@@ -91,6 +91,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,6 +111,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <WholeProgramOptimization>false</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,6 +130,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -147,6 +150,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <WholeProgramOptimization>false</WholeProgramOptimization>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -163,9 +167,11 @@
     <ClCompile Include="codecvt.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="d3d\device.cpp" />
+    <ClCompile Include="d3d\ps.cpp" />
     <ClCompile Include="d3d\RTV.cpp" />
     <ClCompile Include="d3d\swapchain.cpp" />
     <ClCompile Include="d3d\viewport.cpp" />
+    <ClCompile Include="d3d\vs.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="window.cpp" />
@@ -201,9 +207,11 @@
     <ClInclude Include="..\include\suika\window.h" />
     <ClInclude Include="d3d\device.hpp" />
     <ClInclude Include="d3d\info.hpp" />
+    <ClInclude Include="d3d\ps.hpp" />
     <ClInclude Include="d3d\RTV.hpp" />
     <ClInclude Include="d3d\swapchain.hpp" />
     <ClInclude Include="d3d\viewport.hpp" />
+    <ClInclude Include="d3d\vs.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

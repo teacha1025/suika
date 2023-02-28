@@ -29,6 +29,12 @@
     <ClCompile Include="canvas.cpp">
       <Filter>suika\canvas</Filter>
     </ClCompile>
+    <ClCompile Include="d3d\vs.cpp">
+      <Filter>d3d\shader\vs</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d\ps.cpp">
+      <Filter>d3d\shader\ps</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -81,6 +87,15 @@
     </Filter>
     <Filter Include="suika\canvas">
       <UniqueIdentifier>{1beedfdb-03ff-4440-aa4c-652adc61b558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d\shader">
+      <UniqueIdentifier>{1860b830-0891-4873-a5c2-ec322eef2d45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d\shader\ps">
+      <UniqueIdentifier>{a24c97ad-1789-48d4-a28c-701b9a41f211}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d\shader\vs">
+      <UniqueIdentifier>{f4eb671e-ae6e-41dc-af8b-1cc2b2685c15}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +195,12 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\canvas.h">
       <Filter>suika\canvas</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\vs.hpp">
+      <Filter>d3d\shader\vs</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\ps.hpp">
+      <Filter>d3d\shader\ps</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

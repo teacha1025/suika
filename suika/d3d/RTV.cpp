@@ -30,7 +30,7 @@ namespace suika {
 					log_d3d.result(er);
 					return false;
 				}
-				log_d3d.info("Create RexderTargetView");
+				log_d3d.info("Create RenderTargetView");
 				return true;
 			}
 		}

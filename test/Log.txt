@@ -1,0 +1,4 @@
+[8]	‹N“® 2023/02/28 19:49:30  Lib version: 0.00.01
+[66]	Info: window create
+[76]	Info: window create
+[20493]	Info: fin

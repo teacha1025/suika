@@ -5,6 +5,7 @@
 #include "d3d/device.hpp"
 #include "d3d/vs.hpp"
 #include "d3d/ps.hpp"
+#include "d3d/cbuffer.hpp"
 
 #include "d3d/shader/shape_vs.h"
 #include "d3d/shader/shape_ps.h"
@@ -28,6 +29,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		vs.create(g_vs_main, sizeof(g_vs_main), "shape");
 		ps.create(g_ps_main, sizeof(g_ps_main), "shape");
 	}
+	auto cb = suika::d3d::set_view({1280,960});
+	Microsoft::WRL::ComPtr<ID3D11Buffer> cbf;
+	if (!suika::d3d::create_cbuffer(cbf.GetAddressOf(), sizeof(cb))) {
+		suika::log.error("cb");
+		return 0;
+	}
+	suika::d3d::update_cbuffer(cbf.Get(), &cb, 0);
 
 	if (suika::window::create({ 1280,920 }, { 128,128 }, { 1.0,1.0 }, { 255,255,255 }, "Application") == nullptr) {
 		return 0;
@@ -36,7 +44,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	suika::window::title("APP");
 	auto update = [&]() {suika::window::flip(); suika::window::clear(); return suika::window::process(); };
 	while (update()) {
-
+		cb = suika::d3d::set_view({ 1280,960 });
+		suika::d3d::update_cbuffer(cbf.Get(), &cb, 0);
 	}
 	suika::log.info("fin");
 }

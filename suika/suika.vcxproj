@@ -166,6 +166,7 @@
     <ClCompile Include="canvas.cpp" />
     <ClCompile Include="codecvt.cpp" />
     <ClCompile Include="color.cpp" />
+    <ClCompile Include="d3d\cbuffer.cpp" />
     <ClCompile Include="d3d\device.cpp" />
     <ClCompile Include="d3d\ps.cpp" />
     <ClCompile Include="d3d\RTV.cpp" />
@@ -205,6 +206,7 @@
     <ClInclude Include="..\include\suika\string_function.h" />
     <ClInclude Include="..\include\suika\vector.h" />
     <ClInclude Include="..\include\suika\window.h" />
+    <ClInclude Include="d3d\cbuffer.hpp" />
     <ClInclude Include="d3d\device.hpp" />
     <ClInclude Include="d3d\info.hpp" />
     <ClInclude Include="d3d\ps.hpp" />

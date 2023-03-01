@@ -1,8 +1,6 @@
-#include <DirectXMath.h>
 #include <d3d11.h>
 #include <windows.h>
 #include <unordered_map>
-#include <wrl/client.h>
 #include "../../include/suika/point.h"
 #include "info.hpp"
 

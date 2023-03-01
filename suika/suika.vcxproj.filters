@@ -35,6 +35,9 @@
     <ClCompile Include="d3d\ps.cpp">
       <Filter>d3d\shader\ps</Filter>
     </ClCompile>
+    <ClCompile Include="d3d\cbuffer.cpp">
+      <Filter>d3d\shader\constant</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -96,6 +99,12 @@
     </Filter>
     <Filter Include="d3d\shader\vs">
       <UniqueIdentifier>{f4eb671e-ae6e-41dc-af8b-1cc2b2685c15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\shader">
+      <UniqueIdentifier>{90246c27-0116-4d19-bb6c-98e0d06c6f7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d\shader\constant">
+      <UniqueIdentifier>{e439607f-85b7-44f8-9522-95098f198d1d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +210,9 @@
     </ClInclude>
     <ClInclude Include="d3d\ps.hpp">
       <Filter>d3d\shader\ps</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\cbuffer.hpp">
+      <Filter>d3d\shader\constant</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

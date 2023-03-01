@@ -33,10 +33,10 @@ cbuffer ConstantBuffer : register(b0)
 suika::PSInput vs_main( suika::VSInput input )
 {
     suika::PSInput output;
-
-    output.position = mul(input.position,  world);
-    output.position = mul(output.position, view);
-    output.position = mul(output.position, projection);
+	output.position = input.position;
+    //output.position = mul(input.position,  world);
+    //output.position = mul(output.position, view);
+    //output.position = mul(output.position, projection);
     output.color = input.color;
 	output.uv = input.uv;
     return output;

@@ -15,6 +15,12 @@ extern int main();
 
 namespace suika {
 	//logger log;
+	struct vertex
+	{
+		DirectX::XMFLOAT3 position;
+		DirectX::XMFLOAT4 color;
+		DirectX::XMFLOAT2 uv;
+	};
 }
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd) {
@@ -42,6 +48,16 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	}
 	suika::window::background(suika::color(255, 127, 0));
 	suika::window::title("APP");
+
+
+	suika::vertex v[4] = {
+		{{128,128,0},{1.0f,1.0f,1.0f,1.0f},{0,0}},
+		{{192,128,0},{1.0f,1.0f,1.0f,1.0f},{0,0}},
+		{{128,192,0},{1.0f,1.0f,1.0f,1.0f},{0,0}},
+		{{192,192,0},{1.0f,1.0f,1.0f,1.0f},{0,0}},
+	};
+
+
 	auto update = [&]() {suika::window::flip(); suika::window::clear(); return suika::window::process(); };
 	while (update()) {
 		cb = suika::d3d::set_view({ 1280,960 });

@@ -24,12 +24,12 @@ namespace {
 	template<typename T>
 	constexpr inline T logGT(T x) {
 		return x > T { 0.25 } ? log_impl(x, T { 0 }) :
-		                        logGT<T>(x * e<T> * e<T> * e<T> * e<T> * e<T>) - T { 5 };
+								logGT<T>(x * e<T> * e<T> * e<T> * e<T> * e<T>) - T { 5 };
 	}
 	template<typename T>
 	constexpr inline T logLT(T x) {
 		return x < T { 1024 } ? log_impl(x, T { 0 }) :
-		                        logLT<T>(x / (e<T> * e<T> * e<T> * e<T> * e<T>)) + T { 5 };
+								logLT<T>(x / (e<T> * e<T> * e<T> * e<T> * e<T>)) + T { 5 };
 	}
 } // namespace
 

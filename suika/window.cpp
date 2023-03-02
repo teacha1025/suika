@@ -102,7 +102,7 @@ namespace suika {
 			return create(size, rate, bg, title, lt);
 		}
 		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title, const point<uint>& pos) {
-			auto              wtitle = title.to_wstring();
+			auto			  wtitle = title.to_wstring();
 			std::wstring_view title_view = wtitle;
 			HINSTANCE hinst = GetModuleHandle(NULL);
 			WNDCLASS  wclass;

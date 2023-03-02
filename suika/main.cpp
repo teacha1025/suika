@@ -54,76 +54,28 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	suika::window::canvas().get()->set();
 	
-		suika::vertex::vertex_2d vertices[4] = {
-			{{64,64,0,1},suika::pallet::red ,{0,0}},
-			{{480,64,0,1},suika::pallet::yellow,{0,0}},
-			{{64,480,0,1},suika::pallet::blue,{0,0}},
-			{{480,480,0,1},suika::pallet::green,{0,0}},
-		};
+	suika::vertex::vertex_2d vertices[4] = {
+		suika::vertex::create_2d(suika::point<float>{64,64}, suika::pallet::red, {0,0}),
+		suika::vertex::create_2d(suika::point<float>{480,64}, suika::pallet::yellow, {0,0}),
+		suika::vertex::create_2d(suika::point<float>{64,480}, suika::pallet::blue, {0,0}),
+		suika::vertex::create_2d(suika::point<float>{480,480}, suika::pallet::green, {0,0}),
+	};
+	suika::vertex::set_vertex(vertices, sizeof(vertices), sizeof(suika::vertex::vertex_2d));
 
-		
-		//Microsoft::WRL::ComPtr<ID3D11Buffer> g_indexBuffer;
-		//Microsoft::WRL::ComPtr<ID3D11Buffer> g_vertexBuffer;
-
-		//// バッファを作成
-		//D3D11_BUFFER_DESC bufferDesc;
-		//ZeroMemory(&bufferDesc, sizeof(bufferDesc));
-
-		//// 頂点バッファの設定
-		//bufferDesc.Usage = D3D11_USAGE_DEFAULT;
-		//bufferDesc.ByteWidth = sizeof(vertices);
-		//bufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
-		//bufferDesc.CPUAccessFlags = 0;
-
-		//// リソースの設定
-		//D3D11_SUBRESOURCE_DATA initData;
-		//ZeroMemory(&initData, sizeof(initData));
-		//initData.pSysMem = vertices;
-
-		//// 頂点バッファを作成
-		//if (FAILED(suika::d3d::pDevice->CreateBuffer(&bufferDesc, &initData, g_vertexBuffer.GetAddressOf()))) {
-		//	//MessageBox(NULL, L"頂点バッファを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		//	return E_FAIL;
-		//}
-
-		//// 表示する頂点バッファを選択
-		//UINT stride = sizeof(suika::vertex);
-		//UINT offset = 0;
-		//suika::d3d::pContext->IASetVertexBuffers(0, 1, g_vertexBuffer.GetAddressOf(), &stride, &offset);
-		suika::vertex::set_vertex(vertices, sizeof(vertices), sizeof(suika::vertex::vertex_2d));
-
-		// 四角形のインデックスを定義
-		WORD index[] =
-		{
-			0, 1, 2,
-			2, 1, 3
-		};
-
-		//// インデックス情報の追加
-		//bufferDesc.Usage = D3D11_USAGE_DEFAULT;                 // デフォルトアクセス
-		//bufferDesc.ByteWidth = sizeof(index);                // サイズはインデックスの数 6
-		//bufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;         // インデックスバッファを使用
-		//bufferDesc.CPUAccessFlags = 0;                          // CPUのバッファへのアクセス拒否
-		//initData.pSysMem = index;
-
-		//// インデックスバッファを作成
-		//if (FAILED(suika::d3d::pDevice->CreateBuffer(&bufferDesc, &initData, &g_indexBuffer))) {
-		//	//MessageBox(NULL, L"インデックスバッファを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
-		//	return E_FAIL;
-		//}
-
-		//// 表示するインデックスバッファを選択
-		//suika::d3d::pContext->IASetIndexBuffer(g_indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
-
-		//// 使用するプリミティブタイプを設定
-		//suika::d3d::pContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		suika::vertex::set_index(index, sizeof(index));
-	
-		
+	// 四角形のインデックスを定義
+	WORD index[] =
+	{
+		0, 1, 2,
+		2, 1, 3
+	};
+	suika::vertex::set_index(index, sizeof(index), suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	auto update = [&]() {suika::window::flip(); suika::window::clear(); return suika::window::process(); };
 	while (update()) {
 		vertices[0].position.x += 1.0f;
-
+		vertices[1].position.x += 1.0f;
+		vertices[2].position.x += 1.0f;
+		vertices[3].position.x += 1.0f;
+		suika::vertex::set_vertex(vertices, sizeof(vertices), sizeof(suika::vertex::vertex_2d));
 		suika::d3d::pContext->DrawIndexed(6, 0, 0);
 	}
 	suika::log.info("fin");

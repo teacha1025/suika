@@ -7,13 +7,13 @@
 namespace suika {
 	namespace vertex {
 		vertex_2d create_2d(const float4& pos, const color& col, const float2& uv) {
-			return vertex_2d{ .position = pos, .color = col, .uv = uv };
+			return vertex_2d{ .position = pos, .color = {col.r, col.g, col.b, col.a}, .uv = uv };
 		}
 		vertex_2d create_2d(const point<float>& pos, const color& col, const float2& uv) {
-			return vertex_2d{ .position = {pos.x, pos.y, 0.0f, 1.0f}, .color = col, .uv = uv };
+			return vertex_2d{ .position = {pos.x, pos.y, 0.0f, 1.0f}, .color = {col.r, col.g, col.b, col.a}, .uv = uv };
 		}
 		vertex_2d create_2d(const vector3<float>& pos, const color& col, const float2& uv) {
-			return vertex_2d{ .position = {pos.x, pos.y, pos.z, 1.0f}, .color = col, .uv = uv };
+			return vertex_2d{ .position = {pos.x, pos.y, pos.z, 1.0f}, .color = {col.r, col.g, col.b, col.a}, .uv = uv };
 		}
 
 		D3D11_BUFFER_DESC bufferDesc;
@@ -40,7 +40,7 @@ namespace suika {
 			suika::d3d::pContext->IASetVertexBuffers(0, 1, g_vertexBuffer.GetAddressOf(), &stride, &offset);
 		}
 
-		void set_index(const void* index, uint index_size) {
+		void set_index(const void* index, uint index_size, primitive_topology topology) {
 			bufferDesc.Usage = D3D11_USAGE_DEFAULT;
 			bufferDesc.ByteWidth = index_size;
 			bufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
@@ -55,7 +55,7 @@ namespace suika {
 			}
 
 			suika::d3d::pContext->IASetIndexBuffer(g_indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
-			suika::d3d::pContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+			suika::d3d::pContext->IASetPrimitiveTopology(static_cast<D3D11_PRIMITIVE_TOPOLOGY>(topology));
 		}
 	}
 }

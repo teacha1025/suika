@@ -1,233 +1,233 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="window.cpp">
-      <Filter>suika\window</Filter>
-    </ClCompile>
-    <ClCompile Include="logger.cpp">
-      <Filter>suika\logger</Filter>
-    </ClCompile>
-    <ClCompile Include="codecvt.cpp">
-      <Filter>suika\string</Filter>
-    </ClCompile>
-    <ClCompile Include="color.cpp">
-      <Filter>suika\color</Filter>
-    </ClCompile>
-    <ClCompile Include="d3d\device.cpp">
-      <Filter>d3d\device</Filter>
-    </ClCompile>
-    <ClCompile Include="d3d\swapchain.cpp">
-      <Filter>d3d\canvas\swapchain</Filter>
-    </ClCompile>
-    <ClCompile Include="d3d\RTV.cpp">
-      <Filter>d3d\canvas\RTV</Filter>
-    </ClCompile>
-    <ClCompile Include="d3d\viewport.cpp">
-      <Filter>d3d\canvas\viewport</Filter>
-    </ClCompile>
-    <ClCompile Include="canvas.cpp">
-      <Filter>suika\canvas</Filter>
-    </ClCompile>
-    <ClCompile Include="d3d\vs.cpp">
-      <Filter>d3d\shader\vs</Filter>
-    </ClCompile>
-    <ClCompile Include="d3d\ps.cpp">
-      <Filter>d3d\shader\ps</Filter>
-    </ClCompile>
-    <ClCompile Include="d3d\cbuffer.cpp">
-      <Filter>d3d\shader\constant</Filter>
-    </ClCompile>
-    <ClCompile Include="shader.cpp">
-      <Filter>suika\shader</Filter>
-    </ClCompile>
-    <ClCompile Include="vertex.cpp">
-      <Filter>d3d\polygon</Filter>
-    </ClCompile>
+	<ClCompile Include="main.cpp" />
+	<ClCompile Include="window.cpp">
+	  <Filter>suika\window</Filter>
+	</ClCompile>
+	<ClCompile Include="logger.cpp">
+	  <Filter>suika\logger</Filter>
+	</ClCompile>
+	<ClCompile Include="codecvt.cpp">
+	  <Filter>suika\string</Filter>
+	</ClCompile>
+	<ClCompile Include="color.cpp">
+	  <Filter>suika\color</Filter>
+	</ClCompile>
+	<ClCompile Include="d3d\device.cpp">
+	  <Filter>d3d\device</Filter>
+	</ClCompile>
+	<ClCompile Include="d3d\swapchain.cpp">
+	  <Filter>d3d\canvas\swapchain</Filter>
+	</ClCompile>
+	<ClCompile Include="d3d\RTV.cpp">
+	  <Filter>d3d\canvas\RTV</Filter>
+	</ClCompile>
+	<ClCompile Include="d3d\viewport.cpp">
+	  <Filter>d3d\canvas\viewport</Filter>
+	</ClCompile>
+	<ClCompile Include="canvas.cpp">
+	  <Filter>suika\canvas</Filter>
+	</ClCompile>
+	<ClCompile Include="d3d\vs.cpp">
+	  <Filter>d3d\shader\vs</Filter>
+	</ClCompile>
+	<ClCompile Include="d3d\ps.cpp">
+	  <Filter>d3d\shader\ps</Filter>
+	</ClCompile>
+	<ClCompile Include="d3d\cbuffer.cpp">
+	  <Filter>d3d\shader\constant</Filter>
+	</ClCompile>
+	<ClCompile Include="shader.cpp">
+	  <Filter>suika\shader</Filter>
+	</ClCompile>
+	<ClCompile Include="vertex.cpp">
+	  <Filter>d3d\polygon</Filter>
+	</ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="d3d">
-      <UniqueIdentifier>{9ee6d535-a343-4b98-b967-3c2b2b8777f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika">
-      <UniqueIdentifier>{be9dc4ec-ad93-44d7-aed6-4f9f3a0fc7ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\point">
-      <UniqueIdentifier>{4d1cac14-952f-4cad-8f4d-3a9912a96bf8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\string">
-      <UniqueIdentifier>{f1ca25bb-bb5f-47b2-adeb-f6262dc9a47f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\interface">
-      <UniqueIdentifier>{3bb00653-c744-4c42-94be-3e24de2b8385}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\concept">
-      <UniqueIdentifier>{24857771-8676-497c-bd8f-2936de337e30}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\math">
-      <UniqueIdentifier>{c60bab07-7617-45bf-bfed-32af572e9fe1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\color">
-      <UniqueIdentifier>{6186f5ff-2e63-406d-aef2-45fa4c7b110a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\logger">
-      <UniqueIdentifier>{616a34a7-d79a-4a23-abe9-ff1de9015c2b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\range">
-      <UniqueIdentifier>{549dbf70-08d9-4be2-890d-69906719b5fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\window">
-      <UniqueIdentifier>{77cd9f33-775f-4e48-b696-89300983109c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="d3d\device">
-      <UniqueIdentifier>{f71871e7-c749-47be-9739-76ce9e1e216b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="d3d\canvas">
-      <UniqueIdentifier>{38618f2c-a911-4b41-873e-fed925b6e1fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="d3d\canvas\viewport">
-      <UniqueIdentifier>{f49dd3ec-da27-4164-9209-97f8752a797b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="d3d\canvas\RTV">
-      <UniqueIdentifier>{bb9a8cce-fe9b-47fd-96c6-8d277a6d63af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="d3d\canvas\swapchain">
-      <UniqueIdentifier>{340fa92b-8421-43b4-af14-609d67edf812}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\canvas">
-      <UniqueIdentifier>{1beedfdb-03ff-4440-aa4c-652adc61b558}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="d3d\shader">
-      <UniqueIdentifier>{1860b830-0891-4873-a5c2-ec322eef2d45}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="d3d\shader\ps">
-      <UniqueIdentifier>{a24c97ad-1789-48d4-a28c-701b9a41f211}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="d3d\shader\vs">
-      <UniqueIdentifier>{f4eb671e-ae6e-41dc-af8b-1cc2b2685c15}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\shader">
-      <UniqueIdentifier>{90246c27-0116-4d19-bb6c-98e0d06c6f7f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="d3d\shader\constant">
-      <UniqueIdentifier>{e439607f-85b7-44f8-9522-95098f198d1d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="d3d\polygon">
-      <UniqueIdentifier>{9caa2e8e-448d-47f8-a1a5-b813c254d356}</UniqueIdentifier>
-    </Filter>
+	<Filter Include="d3d">
+	  <UniqueIdentifier>{9ee6d535-a343-4b98-b967-3c2b2b8777f2}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="suika">
+	  <UniqueIdentifier>{be9dc4ec-ad93-44d7-aed6-4f9f3a0fc7ba}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="suika\point">
+	  <UniqueIdentifier>{4d1cac14-952f-4cad-8f4d-3a9912a96bf8}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="suika\string">
+	  <UniqueIdentifier>{f1ca25bb-bb5f-47b2-adeb-f6262dc9a47f}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="suika\interface">
+	  <UniqueIdentifier>{3bb00653-c744-4c42-94be-3e24de2b8385}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="suika\concept">
+	  <UniqueIdentifier>{24857771-8676-497c-bd8f-2936de337e30}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="suika\math">
+	  <UniqueIdentifier>{c60bab07-7617-45bf-bfed-32af572e9fe1}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="suika\color">
+	  <UniqueIdentifier>{6186f5ff-2e63-406d-aef2-45fa4c7b110a}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="suika\logger">
+	  <UniqueIdentifier>{616a34a7-d79a-4a23-abe9-ff1de9015c2b}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="suika\range">
+	  <UniqueIdentifier>{549dbf70-08d9-4be2-890d-69906719b5fc}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="suika\window">
+	  <UniqueIdentifier>{77cd9f33-775f-4e48-b696-89300983109c}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="d3d\device">
+	  <UniqueIdentifier>{f71871e7-c749-47be-9739-76ce9e1e216b}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="d3d\canvas">
+	  <UniqueIdentifier>{38618f2c-a911-4b41-873e-fed925b6e1fd}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="d3d\canvas\viewport">
+	  <UniqueIdentifier>{f49dd3ec-da27-4164-9209-97f8752a797b}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="d3d\canvas\RTV">
+	  <UniqueIdentifier>{bb9a8cce-fe9b-47fd-96c6-8d277a6d63af}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="d3d\canvas\swapchain">
+	  <UniqueIdentifier>{340fa92b-8421-43b4-af14-609d67edf812}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="suika\canvas">
+	  <UniqueIdentifier>{1beedfdb-03ff-4440-aa4c-652adc61b558}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="d3d\shader">
+	  <UniqueIdentifier>{1860b830-0891-4873-a5c2-ec322eef2d45}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="d3d\shader\ps">
+	  <UniqueIdentifier>{a24c97ad-1789-48d4-a28c-701b9a41f211}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="d3d\shader\vs">
+	  <UniqueIdentifier>{f4eb671e-ae6e-41dc-af8b-1cc2b2685c15}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="suika\shader">
+	  <UniqueIdentifier>{90246c27-0116-4d19-bb6c-98e0d06c6f7f}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="d3d\shader\constant">
+	  <UniqueIdentifier>{e439607f-85b7-44f8-9522-95098f198d1d}</UniqueIdentifier>
+	</Filter>
+	<Filter Include="d3d\polygon">
+	  <UniqueIdentifier>{9caa2e8e-448d-47f8-a1a5-b813c254d356}</UniqueIdentifier>
+	</Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\suika\pallet.h">
-      <Filter>suika\color</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\color.h">
-      <Filter>suika\color</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\vector.h">
-      <Filter>suika\point</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\point.h">
-      <Filter>suika\point</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\def.h" />
-    <ClInclude Include="..\include\suika\math.h">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\math\ceil.ipp">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\math\exp.ipp">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\math\floor.ipp">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\math\fmod.ipp">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\math\log.ipp">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\math\pow.ipp">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\math\round.ipp">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\math\sin_con_tan.ipp">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\math\sqrt.ipp">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\math\trunc.ipp">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\math\abs.ipp">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\math\asin_acos_atan.ipp">
-      <Filter>suika\math</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\concepts.h">
-      <Filter>suika\concept</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\base.h">
-      <Filter>suika\interface</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\string_function.h">
-      <Filter>suika\string</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\string.h">
-      <Filter>suika\string</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\detail\string.ipp">
-      <Filter>suika\string</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\window.h">
-      <Filter>suika\window</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\logger.h">
-      <Filter>suika\logger</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\codecvt.h">
-      <Filter>suika\string</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\range.h">
-      <Filter>suika\range</Filter>
-    </ClInclude>
-    <ClInclude Include="d3d\info.hpp">
-      <Filter>d3d</Filter>
-    </ClInclude>
-    <ClInclude Include="d3d\device.hpp">
-      <Filter>d3d\device</Filter>
-    </ClInclude>
-    <ClInclude Include="d3d\swapchain.hpp">
-      <Filter>d3d\canvas\swapchain</Filter>
-    </ClInclude>
-    <ClInclude Include="d3d\RTV.hpp">
-      <Filter>d3d\canvas\RTV</Filter>
-    </ClInclude>
-    <ClInclude Include="d3d\viewport.hpp">
-      <Filter>d3d\canvas\viewport</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\canvas.h">
-      <Filter>suika\canvas</Filter>
-    </ClInclude>
-    <ClInclude Include="d3d\vs.hpp">
-      <Filter>d3d\shader\vs</Filter>
-    </ClInclude>
-    <ClInclude Include="d3d\ps.hpp">
-      <Filter>d3d\shader\ps</Filter>
-    </ClInclude>
-    <ClInclude Include="d3d\cbuffer.hpp">
-      <Filter>d3d\shader\constant</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\shader.h">
-      <Filter>suika\shader</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\vertex.h">
-      <Filter>d3d\polygon</Filter>
-    </ClInclude>
+	<ClInclude Include="..\include\suika\pallet.h">
+	  <Filter>suika\color</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\color.h">
+	  <Filter>suika\color</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\vector.h">
+	  <Filter>suika\point</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\point.h">
+	  <Filter>suika\point</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\def.h" />
+	<ClInclude Include="..\include\suika\math.h">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\math\ceil.ipp">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\math\exp.ipp">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\math\floor.ipp">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\math\fmod.ipp">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\math\log.ipp">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\math\pow.ipp">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\math\round.ipp">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\math\sin_con_tan.ipp">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\math\sqrt.ipp">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\math\trunc.ipp">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\math\abs.ipp">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\math\asin_acos_atan.ipp">
+	  <Filter>suika\math</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\concepts.h">
+	  <Filter>suika\concept</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\base.h">
+	  <Filter>suika\interface</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\string_function.h">
+	  <Filter>suika\string</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\string.h">
+	  <Filter>suika\string</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\detail\string.ipp">
+	  <Filter>suika\string</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\window.h">
+	  <Filter>suika\window</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\logger.h">
+	  <Filter>suika\logger</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\codecvt.h">
+	  <Filter>suika\string</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\range.h">
+	  <Filter>suika\range</Filter>
+	</ClInclude>
+	<ClInclude Include="d3d\info.hpp">
+	  <Filter>d3d</Filter>
+	</ClInclude>
+	<ClInclude Include="d3d\device.hpp">
+	  <Filter>d3d\device</Filter>
+	</ClInclude>
+	<ClInclude Include="d3d\swapchain.hpp">
+	  <Filter>d3d\canvas\swapchain</Filter>
+	</ClInclude>
+	<ClInclude Include="d3d\RTV.hpp">
+	  <Filter>d3d\canvas\RTV</Filter>
+	</ClInclude>
+	<ClInclude Include="d3d\viewport.hpp">
+	  <Filter>d3d\canvas\viewport</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\canvas.h">
+	  <Filter>suika\canvas</Filter>
+	</ClInclude>
+	<ClInclude Include="d3d\vs.hpp">
+	  <Filter>d3d\shader\vs</Filter>
+	</ClInclude>
+	<ClInclude Include="d3d\ps.hpp">
+	  <Filter>d3d\shader\ps</Filter>
+	</ClInclude>
+	<ClInclude Include="d3d\cbuffer.hpp">
+	  <Filter>d3d\shader\constant</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\shader.h">
+	  <Filter>suika\shader</Filter>
+	</ClInclude>
+	<ClInclude Include="..\include\suika\vertex.h">
+	  <Filter>d3d\polygon</Filter>
+	</ClInclude>
   </ItemGroup>
 </Project>

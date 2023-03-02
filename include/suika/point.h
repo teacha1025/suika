@@ -739,12 +739,12 @@ namespace suika {
 		}
 
 		constexpr polar2& operator+=(const polar2& p) {
-			r     = math::sqrt(r * r + p.r * p.r + 2 * r * p.r * math::cos(theta - p.theta));
+			r	 = math::sqrt(r * r + p.r * p.r + 2 * r * p.r * math::cos(theta - p.theta));
 			theta = math::atan((r * math::sin(theta) + p.r * math::sin(p.theta)) / (r * math::cos(theta) + p.r * math::cos(p.theta)));
 			return *this;
 		}
 		constexpr polar2& operator-=(const polar2& p) {
-			r     = math::sqrt(r * r + p.r * p.r - 2 * r * p.r * math::cos(theta - p.theta));
+			r	 = math::sqrt(r * r + p.r * p.r - 2 * r * p.r * math::cos(theta - p.theta));
 			theta = math::atan((r * math::sin(theta) - p.r * math::sin(p.theta)) / (r * math::cos(theta) - p.r * math::cos(p.theta)));
 			return *this;
 		}
@@ -760,12 +760,12 @@ namespace suika {
 		}
 
 		constexpr polar2& operator+=(size a) const {
-			r     = math::sqrt(r * r + a * a + 2 * r * a * math::cos(theta));
+			r	 = math::sqrt(r * r + a * a + 2 * r * a * math::cos(theta));
 			theta = math::atan((r * math::sin(theta)) / (r * math::cos(theta) + a));
 			return *this;
 		}
 		constexpr polar2& operator-=(size a) const {
-			r     = math::sqrt(r * r + a * a - 2 * r * a * math::cos(theta));
+			r	 = math::sqrt(r * r + a * a - 2 * r * a * math::cos(theta));
 			theta = math::atan((r * math::sin(theta)) / (r * math::cos(theta) - a));
 			return *this;
 		}
@@ -801,13 +801,13 @@ namespace suika {
 		}
 		template<concepts::numbers t>
 		constexpr polar2& operator+=(const polar2<t>& p) {
-			r     = math::sqrt(r * r + p.r * p.r + 2 * r * p.r * math::cos(theta - p.theta));
+			r	 = math::sqrt(r * r + p.r * p.r + 2 * r * p.r * math::cos(theta - p.theta));
 			theta = math::atan((r * math::sin(theta) + p.r * math::sin(p.theta)) / (r * math::cos(theta) + p.r * math::cos(p.theta)));
 			return *this;
 		}
 		template<concepts::numbers t>
 		constexpr polar2& operator-=(const polar2<t>& p) {
-			r     = math::sqrt(r * r + p.r * p.r - 2 * r * p.r * math::cos(theta - p.theta));
+			r	 = math::sqrt(r * r + p.r * p.r - 2 * r * p.r * math::cos(theta - p.theta));
 			theta = math::atan((r * math::sin(theta) - p.r * math::sin(p.theta)) / (r * math::cos(theta) - p.r * math::cos(p.theta)));
 			return *this;
 		}
@@ -841,13 +841,13 @@ namespace suika {
 		}
 		template<concepts::numbers t>
 		constexpr polar2& operator+=(t a) const {
-			r     = math::sqrt(r * r + a * a + 2 * r * a * math::cos(theta));
+			r	 = math::sqrt(r * r + a * a + 2 * r * a * math::cos(theta));
 			theta = math::atan((r * math::sin(theta)) / (r * math::cos(theta) + a));
 			return *this;
 		}
 		template<concepts::numbers t>
 		constexpr polar2& operator-=(t a) const {
-			r     = math::sqrt(r * r + a * a - 2 * r * a * math::cos(theta));
+			r	 = math::sqrt(r * r + a * a - 2 * r * a * math::cos(theta));
 			theta = math::atan((r * math::sin(theta)) / (r * math::cos(theta) - a));
 			return *this;
 		}

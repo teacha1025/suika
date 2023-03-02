@@ -88,7 +88,7 @@ namespace suika {
 			MATRIX_D mx = MGetRotXD(angle.x);
 			MATRIX_D my = MGetRotYD(angle.y);
 			MATRIX_D mz = MGetRotZD(angle.z);
-			v           = VTransformD(v, MMultD(MMultD(mz, mx), my));
+			v		   = VTransformD(v, MMultD(MMultD(mz, mx), my));
 			return { v.x, v.y, v.z };
 		}
 

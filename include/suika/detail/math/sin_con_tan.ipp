@@ -17,8 +17,8 @@ namespace {
 	template<typename T>
 	constexpr inline T trig_series(T x, T sum, T n, int i, int s, T t) {
 		return feq(10000000 * sum, 10000000 * (sum + t * s / n)) ?
-		           sum :
-		           trig_series(x, sum + t * s / n, n * i * (T(i) + T(1)), i + 2, -s, t * x * x);
+				   sum :
+				   trig_series(x, sum + t * s / n, n * i * (T(i) + T(1)), i + 2, -s, t * x * x);
 	}
 } // namespace
 

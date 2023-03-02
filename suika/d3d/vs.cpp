@@ -25,6 +25,9 @@ namespace suika {
                 {
                 case D3D10_REGISTER_COMPONENT_FLOAT32:
                     return DXGI_FORMAT_R32G32B32A32_FLOAT;
+                
+                case D3D10_REGISTER_COMPONENT_UINT32: 
+                    return DXGI_FORMAT_R32G32B32A32_UINT;
                 }
             }
 
@@ -35,6 +38,8 @@ namespace suika {
                 {
                 case D3D10_REGISTER_COMPONENT_FLOAT32:
                     return DXGI_FORMAT_R32G32B32_FLOAT;
+                case D3D10_REGISTER_COMPONENT_UINT32:
+                    return DXGI_FORMAT_R32G32B32_UINT;
                 }
             }
 
@@ -45,6 +50,8 @@ namespace suika {
                 {
                 case D3D10_REGISTER_COMPONENT_FLOAT32:
                     return DXGI_FORMAT_R32G32_FLOAT;
+                case D3D10_REGISTER_COMPONENT_UINT32:
+                    return DXGI_FORMAT_R32G32_UINT;
                 }
             }
 
@@ -55,6 +62,8 @@ namespace suika {
                 {
                 case D3D10_REGISTER_COMPONENT_FLOAT32:
                     return DXGI_FORMAT_R32_FLOAT;
+                case D3D10_REGISTER_COMPONENT_UINT32:
+                    return DXGI_FORMAT_R32_UINT;
                 }
             }
 

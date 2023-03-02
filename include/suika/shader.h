@@ -10,5 +10,4 @@ namespace suika {
 	void set_vs(const string& name);
 	void set_ps(const string& name);
 
-	void 
 }

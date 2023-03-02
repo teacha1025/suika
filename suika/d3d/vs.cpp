@@ -1,5 +1,4 @@
 #include <d3d11.h>
-#include <d3d11shader.h>
 #include <d3dcompiler.h>
 #include <dxgi.h>
 #include <windows.h>
@@ -61,9 +60,41 @@ namespace suika {
 
             return DXGI_FORMAT_UNKNOWN;
         }
+        HRESULT CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut) {
+            HRESULT hr = S_OK;
 
-        void vertex_shader::create(const BYTE* input, size_t size, const string& name) {
+            DWORD dwShaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
+#ifdef _DEBUG
+            dwShaderFlags |= D3DCOMPILE_DEBUG;
+
+            dwShaderFlags |= D3DCOMPILE_SKIP_OPTIMIZATION;
+#endif
+
+            ID3DBlob* pErrorBlob = nullptr;
+            hr = D3DCompileFromFile(szFileName, nullptr, nullptr, szEntryPoint, szShaderModel,
+                dwShaderFlags, 0, ppBlobOut, &pErrorBlob);
+            if (FAILED(hr)) {
+                if (pErrorBlob) {
+                    OutputDebugStringA(reinterpret_cast<const char*>(pErrorBlob->GetBufferPointer()));
+                    pErrorBlob->Release();
+                }
+                return hr;
+            }
+            if (pErrorBlob) pErrorBlob->Release();
+
+            return S_OK;
+        }
+        void vertex_shader::create(const string& input, const string& name) {
             ComPtr<ID3DBlob> vblob;
+            auto er = CompileShaderFromFile(input.to_wstring().data(), "vs_main", "vs_5_0", &vblob);
+            if (FAILED(er)) {
+                log_d3d.error("Failed to Compile VertexShader");
+                log_d3d.result(er);
+                return;
+            }
+            create(vblob.Get()->GetBufferPointer(), vblob.Get()->GetBufferSize(), name);
+        }
+        void vertex_shader::create(LPCVOID input, size_t size, const string& name) {
             auto er = pDevice->CreateVertexShader(input, size, nullptr, pVS.GetAddressOf());
             ComPtr<ID3D11ShaderReflection> pReflector;
             er = D3DReflect(input, size, IID_ID3D11ShaderReflection, (void**)pReflector.GetAddressOf());

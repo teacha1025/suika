@@ -10,7 +10,8 @@ namespace suika {
 		struct vertex_shader {
 			Microsoft::WRL::ComPtr<ID3D11VertexShader> pVS;
 			Microsoft::WRL::ComPtr<ID3D11InputLayout> pIL;
-			void create(const BYTE* input, size_t size, const string& name);
+			void create(const string& input, const string& name);
+			void create(LPCVOID input, size_t size, const string& name);
 			void set();
 		};
 

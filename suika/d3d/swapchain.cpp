@@ -16,7 +16,7 @@ namespace suika {
 				DXGI_SWAP_CHAIN_DESC descSwapChain = {
 					.BufferDesc = {
 						.Width = static_cast<UINT>(size.x), 
-						.Height = static_cast<UINT>(size.x),
+						.Height = static_cast<UINT>(size.y),
 						.RefreshRate = {60U, 1U}, 
 						.Format = DXGI_FORMAT_R8G8B8A8_UNORM, 
 						.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED,	

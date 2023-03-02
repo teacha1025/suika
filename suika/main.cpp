@@ -29,38 +29,43 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	if (!suika::d3d::init()) {
 		suika::log.error("d3d error");
 		return 0;
+	}	
+
+	if (suika::window::create({ 1280,960 }, { 128,128 }, { 1.0,1.0 }, { 255,255,255 }, "Application") == nullptr) {
+		return 0;
 	}
-	{
-		suika::d3d::vertex_shader vs;
-		suika::d3d::pixel_shader ps;
-		vs.create(g_vs_main, sizeof(g_vs_main), "shape");
-		ps.create(g_ps_main, sizeof(g_ps_main), "shape");
-		vs.set();
-		ps.set();
-	}
-	auto cb = suika::d3d::set_view({1280,960});
+
+	suika::d3d::vertex_shader vs;
+	suika::d3d::pixel_shader ps;
+	vs.create(g_vs_main, sizeof(g_vs_main), "shape");
+	ps.create(g_ps_main, sizeof(g_ps_main), "shape");
+	//vs.create("../suika/d3d/shader/shape.hlsl", "shape");
+	//ps.create("../suika/d3d/shader/shape.hlsl", "shape");
+	vs.set();
+	ps.set();
+
+	auto cb = suika::d3d::set_view({ 1280,960 });
 	Microsoft::WRL::ComPtr<ID3D11Buffer> cbf;
 	if (!suika::d3d::create_cbuffer(cbf.GetAddressOf(), sizeof(cb))) {
 		suika::log.error("cb");
 		return 0;
 	}
-	suika::d3d::update_cbuffer(cbf.Get(), &cb, 0);
+	suika::d3d::update_cbuffer(cbf.Get(), &cb, sizeof(cb), 0);
+	suika::d3d::set_cbuffer(cbf.GetAddressOf());
 
-	if (suika::window::create({ 1280,920 }, { 128,128 }, { 1.0,1.0 }, { 255,255,255 }, "Application") == nullptr) {
-		return 0;
-	}
-	suika::window::background(suika::color(255, 127, 0));
+	suika::window::background(suika::color(0, 0, 0));
 	suika::window::title("APP");
 
-
-	suika::vertex vertices[4] = {
-		{{128,128,0, 0},{1.0f,1.0f,1.0f,1.0f},{0,0}},
-		{{192,128,0, 0},{1.0f,1.0f,1.0f,1.0f},{0,0}},
-		{{128,192,0, 0},{1.0f,1.0f,1.0f,1.0f},{0,0}},
-		{{192,192,0, 0},{1.0f,1.0f,1.0f,1.0f},{0,0}},
-	};
-
+	suika::window::canvas().get()->set();
 	{
+		suika::vertex vertices[4] = {
+			{{64,64,0,1},{1.0f,0.0f,0.0f,1.0f} ,{0,0}},
+			{{480,64,0,1},{1.0f,1.0f,0.0f,1.0f},{0,0}},
+			{{64,480,0,1},{0.0f,0.0f,1.0f,1.0f},{0,0}},
+			{{480,480,0,1},{0.0f,1.0f,1.0f,1.0f},{0,0}},
+		};
+
+
 		Microsoft::WRL::ComPtr<ID3D11Buffer> g_indexBuffer;
 		Microsoft::WRL::ComPtr<ID3D11Buffer> g_vertexBuffer;
 
@@ -80,8 +85,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		initData.pSysMem = vertices;
 
 		// 頂点バッファを作成
-		if (FAILED(suika::d3d::pDevice->CreateBuffer(&bufferDesc, &initData, g_vertexBuffer.GetAddressOf())))
-		{
+		if (FAILED(suika::d3d::pDevice->CreateBuffer(&bufferDesc, &initData, g_vertexBuffer.GetAddressOf()))) {
 			//MessageBox(NULL, L"頂点バッファを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 			return E_FAIL;
 		}
@@ -100,14 +104,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 		// インデックス情報の追加
 		bufferDesc.Usage = D3D11_USAGE_DEFAULT;                 // デフォルトアクセス
-		bufferDesc.ByteWidth = sizeof(WORD) * 6;                // サイズはインデックスの数 6
+		bufferDesc.ByteWidth = sizeof(index);                // サイズはインデックスの数 6
 		bufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;         // インデックスバッファを使用
 		bufferDesc.CPUAccessFlags = 0;                          // CPUのバッファへのアクセス拒否
 		initData.pSysMem = index;
 
 		// インデックスバッファを作成
-		if (FAILED(suika::d3d::pDevice->CreateBuffer(&bufferDesc, &initData, &g_indexBuffer)))
-		{
+		if (FAILED(suika::d3d::pDevice->CreateBuffer(&bufferDesc, &initData, &g_indexBuffer))) {
 			//MessageBox(NULL, L"インデックスバッファを作成できませんでした。", WINDOW_TITLE, MB_OK | MB_ICONERROR);
 			return E_FAIL;
 		}
@@ -118,15 +121,25 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		// 使用するプリミティブタイプを設定
 		suika::d3d::pContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	}
-	
-
+		
 	auto update = [&]() {suika::window::flip(); suika::window::clear(); return suika::window::process(); };
 	while (update()) {
-		cb = suika::d3d::set_view({ 1280,960 });
-		suika::d3d::update_cbuffer(cbf.Get(), &cb, 0);
-		//suika::d3d::pContext->IASetVertexBuffers(0, 1, g_vertexBuffer.GetAddressOf(), &stride, &offset);
-
+		
+		//suika::d3d::pContext->UpdateSubresource(cbf.Get(), 0, nullptr, &cb, 0, 0);
+		//D3D11_MAPPED_SUBRESOURCE cData;
+		//auto er = suika::d3d::pContext->Map(cbf.Get(), 0, D3D11_MAP_WRITE_DISCARD, 0, &cData);
+		//if (FAILED(er)) {
+		//	suika::d3d::log_d3d.error("Failed to Map");
+		//	suika::d3d::log_d3d.result(er);
+		//	//return;
+		//}
+		//else {
+		//	memcpy_s(cData.pData, cData.RowPitch, &cb, sizeof(cb));
+		//	suika::d3d::pContext->Unmap(cbf.Get(), 0);
+		//}
 		suika::d3d::pContext->DrawIndexed(6, 0, 0);
 	}
 	suika::log.info("fin");
+
+	return 0;
 }

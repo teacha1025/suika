@@ -9,7 +9,8 @@ namespace suika {
 	namespace d3d {
 		struct pixel_shader {
 			Microsoft::WRL::ComPtr<ID3D11PixelShader> pPS;
-			void create(const BYTE* input, size_t size, const string& name);
+			void create(const string& input, const string& name);
+			void create(LPCVOID input, size_t size, const string& name);
 			void set();
 		};
 

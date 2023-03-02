@@ -135,7 +135,7 @@ namespace suika {
 			wnd._bg = bg;
 			wnd._bg.now.a = 255;
 			wnd._fullscreen_flag = false;
-			wnd._canvas = make_canvas(size,pos, hwnd, wnd._bg.now);
+			wnd._canvas = make_canvas(size,{0,0}, hwnd, wnd._bg.now);
 
 			if (window_list.empty()) {
 				default_id = hwnd;

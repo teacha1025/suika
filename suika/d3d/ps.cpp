@@ -13,7 +13,7 @@ using namespace Microsoft::WRL;
 namespace suika {
     namespace d3d {
 
-        std::unordered_map<std::string, pixel_shader&> pixel_shader_list;
+        std::unordered_map<std::string, pixel_shader> pixel_shader_list;
         HRESULT CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
         void pixel_shader::create(const string& input, const string& name) {
             ComPtr<ID3DBlob> vblob;

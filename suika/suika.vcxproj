@@ -175,6 +175,8 @@
     <ClCompile Include="d3d\vs.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="shader.cpp" />
+    <ClCompile Include="vertex.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -202,9 +204,11 @@
     <ClInclude Include="..\include\suika\pallet.h" />
     <ClInclude Include="..\include\suika\point.h" />
     <ClInclude Include="..\include\suika\range.h" />
+    <ClInclude Include="..\include\suika\shader.h" />
     <ClInclude Include="..\include\suika\string.h" />
     <ClInclude Include="..\include\suika\string_function.h" />
     <ClInclude Include="..\include\suika\vector.h" />
+    <ClInclude Include="..\include\suika\vertex.h" />
     <ClInclude Include="..\include\suika\window.h" />
     <ClInclude Include="d3d\cbuffer.hpp" />
     <ClInclude Include="d3d\device.hpp" />

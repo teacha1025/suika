@@ -14,6 +14,6 @@ namespace suika {
 			void set();
 		};
 
-		extern std::unordered_map<std::string, pixel_shader&> pixel_shader_list;
+		extern std::unordered_map<std::string, pixel_shader> pixel_shader_list;
 	}
 }

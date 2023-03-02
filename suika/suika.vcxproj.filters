@@ -38,6 +38,12 @@
     <ClCompile Include="d3d\cbuffer.cpp">
       <Filter>d3d\shader\constant</Filter>
     </ClCompile>
+    <ClCompile Include="shader.cpp">
+      <Filter>suika\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="vertex.cpp">
+      <Filter>d3d\polygon</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -105,6 +111,9 @@
     </Filter>
     <Filter Include="d3d\shader\constant">
       <UniqueIdentifier>{e439607f-85b7-44f8-9522-95098f198d1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d\polygon">
+      <UniqueIdentifier>{9caa2e8e-448d-47f8-a1a5-b813c254d356}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +222,12 @@
     </ClInclude>
     <ClInclude Include="d3d\cbuffer.hpp">
       <Filter>d3d\shader\constant</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\shader.h">
+      <Filter>suika\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\vertex.h">
+      <Filter>d3d\polygon</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

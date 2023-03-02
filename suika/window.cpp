@@ -94,7 +94,14 @@ namespace suika {
 				0);
 		}
 
-		id create(const point<uint>& size, const point<uint>& pos, point<double> rate, const color& bg, const string& title) {
+		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title) {
+			static const uint x = (uint)GetSystemMetrics(SM_CXSCREEN);
+			static const uint y = (uint)GetSystemMetrics(SM_CYSCREEN);
+
+			auto lt = point<uint>(x, y); lt -= size; lt /= 2u;
+			return create(size, rate, bg, title, lt);
+		}
+		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title, const point<uint>& pos) {
 			auto              wtitle = title.to_wstring();
 			std::wstring_view title_view = wtitle;
 			HINSTANCE hinst = GetModuleHandle(NULL);

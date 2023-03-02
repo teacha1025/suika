@@ -16,7 +16,7 @@ using namespace Microsoft::WRL;
 
 namespace suika {
 	namespace d3d {
-        std::unordered_map<std::string, vertex_shader&> vertex_shader_list;
+        std::unordered_map<std::string, vertex_shader> vertex_shader_list;
         DXGI_FORMAT GetDxgiFormat(D3D_REGISTER_COMPONENT_TYPE type, BYTE mask) {
             if (mask & 0x0F)
             {
@@ -137,7 +137,6 @@ namespace suika {
                 }
             }
 
-            vertex_shader_list.insert({ name.to_string(), *this});
             log_d3d.info("Create VS");
 		}
 		void vertex_shader::set() {

@@ -15,7 +15,8 @@ namespace suika {
 	namespace window {
 		using id = HWND;
 		extern id default_id;
-		id create(const point<uint>& size, const point<uint>& pos, point<double> rate, const color& bg, const string& title);
+		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title);
+		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title, const point<uint>& pos);
 		bool process();
 		void flip();
 		void clear();

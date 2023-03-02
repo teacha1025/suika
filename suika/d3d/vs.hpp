@@ -1,5 +1,6 @@
 #pragma once
 #include <unordered_map>
+#include <xmemory>
 #include <d3d11.h>
 #include <wrl/client.h>
 #include <Windows.h>
@@ -15,6 +16,6 @@ namespace suika {
 			void set();
 		};
 
-		extern std::unordered_map<std::string, vertex_shader&> vertex_shader_list;
+		extern std::unordered_map<std::string, vertex_shader> vertex_shader_list;
 	}
 }

@@ -13,7 +13,6 @@ namespace suika
 		uint4 color : COLOR0;
 		float2 uv : TEXCOORD0;
 	};
-
 }
 
 cbuffer ConstantBuffer : register(b0)
@@ -21,6 +20,8 @@ cbuffer ConstantBuffer : register(b0)
     matrix mt;
 }
 
+Texture2D    texture : register(t0);
+SamplerState sampler : register(s0);
 suika::PSInput vs_main( suika::VSInput input )
 {
     suika::PSInput output;
@@ -35,5 +36,5 @@ suika::PSInput vs_main( suika::VSInput input )
 
 float4 ps_main( suika::PSInput input ) : SV_Target
 {
-        return input.color;
+    return texture.Sample(sampler, input.uv);
 }

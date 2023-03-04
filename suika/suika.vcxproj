@@ -164,10 +164,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="canvas.cpp" />
+    <ClCompile Include="cbuffer.cpp" />
     <ClCompile Include="codecvt.cpp" />
     <ClCompile Include="color.cpp" />
-    <ClCompile Include="d3d\cbuffer.cpp" />
+    <ClCompile Include="d3d\c_buffer.cpp" />
     <ClCompile Include="d3d\device.cpp" />
+    <ClCompile Include="d3d\dwrite.cpp" />
     <ClCompile Include="d3d\ps.cpp" />
     <ClCompile Include="d3d\RTV.cpp" />
     <ClCompile Include="d3d\swapchain.cpp" />
@@ -182,6 +184,7 @@
   <ItemGroup>
     <ClInclude Include="..\include\suika\base.h" />
     <ClInclude Include="..\include\suika\canvas.h" />
+    <ClInclude Include="..\include\suika\cbuffer.h" />
     <ClInclude Include="..\include\suika\codecvt.h" />
     <ClInclude Include="..\include\suika\color.h" />
     <ClInclude Include="..\include\suika\concepts.h" />
@@ -212,6 +215,7 @@
     <ClInclude Include="..\include\suika\window.h" />
     <ClInclude Include="d3d\cbuffer.hpp" />
     <ClInclude Include="d3d\device.hpp" />
+    <ClInclude Include="d3d\dwrite.h" />
     <ClInclude Include="d3d\info.hpp" />
     <ClInclude Include="d3d\ps.hpp" />
     <ClInclude Include="d3d\RTV.hpp" />

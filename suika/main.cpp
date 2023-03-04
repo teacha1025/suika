@@ -5,6 +5,7 @@
 #include "../include/suika/color.h"
 #include "../include/suika/pallet.h"
 #include "../include/suika/vertex.h"
+#include "../include/suika/cbuffer.h"
 
 #include "d3d/info.hpp"
 #include "d3d/device.hpp"
@@ -40,19 +41,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	suika::set_vs("shape");
 	suika::set_ps("shape");
 
-	auto cb = suika::d3d::set_view({ 1280,960 });
-	Microsoft::WRL::ComPtr<ID3D11Buffer> cbf;
-	if (!suika::d3d::create_cbuffer(cbf.GetAddressOf(), sizeof(cb))) {
-		suika::log.error("cb");
-		return 0;
-	}
-	suika::d3d::update_cbuffer(cbf.Get(), &cb, sizeof(cb), 0);
-	suika::d3d::set_cbuffer(cbf.GetAddressOf());
-
 	suika::window::background(suika::color(0, 0, 0));
 	suika::window::title("APP");
 
 	suika::window::canvas().get()->set();
+
+	auto cb = suika::set_view({ 1280,960 });
+	suika::set_cbuffer(sizeof(cb), &cb, 0);
 	
 	suika::vertex::vertex_2d vertices[4] = {
 		suika::vertex::create_2d(suika::point<float>{64,64}, suika::pallet::red, {0,0}),

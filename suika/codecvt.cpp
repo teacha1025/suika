@@ -105,4 +105,20 @@ namespace suika {
 	std::u32string to_u32string(const std::wstring_view& src) {
 		return std::u32string(src.begin(), src.end());
 	}
+
+	std::string to_string(const std::string_view& src) {
+		return std::string(src);
+	}
+	std::wstring to_wstring(const std::wstring_view& src) {
+		return std::wstring(src);
+	}
+	std::u8string to_u8string(const std::u8string_view& src) {
+		return std::u8string(src);
+	}
+	std::u16string to_u16string(const std::u16string_view& src) {
+		return std::u16string(src);
+	}
+	std::u32string to_u32string(const std::u32string_view& src) {
+		return std::u32string(src);
+	}
 } // namespace suika

@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <wrl/client.h>
 #include "../../include/suika/logger.h"
+#include "../../include/suika/window.h"
 
 
 namespace suika {
@@ -19,6 +20,7 @@ namespace suika {
 		extern std::unordered_map<canvas_id, Microsoft::WRL::ComPtr<ID3D11RenderTargetView>> pRTView;
 		//extern std::unordered_map<canvas_id, Microsoft::WRL::ComPtr<ID3D11DepthStencilView>> pDSView;
 		extern std::unordered_map<canvas_id, D3D11_VIEWPORT> ViewPort;
+		extern std::unordered_map<canvas_id, window::id> WindowID;
 		extern logger log_d3d;
 	}
 }

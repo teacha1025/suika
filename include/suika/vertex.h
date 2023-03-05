@@ -49,6 +49,6 @@ namespace suika {
 
 		void set_vertex(const void* vertices, uint vertices_size, uint stride);
 
-		void set_index(const void* index, uint index_size, primitive_topology topology);
+		void set_index(const std::vector<uint16>& index, primitive_topology topology);
 	}
 }

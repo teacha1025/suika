@@ -112,7 +112,7 @@ namespace suika {
 			create(vblob.Get()->GetBufferPointer(), vblob.Get()->GetBufferSize(), name);
 		}
 		void vertex_shader::create(LPCVOID input, size_t size, const string& name) {
-			auto er = pDevice->CreateVertexShader(input, size, nullptr, pVS.GetAddressOf());
+			auto er = pDevice->CreateVertexShader(input, size, nullptr, &pVS);
 			ComPtr<ID3D11ShaderReflection> pReflector;
 			er = D3DReflect(input, size, IID_ID3D11ShaderReflection, (void**)pReflector.GetAddressOf());
 			if (FAILED(er)) {

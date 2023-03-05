@@ -1,9 +1,51 @@
-#pragma comment(lib, "suika_d.lib")
+﻿#include "suika.h"
+#include "../suika/d3d/dwrite.h"
+
 
 void init() {
 
 }
 
 int main() {
+	auto cid = suika::window::canvas().get()->id;
+	suika::d3d::dwrite::init(cid);
+	suika::d3d::dwrite::font_data fd;
+	fd.Color = suika::pallet::white;
+	fd.fontWeight = DWRITE_FONT_WEIGHT_BOLD;
+	fd.fontSize = 64.0f;
+	fd.font = "メイリオ";
+	suika::d3d::dwrite::set(fd, cid);
 
+	auto cb = suika::set_view({ 1280,960 });
+	suika::set_cbuffer(sizeof(cb), &cb, 0);
+
+	suika::vertex::vertex_2d vertices[4] = {
+		suika::vertex::create_2d(suika::point<float>{64,64}, suika::pallet::red, {0,0}),
+		suika::vertex::create_2d(suika::point<float>{480,64}, suika::pallet::yellow, {0,0}),
+		suika::vertex::create_2d(suika::point<float>{64,480}, suika::pallet::blue, {0,0}),
+		suika::vertex::create_2d(suika::point<float>{480,480}, suika::pallet::green, {0,0}),
+	};
+	suika::vertex::set_vertex(vertices, sizeof(vertices), sizeof(suika::vertex::vertex_2d));
+
+	// 四角形のインデックスを定義
+	std::vector<suika::uint16> index =
+	{
+		0, 1, 2,
+		2, 1, 3
+	};
+	suika::vertex::set_index(index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	auto update = [&]() {suika::window::flip(); suika::window::clear(); return suika::window::process(); };
+	int i = 0;
+	while (update()) {
+		vertices[0].position.x += 1.0f;
+		vertices[1].position.x += 1.0f;
+		vertices[2].position.x += 1.0f;
+		vertices[3].position.x += 1.0f;
+		suika::vertex::set_vertex(vertices, sizeof(vertices), sizeof(suika::vertex::vertex_2d));
+		suika::vertex::set_index(index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		suika::d3d::pContext->DrawIndexed(6, 0, 0);
+
+		suika::d3d::dwrite::draw(L"TEST😀", { i,i }, cid);
+		//i++;
+	}
 }

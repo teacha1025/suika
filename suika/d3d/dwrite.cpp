@@ -16,39 +16,65 @@ namespace suika {
 		namespace dwrite {
 			ComPtr<ID2D1Factory> pD2DFactory;
 			ComPtr<IDWriteFactory> pDWriteFactory;
+			//IDWriteFactory* pDWriteFactory;
 			ComPtr<IDWriteTextFormat> pTextFormat;
+			//IDWriteTextFormat* pTextFormat;
 			ComPtr<IDWriteTextLayout> pTextLayout;
 			std::unordered_map<canvas_id, ComPtr<ID2D1RenderTarget>> pRT;
 			ComPtr<ID2D1SolidColorBrush> pSolidBrush;
-			ComPtr<IDXGISurface> pBackBuffer;
+			
 
 			void init(canvas_id window) {
 				// Direct2D,DirectWriteの初期化
-				D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, pD2DFactory.GetAddressOf());
-
+				auto er = D2D1CreateFactory(D2D1_FACTORY_TYPE_SINGLE_THREADED, pD2DFactory.GetAddressOf());
+				if (FAILED(er)) {
+					log_d3d.error("Failed to Create Text Format");
+					log_d3d.result(er);
+					return;
+				}
+				ComPtr<IDXGISurface> pBackBuffer;
 				// バックバッファの取得
 				// 型：IDXGISwapChain
-				d3d::pSwapChain.at(window).Get()->GetBuffer(0, IID_PPV_ARGS(pBackBuffer.GetAddressOf()));
+				er = d3d::pSwapChain.at(window).Get()->GetBuffer(0, IID_PPV_ARGS(pBackBuffer.GetAddressOf()));
+				if (FAILED(er)) {
+					log_d3d.error("Failed to Create Text Format");
+					log_d3d.result(er);
+					return;
+				}
 
 				// dpiの設定
 				FLOAT dpiX;
 				FLOAT dpiY;
-				pD2DFactory->GetDesktopDpi(&dpiX, &dpiY);
+				HWND hwnd = WindowID.at(window);
+				HDC hdc = GetDC(hwnd);
+				point<int> dpi = { GetDeviceCaps(hdc, LOGPIXELSX), GetDeviceCaps(hdc, LOGPIXELSY) };
+				dpiX = dpi.x / 96.0f;
+				dpiY = dpi.y / 96.0f;
+				ReleaseDC(hwnd, hdc);
 
 				// レンダーターゲットの作成
-				D2D1_RENDER_TARGET_PROPERTIES props = D2D1::RenderTargetProperties(D2D1_RENDER_TARGET_TYPE_DEFAULT, D2D1::PixelFormat(DXGI_FORMAT_UNKNOWN, D2D1_ALPHA_MODE_PREMULTIPLIED), dpiX, dpiY);
+				D2D1_RENDER_TARGET_PROPERTIES props = D2D1::RenderTargetProperties(D2D1_RENDER_TARGET_TYPE_DEFAULT, D2D1::PixelFormat(DXGI_FORMAT_UNKNOWN, D2D1_ALPHA_MODE_PREMULTIPLIED), dpi.x, dpi.y);
 
 				if (!pRT.contains(window)) {
 					pRT.insert({ window,{} });
 				}
 				// サーフェスに描画するレンダーターゲットを作成
-				pD2DFactory->CreateDxgiSurfaceRenderTarget(pBackBuffer.Get(), &props, pRT[window].GetAddressOf());
-
+				er = pD2DFactory->CreateDxgiSurfaceRenderTarget(pBackBuffer.Get(), &props, pRT[window].GetAddressOf());
+				if (FAILED(er)) {
+					log_d3d.error("Failed to Create DXGI Surface RT");
+					log_d3d.result(er);
+					return;
+				}
 				// アンチエイリアシングモード
 				pRT[window]->SetTextAntialiasMode(D2D1_TEXT_ANTIALIAS_MODE_CLEARTYPE);
 
 				// IDWriteFactoryの作成
-				DWriteCreateFactory(DWRITE_FACTORY_TYPE_SHARED, __uuidof(IDWriteFactory), reinterpret_cast<IUnknown**>(pDWriteFactory.GetAddressOf()));
+				er = DWriteCreateFactory(DWRITE_FACTORY_TYPE_SHARED, __uuidof(IDWriteFactory), reinterpret_cast<IUnknown**>(pDWriteFactory.GetAddressOf()));
+				if (FAILED(er)) {
+					log_d3d.error("Failed to Create DWrite Factory");
+					log_d3d.result(er);
+					return;
+				}
 			}
 
 			void set(const font_data& font, canvas_id window) {
@@ -61,7 +87,7 @@ namespace suika {
 				//第6引数：フォントサイズ（20, 30等）
 				//第7引数：ロケール名（L""）
 				//第8引数：テキストフォーマット（&g_pTextFormat）
-				pDWriteFactory->CreateTextFormat(
+				auto er = pDWriteFactory->CreateTextFormat(
 					font.font.to_wstring().c_str(),
 					//font->fontCollection,
 					nullptr,
@@ -70,12 +96,21 @@ namespace suika {
 					font.fontStretch,
 					font.fontSize,
 					font.localeName.to_wstring().c_str(),
-					pTextFormat.GetAddressOf());
-
+					&pTextFormat);
+				if (FAILED(er)) {
+					log_d3d.error("Failed to Create Text Format");
+					log_d3d.result(er);
+					return;
+				}
 				//関数SetTextAlignment()
 				//第1引数：テキストの配置（DWRITE_TEXT_ALIGNMENT_LEADING：前, DWRITE_TEXT_ALIGNMENT_TRAILING：後, DWRITE_TEXT_ALIGNMENT_CENTER：中央,
 				//                         DWRITE_TEXT_ALIGNMENT_JUSTIFIED：行いっぱい）
-				pTextFormat->SetTextAlignment(font.textAlignment);
+				er = pTextFormat->SetTextAlignment(font.textAlignment);
+				if (FAILED(er)) {
+					log_d3d.error("Failed to Set Text Alignment");
+					log_d3d.result(er);
+					return;
+				}
 
 				//関数CreateSolidColorBrush()
 				//第1引数：フォント色（D2D1::ColorF(D2D1::ColorF::Black)：黒, D2D1::ColorF(D2D1::ColorF(0.0f, 0.2f, 0.9f, 1.0f))：RGBA指定）
@@ -83,11 +118,15 @@ namespace suika {
 				float g = font.Color.g / 255.0f;
 				float b = font.Color.b / 255.0f;
 				float a = font.Color.a / 255.0f;
-				pRT[window]->CreateSolidColorBrush(D2D1::ColorF(r, g, b, a), pSolidBrush.GetAddressOf());
+				er = pRT[window]->CreateSolidColorBrush(D2D1::ColorF(r, g, b, a), pSolidBrush.GetAddressOf());
+				if (FAILED(er)) {
+					log_d3d.error("Failed to Create Solid Color Brush");
+					log_d3d.result(er);
+					return;
+				}
 			}
 
-			void draw(string str, point<float> pos, canvas_id window, D2D1_DRAW_TEXT_OPTIONS options)
-			{
+			void draw(string str, point<float> pos, canvas_id window, D2D1_DRAW_TEXT_OPTIONS options) {
 				// 文字列の変換
 				std::wstring wstr = str.to_wstring();
 
@@ -95,8 +134,12 @@ namespace suika {
 				D2D1_SIZE_F TargetSize = pRT[window]->GetSize();
 
 				// テキストレイアウトを作成
-				pDWriteFactory->CreateTextLayout(wstr.c_str(), wstr.size(), pTextFormat.Get(), TargetSize.width, TargetSize.height, &pTextLayout);
-
+				auto er = pDWriteFactory->CreateTextLayout(wstr.c_str(), wstr.size(), pTextFormat.Get(), TargetSize.width, TargetSize.height, &pTextLayout);
+				if (FAILED(er)) {
+					log_d3d.error("Failed to Create Text Layout");
+					log_d3d.result(er);
+					return;
+				}
 				// 描画位置の確定
 				D2D1_POINT_2F pounts;
 				pounts.x = pos.x;
@@ -109,7 +152,17 @@ namespace suika {
 				pRT[window]->DrawTextLayout(pounts, pTextLayout.Get(), pSolidBrush.Get(), options);
 
 				// 描画の終了
-				pRT[window]->EndDraw();
+				er = pRT[window]->EndDraw();
+				if (FAILED(er)) {
+					log_d3d.error("Failed to EndDraw");
+					log_d3d.result(er);
+					return;
+				}
+			}
+
+			void free() {
+				//pTextFormat->Release();
+				//pDWriteFactory->Release();
 			}
 		}
 	}

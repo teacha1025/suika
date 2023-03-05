@@ -182,6 +182,7 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\suika.h" />
     <ClInclude Include="..\include\suika\base.h" />
     <ClInclude Include="..\include\suika\canvas.h" />
     <ClInclude Include="..\include\suika\cbuffer.h" />

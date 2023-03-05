@@ -10,506 +10,508 @@
 //#include "../string.h"
 
 namespace suika {
+#define TR(s) suika::to_wstring(s)
+#define TRM to_wstring
 #pragma region constructor
-	constexpr inline string::string():
+	inline string::string():
 		_string_data() {}
-	constexpr inline string::string(const string& other):
+	inline string::string(const string& other):
 		_string_data(other._string_data) {}
-	constexpr inline string& string::operator=(const string& other) {
+	inline string& string::operator=(const string& other) {
 		_string_data = other._string_data;
 		return *this;
 	}
-	constexpr inline string::string(const string& other, size_type pos):
-		_string_data(std::string(other._string_data, pos)) {}
-	constexpr inline string::string(const string& other, size_type pos, size_type count):
-		_string_data(std::string(other._string_data, pos, count)) {}
-	constexpr inline string::string(string&& other) noexcept {
+	inline string::string(const string& other, size_type pos):
+		_string_data(string_type(other._string_data, pos)) {}
+	inline string::string(const string& other, size_type pos, size_type count):
+		_string_data(string_type(other._string_data, pos, count)) {}
+	inline string::string(string&& other) noexcept {
 		*this = std::move(other);
 	}
 
 	inline string::string(const utf8& other):
-		_string_data(suika::to_string(other)) {}
+		_string_data(TR(other)) {}
 	inline string& string::operator=(const utf8& other) {
-		_string_data = suika::to_string(other);
+		_string_data = TR(other);
 		return *this;
 	}
 	inline string::string(const utf8& other, size_type pos):
-		_string_data(suika::to_string(std::u8string(other, pos))) {}
+		_string_data(TR(std::u8string(other, pos))) {}
 	inline string::string(const utf8& other, size_type pos, size_type count):
-		_string_data(suika::to_string(std::u8string(other, pos, count))) {}
+		_string_data(TR(std::u8string(other, pos, count))) {}
 
 	inline string::string(const utf16& other):
-		_string_data(suika::to_string(other)) {}
+		_string_data(TR(other)) {}
 	inline string& string::operator=(const utf16& other) {
-		_string_data = suika::to_string(other);
+		_string_data = TR(other);
 		return *this;
 	}
 	inline string::string(const utf16& other, size_type pos):
-		_string_data(suika::to_string(std::u16string(other, pos))) {}
+		_string_data(TR(std::u16string(other, pos))) {}
 	inline string::string(const utf16& other, size_type pos, size_type count):
-		_string_data(suika::to_string(std::u16string(other, pos, count))) {}
+		_string_data(TR(std::u16string(other, pos, count))) {}
 
 
 	inline string::string(const utf32& other):
-		_string_data(suika::to_string(other)) {}
+		_string_data(TR(other)) {}
 	inline string& string::operator=(const utf32& other) {
-		_string_data = suika::to_string(other);
+		_string_data = TR(other);
 		return *this;
 	}
 	inline string::string(const utf32& other, size_type pos):
-		_string_data(suika::to_string(std::u32string(other, pos))) {}
+		_string_data(TR(std::u32string(other, pos))) {}
 	inline string::string(const utf32& other, size_type pos, size_type count):
-		_string_data(suika::to_string(std::u32string(other, pos, count))) {}
+		_string_data(TR(std::u32string(other, pos, count))) {}
 
-	constexpr inline string::string(const str& other):
-		_string_data(other) {}
-	constexpr inline string& string::operator=(const str& other) {
-		_string_data = other;
+	inline string::string(const str& other):
+		_string_data(TR(other)) {}
+	inline string& string::operator=(const str& other) {
+		_string_data = TR(other);
 		return *this;
 	}
-	constexpr inline string::string(const str& other, size_type pos):
-		_string_data(std::string(other, pos)) {}
-	constexpr inline string::string(const str& other, size_type pos, size_type count):
-		_string_data(std::string(other, pos, count)) {}
+	inline string::string(const str& other, size_type pos):
+		_string_data(TR(std::string(other, pos))) {}
+	inline string::string(const str& other, size_type pos, size_type count):
+		_string_data(TR(std::string(other, pos, count))) {}
 
 	inline string::string(const wstr& other):
-		_string_data(suika::to_string(other)) {}
+		_string_data(TR(other)) {}
 	inline string& string::operator=(const wstr& other) {
-		_string_data = suika::to_string(other);
+		_string_data = TR(other);
 		return *this;
 	}
 	inline string::string(const wstr& other, size_type pos):
-		_string_data(suika::to_string(std::wstring(other, pos))) {}
+		_string_data(TR(std::wstring(other, pos))) {}
 	inline string::string(const wstr& other, size_type pos, size_type count):
-		_string_data(suika::to_string(std::wstring(other, pos, count))) {}
+		_string_data(TR(std::wstring(other, pos, count))) {}
 
 	inline string::string(const char8* other):
-		_string_data(suika::to_string(other)) {}
+		_string_data(TR(other)) {}
 	inline string& string::operator=(const char8* other) {
-		_string_data = suika::to_string(other);
+		_string_data = TR(other);
 		return *this;
 	}
 	inline string::string(const char8* other, size_type pos):
-		_string_data(suika::to_string(std::u8string(other, pos))) {}
+		_string_data(TR(std::u8string(other, pos))) {}
 
 	inline string::string(const char16* other):
-		_string_data(suika::to_string(other)) {}
+		_string_data(TR(other)) {}
 	inline string& string::operator=(const char16* other) {
-		_string_data = suika::to_string(other);
+		_string_data = TR(other);
 		return *this;
 	}
 	inline string::string(const char16* other, size_type pos):
-		_string_data(suika::to_string(std::u16string(other, pos))) {}
+		_string_data(TR(std::u16string(other, pos))) {}
 
 	inline string::string(const char32* other):
-		_string_data(suika::to_string(other)) {}
+		_string_data(TR(other)) {}
 	inline string& string::operator=(const char32* other) {
-		_string_data = suika::to_string(other);
+		_string_data = TR(other);
 		return *this;
 	}
 	inline string::string(const char32* other, size_type pos):
-		_string_data(suika::to_string(std::u32string(other, pos))) {}
+		_string_data(TR(std::u32string(other, pos))) {}
 
-	constexpr inline string::string(const char* other):
-		_string_data(std::string(other)) {}
-	constexpr inline string& string::operator=(const char* other) {
-		_string_data = std::string(other);
+	inline string::string(const char* other):
+		_string_data(TR(std::string(other))) {}
+	inline string& string::operator=(const char* other) {
+		_string_data = TR(std::string(other));
 		return *this;
 	}
-	constexpr inline string::string(const char* other, size_type pos):
-		_string_data(std::string(other, pos)) {}
+	inline string::string(const char* other, size_type pos):
+		_string_data(TR(std::string(other, pos))) {}
 
 	inline string::string(const wchar_t* other):
-		_string_data(suika::to_string(other)) {}
+		_string_data(TR(other)) {}
 	inline string& string::operator=(const wchar_t* other) {
-		_string_data = suika::to_string(other);
+		_string_data = TR(other);
 		return *this;
 	}
 	inline string::string(const wchar_t* other, size_type pos):
-		_string_data(suika::to_string(std::wstring(other, pos))) {}
+		_string_data(TR(std::wstring(other, pos))) {}
 
 	inline string::string(std::initializer_list<char8> il):
-		_string_data(suika::to_string(std::u8string(il))) {}
+		_string_data(TR(std::u8string(il))) {}
 	inline string& string::operator=(std::initializer_list<char8> il) {
-		_string_data = suika::to_string(std::u8string(il));
+		_string_data = TR(std::u8string(il));
 	}
 	inline string::string(std::initializer_list<char16> il):
-		_string_data(suika::to_string(std::u16string(il))) {}
+		_string_data(TR(std::u16string(il))) {}
 	inline string& string::operator=(std::initializer_list<char16> il) {
-		_string_data = suika::to_string(std::u16string(il));
+		_string_data = TR(std::u16string(il));
 	}
 	inline string::string(std::initializer_list<char32> il):
-		_string_data(suika::to_string(std::u32string(il))) {}
+		_string_data(TR(std::u32string(il))) {}
 	inline string& string::operator=(std::initializer_list<char32> il) {
-		_string_data = suika::to_string(std::u32string(il));
+		_string_data = TR(std::u32string(il));
 	}
-	constexpr inline string::string(std::initializer_list<char> il):
-		_string_data(std::string(il)) {}
-	constexpr inline string& string::operator=(std::initializer_list<char> il) {
-		_string_data = std::string(il);
+	inline string::string(std::initializer_list<char> il):
+		_string_data(TR(std::string(il))) {}
+	inline string& string::operator=(std::initializer_list<char> il) {
+		_string_data = TR(std::string(il));
 		return *this;
 	}
 	inline string::string(std::initializer_list<wchar_t> il):
-		_string_data(suika::to_string(std::wstring(il))) {}
+		_string_data(TR(std::wstring(il))) {}
 	inline string& string::operator=(std::initializer_list<wchar_t> il) {
-		_string_data = suika::to_string(std::wstring(il));
+		_string_data = TR(std::wstring(il));
 	}
 
 	inline string::string(size_type count, char8 c):
-		_string_data(suika::to_string(std::u8string(count, c))) {}
+		_string_data(TR(std::u8string(count, c))) {}
 	inline string::string(size_type count, char16 c):
-		_string_data(suika::to_string(std::u16string(count, c))) {}
+		_string_data(TR(std::u16string(count, c))) {}
 	inline string::string(size_type count, char32 c):
-		_string_data(suika::to_string(std::u32string(count, c))) {}
-	constexpr inline string::string(size_type count, char c):
-		_string_data(std::string(count, c)) {}
+		_string_data(TR(std::u32string(count, c))) {}
+	inline string::string(size_type count, char c):
+		_string_data(TR(std::string(count, c))) {}
 	inline string::string(size_type count, wchar_t c):
-		_string_data(suika::to_string(std::wstring(count, c))) {}
+		_string_data(TR(std::wstring(count, c))) {}
 
 	inline string::string(utf8::iterator first, utf8::iterator last):
-		_string_data(suika::to_string(std::u8string(first, last))) {}
+		_string_data(TR(std::u8string(first, last))) {}
 	inline string::string(utf16::iterator first, utf16::iterator last):
-		_string_data(suika::to_string(std::u16string(first, last))) {}
+		_string_data(TR(std::u16string(first, last))) {}
 	inline string::string(utf32::iterator first, utf32::iterator last):
-		_string_data(suika::to_string(std::u32string(first, last))) {}
-	constexpr inline string::string(str::iterator first, str::iterator last):
-		_string_data(std::string(first, last)) {}
+		_string_data(TR(std::u32string(first, last))) {}
+	inline string::string(str::iterator first, str::iterator last):
+		_string_data(TR(std::string(first, last))) {}
 	inline string::string(wstr::iterator first, wstr::iterator last):
-		_string_data(suika::to_string(std::wstring(first, last))) {}
+		_string_data(TR(std::wstring(first, last))) {}
 #pragma endregion
 #pragma region equalequal operator
-	inline constexpr bool string::operator==(const string& str) const {
+	inline bool string::operator==(const string& str) const {
 		return _string_data == str._string_data;
 	}
 	inline bool string::operator==(const utf8& str) const {
-		return _string_data == suika::to_string(str);
+		return _string_data == TR(str);
 	}
 	inline bool string::operator==(const utf16& str) const {
-		return _string_data == suika::to_string(str);
+		return _string_data == TR(str);
 	}
 	inline bool string::operator==(const utf32& str) const {
-		return _string_data == suika::to_string(str);
+		return _string_data == TR(str);
 	}
-	inline constexpr bool string::operator==(const str& str) const {
-		return _string_data == str;
+	inline bool string::operator==(const str& str) const {
+		return _string_data == TR(str);
 	}
 	inline bool string::operator==(const wstr& str) const {
-		return _string_data == suika::to_string(str);
+		return _string_data == TR(str);
 	}
 	inline bool string::operator==(const char8* str) const {
-		return _string_data == suika::to_string(str);
+		return _string_data == TR(str);
 	}
 	inline bool string::operator==(const char16* str) const {
-		return _string_data == suika::to_string(str);
+		return _string_data == TR(str);
 	}
 	inline bool string::  operator==(const char32* str) const {
-		return _string_data == suika::to_string(str);
+		return _string_data == TR(str);
 	}
-	inline constexpr bool string::operator==(const char* str) const {
-		return _string_data == str;
+	inline bool string::operator==(const char* str) const {
+		return _string_data == TR(str);
 	}
 	inline bool string::operator==(const wchar_t* str) const {
-		return _string_data == suika::to_string(str);
+		return _string_data == TR(str);
 	}
 
-	//inline constexpr bool operator==(const string& rhs, const string& lhs) {
+	//inline bool operator==(const string& rhs, const string& lhs) {
 	//	return rhs.to_string() == lhs.to_string();
 	//}
-	//inline constexpr bool operator==(const string& lhs, const string::str& rhs) {
+	//inline bool operator==(const string& lhs, const string::str& rhs) {
 	//	return lhs.to_string() == rhs;
 	//}
-	//inline constexpr bool operator==(const string& lhs, const char* rhs) {
+	//inline bool operator==(const string& lhs, const char* rhs) {
 	//	return lhs.to_string() == rhs;
 	//}
-	//inline constexpr bool operator==(const string::str& lhs, const string& rhs) {
+	//inline bool operator==(const string::str& lhs, const string& rhs) {
 	//	return lhs == rhs.to_string();
 	//}
-	//inline constexpr bool operator==(const char* lhs, const string& rhs) {
+	//inline bool operator==(const char* lhs, const string& rhs) {
 	//	return lhs == rhs.to_string();
 	//}
 	//
 	//template<class string_t>
 	//inline bool operator==(const string& lhs, const string_t& rhs) {
-	//	return lhs.to_string() == suika::to_string(rhs);
+	//	return lhs.to_string() == TR(rhs);
 	//}
 	//template<class char_t>
 	//inline bool operator==(const string& lhs, const char_t* rhs) {
-	//	return lhs.to_string() == suika::to_string(rhs);
+	//	return lhs.to_string() == TR(rhs);
 	//}
 	//template<class string_t>
 	//inline bool operator==(const string_t& lhs, const string& rhs) {
-	//	return suika::to_string(lhs) == rhs.to_string();
+	//	return TR(lhs) == rhs.to_string();
 	//}
 	//template<class char_t>
 	//inline bool operator==(const char_t* lhs, const string& rhs) {
-	//	return suika::to_string(lhs) == rhs.to_string();
+	//	return TR(lhs) == rhs.to_string();
 	//}
 
 #pragma endregion
 #pragma region starship operator
-	//constexpr inline std::strong_ordering string::operator<=>(const string& str) const {
+	//inline std::strong_ordering string::operator<=>(const string& str) const {
 	//	return _string_data <=> str._string_data;
 	//}
-	//constexpr inline std::strong_ordering string::operator<=>(const str& str) const {
+	//inline std::strong_ordering string::operator<=>(const str& str) const {
 	//	return _string_data <=> str;
 	//}
-	//constexpr inline std::strong_ordering string::operator<=>(const char* str) const {
+	//inline std::strong_ordering string::operator<=>(const char* str) const {
 	//	return _string_data <=> str;
 	//}
 	//inline std::strong_ordering string::operator<=>(const utf8& str) const {
-	//	return _string_data <=> suika::to_string(str);
+	//	return _string_data <=> TR(str);
 	//}
 	//inline std::strong_ordering string::operator<=>(const char8* str) const {
-	//	return _string_data <=> suika::to_string(str);
+	//	return _string_data <=> TR(str);
 	//}
 	//inline std::strong_ordering string::operator<=>(const utf16& str) const {
-	//	return _string_data <=> suika::to_string(str);
+	//	return _string_data <=> TR(str);
 	//}
 	//inline std::strong_ordering string::operator<=>(const char16* str) const {
-	//	return _string_data <=> suika::to_string(str);
+	//	return _string_data <=> TR(str);
 	//}
 	//inline std::strong_ordering string::operator<=>(const utf32& str) const {
-	//	return _string_data <=> suika::to_string(str);
+	//	return _string_data <=> TR(str);
 	//}
 	//inline std::strong_ordering string::operator<=>(const char32* str) const {
-	//	return _string_data <=> suika::to_string(str);
+	//	return _string_data <=> TR(str);
 	//}
 	//inline std::strong_ordering string::operator<=>(const wstr& str) const {
-	//	return _string_data <=> suika::to_string(str);
+	//	return _string_data <=> TR(str);
 	//}
 	//inline std::strong_ordering string::operator<=>(const wchar_t* str) const {
-	//	return _string_data <=> suika::to_string(str);
+	//	return _string_data <=> TR(str);
 	//}
 	//
-	//constexpr inline std::strong_ordering operator<=>(const string& rhs, const string& lhs) {
+	//inline std::strong_ordering operator<=>(const string& rhs, const string& lhs) {
 	//	return lhs.to_string() <=> rhs.to_string();
 	//}
-	//constexpr inline std::strong_ordering operator<=>(const string& lhs, const string::str& rhs) {
+	//inline std::strong_ordering operator<=>(const string& lhs, const string::str& rhs) {
 	//	return lhs.to_string() <=> rhs;
 	//}
 	//template<class string_t>
 	//inline std::strong_ordering operator<=>(const string& lhs, const string_t& rhs) {
-	//	return lhs.to_string() <=> suika::to_string(rhs);
+	//	return lhs.to_string() <=> TR(rhs);
 	//}
-	//constexpr inline std::strong_ordering operator<=>(const string::str& lhs, const string& rhs) {
+	//inline std::strong_ordering operator<=>(const string::str& lhs, const string& rhs) {
 	//	return lhs <=> rhs.to_string();
 	//}
 	//template<class string_t>
 	//inline std::strong_ordering operator<=>(const string_t& lhs, const string& rhs) {
-	//	return lhs.to_string() <=> suika::to_string(rhs);
+	//	return lhs.to_string() <=> TR(rhs);
 	//}
-	//constexpr inline std::strong_ordering operator<=>(const string& lhs, const char* rhs) {
+	//inline std::strong_ordering operator<=>(const string& lhs, const char* rhs) {
 	//	return lhs.to_string() <=> rhs;
 	//}
 	//template<class char_t>
 	//inline std::strong_ordering operator<=>(const string& lhs, const char_t* rhs) {
-	//	return lhs.to_string() <=> suika::to_string(rhs);
+	//	return lhs.to_string() <=> TR(rhs);
 	//}
-	//constexpr inline std::strong_ordering operator<=>(const char* lhs, const string& rhs) {
+	//inline std::strong_ordering operator<=>(const char* lhs, const string& rhs) {
 	//	return lhs <=> rhs.to_string();
 	//}
 	//template<class char_t>
 	//inline std::strong_ordering operator<=>(const char_t* lhs, const string& rhs) {
-	//	return suika::to_string(lhs) <=> rhs.to_string();
+	//	return TR(lhs) <=> rhs.to_string();
 	//}
 #pragma endregion
 #pragma region plus operator
-	constexpr inline string operator+(const string& lhs, const string& rhs) {
-		return string(lhs.to_string() + rhs.to_string());
+	inline string operator+(const string& lhs, const string& rhs) {
+		return string(lhs.TRM() + rhs.TRM());
 	}
-	constexpr inline string operator+(const string& lhs, const string::str& rhs) {
-		return string(lhs.to_string() + rhs);
+	inline string operator+(const string& lhs, const string::str& rhs) {
+		return string(lhs.TRM() + TR(rhs));
 	}
 	template<class string_t>
 	inline string operator+(const string& lhs, const string_t& rhs) {
-		return string(lhs.to_string() + rhs.to_string());
+		return string(lhs.TRM() + rhs.TRM());
 	}
 
-	constexpr inline string operator+(const string::str& lhs, const string& rhs) {
-		return string(lhs + rhs.to_string());
+	inline string operator+(const string::string_type& lhs, const string& rhs) {
+		return string(lhs + rhs.TRM());
 	}
 	template<class string_t>
 	inline string operator+(const string_t& lhs, const string& rhs) {
-		return string(suika::to_string(lhs) + rhs.to_string());
+		return string(TR(lhs) + rhs.TRM());
 	}
 	
-	constexpr inline string operator+(const string& lhs, string&& rhs) {
-		return string(lhs.to_string() + rhs.to_string());
+	inline string operator+(const string& lhs, string&& rhs) {
+		return string(lhs.TRM() + rhs.TRM());
 	}
-	constexpr inline string operator+(string&& lhs, string&& rhs) {
-		return string(lhs.to_string() + rhs.to_string());
+	inline string operator+(string&& lhs, string&& rhs) {
+		return string(lhs.TRM() + rhs.TRM());
 	}
-	constexpr inline string operator+(string&& lhs, const string& rhs) {
-		return string(lhs.to_string() + rhs.to_string());
+	inline string operator+(string&& lhs, const string& rhs) {
+		return string(lhs.TRM() + rhs.TRM());
 	}
 	template<class string_t>
 	inline string operator+(string_t&& lhs, const string& rhs) {
-		return string(suika::to_string(lhs) + rhs.to_string());
+		return string(TR(lhs) + rhs.TRM());
 	}
 	template<class string_t>
 	inline string operator+(string&& lhs, const string_t& rhs) {
-		return string(lhs.to_string() + suika::to_string(rhs));
+		return string(lhs.TRM() + TR(rhs));
 	}
 	template<class string_t>
 	inline string operator+(const string_t& lhs, string&& rhs) {
-		return string(suika::to_string(lhs) + rhs.to_string());
+		return string(TR(lhs) + rhs.TRM());
 	}
 	template<class string_t>
 	inline string operator+(string_t&& lhs, string&& rhs) {
-		return string(suika::to_string(lhs) + rhs.to_string());
+		return string(TR(lhs) + rhs.TRM());
 	}
 	template<class string_t>
 	inline string operator+(string&& lhs, string_t&& rhs) {
-		return string(lhs.to_string() + suika::to_string(rhs));
+		return string(lhs.TRM() + TR(rhs));
 	}
-	constexpr inline string operator+(const char* lhs, const string& rhs) {
-		return string(lhs + rhs.to_string());
+	inline string operator+(const char* lhs, const string& rhs) {
+		return string(TR(lhs) + rhs.TRM());
 	}
-	constexpr inline string operator+(const char* lhs, string&& rhs) {
-		return string(lhs + rhs.to_string());
+	inline string operator+(const char* lhs, string&& rhs) {
+		return string(TR(lhs) + rhs.TRM());
 	}
-	constexpr inline string operator+(char lhs, const string& rhs) {
-		return string(lhs + rhs.to_string());
+	inline string operator+(char lhs, const string& rhs) {
+		return string(lhs + rhs.TRM());
 	}
-	constexpr inline string operator+(char lhs, string&& rhs) {
-		return string(lhs + rhs.to_string());
+	inline string operator+(char lhs, string&& rhs) {
+		return string(lhs + rhs.TRM());
 	}
-	constexpr inline string operator+(const string& lhs, const char* rhs) {
-		return string(lhs.to_string() + rhs);
+	inline string operator+(const string& lhs, const char* rhs) {
+		return string(lhs.TRM() + TR(rhs));
 	}
-	constexpr inline string operator+(string&& lhs, const char* rhs) {
-		return string(lhs.to_string() + rhs);
+	inline string operator+(string&& lhs, const char* rhs) {
+		return string(lhs.TRM() + TR(rhs));
 	}
-	constexpr inline string operator+(const string& lhs, char rhs) {
-		return string(lhs.to_string() + rhs);
+	inline string operator+(const string& lhs, char rhs) {
+		return string(lhs.TRM() + rhs);
 	}
-	constexpr inline string operator+(string&& lhs, char rhs) {
-		return string(lhs.to_string() + rhs);
+	inline string operator+(string&& lhs, char rhs) {
+		return string(lhs.TRM() + rhs);
 	}
 	template<class char_t>
 	inline string operator+(const char_t* lhs, const string& rhs) {
-		return string(suika::to_string(lhs) + rhs.to_string());
+		return string(TR(lhs) + rhs.TRM());
 	}
 	template<class char_t>
 	inline string operator+(const char_t* lhs, string&& rhs) {
-		return string(suika::to_string(lhs) + rhs.to_string());
+		return string(TR(lhs) + rhs.TRM());
 	}
 	template<class char_t>
 	inline string operator+(char_t lhs, const string& rhs) {
-		auto s = string(1, rhs).to_string();
-		return string(s + rhs.to_string());
+		auto s = string(1, rhs).TRM();
+		return string(s + rhs.TRM());
 	}
 	template<class char_t>
 	inline string operator+(char_t lhs, string&& rhs) {
-		auto s = string(1, rhs).to_string();
-		return string(s + rhs.to_string());
+		auto s = string(1, rhs).TRM();
+		return string(s + rhs.TRM());
 	}
 	template<class char_t>
 	inline string operator+(const string& lhs, const char_t* rhs) {
-		return string(lhs.to_string() + suika::to_string(rhs));
+		return string(lhs.TRM() + TR(rhs));
 	}
 	template<class char_t>
 	inline string operator+(string&& lhs, const char_t* rhs) {
-		return string(lhs.to_string() + suika::to_string(rhs));
+		return string(lhs.TRM() + TR(rhs));
 	}
 	template<class char_t>
 	inline string operator+(const string& lhs, char_t rhs) {
-		auto s = string(1, rhs).to_string();
-		return string(lhs.to_string() + s);
+		auto s = string(1, rhs).TRM();
+		return string(lhs.TRM() + s);
 	}
 	template<class char_t>
 	inline string operator+(string&& lhs, char_t rhs) {
-		auto s = string(1, rhs).to_string();
-		return string(lhs.to_string() + s);
+		auto s = string(1, rhs).TRM();
+		return string(lhs.TRM() + s);
 	}
 #pragma endregion
 #pragma region plus_equal operator
-	constexpr inline string& string::operator+=(const string& str) {
-		_string_data += str.to_string();
+	inline string& string::operator+=(const string& str) {
+		_string_data += str.TRM();
 		return *this;
 	}
-	constexpr inline string& string::operator+=(const char* str) {
-		_string_data += str;
+	inline string& string::operator+=(const char* str) {
+		_string_data += TR(str);
 		return *this;
 	}
-	constexpr inline string& string::operator+=(char str) {
-		_string_data += str;
+	inline string& string::operator+=(char str) {
+		_string_data += string(1, str).TRM();
 		return *this;
 	}
-	constexpr inline string& string::operator+=(const str& str) {
-		_string_data += str;
+	inline string& string::operator+=(const str& str) {
+		_string_data += TR(str);
 		return *this;
 	}
-	constexpr inline string& string::operator+=(const str_view& str) {
-		_string_data += str;
+	inline string& string::operator+=(const str_view& str) {
+		_string_data += TR(str);
 		return *this;
 	}
 	inline string& string::operator+=(const char8* str) {
-		_string_data += suika::to_string(str);
+		_string_data += TR(str);
 		return *this;
 	}
 	inline string& string::operator+=(char8 str) {
-		auto s = string(1, str).to_string();
-		_string_data += s;
+		auto s = string(1, str).TRM();
+		_string_data += TR(s);
 		return *this;
 	}
 	inline string& string::operator+=(const utf8& str) {
-		_string_data += suika::to_string(str);
+		_string_data += TR(str);
 		return *this;
 	}
 	inline string& string::operator+=(const utf8_view& str) {
-		_string_data += suika::to_string(str);
+		_string_data += TR(str);
 		return *this;
 	}
 	inline string& string::operator+=(const char16* str) {
-		_string_data += suika::to_string(str);
+		_string_data += TR(str);
 		return *this;
 	}
 	inline string& string::operator+=(char16 str) {
-		auto s = string(1, str).to_string();
-		_string_data += s;
+		auto s = string(1, str).TRM();
+		_string_data += TR(s);
 		return *this;
 	}
 	inline string& string::operator+=(const utf16& str) {
-		_string_data += suika::to_string(str);
+		_string_data += TR(str);
 		return *this;
 	}
 	inline string& string::operator+=(const utf16_view& str) {
-		_string_data += suika::to_string(str);
+		_string_data += TR(str);
 		return *this;
 	}
 	inline string& string::operator+=(const char32* str) {
-		_string_data += suika::to_string(str);
+		_string_data += TR(str);
 		return *this;
 	}
 	inline string& string::operator+=(char32 str) {
-		auto s = string(1, str).to_string();
-		_string_data += s;
+		auto s = string(1, str).to_wstring();
+		_string_data += TR(s);
 		return *this;
 	}
 	inline string& string::operator+=(const utf32& str) {
-		_string_data += suika::to_string(str);
+		_string_data += TR(str);
 		return *this;
 	}
 	inline string& string::operator+=(const utf32_view& str) {
-		_string_data += suika::to_string(str);
+		_string_data += TR(str);
 		return *this;
 	}
 	inline string& string::operator+=(const wchar_t* str) {
-		_string_data += suika::to_string(str);
+		_string_data += TR(str);
 		return *this;
 	}
 	inline string& string::operator+=(wchar_t str) {
 		auto s = string(1, str).to_string();
-		_string_data += s;
+		_string_data += TR(s);
 		return *this;
 	}
 	inline string& string::operator+=(const wstr& str) {
-		_string_data += suika::to_string(str);
+		_string_data += TR(str);
 		return *this;
 	}
 	inline string& string::operator+=(const wstr_view& str) {
-		_string_data += suika::to_string(str);
+		_string_data += TR(str);
 		return *this;
 	}
 #pragma endregion
@@ -523,8 +525,8 @@ namespace suika {
 	inline std::u32string string::to_u32string() const {
 		return suika::to_u32string(_string_data);
 	}
-	constexpr inline std::string string::to_string() const {
-		return _string_data;
+	inline std::string string::to_string() const {
+		return suika::to_string(_string_data);
 	}
 	inline std::wstring string::to_wstring() const {
 		return suika::to_wstring(_string_data);
@@ -542,8 +544,9 @@ namespace suika {
 		auto s = suika::to_u32string(_string_data);
 		return std::u32string_view(s);
 	}
-	constexpr inline std::string_view string::to_string_view() const {
-		return std::string_view(_string_data);
+	inline std::string_view string::to_string_view() const {
+		auto s = suika::to_string(_string_data);
+		return std::string_view(s);
 	}
 	inline std::wstring_view string::to_wstring_view() const {
 		auto s = suika::to_wstring(_string_data);
@@ -552,58 +555,60 @@ namespace suika {
 #pragma endregion
 #pragma region splitter
 	inline std::vector<std::u8string> string::split(char8 split_char, bool is_contain_lastempty) const {
-		return suika::split(to_u8string(), split_char, is_contain_lastempty);
+		return suika::split(suika::to_u8string(_string_data), split_char, is_contain_lastempty);
 	}
 	inline std::vector<std::u16string> string::split(char16 split_char, bool is_contain_lastempty) const {
-		return suika::split(to_u16string(), split_char, is_contain_lastempty);
+		return suika::split(suika::to_u16string(_string_data), split_char, is_contain_lastempty);
 	}
 	inline std::vector<std::u32string> string::split(char32 split_char, bool is_contain_lastempty) const {
-		return suika::split(to_u32string(), split_char, is_contain_lastempty);
+		return suika::split(suika::to_u32string(_string_data), split_char, is_contain_lastempty);
 	}
 	inline std::vector<std::string> string::split(char split_char, bool is_contain_lastempty) const {
-		return suika::split(_string_data, split_char, is_contain_lastempty);
+		return suika::split(suika::to_string(_string_data), split_char, is_contain_lastempty);
 	}
 	inline std::vector<std::wstring> string::split(wchar_t split_char, bool is_contain_lastempty) const {
-		return suika::split(to_wstring(), split_char, is_contain_lastempty);
+		return suika::split(suika::to_wstring(_string_data), split_char, is_contain_lastempty);
 	}
 #pragma endregion
 #pragma region replacer
 	inline string& string::replace(utf8 old_string, utf8 new_string) {
-		_string_data = suika::to_string(suika::replace_string(suika::to_u8string(_string_data), old_string, new_string));
+		_string_data = TR(suika::replace_string(suika::to_u8string(_string_data), old_string, new_string));
 		return *this;
 	}
 	inline string& string::replace(utf16 old_string, utf16 new_string) {
-		_string_data = suika::to_string(suika::replace_string(suika::to_u16string(_string_data), old_string, new_string));
+		_string_data = TR(suika::replace_string(suika::to_u16string(_string_data), old_string, new_string));
 		return *this;
 	}
 	inline string& string::replace(utf32 old_string, utf32 new_string) {
-		_string_data = suika::to_string(suika::replace_string(suika::to_u32string(_string_data), old_string, new_string));
+		_string_data = TR(suika::replace_string(suika::to_u32string(_string_data), old_string, new_string));
 		return *this;
 	}
 	inline string& string::replace(str old_string, str new_string) {
-		_string_data = suika::replace_string(_string_data, old_string, new_string);
+		_string_data = TR(suika::replace_string(suika::to_string(_string_data), old_string, new_string));
 		return *this;
 	}
 	inline string& string::replace(wstr old_string, wstr new_string) {
-		_string_data = suika::to_string(suika::replace_string(suika::to_wstring(_string_data), old_string, new_string));
+		_string_data = TR(suika::replace_string(suika::to_wstring(_string_data), old_string, new_string));
 		return *this;
 	}
 
 	inline string string::replaced(utf8 old_string, utf8 new_string) {
-		return string(suika::to_string(suika::replace_string(suika::to_u8string(_string_data), old_string, new_string)));
+		return string(TR(suika::replace_string(suika::to_u8string(_string_data), old_string, new_string)));
 	}
 	inline string string::replaced(utf16 old_string, utf16 new_string) {
-		return string(suika::to_string(suika::replace_string(suika::to_u16string(_string_data), old_string, new_string)));
+		return string(TR(suika::replace_string(suika::to_u16string(_string_data), old_string, new_string)));
 	}
 	inline string string::replaced(utf32 old_string, utf32 new_string) {
-		return string(suika::to_string(suika::replace_string(suika::to_u32string(_string_data), old_string, new_string)));
+		return string(TR(suika::replace_string(suika::to_u32string(_string_data), old_string, new_string)));
 	}
 	inline string string::replaced(str old_string, str new_string) {
-		return string(suika::replace_string(_string_data, old_string, new_string));
+		return string(TR(suika::replace_string(suika::to_string(_string_data), old_string, new_string)));
 	}
 	inline string string::replaced(wstr old_string, wstr new_string) {
-		return string(suika::to_string(suika::replace_string(suika::to_wstring(_string_data), old_string, new_string)));
+		return string(TR(suika::replace_string(suika::to_wstring(_string_data), old_string, new_string)));
 	}
 #pragma endregion
+#undef TR
+#undef TRM
 } // namespace suika
 #endif

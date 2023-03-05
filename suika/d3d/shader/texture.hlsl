@@ -20,8 +20,8 @@ cbuffer ConstantBuffer : register(b0)
     matrix mt;
 }
 
-Texture2D    texture : register(t0);
-SamplerState sampler : register(s0);
+Texture2D    g_texture : register(t0);
+SamplerState g_sampler : register(s0);
 suika::PSInput vs_main( suika::VSInput input )
 {
     suika::PSInput output;
@@ -36,5 +36,5 @@ suika::PSInput vs_main( suika::VSInput input )
 
 float4 ps_main( suika::PSInput input ) : SV_Target
 {
-    return texture.Sample(sampler, input.uv);
+    return g_texture.Sample(g_sampler, input.uv);
 }

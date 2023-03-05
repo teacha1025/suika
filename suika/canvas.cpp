@@ -14,6 +14,9 @@
 using namespace Microsoft::WRL;
 
 namespace suika {
+	namespace d3d {
+		std::unordered_map<canvas_id, window::id> WindowID;
+	}
 	ulong canvas_num = 0;
 	canvas::canvas(const point<float>& size, const point<float>& top, HWND hWnd, const color& bg) {
 		id = canvas_num++;
@@ -21,6 +24,7 @@ namespace suika {
 		d3d::swapchain::create(size, hWnd, id);
 		d3d::RTV::create(id);
 		d3d::viewport::create(top, size, id);
+		d3d::WindowID.insert({ id, hWnd });
 	}
 
 	void canvas::clear() {

@@ -30,172 +30,161 @@ namespace suika {
 		using str_view   = std::string_view;
 		using wstr_view  = std::wstring_view;
 
-		using string_type			= str;
+		using string_type			= wstr;
 		using string_view_type	   = str_view;
 
 		using size_type = string_type::size_type;
 
 		static constexpr auto npos = string_type::npos;
 
-		constexpr string();
+		string();
 
-		constexpr string(const string& other);
-		constexpr string& operator=(const string& other);
-		constexpr string(const string& other, size_type pos);
-		constexpr string(const string& other, size_type pos, size_type count);
-		constexpr string(string&& other) noexcept;
+		string(const string& other);
+		string& operator=(const string& other);
+		string(const string& other, size_type pos);
+		string(const string& other, size_type pos, size_type count);
+		string(string&& other) noexcept;
 
-				  string(const utf8& s);
-				  string& operator=(const utf8& other);
-				  string(const utf8& s, size_type pos);
-				  string(const utf8& s, size_type pos, size_type count);
-				  string(const utf16& s);
-				  string& operator=(const utf16& other);
-				  string(const utf16& s, size_type pos);
-				  string(const utf16& s, size_type pos, size_type count);
-				  string(const utf32& s);
-				  string& operator=(const utf32& other);
-				  string(const utf32& s, size_type pos);
-				  string(const utf32& s, size_type pos, size_type count);
-		constexpr string(const str& s);
-		constexpr string& operator=(const str& other);
-		constexpr string(const str& s, size_type pos);
-		constexpr string(const str& s, size_type pos, size_type count);
-				  string(const wstr& s);
-				  string& operator=(const wstr& other);
-				  string(const wstr& s, size_type pos);
-				  string(const wstr& s, size_type pos, size_type count);
-				  string(const char8* s);
-				  string& operator=(const char8* other);
-				  string(const char8* s, size_type count);
-				  string(const char16* s);
-				  string& operator=(const char16* other);
-				  string(const char16* s, size_type count);
-				  string(const char32* s);
-				  string& operator=(const char32* other);
-				  string(const char32* s, size_type count);
-		constexpr string(const char* s);
-		constexpr string& operator=(const char* other);
-		constexpr string(const char* s, size_type count);
-				  string(const wchar_t* s);
-				  string& operator=(const wchar_t* other);
-				  string(const wchar_t* s, size_type count);
-				  string(std::initializer_list<char8> il);
-				  string& operator=(std::initializer_list<char8> il);
-				  string(std::initializer_list<char16> il);
-				  string& operator=(std::initializer_list<char16> il);
-				  string(std::initializer_list<char32> il);
-				  string& operator=(std::initializer_list<char32> il);
-		constexpr string(std::initializer_list<char> il);
-		constexpr string& operator=(std::initializer_list<char> il);
-				  string(std::initializer_list<wchar_t> il);
-				  string& operator=(std::initializer_list<wchar_t> il);
-				  string(size_type count, char8 c);
-				  string(size_type count, char16 c);
-				  string(size_type count, char32 c);
-		constexpr string(size_type count, char c);
-				  string(size_type count, wchar_t c);
-				  string(utf8::iterator first, utf8::iterator last);
-				  string(utf16::iterator first, utf16::iterator last);
-				  string(utf32::iterator first, utf32::iterator last);
-		constexpr string(str::iterator first, str::iterator last);
-				  string(wstr::iterator first, wstr::iterator last);
+		string(const utf8& s);
+		string& operator=(const utf8& other);
+		string(const utf8& s, size_type pos);
+		string(const utf8& s, size_type pos, size_type count);
+		string(const utf16& s);
+		string& operator=(const utf16& other);
+		string(const utf16& s, size_type pos);
+		string(const utf16& s, size_type pos, size_type count);
+		string(const utf32& s);
+		string& operator=(const utf32& other);
+		string(const utf32& s, size_type pos);
+		string(const utf32& s, size_type pos, size_type count);
+		string(const str& s);
+		string& operator=(const str& other);
+		string(const str& s, size_type pos);
+		string(const str& s, size_type pos, size_type count);
+		string(const wstr& s);
+		string& operator=(const wstr& other);
+		string(const wstr& s, size_type pos);
+		string(const wstr& s, size_type pos, size_type count);
+		string(const char8* s);
+		string& operator=(const char8* other);
+		string(const char8* s, size_type count);
+		string(const char16* s);
+		string& operator=(const char16* other);
+		string(const char16* s, size_type count);
+		string(const char32* s);
+		string& operator=(const char32* other);
+		string(const char32* s, size_type count);
+		string(const char* s);
+		string& operator=(const char* other);
+		string(const char* s, size_type count);
+		string(const wchar_t* s);
+		string& operator=(const wchar_t* other);
+		string(const wchar_t* s, size_type count);
+		string(std::initializer_list<char8> il);
+		string& operator=(std::initializer_list<char8> il);
+		string(std::initializer_list<char16> il);
+		string& operator=(std::initializer_list<char16> il);
+		string(std::initializer_list<char32> il);
+		string& operator=(std::initializer_list<char32> il);
+		string(std::initializer_list<char> il);
+		string& operator=(std::initializer_list<char> il);
+		string(std::initializer_list<wchar_t> il);
+		string& operator=(std::initializer_list<wchar_t> il);
+		string(size_type count, char8 c);
+		string(size_type count, char16 c);
+		string(size_type count, char32 c);
+		string(size_type count, char c);
+		string(size_type count, wchar_t c);
+		string(utf8::iterator first, utf8::iterator last);
+		string(utf16::iterator first, utf16::iterator last);
+		string(utf32::iterator first, utf32::iterator last);
+		string(str::iterator first, str::iterator last);
+		string(wstr::iterator first, wstr::iterator last);
+		
+		bool				   operator==(const string& str) const;
+		bool				 operator==(const utf8& str) const;
+		bool				   operator==(const utf16& str) const;
+		bool				 operator==(const utf32& str) const;
+		bool				   operator==(const str& str) const;
+		bool				 operator==(const wstr& str) const;
+		bool				   operator==(const char8* str) const;
+		bool				 operator==(const char16* str) const;
+		bool				 operator==(const char32* str) const;
+		bool				   operator==(const char* str) const;
+		bool				   operator==(const wchar_t* str) const;
+		string&			   operator+=(const string& str);
+		string&			   operator+=(const char8* str);
+		string&			   operator+=(const char16* str);
+		string&			   operator+=(const char32* str);
+		string&			   operator+=(const char* str);
+		string&			   operator+=(const wchar_t* str);
+		string&			   operator+=(char8 c);
+		string&			   operator+=(char16 c);
+		string&			   operator+=(char32 c);
+		string&			   operator+=(char c);
+		string&			   operator+=(wchar_t c);
+		string&			   operator+=(const utf8& str);
+		string&			   operator+=(const utf16& str);
+		string&			   operator+=(const utf32& str);
+		string&			   operator+=(const str& str);
+		string&			   operator+=(const wstr& str);
+		string&			   operator+=(const utf8_view& str);
+		string&			   operator+=(const utf16_view& str);
+		string&			   operator+=(const utf32_view& str);
+		string&			   operator+=(const str_view& str);
+		string&			   operator+=(const wstr_view& str);
 
-		constexpr bool				   operator==(const string& str) const;
-				  bool				 operator==(const utf8& str) const;
-				  bool				   operator==(const utf16& str) const;
-				  bool				 operator==(const utf32& str) const;
-		constexpr bool				   operator==(const str& str) const;
-				  bool				 operator==(const wstr& str) const;
-				  bool				   operator==(const char8* str) const;
-				  bool				 operator==(const char16* str) const;
-				  bool				 operator==(const char32* str) const;
-		constexpr bool				   operator==(const char* str) const;
-				  bool				   operator==(const wchar_t* str) const;
-		//constexpr std::strong_ordering operator<=>(const string& str) const;
-	   	//		  std::strong_ordering operator<=>(const utf8& str) const;
-	   	//		  std::strong_ordering operator<=>(const utf16& str) const;
-	   	//		  std::strong_ordering operator<=>(const utf32& str) const;
-		//constexpr std::strong_ordering operator<=>(const str& str) const;
-		//		  std::strong_ordering operator<=>(const wstr& str) const;
-		//		  std::strong_ordering operator<=>(const char8* str) const;
-		//		  std::strong_ordering operator<=>(const char16* str) const;
-		//		  std::strong_ordering operator<=>(const char32* str) const;
-		//constexpr std::strong_ordering operator<=>(const char* str) const;
-		//		  std::strong_ordering operator<=>(const wchar_t* str) const;
-		constexpr string&			   operator+=(const string& str);
-				  string&			   operator+=(const char8* str);
-				  string&			   operator+=(const char16* str);
-				  string&			   operator+=(const char32* str);
-		constexpr string&			   operator+=(const char* str);
-				  string&			   operator+=(const wchar_t* str);
-		  		  string&			   operator+=(char8 c);
-				  string&			   operator+=(char16 c);
-				  string&			   operator+=(char32 c);
-		constexpr string&			   operator+=(char c);
-				  string&			   operator+=(wchar_t c);
-				  string&			   operator+=(const utf8& str);
-				  string&			   operator+=(const utf16& str);
-				  string&			   operator+=(const utf32& str);
-		constexpr string&			   operator+=(const str& str);
-				  string&			   operator+=(const wstr& str);
-		  		  string&			   operator+=(const utf8_view& str);
-				  string&			   operator+=(const utf16_view& str);
-				  string&			   operator+=(const utf32_view& str);
-		constexpr string&			   operator+=(const str_view& str);
-				  string&			   operator+=(const wstr_view& str);
+		/// <summary>
+		/// 文字コードを変換
+		/// </summary>
+		/// <returns>UTF8文字列</returns>
+		utf8  to_u8string() const;
+		/// <summary>
+		/// 文字コードを変換
+		/// </summary>
+		/// <returns>UTF16文字列</returns>
+		utf16 to_u16string() const;
+		/// <summary>
+		/// 文字コードを変換
+		/// </summary>
+		/// <returns>UTF32文字列</returns>
+		utf32 to_u32string() const;
+		/// <summary>
+		/// 文字コードを変換
+		/// </summary>
+		/// <returns>文字列</returns>
+		str	to_string() const;
+		/// <summary>
+		/// 文字コードを変換
+		/// </summary>
+		/// <returns>ワイド文字列</returns>
+		wstr  to_wstring() const;
 
-				  /// <summary>
-				  /// 文字コードを変換
-				  /// </summary>
-				  /// <returns>UTF8文字列</returns>
-				  utf8  to_u8string() const;
-				  /// <summary>
-				  /// 文字コードを変換
-				  /// </summary>
-				  /// <returns>UTF16文字列</returns>
-				  utf16 to_u16string() const;
-				  /// <summary>
-				  /// 文字コードを変換
-				  /// </summary>
-				  /// <returns>UTF32文字列</returns>
-				  utf32 to_u32string() const;
-				  /// <summary>
-				  /// 文字コードを変換
-				  /// </summary>
-				  /// <returns>文字列</returns>
-		constexpr str	to_string() const;
-				  /// <summary>
-				  /// 文字コードを変換
-				  /// </summary>
-				  /// <returns>ワイド文字列</returns>
-				  wstr  to_wstring() const;
-
-				  /// <summary>
-				  /// 文字コードを変換
-				  /// </summary>
-				  /// <returns>UTF8ビュー文字列</returns>
-				  utf8_view		to_u8string_view() const;
-				  /// <summary>
-				  /// 文字コードを変換
-				  /// </summary>
-				  /// <returns>UTF16ビュー文字列</returns>
-				  utf16_view	to_u16string_view() const;
-				  /// <summary>
-				  /// 文字コードを変換
-				  /// </summary>
-				  /// <returns>UTF32ビュー文字列</returns>
-				  utf32_view	to_u32string_view() const;
-				  /// <summary>
-				  /// 文字コードを変換
-				  /// </summary>
-				  /// <returns>ビュー文字列</returns>
-		constexpr str_view		to_string_view() const;
-				  /// <summary>
-				  /// 文字コードを変換
-				  /// </summary>
-				  /// <returns>ワイドビュー文字列</returns>
-				  wstr_view		to_wstring_view() const;
+		/// <summary>
+		/// 文字コードを変換
+		/// </summary>
+		/// <returns>UTF8ビュー文字列</returns>
+		utf8_view		to_u8string_view() const;
+		/// <summary>
+		/// 文字コードを変換
+		/// </summary>
+		/// <returns>UTF16ビュー文字列</returns>
+		utf16_view	to_u16string_view() const;
+		/// <summary>
+		/// 文字コードを変換
+		/// </summary>
+		/// <returns>UTF32ビュー文字列</returns>
+		utf32_view	to_u32string_view() const;
+		/// <summary>
+		/// 文字コードを変換
+		/// </summary>
+		/// <returns>ビュー文字列</returns>
+		str_view		to_string_view() const;
+		/// <summary>
+		/// 文字コードを変換
+		/// </summary>
+		/// <returns>ワイドビュー文字列</returns>
+		wstr_view		to_wstring_view() const;
 
 		/// <summary>
 		/// 文字列を分割
@@ -498,20 +487,20 @@ namespace suika {
 	//template<class char_t>
 	//std::strong_ordering operator<=>(const char_t* lhs, const string& rhs);//
 
-	constexpr string operator+(const string& lhs, const string& rhs);//
-	constexpr string operator+(const string& lhs, const string::str& rhs);//
-	constexpr string operator+(const string::str& lhs, const string& rhs);//
-	constexpr string operator+(string&& lhs, const string& rhs);//
-	constexpr string operator+(const string& lhs, string&& rhs);//
-	constexpr string operator+(string&& lhs, string&& rhs);//
-	constexpr string operator+(const char* lhs, const string& rhs);
-	constexpr string operator+(const char* lhs, string&& rhs);
-	constexpr string operator+(char lhs, const string& rhs);
-	constexpr string operator+(char lhs, string&& rhs);
-	constexpr string operator+(const string& lhs, const char* rhs);
-	constexpr string operator+(string&& lhs, const char* rhs);
-	constexpr string operator+(const string& lhs, char rhs);
-	constexpr string operator+(string&& lhs, char rhs);
+	string operator+(const string& lhs, const string& rhs);//
+	string operator+(const string& lhs, const string::str& rhs);//
+	string operator+(const string::string_type& lhs, const string& rhs);//
+	string operator+(string&& lhs, const string& rhs);//
+	string operator+(const string& lhs, string&& rhs);//
+	string operator+(string&& lhs, string&& rhs);//
+	string operator+(const char* lhs, const string& rhs);
+	string operator+(const char* lhs, string&& rhs);
+	string operator+(char lhs, const string& rhs);
+	string operator+(char lhs, string&& rhs);
+	string operator+(const string& lhs, const char* rhs);
+	string operator+(string&& lhs, const char* rhs);
+	string operator+(const string& lhs, char rhs);
+	string operator+(string&& lhs, char rhs);
 	template<class string_t>
 	string operator+(const string& lhs, const string_t& rhs);//
 	template<class string_t>
@@ -543,9 +532,9 @@ namespace suika {
 } // namespace suika
 
 template<>
-struct std::formatter<suika::string>: std::formatter<suika::string::string_type> {
-	auto format(suika::string str, std::format_context& ctx) const {
-		return std::formatter<suika::string::string_type>::format(str.to_string(), ctx);
+struct std::formatter<suika::string>: std::formatter<suika::string::string_type, suika::string::string_type::value_type> {
+	auto format(suika::string str, std::wformat_context& ctx) const {
+		return std::formatter<suika::string::string_type, suika::string::string_type::value_type>::format(str.to_wstring(), ctx);
 	}
 };
 

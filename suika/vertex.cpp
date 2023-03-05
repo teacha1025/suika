@@ -1,6 +1,7 @@
 #include <d3d11.h>
 #include <windows.h>
 #include <wrl/client.h>
+#include <vector>
 #include "d3d/info.hpp"
 #include "../include/suika/vertex.h"
 
@@ -31,7 +32,7 @@ namespace suika {
 			ZeroMemory(&initData, sizeof(initData));
 			initData.pSysMem = vertices;
 
-			auto er = suika::d3d::pDevice->CreateBuffer(&bufferDesc, &initData, g_vertexBuffer.GetAddressOf());
+			auto er = suika::d3d::pDevice->CreateBuffer(&bufferDesc, &initData, &g_vertexBuffer);
 			if (FAILED(er)) {
 				d3d::log_d3d.error("Failed to Create VertexBuffer");
 				d3d::log_d3d.result(er);
@@ -40,12 +41,12 @@ namespace suika {
 			suika::d3d::pContext->IASetVertexBuffers(0, 1, g_vertexBuffer.GetAddressOf(), &stride, &offset);
 		}
 
-		void set_index(const void* index, uint index_size, primitive_topology topology) {
+		void set_index(const std::vector<uint16>& index, primitive_topology topology) {
 			bufferDesc.Usage = D3D11_USAGE_DEFAULT;
-			bufferDesc.ByteWidth = index_size;
+			bufferDesc.ByteWidth = static_cast<UINT>(index.size() * sizeof(uint16));
 			bufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 			bufferDesc.CPUAccessFlags = 0;
-			initData.pSysMem = index;
+			initData.pSysMem = index.data();
 
 			auto er = suika::d3d::pDevice->CreateBuffer(&bufferDesc, &initData, &g_indexBuffer);
 			if (FAILED(er)) {

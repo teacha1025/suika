@@ -12,6 +12,7 @@
 #include "d3d/vs.hpp"
 #include "d3d/ps.hpp"
 #include "d3d/cbuffer.hpp"
+#include "d3d/dwrite.h"
 
 #include "d3d/shader/shape_vs.h"
 #include "d3d/shader/shape_ps.h"
@@ -35,9 +36,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	}
 
 	//suika::add_vs(g_vs_main, sizeof(g_vs_main), "shape");
+	//suika::add_ps(g_ps_main, sizeof(g_ps_main), "texture");
 	//suika::add_ps(g_ps_main, sizeof(g_ps_main), "shape");
+	//suika::add_ps(g_ps_main, sizeof(g_ps_main), "texture");
 	suika::add_vs("../suika/d3d/shader/shape.hlsl", "shape");
+	suika::add_vs("../suika/d3d/shader/texture.hlsl", "texture");
 	suika::add_ps("../suika/d3d/shader/shape.hlsl", "shape");
+	suika::add_ps("../suika/d3d/shader/texture.hlsl", "texture");
 	suika::set_vs("shape");
 	suika::set_ps("shape");
 
@@ -45,35 +50,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	suika::window::title("APP");
 
 	suika::window::canvas().get()->set();
-
-	auto cb = suika::set_view({ 1280,960 });
-	suika::set_cbuffer(sizeof(cb), &cb, 0);
 	
-	suika::vertex::vertex_2d vertices[4] = {
-		suika::vertex::create_2d(suika::point<float>{64,64}, suika::pallet::red, {0,0}),
-		suika::vertex::create_2d(suika::point<float>{480,64}, suika::pallet::yellow, {0,0}),
-		suika::vertex::create_2d(suika::point<float>{64,480}, suika::pallet::blue, {0,0}),
-		suika::vertex::create_2d(suika::point<float>{480,480}, suika::pallet::green, {0,0}),
-	};
-	suika::vertex::set_vertex(vertices, sizeof(vertices), sizeof(suika::vertex::vertex_2d));
-
-	// 四角形のインデックスを定義
-	WORD index[] =
-	{
-		0, 1, 2,
-		2, 1, 3
-	};
-	suika::vertex::set_index(index, sizeof(index), suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	auto update = [&]() {suika::window::flip(); suika::window::clear(); return suika::window::process(); };
-	while (update()) {
-		vertices[0].position.x += 1.0f;
-		vertices[1].position.x += 1.0f;
-		vertices[2].position.x += 1.0f;
-		vertices[3].position.x += 1.0f;
-		suika::vertex::set_vertex(vertices, sizeof(vertices), sizeof(suika::vertex::vertex_2d));
-		suika::d3d::pContext->DrawIndexed(6, 0, 0);
-	}
+	auto res = main();
+	
 	suika::log.info("fin");
-
-	return 0;
+	suika::d3d::dwrite::free();
+	return res;
 }

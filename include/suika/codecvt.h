@@ -134,5 +134,11 @@ namespace suika {
 	/// <param name="src">元のワイド文字列</param>
 	/// <returns>変換されたUTF32文字列</returns>
 	std::u32string to_u32string(const std::wstring_view& src);
+
+	std::string to_string(const std::string_view& src);
+	std::wstring to_wstring(const std::wstring_view& src);
+	std::u8string to_u8string(const std::u8string_view& src);
+	std::u16string to_u16string(const std::u16string_view& src);
+	std::u32string to_u32string(const std::u32string_view& src);
 } // namespace suika
 #endif

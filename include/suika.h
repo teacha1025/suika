@@ -9,6 +9,7 @@
 #include "../include/suika/shader.h"
 #include "../include/suika/vertex.h"
 #include "../include/suika/cbuffer.h"
+#include "../include/suika/blend.h"
 
 #include "../include/suika/color.h"
 #include "../include/suika/pallet.h"

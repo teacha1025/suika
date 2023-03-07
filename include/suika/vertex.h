@@ -50,5 +50,10 @@ namespace suika {
 		void set_vertex(const void* vertices, uint vertices_size, uint stride);
 
 		void set_index(const std::vector<uint16>& index, primitive_topology topology);
+		template<class vertex_type>
+		void set(const std::vector<vertex_type>& vertices, void* data, const std::vector<uint16>& index, primitive_topology topology) {
+			set_vertex(data, vertices.size(), sizeof(vertex_type));
+			set_index(index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		}
 	}
 }

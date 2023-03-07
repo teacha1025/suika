@@ -167,6 +167,7 @@
     <ClCompile Include="cbuffer.cpp" />
     <ClCompile Include="codecvt.cpp" />
     <ClCompile Include="color.cpp" />
+    <ClCompile Include="d3d\blend.cpp" />
     <ClCompile Include="d3d\c_buffer.cpp" />
     <ClCompile Include="d3d\device.cpp" />
     <ClCompile Include="d3d\dwrite.cpp" />
@@ -184,6 +185,7 @@
   <ItemGroup>
     <ClInclude Include="..\include\suika.h" />
     <ClInclude Include="..\include\suika\base.h" />
+    <ClInclude Include="..\include\suika\blend.h" />
     <ClInclude Include="..\include\suika\canvas.h" />
     <ClInclude Include="..\include\suika\cbuffer.h" />
     <ClInclude Include="..\include\suika\codecvt.h" />
@@ -214,6 +216,7 @@
     <ClInclude Include="..\include\suika\vector.h" />
     <ClInclude Include="..\include\suika\vertex.h" />
     <ClInclude Include="..\include\suika\window.h" />
+    <ClInclude Include="d3d\blend.hpp" />
     <ClInclude Include="d3d\cbuffer.hpp" />
     <ClInclude Include="d3d\device.hpp" />
     <ClInclude Include="d3d\dwrite.h" />

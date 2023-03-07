@@ -50,7 +50,7 @@ namespace suika {
 			historical<color> _bg = pallet::black;
 			historical<bool> _fullscreen_flag = false;
 			//historical<uint> _fullscreen_type = fullscreen_type::borderless | fullscreen_type::dotbydot;
-			historical<string> _title = string("window");
+			historical<string> _title = string("Application");
 			std::shared_ptr<suika::canvas> _canvas = nullptr;
 			HINSTANCE _hinstance = NULL;
 			bool _isclosed = false;
@@ -92,6 +92,10 @@ namespace suika {
 				clientRect.right - clientRect.left,
 				clientRect.bottom - clientRect.top,
 				0);
+		}
+
+		void init() {
+			window_list.insert(std::make_pair(static_cast<suika::window::id>(nullptr), window{}));
 		}
 
 		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title) {
@@ -144,8 +148,9 @@ namespace suika {
 			wnd._fullscreen_flag = false;
 			wnd._canvas = make_canvas(size,{0,0}, hwnd, wnd._bg.now);
 
-			if (window_list.empty()) {
+			if (window_list.size() == 1ull) {
 				default_id = hwnd;
+				window_list.clear();
 			}
 			window_list.insert({ hwnd, wnd });
 			log.info("window create");
@@ -268,6 +273,9 @@ namespace suika {
 		
 
 		void adapt_param() {
+			if (window_list.empty() || window_list.begin()->first == nullptr) {
+				return;
+			}
 			for (const auto& p_ : window_list) {
 				const auto& p = p_.second;
 

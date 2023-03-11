@@ -1,6 +1,7 @@
 ﻿#include "suika.h"
 #include "../suika/d3d/dwrite.h"
 #include "../suika/d3d/blend.hpp"
+#include "../suika/d3d/texture.hpp"
 
 
 void init() {
@@ -25,37 +26,32 @@ int main() {
 
 	std::vector<suika::vertex::vertex_2d> vertices = {
 		suika::vertex::create_2d(suika::point<float>{64,64}, suika::pallet::red, {0,0}),
-		suika::vertex::create_2d(suika::point<float>{480,64}, suika::pallet::yellow, {0,0}),
-		suika::vertex::create_2d(suika::point<float>{64,480}, suika::pallet::blue, {0,0}),
-		suika::vertex::create_2d(suika::point<float>{480,480}, suika::pallet::green, {0,0}),
+		suika::vertex::create_2d(suika::point<float>{704,64}, suika::pallet::yellow, {1,0}),
+		suika::vertex::create_2d(suika::point<float>{64,544}, suika::pallet::blue, {0,1}),
+		suika::vertex::create_2d(suika::point<float>{704,544}, suika::pallet::green, {1,1}),
 	};
-
-	vertices[0].color.a = 127;
-	vertices[1].color.a = 127;
-	vertices[2].color.a = 127;
-	vertices[3].color.a = 127;
-	//suika::vertex::set_vertex(vertices, sizeof(vertices), sizeof(suika::vertex::vertex_2d));
-	
 
 	// 四角形のインデックスを定義
 	std::vector<suika::uint16> index =
 	{
 		0, 1, 2,
-		2, 1, 3
+		2, 1, 3,
 	};
 	suika::vertex::set_index(index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	auto update = [&]() {suika::window::flip(); suika::window::clear(); return suika::window::process(); };
 	int i = 0;
-	const void* ptr = vertices.data();
+
+	suika::d3d::texture::texture tex("frame.png");
+	suika::set_vs("texture");
+	suika::set_ps("texture");
 	while (update()) {
 		suika::d3d::dwrite::draw(L"TEST😀", { 128,128 }, cid);
-		vertices[0].color.a = i % 255;
-		vertices[1].color.a = i % 255;
-		vertices[2].color.a = i % 255;
-		vertices[3].color.a = i % 255;
+		for (auto& v : vertices) {
+			v.color.a = i % 255;
+		}
 		suika::vertex::set(vertices, index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-
-		suika::d3d::pContext->DrawIndexed(6, 0, 0);
+		suika::d3d::texture::set(tex);
+		suika::d3d::pContext->DrawIndexed(index.size(), 0, 0);
 		i++;
 	}
 }

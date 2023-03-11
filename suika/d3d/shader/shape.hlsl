@@ -5,6 +5,7 @@ namespace suika
 		float4 position : POSITION;
 		uint4 color : COLOR0;
 		float2 uv : TEXCOORD0;
+		float2 dummy : TEXCOORD1;
 	};
 
 	struct PSInput
@@ -12,6 +13,7 @@ namespace suika
 		float4 position : SV_POSITION;
 		float4 color : COLOR0;
 		float2 uv : TEXCOORD0;
+		float2 dummy : TEXCOORD1;
 	};
 
 }

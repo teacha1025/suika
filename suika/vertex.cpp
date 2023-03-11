@@ -7,6 +7,7 @@
 
 namespace suika {
 	namespace vertex {
+		std::vector<uint16> index;
 		vertex_2d create_2d(const float4& pos, const color& col, const float2& uv) {
 			return vertex_2d{ .position = pos, .color = {col.r, col.g, col.b, col.a}, .uv = uv };
 		}
@@ -22,6 +23,7 @@ namespace suika {
 		UINT offset = 0;
 		Microsoft::WRL::ComPtr<ID3D11Buffer> g_indexBuffer;
 		Microsoft::WRL::ComPtr<ID3D11Buffer> g_vertexBuffer;
+
 		void set_vertex(const void* vertices, uint vertices_size, uint stride) {
 			ZeroMemory(&bufferDesc, sizeof(bufferDesc));
 			bufferDesc.Usage = D3D11_USAGE_DEFAULT;
@@ -57,6 +59,27 @@ namespace suika {
 
 			suika::d3d::pContext->IASetIndexBuffer(g_indexBuffer.Get(), DXGI_FORMAT_R16_UINT, 0);
 			suika::d3d::pContext->IASetPrimitiveTopology(static_cast<D3D11_PRIMITIVE_TOPOLOGY>(topology));
+		}
+
+		void internal_set(const std::vector<vertex_2d>& vertices, const std::vector<uint16>& index) {
+
+		}
+
+		void add_index(const std::vector<uint16>& idx) {
+			index.insert(idx.end(), idx.begin(), idx.end());
+		}
+
+		void add_vertex() {
+
+		}
+
+		void draw() {
+			if (index.empty()) return;
+			set_index(index, primitive_topology::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+			d3d::pContext->DrawIndexed(index.size(), 0, 0);
+
+			index.clear();
+			index.shrink_to_fit();
 		}
 	}
 }

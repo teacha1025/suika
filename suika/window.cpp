@@ -14,6 +14,7 @@
 #include "..\include\suika\string.h"
 
 #include "d3d/device.hpp"
+#include "..\include\suika\vertex.h"
 
 
 

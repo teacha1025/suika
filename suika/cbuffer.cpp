@@ -26,7 +26,7 @@ namespace suika {
 		if (!cbuffers.contains(index)) {
 			cbuffers.insert({ index,{} });
 			auto& cb = cbuffers[index];
-			if (!d3d::create_cbuffer(cb.GetAddressOf(), constant_size)) {
+			if (!d3d::cbuffer::create(cb.GetAddressOf(), constant_size)) {
 				cbuffers.erase(index);
 				d3d::log_d3d.error("Failed to Create CBuffer");
 				return;
@@ -34,7 +34,7 @@ namespace suika {
 		}
 		auto& cb = cbuffers[index];
 
-		d3d::update_cbuffer(cb.Get(), constant, sizeof(cb), index);
-		d3d::set_cbuffer(cb.GetAddressOf());
+		d3d::cbuffer::update(cb.Get(), constant, sizeof(cb), index);
+		d3d::cbuffer::set(cb.GetAddressOf());
 	}
 }

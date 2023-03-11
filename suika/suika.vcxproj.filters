@@ -53,6 +53,9 @@
     <ClCompile Include="d3d\blend.cpp">
       <Filter>d3d\blend</Filter>
     </ClCompile>
+    <ClCompile Include="d3d\texture.cpp">
+      <Filter>d3d\texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -127,11 +130,14 @@
     <Filter Include="d3d\dwrite">
       <UniqueIdentifier>{9b3e6d07-c51a-4590-888a-b7e385c15910}</UniqueIdentifier>
     </Filter>
-    <Filter Include="d3d\blend">
-      <UniqueIdentifier>{417a57f4-8f6a-4d39-8da1-66c64f23adee}</UniqueIdentifier>
-    </Filter>
     <Filter Include="suika\blend">
       <UniqueIdentifier>{1878a226-0f2f-4102-a749-1d2253e5316c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d\texture">
+      <UniqueIdentifier>{63c44822-ba5a-4bb3-b593-c5b008e7e7b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d\blend">
+      <UniqueIdentifier>{417a57f4-8f6a-4d39-8da1-66c64f23adee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +265,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\blend.h">
       <Filter>suika\blend</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\texture.hpp">
+      <Filter>d3d\texture</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

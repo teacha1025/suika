@@ -8,6 +8,7 @@
 namespace suika {
 	namespace vertex {
 		std::vector<uint16> index;
+		std::vector<vertex_2d> vertices;
 		vertex_2d create_2d(const float4& pos, const color& col, const float2& uv) {
 			return vertex_2d{ .position = pos, .color = {col.r, col.g, col.b, col.a}, .uv = uv };
 		}
@@ -61,18 +62,16 @@ namespace suika {
 			suika::d3d::pContext->IASetPrimitiveTopology(static_cast<D3D11_PRIMITIVE_TOPOLOGY>(topology));
 		}
 
-		void internal_set(const std::vector<vertex_2d>& vertices, const std::vector<uint16>& index) {
-
-		}
-
 		void add_index(const std::vector<uint16>& idx) {
 			index.insert(idx.end(), idx.begin(), idx.end());
 		}
 
-		void add_vertex() {
+		void add_vertex(const std::vector<vertex_2d>& vtx) {
+			vertices.insert(vtx.end(), vtx.begin(), vtx.end());
+		}
+		void internal_set(const std::vector<vertex_2d>& vertices, const std::vector<uint16>& index) {
 
 		}
-
 		void draw() {
 			if (index.empty()) return;
 			set_index(index, primitive_topology::PRIMITIVE_TOPOLOGY_TRIANGLELIST);

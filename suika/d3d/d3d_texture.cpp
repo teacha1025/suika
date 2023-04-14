@@ -81,7 +81,7 @@ namespace suika {
                 }
                 //auto bpp = ;
                 //size_t rowPitch = (size.x * bpp + 7) / 8;
-                buffer.resize(size.x * size.y * pixelBytes);
+                buffer.resize(static_cast<size_t>(size.x) * static_cast<size_t>(size.y) * static_cast<size_t>(pixelBytes));
 
                 if (pixelFormat != GUID_WICPixelFormat32bppRGBA) {
                     // •ÏŠ·‚·‚é
@@ -103,7 +103,7 @@ namespace suika {
                     }
 
                     // copy
-                    er = FC->CopyPixels(0, size.x * pixelBytes, buffer.size(), pointer());
+                    er = FC->CopyPixels(0, size.x * pixelBytes, static_cast<UINT>(buffer.size()), pointer());
                     if (FAILED(er)) {
                         log_d3d.error("Failed to Copy Pixel");
                         log_d3d.result(er);
@@ -112,7 +112,7 @@ namespace suika {
                 }
                 else {
                     // copy
-                    er = frame->CopyPixels(0, size.x * pixelBytes, buffer.size(), pointer());
+                    er = frame->CopyPixels(0, size.x * pixelBytes, static_cast<UINT>(buffer.size()), pointer());
                     if (FAILED(er)) {
                         log_d3d.error("Failed to Copy Pixel");
                         log_d3d.result(er);
@@ -139,7 +139,7 @@ namespace suika {
                 static D3D11_SUBRESOURCE_DATA initData;
                 initData.pSysMem = pointer();
                 initData.SysMemPitch = image.size.x * image.pixelBytes;
-                initData.SysMemSlicePitch = image.buffer.size();
+                initData.SysMemSlicePitch = static_cast<UINT>(image.buffer.size());
 
                 auto er = d3d::pDevice->CreateTexture2D(&desc, &initData, &g_texture);
                 if (FAILED(er)) {

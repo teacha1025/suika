@@ -21,11 +21,17 @@ namespace suika {
 	}
 
 	void set_vs(const string& name) {
-		d3d::vertex_shader_list.at(name.to_string()).set();
+		static string vs = "";
+		if (vs != name) {
+			d3d::vertex_shader_list.at(name.to_string()).set();
+			vs = name;
+		}
 	}
 	void set_ps(const string& name) {
-		d3d::pixel_shader_list.at(name.to_string()).set();
+		static string ps = "";
+		if (ps != name) {
+			d3d::pixel_shader_list.at(name.to_string()).set();
+			ps = name;
+		}
 	}
-
-	
 }

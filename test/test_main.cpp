@@ -24,11 +24,12 @@ int main() {
 	suika::set_cbuffer(sizeof(cb), &cb, 0);
 	suika::d3d::blend::blends[suika::blend::alpha].set();
 
+	define w = 64, h = 64;
 	std::vector<suika::vertex::vertex_2d> vertices = {
-		suika::vertex::create_2d(suika::point<float>{64,64}, suika::pallet::red, {0,0}),
-		suika::vertex::create_2d(suika::point<float>{704,64}, suika::pallet::yellow, {1,0}),
-		suika::vertex::create_2d(suika::point<float>{64,544}, suika::pallet::blue, {0,1}),
-		suika::vertex::create_2d(suika::point<float>{704,544}, suika::pallet::green, {1,1}),
+		suika::vertex::create_2d(suika::vector2<float>{64,64}, suika::pallet::red, {0,0}),
+		suika::vertex::create_2d(suika::vector2<float>{64+w,64}, suika::pallet::yellow, {1,0}),
+		suika::vertex::create_2d(suika::vector2<float>{64,64+h}, suika::pallet::blue, {0,1}),
+		suika::vertex::create_2d(suika::vector2<float>{64+w,64+h}, suika::pallet::green, {1,1}),
 	};
 
 	// 四角形のインデックスを定義
@@ -41,7 +42,7 @@ int main() {
 	auto update = [&]() {suika::window::flip(); suika::window::clear(); return suika::window::process(); };
 	int i = 0;
 
-	suika::d3d::texture::texture tex("frame.png");
+	suika::d3d::texture::texture tex("test.bmp");
 	suika::set_vs("texture");
 	suika::set_ps("texture");
 	while (update()) {
@@ -51,7 +52,7 @@ int main() {
 		}
 		suika::vertex::set(vertices, index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		suika::d3d::texture::set(tex);
-		suika::d3d::pContext->DrawIndexed(index.size(), 0, 0);
+		suika::d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);
 		i++;
 	}
 }

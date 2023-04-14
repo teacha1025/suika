@@ -16,6 +16,8 @@
 #include "../include/suika/string.h"
 #include "../include/suika/string_function.h"
 
+#include "../include/suika/texture.h"
+
 #ifdef _DEBUG
 #pragma comment(lib, "suika_d.lib")
 #else

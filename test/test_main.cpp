@@ -45,6 +45,9 @@ int main() {
 	suika::d3d::texture::texture tex("test.bmp");
 	suika::set_vs("texture");
 	suika::set_ps("texture");
+
+	suika::texture tex;
+
 	while (update()) {
 		suika::d3d::dwrite::draw(L"TEST😀", { 128,128 }, cid);
 		for (auto& v : vertices) {

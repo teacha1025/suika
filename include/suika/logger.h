@@ -21,9 +21,9 @@ namespace suika {
 	/// </summary>
 	class logger: public detail::ibase {
 		std::chrono::system_clock::time_point _startup_count;
-		FILE*								 fp;
-		std::string						   filename = "Log.txt";
-		bool								  flag	 = true;
+		FILE* fp;
+		std::string filename = "Log.txt";
+		bool flag	 = true;
 
 	public:
 		/// <summary>

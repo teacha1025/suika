@@ -1,20 +1,16 @@
 #if _MSC_VER > 1000
 #pragma once
 #endif
-#ifndef _SK_BASE
-#define _SK_BASE
+#ifndef _SK_DRAW
+#define _SK_DRAW
 #include "point.h"
 #include "def.h"
 #include "string.h"
 
 namespace suika {
 	namespace detail {
-		/**
-		@biref •`‰æŠî’êƒNƒ‰ƒX
-
-		*/
 		template<class T>
-		class ishape {
+		class ishape : public ibase {
 		protected:
 			using position_type = float;
 			//Œ´“_‚©‚ç‚ÌˆÚ“®—Ê

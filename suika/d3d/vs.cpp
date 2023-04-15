@@ -126,7 +126,7 @@ namespace suika {
 
 			// Create InputLayout
 			std::vector<D3D11_INPUT_ELEMENT_DESC> vbElement;
-			for (int i = 0; i < shaderdesc.InputParameters; ++i) {
+			for (UINT i = 0U; i < shaderdesc.InputParameters; ++i) {
 				D3D11_SIGNATURE_PARAMETER_DESC sigdesc;
 				pReflector->GetInputParameterDesc(i, &sigdesc);
 
@@ -146,7 +146,7 @@ namespace suika {
 
 			if (!vbElement.empty()) {
 				er = pDevice->CreateInputLayout(&vbElement[0], vbElement.size(),
-					input, size, pIL.GetAddressOf());
+					input, static_cast<SIZE_T>(size), pIL.GetAddressOf());
 				if (FAILED(er)) {
 					log_d3d.error("Failed to Create Input Layout");
 					log_d3d.result(er);

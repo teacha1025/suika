@@ -75,7 +75,7 @@ namespace suika {
 		void draw() {
 			if (index.empty()) return;
 			set_index(index, primitive_topology::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-			d3d::pContext->DrawIndexed(index.size(), 0, 0);
+			d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);
 
 			index.clear();
 			index.shrink_to_fit();

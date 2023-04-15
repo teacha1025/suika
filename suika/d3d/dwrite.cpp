@@ -47,7 +47,7 @@ namespace suika {
 				FLOAT dpiY;
 				HWND hwnd = WindowID.at(window);
 				HDC hdc = GetDC(hwnd);
-				point<int> dpi = { GetDeviceCaps(hdc, LOGPIXELSX), GetDeviceCaps(hdc, LOGPIXELSY) };
+				point<FLOAT> dpi = { static_cast<FLOAT>(GetDeviceCaps(hdc, LOGPIXELSX)), static_cast<FLOAT>(GetDeviceCaps(hdc, LOGPIXELSY)) };
 				dpiX = dpi.x / 96.0f;
 				dpiY = dpi.y / 96.0f;
 				ReleaseDC(hwnd, hdc);
@@ -134,14 +134,14 @@ namespace suika {
 				D2D1_SIZE_F TargetSize = pRT[window]->GetSize();
 
 				// テキストレイアウトを作成
-				auto er = pDWriteFactory->CreateTextLayout(wstr.c_str(), wstr.size(), pTextFormat.Get(), TargetSize.width, TargetSize.height, &pTextLayout);
+				auto er = pDWriteFactory->CreateTextLayout(wstr.c_str(), static_cast<UINT32>(wstr.size()), pTextFormat.Get(), TargetSize.width, TargetSize.height, & pTextLayout);
 				if (FAILED(er)) {
 					log_d3d.error("Failed to Create Text Layout");
 					log_d3d.result(er);
 					return;
 				}
 				// 描画位置の確定
-				D2D1_POINT_2F pounts;
+				D2D1_POINT_2F pounts = { 0,0 };
 				pounts.x = pos.x;
 				pounts.y = pos.y;
 

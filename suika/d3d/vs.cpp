@@ -145,7 +145,7 @@ namespace suika {
 			}
 
 			if (!vbElement.empty()) {
-				er = pDevice->CreateInputLayout(&vbElement[0], vbElement.size(),
+				er = pDevice->CreateInputLayout(&vbElement[0], static_cast<UINT>(vbElement.size()),
 					input, static_cast<SIZE_T>(size), pIL.GetAddressOf());
 				if (FAILED(er)) {
 					log_d3d.error("Failed to Create Input Layout");

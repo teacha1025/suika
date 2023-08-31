@@ -24,6 +24,11 @@ namespace suika {
 
 			//拡大率
 			vector3<double> _extend;
+
+			struct shaders {
+				string vs;
+				string ps;
+			} _shaders;
 		public:
 			constexpr ishape() :
 				_transition({ 0, 0, 0 }),
@@ -181,6 +186,38 @@ namespace suika {
 				_extend = { rate, rate, rate };
 				return static_cast<T&>(*this);
 			}
+			/// <summary>
+			/// 頂点シェーダーの設定
+			/// </summary>
+			/// <param name="shader">シェーダーの名前</param>
+			virtual T vs(const string& shader)&& {
+				_shaders.vs = shader;
+				return static_cast<T&&>(std::move(*this));
+			}
+			/// <summary>
+			/// 頂点シェーダーの設定
+			/// </summary>
+			/// <param name="shader">シェーダーの名前</param>
+			virtual T& vs(const string& shader)& {
+				_shaders.vs = shader;
+				return static_cast<T&>(*this);
+			}
+			/// <summary>
+			/// ピクセルシェーダーの設定
+			/// </summary>
+			/// <param name="shader">シェーダーの名前</param>
+			virtual T ps(const string& shader)&& {
+				_shaders.ps = shader;
+				return static_cast<T&&>(std::move(*this));
+			}
+			/// <summary>
+			/// ピクセルシェーダーの設定
+			/// </summary>
+			/// <param name="shader">シェーダーの名前</param>
+			virtual T& ps(const string& shader)& {
+				_shaders.ps = shader;
+				return static_cast<T&>(*this);
+			}
 
 			//取得系
 
@@ -258,6 +295,8 @@ namespace suika {
 						static_cast<position_type>(_center.y)
 				};
 			}
+
+			virtual void draw() = 0;
 
 			virtual string to_string() const override {
 				return std::format("at:{}, rotation:{}, center:{}, extend:{}", _transition.to_string().to_string(), _rotation.to_string().to_string(), _center.to_string().to_string(), _extend.to_string().to_string());

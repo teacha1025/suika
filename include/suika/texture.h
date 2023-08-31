@@ -19,8 +19,13 @@ namespace suika {
 	class texture : public detail::ishape<texture> {
 	private:
 		point<bool> _turn;
+		string path;
 	public:
+		virtual texture turned(const point<bool>& turn)&&;
+		virtual texture& turned(const point<bool>& turn)&;
 
+		point<bool> turn() const;
+		virtual void draw() override;
 	};
 }
 #endif

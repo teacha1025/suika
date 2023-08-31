@@ -47,9 +47,9 @@ int main() {
 	//auto update = [&]() {suika::window::flip(); suika::window::clear(); return suika::window::process(); };
 	int i = 0;
 
-	suika::d3d::texture::texture tex("test.bmp");
-	suika::set_vs("texture");
-	suika::set_ps("texture");
+	//suika::d3d::texture::texture tex("test.bmp");
+	//suika::set_vs("texture");
+	//suika::set_ps("texture");
 
 	//suika::texture tex;
 

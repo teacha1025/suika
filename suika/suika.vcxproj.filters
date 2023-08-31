@@ -59,6 +59,9 @@
     <ClCompile Include="texture.cpp">
       <Filter>suika\draw\texture</Filter>
     </ClCompile>
+    <ClCompile Include="system.cpp">
+      <Filter>suika\system</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -147,6 +150,9 @@
     </Filter>
     <Filter Include="suika\draw\texture">
       <UniqueIdentifier>{0b3394b3-656a-4c95-a949-75ec618c42ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\system">
+      <UniqueIdentifier>{d1f995a5-649d-4e28-9d2d-6ccac3a9a730}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -283,6 +289,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\draw.h">
       <Filter>suika\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\system.h">
+      <Filter>suika\system</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

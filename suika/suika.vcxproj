@@ -180,6 +180,7 @@
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shader.cpp" />
+    <ClCompile Include="system.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="vertex.cpp" />
     <ClCompile Include="window.cpp" />
@@ -216,6 +217,7 @@
     <ClInclude Include="..\include\suika\shader.h" />
     <ClInclude Include="..\include\suika\string.h" />
     <ClInclude Include="..\include\suika\string_function.h" />
+    <ClInclude Include="..\include\suika\system.h" />
     <ClInclude Include="..\include\suika\texture.h" />
     <ClInclude Include="..\include\suika\vector.h" />
     <ClInclude Include="..\include\suika\vertex.h" />

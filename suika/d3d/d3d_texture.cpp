@@ -18,9 +18,7 @@ namespace suika {
             
 
 
-            Microsoft::WRL::ComPtr<ID3D11Texture2D> g_texture;
-            Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> g_srv;
-            Microsoft::WRL::ComPtr<ID3D11SamplerState> g_sampler;
+            
             texture::texture(string path) {
                 auto pointer = [&]() {return buffer.empty() ? nullptr : &buffer[0]; };
                 this->path = path;
@@ -119,13 +117,11 @@ namespace suika {
                         return;
                     }
                 }
-            }
 
-            void set(const texture& image) {
-                auto pointer = [&]() {return image.buffer.empty() ? nullptr : &image.buffer[0]; };
+
                 static D3D11_TEXTURE2D_DESC desc;
-                desc.Width = image.size.x;
-                desc.Height = image.size.y;
+                desc.Width = size.x;
+                desc.Height = size.y;
                 desc.MipLevels = 1;
                 desc.ArraySize = 1;
                 desc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -138,10 +134,10 @@ namespace suika {
 
                 static D3D11_SUBRESOURCE_DATA initData;
                 initData.pSysMem = pointer();
-                initData.SysMemPitch = image.size.x * image.pixelBytes;
-                initData.SysMemSlicePitch = static_cast<UINT>(image.buffer.size());
+                initData.SysMemPitch = size.x * pixelBytes;
+                initData.SysMemSlicePitch = static_cast<UINT>(buffer.size());
 
-                auto er = d3d::pDevice->CreateTexture2D(&desc, &initData, &g_texture);
+                er = d3d::pDevice->CreateTexture2D(&desc, &initData, &g_texture);
                 if (FAILED(er)) {
                     log_d3d.error("Failed to Create Texture2D");
                     log_d3d.result(er);
@@ -181,9 +177,13 @@ namespace suika {
                     log_d3d.result(er);
                     return;
                 }
+            }
 
-                d3d::pContext->PSSetShaderResources(0, 1, g_srv.GetAddressOf());
-                d3d::pContext->PSSetSamplers(0, 1, g_sampler.GetAddressOf());
+            void set(const texture& image) {
+                
+
+                d3d::pContext->PSSetShaderResources(0, 1, image.g_srv.GetAddressOf());
+                d3d::pContext->PSSetSamplers(0, 1, image.g_sampler.GetAddressOf());
             }
         }
     }

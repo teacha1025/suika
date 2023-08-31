@@ -15,6 +15,10 @@ namespace suika {
                 uint pixelBytes;
                 string path;
 
+                Microsoft::WRL::ComPtr<ID3D11Texture2D> g_texture;
+                Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> g_srv;
+                Microsoft::WRL::ComPtr<ID3D11SamplerState> g_sampler;
+
                 texture(string path);
             };
 

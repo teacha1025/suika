@@ -31,7 +31,7 @@ namespace suika {
 				_rotation({ 0, 0, 0 }),
 				_extend({ 1.0, 1.0, 1.0 }) {}
 
-			virtual string to_string() const = 0;
+			//virtual string to_string() const = 0;
 
 			//İ’èŒn
 

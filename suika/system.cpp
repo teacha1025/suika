@@ -3,9 +3,6 @@
 #include "..\include\suika\system.h"
 #include "..\include\suika\window.h"
 
-
-
-
 namespace suika {
 	namespace sys {
 		bool exit_flag = false;

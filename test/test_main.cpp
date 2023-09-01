@@ -47,11 +47,20 @@ int main() {
 	//auto update = [&]() {suika::window::flip(); suika::window::clear(); return suika::window::process(); };
 	int i = 0;
 
-	//suika::d3d::texture::texture tex("test.bmp");
-	//suika::set_vs("texture");
-	//suika::set_ps("texture");
+	suika::d3d::texture::texture tex("test.bmp");
+	suika::set_vs("texture");
+	suika::set_ps("texture");
 
 	//suika::texture tex;
+
+	std::vector<suika::vertex::vertex_2d> v[32][32];
+	for (int x = 0; x < 32; x++) {
+		for (int y = 0; y < 32; y++) {
+			v[x][y] = create_vertex({ x * w,y * h }, { w,h });
+			//suika::d3d::texture::set(tex);
+			//suika::d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);
+		}
+	}
 
 	while (suika::sys::update()) {
 		suika::window::title(std::format("{:4.2f}fps", suika::sys::fps()));
@@ -59,10 +68,10 @@ int main() {
 		/*for (auto& v : vertices) {
 			v.color.a = i % 255;
 		}*/
+		suika::d3d::texture::set(tex);
 		for (int x = 0; x < 32; x++) {
 			for (int y = 0; y < 32; y++) {
-				suika::vertex::set(create_vertex({ x*w,y*h }, { w,h }), index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-				suika::d3d::texture::set(tex);
+				suika::vertex::set(create_vertex({ x * w,y * h }, { w,h }), index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 				suika::d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);
 			}
 		}

@@ -13,7 +13,7 @@
 #include "../include/suika/pallet.h"
 
 namespace suika {
-	std::unordered_map < string, d3d::texture::texture> textures;
+	//std::unordered_map<string,d3d::texture::texture> textures;
 
 	texture& texture::turned(const point<bool>& turn)& {
 		_turn = turn;
@@ -25,7 +25,7 @@ namespace suika {
 	}
 
 	void texture::draw() {
-		std::vector<vertex::vertex_2d> vertices = {
+		/*std::vector<vertex::vertex_2d> vertices = {
 			vertex::create_2d(suika::vector2<float>{x,y}, pallet::black, {0,0}),
 			vertex::create_2d(suika::vector2<float>{x + w,y}, pallet::black, {1,0}),
 			vertex::create_2d(suika::vector2<float>{x,y + h}, pallet::black, {0,1}),
@@ -33,6 +33,6 @@ namespace suika {
 		};
 		suika::vertex::set(vertices, index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		suika::d3d::texture::set(tex);
-		suika::d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);
+		suika::d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);*/
 	}
 }

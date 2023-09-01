@@ -532,6 +532,7 @@ namespace suika {
 		return suika::to_wstring(_string_data);
 	}
 
+#if 0
 	inline std::u8string_view string::to_u8string_view() const {
 		auto s = suika::to_u8string(_string_data);
 		return std::u8string_view(s);
@@ -552,6 +553,7 @@ namespace suika {
 		auto s = suika::to_wstring(_string_data);
 		return std::wstring_view(s);
 	}
+#endif
 #pragma endregion
 #pragma region splitter
 	inline std::vector<std::u8string> string::split(char8 split_char, bool is_contain_lastempty) const {

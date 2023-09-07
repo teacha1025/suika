@@ -5,6 +5,7 @@
 #include <wrl/client.h>
 #include <Windows.h>
 #include "texture.hpp"
+#include "vertex.h"
 #include "info.hpp"
 
 #pragma comment(lib, "windowscodecs.lib")
@@ -16,10 +17,18 @@ namespace suika {
             Microsoft::WRL::ComPtr<IWICBitmapDecoder> decoder;
             Microsoft::WRL::ComPtr<IWICBitmapFrameDecode> frame;
             
+            std::unordered_map<string, texture> texture_list;
+            texture* currentTexture;
 
+            texture::texture() {
 
+            }
             
             texture::texture(string path) {
+                if(texture_list.find(path) != texture_list.end()) {
+					*this = texture_list[path];
+					return;
+				}
                 auto pointer = [&]() {return buffer.empty() ? nullptr : &buffer[0]; };
                 this->path = path;
                 Microsoft::WRL::ComPtr<IWICFormatConverter> FC;
@@ -177,10 +186,14 @@ namespace suika {
                     log_d3d.result(er);
                     return;
                 }
+
+                texture_list.insert({ path, *this });
             }
 
             void set(const texture& image) {
-                
+                if (&image != currentTexture) {
+                    vertex::flush();
+                }
 
                 d3d::pContext->PSSetShaderResources(0, 1, image.g_srv.GetAddressOf());
                 d3d::pContext->PSSetSamplers(0, 1, image.g_sampler.GetAddressOf());

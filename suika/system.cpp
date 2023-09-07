@@ -2,6 +2,7 @@
 
 #include "..\include\suika\system.h"
 #include "..\include\suika\window.h"
+#include "d3d\vertex.h"
 
 namespace suika {
 	namespace sys {
@@ -28,7 +29,7 @@ namespace suika {
 				cnt++;
 			}
 
-
+			d3d::vertex::flush();
 			window::flip();
 			window::clear();
 			return window::process();

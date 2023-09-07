@@ -2,6 +2,7 @@
 #include "../suika/d3d/dwrite.h"
 #include "../suika/d3d/blend.hpp"
 #include "../suika/d3d/texture.hpp"
+#include "../suika/d3d/vertex.h"
 
 
 void init() {
@@ -43,39 +44,65 @@ int main() {
 		0, 1, 2,
 		2, 1, 3,
 	};
-	suika::vertex::set_index(index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 	//auto update = [&]() {suika::window::flip(); suika::window::clear(); return suika::window::process(); };
 	int i = 0;
 
 	suika::d3d::texture::texture tex("test.bmp");
+#if 1
+	suika::set_vs("shape");
+	suika::set_ps("shape");
+#else
 	suika::set_vs("texture");
 	suika::set_ps("texture");
-
+#endif
 	//suika::texture tex;
 
-	std::vector<suika::vertex::vertex_2d> v[32][32];
+	suika::vector3<float> v[32][32];
 	for (int x = 0; x < 32; x++) {
 		for (int y = 0; y < 32; y++) {
-			v[x][y] = create_vertex({ x * w,y * h }, { w,h });
+			v[x][y] = suika::vector3<float>{ x * w, y * h, 0 };
 			//suika::d3d::texture::set(tex);
 			//suika::d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);
 		}
 	}
 
 	while (suika::sys::update()) {
-		suika::window::title(std::format("{:4.2f}fps", suika::sys::fps()));
+		suika::window::title(std::format("{:4.1f}fps", suika::sys::fps()));
 		//suika::d3d::dwrite::draw(L"TEST😀", { 128,128 }, cid);
 		/*for (auto& v : vertices) {
 			v.color.a = i % 255;
 		}*/
-		suika::d3d::texture::set(tex);
-		for (int x = 0; x < 32; x++) {
-			for (int y = 0; y < 32; y++) {
-				suika::vertex::set(create_vertex({ x * w,y * h }, { w,h }), index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-				suika::d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);
+		//suika::d3d::texture::set(tex);
+		for (int y = 0; y < 32; y++) {
+			for (int x = 0; x < 32; x++) {
+				//suika::vertex::set(create_vertex({ x * w,y * h }, { w,h }), index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+				//suika::d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);
+				//suika::vertex::draw(create_vertex({ x * w,y * h }, { w,h }), index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+				suika::d3d::vertex::add_index({ 0,0,0 }, v[x][y], {0,0,0}, {1,1,1});
 			}
 		}
-		//i++;
+		suika::d3d::vertex::set_vertex_instance(create_vertex({ 0,0 }, { w,h }));
+		suika::d3d::vertex::flush();
+		if (i == 60) {
+			fd.Color = suika::pallet::yellow;
+			fd.Color.a = 255;
+			fd.fontWeight = DWRITE_FONT_WEIGHT_LIGHT;
+			fd.fontSize = 32.0f;
+			fd.font = "游明朝";
+			suika::d3d::dwrite::set(fd, cid);
+		}
+		if (i ==120) {
+			i = 0;
+			fd.Color = suika::pallet::white;
+			fd.Color.a = 255;
+			fd.fontWeight = DWRITE_FONT_WEIGHT_BOLD;
+			fd.fontSize = 64.0f;
+			fd.font = "ＭＳゴシック";
+			suika::d3d::dwrite::set(fd, cid);
+		}
+		suika::d3d::dwrite::draw(L"TEST☺", { 128,128 }, cid);
+		i++;
 		
 	}
 }

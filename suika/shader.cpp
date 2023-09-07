@@ -1,5 +1,6 @@
 #include "../suika/d3d/vs.hpp"
 #include "../suika/d3d/ps.hpp"
+#include "d3d/vertex.h"
 #include "../include/suika/string.h"
 #include "../include/suika/shader.h"
 namespace suika {
@@ -23,6 +24,7 @@ namespace suika {
 	void set_vs(const string& name) {
 		static string vs = "";
 		if (vs != name) {
+			d3d::vertex::flush();
 			d3d::vertex_shader_list.at(name.to_string()).set();
 			vs = name;
 		}
@@ -30,6 +32,7 @@ namespace suika {
 	void set_ps(const string& name) {
 		static string ps = "";
 		if (ps != name) {
+			d3d::vertex::flush();
 			d3d::pixel_shader_list.at(name.to_string()).set();
 			ps = name;
 		}

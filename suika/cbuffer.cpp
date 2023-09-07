@@ -8,15 +8,15 @@
 
 namespace suika {
 	cbuffer_default set_view(const point<int>& window_size) {
-		auto p = DirectX::XMMatrixTranspose(DirectX::XMMatrixOrthographicOffCenterLH(0.0f, static_cast<float>(window_size.x), static_cast<float>(window_size.y), 0.0f, 0.0f, 1.0f));
+		auto p = /*DirectX::XMMatrixTranspose*/(DirectX::XMMatrixOrthographicOffCenterLH(0.0f, static_cast<float>(window_size.x), static_cast<float>(window_size.y), 0.0f, 0.0f, 1.0f));
 
 		auto m = DirectX::XMMatrixTranspose(p);
 		cbuffer_default b{};
 		for (int i = 0; i < 4; i++) {
-			b.mt.m[i][0] = m.r[i].m128_f32[0];
-			b.mt.m[i][1] = m.r[i].m128_f32[1];
-			b.mt.m[i][2] = m.r[i].m128_f32[2];
-			b.mt.m[i][3] = m.r[i].m128_f32[3];
+			b.mt.at(i,0) = m.r[i].m128_f32[0];
+			b.mt.at(i,1) = m.r[i].m128_f32[1];
+			b.mt.at(i,2) = m.r[i].m128_f32[2];
+			b.mt.at(i,3) = m.r[i].m128_f32[3];
 		}
 		return { b };
 	}

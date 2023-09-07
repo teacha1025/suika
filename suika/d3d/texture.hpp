@@ -19,10 +19,13 @@ namespace suika {
                 Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> g_srv;
                 Microsoft::WRL::ComPtr<ID3D11SamplerState> g_sampler;
 
+                texture();
                 texture(string path);
             };
 
             void set(const texture& texture);
+
+            extern texture* currentTexture;
         }
 	}
 }

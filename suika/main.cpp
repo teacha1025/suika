@@ -26,8 +26,10 @@ namespace suika {
 	namespace window {
 		void init();
 	}
-	namespace vertex {
-		void init();
+	namespace d3d {
+		namespace vertex {
+			void init();
+		}
 	}
 }
 
@@ -49,7 +51,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		suika::set_ps("shape");
 
 		suika::d3d::blend::init();
-		suika::vertex::init();
+		suika::d3d::vertex::init();
 
 		if (suika::window::create(suika::window::size(nullptr), suika::window::extends(nullptr), suika::window::background(nullptr), suika::window::title(nullptr)) == nullptr) {
 			return 0;

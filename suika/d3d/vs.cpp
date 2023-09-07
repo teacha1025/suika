@@ -6,6 +6,7 @@
 #include <wrl/client.h>
 
 #include "../../include/suika/point.h"
+#include "../../include/suika/string.h"
 #include "info.hpp"
 #include "vs.hpp"
 
@@ -126,25 +127,44 @@ namespace suika {
 
 			// Create InputLayout
 			std::vector<D3D11_INPUT_ELEMENT_DESC> vbElement;
+			uint ins_mat_index = 0;
 			for (UINT i = 0U; i < shaderdesc.InputParameters; ++i) {
 				D3D11_SIGNATURE_PARAMETER_DESC sigdesc;
 				pReflector->GetInputParameterDesc(i, &sigdesc);
 
 				auto format = GetDxgiFormat(sigdesc.ComponentType, sigdesc.Mask);
+				D3D11_INPUT_ELEMENT_DESC eledesc;
+				if (std::string(sigdesc.SemanticName) == ("SV_InstanceID")) {
+					continue;
+				}
+				if (std::string(sigdesc.SemanticName) == ("MATRIX")) {
+					eledesc = {
+						.SemanticName = sigdesc.SemanticName // Semantic–¼
+						, .SemanticIndex = sigdesc.SemanticIndex // POSITION0‚Æ‚©‚Ì”ŽšB–³‚¯‚ê‚Î0
+						, .Format = format // DXGI_FORMAT
+						, .InputSlot = 1 // Œˆ‚ß‘Å‚¿
+						, .AlignedByteOffset = (ins_mat_index++)*16 // Œˆ‚ß‘Å‚¿
+						, .InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA // Œˆ‚ß‘Å‚¿
+						, .InstanceDataStepRate = 1 // Œˆ‚ß‘Å‚¿
+					};
+				}
+				else {
 
-				D3D11_INPUT_ELEMENT_DESC eledesc = {
-					sigdesc.SemanticName // Semantic–¼
-					, sigdesc.SemanticIndex // POSITION0‚Æ‚©‚Ì”ŽšB–³‚¯‚ê‚Î0
-					, format // DXGI_FORMAT
-					, 0 // Œˆ‚ß‘Å‚¿
-					, D3D11_APPEND_ALIGNED_ELEMENT // Œˆ‚ß‘Å‚¿
-					, D3D11_INPUT_PER_VERTEX_DATA // Œˆ‚ß‘Å‚¿
-					, 0 // Œˆ‚ß‘Å‚¿
-				};
+					eledesc = {
+						.SemanticName = sigdesc.SemanticName // Semantic–¼
+						, .SemanticIndex = sigdesc.SemanticIndex // POSITION0‚Æ‚©‚Ì”ŽšB–³‚¯‚ê‚Î0
+						, .Format = format // DXGI_FORMAT
+						, .InputSlot = 0 // Œˆ‚ß‘Å‚¿
+						, .AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT // Œˆ‚ß‘Å‚¿
+						, .InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA // Œˆ‚ß‘Å‚¿
+						, .InstanceDataStepRate = 0 // Œˆ‚ß‘Å‚¿
+					};
+				}
 				vbElement.push_back(eledesc);
 			}
 
 			if (!vbElement.empty()) {
+				//error
 				er = pDevice->CreateInputLayout(&vbElement[0], static_cast<UINT>(vbElement.size()),
 					input, static_cast<SIZE_T>(size), pIL.GetAddressOf());
 				if (FAILED(er)) {

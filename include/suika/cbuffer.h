@@ -1,14 +1,15 @@
 #pragma once
 #include "def.h"
 #include "point.h"
+#include "type.h"
+#include "matrix.h"
 
 namespace suika {
-	struct matrix {
-		float m[4][4];
-	};
-
 	struct cbuffer_default {
-		matrix mt;
+		matrix<float> mt;
+		cbuffer_default() {
+			mt.resize(4, 4);
+		}
 	};
 	cbuffer_default set_view(const point<int>& window_size);
 

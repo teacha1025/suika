@@ -169,6 +169,7 @@
     <ClCompile Include="color.cpp" />
     <ClCompile Include="d3d\blend.cpp" />
     <ClCompile Include="d3d\c_buffer.cpp" />
+    <ClCompile Include="d3d\d3d_vertex.cpp" />
     <ClCompile Include="d3d\device.cpp" />
     <ClCompile Include="d3d\dwrite.cpp" />
     <ClCompile Include="d3d\ps.cpp" />
@@ -179,7 +180,10 @@
     <ClCompile Include="d3d\vs.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="matrix.cpp" />
+    <ClCompile Include="rect.cpp" />
     <ClCompile Include="shader.cpp" />
+    <ClCompile Include="string_function.cpp" />
     <ClCompile Include="system.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="vertex.cpp" />
@@ -211,14 +215,17 @@
     <ClInclude Include="..\include\suika\draw.h" />
     <ClInclude Include="..\include\suika\logger.h" />
     <ClInclude Include="..\include\suika\math.h" />
+    <ClInclude Include="..\include\suika\matrix.h" />
     <ClInclude Include="..\include\suika\pallet.h" />
     <ClInclude Include="..\include\suika\point.h" />
     <ClInclude Include="..\include\suika\range.h" />
+    <ClInclude Include="..\include\suika\rect.h" />
     <ClInclude Include="..\include\suika\shader.h" />
     <ClInclude Include="..\include\suika\string.h" />
     <ClInclude Include="..\include\suika\string_function.h" />
     <ClInclude Include="..\include\suika\system.h" />
     <ClInclude Include="..\include\suika\texture.h" />
+    <ClInclude Include="..\include\suika\type.h" />
     <ClInclude Include="..\include\suika\vector.h" />
     <ClInclude Include="..\include\suika\vertex.h" />
     <ClInclude Include="..\include\suika\window.h" />
@@ -231,6 +238,7 @@
     <ClInclude Include="d3d\RTV.hpp" />
     <ClInclude Include="d3d\swapchain.hpp" />
     <ClInclude Include="d3d\texture.hpp" />
+    <ClInclude Include="d3d\vertex.h" />
     <ClInclude Include="d3d\viewport.hpp" />
     <ClInclude Include="d3d\vs.hpp" />
   </ItemGroup>

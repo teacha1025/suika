@@ -531,12 +531,22 @@ namespace suika {
 	string operator+(string&& lhs, char_t rhs);
 } // namespace suika
 
+namespace std {
 template<>
-struct std::formatter<suika::string>: std::formatter<suika::string::string_type, suika::string::string_type::value_type> {
-	auto format(suika::string str, std::wformat_context& ctx) const {
-		return std::formatter<suika::string::string_type, suika::string::string_type::value_type>::format(str.to_wstring(), ctx);
+struct formatter<suika::string>: formatter<suika::string::string_type, suika::string::string_type::value_type> {
+	auto format(suika::string str, wformat_context& ctx) const {
+		return formatter<suika::string::string_type, suika::string::string_type::value_type>::format(str.to_wstring(), ctx);
 	}
 };
+
+	template<>
+	struct hash<suika::string> {
+	public:
+		size_t operator()(const suika::string& data)const {
+			return hash<suika::string::string_type>()(data.to_wstring());
+		}
+	};
+}
 
 #include "detail/string.ipp"
 

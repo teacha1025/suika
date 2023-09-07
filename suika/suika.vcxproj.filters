@@ -41,9 +41,6 @@
     <ClCompile Include="shader.cpp">
       <Filter>suika\shader</Filter>
     </ClCompile>
-    <ClCompile Include="vertex.cpp">
-      <Filter>d3d\polygon</Filter>
-    </ClCompile>
     <ClCompile Include="cbuffer.cpp">
       <Filter>suika\shader</Filter>
     </ClCompile>
@@ -61,6 +58,21 @@
     </ClCompile>
     <ClCompile Include="system.cpp">
       <Filter>suika\system</Filter>
+    </ClCompile>
+    <ClCompile Include="vertex.cpp">
+      <Filter>suika\draw\vertex</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d\d3d_vertex.cpp">
+      <Filter>d3d\polygon</Filter>
+    </ClCompile>
+    <ClCompile Include="rect.cpp">
+      <Filter>suika\draw\rect</Filter>
+    </ClCompile>
+    <ClCompile Include="string_function.cpp">
+      <Filter>suika\string</Filter>
+    </ClCompile>
+    <ClCompile Include="matrix.cpp">
+      <Filter>suika\matrix</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +165,15 @@
     </Filter>
     <Filter Include="suika\system">
       <UniqueIdentifier>{d1f995a5-649d-4e28-9d2d-6ccac3a9a730}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\draw\vertex">
+      <UniqueIdentifier>{16fb63f4-cb9e-4bfc-a80f-9e1ba5fc3fb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\draw\rect">
+      <UniqueIdentifier>{f55bdd13-ef1c-4ab9-a020-a7924a3c38e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\matrix">
+      <UniqueIdentifier>{2e608181-c59e-426f-8462-867a47f6533d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -265,9 +286,6 @@
     <ClInclude Include="..\include\suika\shader.h">
       <Filter>suika\shader</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\suika\vertex.h">
-      <Filter>d3d\polygon</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\suika\cbuffer.h">
       <Filter>suika\shader</Filter>
     </ClInclude>
@@ -292,6 +310,19 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\system.h">
       <Filter>suika\system</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\vertex.h">
+      <Filter>suika\draw\vertex</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\vertex.h">
+      <Filter>d3d\polygon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\type.h" />
+    <ClInclude Include="..\include\suika\rect.h">
+      <Filter>suika\draw\rect</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\matrix.h">
+      <Filter>suika\matrix</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

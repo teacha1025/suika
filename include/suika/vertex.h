@@ -43,26 +43,13 @@ namespace suika {
 			float4 position;
 			color_v color;
 			float2 uv;
-			float2 dummy;
+			//float2 dummy;
 		};
 		vertex_2d create_2d(const float4& pos, const color& col, const float2& uv);
 		vertex_2d create_2d(const point<float>& pos, const color& col, const float2& uv);
 		vertex_2d create_2d(const vector3<float>& pos, const color& col, const float2& uv);
 
-		void set_vertex(const void* vertices, uint vertices_size, uint stride);
-
-		void set_index(const std::vector<uint16>& index, primitive_topology topology);
-		template<class vertex_type>
-		void set(const std::vector<vertex_type>& vertices, const std::vector<uint16>& index, primitive_topology topology) {
-			set_vertex(vertices.data(), static_cast<uint>(vertices.size() * sizeof(vertex_type)), static_cast<uint>(sizeof(vertex_type)));
-			set_index(index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		}
-		void internal_set(const std::vector<vertex_2d>& vertices, const std::vector<uint16>& index);
-#if 0
-		extern std::vector<uint16> index;
-		void add_index(const std::vector<uint16>& index);
-		void draw();
-#endif
+		void draw(const std::vector<vertex_2d>& vertices, const std::vector<uint16>& index, primitive_topology topology);
 		/*
 		MEMO
 		set_vertex,set_index,set

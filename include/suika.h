@@ -3,6 +3,8 @@
 #endif
 #ifndef _SK_INCLUDE
 #define _SK_INCLUDE
+#include <format>
+
 #include "../include/suika/system.h"
 #include "../include/suika/logger.h"
 #include "../include/suika/window.h"

@@ -16,6 +16,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unit_test", "unit_test\unit
 		{9E9CF0AC-C0A6-4620-BF77-9F462FE30FED} = {9E9CF0AC-C0A6-4620-BF77-9F462FE30FED}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shader", "shader\shader.vcxitems", "{9A3B5BB8-E4AF-4C65-8EB4-BA9344304AFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

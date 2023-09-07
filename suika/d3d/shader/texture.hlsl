@@ -5,8 +5,9 @@ namespace suika
 		float4 position : POSITION;
 		uint4 color : COLOR0;
 		float2 uv : TEXCOORD0;
-		//uint InstanceId : SV_InstanceID;
-		float2 dummy : TEXCOORD1;
+		uint InstanceId : SV_InstanceID;
+		float4x4 InstanceMatrix : MATRIX;
+		//float2 dummy : TEXCOORD1;
 	};
 
 	struct PSInput
@@ -14,7 +15,7 @@ namespace suika
 		float4 position : SV_POSITION;
 		uint4 color : COLOR0;
 		float2 uv : TEXCOORD0;
-		float2 dummy : TEXCOORD1;
+		//float2 dummy : TEXCOORD1;
 	};
 }
 
@@ -28,13 +29,13 @@ SamplerState g_sampler : register(s0);
 suika::PSInput vs_main( suika::VSInput input )
 {
     suika::PSInput output;
-    output.position = mul(input.position,  mt);
-	output.position.x = output.position.x - 1;
-	output.position.y = output.position.y + 1;
-	output.position.w = 1;
+	float4 pos = input.position;
+	pos = mul(pos,  input.InstanceMatrix);
+    pos = mul(pos,  mt);
+
+	output.position = pos;
     output.color = float4(input.color.x / 255.0f, input.color.y / 255.0f, input.color.z / 255.0f, input.color.w / 255.0f);
 	output.uv = input.uv;
-	output.dummy = input.dummy;
     return output;
 }
 

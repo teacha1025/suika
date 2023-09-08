@@ -3,9 +3,10 @@
 #include "../include/suika/rect.h"
 
 namespace suika {
+#if 0
 	void rect::draw() {
 		auto vec2xmvec = [](const vector3<float>& v) {
-			return DirectX::XMVECTOR(v.x, v.y, v.z);
+			return DirectX::XMVECTOR{ v.x, v.y, v.z };
 		};
 		auto affin = [&](const point<int>& uv) {
 			point<float> _p = this->_size * uv;
@@ -26,4 +27,5 @@ namespace suika {
 		d3d::vertex::set_vertex_instance();
 		d3d::vertex::add_index(this->_center, this->_transition, this->_rotation, this->_extend);
 	}
+#endif
 }

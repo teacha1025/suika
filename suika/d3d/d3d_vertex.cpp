@@ -5,6 +5,7 @@
 #include <vector>
 #include "info.hpp"
 #include "vertex.h"
+#include "../../include/suika/vertex.h"
 #include "../../include/suika/type.h"
 
 namespace suika {
@@ -14,7 +15,8 @@ namespace suika {
 			std::vector<DirectX::XMMATRIX> instance_matrix;
 
 			void* now_vertex;
-			type_info now_vertex_type;
+			std::any now_vertex_;
+			type_info const* now_vertex_type = &typeid(suika::vertex::vertex_2d);
 			ins_type now_type= ins_type::none;
 
 			D3D11_BUFFER_DESC bufferDesc;

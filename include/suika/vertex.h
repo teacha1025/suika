@@ -44,6 +44,12 @@ namespace suika {
 			color_v color;
 			float2 uv;
 			//float2 dummy;
+
+			bool operator == (const vertex_2d& v) const {
+				return this->position.x == v.position.x && this->position.y == v.position.y && this->position.z == v.position.z && this->position.w == v.position.w
+					&& this->color.r == v.color.r && this->color.g == v.color.g && this->color.b == v.color.b && this->color.a == v.color.a
+					&& this->uv.x == v.uv.x && this->uv.y == v.uv.y;
+			}
 		};
 		vertex_2d create_2d(const float4& pos, const color& col, const float2& uv);
 		vertex_2d create_2d(const point<float>& pos, const color& col, const float2& uv);

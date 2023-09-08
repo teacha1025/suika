@@ -548,4 +548,58 @@ namespace unittest
 			}
 		}
 	};
+
+	TEST_CLASS(Matrix) {
+	public:
+		TEST_METHOD(Mul_Vec2) {
+			suika::vector2<int> v(1, 2);
+			suika::vector2<int> a(5, 11);
+			suika::matrix<int> m(2, 2, { 1,2,3,4 });
+			Assert::IsTrue(vector::mul(m, v) == a);
+
+			suika::vector2<float> vf(1.0f, 2.0f);
+			suika::vector2<float> af(5.0f, 11.0f);
+			suika::matrix<float> mf(2, 2, { 1.0f,2.0f,3.0f,4.0f });
+			Assert::IsTrue(vector::mul(mf, vf) == af);
+
+			suika::vector2<double> vd(1.0, 2.0);
+			suika::vector2<double> ad(5.0, 11.0);
+			suika::matrix<double> md(2, 2, { 1.0,2.0,3.0,4.0 });
+			Assert::IsTrue(vector::mul(md, vd) == ad);
+		}
+
+		TEST_METHOD(Mul_Vec3) {
+			suika::vector3<int> v(1, 2, 3);
+			suika::vector3<int> a(14, 32, 50);
+			suika::matrix<int> m(3, 3, { 1,2,3,4,5,6,7,8,9 });
+			Assert::IsTrue(vector::mul(m, v) == a);
+
+			suika::vector3<float> vf(1.0f, 2.0f, 3.0f);
+			suika::vector3<float> af(14.0f, 32.0f, 50.0f);
+			suika::matrix<float> mf(3, 3, { 1.0f,2.0f,3.0f,4.0f,5.0f,6.0f,7.0f,8.0f,9.0f });
+			Assert::IsTrue(vector::mul(mf, vf) == af);
+
+			suika::vector3<double> vd(1.0, 2.0, 3.0);
+			suika::vector3<double> ad(14.0, 32.0, 50.0);
+			suika::matrix<double> md(3, 3, { 1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0 });
+			Assert::IsTrue(vector::mul(md, vd) == ad);
+		}
+
+		TEST_METHOD(Mul_Matrix) {
+			suika::matrix<int> m1(2, 3, { 1,2,3,4,5,6 });
+			suika::matrix<int> m2(3, 2, { 7,8,9,10,11,12 });
+			suika::matrix<int> a(2, 2, { 58,64,139,154 });
+			Assert::IsTrue(vector::mul(m1, m2) == a);
+
+			suika::matrix<float> m1f(2, 3, { 1.0f,2.0f,3.0f,4.0f,5.0f,6.0f });
+			suika::matrix<float> m2f(3, 2, { 7.0f,8.0f,9.0f,10.0f,11.0f,12.0f });
+			suika::matrix<float> af(2, 2, { 58.0f,64.0f,139.0f,154.0f });
+			Assert::IsTrue(vector::mul(m1f, m2f) == af);
+
+			suika::matrix<double> m1d(2, 3, { 1.0,2.0,3.0,4.0,5.0,6.0 });
+			suika::matrix<double> m2d(3, 2, { 7.0,8.0,9.0,10.0,11.0,12.0 });
+			suika::matrix<double> ad(2, 2, { 58.0,64.0,139.0,154.0 });
+			Assert::IsTrue(vector::mul(m1d, m2d) == ad);
+		}
+	};
 }

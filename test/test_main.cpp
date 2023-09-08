@@ -69,21 +69,16 @@ int main() {
 
 	while (suika::sys::update()) {
 		suika::window::title(std::format("{:4.1f}fps", suika::sys::fps()));
-		//suika::d3d::dwrite::draw(L"TEST😀", { 128,128 }, cid);
-		/*for (auto& v : vertices) {
-			v.color.a = i % 255;
-		}*/
 		//suika::d3d::texture::set(tex);
 		for (int y = 0; y < 32; y++) {
 			for (int x = 0; x < 32; x++) {
-				//suika::vertex::set(create_vertex({ x * w,y * h }, { w,h }), index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-				//suika::d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);
-				//suika::vertex::draw(create_vertex({ x * w,y * h }, { w,h }), index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+				suika::d3d::vertex::set_vertex_instance(create_vertex({ 0,0 }, { w,h }));
 				suika::d3d::vertex::add_index({ 0,0,0 }, v[x][y], {0,0,0}, {1,1,1});
 			}
 		}
-		suika::d3d::vertex::set_vertex_instance(create_vertex({ 0,0 }, { w,h }));
-		suika::d3d::vertex::flush();
+		
+		//suika::d3d::vertex::flush();
+#if 0
 		if (i == 60) {
 			fd.Color = suika::pallet::yellow;
 			fd.Color.a = 255;
@@ -103,6 +98,7 @@ int main() {
 		}
 		suika::d3d::dwrite::draw(L"TEST☺", { 128,128 }, cid);
 		i++;
+#endif
 		
 	}
 }

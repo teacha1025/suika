@@ -17,11 +17,10 @@ namespace suika {
 			extern Microsoft::WRL::ComPtr<ID3D11Buffer> g_vertexBuffer;
 			extern Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceMatrix;
 			extern std::vector<DirectX::XMMATRIX> instance_matrix;
-			extern void* now_vertex;
-			extern type_info const* now_vertex_type;
 			extern UINT offset;
 			extern UINT offset_ins[2];
-			extern std::any now_vertex_;
+			extern uint stride_ins[2];
+			extern std::any now_vertex;
 			enum class ins_type {
 				rect,
 				circle,
@@ -34,23 +33,8 @@ namespace suika {
 
 			template<class T>
 			void set_vertex(std::vector<T> vertices) {
-				/*if (!now_vertex && now_vertex_type == &typeid(T)) {
-					using vt = std::vector<T>;
-					const vt* pnow = (reinterpret_cast<vt*>(now_vertex));
-					const vt& now = *pnow;
-					if (now == vertices) {
-						return;
-					}
-				}
-				now_vertex = std::malloc(sizeof(std::vector<T>) * vertices.size());
-				std::memcpy(now_vertex, vertices.data(), sizeof(std::vector<T>) * vertices.size());
-				now_vertex_type = &typeid(std::vector<T>);*/
-
-				/*if (now_vertex_.has_value() && now_vertex_.type() == typeid(std::vector<T>) && std::any_cast<std::vector<T>>(now_vertex_) == vertices) {
-					return;
-				}*/
-
 				flush();
+				now_vertex = vertices;
 
 				const uint stride = sizeof(T);
 				D3D11_MAPPED_SUBRESOURCE mapped;
@@ -70,44 +54,6 @@ namespace suika {
 
 			}
 
-			template<>
-			void set_vertex(std::vector<suika::vertex::vertex_2d> vertices) {
-				/*if (!now_vertex && now_vertex_type == &typeid(T)) {
-					using vt = std::vector<T>;
-					const vt* pnow = (reinterpret_cast<vt*>(now_vertex));
-					const vt& now = *pnow;
-					if (now == vertices) {
-						return;
-					}
-				}
-				now_vertex = std::malloc(sizeof(std::vector<T>) * vertices.size());
-				std::memcpy(now_vertex, vertices.data(), sizeof(std::vector<T>) * vertices.size());
-				now_vertex_type = &typeid(std::vector<T>);*/
-
-				const auto v = std::any_cast<std::vector<suika::vertex::vertex_2d>>(now_vertex_);
-				if (now_vertex_.has_value() && now_vertex_.type() == typeid(std::vector<suika::vertex::vertex_2d>) && v == vertices) {
-					return;
-				}
-
-				flush();
-
-				const uint stride = sizeof(suika::vertex::vertex_2d);
-				D3D11_MAPPED_SUBRESOURCE mapped;
-				const D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
-				auto er = suika::d3d::pContext->Map(g_vertexBuffer.Get(), 0, map_type, 0, &mapped);
-				if (FAILED(er)) {
-					d3d::log_d3d.error("Failed to Update VertexBuffer");
-					d3d::log_d3d.result(er);
-					return;
-				}
-				if (void* const p = mapped.pData) {
-					std::memcpy(p, vertices.data(), sizeof(suika::vertex::vertex_2d) * vertices.size());
-				}
-				suika::d3d::pContext->Unmap(g_vertexBuffer.Get(), 0);
-
-				suika::d3d::pContext->IASetVertexBuffers(0, 1, g_vertexBuffer.GetAddressOf(), &stride, &offset);
-
-			}
 
 			void set_index(const std::vector<uint16>& index, D3D11_PRIMITIVE_TOPOLOGY topology);
 			
@@ -122,16 +68,16 @@ namespace suika {
 			void add_index(const suika::vector3<float>& origine, const suika::vector3<float>& translate, const suika::vector3<float>& rotate, const suika::vector3<float>& extend);
 			template<class T>
 			void set_vertex_instance(const std::vector<T>& vertices) {
-				//if (!now_vertex && now_vertex_type == &typeid(T)) {
-				//	std::vector<T>* now = (std::vector<T>*)now_vertex;
-				//	/*if (*now == vertices) {
-				//		return;
-				//	}*/
-				//}
-				flush();
-				/*now_vertex = std::malloc(sizeof(std::vector<T>) * vertices.size());
-				std::memcpy(now_vertex, vertices.data(), sizeof(std::vector<T>) * vertices.size());
-				now_vertex_type = &typeid(std::vector<T>);*/
+				auto fl = [&]() {
+					flush();
+					now_vertex = vertices;
+				};
+				if (now_vertex.has_value() && now_vertex.type() == typeid(std::vector<T>)) {
+					if (std::any_cast<const std::vector<T>&>(now_vertex) == vertices) {
+						return;
+					}
+				}
+				fl();
 
 				const D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
 				{
@@ -147,22 +93,7 @@ namespace suika {
 					}
 					suika::d3d::pContext->Unmap(g_vertexBuffer.Get(), 0);
 				}
-				{
-					D3D11_MAPPED_SUBRESOURCE mapped;
-					auto er = suika::d3d::pContext->Map(g_instanceMatrix.Get(), 0, map_type, 0, &mapped);
-					if (FAILED(er)) {
-						d3d::log_d3d.error("Failed to Update VertexBuffer");
-						d3d::log_d3d.result(er);
-						return;
-					}
-					if (void* const p = mapped.pData) {
-						std::memcpy(p, instance_matrix.data(), sizeof(DirectX::XMMATRIX) * instance_matrix.size());
-					}
-					suika::d3d::pContext->Unmap(g_instanceMatrix.Get(), 0);
-				}
-				uint st[] = { sizeof(T), sizeof(DirectX::XMMATRIX)};
-				ID3D11Buffer* buf[] = { g_vertexBuffer.Get(), g_instanceMatrix.Get() };
-				suika::d3d::pContext->IASetVertexBuffers(0, 2, buf, st, offset_ins);
+				stride_ins[0] = sizeof(T);
 			}
 			void set_ins_mode(ins_type type);
 

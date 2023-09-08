@@ -11,10 +11,9 @@ constexpr float eps_f = 1e-7f;
 #define EQ_F(A,B) math::abs((((A)) - ((B)))) < eps_f, suika::to_wstring(std::format("A:{}={}, B:{}={}, diff:{}", #A, A, #B, B, math::abs((((A)) - ((B)))))).c_str()
 #define EQ_D(A,B) math::abs((((A)) - ((B)))) < eps_d, suika::to_wstring(std::format("A:{}={}, B:{}={}, diff:{}", #A, A, #B, B, math::abs((((A)) - ((B)))))).c_str()
 
-namespace unittest
+namespace string_test
 {
-	TEST_CLASS(String)
-	{
+	TEST_CLASS(Split) {
 	public:
 		TEST_METHOD(SplitUTF8) {
 			using string = std::u8string;
@@ -86,7 +85,9 @@ namespace unittest
 			Assert::IsTrue(data_a != splited_b);
 			Assert::IsTrue(data_b != splited_a);
 		}
-
+	};
+	TEST_CLASS(Replace) {
+	public:
 		TEST_METHOD(ReplaceUTF8) {
 			using string = std::u8string;
 			string src = u8"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñŽO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ ŽO";
@@ -157,7 +158,9 @@ namespace unittest
 			Assert::AreEqual(L"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñŽOabcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñŽO", suika::replace_string(src, L" ", L"").c_str());
 			Assert::AreEqual(L"abcABC‚ i‚¤123‚P‚Q‚Rˆê“ñŽO a b c A B C ‚  i ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ ŽO", suika::replace_string(src, L"‚¢", L"i").c_str());
 		}
-
+		};
+	TEST_CLASS(Convert) {
+	public:
 		TEST_METHOD(ToUTF8) {
 			using utf8 = std::u8string;
 			using utf16 = std::u16string;
@@ -292,22 +295,362 @@ namespace unittest
 			Assert::AreEqual(w.c_str(), cs.c_str());
 		}
 	};
+}
 
-	TEST_CLASS(Math) {
-		TEST_METHOD(Abs) {
-			int32  i = 5;
-			float  f = 5.0f;
-			double d = 5.0;
+namespace vector_test {
+	TEST_CLASS(MatrixOperation) {
+public:
+	TEST_METHOD(Mul_Vec2) {
+		suika::vector2<int> v(1, 2);
+		suika::vector2<int> a(5, 11);
+		suika::matrix<int> m(2, 2, {
+			1,2,
+			3,4
+			});
+		Assert::IsTrue(m*v == a);
 
-			Assert::AreEqual(i, math::abs(i));
-			Assert::AreEqual(i, math::abs(-i));
+		suika::vector2<float> vf(1.0f, 2.0f);
+		suika::vector2<float> af(5.0f, 11.0f);
+		suika::matrix<float> mf(2, 2, {
+			1.0f,2.0f,
+			3.0f,4.0f
+			});
+		Assert::IsTrue(mf*vf == af);
 
-			Assert::AreEqual(f, math::abs(f));
-			Assert::AreEqual(f, math::abs(-f));
+		suika::vector2<double> vd(1.0, 2.0);
+		suika::vector2<double> ad(5.0, 11.0);
+		suika::matrix<double> md(2, 2, {
+			1.0,2.0,
+			3.0,4.0
+			});
+		Assert::IsTrue(md*vd == ad);
+	}
 
-			Assert::AreEqual(d, math::abs(d));
-			Assert::AreEqual(d, math::abs(-d));
-		}
+	TEST_METHOD(Mul_Vec3) {
+		suika::vector3<int> v(1, 2, 3);
+		suika::vector3<int> a(14, 32, 50);
+		suika::matrix<int> m(3, 3, {
+			1,2,3,
+			4,5,6,
+			7,8,9
+			});
+		Assert::IsTrue(m * v == a);
+
+		suika::vector3<float> vf(1.0f, 2.0f, 3.0f);
+		suika::vector3<float> af(14.0f, 32.0f, 50.0f);
+		suika::matrix<float> mf(3, 3, {
+			1.0f,2.0f,3.0f,
+			4.0f,5.0f,6.0f,
+			7.0f,8.0f,9.0f
+			});
+		Assert::IsTrue(mf * vf == af);
+
+		suika::vector3<double> vd(1.0, 2.0, 3.0);
+		suika::vector3<double> ad(14.0, 32.0, 50.0);
+		suika::matrix<double> md(3, 3, {
+			1.0,2.0,3.0,
+			4.0,5.0,6.0,
+			7.0,8.0,9.0
+			});
+		Assert::IsTrue(md * vd == ad);
+	}
+
+	TEST_METHOD(Mul_Matrix) {
+		suika::matrix<int> m1(2, 3, {
+			1,2,3,
+			4,5,6
+			});
+		suika::matrix<int> m2(3, 2, {
+			7,8,
+			9,10,
+			11,12
+			});
+		suika::matrix<int> a(2, 2, {
+			58,64,
+			139,154
+			});
+		Assert::IsTrue(vector::mul(m1, m2) == a);
+
+		suika::matrix<float> m1f(2, 3, {
+			1.0f,2.0f,3.0f,
+			4.0f,5.0f,6.0f
+			});
+		suika::matrix<float> m2f(3, 2, {
+			7.0f,8.0f,
+			9.0f,10.0f,
+			11.0f,12.0f
+			});
+		suika::matrix<float> af(2, 2, {
+			58.0f,64.0f,
+			139.0f,154.0f
+			});
+		Assert::IsTrue(vector::mul(m1f, m2f) == af);
+
+		suika::matrix<double> m1d(2, 3, {
+			1.0,2.0,3.0,
+			4.0,5.0,6.0
+			});
+		suika::matrix<double> m2d(3, 2, {
+			7.0,8.0,
+			9.0,10.0,
+			11.0,12.0
+			});
+		suika::matrix<double> ad(2, 2, {
+			58.0,64.0,
+			139.0,154.0
+			});
+		Assert::IsTrue(vector::mul(m1d, m2d) == ad);
+	}
+
+	TEST_METHOD(Mul_Transpose) {
+		suika::matrix<int> m(2, 3, {
+			1,2,3,
+			4,5,6
+			});
+		suika::matrix<int> a(3, 2, {
+			1,4,
+			2,5,
+			3,6
+			});
+		Assert::IsTrue(vector::transpose(m) == a);
+
+		suika::matrix<float> mf(2, 3, {
+			1.0f,2.0f,3.0f,
+			4.0f,5.0f,6.0f
+			});
+		suika::matrix<float> af(3, 2, {
+			1.0f,4.0f,
+			2.0f,5.0f,
+			3.0f,6.0f
+			});
+		Assert::IsTrue(vector::transpose(mf) == af);
+
+		suika::matrix<double> md(2, 3, {
+			1.0,2.0,3.0,
+			4.0,5.0,6.0
+			});
+		suika::matrix<double> ad(3, 2, {
+			1.0,4.0,
+			2.0,5.0,
+			3.0,6.0
+			});
+		Assert::IsTrue(vector::transpose(md) == ad);
+	}
+
+	TEST_METHOD(Mul_Inverse) {
+		suika::matrix<int> m(1, 1, { 2 });
+		suika::matrix<int> a(1, 1, { 0 });
+		Assert::IsTrue(vector::inverse(m) == a);
+
+		suika::matrix<float> mf(1, 1, { 2.0f });
+		suika::matrix<float> af(1, 1, { 0.5f });
+		Assert::IsTrue(vector::inverse(mf) == af);
+
+		suika::matrix<double> md(1, 1, { 2.0 });
+		suika::matrix<double> ad(1, 1, { 0.5 });
+		Assert::IsTrue(vector::inverse(md) == ad);
+
+		m = suika::matrix<int>(2, 2, {
+			2,1,
+			5,3
+			});
+		a = suika::matrix<int>(2, 2, {
+			3,-1,
+			-5,2
+			});
+		Assert::IsTrue(vector::inverse(m) == a);
+
+		mf = suika::matrix<float>(2, 2, {
+			2.0f, 1.0f,
+			5.0f, 3.0f
+			});
+		af = suika::matrix<float>(2, 2, {
+			3.0f,-1.0f,
+			-5.0f, 2.0f
+			});
+		Assert::IsTrue(vector::inverse(mf) == af);
+
+		md = suika::matrix<double>(2, 2, {
+			2.0,1.0,
+			5.0,3.0
+			});
+		ad = suika::matrix<double>(2, 2, {
+			3.0,-1.0,
+			-5.0,2.0
+			});
+		Assert::IsTrue(vector::inverse(md) == ad);
+
+
+
+		m = suika::matrix<int>(3, 3, {
+			0,-1,1,
+			-1,4,-2,
+			1,-2,1
+			});
+		a = suika::matrix<int>(3, 3, {
+			0,1,2,
+			1,1,1,
+			2,1,1
+			});
+		matrix<int> t = vector::inverse(m);
+		Assert::IsTrue(t == a);
+
+		mf = suika::matrix<float>(3, 3, {
+			0.0f,-1.0f,1.0f,
+			-1.0f,4.0f,-2.0f,
+			1.0f,-2.0f,1.0f
+			});
+		af = suika::matrix<float>(3, 3, {
+			0.0f,1.0f,2.0f,
+			1.0f,1.0f,1.0f,
+			2.0f,1.0f,1.0f
+			});
+		matrix<float> tf = vector::inverse(mf);
+		Assert::IsTrue(tf == af);
+
+		md = suika::matrix<double>(3, 3, {
+			0.0,-1.0,1.0,
+			-1.0,4.0,-2.0,
+			1.0,-2.0,1.0
+			});
+		ad = suika::matrix<double>(3, 3, {
+			0.0,1.0,2.0,
+			1.0,1.0,1.0,
+			2.0,1.0,1.0
+			});
+		matrix<double> td = vector::inverse(md);
+		Assert::IsTrue(td == ad);
+
+		m = suika::matrix<int>(4, 4, {
+			1,1,1,-1,
+			1,1,-1,1,
+			1,-1,1,1,
+			-1,1,1,1
+			});
+		a = suika::matrix<int>(4, 4, 0);
+		Assert::IsTrue(vector::inverse(m) == a);
+
+		mf = suika::matrix<float>(4, 4, {
+			1.0f,1.0f,1.0f,-1.0f,
+			1.0f,1.0f,-1.0f,1.0f,
+			1.0f,-1.0f,1.0f,1.0f,
+			-1.0f,1.0f,1.0f,1.0f
+			});
+		af = suika::matrix<float>(4, 4, {
+			0.25f,0.25f,0.25f,-0.25f,
+			0.25f,0.25f,-0.25f,0.25f,
+			0.25f,-0.25f,0.25f,0.25f,
+			-0.25f,0.25f,0.25f,0.25f
+			});
+		Assert::IsTrue(vector::inverse(mf) == af);
+
+		md = suika::matrix<double>(4, 4, {
+			1.0,1.0,1.0,-1.0,
+			1.0,1.0,-1.0,1.0,
+			1.0,-1.0,1.0,1.0,
+			-1.0,1.0,1.0,1.0
+			});
+		ad = suika::matrix<double>(4, 4, {
+			0.25,0.25,0.25,-0.25,
+			0.25,0.25,-0.25,0.25,
+			0.25,-0.25,0.25,0.25,
+			-0.25,0.25,0.25,0.25
+			});
+		Assert::IsTrue(vector::inverse(md) == ad);
+	}
+
+	TEST_METHOD(Mul_Determinant) {
+		suika::matrix<int> m(1, 1, { 2 });
+		double a = 2;
+		Assert::IsTrue(a == vector::determinant(m));
+
+		suika::matrix<float> mf(1, 1, { 2.0f });
+		double af = 2.0;
+		Assert::IsTrue(af == vector::determinant(mf));
+
+		suika::matrix<double> md(1, 1, { 2.0 });
+		double ad = 2.0;
+		Assert::IsTrue(ad == vector::determinant(md));
+
+		m = suika::matrix<int>(2, 2, {
+			2,1,
+			5,3
+			});
+		a = 1;
+		Assert::IsTrue(a == vector::determinant(m));
+
+		mf = suika::matrix<float>(2, 2, {
+			2.0f, 1.0f,
+			5.0f, 3.0f
+			});
+		af = 1.0f;
+		Assert::IsTrue(af == vector::determinant(mf));
+
+		md = suika::matrix<double>(2, 2, {
+			2.0,1.0,
+			5.0,3.0
+			});
+		ad = 1.0;
+		Assert::IsTrue(ad == vector::determinant(md));
+
+		m = suika::matrix<int>(3, 3, {
+			0,-1,1,
+			-1,4,-2,
+			1,-2,1
+			});
+		a = -1;
+		auto t = vector::determinant(m);
+		Assert::IsTrue(a == t);
+
+		mf = suika::matrix<float>(3, 3, {
+			0.0f,-1.0f,1.0f,
+			-1.0f,4.0f,-2.0f,
+			1.0f,-2.0f,1.0f
+			});
+		af = -1.0f;
+		Assert::IsTrue(af == vector::determinant(mf));
+
+		md = suika::matrix<double>(3, 3, {
+			0.0,-1.0,1.0,
+			-1.0,4.0,-2.0,
+			1.0,-2.0,1.0
+			});
+		ad = -1.0;
+		Assert::IsTrue(ad == vector::determinant(md));
+
+		m = suika::matrix<int>(4, 4, {
+			1,1,1,-1,
+			1,1,-1,1,
+			1,-1,1,1,
+			-1,1,1,1
+			});
+		a = -16;
+		Assert::IsTrue(a == vector::determinant(m));
+
+		mf = suika::matrix<float>(4, 4, {
+			1.0f,1.0f,1.0f,-1.0f,
+			1.0f,1.0f,-1.0f,1.0f,
+			1.0f,-1.0f,1.0f,1.0f,
+			-1.0f,1.0f,1.0f,1.0f
+			});
+		af = -16.0f;
+		Assert::IsTrue(af == vector::determinant(mf));
+
+		md = suika::matrix<double>(4, 4, {
+			1.0,1.0,1.0,-1.0,
+			1.0,1.0,-1.0,1.0,
+			1.0,-1.0,1.0,1.0,
+			-1.0,1.0,1.0,1.0
+			});
+		ad = -16.0;
+		Assert::IsTrue(ad == vector::determinant(md));
+	}
+	};
+}
+
+namespace math_test {
+	TEST_CLASS(Found) {
+	public:
 		TEST_METHOD(Exp) {
 			define INF_I = std::numeric_limits<int32>::max();
 			define INF_F = std::numeric_limits<float>::infinity();
@@ -462,6 +805,9 @@ namespace unittest
 			Assert::IsTrue(EQ_F(std::pow(xf, yf), math::pow(xf, yf)));
 			Assert::IsTrue(EQ_D(std::pow(xd, yd), math::pow(xd, yd)));
 		}
+	};
+	TEST_CLASS(Triangle) {
+	public:
 		TEST_METHOD(Sin) {
 			constexpr double p_d = suika::PI / 6.0;
 			constexpr float  p_f = suika::PI_F / 6.0f;
@@ -513,6 +859,9 @@ namespace unittest
 				Assert::IsTrue(EQ_F(std::atan(i * 0.1f), math::atan(i * 0.1f)));
 			}
 		}
+	};
+	TEST_CLASS(Rounding) {
+	public:
 		TEST_METHOD(Ceil) {
 			for (int i = -20; i <= 20; i++) {
 				double d = i * 0.1;
@@ -537,6 +886,28 @@ namespace unittest
 				Assert::AreEqual(std::trunc(d), math::trunc(d));
 			}
 		}
+	};
+	TEST_CLASS(Other) {
+	public:
+		TEST_METHOD(Abs) {
+			int32  i = 5;
+			float  f = 5.0f;
+			double d = 5.0;
+
+			Assert::AreEqual(i, math::abs(i));
+			Assert::AreEqual(i, math::abs(-i));
+
+			Assert::AreEqual(f, math::abs(f));
+			Assert::AreEqual(f, math::abs(-f));
+
+			Assert::AreEqual(d, math::abs(d));
+			Assert::AreEqual(d, math::abs(-d));
+		}
+		TEST_METHOD(Sqrt) {
+			for (int i = 0; i <= 100; i++) {
+				Assert::IsTrue(EQ_D(std::sqrt(i), math::sqrt(i)));
+			}
+		}
 		TEST_METHOD(Fmod) {
 			define e = 2.1;
 			define ef = 2.1f;
@@ -546,60 +917,6 @@ namespace unittest
 				Assert::AreEqual(std::fmod(d, e), math::fmod(d, e));
 				Assert::AreEqual(std::fmod(df, ef), math::fmod(df, ef));
 			}
-		}
-	};
-
-	TEST_CLASS(Matrix) {
-	public:
-		TEST_METHOD(Mul_Vec2) {
-			suika::vector2<int> v(1, 2);
-			suika::vector2<int> a(5, 11);
-			suika::matrix<int> m(2, 2, { 1,2,3,4 });
-			Assert::IsTrue(vector::mul(m, v) == a);
-
-			suika::vector2<float> vf(1.0f, 2.0f);
-			suika::vector2<float> af(5.0f, 11.0f);
-			suika::matrix<float> mf(2, 2, { 1.0f,2.0f,3.0f,4.0f });
-			Assert::IsTrue(vector::mul(mf, vf) == af);
-
-			suika::vector2<double> vd(1.0, 2.0);
-			suika::vector2<double> ad(5.0, 11.0);
-			suika::matrix<double> md(2, 2, { 1.0,2.0,3.0,4.0 });
-			Assert::IsTrue(vector::mul(md, vd) == ad);
-		}
-
-		TEST_METHOD(Mul_Vec3) {
-			suika::vector3<int> v(1, 2, 3);
-			suika::vector3<int> a(14, 32, 50);
-			suika::matrix<int> m(3, 3, { 1,2,3,4,5,6,7,8,9 });
-			Assert::IsTrue(vector::mul(m, v) == a);
-
-			suika::vector3<float> vf(1.0f, 2.0f, 3.0f);
-			suika::vector3<float> af(14.0f, 32.0f, 50.0f);
-			suika::matrix<float> mf(3, 3, { 1.0f,2.0f,3.0f,4.0f,5.0f,6.0f,7.0f,8.0f,9.0f });
-			Assert::IsTrue(vector::mul(mf, vf) == af);
-
-			suika::vector3<double> vd(1.0, 2.0, 3.0);
-			suika::vector3<double> ad(14.0, 32.0, 50.0);
-			suika::matrix<double> md(3, 3, { 1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0 });
-			Assert::IsTrue(vector::mul(md, vd) == ad);
-		}
-
-		TEST_METHOD(Mul_Matrix) {
-			suika::matrix<int> m1(2, 3, { 1,2,3,4,5,6 });
-			suika::matrix<int> m2(3, 2, { 7,8,9,10,11,12 });
-			suika::matrix<int> a(2, 2, { 58,64,139,154 });
-			Assert::IsTrue(vector::mul(m1, m2) == a);
-
-			suika::matrix<float> m1f(2, 3, { 1.0f,2.0f,3.0f,4.0f,5.0f,6.0f });
-			suika::matrix<float> m2f(3, 2, { 7.0f,8.0f,9.0f,10.0f,11.0f,12.0f });
-			suika::matrix<float> af(2, 2, { 58.0f,64.0f,139.0f,154.0f });
-			Assert::IsTrue(vector::mul(m1f, m2f) == af);
-
-			suika::matrix<double> m1d(2, 3, { 1.0,2.0,3.0,4.0,5.0,6.0 });
-			suika::matrix<double> m2d(3, 2, { 7.0,8.0,9.0,10.0,11.0,12.0 });
-			suika::matrix<double> ad(2, 2, { 58.0,64.0,139.0,154.0 });
-			Assert::IsTrue(vector::mul(m1d, m2d) == ad);
 		}
 	};
 }

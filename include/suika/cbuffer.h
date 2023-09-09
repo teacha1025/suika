@@ -5,11 +5,8 @@
 #include "matrix.h"
 
 namespace suika {
-	struct matrix4x4 {
-		float mt[4][4];
-	};
 	struct cbuffer_default {
-		matrix4x4 mt;
+		matrix4x4<float> mt;
 	};
 	cbuffer_default set_view(const point<int>& window_size);
 

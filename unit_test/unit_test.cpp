@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
+#include <DirectXMath.h>
 #include <suika.h>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -8,8 +9,8 @@ using namespace suika;
 #define MES(t) std::cout << t << std::endl;
 constexpr double eps_d = 1e-14;
 constexpr float eps_f = 1e-7f;
-#define EQ_F(A,B) math::abs((((A)) - ((B)))) < eps_f, suika::to_wstring(std::format("A:{}={}, B:{}={}, diff:{}", #A, A, #B, B, math::abs((((A)) - ((B)))))).c_str()
-#define EQ_D(A,B) math::abs((((A)) - ((B)))) < eps_d, suika::to_wstring(std::format("A:{}={}, B:{}={}, diff:{}", #A, A, #B, B, math::abs((((A)) - ((B)))))).c_str()
+#define EQ_F(A,B) std::abs((((A)) - ((B)))) < eps_f, suika::to_wstring(std::format("A:{}={}, B:{}={}, diff:{}", #A, A, #B, B, math::abs((((A)) - ((B)))))).c_str()
+#define EQ_D(A,B) std::abs((((A)) - ((B)))) < eps_d, suika::to_wstring(std::format("A:{}={}, B:{}={}, diff:{}", #A, A, #B, B, math::abs((((A)) - ((B)))))).c_str()
 
 namespace string_test
 {
@@ -402,7 +403,7 @@ public:
 		Assert::IsTrue(vector::mul(m1d, m2d) == ad);
 	}
 
-	TEST_METHOD(Mul_Transpose) {
+	TEST_METHOD(Transpose) {
 		suika::matrix<int> m(2, 3, {
 			1,2,3,
 			4,5,6
@@ -437,7 +438,73 @@ public:
 		Assert::IsTrue(vector::transpose(md) == ad);
 	}
 
-	TEST_METHOD(Mul_Inverse) {
+	TEST_METHOD(Identity) {
+		suika::matrix<int> i1(1, 1, { 1 });
+		suika::matrix<int> i2(2, 2, {
+					1,0,
+					0,1
+			});
+		suika::matrix<int> i3(3, 3, {
+					1,0,0,
+					0,1,0,
+					0,0,1
+			});
+		suika::matrix<int> i4(4, 4, {
+					1,0,0,0,
+					0,1,0,0,
+					0,0,1,0,
+					0,0,0,1
+			});
+		Assert::IsTrue(vector::identity<int>(1) == i1);
+		Assert::IsTrue(vector::identity<int>(2) == i2);
+		Assert::IsTrue(vector::identity<int>(3) == i3);
+		Assert::IsTrue(vector::identity<int>(4) == i4);
+
+
+		suika::matrix<float> i1f(1, 1, { 1.0f });
+		suika::matrix<float> i2f(2, 2, {
+					1.0f,0.0f,
+					0.0f,1.0f
+			});
+		suika::matrix<float> i3f(3, 3, {
+					1.0f,0.0f,0.0f,
+					0.0f,1.0f,0.0f,
+					0.0f,0.0f,1.0f
+			});
+		suika::matrix<float> i4f(4, 4, {
+					1.0f,0.0f,0.0f,0.0f,
+					0.0f,1.0f,0.0f,0.0f,
+					0.0f,0.0f,1.0f,0.0f,
+					0.0f,0.0f,0.0f,1.0f
+			});
+		Assert::IsTrue(vector::identity<float>(1) == i1f);
+		Assert::IsTrue(vector::identity<float>(2) == i2f);
+		Assert::IsTrue(vector::identity<float>(3) == i3f);
+		Assert::IsTrue(vector::identity<float>(4) == i4f);
+
+		suika::matrix<double> i1d(1, 1, { 1.0 });
+		suika::matrix<double> i2d(2, 2, {
+					1.0,0.0,
+					0.0,1.0
+			});
+		suika::matrix<double> i3d(3, 3, {
+					1.0,0.0,0.0,
+					0.0,1.0,0.0,
+					0.0,0.0,1.0
+			});
+		suika::matrix<double> i4d(4, 4, {
+					1.0,0.0,0.0,0.0,
+					0.0,1.0,0.0,0.0,
+					0.0,0.0,1.0,0.0,
+					0.0,0.0,0.0,1.0
+			});
+		Assert::IsTrue(vector::identity<double>(1) == i1d);
+		Assert::IsTrue(vector::identity<double>(2) == i2d);
+		Assert::IsTrue(vector::identity<double>(3) == i3d);
+		Assert::IsTrue(vector::identity<double>(4) == i4d);
+	}
+
+	TEST_METHOD(Inverse) {
 		suika::matrix<int> m(1, 1, { 2 });
 		suika::matrix<int> a(1, 1, { 0 });
 		Assert::IsTrue(vector::inverse(m) == a);
@@ -559,7 +626,7 @@ public:
 		Assert::IsTrue(vector::inverse(md) == ad);
 	}
 
-	TEST_METHOD(Mul_Determinant) {
+	TEST_METHOD(Determinant) {
 		suika::matrix<int> m(1, 1, { 2 });
 		double a = 2;
 		Assert::IsTrue(a == vector::determinant(m));
@@ -645,6 +712,27 @@ public:
 		ad = -16.0;
 		Assert::IsTrue(ad == vector::determinant(md));
 	}
+	};
+
+	TEST_CLASS(Transform) {
+		TEST_METHOD(Rotation) {
+			matrix<int> m(4, 1, {
+				1,
+				1,
+				1,
+				1,
+				});
+			matrix<int> r = vector::rotation<int>(PI, PI, PI);
+			auto axm = DirectX::XMMatrixRotationRollPitchYaw(PI_F, PI_F, PI_F);
+			matrix<int> a(4,4);
+			for(int i = 0; i < 4; i++) {
+				for (int j = 0; j < 1; j++) {
+					a.at(i,j) = axm.r[i].m128_f32[j];
+				}
+			}
+			auto t = r * m;
+			Assert::IsTrue(a == t);
+		}
 	};
 }
 

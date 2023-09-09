@@ -18,10 +18,10 @@ namespace suika {
 			b.mt.at(i,2) = m.r[i].m128_f32[2];
 			b.mt.at(i,3) = m.r[i].m128_f32[3];*/
 
-			b.mt.mt[i][0] = m.r[i].m128_f32[0];
-			b.mt.mt[i][1] = m.r[i].m128_f32[1];
-			b.mt.mt[i][2] = m.r[i].m128_f32[2];
-			b.mt.mt[i][3] = m.r[i].m128_f32[3];
+			b.mt.at(i,0) = m.r[i].m128_f32[0];
+			b.mt.at(i,1) = m.r[i].m128_f32[1];
+			b.mt.at(i,2) = m.r[i].m128_f32[2];
+			b.mt.at(i,3) = m.r[i].m128_f32[3];
 		}
 		return { b };
 	}

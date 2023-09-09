@@ -175,6 +175,9 @@
     <Filter Include="suika\matrix">
       <UniqueIdentifier>{2e608181-c59e-426f-8462-867a47f6533d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="suika\exception">
+      <UniqueIdentifier>{ff93511c-6246-4cf1-af5c-2f4dc83cbe0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\suika\pallet.h">
@@ -323,6 +326,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\matrix.h">
       <Filter>suika\matrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\except.h">
+      <Filter>suika\exception</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

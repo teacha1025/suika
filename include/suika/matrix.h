@@ -736,6 +736,13 @@ namespace suika {
 			return ret;
 		}
 
+		/// <summary>
+		/// ‰ñ“]À•W‚ğ•Ô‚·
+		/// </summary>
+		/// <param name="roll">ƒ[ƒ‹Šp</param>
+		/// <param name="pitch">ƒsƒbƒ`Šp</param>
+		/// <param name="yaw">ƒˆ[Šp</param>
+		/// <returns>‰ñ“]s—ñ</returns>
 		template<concepts::numbers T>
 		matrix<T> rotation(double roll, double pitch, double yaw) {
 			double sr = std::sin(roll), cr = std::cos(roll);
@@ -750,8 +757,15 @@ namespace suika {
 				});
 		}
 
+		/// <summary>
+		/// Šg‘åk¬s—ñ‚ğ•Ô‚·
+		/// </summary>
+		/// <param name="x">x•ûŒü‚ÌŠg‘å—¦</param>
+		/// <param name="y">y•ûŒü‚ÌŠg‘å—¦</param>
+		/// <param name="z">z•ûŒü‚ÌŠg‘å—¦</param>
+		/// <returns>Šg‘åk¬s—ñ</returns>
 		template<concepts::numbers T>
-		matrix<T> scale(T x, T y, T z) {
+		matrix<T> scalling(T x, T y, T z) {
 			return matrix<T>(4, 4, {
 				x, 0, 0, 0,
 				0, y, 0, 0,
@@ -760,12 +774,39 @@ namespace suika {
 				});
 		}
 
+		/// <summary>
+		/// •½sˆÚ“®s—ñ‚ğ•Ô‚·
+		/// </summary>
+		/// <param name="x">x•ûŒü‚ÌˆÚ“®—Ê</param>
+		/// <param name="y">y•ûŒü‚ÌˆÚ“®—Ê</param>
+		/// <param name="z">z•ûŒü‚ÌˆÚ“®—Ê</param>
+		/// <returns>•½sˆÚ“®s—ñ</returns>
 		template<concepts::numbers T>
-		matrix<T> translate(T x, T y, T z) {
+		matrix<T> translation(T x, T y, T z) {
 			return matrix<T>(4, 4, {
 					1, 0, 0, x,
 					0, 1, 0, y,
 					0, 0, 1, z,
+					0, 0, 0, 1
+				});
+		}
+		
+		/// <summary>
+		/// ™’’fs—ñ‚ğ•Ô‚·
+		/// </summary>
+		/// <param name="Hxy">xy•½–Ê‚Å‚Ìx•ûŒü‚Ö‚ÌŒW”</param>
+		/// <param name="Hyx">xy•½–Ê‚Å‚Ìy•ûŒü‚Ö‚ÌŒW”</param>
+		/// <param name="Hxz">xz•½–Ê‚Å‚Ìx•ûŒü‚Ö‚ÌŒW”</param>
+		/// <param name="Hzx">xz•½–Ê‚Å‚Ìz•ûŒü‚Ö‚ÌŒW”</param>
+		/// <param name="Hyz">yz•½–Ê‚Å‚Ìy•ûŒü‚Ö‚ÌŒW”</param>
+		/// <param name="Hzy">yz•½–Ê‚Å‚Ìz•ûŒü‚Ö‚ÌŒW”</param>
+		/// <returns></returns>
+		template<concepts::numbers T>
+		matrix<T> shear(T Hxy, T Hyx, T Hxz, T Hzx, T Hyz, T Hzy) {
+			return matrix<T>(4, 4, {
+					1, Hyx, Hzx, 0,
+					Txy, 1, Tzy, 0,
+					Hxz, Hyz, 1, 0,
 					0, 0, 0, 1
 				});
 		}

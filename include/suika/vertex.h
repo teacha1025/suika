@@ -4,24 +4,12 @@
 #include "color.h"
 
 namespace suika {
-	struct float2 {
-		float x, y;
-	};
-	struct float3 {
-		float x, y, z;
-	};
-	struct float4 {
-		float x, y, z, w;
-	};
-	struct double2 {
-		double x, y;
-	};
-	struct double3 {
-		double x, y, z;
-	};
-	struct double4 {
-		double x, y, z, w;
-	};
+	using float2 = vector2<float>;
+	using float3 = vector3<float>;
+	using float4 = vector4<float>;
+	using double2 = vector2<double>;
+	using double3 = vector3<double>;
+	using double4 = vector4<double>;
 	struct color_v {
 		uint r, g, b, a;
 	};

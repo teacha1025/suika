@@ -655,6 +655,341 @@ namespace suika {
 		}
 	};
 
+	/// @brief 4次元空間の位置ベクトル
+	/// @tparam T 数値の型
+	template<concepts::numbers T>
+	class vector4 final : public detail::ibase {
+	public:
+		using value_type = T;
+		T x = 0, y = 0, z = 0, w = 0;
+		/// <summary>
+		/// ベクトルの成分を文字列として取得
+		/// </summary>
+		/// <returns>"[x,y,z,w]"</returns>
+		virtual string to_string() const override {
+			return "[" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + "," + std::to_string(w) + "]";
+		}
+		/// <summary>
+		/// ゼロベクトル
+		/// </summary>
+		constexpr vector3() = default;
+		/// <summary>
+		/// 縦、横、奥行の値からベクトルを作成
+		/// </summary>
+		/// <param name="_x">x方向の値</param>
+		/// <param name="_y">y方向の値</param>
+		/// <param name="_z">y方向の値</param>
+		constexpr vector4(T _x, T _y, T _z, T _w) noexcept :
+			x(_x),
+			y(_y),
+			z(_z),
+			w(_w){
+		}
+		/// <summary>
+		/// 異なる数値型からベクトルを作成
+		/// </summary>
+		/// <param name="_x">x方向の値</param>
+		/// <param name="_y">y方向の値</param>
+		/// <param name="_z">z方向の値</param>
+		template<concepts::numbers X, concepts::numbers Y, concepts::numbers Z>
+		constexpr vector4(X _x, Y _y, Z _z, T _w) noexcept :
+			x(SCAST(T, _x)),
+			y(SCAST(T, _y)),
+			z(SCAST(T, _z)),
+			w(SCAST(T, _w)) {
+		}
+		/// <summary>
+		/// 異なる数値型のベクトルから作成
+		/// </summary>
+		/// <param name="p">別の位置ベクトル</param>
+		template<concepts::numbers t>
+		constexpr vector4(const vector4<t>& p) noexcept :
+			x(SCAST(T, p.x)),
+			y(SCAST(T, p.y)),
+			z(SCAST(T, p.z)),
+			w(SCAST(T, p.w)){
+		}
+
+		constexpr vector4 operator+() const {
+			return *this;
+		}
+
+		constexpr vector4 operator-() const {
+			return { -x, -y, -z, -w };
+		}
+
+		constexpr vector4 operator+(const vector4& other) const {
+			return { x + other.x, y + other.y, z + other.z, w + other.w };
+		}
+
+		constexpr vector4 operator-(const vector4& other) const {
+			return { x - other.x, y - other.y, z - other.z, w - other.w };
+		}
+
+		constexpr vector4 operator*(const vector4& other) const {
+			return { x * other.x, y * other.y, z * other.z, w * other.w };
+		}
+
+		constexpr vector4 operator/(const vector4& other) const {
+			return { x / other.x, y / other.y, z / other.z, w / other.w };
+		}
+
+		constexpr vector4 operator%(const vector4& other) const {
+			return { SCAST(T, math::fmod(x, other.x)), SCAST(T, math::fmod(y, other.y)), SCAST(T, math::fmod(z, other.z)), SCAST(T, math::fmod(w, other.w)) };
+		}
+
+		template<concepts::numbers t>
+		constexpr auto operator+(const vector4<t>& other) const -> vector4<decltype(x + other.x)> {
+			return { x + other.x, y + other.y, z + other.z, w + other.w };
+		}
+
+		template<concepts::numbers t>
+		constexpr auto operator-(const vector4<t>& other) const -> vector4<decltype(x - other.x)> {
+			return { x - other.x, y - other.y, z - other.z, w - other.w };
+		}
+
+		template<concepts::numbers t>
+		constexpr auto operator*(const vector4<t>& other) const -> vector4<decltype(x* other.x)> {
+			return { x * other.x, y * other.y, z * other.z, w * other.w };
+		}
+
+		template<concepts::numbers t>
+		constexpr auto operator/(const vector4<t>& other) const -> vector4<decltype(x / other.x)> {
+			return { x / other.x, y / other.y, z / other.z, w / other.w };
+		}
+
+		template<concepts::numbers t>
+		constexpr auto operator%(const vector4<t>& other) const -> vector4<decltype(math::fmod(x, other.x))> {
+			return { math::fmod(x, other.x), math::fmod(y, other.y), math::fmod(z, other.z) };
+		}
+
+		constexpr vector4& operator+=(const vector4& other) {
+			x += other.x;
+			y += other.y;
+			z += other.z;
+			w += other.w;
+			return *this;
+		}
+
+		constexpr vector4& operator-=(const vector4& other) {
+			x -= other.x;
+			y -= other.y;
+			z -= other.z;
+			w -= other.w;
+			return *this;
+		}
+
+		constexpr vector4& operator*=(const vector4& other) {
+			x *= other.x;
+			y *= other.y;
+			z *= other.z;
+			return *this;
+		}
+
+		constexpr vector4& operator/=(const vector4& other) {
+			x /= other.x;
+			y /= other.y;
+			z /= other.z;
+			w /= other.w;
+			return *this;
+		}
+
+		constexpr vector4& operator%=(const vector4& other) {
+			x = fmod(x, other.x);
+			y = fmod(y, other.y);
+			z = fmod(z, other.z);
+			w = fmod(w, other.w);
+			return *this;
+		}
+
+		template<concepts::numbers t>
+		constexpr vector4& operator+=(const vector4<t>& other) {
+			x += other.x;
+			y += other.y;
+			z += other.z;
+			w += other.w;
+			return *this;
+		}
+
+		template<concepts::numbers t>
+		constexpr vector4& operator-=(const vector4<t>& other) {
+			x -= other.x;
+			y -= other.y;
+			z -= other.z;
+			w -= other.w;
+			return *this;
+		}
+
+		template<concepts::numbers t>
+		constexpr vector4& operator*=(const vector4<t>& other) {
+			x *= other.x;
+			y *= other.y;
+			z *= other.z;
+			w *= other.w;
+			return *this;
+		}
+
+		template<concepts::numbers t>
+		constexpr vector4& operator/=(const vector4<t>& other) {
+			x /= other.x;
+			y /= other.y;
+			z /= other.z;
+			w /= other.w;
+			return *this;
+		}
+
+		template<concepts::numbers t>
+		constexpr vector4& operator%=(const vector4<t>& other) {
+			x = fmod(x, other.x);
+			y = fmod(y, other.y);
+			z = fmod(z, other.z);
+			w = fmod(z, other.w);
+			return *this;
+		}
+
+		template<concepts::numbers t>
+		constexpr auto operator+(t s) const -> vector4<decltype(x + s)> {
+			return { x + s, y + s, z + s, w + s };
+		}
+
+		template<concepts::numbers t>
+		constexpr auto operator-(t s) const -> vector4<decltype(x - s)> {
+			return { x - s, y - s, z - s, w - s };
+		}
+
+		template<concepts::numbers t>
+		constexpr auto operator*(t s) const -> vector4<decltype(x* s)> {
+			return { x * s, y * s, z * s, w * s };
+		}
+
+		template<concepts::numbers t>
+		constexpr auto operator/(t s) const -> vector4<decltype(x / s)> {
+			return { x / s, y / s, z / s, w / 2 };
+		}
+
+		template<concepts::numbers t>
+		constexpr auto operator%(t s) const -> vector4<decltype(math::fmod(x, s))> {
+			return { math::fmod(x, s), math::fmod(y, s), math::fmod(z, s), math::fmod(w, s) };
+		}
+
+		template<concepts::numbers t>
+		constexpr vector4& operator+=(t s) {
+			x += s;
+			y += s;
+			z += s;
+			w += s;
+			return *this;
+		}
+
+		template<concepts::numbers t>
+		constexpr vector4& operator-=(t s) {
+			x -= s;
+			y -= s;
+			z -= s;
+			w -= s;
+			return *this;
+		}
+
+		template<concepts::numbers t>
+		constexpr vector4& operator*=(t s) {
+			x *= s;
+			y *= s;
+			z *= s;
+			w *= s;
+			return *this;
+		}
+
+		template<concepts::numbers t>
+		constexpr vector4& operator/=(t s) {
+			x /= s;
+			y /= s;
+			z /= s;
+			w /= s;
+			return *this;
+		}
+
+		template<concepts::numbers t>
+		constexpr vector4& operator%=(t s) {
+			x = fmod(x, s);
+			y = fmod(y, s);
+			z = fmod(z, s);
+			w = fmod(z, s);
+			return *this;
+		}
+
+		constexpr vector4& operator++() {
+			++x;
+			++y;
+			++z;
+			++w;
+			return *this;
+		}
+
+		constexpr vector4& operator--() {
+			--x;
+			--y;
+			--z;
+			--w;
+			return *this;
+		}
+
+		template<concepts::numbers t>
+		constexpr vector4& operator++(t) {
+			x++;
+			y++;
+			z++;
+			w++;
+			return *this;
+		}
+
+		template<concepts::numbers t>
+		constexpr vector4& operator--(t) {
+			x--;
+			y--;
+			z--;
+			w--;
+			return *this;
+		}
+
+		constexpr bool operator==(const vector4& other) const {
+			return (x == other.x) && (y == other.y) && (z == other.z) && (w == other.w);
+		}
+
+		constexpr bool operator!=(const vector4& other) const {
+			return (x != other.x) || (y != other.y) || (z == other.z) || (w == other.w);
+		}
+
+		template<concepts::numbers t>
+		constexpr bool operator==(const vector4<t>& other) const {
+			return (x == other.x) && (y == other.y) && (z == other.z) && (w == other.w);
+		}
+
+		template<concepts::numbers t>
+		constexpr bool operator!=(const vector4<t>& other) const {
+			return (x != other.x) || (y != other.y) || (z != other.z) || (w != other.w);
+		}
+
+		template<concepts::numbers t>
+		constexpr bool operator<(const vector4<t>& a) const {
+			return x < a.x && y < a.y && z < a.z && w < a.w;
+		}
+
+		template<concepts::numbers t>
+		constexpr bool operator>(const vector4<t>& a) const {
+			return x > a.x && y > a.y && z > a.z && w > a.w;
+		}
+
+		template<concepts::numbers t>
+		constexpr bool operator<=(const vector4<t>& a) const {
+			return x <= a.x && y <= a.y && z <= a.z && w <= a.w;
+		}
+
+		template<concepts::numbers t>
+		constexpr bool operator>=(const vector4<t>& a) const {
+			return x >= a.x && y >= a.y && z >= a.z && w >= a.w;
+		}
+	};
+
 	/// <summary>
 	/// 2次元空間の極座標
 	/// </summary>

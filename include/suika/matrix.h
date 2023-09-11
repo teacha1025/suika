@@ -465,6 +465,19 @@ namespace suika {
 		return ret;
 	}
 
+	template<concepts::numbers T, concepts::numbers t>
+	auto operator *(const matrix<T>& m, const vector4<t>& v) {
+		if (m.size().x != 4) {
+			throw;
+		}
+		vector4<decltype(m.at(0, 0)* v.x)> ret;
+		ret.x = m.at(0, 0) * v.x + m.at(0, 1) * v.y + m.at(0, 2) * v.w + m.at(0, 3) * v.w;
+		ret.y = m.at(1, 0) * v.x + m.at(1, 1) * v.y + m.at(1, 2) * v.z + m.at(1, 3) * v.w;
+		ret.z = m.at(2, 0) * v.x + m.at(2, 1) * v.y + m.at(2, 2) * v.z + m.at(2, 3) * v.w;
+		ret.w = m.at(3, 0) * v.x + m.at(3, 1) * v.y + m.at(3, 2) * v.z + m.at(3, 3) * v.w;
+		return ret;
+	}
+
 	namespace vector {
 		/// <summary>
 		/// 行列と2次元ベクトルとの積算
@@ -474,7 +487,7 @@ namespace suika {
 		/// <returns>m*v</returns>
 		/// <remarks>行列の列数は2である必要がある</remarks>
 		template<concepts::numbers T, concepts::numbers t>
-		vector2<t> mul(const matrix<T>& m, const vector2<t>& v) {
+		auto mul(const matrix<T>& m, const vector2<t>& v) {
 			return m * v;
 		}
 
@@ -487,6 +500,18 @@ namespace suika {
 		/// <remarks>行列の列数は3である必要がある</remarks>
 		template<concepts::numbers T, concepts::numbers t>
 		auto mul(const matrix<T>& m, const vector3<t>& v) {
+			return m * v;
+		}
+
+		/// <summary>
+		/// 行列と4次元ベクトルとの積算
+		/// </summary>
+		/// <param name="m">4列の行列</param>
+		/// <param name="v">4次元ベクトル</param>
+		/// <returns>m*v</returns>
+		/// <remarks>行列の列数は4である必要がある</remarks>
+		template<concepts::numbers T, concepts::numbers t>
+		auto mul(const matrix<T>& m, const vector4<t>& v) {
 			return m * v;
 		}
 
@@ -529,6 +554,21 @@ namespace suika {
 		}
 
 		/// <summary>
+		/// ベクトルを行列に変換する
+		/// </summary>
+		/// <param name="v">4次元ベクトル</param>
+		/// <returns>1x4行列</returns>
+		template<concepts::numbers T>
+		matrix<T> to_matrix(const vector3<T>& v) {
+			matrix<T> ret(1, 4);
+			ret.at(0, 0) = v.x;
+			ret.at(0, 1) = v.y;
+			ret.at(0, 2) = v.z;
+			ret.at(0, 3) = v.w;
+			return ret;
+		}
+
+		/// <summary>
 		/// 行列をベクトルに変換する
 		/// </summary>
 		/// <param name="mt">1x2または2x1の行列</param>
@@ -562,6 +602,26 @@ namespace suika {
 			}
 			if ((n == 3 && m == 1)) {
 				return vector3<T>(mt.vec[0][0], mt.vec[1][0], mt.vec[2][0]);
+			}
+			else {
+				throw;
+			}
+		}
+
+		/// <summary>
+		/// 行列をベクトルに変換する
+		/// </summary>
+		/// <param name="mt">1x4または4x1の行列</param>
+		/// <returns>4次元ベクトル</returns>
+		template<concepts::numbers T>
+		vector4<T> to_vector4(const matrix<T>& mt) {
+			uint n = mt.size().y;
+			uint m = mt.size().x;
+			if ((n == 1 && m == 4)) {
+				return vector4<T>(mt.vec[0][0], mt.vec[0][1], mt.vec[0][2], mt.vec[0][3]);
+			}
+			if ((n == 4 && m == 1)) {
+				return vector4<T>(mt.vec[0][0], mt.vec[1][0], mt.vec[2][0], mt.vec[3][0]);
 			}
 			else {
 				throw;
@@ -736,6 +796,42 @@ namespace suika {
 			return ret;
 		}
 
+		template<concepts::numbers T>
+		matrix<T> rotation_roll(double roll) {
+			std::vector<double> v(16);
+			v[0] = std::cos(roll);
+			v[1] = -std::sin(roll);
+			v[4] = std::sin(roll);
+			v[5] = std::cos(roll);
+			v[10] = 1;
+			v[15] = 1;
+			return matrix<T>(4, 4, v);
+		}
+
+		template<concepts::numbers T>
+		matrix<T> rotation_pitch(double pitch) {
+			std::vector<double> v(16);
+			v[0] = 1;
+			v[5] = std::cos(pitch);
+			v[6] = -std::sin(pitch);
+			v[9] = std::sin(pitch);
+			v[10] = std::cos(pitch);
+			v[15] = 1;
+			return matrix<T>(4, 4, v);
+		}
+
+		template<concepts::numbers T>
+		matrix<T> rotation_yaw(double yaw) {
+			std::vector<double> v(16);
+			v[0] = std::cos(yaw);
+			v[2] = std::sin(yaw);
+			v[5] = 1;
+			v[8] = -std::sin(yaw);
+			v[10] = std::cos(yaw);
+			v[15] = 1;
+			return matrix<T>(4, 4, v);
+		}
+
 		/// <summary>
 		/// 回転座標を返す
 		/// </summary>
@@ -745,16 +841,7 @@ namespace suika {
 		/// <returns>回転行列</returns>
 		template<concepts::numbers T>
 		matrix<T> rotation(double roll, double pitch, double yaw) {
-			double sr = std::sin(roll), cr = std::cos(roll);
-			double sp = std::sin(pitch), cp = std::cos(pitch);
-			double sy = std::sin(yaw), cy = std::cos(yaw);
-
-			return matrix<double>(4, 4, {
-				cy * cp, cy * sp * sr - sy * cr, cy * sp * cr + sy * sr, 0,
-				sy * cp, sy * sp * sr + cy * cr, sy * sp * cr - cy * sr, 0,
-				-sp, cp * sr, cp * cr, 0,
-				0, 0, 0, 1
-				});
+			return rotation_roll<double>(roll) * rotation_yaw<double>(yaw) * rotation_pitch<double>(pitch);
 		}
 
 		/// <summary>
@@ -805,10 +892,23 @@ namespace suika {
 		matrix<T> shear(T Hxy, T Hyx, T Hxz, T Hzx, T Hyz, T Hzy) {
 			return matrix<T>(4, 4, {
 					1, Hyx, Hzx, 0,
-					Txy, 1, Tzy, 0,
+					Hxy, 1, Hzy, 0,
 					Hxz, Hyz, 1, 0,
 					0, 0, 0, 1
 				});
+		}
+
+		/// <summary>
+		/// アフィン変換
+		/// </summary>
+		/// <param name="origine">回転の原点</param>
+		/// <param name="transition">平行移動量</param>
+		/// <param name="rot">軸回りの回転量</param>
+		/// <param name="scale">拡大率</param>
+		/// <returns>アフィン変換行列</returns>
+		template< concepts::numbers T>
+		matrix<T> affine_transformation(const vector3<T>& origine, const vector3<T>& transition, const vector3<T>& rot, const vector3<T>& scale) {
+			return translation<double>(transition.x, transition.y, transition.z) * rotation<double>(rot.z, rot.x, rot.y) * scalling<double>(scale.x, scale.y, scale.z) * translation<double>(-origine.x, -origine.y, -origine.z);
 		}
 	}
 }

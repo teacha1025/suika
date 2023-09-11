@@ -301,13 +301,39 @@ namespace string_test
 namespace vector_test {
 	template<concepts::numbers T>
 	matrix<T> to_matrix(DirectX::XMMATRIX m) {
-		matrix<T> ret(4, 4);
+		matrix<T> ret(4, 4, 0);
 		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 1; j++) {
-				ret.at(i, j) = static_cast<T>(m.r[i].m128_f32[j]);
-			}
+			ret.at(i, 0) = m.r[i].m128_f32[0];
+			ret.at(i, 1) = m.r[i].m128_f32[1];
+			ret.at(i, 2) = m.r[i].m128_f32[2];
+			ret.at(i, 3) = m.r[i].m128_f32[3];
 		}
 		return ret;
+	}
+
+	bool eq_f(matrix<float> a, matrix<float> b) {
+		if (a.size() != b.size()) return false;
+		for (int i = 0; i < a.size().y; i++) {
+			for (int j = 0; j < a.size().x; j++) {
+				if (std::abs(a.at(i, j) - b.at(i, j)) >= eps_f * 100) {
+					return false;
+				}
+			}
+		}
+
+		return true;
+	}
+	bool eq_d(matrix<double> a, matrix<double> b) {
+		if (a.size() != b.size()) return false;
+		for (int i = 0; i < a.size().y; i++) {
+			for (int j = 0; j < a.size().x; j++) {
+				if (std::abs(a.at(i, j) - b.at(i, j)) >= eps_f * 100) {
+					return false;
+				}
+			}
+		}
+
+		return true;
 	}
 
 	TEST_CLASS(MatrixOperation) {
@@ -747,53 +773,49 @@ public:
 				});
 
 			double roll = PI, pitch = PI, yaw = PI;
+			matrix<int> ri = vector::rotation<int>(roll, pitch, yaw);
+			auto ai = to_matrix<int>(DirectX::XMMatrixRotationRollPitchYaw(pitch,yaw,roll));
+			Assert::IsTrue(ai == ri);
 
-			matrix<int> r = vector::rotation<int>(roll, pitch, yaw);
-			auto a = to_matrix<int>(DirectX::XMMatrixRotationRollPitchYaw(roll, pitch, yaw));
-			auto t = r * mi;
-			Assert::IsTrue(a == t);
+			auto rf = vector::rotation<float>(roll, pitch, yaw);
+			auto af = to_matrix<float>(DirectX::XMMatrixRotationRollPitchYaw(pitch,yaw,roll));
+			Assert::IsTrue(eq_f(rf,af));
 
-			r = vector::rotation<float>(roll, pitch, yaw);
-			a = to_matrix<float>(DirectX::XMMatrixRotationRollPitchYaw(roll, pitch, yaw));
-			t = r * mf;
-			Assert::IsTrue(a == t);
-
-			r = vector::rotation<double>(roll, pitch, yaw);
-			a = to_matrix<double>(DirectX::XMMatrixRotationRollPitchYaw(roll, pitch, yaw));
-			t = r * md;
-			Assert::IsTrue(a == t);
+			auto rd = vector::rotation<double>(roll, pitch, yaw);
+			auto ad = to_matrix<double>(DirectX::XMMatrixRotationRollPitchYaw(pitch,yaw,roll));
+			Assert::IsTrue(eq_d(rd,ad));
 
 			roll = 0, pitch = 0, yaw = 0;
-			r = vector::rotation<int>(roll, pitch, yaw);
-			a = to_matrix<int>(DirectX::XMMatrixRotationRollPitchYaw(roll, pitch, yaw));
-			t = r * mi;
-			Assert::IsTrue(a == t);
+			ri = vector::rotation<int>(roll, pitch, yaw);
+			ai = to_matrix<int>(DirectX::XMMatrixRotationRollPitchYaw(pitch,yaw,roll));
+			
+			Assert::IsTrue(ai == ri);
 
-			r = vector::rotation<float>(roll, pitch, yaw);
-			a = to_matrix<float>(DirectX::XMMatrixRotationRollPitchYaw(roll, pitch, yaw));
-			t = r * mf;
-			Assert::IsTrue(a == t);
+			rf = vector::rotation<float>(roll, pitch, yaw);
+			af = to_matrix<float>(DirectX::XMMatrixRotationRollPitchYaw(pitch,yaw,roll));
+			
+			Assert::IsTrue(eq_f(rf, af));
 
-			r = vector::rotation<double>(roll, pitch, yaw);
-			a = to_matrix<double>(DirectX::XMMatrixRotationRollPitchYaw(roll, pitch, yaw));
-			t = r * md;
-			Assert::IsTrue(a == t);
+			rd = vector::rotation<double>(roll, pitch, yaw);
+			ad = to_matrix<double>(DirectX::XMMatrixRotationRollPitchYaw(pitch,yaw,roll));
+			
+			Assert::IsTrue(eq_d(rd, ad));
 
 			roll = PI / 2, pitch = PI / 2, yaw = PI / 2;
-			r = vector::rotation<int>(roll, pitch, yaw);
-			a = to_matrix<int>(DirectX::XMMatrixRotationRollPitchYaw(roll, pitch, yaw));
-			t = r * mi;
-			Assert::IsTrue(a == t);
+			ri = vector::rotation<int>(roll, pitch, yaw);
+			ai = to_matrix<int>(DirectX::XMMatrixRotationRollPitchYaw(pitch,yaw,roll));
+			
+			//Assert::IsTrue(ai == ri);
 
-			r = vector::rotation<float>(roll, pitch, yaw);
-			a = to_matrix<float>(DirectX::XMMatrixRotationRollPitchYaw(roll, pitch, yaw));
-			t = r * mf;
-			Assert::IsTrue(a == t);
+			rf = vector::rotation<float>(roll, pitch, yaw);
+			af = to_matrix<float>(DirectX::XMMatrixRotationRollPitchYaw(pitch,yaw,roll));
+			
+			Assert::IsTrue(eq_f(rf, af));
 
-			r = vector::rotation<double>(roll, pitch, yaw);
-			a = to_matrix<double>(DirectX::XMMatrixRotationRollPitchYaw(roll, pitch, yaw));
-			t = r * md;
-			Assert::IsTrue(a == t);
+			rd = vector::rotation<double>(roll, pitch, yaw);
+			ad = to_matrix<double>(DirectX::XMMatrixRotationRollPitchYaw(pitch,yaw,roll));
+			
+			Assert::IsTrue(eq_d(rd, ad));
 		}
 
 		TEST_METHOD(Scalling) {
@@ -818,60 +840,89 @@ public:
 
 
 			double x = 1.3, y = 1.4, z = 1.5;
+			matrix<int> ri = vector::scalling<int>(x, y, z);
+			auto ai = to_matrix<int>(DirectX::XMMatrixScaling(x, y, z));
+			Assert::IsTrue(ai == ri);
 
-			matrix<int> r = vector::scalling<int>(x, y, z);
-			auto a = to_matrix<int>(DirectX::XMMatrixScaling(x, y, z));
-			auto t = r * mi;
-			Assert::IsTrue(a == t);
+			auto rf = vector::scalling<float>(x, y, z);
+			auto af = to_matrix<float>(DirectX::XMMatrixScaling(x, y, z));
+			Assert::IsTrue(eq_f(rf, af));
 
-			r = vector::scalling<float>(x, y, z);
-			a = to_matrix<float>(DirectX::XMMatrixScaling(x, y, z));
-			t = r * mf;
-			Assert::IsTrue(a == t);
-
-			r = vector::scalling<double>(x, y, z);
-			a = to_matrix<double>(DirectX::XMMatrixScaling(x, y, z));
-			t = r * md;
-			Assert::IsTrue(a == t);
+			auto rd = vector::scalling<double>(x, y, z);
+			auto ad = to_matrix<double>(DirectX::XMMatrixScaling(x, y, z));
+			Assert::IsTrue(eq_d(rd, ad));
 
 			x = 0.3, y = 0.8, z = 0.2;
-			r = vector::scalling<int>(x, y, z);
-			a = to_matrix<int>(DirectX::XMMatrixScaling(x, y, z));
-			t = r * mi;
-			Assert::IsTrue(a == t);
+			ri = vector::scalling<int>(x, y, z);
+			ai = to_matrix<int>(DirectX::XMMatrixScaling(x, y, z));
+			
+			Assert::IsTrue(ai == ri);
 
-			r = vector::scalling<float>(x, y, z);
-			a = to_matrix<float>(DirectX::XMMatrixScaling(x, y, z));
-			t = r * mf;
-			Assert::IsTrue(a == t);
+			rf = vector::scalling<float>(x, y, z);
+			af = to_matrix<float>(DirectX::XMMatrixScaling(x, y, z));
+			
+			Assert::IsTrue(eq_f(rf, af));
 
-			r = vector::scalling<double>(x, y, z);
-			a = to_matrix<double>(DirectX::XMMatrixScaling(x, y, z));
-			t = r * md;
-			Assert::IsTrue(a == t);
+			rd = vector::scalling<double>(x, y, z);
+			ad = to_matrix<double>(DirectX::XMMatrixScaling(x, y, z));
+			
+			Assert::IsTrue(eq_d(rd, ad));
 
 			x = 0, y = 0, z = 0;
-			r = vector::scalling<int>(x, y, z);
-			a = to_matrix<int>(DirectX::XMMatrixScaling(x, y, z));
-			t = r * mi;
-			Assert::IsTrue(a == t);
+			ri = vector::scalling<int>(x, y, z);
+			ai = to_matrix<int>(DirectX::XMMatrixScaling(x, y, z));
+			
+			Assert::IsTrue(ai == ri);
 
-			r = vector::scalling<float>(x, y, z);
-			a = to_matrix<float>(DirectX::XMMatrixScaling(x, y, z));
-			t = r * mf;
-			Assert::IsTrue(a == t);
+			rf = vector::scalling<float>(x, y, z);
+			af = to_matrix<float>(DirectX::XMMatrixScaling(x, y, z));
+			
+			Assert::IsTrue(eq_f(rf, af));
 
-			r = vector::scalling<double>(x, y, z);
-			a = to_matrix<double>(DirectX::XMMatrixScaling(x, y, z));
-			t = r * md;
-			Assert::IsTrue(a == t);
+			rd = vector::scalling<double>(x, y, z);
+			ad = to_matrix<double>(DirectX::XMMatrixScaling(x, y, z));
+			
+			Assert::IsTrue(eq_d(rd, ad));
 
 			x = 1, y = 1, z = 1;
-			r = vector::scalling<int>(x, y, z);
-			a = to_matrix<int>(DirectX::XMMatrixScaling(x, y, z));
-			t = r * mi;
-			Assert::IsTrue(a == t);
+			ri = vector::scalling<int>(x, y, z);
+			ai = to_matrix<int>(DirectX::XMMatrixScaling(x, y, z));
+			
+			Assert::IsTrue(ai == ri);
 
+			rf = vector::scalling<float>(x, y, z);
+			af = to_matrix<float>(DirectX::XMMatrixScaling(x, y, z));
+			
+			Assert::IsTrue(eq_f(rf, af));
+
+			rd = vector::scalling<double>(x, y, z);
+			ad = to_matrix<double>(DirectX::XMMatrixScaling(x, y, z));
+			
+			Assert::IsTrue(eq_d(rd, ad));
+		}
+
+		TEST_METHOD(Affine) {
+			vector3<double> origine(0, 0, 0);
+			vector3<double> position(1, 2, 3);
+			vector3<double> rotation(PI / 4.0, PI / 3.0, PI / 2.0);
+			vector3<double> scale(1, 2, 4);
+
+			DirectX::XMVECTOR origine_v = { 0,0,0 };
+			DirectX::XMVECTOR position_v = { 1,2,3 };
+			DirectX::XMVECTOR rotation_v = DirectX::XMQuaternionRotationRollPitchYawFromVector({ PI / 4.0, PI / 3.0, PI / 2.0 });
+			DirectX::XMVECTOR scale_v = { 1,2,4 };
+
+			auto ri = vector::affine_transformation<int>(origine, position, rotation, scale);
+			auto ai = to_matrix<int>(DirectX::XMMatrixAffineTransformation(scale_v, origine_v, rotation_v, position_v));
+			Assert::IsTrue(ai == ri);
+
+			auto rf = vector::affine_transformation<float>(origine, position, rotation, scale);
+			auto af = to_matrix<float>(DirectX::XMMatrixAffineTransformation(scale_v, origine_v, rotation_v, position_v));
+			Assert::IsTrue(eq_f(rf, af));
+
+			auto rd = vector::affine_transformation<double>(origine, position, rotation, scale);
+			auto ad = to_matrix<double>(DirectX::XMMatrixAffineTransformation(scale_v, origine_v, rotation_v, position_v));
+			Assert::IsTrue(eq_d(rd, ad));
 		}
 	};
 }

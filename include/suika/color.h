@@ -72,7 +72,7 @@ namespace suika {
 		/// RGBA情報
 		/// </summary>
 		/// <returns>RGBAの文字列における情報</returns>
-		virtual string to_string() const override;
+		string to_string() const;
 
 		/// <summary>
 		/// 色が同じであるか
@@ -156,7 +156,7 @@ namespace suika {
 		/// HSVA情報
 		/// </summary>
 		/// <returns>HSVAの文字列における情報</returns>
-		virtual string to_string() const override;
+		string to_string() const;
 
 		/// <summary>
 		/// 色が同じであるか

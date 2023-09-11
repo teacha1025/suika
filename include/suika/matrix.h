@@ -559,7 +559,7 @@ namespace suika {
 		/// <param name="v">4次元ベクトル</param>
 		/// <returns>1x4行列</returns>
 		template<concepts::numbers T>
-		matrix<T> to_matrix(const vector3<T>& v) {
+		matrix<T> to_matrix(const vector4<T>& v) {
 			matrix<T> ret(1, 4);
 			ret.at(0, 0) = v.x;
 			ret.at(0, 1) = v.y;

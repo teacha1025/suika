@@ -90,7 +90,7 @@ namespace suika {
 		/// ログに関する情報
 		/// </summary>
 		/// <returns>ログファイル名</returns>
-		virtual string to_string() const override;
+		string to_string() const;
 	};
 
 	extern logger log;

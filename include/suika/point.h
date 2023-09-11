@@ -35,7 +35,7 @@ namespace suika {
 		/// ベクトルの成分を文字列として取得
 		/// </summary>
 		/// <returns>"[x,y]"</returns>
-		virtual string to_string() const override {
+		string to_string() const {
 			return "[" + std::to_string(x) + "," + std::to_string(y) + "]";
 		}
 
@@ -355,7 +355,7 @@ namespace suika {
 		/// ベクトルの成分を文字列として取得
 		/// </summary>
 		/// <returns>"[x,y,z]"</returns>
-		virtual string to_string() const override {
+		string to_string() const {
 			return "[" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + "]";
 		}
 		/// <summary>
@@ -660,19 +660,19 @@ namespace suika {
 	template<concepts::numbers T>
 	class vector4 final : public detail::ibase {
 	public:
-		using value_type = T;
+		//using value_type = T;
 		T x = 0, y = 0, z = 0, w = 0;
 		/// <summary>
 		/// ベクトルの成分を文字列として取得
 		/// </summary>
 		/// <returns>"[x,y,z,w]"</returns>
-		virtual string to_string() const override {
+		string to_string() const {
 			return "[" + std::to_string(x) + "," + std::to_string(y) + "," + std::to_string(z) + "," + std::to_string(w) + "]";
 		}
 		/// <summary>
 		/// ゼロベクトル
 		/// </summary>
-		constexpr vector3() = default;
+		constexpr vector4() = default;
 		/// <summary>
 		/// 縦、横、奥行の値からベクトルを作成
 		/// </summary>
@@ -1036,7 +1036,7 @@ namespace suika {
 		/// 極座標の成分を文字列として取得
 		/// </summary>
 		/// <returns>[r,θ]</returns>
-		virtual string to_string() const override {
+		string to_string() const {
 			return std::format("[{}, {}]", r, theta);
 		}
 

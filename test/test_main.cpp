@@ -10,6 +10,10 @@ void init() {
 	suika::window::title("APP");
 }
 
+struct f4 {
+	float a, b, c, d;
+};
+
 int main() {
 	auto cid = suika::window::canvas().get()->id;
 	suika::d3d::dwrite::init(cid);
@@ -66,14 +70,18 @@ int main() {
 			//suika::d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);
 		}
 	}
-
+	//sizeof(suika::vector2<float>);
+	//sizeof(f4);
+	//sizeof(float);
 	while (suika::sys::update()) {
 		suika::window::title(std::format("{:4.1f}fps", suika::sys::fps()));
 		//suika::d3d::texture::set(tex);
 		for (int y = 0; y < 32; y++) {
 			for (int x = 0; x < 32; x++) {
-				suika::d3d::vertex::set_vertex_instance(create_vertex({ 0,0 }, { w,h }));
-				suika::d3d::vertex::add_index({ 0,0,0 }, v[x][y], {0,0,0}, {1,1,1});
+				//suika::d3d::vertex::set_vertex_instance(create_vertex({ 0,0 }, { w,h }));
+				//suika::d3d::vertex::add_index({ 0,0,0 }, v[x][y], {0,0,0}, {1,1,1});
+
+				suika::rect({w,h}).at(v[x][y]).colored(suika::pallet::white).draw();
 			}
 		}
 		

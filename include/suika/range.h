@@ -147,7 +147,7 @@ namespace suika {
 		/// 範囲の情報を文字列にして返す
 		/// </summary>
 		/// <returns>最大値、最小値、現在値</returns>
-		virtual string to_string() const override {
+		string to_string() const {
 			return std::format("min:{},max:{},value:{}", minimum, maximum, val);
 		}
 

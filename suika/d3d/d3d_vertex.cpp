@@ -136,6 +136,12 @@ namespace suika {
 			}*/
 
 			void set_index(const std::vector<uint16>& index, D3D11_PRIMITIVE_TOPOLOGY topology) {
+				static std::vector<uint16> old_index(0);
+				if (old_index == index) {
+					return;
+				}
+				flush();
+				old_index = index;
 				D3D11_MAPPED_SUBRESOURCE mapped;
 				D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
 				auto er = suika::d3d::pContext->Map(g_indexBuffer.Get(), 0, map_type, 0, &mapped);
@@ -161,7 +167,7 @@ namespace suika {
 
 				auto m = e * r * t;*/
 
-				auto m = (DirectX::XMMatrixAffineTransformation({ extend.x,extend.y,extend.z },{origine.x,origine.y,origine.z},{rotate.x,rotate.y,rotate.z},{translate.x,translate.y,translate.z}));
+				auto m = (DirectX::XMMatrixAffineTransformation({ extend.x,extend.y,extend.z },{origine.x,origine.y,origine.z},DirectX::XMQuaternionRotationRollPitchYawFromVector({rotate.x,rotate.y,rotate.z}),{translate.x,translate.y,translate.z}));
 
 				return DirectX::XMMatrixTranspose(m);
 			}

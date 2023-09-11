@@ -805,7 +805,7 @@ public:
 			ri = vector::rotation<int>(roll, pitch, yaw);
 			ai = to_matrix<int>(DirectX::XMMatrixRotationRollPitchYaw(pitch,yaw,roll));
 			
-			//Assert::IsTrue(ai == ri);
+			Assert::IsTrue(ai == ri);
 
 			rf = vector::rotation<float>(roll, pitch, yaw);
 			af = to_matrix<float>(DirectX::XMMatrixRotationRollPitchYaw(pitch,yaw,roll));

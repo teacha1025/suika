@@ -23,6 +23,12 @@ namespace suika {
 				affine({ 1,1 }),
 			};
 		};
+		std::vector<suika::uint16> index =
+		{
+			0, 1, 2,
+			2, 1, 3,
+		};
+		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::rect);
 		d3d::vertex::set_vertex_instance(create_vertex());
 		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend);

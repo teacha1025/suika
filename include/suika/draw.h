@@ -298,7 +298,7 @@ namespace suika {
 
 			virtual void draw() = 0;
 
-			virtual string to_string() const override {
+			string to_string() const {
 				return std::format("at:{}, rotation:{}, center:{}, extend:{}", _transition.to_string().to_string(), _rotation.to_string().to_string(), _center.to_string().to_string(), _extend.to_string().to_string());
 			}
 		};

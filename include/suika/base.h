@@ -12,7 +12,7 @@ namespace suika {
 		class ibase {
 		public:
 			constexpr ibase() {}
-			virtual string to_string() const = 0;
+			string to_string() const;
 			//virtual ~ibase() {};
 		};
 	} // namespace detail

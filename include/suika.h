@@ -22,6 +22,8 @@
 
 #include "../include/suika/texture.h"
 
+#include "../include/suika/rect.h"
+
 #ifdef _DEBUG
 #pragma comment(lib, "suika_d.lib")
 #else

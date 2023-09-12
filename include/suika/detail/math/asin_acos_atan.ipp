@@ -50,7 +50,7 @@ namespace suika {
 			auto d = static_cast<ldouble>(x);
 			return x == static_cast<T>(-1.0) ? static_cast<T>(PI) :
 				   x == static_cast<T>(1.0) ? T(0) :
-				   x >  static_cast<T>(-1.0) && x < 1.0 ? static_cast<double>(PI_HALF_LD - asin_series(d, d, 1, d * d * d / 2.0L)) : throw _FE_INVALID;
+				   x >  static_cast<T>(-1.0) && x < 1.0 ? static_cast<T>(PI_HALF_LD - asin_series(d, d, 1, d * d * d / 2.0L)) : throw _FE_INVALID;
 		}
 		template<std::integral T>
 		constexpr inline double acos(T x) {

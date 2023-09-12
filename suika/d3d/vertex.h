@@ -10,13 +10,15 @@
 #include "../../include/suika/color.h"
 #include "../../include/suika/type.h"
 #include "../../include/suika/vertex.h"
+#include "../../include/suika/matrix.h"
 
 namespace suika {
 	namespace d3d {
 		namespace vertex {
 			extern Microsoft::WRL::ComPtr<ID3D11Buffer> g_vertexBuffer;
 			extern Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceMatrix;
-			extern std::vector<DirectX::XMMATRIX> instance_matrix;
+			//extern std::vector<DirectX::XMMATRIX> instance_matrix;
+			extern std::vector<matrix4x4<float>> instance_matrix;
 			extern UINT offset;
 			extern UINT offset_ins[2];
 			extern uint stride_ins[2];
@@ -63,7 +65,7 @@ namespace suika {
 			/// <param name="translate">ピクセル</param>
 			/// <param name="rotate">ラジアン</param>
 			/// <param name="extend">倍率</param>
-			DirectX::XMMATRIX calc_matrix(const suika::vector3<float>& origine, const suika::vector3<float>& translate, const suika::vector3<float>& rotate, const suika::vector3<float>& extend);
+			matrix4x4<float> calc_matrix(const suika::vector3<float>& origine, const suika::vector3<float>& translate, const suika::vector3<float>& rotate, const suika::vector3<float>& extend);
 
 			void add_index(const suika::vector3<float>& origine, const suika::vector3<float>& translate, const suika::vector3<float>& rotate, const suika::vector3<float>& extend);
 			template<class T>

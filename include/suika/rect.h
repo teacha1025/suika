@@ -9,7 +9,9 @@ namespace suika {
 		point<float> _size = { 64,64 };
 		color _color = pallet::white;
 	public:
-		rect(const point<float>& size) : _size(size) {}
+		rect(const point<float>& size) : _size(size) {
+			_shaders = { .vs = "shape", .ps = "shape" };
+		}
 
 
 		virtual void draw() override;

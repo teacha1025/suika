@@ -313,8 +313,8 @@ namespace vector_test {
 
 	bool eq_f(matrix<float> a, matrix<float> b) {
 		if (a.size() != b.size()) return false;
-		for (int i = 0; i < a.size().y; i++) {
-			for (int j = 0; j < a.size().x; j++) {
+		for (uint i = 0; i < a.size().y; i++) {
+			for (uint j = 0; j < a.size().x; j++) {
 				if (std::abs(a.at(i, j) - b.at(i, j)) >= eps_f * 100) {
 					return false;
 				}
@@ -325,8 +325,8 @@ namespace vector_test {
 	}
 	bool eq_d(matrix<double> a, matrix<double> b) {
 		if (a.size() != b.size()) return false;
-		for (int i = 0; i < a.size().y; i++) {
-			for (int j = 0; j < a.size().x; j++) {
+		for (uint i = 0; i < a.size().y; i++) {
+			for (uint j = 0; j < a.size().x; j++) {
 				if (std::abs(a.at(i, j) - b.at(i, j)) >= eps_f * 100) {
 					return false;
 				}

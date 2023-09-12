@@ -5,6 +5,7 @@
 #include <vector>
 #include "info.hpp"
 #include "vertex.h"
+#include "../../include/suika/matrix.h"
 #include "../../include/suika/vertex.h"
 #include "../../include/suika/type.h"
 
@@ -12,7 +13,8 @@ namespace suika {
 	namespace d3d {
 		namespace vertex {
 			std::vector<uint16> index;
-			std::vector<DirectX::XMMATRIX> instance_matrix;
+			//std::vector<DirectX::XMMATRIX> instance_matrix;
+			std::vector<matrix4x4<float>> instance_matrix;
 
 			std::any now_vertex;
 			ins_type now_type= ins_type::none;
@@ -25,6 +27,53 @@ namespace suika {
 			Microsoft::WRL::ComPtr<ID3D11Buffer> g_indexBuffer;
 			Microsoft::WRL::ComPtr<ID3D11Buffer> g_vertexBuffer;
 			Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceMatrix;
+
+			template<concepts::numbers T>
+			matrix<T> to_matrix(DirectX::XMMATRIX m) {
+				matrix<T> ret(4, 4, 0);
+				for (int i = 0; i < 4; i++) {
+					ret.at(i, 0) = m.r[i].m128_f32[0];
+					ret.at(i, 1) = m.r[i].m128_f32[1];
+					ret.at(i, 2) = m.r[i].m128_f32[2];
+					ret.at(i, 3) = m.r[i].m128_f32[3];
+				}
+				return ret;
+			}
+			template<concepts::numbers T>
+			matrix4x4<T> to_matrix4x4(DirectX::XMMATRIX m) {
+				matrix4x4<T> ret;
+				ret.at(0, 0) = m.r[0].m128_f32[0];
+				ret.at(0, 1) = m.r[0].m128_f32[1];
+				ret.at(0, 2) = m.r[0].m128_f32[2];
+				ret.at(0, 3) = m.r[0].m128_f32[3];
+
+				ret.at(1, 0) = m.r[1].m128_f32[0];
+				ret.at(1, 1) = m.r[1].m128_f32[1];
+				ret.at(1, 2) = m.r[1].m128_f32[2];
+				ret.at(1, 3) = m.r[1].m128_f32[3];
+
+				ret.at(2, 0) = m.r[2].m128_f32[0];
+				ret.at(2, 1) = m.r[2].m128_f32[1];
+				ret.at(2, 2) = m.r[2].m128_f32[2];
+				ret.at(2, 3) = m.r[2].m128_f32[3];
+
+				ret.at(3, 0) = m.r[3].m128_f32[0];
+				ret.at(3, 1) = m.r[3].m128_f32[1];
+				ret.at(3, 2) = m.r[3].m128_f32[2];
+				ret.at(3, 3) = m.r[3].m128_f32[3];
+				return ret;
+			}
+			template<concepts::numbers T>
+			DirectX::XMMATRIX to_matrix(matrix<T> m) {
+				DirectX::XMMATRIX ret;
+				for (int i = 0; i < 4; i++) {
+					ret.r[i].m128_f32[0] = m.at(i, 0);
+					ret.r[i].m128_f32[1] = m.at(i, 1);
+					ret.r[i].m128_f32[2] = m.at(i, 2);
+					ret.r[i].m128_f32[3] = m.at(i, 3);
+				}
+				return ret;
+			}
 
 			//main.cpp‚Å‰Šú‰»
 			void init() {
@@ -160,7 +209,7 @@ namespace suika {
 				::suika::d3d::vertex::index = index;
 			}
 
-			DirectX::XMMATRIX calc_matrix(const suika::vector3<float>& origine, const suika::vector3<float>& translate, const suika::vector3<float>& rotate, const suika::vector3<float>& extend) {
+			matrix4x4<float> calc_matrix(const suika::vector3<float>& origine, const suika::vector3<float>& translate, const suika::vector3<float>& rotate, const suika::vector3<float>& extend) {
 				/*auto r = DirectX::XMMatrixRotationRollPitchYaw(rotate.z, rotate.x, rotate.y);
 				auto t = DirectX::XMMatrixTranslation(translate.x, translate.y, translate.z);
 				auto e = DirectX::XMMatrixScaling(extend.x, extend.y, extend.z);
@@ -169,7 +218,33 @@ namespace suika {
 
 				auto m = (DirectX::XMMatrixAffineTransformation({ extend.x,extend.y,extend.z },{origine.x,origine.y,origine.z},DirectX::XMQuaternionRotationRollPitchYawFromVector({rotate.x,rotate.y,rotate.z}),{translate.x,translate.y,translate.z}));
 
-				return DirectX::XMMatrixTranspose(m);
+				return (to_matrix4x4<float>(DirectX::XMMatrixTranspose(m)));
+
+				//const double sp = std::sin(rotate.x), sy = std::sin(rotate.y), sr = std::sin(rotate.z);
+				//const double cp = std::cos(rotate.x), cy = std::cos(rotate.y), cr = std::cos(rotate.z);
+				//matrix4x4<float> ret;
+				//ret.at(0, 0) = extend.x * (cy * cr);
+				//ret.at(0, 1) = extend.y * (sp * sy * cr - cp * sr);
+				//ret.at(0, 2) = extend.z * (cp * sy * cr + sp * sr);
+				//ret.at(0, 3) = -extend.z * origine.z * (cp * cr * sy + sp * sr) - extend.y * origine.y * (sp * cr * sy - cp * sr) - extend.x * origine.x * cr * cy + translate.x;
+
+				//ret.at(1, 0) = extend.x * (cy * sr);
+				//ret.at(1, 1) = extend.y * (sp * sy * sr + cp * cr);
+				//ret.at(1, 2) = extend.z * (cp * sy * sr - sp * cr);
+				//ret.at(1, 3) = -extend.z * origine.z * (cp * sr * sy - sp * cr) - extend.y * origine.y * (sp * sr * sy + cp * cr) - extend.x * origine.x * sr * cy + translate.y;
+
+				//ret.at(2, 0) = -extend.x * sy;
+				//ret.at(2, 1) = extend.y * (sp * cy);
+				//ret.at(2, 2) = extend.z * (cp * cy);
+				//ret.at(2, 3) = extend.z * origine.z * (cp * cy) - extend.y * origine.y * (sp * cy) - extend.x * origine.x * sy + translate.z;
+
+				//ret.at(3, 0) = 0;
+				//ret.at(3, 1) = 0;
+				//ret.at(3, 2) = 0;
+				//ret.at(3, 3) = 1;
+
+				////return static_cast<matrix4x4<float>>(vector::affine_transformation(origine, translate, rotate, extend));
+				//return ret;
 			}
 
 			void add_index(const suika::vector3<float>& origine, const suika::vector3<float>& translate, const suika::vector3<float>& rotate, const suika::vector3<float>& extend) {
@@ -200,11 +275,11 @@ namespace suika {
 							return;
 						}
 						if (void* const p = mapped.pData) {
-							std::memcpy(p, instance_matrix.data(), sizeof(DirectX::XMMATRIX) * instance_matrix.size());
+							std::memcpy(p, instance_matrix.data(), sizeof(matrix4x4<float>) * instance_matrix.size());
 						}
 						suika::d3d::pContext->Unmap(g_instanceMatrix.Get(), 0);
 					}
-					stride_ins[1] = sizeof(DirectX::XMMATRIX);
+					stride_ins[1] = sizeof(matrix4x4<float>);
 
 					ID3D11Buffer* buf[] = { g_vertexBuffer.Get(), g_instanceMatrix.Get() };
 					suika::d3d::pContext->IASetVertexBuffers(0, 2, buf, stride_ins, offset_ins);
@@ -212,7 +287,6 @@ namespace suika {
 					instance_matrix.resize(0);
 				}
 			}
-
 		}
 	}
 }

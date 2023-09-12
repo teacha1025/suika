@@ -16,7 +16,7 @@ namespace suika {
 
 	public:
 		matrix4x4() {
-			std::fill(vec[0], vec[4], 0);
+			std::fill(&vec[0][0], &vec[3][3], static_cast<T>(0));
 		}
 		matrix4x4(const std::vector<T>& ary) {
 			if (ary.size() != 16) {
@@ -908,7 +908,31 @@ namespace suika {
 		/// <returns>アフィン変換行列</returns>
 		template< concepts::numbers T>
 		matrix<T> affine_transformation(const vector3<T>& origine, const vector3<T>& transition, const vector3<T>& rot, const vector3<T>& scale) {
-			return translation<double>(transition.x, transition.y, transition.z) * rotation<double>(rot.z, rot.x, rot.y) * scalling<double>(scale.x, scale.y, scale.z) * translation<double>(-origine.x, -origine.y, -origine.z);
+			//return translation<double>(transition.x, transition.y, transition.z) * rotation<double>(rot.z, rot.x, rot.y) * scalling<double>(scale.x, scale.y, scale.z) * translation<double>(-origine.x, -origine.y, -origine.z);
+			double sp = std::sin(rot.x), sy = std::sin(rot.y), sr = std::sin(rot.z);
+			double cp = std::cos(rot.x), cy = std::cos(rot.y), cr = std::cos(rot.z);
+			matrix<T> ret(4,4,0);
+			ret.at(0, 0) = scale.x * (cy * cr);
+			ret.at(0,1)=scale.y* (sp * sy * cr - cp * sr);
+			ret.at(0,2)=scale.z* (cp * sy * cr + sp * sr);
+			ret.at(0,3)=-scale.z*origine.z*(cp*cr*sy+sp*sr)-scale.y*origine.y*(sp*cr*sy-cp*sr)-scale.x*origine.x*cr*cy+transition.x;
+		
+			ret.at(1,0)=scale.x* (cy * sr);
+			ret.at(1,1)=scale.y* (sp * sy * sr + cp * cr);
+			ret.at(1,2)=scale.z* (cp * sy * sr - sp * cr);
+			ret.at(1,3)=-scale.z*origine.z*(cp*sr*sy-sp*cr)-scale.y*origine.y*(sp*sr*sy+cp*cr)-scale.x*origine.x*sr*cy+transition.y;
+
+			ret.at(2,0)=-scale.x* sy;
+			ret.at(2,1)=scale.y* (sp * cy);
+			ret.at(2,2)=scale.z* (cp * cy);
+			ret.at(2,3)=scale.z*origine.z*(cp*cy)-scale.y*origine.y*(sp*cy)-scale.x*origine.x*sy+transition.z;
+
+			ret.at(3,0)=0;
+			ret.at(3,1)=0;
+			ret.at(3,2)=0;
+			ret.at(3,3)=1;
+		
+			return ret;
 		}
 	}
 }

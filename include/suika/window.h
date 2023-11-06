@@ -15,8 +15,8 @@ namespace suika {
 	namespace window {
 		using id = HWND;
 		extern id default_id;
-		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title);
-		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title, const point<uint>& pos);
+		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title, bool vsync);
+		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title, bool vsync, const point<uint>& pos);
 		bool process();
 		void flip();
 		void clear();
@@ -63,6 +63,13 @@ namespace suika {
 		/// <param name="id">ウィンドウ識別ID</param>
 		void canvas(const std::shared_ptr<suika::canvas>& canvas, id id = default_id);
 
+		/// <summary>
+		/// 垂直同期の設定
+		/// </summary>
+		/// <param name="flag">垂直同期をするか</param>
+		/// <param name="id">ウィンドウ識別ID</param>
+		void vsync(bool flag, id id = default_id);
+
 
 		/// <summary>
 		/// ウィンドウの大きさ取得
@@ -104,6 +111,13 @@ namespace suika {
 		/// <param name="id">ウィンドウ識別ID</param>
 		/// <returns>ウィンドウタイトル</returns>
 		string title(id id = default_id);
+
+		/// <summary>
+		/// 垂直同期設定の取得
+		/// </summary>
+		/// <param name="id">ウィンドウ識別ID</param>
+		/// <returns>垂直同期をしているか</returns>
+		bool vsync(id id = default_id);
 
 		/// <summary>
 		/// ウィンドウの描画キャンバスを取得

@@ -70,16 +70,13 @@ namespace suika {
 			void add_index(const suika::vector3<float>& origine, const suika::vector3<float>& translate, const suika::vector3<float>& rotate, const suika::vector3<float>& extend);
 			template<class T>
 			void set_vertex_instance(const std::vector<T>& vertices) {
-				auto fl = [&]() {
-					flush();
-					now_vertex = vertices;
-				};
 				if (now_vertex.has_value() && now_vertex.type() == typeid(std::vector<T>)) {
 					if (std::any_cast<const std::vector<T>&>(now_vertex) == vertices) {
 						return;
 					}
 				}
-				fl();
+				flush();
+				now_vertex = vertices;
 
 				const D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
 				{

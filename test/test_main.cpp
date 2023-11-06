@@ -8,6 +8,7 @@
 void init() {
 	suika::window::background(suika::pallet::skyblue);
 	suika::window::title("APP");
+	suika::window::vsync(true);
 }
 
 struct f4 {
@@ -42,14 +43,6 @@ int main() {
 
 	std::vector<suika::vertex::vertex_2d> vertices = create_vertex({ 64,64 }, { w,h });
 
-	// 四角形のインデックスを定義
-	std::vector<suika::uint16> index =
-	{
-		0, 1, 2,
-		2, 1, 3,
-	};
-	suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-	//auto update = [&]() {suika::window::flip(); suika::window::clear(); return suika::window::process(); };
 	int i = 0;
 
 	suika::d3d::texture::texture tex("test.bmp");
@@ -60,32 +53,23 @@ int main() {
 	suika::set_vs("texture");
 	suika::set_ps("texture");
 #endif
-	//suika::texture tex;
 
 	suika::vector3<float> v[32][32];
 	for (int x = 0; x < 32; x++) {
 		for (int y = 0; y < 32; y++) {
 			v[x][y] = suika::vector3<float>{ x * w, y * h, 0 };
-			//suika::d3d::texture::set(tex);
-			//suika::d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);
 		}
 	}
-	//sizeof(suika::vector2<float>);
-	//sizeof(f4);
-	//sizeof(float);
+
+	suika::rect r({ w - 1,h - 1 });
+
 	while (suika::sys::update()) {
 		suika::window::title(std::format("{:4.1f}fps", suika::sys::fps()));
-		//suika::d3d::texture::set(tex);
 		for (int y = 0; y < 32; y++) {
 			for (int x = 0; x < 32; x++) {
-				//suika::d3d::vertex::set_vertex_instance(create_vertex({ 0,0 }, { w,h }));
-				//suika::d3d::vertex::add_index({ 0,0,0 }, v[x][y], {0,0,0}, {1,1,1});
-
-				suika::rect({w,h}).at(v[x][y]).colored(suika::pallet::white).draw();
+				r.at(v[x][y]).colored(suika::pallet::gray).draw();
 			}
 		}
-		
-		//suika::d3d::vertex::flush();
 #if 0
 		if (i == 60) {
 			fd.Color = suika::pallet::yellow;

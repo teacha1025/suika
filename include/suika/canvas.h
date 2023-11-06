@@ -12,7 +12,7 @@ namespace suika {
 
 		void clear();
 		void set();
-		void present();
+		void present(bool vsync = false);
 	};
 
 	std::shared_ptr<canvas> make_canvas(const point<float>& size, const point<float>& top, HWND hWnd, const color& fillcolor);

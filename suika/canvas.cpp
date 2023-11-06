@@ -40,10 +40,10 @@ namespace suika {
 		d3d::pContext->OMSetRenderTargets(1u, rtv.GetAddressOf(), nullptr);
 		d3d::pContext->RSSetViewports(1u, &vp);
 	}
-	void canvas::present() {
+	void canvas::present(bool vsync) {
 		auto& sw = d3d::pSwapChain[id];
 
-		sw->Present(1, 0);
+		sw->Present(vsync ? 1 : 0, 0);
 	}
 
 	std::shared_ptr<canvas> make_canvas(const point<float>& size, const point<float>& top, HWND hWnd, const color& fillcolor) {

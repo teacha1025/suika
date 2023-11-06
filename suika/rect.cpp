@@ -4,38 +4,23 @@
 #include "../include/suika/rect.h"
 #include "../include/suika/matrix.h"
 
+static const std::vector<suika::uint16> index =
+{
+	0, 1, 2,
+	2, 1, 3,
+};
+
 namespace suika {
 #if 1
+	auto vec2xmvec(const vector3<float>& v) {
+		return DirectX::XMVECTOR{ v.x, v.y, v.z };
+	}
 	void rect::draw() {
-		auto vec2xmvec = [](const vector3<float>& v) {
-			return DirectX::XMVECTOR{ v.x, v.y, v.z };
-		};
-		auto affine = [&](const point<int>& uv) {
-			point<float> _p = this->_size * uv;
-			float4 p(_p.x, _p.y, 0, 0);
-
-			return vertex::vertex_2d{ .position = p, .color = {.r = this->_color.r, .g = this->_color.g, .b = this->_color.b, .a = this->_color.a}, .uv = uv };
-		};
-		auto create_vertex = [&]() {
-			return std::vector<suika::vertex::vertex_2d> {
-				affine({ 0,0 }),
-				affine({ 1,0 }),
-				affine({ 0,1 }),
-				affine({ 1,1 }),
-			};
-		};
-		std::vector<suika::uint16> index =
-		{
-			0, 1, 2,
-			2, 1, 3,
-		};
-
 		set_vs(this->_shaders.vs);
 		set_ps(this->_shaders.ps);
 		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::rect);
-		auto vtx = create_vertex();
-		d3d::vertex::set_vertex_instance(vtx);
+		d3d::vertex::set_vertex_instance(create_vertex(this->_size));
 		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend);
 	}
 #endif

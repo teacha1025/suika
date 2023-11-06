@@ -53,7 +53,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		suika::d3d::blend::init();
 		suika::d3d::vertex::init();
 
-		if (suika::window::create(suika::window::size(nullptr), suika::window::extends(nullptr), suika::window::background(nullptr), suika::window::title(nullptr)) == nullptr) {
+		if (suika::window::create(suika::window::size(nullptr), suika::window::extends(nullptr), suika::window::background(nullptr), suika::window::title(nullptr), suika::window::vsync(nullptr)) == nullptr) {
 			return 0;
 		}
 

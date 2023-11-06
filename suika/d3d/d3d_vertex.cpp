@@ -75,7 +75,6 @@ namespace suika {
 				return ret;
 			}
 
-			//main.cppÇ≈èâä˙âª
 			void init() {
 				constexpr uint32 BUFFER_SIZE = 65536U;
 				{
@@ -210,41 +209,9 @@ namespace suika {
 			}
 
 			matrix4x4<float> calc_matrix(const suika::vector3<float>& origine, const suika::vector3<float>& translate, const suika::vector3<float>& rotate, const suika::vector3<float>& extend) {
-				/*auto r = DirectX::XMMatrixRotationRollPitchYaw(rotate.z, rotate.x, rotate.y);
-				auto t = DirectX::XMMatrixTranslation(translate.x, translate.y, translate.z);
-				auto e = DirectX::XMMatrixScaling(extend.x, extend.y, extend.z);
-
-				auto m = e * r * t;*/
-
 				auto m = (DirectX::XMMatrixAffineTransformation({ extend.x,extend.y,extend.z },{origine.x,origine.y,origine.z},DirectX::XMQuaternionRotationRollPitchYawFromVector({rotate.x,rotate.y,rotate.z}),{translate.x,translate.y,translate.z}));
 
 				return (to_matrix4x4<float>(DirectX::XMMatrixTranspose(m)));
-
-				//const double sp = std::sin(rotate.x), sy = std::sin(rotate.y), sr = std::sin(rotate.z);
-				//const double cp = std::cos(rotate.x), cy = std::cos(rotate.y), cr = std::cos(rotate.z);
-				//matrix4x4<float> ret;
-				//ret.at(0, 0) = extend.x * (cy * cr);
-				//ret.at(0, 1) = extend.y * (sp * sy * cr - cp * sr);
-				//ret.at(0, 2) = extend.z * (cp * sy * cr + sp * sr);
-				//ret.at(0, 3) = -extend.z * origine.z * (cp * cr * sy + sp * sr) - extend.y * origine.y * (sp * cr * sy - cp * sr) - extend.x * origine.x * cr * cy + translate.x;
-
-				//ret.at(1, 0) = extend.x * (cy * sr);
-				//ret.at(1, 1) = extend.y * (sp * sy * sr + cp * cr);
-				//ret.at(1, 2) = extend.z * (cp * sy * sr - sp * cr);
-				//ret.at(1, 3) = -extend.z * origine.z * (cp * sr * sy - sp * cr) - extend.y * origine.y * (sp * sr * sy + cp * cr) - extend.x * origine.x * sr * cy + translate.y;
-
-				//ret.at(2, 0) = -extend.x * sy;
-				//ret.at(2, 1) = extend.y * (sp * cy);
-				//ret.at(2, 2) = extend.z * (cp * cy);
-				//ret.at(2, 3) = extend.z * origine.z * (cp * cy) - extend.y * origine.y * (sp * cy) - extend.x * origine.x * sy + translate.z;
-
-				//ret.at(3, 0) = 0;
-				//ret.at(3, 1) = 0;
-				//ret.at(3, 2) = 0;
-				//ret.at(3, 3) = 1;
-
-				////return static_cast<matrix4x4<float>>(vector::affine_transformation(origine, translate, rotate, extend));
-				//return ret;
 			}
 
 			void add_index(const suika::vector3<float>& origine, const suika::vector3<float>& translate, const suika::vector3<float>& rotate, const suika::vector3<float>& extend) {

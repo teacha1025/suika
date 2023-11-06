@@ -55,6 +55,7 @@ namespace suika {
 			std::shared_ptr<suika::canvas> _canvas = nullptr;
 			HINSTANCE _hinstance = NULL;
 			bool _isclosed = false;
+			bool _vsync = false;
 			MSG msg{};
 		};
 		std::unordered_map<id, window> window_list;
@@ -99,14 +100,14 @@ namespace suika {
 			window_list.insert(std::make_pair(static_cast<suika::window::id>(nullptr), window{}));
 		}
 
-		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title) {
+		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title, bool vsync) {
 			static const uint x = (uint)GetSystemMetrics(SM_CXSCREEN);
 			static const uint y = (uint)GetSystemMetrics(SM_CYSCREEN);
 
 			auto lt = point<uint>(x, y); lt -= size; lt /= 2u;
-			return create(size, rate, bg, title, lt);
+			return create(size, rate, bg, title, vsync, lt);
 		}
-		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title, const point<uint>& pos) {
+		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title, bool vsync, const point<uint>& pos) {
 			auto			  wtitle = title.to_wstring();
 			std::wstring_view title_view = wtitle;
 			HINSTANCE hinst = GetModuleHandle(NULL);
@@ -148,6 +149,7 @@ namespace suika {
 			wnd._bg.now.a = 255;
 			wnd._fullscreen_flag = false;
 			wnd._canvas = make_canvas(size,{0,0}, hwnd, wnd._bg.now);
+			wnd._vsync = vsync;
 
 			if (window_list.size() == 1ull) {
 				default_id = hwnd;
@@ -186,7 +188,7 @@ namespace suika {
 				return;
 			}
 			for (auto& w : window_list) {
-				w.second._canvas->present();
+				w.second._canvas->present(w.second._vsync);
 			}
 		}
 
@@ -236,6 +238,12 @@ namespace suika {
 			adapt_param();
 		}
 
+		void vsync(bool vsync, id id) {
+			auto& p = param(id);
+			p._vsync = vsync;
+			adapt_param();
+		}
+
 		point<uint> size(id id) {
 			auto p = param(id);
 			return p._size;
@@ -269,6 +277,11 @@ namespace suika {
 		std::shared_ptr<suika::canvas> canvas(id id) {
 			auto p = param(id);
 			return p._canvas;
+		}
+
+		bool vsync(id id) {
+			auto p = param(id);
+			return p._vsync;
 		}
 
 		

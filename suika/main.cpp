@@ -6,6 +6,7 @@
 #include "../include/suika/pallet.h"
 #include "../include/suika/vertex.h"
 #include "../include/suika/cbuffer.h"
+#include "../include/suika/blend.h"
 
 #include "d3d/info.hpp"
 #include "d3d/device.hpp"
@@ -52,15 +53,21 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 		suika::d3d::blend::init();
 		suika::d3d::vertex::init();
-
-		if (suika::window::create(suika::window::size(nullptr), suika::window::extends(nullptr), suika::window::background(nullptr), suika::window::title(nullptr), suika::window::vsync(nullptr)) == nullptr) {
+		auto wid = suika::window::create(suika::window::size(nullptr), suika::window::extends(nullptr), suika::window::background(nullptr), suika::window::title(nullptr), suika::window::vsync(nullptr));
+		if (wid == nullptr) {
 			return 0;
 		}
+
+		
 
 		//suika::window::background(suika::color(0, 0, 0));
 		//suika::window::title("APP");
 
 		suika::window::canvas().get()->set();
+
+		auto cb = suika::set_view(suika::window::size(wid));
+		suika::set_cbuffer(sizeof(cb), &cb, 0);
+		suika::d3d::blend::blends[suika::blend::alpha].set();
 
 		auto res = main();
 

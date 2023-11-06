@@ -29,6 +29,8 @@ namespace suika {
 				string vs;
 				string ps;
 			} _shaders;
+
+			virtual std::vector<suika::vertex::vertex_2d> create_vertex() = 0;
 		public:
 			constexpr ishape() :
 				_transition({ 0, 0, 0 }),

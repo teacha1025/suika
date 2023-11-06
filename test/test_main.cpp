@@ -11,9 +11,6 @@ void init() {
 	suika::window::vsync(true);
 }
 
-struct f4 {
-	float a, b, c, d;
-};
 
 int main() {
 	auto cid = suika::window::canvas().get()->id;
@@ -26,50 +23,23 @@ int main() {
 	fd.font = "游明朝";
 	suika::d3d::dwrite::set(fd, cid);
 
-	auto cb = suika::set_view({ 1280,960 });
-	suika::set_cbuffer(sizeof(cb), &cb, 0);
-	suika::d3d::blend::blends[suika::blend::alpha].set();
+	suika::texture tex("test.bmp");
 
-	define w = 32, h = 32;
-
-	auto create_vertex = [](suika::point<float> pos, suika::point<float> size) {
-		return std::vector<suika::vertex::vertex_2d> {
-			suika::vertex::create_2d(suika::vector2<float>{pos.x, pos.y}, suika::pallet::red, {0,0}),
-			suika::vertex::create_2d(suika::vector2<float>{pos.x + size.x, pos.y}, suika::pallet::yellow, {1,0}),
-			suika::vertex::create_2d(suika::vector2<float>{pos.x, pos.y + size.y}, suika::pallet::blue, {0,1}),
-			suika::vertex::create_2d(suika::vector2<float>{pos.x + size.x, pos.y + size.y}, suika::pallet::green, {1,1}),
-		};
-	};
-
-	std::vector<suika::vertex::vertex_2d> vertices = create_vertex({ 64,64 }, { w,h });
-
+	define w = 64, h = 64;
 	int i = 0;
 
-	suika::d3d::texture::texture tex("test.bmp");
-#if 1
-	suika::set_vs("shape");
-	suika::set_ps("shape");
-#else
-	suika::set_vs("texture");
-	suika::set_ps("texture");
-#endif
-
-	suika::vector3<float> v[32][32];
-	for (int x = 0; x < 32; x++) {
-		for (int y = 0; y < 32; y++) {
-			v[x][y] = suika::vector3<float>{ x * w, y * h, 0 };
-		}
-	}
-
+	//suika::d3d::texture::texture tex("test.bmp");
 	suika::rect r({ w - 1,h - 1 });
 
 	while (suika::sys::update()) {
 		suika::window::title(std::format("{:4.1f}fps", suika::sys::fps()));
-		for (int y = 0; y < 32; y++) {
-			for (int x = 0; x < 32; x++) {
-				r.at(v[x][y]).colored(suika::pallet::gray).draw();
+		for (int y = 0; y < 16; y++) {
+			for (int x = 0; x < 16; x++) {
+				//r.at({x*w, y*h}).colored(suika::pallet::gray).draw();
+				tex.centered({ w / 2,h / 2 }).at({ x * w + w / 2,y * h + h / 2 }).rotated(i / 20.0f).draw();
 			}
 		}
+		i++;
 #if 0
 		if (i == 60) {
 			fd.Color = suika::pallet::yellow;

@@ -772,7 +772,7 @@ public:
 				1.0,
 				});
 
-			double roll = PI, pitch = PI, yaw = PI;
+			float roll = PI_F, pitch = PI_F, yaw = PI_F;
 			matrix<int> ri = vector::rotation<int>(roll, pitch, yaw);
 			auto ai = to_matrix<int>(DirectX::XMMatrixRotationRollPitchYaw(pitch,yaw,roll));
 			Assert::IsTrue(ai == ri);

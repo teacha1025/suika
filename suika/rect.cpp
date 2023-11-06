@@ -2,7 +2,6 @@
 #include "d3d/vertex.h"
 #include "../include/suika/shader.h"
 #include "../include/suika/rect.h"
-#include "../include/suika/matrix.h"
 
 static const std::vector<suika::uint16> index =
 {
@@ -20,7 +19,7 @@ namespace suika {
 		set_ps(this->_shaders.ps);
 		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::rect);
-		d3d::vertex::set_vertex_instance(create_vertex(this->_size));
+		d3d::vertex::set_vertex_instance(create_vertex());
 		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend);
 	}
 #endif

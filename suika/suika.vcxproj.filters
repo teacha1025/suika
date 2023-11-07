@@ -178,6 +178,9 @@
     <Filter Include="suika\exception">
       <UniqueIdentifier>{ff93511c-6246-4cf1-af5c-2f4dc83cbe0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="suika\input">
+      <UniqueIdentifier>{1464e3b3-e7c3-4006-9ee3-c54e2b112ca3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\suika\pallet.h">
@@ -329,6 +332,12 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\except.h">
       <Filter>suika\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\input_base.h">
+      <Filter>suika\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\keyboard.h">
+      <Filter>suika\input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

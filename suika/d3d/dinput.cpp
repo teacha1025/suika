@@ -35,7 +35,7 @@ namespace suika {
 					return false;
 				}
 
-				er = key_dev->SetCooperativeLevel(hWnd, DISCL_NONEXCLUSIVE | DISCL_BACKGROUND);
+				er = key_dev->SetCooperativeLevel(hWnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
 				if (FAILED(er)) {
 					log_d3d.error("Failed to SetCooperativeLevel");
 					log_d3d.result(er);
@@ -43,6 +43,9 @@ namespace suika {
 				}
 
 				key_dev->Acquire();
+
+				log_d3d.info("Create DirectInput Device");
+				return true;
 			}
 
 			void fin() {
@@ -51,14 +54,15 @@ namespace suika {
 			}
 
 			void update(bool key_reset) {
+				key_dev->Acquire();
 				auto er = key_dev->GetDeviceState(256, key);
 				if (FAILED(er)) {
 					if (key_reset && er == DIERR_INPUTLOST) {
 						key_dev->Acquire();
 						update(false);
 					}
-					log_d3d.error("Failed to get key state");
-					log_d3d.result(er);
+					//log_d3d.error("Failed to get key state");
+					//log_d3d.result(er);
 					return;
 				}
 			}

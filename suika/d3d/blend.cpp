@@ -16,7 +16,7 @@ namespace suika {
 				pDevice->CreateBlendState(&desc, &state);
 			}
 			void blend_state::set() {
-				static const FLOAT factor[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
+				static const FLOAT factor[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 				pContext->OMSetBlendState(state.Get(), factor, 0xffffffff);
 			}
 

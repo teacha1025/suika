@@ -6,6 +6,7 @@
 #include "point.h"
 #include "def.h"
 #include "string.h"
+#include "blend.h"
 
 namespace suika {
 	namespace detail {
@@ -24,6 +25,9 @@ namespace suika {
 
 			//拡大率
 			vector3<double> _extend;
+			
+			//ブレンド
+			blend _blend;
 
 			struct shaders {
 				string vs;
@@ -36,7 +40,8 @@ namespace suika {
 				_transition({ 0, 0, 0 }),
 				_center({ 0, 0, 0 }),
 				_rotation({ 0, 0, 0 }),
-				_extend({ 1.0, 1.0, 1.0 }) {}
+				_extend({ 1.0, 1.0, 1.0 }),
+				_blend(blend::none){}
 
 			//virtual string to_string() const = 0;
 
@@ -186,6 +191,22 @@ namespace suika {
 			/// <param name="rate">拡大率</param>
 			virtual T& extended(double rate)& {
 				_extend = { rate, rate, rate };
+				return static_cast<T&>(*this);
+			}
+			/// <summary>
+			/// ブレンドの設定
+			/// </summary>
+			/// <param name="type">ブレンドの種類</param>
+			virtual T blended(blend type)&& {
+				_blend = type;
+				return static_cast<T&&>(std::move(*this));
+			}
+			/// <summary>
+			/// ブレンドの設定
+			/// </summary>
+			/// <param name="type">ブレンドの種類</param>
+			virtual T& blended(blend type)& {
+				_blend = type;
 				return static_cast<T&>(*this);
 			}
 			/// <summary>

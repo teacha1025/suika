@@ -77,6 +77,9 @@
     <ClCompile Include="d3d\dinput.cpp">
       <Filter>d3d\dinput</Filter>
     </ClCompile>
+    <ClCompile Include="keyboard.cpp">
+      <Filter>suika\input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -183,6 +186,9 @@
     </Filter>
     <Filter Include="d3d\dinput">
       <UniqueIdentifier>{6c1d956e-6aa6-4ff8-b35a-dcb9eca08820}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\input">
+      <UniqueIdentifier>{864ce1b5-399f-4ee8-8efa-953178605f93}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +344,12 @@
     </ClInclude>
     <ClInclude Include="d3d\dinput.hpp">
       <Filter>d3d\dinput</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\input_base.h">
+      <Filter>suika\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\keyboard.h">
+      <Filter>suika\input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

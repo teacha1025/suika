@@ -22,10 +22,10 @@ namespace suika {
 
 	std::vector<suika::vertex::vertex_2d> texture::create_vertex() {
 		return {
-				vertex::create_2d({0.f,0.f},pallet::white,{0,0}),
-				vertex::create_2d({this->_size.x,0.f},pallet::white,{1,0}),
-				vertex::create_2d({0.f,this->_size.y},pallet::white,{0,1}),
-				vertex::create_2d({this->_size.x,this->_size.y},pallet::white,{1,1}),
+				vertex::create_2d({0.f,0.f},{0,0,0,127},{0,0}),
+				vertex::create_2d({this->_size.x,0.f},{0,0,0,127},{1,0}),
+				vertex::create_2d({0.f,this->_size.y},{0,0,0,127},{0,1}),
+				vertex::create_2d({this->_size.x,this->_size.y},{0,0,0,127},{1,1}),
 		};
 	}
 
@@ -41,6 +41,7 @@ namespace suika {
 	void texture::draw() {
 		set_vs(this->_shaders.vs);
 		set_ps(this->_shaders.ps);
+		suika::d3d::blend::blends[_blend].set();
 		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		suika::d3d::texture::set(_tex);
 		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::rect);

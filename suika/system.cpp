@@ -2,9 +2,18 @@
 
 #include "..\include\suika\system.h"
 #include "..\include\suika\window.h"
+
+#include "..\include\suika\keyboard.h"
+
 #include "d3d\vertex.h"
+#include "d3d\dinput.hpp"
 
 namespace suika {
+	namespace keyboard {
+		void update();
+	}
+
+
 	namespace sys {
 		bool exit_flag = false;
 		bool stop_flag = false;
@@ -32,6 +41,11 @@ namespace suika {
 			d3d::vertex::flush();
 			window::flip();
 			window::clear();
+
+			d3d::dinput::update();
+
+			keyboard::update();
+
 			return window::process();
 		}
 

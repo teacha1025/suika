@@ -179,6 +179,7 @@
     <ClCompile Include="d3d\d3d_texture.cpp" />
     <ClCompile Include="d3d\viewport.cpp" />
     <ClCompile Include="d3d\vs.cpp" />
+    <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matrix.cpp" />

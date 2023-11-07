@@ -27,13 +27,16 @@ namespace suika {
 	namespace window {
 		void init();
 	}
+	namespace keyboard {
+		void init();
+	}
 	namespace d3d {
 		namespace vertex {
 			void init();
 		}
 
 		namespace dinput {
-			void init(HWND hWnd);
+			bool init(HWND hWnd);
 		}
 	}
 }
@@ -43,7 +46,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	try {
 		suika::window::init();
 		init();
-		suika::log.init();
+		if (!suika::log.init()) {
+			return 0;
+		}
 		if (!suika::d3d::init()) {
 			suika::log.error("d3d error");
 			return 0;
@@ -70,6 +75,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		suika::window::canvas().get()->set();
 
 		suika::d3d::dinput::init(wid);
+		suika::keyboard::init();
 
 		auto cb = suika::set_view(suika::window::size(wid));
 		suika::set_cbuffer(sizeof(cb), &cb, 0);

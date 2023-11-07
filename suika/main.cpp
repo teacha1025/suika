@@ -31,6 +31,10 @@ namespace suika {
 		namespace vertex {
 			void init();
 		}
+
+		namespace dinput {
+			void init(HWND hWnd);
+		}
 	}
 }
 
@@ -64,6 +68,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//suika::window::title("APP");
 
 		suika::window::canvas().get()->set();
+
+		suika::d3d::dinput::init(wid);
 
 		auto cb = suika::set_view(suika::window::size(wid));
 		suika::set_cbuffer(sizeof(cb), &cb, 0);

@@ -39,15 +39,6 @@ namespace suika {
 	}
 
 	void texture::draw() {
-		/*std::vector<vertex::vertex_2d> vertices = {
-			vertex::create_2d(suika::vector2<float>{x,y}, pallet::black, {0,0}),
-			vertex::create_2d(suika::vector2<float>{x + w,y}, pallet::black, {1,0}),
-			vertex::create_2d(suika::vector2<float>{x,y + h}, pallet::black, {0,1}),
-			vertex::create_2d(suika::vector2<float>{x + w,y + h}, pallet::black, {1,1}),
-		};
-		suika::vertex::set(vertices, index, suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		suika::d3d::texture::set(tex);
-		suika::d3d::pContext->DrawIndexed(static_cast<UINT>(index.size()), 0, 0);*/
 		set_vs(this->_shaders.vs);
 		set_ps(this->_shaders.ps);
 		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);

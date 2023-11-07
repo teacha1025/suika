@@ -171,6 +171,7 @@
     <ClCompile Include="d3d\c_buffer.cpp" />
     <ClCompile Include="d3d\d3d_vertex.cpp" />
     <ClCompile Include="d3d\device.cpp" />
+    <ClCompile Include="d3d\dinput.cpp" />
     <ClCompile Include="d3d\dwrite.cpp" />
     <ClCompile Include="d3d\ps.cpp" />
     <ClCompile Include="d3d\RTV.cpp" />
@@ -235,6 +236,7 @@
     <ClInclude Include="d3d\blend.hpp" />
     <ClInclude Include="d3d\cbuffer.hpp" />
     <ClInclude Include="d3d\device.hpp" />
+    <ClInclude Include="d3d\dinput.hpp" />
     <ClInclude Include="d3d\dwrite.h" />
     <ClInclude Include="d3d\info.hpp" />
     <ClInclude Include="d3d\ps.hpp" />

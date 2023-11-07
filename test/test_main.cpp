@@ -36,7 +36,7 @@ int main() {
 		for (int y = 0; y < 16; y++) {
 			for (int x = 0; x < 16; x++) {
 				//r.at({x*w, y*h}).colored(suika::pallet::gray).draw();
-				tex.centered({ w / 2,h / 2 }).at({ x * w + w / 2,y * h + h / 2 }).rotated(i / 20.0f).draw();
+				tex.centered({ 0, 0}).at({ x * w + w / 2,y * h + h / 2 }).rotated(i / 20.0f).draw();
 			}
 		}
 		i++;

@@ -74,6 +74,9 @@
     <ClCompile Include="matrix.cpp">
       <Filter>suika\matrix</Filter>
     </ClCompile>
+    <ClCompile Include="d3d\dinput.cpp">
+      <Filter>d3d\dinput</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -178,8 +181,8 @@
     <Filter Include="suika\exception">
       <UniqueIdentifier>{ff93511c-6246-4cf1-af5c-2f4dc83cbe0f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="suika\input">
-      <UniqueIdentifier>{1464e3b3-e7c3-4006-9ee3-c54e2b112ca3}</UniqueIdentifier>
+    <Filter Include="d3d\dinput">
+      <UniqueIdentifier>{6c1d956e-6aa6-4ff8-b35a-dcb9eca08820}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -333,11 +336,8 @@
     <ClInclude Include="..\include\suika\except.h">
       <Filter>suika\exception</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\suika\input_base.h">
-      <Filter>suika\input</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\suika\keyboard.h">
-      <Filter>suika\input</Filter>
+    <ClInclude Include="d3d\dinput.hpp">
+      <Filter>d3d\dinput</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

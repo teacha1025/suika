@@ -7,7 +7,7 @@ namespace suika {
 	class rect : public detail::ishape<rect> {
 	protected:
 		point<float> _size = { 64,64 };
-		color _color = pallet::white;
+		color_f _color = pallet::white;
 
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override {
 			return {
@@ -25,11 +25,11 @@ namespace suika {
 
 		virtual void draw() override;
 
-		virtual rect colored(const color& color)&& {
+		virtual rect colored(const color_f& color)&& {
 			this->_color = color;
 			return static_cast<rect&&>(std::move(*this));
 		}
-		virtual rect& colored(const color& color)& {
+		virtual rect& colored(const color_f& color)& {
 			this->_color = color;
 			return static_cast<rect&>(*this);
 		}
@@ -41,6 +41,14 @@ namespace suika {
 		virtual rect& resized(const point<float>& size)& {
 			this->_size = size;
 			return static_cast<rect&>(*this);
+		}
+
+		virtual point<float> size() const {
+			return this->_size;
+		}
+
+		virtual color_f color() const {
+			return this->_color;
 		}
 		
 	};

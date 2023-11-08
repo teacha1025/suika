@@ -10,18 +10,21 @@ namespace suika {
 	namespace d3d {
 		namespace dinput {
 			ComPtr<IDirectInputDevice8> key_dev;
-			ComPtr<IDirectInput8> input;
+			ComPtr<IDirectInputDevice8> mouse_dev;
+			ComPtr<IDirectInput8> key_input;
+			ComPtr<IDirectInput8> mouse_input;
+			DIMOUSESTATE2 mouse_state;
 			BYTE key[256];
 
 			bool init(HWND hWnd) {
-				auto er = DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)(input.GetAddressOf()), NULL);
+				auto er = DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)(key_input.GetAddressOf()), NULL);
 				if (FAILED(er)) {
 					log_d3d.error("Failed to create DInput");
 					log_d3d.result(er);
 					return false;
 				}
 
-				er = input->CreateDevice(GUID_SysKeyboard, key_dev.GetAddressOf(), NULL);
+				er = key_input->CreateDevice(GUID_SysKeyboard, key_dev.GetAddressOf(), NULL);
 				if (FAILED(er)) {
 					log_d3d.error("Failed to create DInputDevice");
 					log_d3d.result(er);
@@ -42,19 +45,52 @@ namespace suika {
 					return false;
 				}
 
+
+
+				er = DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)(mouse_input.GetAddressOf()), NULL);
+				if (FAILED(er)) {
+					log_d3d.error("Failed to create DInput");
+					log_d3d.result(er);
+					return false;
+				}
+
+				er = mouse_input->CreateDevice(GUID_SysMouse, mouse_dev.GetAddressOf(), NULL);
+				if (FAILED(er)) {
+					log_d3d.error("Failed to create DInputDevice");
+					log_d3d.result(er);
+					return false;
+				}
+
+				er = mouse_dev->SetDataFormat(&c_dfDIMouse);
+				if (FAILED(er)) {
+					log_d3d.error("Failed to SetDataFormat");
+					log_d3d.result(er);
+					return false;
+				}
+
+				er = mouse_dev->SetCooperativeLevel(hWnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
+				if (FAILED(er)) {
+					log_d3d.error("Failed to SetCooperativeLevel");
+					log_d3d.result(er);
+					return false;
+				}
+
 				key_dev->Acquire();
+				mouse_dev->Acquire();
 
 				log_d3d.info("Create DirectInput Device");
 				return true;
 			}
 
 			void fin() {
-				//key_dev->Unacquire();
+				key_dev->Unacquire();
+				mouse_dev->Unacquire();
 				//key_dev->Release();
 			}
 
 			void update(bool key_reset) {
 				key_dev->Acquire();
+				mouse_dev->Acquire();
 				auto er = key_dev->GetDeviceState(256, key);
 				if (FAILED(er)) {
 					if (key_reset && er == DIERR_INPUTLOST) {
@@ -62,6 +98,17 @@ namespace suika {
 						update(false);
 					}
 					//log_d3d.error("Failed to get key state");
+					//log_d3d.result(er);
+					return;
+				}
+				memset(&mouse_state.rgbButtons, 0, sizeof(BYTE)*8);
+				er = mouse_dev->GetDeviceState(sizeof(DIMOUSESTATE2), &mouse_state);
+				if (FAILED(er)) {
+					if (key_reset && er == DIERR_INPUTLOST) {
+						mouse_dev->Acquire();
+						update(false);
+					}
+					//log_d3d.error("Failed to get mouse state");
 					//log_d3d.result(er);
 					return;
 				}

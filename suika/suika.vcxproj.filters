@@ -80,6 +80,9 @@
     <ClCompile Include="keyboard.cpp">
       <Filter>suika\input</Filter>
     </ClCompile>
+    <ClCompile Include="mouse.cpp">
+      <Filter>suika\input</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -349,6 +352,9 @@
       <Filter>suika\input</Filter>
     </ClInclude>
     <ClInclude Include="..\include\suika\keyboard.h">
+      <Filter>suika\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\mouse.h">
       <Filter>suika\input</Filter>
     </ClInclude>
   </ItemGroup>

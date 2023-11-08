@@ -3,7 +3,7 @@ namespace suika
 	struct VSInput
 	{
 		float4 position : POSITION;
-		uint4 color : COLOR0;
+        float4 color : COLOR0;
 		float2 uv : TEXCOORD0;
 		
 		float4x4 InstanceMatrix : MATRIX;
@@ -35,7 +35,7 @@ suika::PSInput vs_main( suika::VSInput input )
     pos = mul(pos,  mt);
 
 	output.position = pos;
-    output.color = float4(input.color.x / 255.0f, input.color.y / 255.0f, input.color.z / 255.0f, input.color.w / 255.0f);
+    output.color = input.color;
 	output.uv = input.uv;
     return output;
 }

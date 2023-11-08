@@ -37,6 +37,7 @@ namespace suika {
 
 		namespace dinput {
 			bool init(HWND hWnd);
+			void fin();
 		}
 	}
 }
@@ -85,6 +86,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 		suika::log.info("fin");
 		suika::d3d::dwrite::free();
+		suika::d3d::dinput::fin();
 
 		if (SUCCEEDED(hr_init)) {
 			CoUninitialize();

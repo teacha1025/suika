@@ -102,9 +102,9 @@ namespace suika {
 
 			return S_OK;
 		}
-		void vertex_shader::create(const string& input, const string& name) {
+		void vertex_shader::create(const string& key_input, const string& name) {
 			ComPtr<ID3DBlob> vblob;
-			auto er = CompileShaderFromFile(input.to_wstring().data(), "vs_main", "vs_5_0", &vblob);
+			auto er = CompileShaderFromFile(key_input.to_wstring().data(), "vs_main", "vs_5_0", &vblob);
 			if (FAILED(er)) {
 				log_d3d.error("Failed to Compile VertexShader");
 				log_d3d.result(er);
@@ -112,10 +112,10 @@ namespace suika {
 			}
 			create(vblob.Get()->GetBufferPointer(), vblob.Get()->GetBufferSize(), name);
 		}
-		void vertex_shader::create(LPCVOID input, size_t size, const string& name) {
-			auto er = pDevice->CreateVertexShader(input, size, nullptr, &pVS);
+		void vertex_shader::create(LPCVOID key_input, size_t size, const string& name) {
+			auto er = pDevice->CreateVertexShader(key_input, size, nullptr, &pVS);
 			ComPtr<ID3D11ShaderReflection> pReflector;
-			er = D3DReflect(input, size, IID_ID3D11ShaderReflection, (void**)pReflector.GetAddressOf());
+			er = D3DReflect(key_input, size, IID_ID3D11ShaderReflection, (void**)pReflector.GetAddressOf());
 			if (FAILED(er)) {
 				log_d3d.error("Failed to Create VertexShader");
 				log_d3d.result(er);
@@ -166,7 +166,7 @@ namespace suika {
 			if (!vbElement.empty()) {
 				//error
 				er = pDevice->CreateInputLayout(&vbElement[0], static_cast<UINT>(vbElement.size()),
-					input, static_cast<SIZE_T>(size), pIL.GetAddressOf());
+					key_input, static_cast<SIZE_T>(size), pIL.GetAddressOf());
 				if (FAILED(er)) {
 					log_d3d.error("Failed to Create Input Layout");
 					log_d3d.result(er);

@@ -15,9 +15,9 @@ namespace suika {
 
 		std::unordered_map<std::string, pixel_shader> pixel_shader_list;
 		HRESULT CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut);
-		void pixel_shader::create(const string& input, const string& name) {
+		void pixel_shader::create(const string& key_input, const string& name) {
 			ComPtr<ID3DBlob> vblob;
-			auto er = CompileShaderFromFile(input.to_wstring().data(), "ps_main", "ps_5_0", &vblob);
+			auto er = CompileShaderFromFile(key_input.to_wstring().data(), "ps_main", "ps_5_0", &vblob);
 			if (FAILED(er)) {
 				log_d3d.error("Failed to Compile VertexShader");
 				log_d3d.result(er);
@@ -25,8 +25,8 @@ namespace suika {
 			}
 			create(vblob.Get()->GetBufferPointer(), vblob.Get()->GetBufferSize(), name);
 		}
-		void pixel_shader::create(LPCVOID input, size_t size, const string& name) {
-			auto er = pDevice->CreatePixelShader(input, size, NULL, pPS.GetAddressOf());
+		void pixel_shader::create(LPCVOID key_input, size_t size, const string& name) {
+			auto er = pDevice->CreatePixelShader(key_input, size, NULL, pPS.GetAddressOf());
 			if (FAILED(er)) {
 				log_d3d.error("Failed to Create PixelShader");
 				log_d3d.result(er);

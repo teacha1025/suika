@@ -52,6 +52,31 @@ namespace suika {
 		return out;
 	}
 
+	color_f color::to_color_f() const {
+		return color_f(r / 255.0f, g / 255.0f, b / 255.0f, a / 255.0f);
+	}
+
+	color::operator color_f() const {
+		return to_color_f();
+	}
+
+	unsigned int color_f::to_int() const {
+		return 0;
+		//return GetColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b));
+	}
+
+	string color_f::to_string() const {
+		return std::format("#r:{:.2f}, g:{:.2f}, b:{:.2f}, a{:.2f}", r, g, b, a);
+	}
+
+	hsv color_f::to_hsv() const {
+		return to_color().to_hsv();
+	}
+
+	color color_f::to_color() const {
+		return color(r * 255.0f, g * 255.0f, b * 255.0f, a * 255.0f);
+	}
+
 	unsigned int hsv::to_int() const {
 		return to_color().to_int();
 	}
@@ -59,6 +84,8 @@ namespace suika {
 	string hsv::to_string() const {
 		return std::format("#h:{}, s:{}, v{}, a{}", h, s, v, a);
 	}
+
+
 
 	color hsv::to_color() const {
 		double hh, ff;

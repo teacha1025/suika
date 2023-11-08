@@ -11,7 +11,7 @@ namespace suika {
 	using double3 = vector3<double>;
 	using double4 = vector4<double>;
 	struct color_v {
-		uint r, g, b, a;
+		float r, g, b, a;
 	};
 	enum primitive_topology {
 		PRIMITIVE_TOPOLOGY_UNDEFINED = 0,
@@ -39,9 +39,9 @@ namespace suika {
 					&& this->uv.x == v.uv.x && this->uv.y == v.uv.y;
 			}
 		};
-		vertex_2d create_2d(const float4& pos, const color& col, const float2& uv);
-		vertex_2d create_2d(const point<float>& pos, const color& col, const float2& uv);
-		vertex_2d create_2d(const vector3<float>& pos, const color& col, const float2& uv);
+		vertex_2d create_2d(const float4& pos, const color_f& col, const float2& uv);
+		vertex_2d create_2d(const point<float>& pos, const color_f& col, const float2& uv);
+		vertex_2d create_2d(const vector3<float>& pos, const color_f& col, const float2& uv);
 
 		void draw(const std::vector<vertex_2d>& vertices, const std::vector<uint16>& index, primitive_topology topology);
 		/*

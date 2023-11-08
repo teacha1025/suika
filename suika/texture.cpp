@@ -22,10 +22,10 @@ namespace suika {
 
 	std::vector<suika::vertex::vertex_2d> texture::create_vertex() {
 		return {
-				vertex::create_2d({0.f,0.f},{0,0,0,127},{0,0}),
-				vertex::create_2d({this->_size.x,0.f},{0,0,0,127},{1,0}),
-				vertex::create_2d({0.f,this->_size.y},{0,0,0,127},{0,1}),
-				vertex::create_2d({this->_size.x,this->_size.y},{0,0,0,127},{1,1}),
+				vertex::create_2d({0.f,0.f},{0,0,0,1.0f},{0,0}),
+				vertex::create_2d({this->_size.x,0.f},{0,0,0,1.0f},{1,0}),
+				vertex::create_2d({0.f,this->_size.y},{0,0,0,1.0f},{0,1}),
+				vertex::create_2d({this->_size.x,this->_size.y},{0,0,0,1.0f},{1,1}),
 		};
 	}
 

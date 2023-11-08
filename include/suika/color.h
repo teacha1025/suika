@@ -13,6 +13,7 @@
 
 namespace suika {
 	struct hsv;
+	struct color_f;
 
 	/// <summary>
 	/// RGBカラーを扱うクラス
@@ -58,6 +59,11 @@ namespace suika {
 			a(_a) {}
 
 		/// <summary>
+		/// 小数表記に変換
+		/// </summary>
+		color_f to_color_f() const;
+
+		/// <summary>
 		/// HSVカラーへの変換
 		/// </summary>
 		hsv to_hsv() const;
@@ -82,7 +88,88 @@ namespace suika {
 		constexpr bool operator==(const color& c) const {
 			return r == c.r && b == c.b && g == c.g && a == c.a;
 		}
+
+		operator color_f() const;
 	};
+
+	/// <summary>
+	/// RGBカラーを扱うクラス
+	/// </summary>
+	struct color_f : public detail::ibase {
+		/// <summary>
+		/// RGBAの要素[0-255]
+		/// </summary>
+		float r, g, b, a;
+
+
+		/// <summary>
+		/// デフォルトコンストラクタ　デフォルトでは黒色
+		/// </summary>
+		constexpr color_f() :
+			r(0),
+			g(0),
+			b(0),
+			a(1.0) {
+		}
+
+		/// <summary>
+		/// RGBAを指定して色を作成
+		/// </summary>
+		/// <param name="_r">赤[0-1.0]</param>
+		/// <param name="_g">緑[0-1.0]</param>
+		/// <param name="_b">青[0-1.0]</param>
+		/// <param name="_a">α値[0-1.0]</param>
+		constexpr color_f(const float _r, const float _g, const float _b, const float _a = 255) :
+			r(_r),
+			g(_g),
+			b(_b),
+			a(_a) {
+		}
+
+		/// <summary>
+		/// ほかの色から作成
+		/// </summary>
+		/// <param name="color">ほかの色</param>
+		/// <param name="_a">α値[0-1.0]</param>
+		constexpr color_f(const color_f& color, float _a) :
+			r(color.r),
+			g(color.g),
+			b(color.b),
+			a(_a) {
+		}
+
+		/// <summary>
+		/// HSVカラーへの変換
+		/// </summary>
+		hsv to_hsv() const;
+
+		/// <summary>
+		/// 整数表記に変換
+		/// </summary>
+		color to_color() const;
+
+		/// <summary>
+		/// 色を変換
+		/// </summary>
+		/// <returns>数値化された色</returns>
+		unsigned int to_int() const;
+
+		/// <summary>
+		/// RGBA情報
+		/// </summary>
+		/// <returns>RGBAの文字列における情報</returns>
+		string to_string() const;
+
+		/// <summary>
+		/// 色が同じであるか
+		/// </summary>
+		/// <param name="c">比較する色</param>
+		/// <returns>等しいか</returns>
+		constexpr bool operator==(const color_f& c) const {
+			return r == c.r && b == c.b && g == c.g && a == c.a;
+		}
+	};
+
 
 	/// <summary>
 	/// HSVカラーを扱う

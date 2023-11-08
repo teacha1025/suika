@@ -74,7 +74,7 @@ namespace suika {
 	}
 
 	color color_f::to_color() const {
-		return color(r * 255.0f, g * 255.0f, b * 255.0f, a * 255.0f);
+		return color((ubyte)(r * 255.0f), (ubyte)(g * 255.0f), (ubyte)(b * 255.0f), (ubyte)(a * 255.0f));
 	}
 
 	unsigned int hsv::to_int() const {

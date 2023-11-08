@@ -196,6 +196,7 @@ namespace suika {
 					blends.insert({ id, {} });
 					blends[id].create(blendDesc, id);
 				}
+				log_d3d.info("Initialize BlendState");
 			}
 		}
 	}

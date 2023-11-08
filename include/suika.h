@@ -16,7 +16,7 @@
 #include "../include/suika/blend.h"
 
 #include "../include/suika/color.h"
-#include "../include/suika/pallet.h"
+#include "../include/suika/palette.h"
 #include "../include/suika/string.h"
 #include "../include/suika/string_function.h"
 

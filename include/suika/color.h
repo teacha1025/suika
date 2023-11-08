@@ -89,6 +89,9 @@ namespace suika {
 			return r == c.r && b == c.b && g == c.g && a == c.a;
 		}
 
+		/// <summary>
+		/// 小数表記に変換
+		/// </summary>
 		operator color_f() const;
 	};
 

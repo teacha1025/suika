@@ -796,6 +796,11 @@ namespace suika {
 			return ret;
 		}
 
+		/// <summary>
+		/// ƒ[ƒ‹•ûŒü‚É‰ñ“]
+		/// </summary>
+		/// <param name="roll">Šp“x</param>
+		/// <returns>‰ñ“]s—ñ</returns>
 		template<concepts::numbers T>
 		matrix<T> rotation_roll(double roll) {
 			std::vector<double> v(16);
@@ -808,6 +813,11 @@ namespace suika {
 			return matrix<T>(4, 4, v);
 		}
 
+		/// <summary>
+		/// ƒsƒbƒ`•ûŒü‚É‰ñ“]
+		/// </summary>
+		/// <param name="pitch">Šp“x</param>
+		/// <returns>‰ñ“]s—ñ</returns>
 		template<concepts::numbers T>
 		matrix<T> rotation_pitch(double pitch) {
 			std::vector<double> v(16);
@@ -820,6 +830,11 @@ namespace suika {
 			return matrix<T>(4, 4, v);
 		}
 
+		/// <summary>
+		/// ƒˆ[•ûŒü‚É‰ñ“]
+		/// </summary>
+		/// <param name="yaw">Šp“x</param>
+		/// <returns>‰ñ“]s—ñ</returns>
 		template<concepts::numbers T>
 		matrix<T> rotation_yaw(double yaw) {
 			std::vector<double> v(16);
@@ -912,25 +927,25 @@ namespace suika {
 			double sp = std::sin(rot.x), sy = std::sin(rot.y), sr = std::sin(rot.z);
 			double cp = std::cos(rot.x), cy = std::cos(rot.y), cr = std::cos(rot.z);
 			matrix<T> ret(4,4,0);
-			ret.at(0, 0) = scale.x * (cy * cr);
-			ret.at(0,1)=scale.y* (sp * sy * cr - cp * sr);
-			ret.at(0,2)=scale.z* (cp * sy * cr + sp * sr);
-			ret.at(0,3)=-scale.z*origine.z*(cp*cr*sy+sp*sr)-scale.y*origine.y*(sp*cr*sy-cp*sr)-scale.x*origine.x*cr*cy+transition.x;
+			ret.at(0, 0) = (T)(scale.x * (cy * cr));
+			ret.at(0,1)=(T)(scale.y* (sp * sy * cr - cp * sr));
+			ret.at(0,2)=(T)(scale.z* (cp * sy * cr + sp * sr));
+			ret.at(0,3)=(T)(-scale.z*origine.z*(cp*cr*sy+sp*sr)-scale.y*origine.y*(sp*cr*sy-cp*sr)-scale.x*origine.x*cr*cy+transition.x);
 		
-			ret.at(1,0)=scale.x* (cy * sr);
-			ret.at(1,1)=scale.y* (sp * sy * sr + cp * cr);
-			ret.at(1,2)=scale.z* (cp * sy * sr - sp * cr);
-			ret.at(1,3)=-scale.z*origine.z*(cp*sr*sy-sp*cr)-scale.y*origine.y*(sp*sr*sy+cp*cr)-scale.x*origine.x*sr*cy+transition.y;
+			ret.at(1,0)=(T)(scale.x* (cy * sr));
+			ret.at(1,1)=(T)(scale.y* (sp * sy * sr + cp * cr));
+			ret.at(1,2)=(T)(scale.z* (cp * sy * sr - sp * cr));
+			ret.at(1,3)=(T)(-scale.z*origine.z*(cp*sr*sy-sp*cr)-scale.y*origine.y*(sp*sr*sy+cp*cr)-scale.x*origine.x*sr*cy+transition.y);
 
-			ret.at(2,0)=-scale.x* sy;
-			ret.at(2,1)=scale.y* (sp * cy);
-			ret.at(2,2)=scale.z* (cp * cy);
-			ret.at(2,3)=scale.z*origine.z*(cp*cy)-scale.y*origine.y*(sp*cy)-scale.x*origine.x*sy+transition.z;
+			ret.at(2,0)=(T)(-scale.x* sy);
+			ret.at(2,1)=(T)(scale.y* (sp * cy));
+			ret.at(2,2)=(T)(scale.z* (cp * cy));
+			ret.at(2,3)=(T)(scale.z*origine.z*(cp*cy)-scale.y*origine.y*(sp*cy)-scale.x*origine.x*sy+transition.z);
 
-			ret.at(3,0)=0;
-			ret.at(3,1)=0;
-			ret.at(3,2)=0;
-			ret.at(3,3)=1;
+			ret.at(3,0)=(T)(0);
+			ret.at(3,1)=(T)(0);
+			ret.at(3,2)=(T)(0);
+			ret.at(3,3)=(T)(1);
 		
 			return ret;
 		}

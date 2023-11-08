@@ -195,7 +195,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\suika\pallet.h">
+    <ClInclude Include="..\include\suika\palette.h">
       <Filter>suika\color</Filter>
     </ClInclude>
     <ClInclude Include="..\include\suika\color.h">

@@ -84,6 +84,10 @@ namespace suika {
 		/// <param name="str">出力する文字列</param>
 		void debug(const string& str);
 
+		/// <summary>
+		/// windowsのHRESULTを出力
+		/// </summary>
+		/// <param name="result">HRESULTのエラーコード</param>
 		void result(long result);
 
 		/// <summary>

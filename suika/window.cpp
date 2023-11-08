@@ -6,7 +6,7 @@
 
 #include "..\include\suika\point.h"
 #include "..\include\suika\color.h"
-#include "..\include\suika\pallet.h"
+#include "..\include\suika\palette.h"
 #include "..\include\suika\logger.h"
 #include "..\include\suika\canvas.h"
 
@@ -51,7 +51,7 @@ namespace suika {
 		struct window {
 			historical<point<uint>> _size = point<uint>{ 1280u, 960u };
 			historical<point<double>> _rate = point<double>{ 1.0, 1.0 };
-			historical<color> _bg = pallet::black;
+			historical<color> _bg = palette::black;
 			historical<bool> _fullscreen_flag = false;
 			//historical<uint> _fullscreen_type = fullscreen_type::borderless | fullscreen_type::dotbydot;
 			historical<string> _title = string("Application");
@@ -115,7 +115,7 @@ namespace suika {
 			auto			  wtitle = title.to_wstring();
 			std::wstring_view title_view = wtitle;
 			HINSTANCE hinst = GetModuleHandle(NULL);
-			WNDCLASS  wclass;
+			WNDCLASS  wclass = {};
 			wclass.style = CS_HREDRAW | CS_VREDRAW;
 			wclass.lpfnWndProc = WndProc;
 			wclass.cbClsExtra = 0;
@@ -249,46 +249,52 @@ namespace suika {
 		}
 
 		point<uint> size(id id) {
-			auto p = param(id);
+			window p = param(id);
 			return p._size;
 		}
 
 		point<double> center(id id) {
-			auto p = param(id);
+			window p = param(id);
 			return { p._size.now.x / 2.0, p._size.now.y / 2.0 };
 		}
 
 		bool fullscreen() {
-			auto p = param(default_id);
+			window p = param(default_id);
 			return p._fullscreen_flag;
 		}
 
 		point<double> extends(id id) {
-			auto p = param(id);
+			window p = param(id);
 			return p._rate;
 		}
 
 		color background(id id) {
-			auto p = param(id);
+			window p = param(id);
 			return p._bg;
 		}
 
 		string title(id id) {
-			auto p = param(id);
+			window p = param(id);
 			return p._title;
 		}
 
 		std::shared_ptr<suika::canvas> canvas(id id) {
-			auto p = param(id);
+			window p = param(id);
 			return p._canvas;
 		}
 
 		bool vsync(id id) {
-			auto p = param(id);
+			window p = param(id);
 			return p._vsync;
 		}
 
-		
+		std::vector<id> all_id() {
+			std::vector<id> ret;
+			for (const auto& w : window_list) {
+				ret.emplace_back(w.first);
+			}
+			return ret;
+		}
 
 		void adapt_param() {
 			if (window_list.empty() || window_list.begin()->first == nullptr) {

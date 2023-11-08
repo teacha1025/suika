@@ -27,16 +27,40 @@ namespace suika {
 	protected:
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
 	public:
+		/// <summary>
+		/// テクスチャを作成
+		/// </summary>
+		/// <param name="path">テクスチャのパス</param>
 		texture(string path) :path(path) {
 			_tex = d3d::texture::texture(path);
 			_size = _tex.size;
-			_shaders = { "texture", "texture" };
+			_shaders = { TEXTURE_VERTEX, TEXTURE_PIXEL };
 		}
 
+		/// <summary>
+		/// テクスチャを反転させる
+		/// </summary>
+		/// <param name="turn">各方向の反転</param>
 		virtual texture turned(const point<bool>& turn)&&;
+		/// <summary>
+		/// テクスチャを反転させる
+		/// </summary>
+		/// <param name="turn">各方向の反転</param>
 		virtual texture& turned(const point<bool>& turn)&;
 
+		/// <summary>
+		/// テクスチャ反転を取得
+		/// </summary>
+		/// <param name="turn">各方向の反転</param>
 		point<bool> turn() const;
+		/// <summary>
+		/// テクスチャの大きさを取得
+		/// </summary>
+		/// <returns>テクスチャの大きさ</returns>
+		point<float> size() const;
+		/// <summary>
+		/// テクスチャを描画する
+		/// </summary>
 		virtual void draw() override;
 	};
 }

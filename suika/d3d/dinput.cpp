@@ -1,3 +1,6 @@
+#ifndef DIRECTINPUT_VERSION
+#define DIRECTINPUT_VERSION 0x0800
+#endif
 #include <dinput.h>
 #include "info.hpp"
 
@@ -86,6 +89,7 @@ namespace suika {
 			void fin() {
 				key_dev->Unacquire();
 				mouse_dev->Unacquire();
+				log_d3d.info("Finalize DirectInput Device");
 				//key_dev->Release();
 			}
 
@@ -95,7 +99,7 @@ namespace suika {
 					if (key_reset && er == DIERR_INPUTLOST) {
 						key_dev->Acquire();
 					}
-					log_d3d.error("Failed to get key acquire");
+					//log_d3d.error("Failed to get key acquire");
 					log_d3d.result(er);
 					//return;
 				}
@@ -104,7 +108,7 @@ namespace suika {
 					if (key_reset && er == DIERR_INPUTLOST) {
 						mouse_dev->Acquire();
 					}
-					log_d3d.error("Failed to get mouse acquire");
+					//log_d3d.error("Failed to get mouse acquire");
 					log_d3d.result(er);
 					//return;
 				}
@@ -119,7 +123,6 @@ namespace suika {
 					log_d3d.result(er);
 					return;
 				}
-				//memset(&mouse_state.rgbButtons, 0, sizeof(BYTE)*8);
 				er = mouse_dev->GetDeviceState(sizeof(DIMOUSESTATE), &mouse_state);
 				if (FAILED(er)) {
 					if (key_reset && er == DIERR_INPUTLOST) {

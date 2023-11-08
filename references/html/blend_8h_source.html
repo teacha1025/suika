@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>suika: include/suika/blend.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">suika<span id="projectnumber">&#160;Ver 1.00α1</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('blend_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">blend.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesuika.html">suika</a> {</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6">    4</a></span>    <span class="keyword">enum class</span> <a class="code hl_enumeration" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6">blend</a> {</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a334c4a4c42fdb79d7ebc3e73b517e6f8">none</a> = 0,</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a2c1743a391305fbf367df8e4f069f9f9">alpha</a> = 1,</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a34ec78fcc91ffb1e54cd85e4a0924332">add</a> = 2,</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a8a68dc3e925eacf92633be230722a140">sub</a> = 3,</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a353942263d1bedfbe06b7bfa78226253">mul</a> = 4,</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a0b43c25ccf2340e23492d4d3141479dc">dest</a> = 5,</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6ab82a2c71c7ac20cb61da730f02eb26ce">inv_dest</a> = 6,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a452c1e667fc4f9a4377d8415e04c9fbe">inv_src</a> = 7,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6aae48045067824e7aaafc76dfa380ba67">mul_alpha</a> = 8,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6aa62dc820dc5bbdd146f7f47bb7e777c7">pma_alpha</a> = 9,</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6ab0de51ef5addf187f904a38ac6c163fe">pma_add</a> = 10,</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a69863190419236789bc973c5d768b6cd">pma_sub</a> = 11,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_enumvalue" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a2ae9fd8ed87170080f47d83c36bb484f">pma_inv_src</a> = 12,</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    };</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+<div class="ttc" id="anamespacesuika_html"><div class="ttname"><a href="namespacesuika.html">suika</a></div><div class="ttdoc">suika名前空間</div><div class="ttdef"><b>Definition:</b> base.h:10</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6">suika::blend</a></div><div class="ttdeci">blend</div><div class="ttdef"><b>Definition:</b> blend.h:4</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6a0b43c25ccf2340e23492d4d3141479dc"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a0b43c25ccf2340e23492d4d3141479dc">suika::blend::dest</a></div><div class="ttdeci">@ dest</div><div class="ttdoc">カラーは更新されない</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6a2ae9fd8ed87170080f47d83c36bb484f"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a2ae9fd8ed87170080f47d83c36bb484f">suika::blend::pma_inv_src</a></div><div class="ttdeci">@ pma_inv_src</div><div class="ttdoc">乗算済みαブレンドモードの描画元の色を反転する</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6a2c1743a391305fbf367df8e4f069f9f9"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a2c1743a391305fbf367df8e4f069f9f9">suika::blend::alpha</a></div><div class="ttdeci">@ alpha</div><div class="ttdoc">αブレンド</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6a334c4a4c42fdb79d7ebc3e73b517e6f8"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a334c4a4c42fdb79d7ebc3e73b517e6f8">suika::blend::none</a></div><div class="ttdeci">@ none</div><div class="ttdoc">ノーブレンド</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6a34ec78fcc91ffb1e54cd85e4a0924332"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a34ec78fcc91ffb1e54cd85e4a0924332">suika::blend::add</a></div><div class="ttdeci">@ add</div><div class="ttdoc">加算ブレンド</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6a353942263d1bedfbe06b7bfa78226253"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a353942263d1bedfbe06b7bfa78226253">suika::blend::mul</a></div><div class="ttdeci">@ mul</div><div class="ttdoc">乗算ブレンド</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6a452c1e667fc4f9a4377d8415e04c9fbe"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a452c1e667fc4f9a4377d8415e04c9fbe">suika::blend::inv_src</a></div><div class="ttdeci">@ inv_src</div><div class="ttdoc">描画元の色を反転する</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6a69863190419236789bc973c5d768b6cd"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a69863190419236789bc973c5d768b6cd">suika::blend::pma_sub</a></div><div class="ttdeci">@ pma_sub</div><div class="ttdoc">乗算済みαブレンドモードの減算ブレンド</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6a8a68dc3e925eacf92633be230722a140"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a8a68dc3e925eacf92633be230722a140">suika::blend::sub</a></div><div class="ttdeci">@ sub</div><div class="ttdoc">減算ブレンド</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6aa62dc820dc5bbdd146f7f47bb7e777c7"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6aa62dc820dc5bbdd146f7f47bb7e777c7">suika::blend::pma_alpha</a></div><div class="ttdeci">@ pma_alpha</div><div class="ttdoc">乗算済みαブレンドモードのαブレンド</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6aae48045067824e7aaafc76dfa380ba67"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6aae48045067824e7aaafc76dfa380ba67">suika::blend::mul_alpha</a></div><div class="ttdeci">@ mul_alpha</div><div class="ttdoc">アルファチャンネル考慮付き乗算ブレンド</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6ab0de51ef5addf187f904a38ac6c163fe"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6ab0de51ef5addf187f904a38ac6c163fe">suika::blend::pma_add</a></div><div class="ttdeci">@ pma_add</div><div class="ttdoc">乗算済みαブレンドモードの加算ブレンド</div></div>
+<div class="ttc" id="anamespacesuika_html_a78b27589d03e611b465eb71f50ed42f6ab82a2c71c7ac20cb61da730f02eb26ce"><div class="ttname"><a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6ab82a2c71c7ac20cb61da730f02eb26ce">suika::blend::inv_dest</a></div><div class="ttdeci">@ inv_dest</div><div class="ttdoc">描画先の色の反転値を掛ける</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_0791a8f21def4af1626ddbe2fded6b50.html">suika</a></li><li class="navelem"><b>blend.h</b></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

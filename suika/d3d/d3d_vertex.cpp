@@ -131,6 +131,8 @@ namespace suika {
 						return;
 					}
 				}
+
+				log_d3d.info("Initialize Vertex");
 			}
 
 			//void set_vertex(const void* vertices, uint vertices_size, uint stride) {

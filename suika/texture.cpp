@@ -9,7 +9,7 @@
 #include "../include/suika/shader.h"
 #include "../include/suika/texture.h"
 #include "../include/suika/vertex.h"
-#include "../include/suika/pallet.h"
+#include "../include/suika/palette.h"
 
 static const std::vector<suika::uint16> index =
 {
@@ -22,10 +22,10 @@ namespace suika {
 
 	std::vector<suika::vertex::vertex_2d> texture::create_vertex() {
 		return {
-				vertex::create_2d({0.f,0.f},{0,0,0,1.0f},{0,0}),
-				vertex::create_2d({this->_size.x,0.f},{0,0,0,1.0f},{1,0}),
-				vertex::create_2d({0.f,this->_size.y},{0,0,0,1.0f},{0,1}),
-				vertex::create_2d({this->_size.x,this->_size.y},{0,0,0,1.0f},{1,1}),
+				vertex::create_2d({0.f,0.f},{0,0,0,1.0f},{_turn.x ? 1 : 0,_turn.y ? 1 : 0}),
+				vertex::create_2d({this->_size.x,0.f},{0,0,0,1.0f},{_turn.x ? 0 : 1,_turn.y ? 1 : 0}),
+				vertex::create_2d({0.f,this->_size.y},{0,0,0,1.0f},{_turn.x ? 1 : 0,_turn.y ? 0 : 1}),
+				vertex::create_2d({this->_size.x,this->_size.y},{0,0,0,1.0f},{_turn.x ? 0 : 1,_turn.y ? 0 : 1}),
 		};
 	}
 
@@ -36,6 +36,13 @@ namespace suika {
 	texture texture::turned(const point<bool>& turn)&& {
 		_turn = turn;
 		return static_cast<texture&&>(std::move(*this));
+	}
+
+	point<bool> texture::turn() const {
+		return _turn;
+	}
+	point<float> texture::size() const {
+		return _size;
 	}
 
 	void texture::draw() {

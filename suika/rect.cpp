@@ -15,6 +15,14 @@ namespace suika {
 	auto vec2xmvec(const vector3<float>& v) {
 		return DirectX::XMVECTOR{ v.x, v.y, v.z };
 	}
+	std::vector<suika::vertex::vertex_2d> rect::create_vertex() {
+		return {
+			vertex::create_2d({0.f,0.f},this->_color,{0,0}),
+			vertex::create_2d({this->_size.x,0.f},this->_color,{1,0}),
+			vertex::create_2d({0.f,this->_size.y},this->_color,{0,1}),
+			vertex::create_2d({this->_size.x,this->_size.y},this->_color,{1,1}),
+		};
+	}
 	void rect::draw() {
 		set_vs(this->_shaders.vs);
 		set_ps(this->_shaders.ps);

@@ -3,7 +3,7 @@
 #include "../include/suika/window.h"
 #include "../include/suika/shader.h"
 #include "../include/suika/color.h"
-#include "../include/suika/pallet.h"
+#include "../include/suika/palette.h"
 #include "../include/suika/vertex.h"
 #include "../include/suika/cbuffer.h"
 #include "../include/suika/blend.h"

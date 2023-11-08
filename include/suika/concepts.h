@@ -10,6 +10,9 @@
 
 namespace suika {
 	namespace concepts {
+		/// <summary>
+		/// ベースクラスを継承しているか
+		/// </summary>
 		template<class T>
 		concept is_based =
 			requires(T t) {
@@ -17,12 +20,21 @@ namespace suika {
 				t.to_string();
 			};
 
+		/// <summary>
+		/// 数値型
+		/// </summary>
 		template<typename T>
 		concept numbers = std::integral<T> || std::floating_point<T>;
 
+		/// <summary>
+		/// 文字列型
+		/// </summary>
 		template<class T>
 		concept string = std::is_convertible_v<T, std::string_view>;
 
+		/// <summary>
+		/// 列挙型
+		/// </summary>
 		template<class T>
 		concept enum_elements =
 			requires(T elem) {

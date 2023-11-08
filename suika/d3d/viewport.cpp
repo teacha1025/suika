@@ -10,6 +10,7 @@ namespace suika {
 		namespace viewport {
 			bool create(const point<float>& top, const point<float>& size, canvas_id id) {
 				ViewPort.insert({ id, D3D11_VIEWPORT{.TopLeftX = top.x, .TopLeftY = top.y, .Width = size.x,.Height = size.y, .MinDepth = 0.0f, .MaxDepth = 1.0f } });
+				log_d3d.info("Create Viewport");
 				return true;
 			}
 		}

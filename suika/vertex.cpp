@@ -11,10 +11,10 @@ namespace suika {
 		vertex_2d create_2d(const float4& pos, const color_f& col, const float2& uv) {
 			return vertex_2d{ .position = pos, .color = {col.r, col.g, col.b, col.a}, .uv = uv };
 		}
-		vertex_2d create_2d(const point<float>& pos, const color_f& col, const float2& uv) {
+		vertex_2d create_2d(const float2& pos, const color_f& col, const float2& uv) {
 			return vertex_2d{ .position = {pos.x, pos.y, 0.0f, 1.0f}, .color = {col.r, col.g, col.b, col.a}, .uv = uv };
 		}
-		vertex_2d create_2d(const vector3<float>& pos, const color_f& col, const float2& uv) {
+		vertex_2d create_2d(const float3& pos, const color_f& col, const float2& uv) {
 			return vertex_2d{ .position = {pos.x, pos.y, pos.z, 1.0f}, .color = {col.r, col.g, col.b, col.a}, .uv = uv };
 		}
 		void draw(const std::vector<vertex_2d>& vertices, const std::vector<uint16>& index, primitive_topology topology) {

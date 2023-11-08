@@ -75,6 +75,7 @@ namespace suika {
 					log_d3d.result(er);
 					return;
 				}
+				log_d3d.info("Initialize DWrite");
 			}
 
 			void set(const font_data& font, canvas_id window) {
@@ -163,6 +164,7 @@ namespace suika {
 			void free() {
 				//pTextFormat->Release();
 				//pDWriteFactory->Release();
+				log_d3d.info("Finalize DWrite");
 			}
 		}
 	}

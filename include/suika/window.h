@@ -14,11 +14,43 @@
 namespace suika {
 	namespace window {
 		using id = HWND;
+		/// <summary>
+		/// メインウィンドウのID
+		/// </summary>
 		extern id default_id;
+		/// <summary>
+		/// ウィンドウを作成する
+		/// </summary>
+		/// <param name="size">ウィンドウサイズ</param>
+		/// <param name="rate">ウィンドウの拡大率</param>
+		/// <param name="bg">背景色</param>
+		/// <param name="title">ウィンドウのタイトル</param>
+		/// <param name="vsync">垂直同期を使用するか</param>
+		/// <returns>作成したウィンドウのID</returns>
 		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title, bool vsync);
+		/// <summary>
+		/// ウィンドウを作成する
+		/// </summary>
+		/// <param name="size">ウィンドウサイズ</param>
+		/// <param name="rate">ウィンドウの拡大率</param>
+		/// <param name="bg">背景色</param>
+		/// <param name="title">ウィンドウのタイトル</param>
+		/// <param name="vsync">垂直同期を使用するか</param>
+		/// <param name="pos">ウィンドウの位置</param>
+		/// <returns>作成したウィンドウのID</returns>
 		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title, bool vsync, const point<uint>& pos);
+		/// <summary>
+		/// プロセスを処理する
+		/// </summary>
+		/// <returns>処理に成功したか</returns>
 		bool process();
+		/// <summary>
+		/// ウィンドウに表示する
+		/// </summary>
 		void flip();
+		/// <summary>
+		/// ウィンドウをクリアする
+		/// </summary>
 		void clear();
 
 		/// <summary>
@@ -118,6 +150,12 @@ namespace suika {
 		/// <param name="id">ウィンドウ識別ID</param>
 		/// <returns>垂直同期をしているか</returns>
 		bool vsync(id id = default_id);
+
+		/// <summary>
+		/// 作成されたウィンドウIDをすべて取得する
+		/// </summary>
+		/// <returns></returns>
+		std::vector<id> all_id();
 
 		/// <summary>
 		/// ウィンドウの描画キャンバスを取得

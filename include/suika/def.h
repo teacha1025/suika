@@ -16,38 +16,30 @@
 
 namespace suika {
 #pragma region
-	/*
-	バージョンについて
-
-	0xメジャーバージョン1桁 マイナーバージョン２桁 01~50:α版、51~99:β版
-	メジャーバージョン.マイナーバージョン(α/βバージョン番号)
-	
-	*/
-
 	/// <summary>
 	/// ライブラリのバージョン
 	/// </summary>
-	define VERSION = 0x00001;
+	define VERSION = 0x001;
 	/// <summary>
 	/// ライブラリのバージョン(文字列)
 	/// </summary>
-	define VERSION_S = "0.00α1";
+	define VERSION_S = "0.0.1";
 	/// <summary>
 	/// ライブラリのバージョン(ワイド文字列)
 	/// </summary>
-	define VERSION_WS = L"0.00α1";
+	define VERSION_WS = L"0.0.1";
 	/// <summary>
 	/// ライブラリのバージョン(UTF8文字列)
 	/// </summary>
-	define VERSION_UTF8 = u8"0.00α1";
+	define VERSION_UTF8 = u8"0.0.1";
 	/// <summary>
 	/// ライブラリのバージョン(UTF16文字列)
 	/// </summary>
-	define VERSION_UTF16 = u"0.00α1";
+	define VERSION_UTF16 = u"0.0.1";
 	/// <summary>
 	/// ライブラリのバージョン(UTF32文字列)
 	/// </summary>
-	define VERSION_UTF32 = U"0.00α1";
+	define VERSION_UTF32 = U"0.0.1";
 #pragma endregion
 
 #pragma region constant

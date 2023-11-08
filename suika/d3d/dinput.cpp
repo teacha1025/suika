@@ -13,7 +13,7 @@ namespace suika {
 			ComPtr<IDirectInputDevice8> mouse_dev;
 			ComPtr<IDirectInput8> key_input;
 			ComPtr<IDirectInput8> mouse_input;
-			DIMOUSESTATE2 mouse_state;
+			DIMOUSESTATE mouse_state;
 			BYTE key[256];
 
 			bool init(HWND hWnd) {
@@ -74,8 +74,9 @@ namespace suika {
 					log_d3d.result(er);
 					return false;
 				}
-
+				key_dev->Poll();
 				key_dev->Acquire();
+				mouse_dev->Poll();
 				mouse_dev->Acquire();
 
 				log_d3d.info("Create DirectInput Device");
@@ -89,27 +90,44 @@ namespace suika {
 			}
 
 			void update(bool key_reset) {
-				key_dev->Acquire();
-				mouse_dev->Acquire();
-				auto er = key_dev->GetDeviceState(256, key);
+				auto er = key_dev->Acquire();
+				if (FAILED(er)) {
+					if (key_reset && er == DIERR_INPUTLOST) {
+						key_dev->Acquire();
+					}
+					log_d3d.error("Failed to get key acquire");
+					log_d3d.result(er);
+					//return;
+				}
+				er = mouse_dev->Acquire();
+				if (FAILED(er)) {
+					if (key_reset && er == DIERR_INPUTLOST) {
+						mouse_dev->Acquire();
+					}
+					log_d3d.error("Failed to get mouse acquire");
+					log_d3d.result(er);
+					//return;
+				}
+
+				er = key_dev->GetDeviceState(256, key);
 				if (FAILED(er)) {
 					if (key_reset && er == DIERR_INPUTLOST) {
 						key_dev->Acquire();
 						update(false);
 					}
-					//log_d3d.error("Failed to get key state");
-					//log_d3d.result(er);
+					log_d3d.error("Failed to get key state");
+					log_d3d.result(er);
 					return;
 				}
-				memset(&mouse_state.rgbButtons, 0, sizeof(BYTE)*8);
-				er = mouse_dev->GetDeviceState(sizeof(DIMOUSESTATE2), &mouse_state);
+				//memset(&mouse_state.rgbButtons, 0, sizeof(BYTE)*8);
+				er = mouse_dev->GetDeviceState(sizeof(DIMOUSESTATE), &mouse_state);
 				if (FAILED(er)) {
 					if (key_reset && er == DIERR_INPUTLOST) {
 						mouse_dev->Acquire();
 						update(false);
 					}
-					//log_d3d.error("Failed to get mouse state");
-					//log_d3d.result(er);
+					log_d3d.error("Failed to get mouse state");
+					log_d3d.result(er);
 					return;
 				}
 			}

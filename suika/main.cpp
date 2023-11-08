@@ -30,6 +30,9 @@ namespace suika {
 	namespace keyboard {
 		void init();
 	}
+	namespace mouse {
+		void init();
+	}
 	namespace d3d {
 		namespace vertex {
 			void init();
@@ -77,6 +80,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 		suika::d3d::dinput::init(wid);
 		suika::keyboard::init();
+		suika::mouse::init();
 
 		auto cb = suika::set_view(suika::window::size(wid));
 		suika::set_cbuffer(sizeof(cb), &cb, 0);

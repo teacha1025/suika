@@ -12,6 +12,9 @@ namespace suika {
 	namespace keyboard {
 		void update();
 	}
+	namespace mouse {
+		void update();
+	}
 
 
 	namespace sys {
@@ -45,6 +48,7 @@ namespace suika {
 			d3d::dinput::update();
 
 			keyboard::update();
+			mouse::update();
 
 			return window::process();
 		}

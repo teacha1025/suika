@@ -2,14 +2,25 @@
 #include "d3d/dinput.hpp"
 namespace suika {
 	namespace mouse {
-		detail::_mouse Left(0, "LeftClick");
-		detail::_mouse Right(1, "RightClick");
-		detail::_mouse Middle(2, "MiddleClick");
-		detail::_mouse Button4(3, "Mouse4");
-		detail::_mouse Button5(3, "Mouse5");
-		detail::_mouse Button6(3, "Mouse6");
-		detail::_mouse Button7(3, "Mouse7");
-		detail::_mouse Button8(3, "Mouse8");
+		detail::_mouse Left;
+		detail::_mouse Right;
+		detail::_mouse Middle;
+		detail::_mouse Button4;
+		detail::_mouse Button5;
+		detail::_mouse Button6;
+		detail::_mouse Button7;
+		detail::_mouse Button8;
+
+		void init() {
+			Left = detail::_mouse(0, "LeftClick");
+			Right = detail::_mouse(1, "RightClick");
+			Middle = detail::_mouse(2, "MiddleClick");
+			Button4 = detail::_mouse(3, "Mouse4");
+			Button5 = detail::_mouse(4, "Mouse5");
+			Button6 = detail::_mouse(5, "Mouse6");
+			Button7 = detail::_mouse(6, "Mouse7");
+			Button8 = detail::_mouse(7, "Mouse8");
+		}
 
 		void update() {
 			Left.update();

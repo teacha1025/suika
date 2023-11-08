@@ -42,6 +42,9 @@ int main() {
 		if (suika::keyboard::A.press()) {
 			i++;
 		}
+		if (suika::mouse::Left.press()) {
+			i--;
+		}
 		
 #if 0
 		if (i == 60) {

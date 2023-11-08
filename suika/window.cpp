@@ -20,6 +20,9 @@
 
 
 namespace suika {
+	namespace sys {
+		extern bool exit_flag;
+	}
 	namespace window {
 		template<class T>
 		struct historical {
@@ -64,6 +67,7 @@ namespace suika {
 			switch (uMsg) {
 			case WM_DESTROY:
 				PostQuitMessage(0);
+				sys::exit_flag = true;
 				return 0;
 			}
 

@@ -25,6 +25,7 @@
 #include "../include/suika/rect.h"
 
 #include "../include/suika/keyboard.h"
+#include "../include/suika/mouse.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "suika_d.lib")

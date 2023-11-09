@@ -1,0 +1,100 @@
+#pragma once
+#pragma once
+#include "draw.h"
+#include "vertex.h"
+#include "palette.h"
+
+namespace suika {
+	class circle : public detail::ishape<circle> {
+	protected:
+		float _radius = 64;
+		uint16 _resolution = 64;
+		color_f _color = palette::white;
+
+		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
+	public:
+		/// <summary>
+		/// 矩形作成
+		/// </summary>
+		/// <param name="size">矩形のサイズ</param>
+		circle(float r) : _radius(r) {
+			_shaders = { .vs = SHAPE_VERTEX, .ps = SHAPE_PIXEL };
+		}
+
+		/// <summary>
+		/// 矩形を描画する
+		/// </summary>
+		virtual void draw() override;
+
+		/// <summary>
+		/// 色を設定
+		/// </summary>
+		/// <param name="color">塗りつぶしの色</param>
+		virtual circle colored(const color_f& color)&& {
+			this->_color = color;
+			return static_cast<circle&&>(std::move(*this));
+		}
+		/// <summary>
+		/// 色を設定
+		/// </summary>
+		/// <param name="color">塗りつぶしの色</param>
+		virtual circle& colored(const color_f& color)& {
+			this->_color = color;
+			return static_cast<circle&>(*this);
+		}
+		/// <summary>
+		/// 半径を変える
+		/// </summary>
+		/// <param name="r">変更後の半径</param>
+		virtual circle resized(float r)&& {
+			this->_radius = r;
+			return static_cast<circle&&>(std::move(*this));
+		}
+		/// <summary>
+		/// 半径を変える
+		/// </summary>
+		/// <param name="size">変更後の大きさ</param>
+		virtual circle& resized(float r)& {
+			this->_radius = r;
+			return static_cast<circle&>(*this);
+		}
+		/// <summary>
+		/// 描画の分解能を設定
+		/// </summary>
+		/// <param name="r">分割数</param>
+		virtual circle resolution(uint16 r)&& {
+			this->_resolution = r;
+			return static_cast<circle&&>(std::move(*this));
+		}
+		/// <summary>
+		/// 描画の分解能を設定
+		/// </summary>
+		/// <param name="r">分割数</param>
+		virtual circle& resolution(uint16 r)& {
+			this->_resolution = r;
+			return static_cast<circle&>(*this);
+		}
+		/// <summary>
+		/// 円の半径を取得
+		/// </summary>
+		/// <returns>半径</returns>
+		virtual float radius() const {
+			return this->_radius;
+		}
+		/// <summary>
+		/// 矩形の色を取得
+		/// </summary>
+		/// <returns>矩形の色</returns>
+		virtual color_f color() const {
+			return this->_color;
+		}
+		/// <summary>
+		/// 描画の分解能を取得
+		/// </summary>
+		/// <returns>分解能</returns>
+		virtual uint16 resolution() const {
+			return this->_resolution;
+		}
+
+	};
+}

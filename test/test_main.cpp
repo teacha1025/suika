@@ -31,12 +31,16 @@ int main() {
 
 	//suika::d3d::texture::texture tex("test.bmp");
 	suika::rect r({ w - 1,h - 1 });
+	suika::circle c(32);
 	int cursor = suika::mouse::arrow;
+	suika::line l(suika::window::size()/2, {0,0});
 	while (suika::sys::update()) {
-		suika::window::title(std::format("{:4.1f}fps, [{},{}], {}", suika::sys::fps(), suika::mouse::position().x, suika::mouse::position().y, cursor));
+		i += suika::mouse::wheel();
+		i %= 256;
+		suika::window::title(std::format("{:4.1f}fps,{}, [{},{}], {}", suika::sys::fps(), i, suika::mouse::position().x, suika::mouse::position().y, cursor));
 		for (int y = 0; y < 16; y++) {
 			for (int x = 0; x < 16; x++) {
-				r.at({x*w, y*h}).colored(suika::color(suika::palette::gray, i%=256)).blended(suika::blend::alpha).draw();
+				r.at({x*w, y*h}).colored(suika::color(suika::palette::gray, i)).blended(suika::blend::alpha).draw();
 				//tex.centered({ 0, 0 }).at({ x * w + w / 2,y * h + h / 2 }).blended(suika::blend::alpha).rotated(i / 20.0f).draw();
 			}
 		}
@@ -46,7 +50,7 @@ int main() {
 		if (suika::mouse::Left.press()) {
 			i--;
 		}*/
-		i += suika::mouse::wheel();
+		
 		if (suika::mouse::Right.press()) {
 			suika::mouse::position({ 640,480 });
 			//SetCursor(LoadCursor(NULL, IDC_HAND));
@@ -54,11 +58,18 @@ int main() {
 		else if (suika::mouse::Left.down()) {
 			cursor++;
 			cursor %= 17;
-			
 		}
 		suika::mouse::style((suika::mouse::cursor)cursor);
-		suika::circle(32).at(suika::mouse::position()).resolution(24).blended(suika::blend::alpha).colored(suika::color(suika::palette::red, 127)).draw();
-		
+		c.at(suika::mouse::position()).resolution(24).colored(suika::color(suika::palette::red, i)).blended(suika::blend::alpha).draw();
+		l.B(suika::mouse::position()).colored(suika::color(suika::palette::white, i)).blended(suika::blend::alpha).draw(8.0f,false);
+		//suika::point<float> a = { l.B() - l.A() };
+		//suika::point<float> u = suika::point<float>{ a.y,-a.x };
+		//suika::point<float> v = suika::point<float>{ -a.y,a.x };
+		//u = suika::vector::set_length(u, 64) + l.A();
+		//v = suika::vector::set_length(v, 64) + l.A();
+		//suika::line(suika::vector::set_length(u, 64) + l.A(), suika::vector::set_length(v, 64) + l.A()).draw();
+		//suika::line(suika::vector::set_length(u, 64) + l.B(), suika::vector::set_length(v, 64) + l.B()).draw();
+
 #if 0
 		if (i == 60) {
 			fd.Color = suika::palette::yellow;

@@ -4,7 +4,7 @@
 #include "../include/suika/shader.h"
 #include "../include/suika/circle.h"
 
-std::vector<suika::uint16> index;
+static std::vector<suika::uint16> index;
 
 namespace suika {
 	std::vector<suika::vertex::vertex_2d> circle::create_vertex() {

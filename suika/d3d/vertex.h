@@ -24,6 +24,7 @@ namespace suika {
 			extern uint stride_ins[2];
 			extern std::any now_vertex;
 			enum class ins_type {
+				line,
 				rect,
 				circle,
 				triangle,

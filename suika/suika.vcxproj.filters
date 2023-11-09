@@ -86,6 +86,9 @@
     <ClCompile Include="circle.cpp">
       <Filter>suika\shape\circle</Filter>
     </ClCompile>
+    <ClCompile Include="line.cpp">
+      <Filter>suika\shape\line</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -198,6 +201,9 @@
     </Filter>
     <Filter Include="suika\shape\circle">
       <UniqueIdentifier>{153d62f6-105a-486a-810d-d24458b41f89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\shape\line">
+      <UniqueIdentifier>{a8e6e369-374d-4b8d-afde-94456cd5e3a2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +371,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\circle.h">
       <Filter>suika\shape\circle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\line.h">
+      <Filter>suika\shape\line</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

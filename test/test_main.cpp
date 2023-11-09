@@ -32,6 +32,7 @@ int main() {
 	//suika::d3d::texture::texture tex("test.bmp");
 	suika::rect r({ w - 1,h - 1 });
 	int cursor = suika::mouse::arrow;
+	suika::line l(suika::window::size()/2, {0,0});
 	while (suika::sys::update()) {
 		suika::window::title(std::format("{:4.1f}fps, [{},{}], {}", suika::sys::fps(), suika::mouse::position().x, suika::mouse::position().y, cursor));
 		for (int y = 0; y < 16; y++) {
@@ -54,11 +55,10 @@ int main() {
 		else if (suika::mouse::Left.down()) {
 			cursor++;
 			cursor %= 17;
-			
 		}
 		suika::mouse::style((suika::mouse::cursor)cursor);
 		suika::circle(32).at(suika::mouse::position()).resolution(24).blended(suika::blend::alpha).colored(suika::color(suika::palette::red, 127)).draw();
-		
+		l.B(suika::mouse::position()).draw();
 #if 0
 		if (i == 60) {
 			fd.Color = suika::palette::yellow;

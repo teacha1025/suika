@@ -19,6 +19,7 @@ namespace suika {
 		/// <param name="size">矩形のサイズ</param>
 		circle(float r) : _radius(r) {
 			_shaders = { .vs = SHAPE_VERTEX, .ps = SHAPE_PIXEL };
+			_resolution = r;
 		}
 
 		/// <summary>

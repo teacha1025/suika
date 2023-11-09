@@ -57,6 +57,7 @@ int main() {
 			
 		}
 		suika::mouse::style((suika::mouse::cursor)cursor);
+		suika::circle(32).at(suika::mouse::position()).resolution(24).blended(suika::blend::alpha).colored(suika::color(suika::palette::red, 127)).draw();
 		
 #if 0
 		if (i == 60) {

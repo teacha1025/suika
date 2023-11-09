@@ -54,19 +54,19 @@
       <Filter>d3d\texture</Filter>
     </ClCompile>
     <ClCompile Include="texture.cpp">
-      <Filter>suika\draw\texture</Filter>
+      <Filter>suika\shape\texture</Filter>
     </ClCompile>
     <ClCompile Include="system.cpp">
       <Filter>suika\system</Filter>
     </ClCompile>
     <ClCompile Include="vertex.cpp">
-      <Filter>suika\draw\vertex</Filter>
+      <Filter>suika\shape\vertex</Filter>
     </ClCompile>
     <ClCompile Include="d3d\d3d_vertex.cpp">
       <Filter>d3d\polygon</Filter>
     </ClCompile>
     <ClCompile Include="rect.cpp">
-      <Filter>suika\draw\rect</Filter>
+      <Filter>suika\shape\rect</Filter>
     </ClCompile>
     <ClCompile Include="string_function.cpp">
       <Filter>suika\string</Filter>
@@ -82,6 +82,9 @@
     </ClCompile>
     <ClCompile Include="mouse.cpp">
       <Filter>suika\input</Filter>
+    </ClCompile>
+    <ClCompile Include="circle.cpp">
+      <Filter>suika\shape\circle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -166,20 +169,8 @@
     <Filter Include="d3d\blend">
       <UniqueIdentifier>{417a57f4-8f6a-4d39-8da1-66c64f23adee}</UniqueIdentifier>
     </Filter>
-    <Filter Include="suika\draw">
-      <UniqueIdentifier>{aa450eff-20b7-4408-81f6-40644fc809fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\draw\texture">
-      <UniqueIdentifier>{0b3394b3-656a-4c95-a949-75ec618c42ed}</UniqueIdentifier>
-    </Filter>
     <Filter Include="suika\system">
       <UniqueIdentifier>{d1f995a5-649d-4e28-9d2d-6ccac3a9a730}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\draw\vertex">
-      <UniqueIdentifier>{16fb63f4-cb9e-4bfc-a80f-9e1ba5fc3fb4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="suika\draw\rect">
-      <UniqueIdentifier>{f55bdd13-ef1c-4ab9-a020-a7924a3c38e6}</UniqueIdentifier>
     </Filter>
     <Filter Include="suika\matrix">
       <UniqueIdentifier>{2e608181-c59e-426f-8462-867a47f6533d}</UniqueIdentifier>
@@ -192,6 +183,21 @@
     </Filter>
     <Filter Include="suika\input">
       <UniqueIdentifier>{864ce1b5-399f-4ee8-8efa-953178605f93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\shape">
+      <UniqueIdentifier>{aa450eff-20b7-4408-81f6-40644fc809fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\shape\texture">
+      <UniqueIdentifier>{0b3394b3-656a-4c95-a949-75ec618c42ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\shape\vertex">
+      <UniqueIdentifier>{16fb63f4-cb9e-4bfc-a80f-9e1ba5fc3fb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\shape\rect">
+      <UniqueIdentifier>{f55bdd13-ef1c-4ab9-a020-a7924a3c38e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\shape\circle">
+      <UniqueIdentifier>{153d62f6-105a-486a-810d-d24458b41f89}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -321,7 +327,7 @@
       <Filter>d3d\texture</Filter>
     </ClInclude>
     <ClInclude Include="..\include\suika\texture.h">
-      <Filter>suika\draw\texture</Filter>
+      <Filter>suika\shape\texture</Filter>
     </ClInclude>
     <ClInclude Include="..\include\suika\draw.h">
       <Filter>suika\interface</Filter>
@@ -330,14 +336,14 @@
       <Filter>suika\system</Filter>
     </ClInclude>
     <ClInclude Include="..\include\suika\vertex.h">
-      <Filter>suika\draw\vertex</Filter>
+      <Filter>suika\shape\vertex</Filter>
     </ClInclude>
     <ClInclude Include="d3d\vertex.h">
       <Filter>d3d\polygon</Filter>
     </ClInclude>
     <ClInclude Include="..\include\suika\type.h" />
     <ClInclude Include="..\include\suika\rect.h">
-      <Filter>suika\draw\rect</Filter>
+      <Filter>suika\shape\rect</Filter>
     </ClInclude>
     <ClInclude Include="..\include\suika\matrix.h">
       <Filter>suika\matrix</Filter>
@@ -356,6 +362,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\mouse.h">
       <Filter>suika\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\circle.h">
+      <Filter>suika\shape\circle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

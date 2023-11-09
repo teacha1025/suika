@@ -23,6 +23,7 @@
 #include "../include/suika/texture.h"
 
 #include "../include/suika/rect.h"
+#include "../include/suika/circle.h"
 
 #include "../include/suika/keyboard.h"
 #include "../include/suika/mouse.h"

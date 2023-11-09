@@ -14,6 +14,8 @@ namespace suika {
 		color_f _color = palette::white;
 
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
+		virtual std::vector<suika::vertex::vertex_2d> create_vertex_bold(float b);
+		virtual std::vector<suika::vertex::vertex_2d> create_vertex_bold_round(float b);
 	public:
 		line() {
 			_shaders = { .vs = SHAPE_VERTEX, .ps = SHAPE_PIXEL };
@@ -36,8 +38,8 @@ namespace suika {
 		/// ‘¾‚³b‚Ìü•ª‚ğ•`‰æ‚·‚é
 		/// </summary>
 		/// <param name="b">‘¾‚³</param>
-		/// <param name="rounded">æ’[‚ğŠÛ‚ß‚é‚©</param>
-		virtual void draw(float b, bool rounded);
+		/// <param name="rounded">Šp‚ğŠÛ‚ß‚é‚©</param>
+		virtual void draw(float b, bool rounded = false);
 
 		/// <summary>
 		/// F‚ğİ’è

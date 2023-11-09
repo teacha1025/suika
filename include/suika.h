@@ -5,6 +5,7 @@
 #define _SK_INCLUDE
 #include <format>
 
+#include "../include/suika/vector.h"
 #include "../include/suika/matrix.h"
 #include "../include/suika/system.h"
 #include "../include/suika/logger.h"

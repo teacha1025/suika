@@ -21,14 +21,7 @@ namespace suika {
 			const double y1 = sin(theta1);
 			const float u1 = (float)(x1 * 0.5 + 0.5);
 			const float v1 = (float)(y1 * 0.5 + 0.5);
-			/*const double theta2 = dt * (i+1);
-			const double x2 = cos(theta2);
-			const double y2 = sin(theta2);
-			const float u2 = (float)(x2 * 0.5 + 0.5);
-			const float v2 = (float)(y2 * 0.5 + 0.5);*/
-			//ret.emplace_back(vertex::create_2d({ 0,0 }, this->_color, {0.5f, 0.5f}));
 			ret.emplace_back(vertex::create_2d({ x1 * this->_radius,y1 * this->_radius }, this->_color, { u1,v1 }));
-			//ret.emplace_back(vertex::create_2d({ x2 * this->_radius,y2 * this->_radius }, this->_color, { u2,v2 }));
 			index.emplace_back(0);
 			index.emplace_back(i+1);
 			index.emplace_back(i+2);
@@ -37,10 +30,10 @@ namespace suika {
 		return ret;
 	}
 	void circle::draw() {
+		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::circle);
 		set_vs(this->_shaders.vs);
 		set_ps(this->_shaders.ps);
 		d3d::blend::blends[_blend].set();
-		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::circle);
 		d3d::vertex::set_vertex_instance(create_vertex());
 		d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend);

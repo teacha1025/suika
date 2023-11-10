@@ -22,10 +22,10 @@ namespace suika {
 
 	std::vector<suika::vertex::vertex_2d> texture::create_vertex() {
 		return {
-				vertex::create_2d({0.f,0.f},{0,0,0,1.0f},{_turn.x ? 1 : 0,_turn.y ? 1 : 0}),
-				vertex::create_2d({this->_size.x,0.f},{0,0,0,1.0f},{_turn.x ? 0 : 1,_turn.y ? 1 : 0}),
-				vertex::create_2d({0.f,this->_size.y},{0,0,0,1.0f},{_turn.x ? 1 : 0,_turn.y ? 0 : 1}),
-				vertex::create_2d({this->_size.x,this->_size.y},{0,0,0,1.0f},{_turn.x ? 0 : 1,_turn.y ? 0 : 1}),
+				vertex::create_2d({0.f,0.f},{0,0,0,0.5f},{_turn.x ? 1 : 0,_turn.y ? 1 : 0}),
+				vertex::create_2d({this->_size.x,0.f},{0,0,0,0.5f},{_turn.x ? 0 : 1,_turn.y ? 1 : 0}),
+				vertex::create_2d({0.f,this->_size.y},{0,0,0,0.5f},{_turn.x ? 1 : 0,_turn.y ? 0 : 1}),
+				vertex::create_2d({this->_size.x,this->_size.y},{0,0,0,0.5f},{_turn.x ? 0 : 1,_turn.y ? 0 : 1}),
 		};
 	}
 
@@ -46,12 +46,12 @@ namespace suika {
 	}
 
 	void texture::draw() {
+		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::texture);
 		set_vs(this->_shaders.vs);
 		set_ps(this->_shaders.ps);
 		suika::d3d::blend::blends[_blend].set();
 		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		suika::d3d::texture::set(_tex);
-		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::texture);
 		d3d::vertex::set_vertex_instance(create_vertex());
 		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend);
 	}

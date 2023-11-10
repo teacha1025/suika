@@ -60,15 +60,8 @@ int main() {
 			cursor %= 17;
 		}
 		suika::mouse::style((suika::mouse::cursor)cursor);
-		c.at(suika::mouse::position()).resolution(24).colored(suika::color(suika::palette::red, i)).blended(suika::blend::alpha).draw();
-		l.B(suika::mouse::position()).colored(suika::color(suika::palette::white, i)).blended(suika::blend::alpha).draw(8.0f,false);
-		//suika::point<float> a = { l.B() - l.A() };
-		//suika::point<float> u = suika::point<float>{ a.y,-a.x };
-		//suika::point<float> v = suika::point<float>{ -a.y,a.x };
-		//u = suika::vector::set_length(u, 64) + l.A();
-		//v = suika::vector::set_length(v, 64) + l.A();
-		//suika::line(suika::vector::set_length(u, 64) + l.A(), suika::vector::set_length(v, 64) + l.A()).draw();
-		//suika::line(suika::vector::set_length(u, 64) + l.B(), suika::vector::set_length(v, 64) + l.B()).draw();
+		c.at(suika::mouse::position()).resolution(24).colored(suika::color(suika::palette::red, i)).blended(suika::blend::add).draw();
+		l.B(suika::mouse::position()).colored(suika::color(suika::palette::white, i)).blended(suika::blend::sub).draw(8.0f,false);
 
 #if 0
 		if (i == 60) {

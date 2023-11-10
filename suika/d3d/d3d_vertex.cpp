@@ -24,8 +24,10 @@ namespace suika {
 			D3D11_BUFFER_DESC bufferDesc;
 			D3D11_SUBRESOURCE_DATA initData;
 			UINT offset = 0;
-			UINT offset_ins[4] = { 0,0,0,0 };
-			uint stride_ins[4] = { 0,0,0,0 };
+			UINT offset_ins[2] = { 0,0 };
+			//UINT offset_ins[4] = { 0,0,0,0 };
+			uint stride_ins[2] = { 0,0 };
+			//uint stride_ins[4] = { 0,0,0,0 };
 			Microsoft::WRL::ComPtr<ID3D11Buffer> g_indexBuffer;
 			Microsoft::WRL::ComPtr<ID3D11Buffer> g_vertexBuffer;
 			Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceMatrix;
@@ -217,7 +219,7 @@ namespace suika {
 						}
 						suika::d3d::pContext->Unmap(g_instanceMatrix.Get(), 0);
 
-						mapped = {};
+						/*mapped = {};
 						er = suika::d3d::pContext->Map(g_instanceColor.Get(), 0, map_type, 0, &mapped);
 						if (FAILED(er)) {
 							d3d::log_d3d.error("Failed to Update instanceColor");
@@ -237,18 +239,21 @@ namespace suika {
 							return;
 						}
 						if (void* const p = mapped.pData) {
-							std::memcpy(p, instance_matrix.data(), sizeof(float2) * instance_uv.size());
+							std::memcpy(p, instance_uv.data(), sizeof(float2) * instance_uv.size());
 						}
-						suika::d3d::pContext->Unmap(g_instanceUV.Get(), 0);
+						suika::d3d::pContext->Unmap(g_instanceUV.Get(), 0);*/
 					}
 					stride_ins[1] = sizeof(matrix4x4<float>);
-					stride_ins[2] = sizeof(float4);
-					stride_ins[3] = sizeof(float2);
+					//stride_ins[2] = sizeof(float4);
+					//stride_ins[3] = sizeof(float2);
 
-					ID3D11Buffer* buf[] = { g_vertexBuffer.Get(), g_instanceMatrix.Get(), g_instanceColor.Get(), g_instanceUV.Get()};
+					//ID3D11Buffer* buf[] = { g_vertexBuffer.Get(), g_instanceMatrix.Get(), g_instanceColor.Get(), g_instanceUV.Get()};
+					ID3D11Buffer* buf[] = { g_vertexBuffer.Get(), g_instanceMatrix.Get()};
 					suika::d3d::pContext->IASetVertexBuffers(0, 2, buf, stride_ins, offset_ins);
 					d3d::pContext->DrawIndexedInstanced(static_cast<UINT>(index.size()), static_cast<UINT>(instance_matrix.size()), 0, 0, 0);
 					instance_matrix.resize(0);
+					instance_color.resize(0);
+					instance_uv.resize(0);
 				}
 			}
 		}

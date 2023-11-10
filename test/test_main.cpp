@@ -40,7 +40,7 @@ int main() {
 		suika::window::title(std::format("{:4.1f}fps,{}, [{},{}], {}", suika::sys::fps(), i, suika::mouse::position().x, suika::mouse::position().y, cursor));
 		for (int y = 0; y < 16; y++) {
 			for (int x = 0; x < 16; x++) {
-				r.at({x*w, y*h}).colored(suika::color(suika::palette::gray, i)).blended(suika::blend::alpha).draw();
+				r.at({x*w, y*h}).colored(suika::color(suika::palette::gray, (x+y)*8)).blended(suika::blend::alpha).draw();
 				//tex.centered({ 0, 0 }).at({ x * w + w / 2,y * h + h / 2 }).blended(suika::blend::alpha).rotated(i / 20.0f).draw();
 			}
 		}

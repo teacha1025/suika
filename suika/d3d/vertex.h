@@ -17,15 +17,10 @@ namespace suika {
 		namespace vertex {
 			extern Microsoft::WRL::ComPtr<ID3D11Buffer> g_vertexBuffer;
 			extern Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceMatrix;
-			extern Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceColor;
-			extern Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceUV;
-			//extern std::vector<DirectX::XMMATRIX> instance_matrix;
 			extern std::vector<matrix4x4<float>> instance_matrix;
 			extern UINT offset;
 			extern UINT offset_ins[2];
-			//extern UINT offset_ins[4];
 			extern uint stride_ins[2];
-			//extern uint stride_ins[4];
 			extern std::any now_vertex;
 			enum class ins_type {
 				line,

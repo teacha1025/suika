@@ -1,8 +1,8 @@
 ﻿#include "suika.h"
 #include "../suika/d3d/dwrite.h"
-#include "../suika/d3d/blend.hpp"
-#include "../suika/d3d/texture.hpp"
-#include "../suika/d3d/vertex.h"
+//#include "../suika/d3d/blend.hpp"
+//#include "../suika/d3d/texture.hpp"
+//#include "../suika/d3d/vertex.h"
 
 
 void init() {
@@ -29,7 +29,6 @@ int main() {
 	int i = 0;
 	float f = 0;
 
-	//suika::d3d::texture::texture tex("test.bmp");
 	suika::rect r({ w - 1,h - 1 });
 	suika::circle c(32);
 	int cursor = suika::mouse::arrow;

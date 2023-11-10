@@ -13,10 +13,7 @@ namespace suika {
 	namespace d3d {
 		namespace vertex {
 			std::vector<uint16> index;
-			//std::vector<DirectX::XMMATRIX> instance_matrix;
 			std::vector<matrix4x4<float>> instance_matrix;
-			std::vector<float4> instance_color;
-			std::vector<float2> instance_uv;
 
 			std::any now_vertex;
 			ins_type now_type= ins_type::none;
@@ -25,14 +22,10 @@ namespace suika {
 			D3D11_SUBRESOURCE_DATA initData;
 			UINT offset = 0;
 			UINT offset_ins[2] = { 0,0 };
-			//UINT offset_ins[4] = { 0,0,0,0 };
 			uint stride_ins[2] = { 0,0 };
-			//uint stride_ins[4] = { 0,0,0,0 };
 			Microsoft::WRL::ComPtr<ID3D11Buffer> g_indexBuffer;
 			Microsoft::WRL::ComPtr<ID3D11Buffer> g_vertexBuffer;
 			Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceMatrix;
-			Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceColor;
-			Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceUV;
 
 			template<concepts::numbers T>
 			matrix<T> to_matrix(DirectX::XMMATRIX m) {
@@ -71,7 +64,7 @@ namespace suika {
 			}
 			template<concepts::numbers T>
 			DirectX::XMMATRIX to_matrix(matrix<T> m) {
-				DirectX::XMMATRIX ret;
+				DirectX::XMMATRIX ret = {};
 				for (int i = 0; i < 4; i++) {
 					ret.r[i].m128_f32[0] = m.at(i, 0);
 					ret.r[i].m128_f32[1] = m.at(i, 1);
@@ -136,18 +129,6 @@ namespace suika {
 						d3d::log_d3d.result(er);
 						return;
 					}
-					er = suika::d3d::pDevice->CreateBuffer(&desc, nullptr, &g_instanceColor);
-					if (FAILED(er)) {
-						d3d::log_d3d.error("Failed to Create instanceColorBuffer");
-						d3d::log_d3d.result(er);
-						return;
-					}
-					er = suika::d3d::pDevice->CreateBuffer(&desc, nullptr, &g_instanceUV);
-					if (FAILED(er)) {
-						d3d::log_d3d.error("Failed to Create instanceUVBuffer");
-						d3d::log_d3d.result(er);
-						return;
-					}
 				}
 
 				log_d3d.info("Initialize Vertex");
@@ -190,8 +171,6 @@ namespace suika {
 					flush();
 				}
 				instance_matrix.emplace_back(calc_matrix(origine, translate, rotate, extend));
-				instance_color.emplace_back(color);
-				instance_uv.emplace_back(uv);
 			}
 
 			void set_ins_mode(ins_type type) {
@@ -218,42 +197,12 @@ namespace suika {
 							std::memcpy(p, instance_matrix.data(), sizeof(matrix4x4<float>) * instance_matrix.size());
 						}
 						suika::d3d::pContext->Unmap(g_instanceMatrix.Get(), 0);
-
-						/*mapped = {};
-						er = suika::d3d::pContext->Map(g_instanceColor.Get(), 0, map_type, 0, &mapped);
-						if (FAILED(er)) {
-							d3d::log_d3d.error("Failed to Update instanceColor");
-							d3d::log_d3d.result(er);
-							return;
-						}
-						if (void* const p = mapped.pData) {
-							std::memcpy(p, instance_color.data(), sizeof(float4) * instance_color.size());
-						}
-						suika::d3d::pContext->Unmap(g_instanceColor.Get(), 0);
-
-						mapped = {};
-						er = suika::d3d::pContext->Map(g_instanceUV.Get(), 0, map_type, 0, &mapped);
-						if (FAILED(er)) {
-							d3d::log_d3d.error("Failed to Update instanceUV");
-							d3d::log_d3d.result(er);
-							return;
-						}
-						if (void* const p = mapped.pData) {
-							std::memcpy(p, instance_uv.data(), sizeof(float2) * instance_uv.size());
-						}
-						suika::d3d::pContext->Unmap(g_instanceUV.Get(), 0);*/
 					}
 					stride_ins[1] = sizeof(matrix4x4<float>);
-					//stride_ins[2] = sizeof(float4);
-					//stride_ins[3] = sizeof(float2);
-
-					//ID3D11Buffer* buf[] = { g_vertexBuffer.Get(), g_instanceMatrix.Get(), g_instanceColor.Get(), g_instanceUV.Get()};
 					ID3D11Buffer* buf[] = { g_vertexBuffer.Get(), g_instanceMatrix.Get()};
 					suika::d3d::pContext->IASetVertexBuffers(0, 2, buf, stride_ins, offset_ins);
 					d3d::pContext->DrawIndexedInstanced(static_cast<UINT>(index.size()), static_cast<UINT>(instance_matrix.size()), 0, 0, 0);
 					instance_matrix.resize(0);
-					instance_color.resize(0);
-					instance_uv.resize(0);
 				}
 			}
 		}

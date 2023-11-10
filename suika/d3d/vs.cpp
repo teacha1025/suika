@@ -137,13 +137,35 @@ namespace suika {
 				if (std::string(sigdesc.SemanticName) == ("SV_InstanceID")) {
 					continue;
 				}
-				if (std::string(sigdesc.SemanticName) == ("MATRIX")) {
+				if (std::string(sigdesc.SemanticName) == ("INS_MATRIX")) {
 					eledesc = {
 						.SemanticName = sigdesc.SemanticName // Semantic–¼
 						, .SemanticIndex = sigdesc.SemanticIndex // POSITION0‚Æ‚©‚Ì”šB–³‚¯‚ê‚Î0
 						, .Format = format // DXGI_FORMAT
 						, .InputSlot = 1 // Œˆ‚ß‘Å‚¿
 						, .AlignedByteOffset = (ins_mat_index++)*16 // Œˆ‚ß‘Å‚¿
+						, .InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA // Œˆ‚ß‘Å‚¿
+						, .InstanceDataStepRate = 1 // Œˆ‚ß‘Å‚¿
+					};
+				}
+				else if (std::string(sigdesc.SemanticName) == ("INS_COLOR")) {
+					eledesc = {
+						.SemanticName = sigdesc.SemanticName // Semantic–¼
+						, .SemanticIndex = sigdesc.SemanticIndex // POSITION0‚Æ‚©‚Ì”šB–³‚¯‚ê‚Î0
+						, .Format = format // DXGI_FORMAT
+						, .InputSlot = 2 // Œˆ‚ß‘Å‚¿
+						, .AlignedByteOffset = (ins_mat_index++) * 4 // Œˆ‚ß‘Å‚¿
+						, .InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA // Œˆ‚ß‘Å‚¿
+						, .InstanceDataStepRate = 1 // Œˆ‚ß‘Å‚¿
+					};
+				}
+				else if (std::string(sigdesc.SemanticName) == ("INS_UV")) {
+					eledesc = {
+						.SemanticName = sigdesc.SemanticName // Semantic–¼
+						, .SemanticIndex = sigdesc.SemanticIndex // POSITION0‚Æ‚©‚Ì”šB–³‚¯‚ê‚Î0
+						, .Format = format // DXGI_FORMAT
+						, .InputSlot = 3 // Œˆ‚ß‘Å‚¿
+						, .AlignedByteOffset = (ins_mat_index++) * 2 // Œˆ‚ß‘Å‚¿
 						, .InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA // Œˆ‚ß‘Å‚¿
 						, .InstanceDataStepRate = 1 // Œˆ‚ß‘Å‚¿
 					};

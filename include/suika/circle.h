@@ -14,16 +14,16 @@ namespace suika {
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
 	public:
 		/// <summary>
-		/// 矩形作成
+		/// 円の作成
 		/// </summary>
-		/// <param name="size">矩形のサイズ</param>
+		/// <param name="size">円の半径</param>
 		circle(float r) : _radius(r) {
 			_shaders = { .vs = SHAPE_VERTEX, .ps = SHAPE_PIXEL };
 			_resolution = r;
 		}
 
 		/// <summary>
-		/// 矩形を描画する
+		/// 円を描画する
 		/// </summary>
 		virtual void draw() override;
 
@@ -83,9 +83,9 @@ namespace suika {
 			return this->_radius;
 		}
 		/// <summary>
-		/// 矩形の色を取得
+		/// 円の色を取得
 		/// </summary>
-		/// <returns>矩形の色</returns>
+		/// <returns>円の色</returns>
 		virtual color_f color() const {
 			return this->_color;
 		}

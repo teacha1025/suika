@@ -24,11 +24,12 @@ namespace suika {
 		};
 	}
 	void rect::draw() {
+		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::rect);
 		set_vs(this->_shaders.vs);
 		set_ps(this->_shaders.ps);
 		suika::d3d::blend::blends[_blend].set();
 		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::rect);
+		
 		d3d::vertex::set_vertex_instance(create_vertex());
 		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend);
 

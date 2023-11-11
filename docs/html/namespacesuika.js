@@ -382,7 +382,6 @@ var namespacesuika =
       [ "mul", "namespacesuika_1_1vector.html#a69fd6f9a5599c86ae3629cba2a5f06d6", null ],
       [ "mul", "namespacesuika_1_1vector.html#aa12508f0b10ad7fda33796ce537037d2", null ],
       [ "rotate", "namespacesuika_1_1vector.html#a645dbb0ec6a8e418765c02035d7386c0", null ],
-      [ "rotate", "namespacesuika_1_1vector.html#af956f7d3e0ac85273d9a30500da462fc", null ],
       [ "rotate_at", "namespacesuika_1_1vector.html#aeaa75efb6f974bef78cf339652e1d102", null ],
       [ "rotate_at", "namespacesuika_1_1vector.html#ad75f03cc5edcb8ff31e6aaa34bcb0ec8", null ],
       [ "rotation", "namespacesuika_1_1vector.html#a85ba92deb79b6a7be7e576a52db28f8a", null ],
@@ -408,7 +407,9 @@ var namespacesuika =
     ] ],
     [ "color", "structsuika_1_1color.html", "structsuika_1_1color" ],
     [ "color_f", "structsuika_1_1color__f.html", "structsuika_1_1color__f" ],
+    [ "font", "classsuika_1_1font.html", "classsuika_1_1font" ],
     [ "hsv", "structsuika_1_1hsv.html", "structsuika_1_1hsv" ],
+    [ "line", "classsuika_1_1line.html", "classsuika_1_1line" ],
     [ "logger", "classsuika_1_1logger.html", "classsuika_1_1logger" ],
     [ "matrix", "structsuika_1_1matrix.html", "structsuika_1_1matrix" ],
     [ "polar2", "classsuika_1_1polar2.html", "classsuika_1_1polar2" ],
@@ -452,6 +453,41 @@ var namespacesuika =
       [ "pma_add", "namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6ab0de51ef5addf187f904a38ac6c163fe", null ],
       [ "pma_sub", "namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a69863190419236789bc973c5d768b6cd", null ],
       [ "pma_inv_src", "namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a2ae9fd8ed87170080f47d83c36bb484f", null ]
+    ] ],
+    [ "font_alignment", "namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1", [
+      [ "left", "namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1a811882fecd5c7618d7099ebbd39ea254", null ],
+      [ "right", "namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1a7c4f29407893c334a6cb7a87bf045c0d", null ],
+      [ "center", "namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1aadb115059e28d960fa8badfac5516667", null ],
+      [ "justified", "namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1a9f7a87861baf27aa6e2d0e23dfccd4a7", null ]
+    ] ],
+    [ "font_stretch", "namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276", [
+      [ "undefined", "namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276a5e543256c480ac577d30f76f9120eb74", null ],
+      [ "ultra_condensed", "namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276ad86820904da6402c783fb590b34c53b9", null ],
+      [ "extra_condensed", "namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276ae936c624839ab7bcbe7bf40e10e2cda1", null ],
+      [ "condensed", "namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276adfcc533bd1335f67a8a6598da8e9b402", null ],
+      [ "semi_condensed", "namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276a7bb71d1effc2a169033bc2e73de0020f", null ],
+      [ "normal", "namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276afea087517c26fadd409bd4b9dc642555", null ],
+      [ "semi_expanded", "namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276aca6820981f4c84d87da047f9ed056a06", null ],
+      [ "expanded", "namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276a1a6130a21d7d578d81a168ebcf0d9921", null ],
+      [ "extra_expanded", "namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276a4b874bcd37dc7077fd1ae140af86c488", null ],
+      [ "ultra_expanded", "namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276ac8c7554a6f1d8650b16381691930a263", null ]
+    ] ],
+    [ "font_style", "namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3de", [
+      [ "normal", "namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3deafea087517c26fadd409bd4b9dc642555", null ],
+      [ "oblique", "namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3deadff74cf5ebe9c0bf565d0d7f4184ebbf", null ],
+      [ "italic", "namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3dea030c5b6d1e5715105943ac111d9671bf", null ]
+    ] ],
+    [ "font_weight", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00", [
+      [ "thin", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a36ea88c42525c5f42ebbe0fd38a893a5", null ],
+      [ "extra_light", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00aa23bd9a9bb33c25a906137bb3ef55500", null ],
+      [ "light", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a2ac43aa43bf473f9a9c09b4b608619d3", null ],
+      [ "semi_light", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a9fd11b6d5759524314ec4e6edab3c40c", null ],
+      [ "normal", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00afea087517c26fadd409bd4b9dc642555", null ],
+      [ "semi_bold", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a2f76e7f542f383489f54ed01b6aaf966", null ],
+      [ "bold", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a69dcab4a73aeec2113f69b61e6263da8", null ],
+      [ "extra_bold", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00ad7c79537c888b457d7633e5296835c82", null ],
+      [ "heavy", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a7cfe64ea44dc3bbeb63b29ff3039a481", null ],
+      [ "extra_heavy", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a5caacb8b8ca6d783572f2777ef6d865b", null ]
     ] ],
     [ "primitive_topology", "namespacesuika.html#a97235e02f66ea12749752542f28a058a", [
       [ "PRIMITIVE_TOPOLOGY_UNDEFINED", "namespacesuika.html#a97235e02f66ea12749752542f28a058aacce780b5d18caab2000f94991a63d6e2", null ],

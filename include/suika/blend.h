@@ -1,6 +1,9 @@
 ﻿#pragma once
 
 namespace suika {
+	/// <summary>
+	/// ブレンドの種類
+	/// </summary>
 	enum class blend {
 		//! ノーブレンド
 		none = 0,

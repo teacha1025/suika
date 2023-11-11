@@ -406,7 +406,7 @@ namespace suika {
 		/// <summary>
 		/// ‰ñ“]—Ê‚Ìİ’è
 		/// </summary>
-		/// <param name="center">İ’è‚·‚éŠe²‚Ì‰ñ“]—Ê</param>
+		/// <param name="rotation">İ’è‚·‚éŠe²‚Ì‰ñ“]—Ê</param>
 		virtual font rotated(const vector3<position_type>& rotation)&& {
 			_rotation = rotation;
 			return static_cast<font&&>(std::move(*this));
@@ -414,7 +414,7 @@ namespace suika {
 		/// <summary>
 		/// ‰ñ“]—Ê‚Ìİ’è
 		/// </summary>
-		/// <param name="center">İ’è‚·‚éŠe²‚Ì‰ñ“]—Ê</param>
+		/// <param name="rotation">İ’è‚·‚éŠe²‚Ì‰ñ“]—Ê</param>
 		virtual font& rotated(const vector3<position_type>& rotation)& {
 			_rotation = rotation;
 			return static_cast<font&>(*this);
@@ -422,7 +422,7 @@ namespace suika {
 		/// <summary>
 		/// ‰ñ“]—Ê‚Ìİ’è
 		/// </summary>
-		/// <param name="center">İ’è‚·‚é‰ñ“]—Ê</param>
+		/// <param name="rotation">İ’è‚·‚é‰ñ“]—Ê</param>
 		virtual font rotated(const position_type& rotation)&& {
 			_rotation.z = rotation;
 			return static_cast<font&&>(std::move(*this));
@@ -430,7 +430,7 @@ namespace suika {
 		/// <summary>
 		/// ‰ñ“]—Ê‚Ìİ’è
 		/// </summary>
-		/// <param name="center">İ’è‚·‚é‰ñ“]—Ê</param>
+		/// <param name="rotation">İ’è‚·‚é‰ñ“]—Ê</param>
 		virtual font& rotated(const position_type& rotation)& {
 			_rotation.z = rotation;
 			return static_cast<font&>(*this);

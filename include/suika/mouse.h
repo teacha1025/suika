@@ -48,6 +48,9 @@ namespace suika {
 		extern detail::mouse Button7;
 		extern detail::mouse Button8;
 
+		/// <summary>
+		/// カーソルの種類
+		/// </summary>
 		enum cursor {
 			//! 標準
 			icon,

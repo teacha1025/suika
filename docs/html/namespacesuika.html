@@ -133,8 +133,14 @@ $(document).ready(function(){initNavTree('namespacesuika.html',''); initResizabl
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsuika_1_1color__f.html">color_f</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">RGBカラーを扱うクラス  <a href="structsuika_1_1color__f.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsuika_1_1font.html">font</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">フォント描画に関するクラス  <a href="classsuika_1_1font.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structsuika_1_1hsv.html">hsv</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">HSVカラーを扱う  <a href="structsuika_1_1hsv.html#details">[詳解]</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsuika_1_1line.html">line</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">線分クラス  <a href="classsuika_1_1line.html#details">[詳解]</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsuika_1_1logger.html">logger</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ログ出力に関するクラス  <a href="classsuika_1_1logger.html#details">[詳解]</a><br /></td></tr>
@@ -268,7 +274,55 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>char32</b> = char32_
 &#160;&#160;<a class="el" href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a2ae9fd8ed87170080f47d83c36bb484f">pma_inv_src</a> = 12
 <br />
  }</td></tr>
+<tr class="memdesc:a78b27589d03e611b465eb71f50ed42f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">ブレンドの種類  <a href="namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6">[詳解]</a><br /></td></tr>
 <tr class="separator:a78b27589d03e611b465eb71f50ed42f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6cedadeb6dfafe6a913fdb7df79dce1"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1">font_alignment</a> { <a class="el" href="namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1a811882fecd5c7618d7099ebbd39ea254">left</a> = 0
+, <a class="el" href="namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1a7c4f29407893c334a6cb7a87bf045c0d">right</a> = 1
+, <a class="el" href="namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1aadb115059e28d960fa8badfac5516667">center</a> = 2
+, <a class="el" href="namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1a9f7a87861baf27aa6e2d0e23dfccd4a7">justified</a> = 3
+ }</td></tr>
+<tr class="memdesc:ab6cedadeb6dfafe6a913fdb7df79dce1"><td class="mdescLeft">&#160;</td><td class="mdescRight">フォントの配置  <a href="namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1">[詳解]</a><br /></td></tr>
+<tr class="separator:ab6cedadeb6dfafe6a913fdb7df79dce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0abcc7f532f0f4eede4c75241467d276"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276">font_stretch</a> { <br />
+&#160;&#160;<a class="el" href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276a5e543256c480ac577d30f76f9120eb74">undefined</a> = 0
+, <a class="el" href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276ad86820904da6402c783fb590b34c53b9">ultra_condensed</a> = 1
+, <a class="el" href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276ae936c624839ab7bcbe7bf40e10e2cda1">extra_condensed</a> = 2
+, <a class="el" href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276adfcc533bd1335f67a8a6598da8e9b402">condensed</a> = 3
+, <br />
+&#160;&#160;<a class="el" href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276a7bb71d1effc2a169033bc2e73de0020f">semi_condensed</a> = 4
+, <a class="el" href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276afea087517c26fadd409bd4b9dc642555">normal</a> = 5
+, <a class="el" href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276aca6820981f4c84d87da047f9ed056a06">semi_expanded</a> = 6
+, <a class="el" href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276a1a6130a21d7d578d81a168ebcf0d9921">expanded</a> = 7
+, <br />
+&#160;&#160;<a class="el" href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276a4b874bcd37dc7077fd1ae140af86c488">extra_expanded</a> = 8
+, <a class="el" href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276ac8c7554a6f1d8650b16381691930a263">ultra_expanded</a> = 9
+<br />
+ }</td></tr>
+<tr class="memdesc:a0abcc7f532f0f4eede4c75241467d276"><td class="mdescLeft">&#160;</td><td class="mdescRight">フォントの幅  <a href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276">[詳解]</a><br /></td></tr>
+<tr class="separator:a0abcc7f532f0f4eede4c75241467d276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a971f028ead6e203fe5e46174dc8ef3de"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3de">font_style</a> { <a class="el" href="namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3deafea087517c26fadd409bd4b9dc642555">normal</a> = 0
+, <a class="el" href="namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3deadff74cf5ebe9c0bf565d0d7f4184ebbf">oblique</a> = 1
+, <a class="el" href="namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3dea030c5b6d1e5715105943ac111d9671bf">italic</a> = 2
+ }</td></tr>
+<tr class="memdesc:a971f028ead6e203fe5e46174dc8ef3de"><td class="mdescLeft">&#160;</td><td class="mdescRight">フォントの斜体  <a href="namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3de">[詳解]</a><br /></td></tr>
+<tr class="separator:a971f028ead6e203fe5e46174dc8ef3de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16a15ec693ea60a79a285c89184f9d00"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00">font_weight</a> { <br />
+&#160;&#160;<a class="el" href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a36ea88c42525c5f42ebbe0fd38a893a5">thin</a> = 100
+, <a class="el" href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00aa23bd9a9bb33c25a906137bb3ef55500">extra_light</a> = 200
+, <a class="el" href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a2ac43aa43bf473f9a9c09b4b608619d3">light</a> = 300
+, <a class="el" href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a9fd11b6d5759524314ec4e6edab3c40c">semi_light</a> = 350
+, <br />
+&#160;&#160;<a class="el" href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00afea087517c26fadd409bd4b9dc642555">normal</a> = 400
+, <a class="el" href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a2f76e7f542f383489f54ed01b6aaf966">semi_bold</a> = 600
+, <a class="el" href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a69dcab4a73aeec2113f69b61e6263da8">bold</a> = 700
+, <a class="el" href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00ad7c79537c888b457d7633e5296835c82">extra_bold</a> = 800
+, <br />
+&#160;&#160;<a class="el" href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a7cfe64ea44dc3bbeb63b29ff3039a481">heavy</a> = 900
+, <a class="el" href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a5caacb8b8ca6d783572f2777ef6d865b">extra_heavy</a> = 950
+<br />
+ }</td></tr>
+<tr class="memdesc:a16a15ec693ea60a79a285c89184f9d00"><td class="mdescLeft">&#160;</td><td class="mdescRight">フォントの太さ  <a href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00">[詳解]</a><br /></td></tr>
+<tr class="separator:a16a15ec693ea60a79a285c89184f9d00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97235e02f66ea12749752542f28a058a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacesuika.html#a97235e02f66ea12749752542f28a058a">primitive_topology</a> { <br />
 &#160;&#160;<a class="el" href="namespacesuika.html#a97235e02f66ea12749752542f28a058aacce780b5d18caab2000f94991a63d6e2">PRIMITIVE_TOPOLOGY_UNDEFINED</a> = 0
 , <a class="el" href="namespacesuika.html#a97235e02f66ea12749752542f28a058aa697d22936fee79b3295eea1c10521cf4">PRIMITIVE_TOPOLOGY_POINTLIST</a> = 1
@@ -526,6 +580,8 @@ template&lt;concepts::numbers T&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>ブレンドの種類 </p>
 <table class="fieldtable">
 <tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a78b27589d03e611b465eb71f50ed42f6a334c4a4c42fdb79d7ebc3e73b517e6f8" name="a78b27589d03e611b465eb71f50ed42f6a334c4a4c42fdb79d7ebc3e73b517e6f8"></a>none&#160;</td><td class="fielddoc"><p>ノーブレンド </p>
 </td></tr>
@@ -552,6 +608,164 @@ template&lt;concepts::numbers T&gt; </div>
 <tr><td class="fieldname"><a id="a78b27589d03e611b465eb71f50ed42f6a69863190419236789bc973c5d768b6cd" name="a78b27589d03e611b465eb71f50ed42f6a69863190419236789bc973c5d768b6cd"></a>pma_sub&#160;</td><td class="fielddoc"><p>乗算済みαブレンドモードの減算ブレンド </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a78b27589d03e611b465eb71f50ed42f6a2ae9fd8ed87170080f47d83c36bb484f" name="a78b27589d03e611b465eb71f50ed42f6a2ae9fd8ed87170080f47d83c36bb484f"></a>pma_inv_src&#160;</td><td class="fielddoc"><p>乗算済みαブレンドモードの描画元の色を反転する </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ab6cedadeb6dfafe6a913fdb7df79dce1" name="ab6cedadeb6dfafe6a913fdb7df79dce1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6cedadeb6dfafe6a913fdb7df79dce1">&#9670;&#160;</a></span>font_alignment</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1">suika::font_alignment</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フォントの配置 </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="ab6cedadeb6dfafe6a913fdb7df79dce1a811882fecd5c7618d7099ebbd39ea254" name="ab6cedadeb6dfafe6a913fdb7df79dce1a811882fecd5c7618d7099ebbd39ea254"></a>left&#160;</td><td class="fielddoc"><p>左端揃え </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab6cedadeb6dfafe6a913fdb7df79dce1a7c4f29407893c334a6cb7a87bf045c0d" name="ab6cedadeb6dfafe6a913fdb7df79dce1a7c4f29407893c334a6cb7a87bf045c0d"></a>right&#160;</td><td class="fielddoc"><p>右端揃え </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab6cedadeb6dfafe6a913fdb7df79dce1aadb115059e28d960fa8badfac5516667" name="ab6cedadeb6dfafe6a913fdb7df79dce1aadb115059e28d960fa8badfac5516667"></a>center&#160;</td><td class="fielddoc"><p>中央揃え </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab6cedadeb6dfafe6a913fdb7df79dce1a9f7a87861baf27aa6e2d0e23dfccd4a7" name="ab6cedadeb6dfafe6a913fdb7df79dce1a9f7a87861baf27aa6e2d0e23dfccd4a7"></a>justified&#160;</td><td class="fielddoc"><p>両端揃え </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a0abcc7f532f0f4eede4c75241467d276" name="a0abcc7f532f0f4eede4c75241467d276"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0abcc7f532f0f4eede4c75241467d276">&#9670;&#160;</a></span>font_stretch</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276">suika::font_stretch</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フォントの幅 </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a0abcc7f532f0f4eede4c75241467d276a5e543256c480ac577d30f76f9120eb74" name="a0abcc7f532f0f4eede4c75241467d276a5e543256c480ac577d30f76f9120eb74"></a>undefined&#160;</td><td class="fielddoc"><p>未定義 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0abcc7f532f0f4eede4c75241467d276ad86820904da6402c783fb590b34c53b9" name="a0abcc7f532f0f4eede4c75241467d276ad86820904da6402c783fb590b34c53b9"></a>ultra_condensed&#160;</td><td class="fielddoc"><p>超極細 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0abcc7f532f0f4eede4c75241467d276ae936c624839ab7bcbe7bf40e10e2cda1" name="a0abcc7f532f0f4eede4c75241467d276ae936c624839ab7bcbe7bf40e10e2cda1"></a>extra_condensed&#160;</td><td class="fielddoc"><p>極細 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0abcc7f532f0f4eede4c75241467d276adfcc533bd1335f67a8a6598da8e9b402" name="a0abcc7f532f0f4eede4c75241467d276adfcc533bd1335f67a8a6598da8e9b402"></a>condensed&#160;</td><td class="fielddoc"><p>細 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0abcc7f532f0f4eede4c75241467d276a7bb71d1effc2a169033bc2e73de0020f" name="a0abcc7f532f0f4eede4c75241467d276a7bb71d1effc2a169033bc2e73de0020f"></a>semi_condensed&#160;</td><td class="fielddoc"><p>半細 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0abcc7f532f0f4eede4c75241467d276afea087517c26fadd409bd4b9dc642555" name="a0abcc7f532f0f4eede4c75241467d276afea087517c26fadd409bd4b9dc642555"></a>normal&#160;</td><td class="fielddoc"><p>標準 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0abcc7f532f0f4eede4c75241467d276aca6820981f4c84d87da047f9ed056a06" name="a0abcc7f532f0f4eede4c75241467d276aca6820981f4c84d87da047f9ed056a06"></a>semi_expanded&#160;</td><td class="fielddoc"><p>半太 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0abcc7f532f0f4eede4c75241467d276a1a6130a21d7d578d81a168ebcf0d9921" name="a0abcc7f532f0f4eede4c75241467d276a1a6130a21d7d578d81a168ebcf0d9921"></a>expanded&#160;</td><td class="fielddoc"><p>太 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0abcc7f532f0f4eede4c75241467d276a4b874bcd37dc7077fd1ae140af86c488" name="a0abcc7f532f0f4eede4c75241467d276a4b874bcd37dc7077fd1ae140af86c488"></a>extra_expanded&#160;</td><td class="fielddoc"><p>極太 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a0abcc7f532f0f4eede4c75241467d276ac8c7554a6f1d8650b16381691930a263" name="a0abcc7f532f0f4eede4c75241467d276ac8c7554a6f1d8650b16381691930a263"></a>ultra_expanded&#160;</td><td class="fielddoc"><p>超極太 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a971f028ead6e203fe5e46174dc8ef3de" name="a971f028ead6e203fe5e46174dc8ef3de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a971f028ead6e203fe5e46174dc8ef3de">&#9670;&#160;</a></span>font_style</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3de">suika::font_style</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フォントの斜体 </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a971f028ead6e203fe5e46174dc8ef3deafea087517c26fadd409bd4b9dc642555" name="a971f028ead6e203fe5e46174dc8ef3deafea087517c26fadd409bd4b9dc642555"></a>normal&#160;</td><td class="fielddoc"><p>標準 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a971f028ead6e203fe5e46174dc8ef3deadff74cf5ebe9c0bf565d0d7f4184ebbf" name="a971f028ead6e203fe5e46174dc8ef3deadff74cf5ebe9c0bf565d0d7f4184ebbf"></a>oblique&#160;</td><td class="fielddoc"><p>斜体 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a971f028ead6e203fe5e46174dc8ef3dea030c5b6d1e5715105943ac111d9671bf" name="a971f028ead6e203fe5e46174dc8ef3dea030c5b6d1e5715105943ac111d9671bf"></a>italic&#160;</td><td class="fielddoc"><p>フォント標準の斜体 </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a16a15ec693ea60a79a285c89184f9d00" name="a16a15ec693ea60a79a285c89184f9d00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a16a15ec693ea60a79a285c89184f9d00">&#9670;&#160;</a></span>font_weight</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00">suika::font_weight</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>フォントの太さ </p>
+<table class="fieldtable">
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="a16a15ec693ea60a79a285c89184f9d00a36ea88c42525c5f42ebbe0fd38a893a5" name="a16a15ec693ea60a79a285c89184f9d00a36ea88c42525c5f42ebbe0fd38a893a5"></a>thin&#160;</td><td class="fielddoc"><p>超極細 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a16a15ec693ea60a79a285c89184f9d00aa23bd9a9bb33c25a906137bb3ef55500" name="a16a15ec693ea60a79a285c89184f9d00aa23bd9a9bb33c25a906137bb3ef55500"></a>extra_light&#160;</td><td class="fielddoc"><p>極細 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a16a15ec693ea60a79a285c89184f9d00a2ac43aa43bf473f9a9c09b4b608619d3" name="a16a15ec693ea60a79a285c89184f9d00a2ac43aa43bf473f9a9c09b4b608619d3"></a>light&#160;</td><td class="fielddoc"><p>細 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a16a15ec693ea60a79a285c89184f9d00a9fd11b6d5759524314ec4e6edab3c40c" name="a16a15ec693ea60a79a285c89184f9d00a9fd11b6d5759524314ec4e6edab3c40c"></a>semi_light&#160;</td><td class="fielddoc"><p>半細 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a16a15ec693ea60a79a285c89184f9d00afea087517c26fadd409bd4b9dc642555" name="a16a15ec693ea60a79a285c89184f9d00afea087517c26fadd409bd4b9dc642555"></a>normal&#160;</td><td class="fielddoc"><p>標準 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a16a15ec693ea60a79a285c89184f9d00a2f76e7f542f383489f54ed01b6aaf966" name="a16a15ec693ea60a79a285c89184f9d00a2f76e7f542f383489f54ed01b6aaf966"></a>semi_bold&#160;</td><td class="fielddoc"><p>半太 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a16a15ec693ea60a79a285c89184f9d00a69dcab4a73aeec2113f69b61e6263da8" name="a16a15ec693ea60a79a285c89184f9d00a69dcab4a73aeec2113f69b61e6263da8"></a>bold&#160;</td><td class="fielddoc"><p>太 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a16a15ec693ea60a79a285c89184f9d00ad7c79537c888b457d7633e5296835c82" name="a16a15ec693ea60a79a285c89184f9d00ad7c79537c888b457d7633e5296835c82"></a>extra_bold&#160;</td><td class="fielddoc"><p>極太 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a16a15ec693ea60a79a285c89184f9d00a7cfe64ea44dc3bbeb63b29ff3039a481" name="a16a15ec693ea60a79a285c89184f9d00a7cfe64ea44dc3bbeb63b29ff3039a481"></a>heavy&#160;</td><td class="fielddoc"><p>超極太 </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a16a15ec693ea60a79a285c89184f9d00a5caacb8b8ca6d783572f2777ef6d865b" name="a16a15ec693ea60a79a285c89184f9d00a5caacb8b8ca6d783572f2777ef6d865b"></a>extra_heavy&#160;</td><td class="fielddoc"><p>最太 </p>
 </td></tr>
 </table>
 
@@ -669,6 +883,7 @@ template&lt;concepts::numbers T&gt; </div>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">key_input</td><td>シェーダー配列</td></tr>
+    <tr><td class="paramname">size</td><td>シェーダー配列の要素数</td></tr>
     <tr><td class="paramname">name</td><td>シェーダーの登録名</td></tr>
   </table>
   </dd>
@@ -749,6 +964,7 @@ template&lt;concepts::numbers T&gt; </div>
 <dl class="params"><dt>引数</dt><dd>
   <table class="params">
     <tr><td class="paramname">key_input</td><td>シェーダー配列</td></tr>
+    <tr><td class="paramname">size</td><td>シェーダー配列の要素数</td></tr>
     <tr><td class="paramname">name</td><td>シェーダーの登録名</td></tr>
   </table>
   </dd>

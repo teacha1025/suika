@@ -678,7 +678,8 @@ namespace suika {
 		/// </summary>
 		/// <param name="_x">x方向の値</param>
 		/// <param name="_y">y方向の値</param>
-		/// <param name="_z">y方向の値</param>
+		/// <param name="_z">z方向の値</param>
+		/// <param name="_w">w方向の値</param>
 		constexpr vector4(T _x, T _y, T _z, T _w) noexcept :
 			x(_x),
 			y(_y),
@@ -691,6 +692,7 @@ namespace suika {
 		/// <param name="_x">x方向の値</param>
 		/// <param name="_y">y方向の値</param>
 		/// <param name="_z">z方向の値</param>
+		/// <param name="_w">w方向の値</param>
 		template<concepts::numbers X, concepts::numbers Y, concepts::numbers Z>
 		constexpr vector4(X _x, Y _y, Z _z, T _w) noexcept :
 			x(SCAST(T, _x)),

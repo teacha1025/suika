@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['range_0',['range',['../structsuika_1_1range.html',1,'suika']]]
+  ['polar2_0',['polar2',['../classsuika_1_1polar2.html',1,'suika']]]
 ];

@@ -1,19 +1,4 @@
 var searchData=
 [
-  ['person_0',['person',['../namespacesuika_1_1mouse.html#abb03e2c7d195ce8874cf726dbe08c0e7a3f58253e27c87094259fe052d82fd842',1,'suika::mouse']]],
-  ['pin_1',['pin',['../namespacesuika_1_1mouse.html#abb03e2c7d195ce8874cf726dbe08c0e7af581f46cb768502532a74f7dedc1be13',1,'suika::mouse']]],
-  ['pma_5fadd_2',['pma_add',['../namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6ab0de51ef5addf187f904a38ac6c163fe',1,'suika']]],
-  ['pma_5falpha_3',['pma_alpha',['../namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6aa62dc820dc5bbdd146f7f47bb7e777c7',1,'suika']]],
-  ['pma_5finv_5fsrc_4',['pma_inv_src',['../namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a2ae9fd8ed87170080f47d83c36bb484f',1,'suika']]],
-  ['pma_5fsub_5',['pma_sub',['../namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a69863190419236789bc973c5d768b6cd',1,'suika']]],
-  ['primitive_5ftopology_5flinelist_6',['PRIMITIVE_TOPOLOGY_LINELIST',['../namespacesuika.html#a97235e02f66ea12749752542f28a058aae6f8f88fc61d47fe07316e5f18d475b7',1,'suika']]],
-  ['primitive_5ftopology_5flinelist_5fadj_7',['PRIMITIVE_TOPOLOGY_LINELIST_ADJ',['../namespacesuika.html#a97235e02f66ea12749752542f28a058aa0ead394f053ba35ee62ffd0f1b203de9',1,'suika']]],
-  ['primitive_5ftopology_5flinestrip_8',['PRIMITIVE_TOPOLOGY_LINESTRIP',['../namespacesuika.html#a97235e02f66ea12749752542f28a058aa034ea0b85b0e7a5360effb54ce1d52e9',1,'suika']]],
-  ['primitive_5ftopology_5flinestrip_5fadj_9',['PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ',['../namespacesuika.html#a97235e02f66ea12749752542f28a058aad5070c804824b1105ba1da17aef33aae',1,'suika']]],
-  ['primitive_5ftopology_5fpointlist_10',['PRIMITIVE_TOPOLOGY_POINTLIST',['../namespacesuika.html#a97235e02f66ea12749752542f28a058aa697d22936fee79b3295eea1c10521cf4',1,'suika']]],
-  ['primitive_5ftopology_5ftrianglelist_11',['PRIMITIVE_TOPOLOGY_TRIANGLELIST',['../namespacesuika.html#a97235e02f66ea12749752542f28a058aaaf632ed16761a030ca2fb917994e931f',1,'suika']]],
-  ['primitive_5ftopology_5ftrianglelist_5fadj_12',['PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ',['../namespacesuika.html#a97235e02f66ea12749752542f28a058aa8b8f44253bfe18621a07e2a8486078ad',1,'suika']]],
-  ['primitive_5ftopology_5ftrianglestrip_13',['PRIMITIVE_TOPOLOGY_TRIANGLESTRIP',['../namespacesuika.html#a97235e02f66ea12749752542f28a058aafb88f8bd2a5dc56aa2001b82b553d211',1,'suika']]],
-  ['primitive_5ftopology_5ftrianglestrip_5fadj_14',['PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ',['../namespacesuika.html#a97235e02f66ea12749752542f28a058aa197f1a7cc98a299d2b9422ce31a2de8d',1,'suika']]],
-  ['primitive_5ftopology_5fundefined_15',['PRIMITIVE_TOPOLOGY_UNDEFINED',['../namespacesuika.html#a97235e02f66ea12749752542f28a058aacce780b5d18caab2000f94991a63d6e2',1,'suika']]]
+  ['justified_0',['justified',['../namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1a9f7a87861baf27aa6e2d0e23dfccd4a7',1,'suika']]]
 ];

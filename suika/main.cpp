@@ -77,7 +77,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//suika::window::title("APP");
 
 		suika::window::canvas().get()->set();
-
+		suika::d3d::dwrite::init(suika::window::canvas().get()->id);
 		suika::d3d::dinput::init(wid);
 		suika::keyboard::init();
 		suika::mouse::init();

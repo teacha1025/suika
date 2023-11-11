@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['log_0',['log',['../namespacesuika_1_1math.html#a3d295538c650875845736c3a001caca4',1,'suika::math::log(T x)'],['../namespacesuika_1_1math.html#ad9095b158ac54c86fb705720928f07e1',1,'suika::math::log(T x)']]],
-  ['log_5fn_1',['log_n',['../namespacesuika_1_1math.html#a40c63317f0f0dc4c8492d81ddba0a91d',1,'suika::math::log_n(T x, N n)'],['../namespacesuika_1_1math.html#ac90a394638d8e39d745dcc66bbb62ccb',1,'suika::math::log_n(T x, N n)']]],
-  ['logger_2',['logger',['../classsuika_1_1logger.html#ae4274fc71518b3bb2d8f07547fedf69e',1,'suika::logger']]]
+  ['identity_0',['identity',['../namespacesuika_1_1vector.html#a01bbd7f1589237e7870bfea847e8b98c',1,'suika::vector']]],
+  ['info_1',['info',['../classsuika_1_1logger.html#a4b71a0486f2ee2487ed5efb29fda473f',1,'suika::logger']]],
+  ['init_2',['init',['../classsuika_1_1logger.html#a595be4392df5ab54252623658366ecb6',1,'suika::logger']]],
+  ['inverse_3',['inverse',['../namespacesuika_1_1vector.html#a0cbc54b1d11f05afb94a53a8a89b0d6c',1,'suika::vector']]]
 ];

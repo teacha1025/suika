@@ -17,6 +17,7 @@ namespace suika {
 	/// シェーダー配列からバーテックスシェーダーを作成
 	/// </summary>
 	/// <param name="key_input">シェーダー配列</param>
+	/// <param name="size">シェーダー配列の要素数</param>
 	/// <param name="name">シェーダーの登録名</param>
 	void add_vs(const void* key_input, size_t size, const string& name);
 	/// <summary>
@@ -29,6 +30,7 @@ namespace suika {
 	/// シェーダー配列からピクセルシェーダーを作成
 	/// </summary>
 	/// <param name="key_input">シェーダー配列</param>
+	/// <param name="size">シェーダー配列の要素数</param>
 	/// <param name="name">シェーダーの登録名</param>
 	void add_ps(const void* key_input, size_t size, const string& name);
 

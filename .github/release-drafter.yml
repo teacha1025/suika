@@ -2,10 +2,9 @@ name-template: 'v$RESOLVED_VERSION 🍉'
 tag-template: 'v$RESOLVED_VERSION'
 
 categories:
-  - title: '🚀 Features'🍉
+  - title: '🚀 Features 🍉'
     labels:
       - 'feature'
-      - '新機能'
   - title: '💪 Enhancement'
     labels:
       - 'enhancement'
@@ -14,7 +13,6 @@ categories:
       - 'fix'
       - 'bugfix'
       - 'bug'
-      - 'バグ';
   - title: '🧰 Maintenance'
     label: 'chore'
   - title: '🔧 Refactoring'

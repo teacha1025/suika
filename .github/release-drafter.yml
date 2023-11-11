@@ -31,61 +31,7 @@ change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add
 exclude-labels:
   - 'exclude from changelog'
 
-version-resolver:
-  major:
-    labels:
-      - 'major'
-  minor:
-    labels:
-      - 'minor'
-  patch:
-    labels:
-      - 'patch'
-  default: patch
-
 template: |
   ## Changes
 
   $CHANGES
-
-autolabeler:
-  - label: feature
-    branch:
-      - '/^feat(ure)?[/-].+/'
-  - label: bug
-    branch:
-      - '/^fix[/-].+/'
-  - label: chore
-    branch:
-      - '/^chore[/-].+/'
-  - label: refactor
-    branch:
-      - '/(refactor|refactoring)[/-].+/'
-  - label: documentation
-    branch:
-      - '/doc(umentation)[/-].+/'
-    files:
-      - '*.md'
-  - label: enhancement
-    branch:
-      - '/(enhancement|improve)[/-].+/'
-
-  - label: nextjs
-    files:
-      - 'src/**/*'
-      - 'package.json'
-      - 'yarn.lock'
-      - 'next*'
-      - 'tsconfig.json'
-      - '.eslintrc.json'
-  - label: wasm
-    files:
-      - 'wasm/**/*'
-  - label: docker
-    files:
-      - 'docker/**/*'
-      - 'Dockerfile'
-      - '.dockerignore'
-  - label: github
-    files:
-      - '.github/**/*'

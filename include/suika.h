@@ -23,6 +23,7 @@
 
 #include "../include/suika/texture.h"
 
+#include "../include/suika/font.h"
 #include "../include/suika/rect.h"
 #include "../include/suika/circle.h"
 #include "../include/suika/line.h"

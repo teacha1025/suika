@@ -28,6 +28,7 @@ namespace suika {
 				circle,
 				triangle,
 				texture,
+				font,
 				none,
 			};
 

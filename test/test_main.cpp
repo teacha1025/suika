@@ -13,21 +13,24 @@ void init() {
 
 
 int main() {
-	auto cid = suika::window::canvas().get()->id;
-	suika::d3d::dwrite::init(cid);
-	suika::d3d::dwrite::font_data fd;
-	fd.Color = suika::palette::white;
-	fd.Color.a = 255;
-	fd.fontWeight = DWRITE_FONT_WEIGHT_BOLD;
-	fd.fontSize = 64.0f;
-	fd.font = "游明朝";
-	suika::d3d::dwrite::set(fd, cid);
+	//auto cid = suika::window::canvas().get()->id;
+	//
+	//suika::d3d::dwrite::font_data fd;
+	//fd.color = suika::palette::white;
+	//fd.color.a = 1.0f;
+	//fd.weight = DWRITE_FONT_WEIGHT_BOLD;
+	//fd.size = 64.0f;
+	//fd.font = "游明朝";
+	//suika::d3d::dwrite::set(fd, cid);
+
+	suika::font f;
+	
 
 	suika::texture tex("test.bmp");
 
 	define w = 64, h = 64;
 	int i = 0;
-	float f = 0;
+	//6float f = 0;
 
 	suika::rect r({ w - 1,h - 1 });
 	suika::circle c(32);
@@ -61,22 +64,24 @@ int main() {
 		suika::mouse::style((suika::mouse::cursor)cursor);
 		c.at(suika::mouse::position()).resolution(24).colored(suika::color(suika::palette::red, i)).blended(suika::blend::add).draw();
 		l.B(suika::mouse::position()).colored(suika::color(suika::palette::white, i)).blended(suika::blend::sub).draw(8.0f,false);
-
+		f.text(L"TEST☺").at({ 128,128 }).resized(32);
+		f.rect().colored(suika::color(suika::palette::gray,255)).blended(suika::blend::alpha).draw();
+		f.colored(suika::color(suika::palette::white, i)).draw();
 #if 0
 		if (i == 60) {
-			fd.Color = suika::palette::yellow;
-			fd.Color.a = 255;
-			fd.fontWeight = DWRITE_FONT_WEIGHT_LIGHT;
-			fd.fontSize = 32.0f;
+			fd.color = suika::palette::yellow;
+			fd.color.a = 1.0f;
+			fd.weight = DWRITE_FONT_WEIGHT_LIGHT;
+			fd.size = 32.0f;
 			fd.font = "游明朝";
 			suika::d3d::dwrite::set(fd, cid);
 		}
 		if (i ==120) {
 			i = 0;
-			fd.Color = suika::palette::white;
-			fd.Color.a = 255;
-			fd.fontWeight = DWRITE_FONT_WEIGHT_BOLD;
-			fd.fontSize = 64.0f;
+			fd.color = suika::palette::white;
+			fd.color.a = 1.0f;
+			fd.weight = DWRITE_FONT_WEIGHT_BOLD;
+			fd.size = 64.0f;
 			fd.font = "ＭＳゴシック";
 			suika::d3d::dwrite::set(fd, cid);
 		}

@@ -79,6 +79,10 @@ namespace suika {
 			}
 
 			void set(const font_data& font, canvas_id window) {
+				set(font.font, font.weight, font.style, font.stretch, font.size, font.locale, font.alignment, font.color, window);
+			}
+
+			void set(const string& font, DWRITE_FONT_WEIGHT weight, DWRITE_FONT_STYLE style, DWRITE_FONT_STRETCH stretch, float size, const string& locale, DWRITE_TEXT_ALIGNMENT alignment, const color_f& color, canvas_id window) {
 				//関数CreateTextFormat()
 				//第1引数：フォント名（L"メイリオ", L"Arial", L"Meiryo UI"等）
 				//第2引数：フォントコレクション（nullptr）
@@ -89,14 +93,14 @@ namespace suika {
 				//第7引数：ロケール名（L""）
 				//第8引数：テキストフォーマット（&g_pTextFormat）
 				auto er = pDWriteFactory->CreateTextFormat(
-					font.font.to_wstring().c_str(),
+					font.to_wstring().c_str(),
 					//font->fontCollection,
 					nullptr,
-					font.fontWeight,
-					font.fontStyle,
-					font.fontStretch,
-					font.fontSize,
-					font.localeName.to_wstring().c_str(),
+					weight,
+					style,
+					stretch,
+					size,
+					locale.to_wstring().c_str(),
 					&pTextFormat);
 				if (FAILED(er)) {
 					log_d3d.error("Failed to Create Text Format");
@@ -106,7 +110,7 @@ namespace suika {
 				//関数SetTextAlignment()
 				//第1引数：テキストの配置（DWRITE_TEXT_ALIGNMENT_LEADING：前, DWRITE_TEXT_ALIGNMENT_TRAILING：後, DWRITE_TEXT_ALIGNMENT_CENTER：中央,
 				//                         DWRITE_TEXT_ALIGNMENT_JUSTIFIED：行いっぱい）
-				er = pTextFormat->SetTextAlignment(font.textAlignment);
+				er = pTextFormat->SetTextAlignment(alignment);
 				if (FAILED(er)) {
 					log_d3d.error("Failed to Set Text Alignment");
 					log_d3d.result(er);
@@ -115,10 +119,10 @@ namespace suika {
 
 				//関数CreateSolidColorBrush()
 				//第1引数：フォント色（D2D1::ColorF(D2D1::ColorF::Black)：黒, D2D1::ColorF(D2D1::ColorF(0.0f, 0.2f, 0.9f, 1.0f))：RGBA指定）
-				float r = font.Color.r / 255.0f;
-				float g = font.Color.g / 255.0f;
-				float b = font.Color.b / 255.0f;
-				float a = font.Color.a / 255.0f;
+				float r = color.r;
+				float g = color.g;
+				float b = color.b;
+				float a = color.a;
 				er = pRT[window]->CreateSolidColorBrush(D2D1::ColorF(r, g, b, a), pSolidBrush.GetAddressOf());
 				if (FAILED(er)) {
 					log_d3d.error("Failed to Create Solid Color Brush");
@@ -127,7 +131,7 @@ namespace suika {
 				}
 			}
 
-			void draw(string str, point<float> pos, canvas_id window, D2D1_DRAW_TEXT_OPTIONS options) {
+			void draw(string str, point<float> pos, canvas_id window, D2D1_DRAW_TEXT_OPTIONS options, float alpha) {
 				// 文字列の変換
 				std::wstring wstr = str.to_wstring();
 
@@ -146,11 +150,17 @@ namespace suika {
 				pounts.x = pos.x;
 				pounts.y = pos.y;
 
+				//D2D1_MATRIX_3X2_F matricx;
+
 				// 描画の開始
 				pRT[window]->BeginDraw();
 
+				pSolidBrush->SetOpacity(alpha);
+
 				// 描画処理
 				pRT[window]->DrawTextLayout(pounts, pTextLayout.Get(), pSolidBrush.Get(), options);
+
+				pSolidBrush->SetOpacity(1.0f);
 
 				// 描画の終了
 				er = pRT[window]->EndDraw();
@@ -159,6 +169,26 @@ namespace suika {
 					log_d3d.result(er);
 					return;
 				}
+			}
+
+			point<float> get_size(string str, canvas_id window) {
+				// 文字列の変換
+				std::wstring wstr = str.to_wstring();
+
+				// ターゲットサイズの取得
+				D2D1_SIZE_F TargetSize = pRT[window]->GetSize();
+
+				// テキストレイアウトを作成
+				auto er = pDWriteFactory->CreateTextLayout(wstr.c_str(), static_cast<UINT32>(wstr.size()), pTextFormat.Get(), TargetSize.width, TargetSize.height, &pTextLayout);
+				if (FAILED(er)) {
+					log_d3d.error("Failed to Create Text Layout");
+					log_d3d.result(er);
+					return {-1,-1};
+				}
+
+				DWRITE_TEXT_METRICS text_metrics;
+				pTextLayout->GetMetrics(&text_metrics);
+				return { text_metrics.width, text_metrics.height };
 			}
 
 			void free() {

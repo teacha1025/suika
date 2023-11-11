@@ -23,13 +23,12 @@ int main() {
 	//fd.font = "游明朝";
 	//suika::d3d::dwrite::set(fd, cid);
 
-	suika::font f("HG創英角ﾎﾟｯﾌﾟ体",32,suika::font::weight::bold);
-	
+	suika::font f("HG創英角ﾎﾟｯﾌﾟ体",32,true,2,suika::font_weight::bold, suika::font_style::normal, suika::font_alignment::justified);
 
 	suika::texture tex("test.bmp");
 
 	define w = 64, h = 64;
-	int i = 0, j = 0;
+	int i = 0, j = 0, edge = 0;
 	//6float f = 0;
 
 	suika::rect r({ w - 1,h - 1 });
@@ -37,9 +36,9 @@ int main() {
 	int cursor = suika::mouse::arrow;
 	suika::line l(suika::window::size()/2, {0,0});
 	while (suika::sys::update()) {
-		i += suika::mouse::wheel();
+		edge += suika::mouse::wheel();
 		i %= 256;
-		suika::window::title(std::format("{:4.1f}fps,{}, [{},{}], {}", suika::sys::fps(), i, suika::mouse::position().x, suika::mouse::position().y, cursor));
+		suika::window::title(std::format("{:4.1f}fps,{}, [{},{}], {}", suika::sys::fps(), edge, suika::mouse::position().x, suika::mouse::position().y, cursor));
 		for (int y = 0; y < 16; y++) {
 			for (int x = 0; x < 16; x++) {
 				r.at({x*w, y*h}).colored(suika::color(suika::palette::gray, (x+y)*8)).blended(suika::blend::alpha).draw();
@@ -72,6 +71,8 @@ int main() {
 			}
 
 			flag ^= 1;
+
+			f.edged(flag, 2);
 		}
 		else if (suika::mouse::Left.down()) {
 			cursor++;
@@ -80,9 +81,9 @@ int main() {
 		suika::mouse::style((suika::mouse::cursor)cursor);
 		c.at(suika::mouse::position()).resolution(24).colored(suika::color(suika::palette::red, i)).blended(suika::blend::add).draw();
 		l.B(suika::mouse::position()).colored(suika::color(suika::palette::white, i)).blended(suika::blend::sub).draw(8.0f,false);
-		f.text(L"🍔🍝 こんにちは！！ 🍇🍣").at(suika::mouse::position()).centered(f.rect().size() / 2).resized(64);
-		f.rect().colored(suika::color(suika::palette::gray,255)).blended(suika::blend::alpha).draw();
-		f.colored(suika::hsv(j, 1.0f,1.0f).to_color()).draw();
+		f.text(L"こんにちは！！").centered({0,0}).at(suika::mouse::position()).resized(64).edged(true,edge).centered(f.rect().size() / 2);
+		f.rect().centered(f.rect().size()/2).colored(suika::color(suika::palette::gray, 255)).blended(suika::blend::alpha).draw();
+		f.colored(suika::hsv(j, 1.0f,1.0f).to_color(),suika::palette::white).draw();
 		j++;
 		j %= 360;
 #if 0

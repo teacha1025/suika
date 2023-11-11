@@ -6,8 +6,7 @@ namespace suika
         float4 color : COLOR0;
 		float2 uv : TEXCOORD0;
 		
-		float4x4 InstanceMatrix : MATRIX;
-        uint InstanceId : SV_InstanceID;
+		float4x4 InstanceMatrix : INS_MATRIX;
 		//float2 dummy : TEXCOORD1;
 	};
 

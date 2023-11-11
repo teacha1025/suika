@@ -19,6 +19,12 @@ var searchData=
   ['floor_16',['floor',['../namespacesuika_1_1math.html#af0eeb07ac3e17ef460cde0f8b4020221',1,'suika::math::floor(T x)'],['../namespacesuika_1_1math.html#a29b0e60dce93b164c6bdbf23c85bb3ad',1,'suika::math::floor(T x)']]],
   ['floralwhite_17',['floralwhite',['../namespacesuika_1_1palette.html#a72f6ea6a3ea120fe182c2358e39b2882',1,'suika::palette']]],
   ['fmod_18',['fmod',['../namespacesuika_1_1math.html#adb5a58dd35b6fc96632752621dc72eb6',1,'suika::math::fmod(T x, T y)'],['../namespacesuika_1_1math.html#ad5d2514c0f3c2ff537ad6d2b5130b254',1,'suika::math::fmod(S x, S y)']]],
-  ['forestgreen_19',['forestgreen',['../namespacesuika_1_1palette.html#a26ffbf0375aa4240f1d8cda59ff3552c',1,'suika::palette']]],
-  ['fuchsia_20',['fuchsia',['../namespacesuika_1_1palette.html#a4a17e9f84fcaf1d77e2a1cd7b64b6366',1,'suika::palette']]]
+  ['font_19',['font',['../classsuika_1_1font.html#a7f51b54a04f8018c53203ce21dd31493',1,'suika::font::font()'],['../classsuika_1_1font.html#a79abf4c4c783d5b12f213c564f07285a',1,'suika::font::font(const string &amp;font_name, float size=16.0f, bool edge=false, int32 edge_width=1u, font_weight w=font_weight::normal, font_style s=font_style::normal, font_alignment a=font_alignment::left, font_stretch st=font_stretch::normal)'],['../classsuika_1_1font.html',1,'suika::font']]],
+  ['font_5falignment_20',['font_alignment',['../namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1',1,'suika']]],
+  ['font_5fname_21',['font_name',['../classsuika_1_1font.html#a84a30cfb1c5a997fd79be90e56379e1f',1,'suika::font::font_name(const string &amp;font_name) &amp;&amp;'],['../classsuika_1_1font.html#ad01f3dee76c21a12034e175f28efb603',1,'suika::font::font_name(const string &amp;font_name) &amp;']]],
+  ['font_5fstretch_22',['font_stretch',['../namespacesuika.html#a0abcc7f532f0f4eede4c75241467d276',1,'suika']]],
+  ['font_5fstyle_23',['font_style',['../namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3de',1,'suika']]],
+  ['font_5fweight_24',['font_weight',['../namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00',1,'suika']]],
+  ['forestgreen_25',['forestgreen',['../namespacesuika_1_1palette.html#a26ffbf0375aa4240f1d8cda59ff3552c',1,'suika::palette']]],
+  ['fuchsia_26',['fuchsia',['../namespacesuika_1_1palette.html#a4a17e9f84fcaf1d77e2a1cd7b64b6366',1,'suika::palette']]]
 ];

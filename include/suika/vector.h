@@ -75,6 +75,7 @@ namespace suika {
 			return { x, y };
 		}
 
+#if 0
 		/// <summary>
 		/// ベクトルを回転させる
 		/// </summary>
@@ -91,7 +92,7 @@ namespace suika {
 			v		   = VTransformD(v, MMultD(MMultD(mz, mx), my));
 			return { v.x, v.y, v.z };
 		}
-
+#endif
 		/// <summary>
 		/// 回転中心を指定して座標を回転させる
 		/// </summary>

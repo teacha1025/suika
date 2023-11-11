@@ -137,7 +137,7 @@ namespace suika {
 				if (std::string(sigdesc.SemanticName) == ("SV_InstanceID")) {
 					continue;
 				}
-				if (std::string(sigdesc.SemanticName) == ("MATRIX")) {
+				if (std::string(sigdesc.SemanticName) == ("INS_MATRIX")) {
 					eledesc = {
 						.SemanticName = sigdesc.SemanticName // Semanticñº
 						, .SemanticIndex = sigdesc.SemanticIndex // POSITION0Ç∆Ç©ÇÃêîéöÅBñ≥ÇØÇÍÇŒ0

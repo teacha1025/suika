@@ -12,18 +12,22 @@ namespace suika {
 			struct font_data {
 				string font = "メイリオ";					// フォント名
 				//IDWriteFontCollection* fontCollection;		// フォントコレクション
-				DWRITE_FONT_WEIGHT fontWeight = DWRITE_FONT_WEIGHT_NORMAL;			// フォントの太さ
-				DWRITE_FONT_STYLE fontStyle = DWRITE_FONT_STYLE_NORMAL;			// フォントスタイル
-				DWRITE_FONT_STRETCH fontStretch = DWRITE_FONT_STRETCH_NORMAL;		// フォントの幅
-				float fontSize = 20.0f;					// フォントサイズ
-				string localeName = L"";			// ロケール名
-				DWRITE_TEXT_ALIGNMENT textAlignment = DWRITE_TEXT_ALIGNMENT_LEADING;		// テキストの配置
-				color Color = color(255, 255, 255, 255);				// フォントの色
+				DWRITE_FONT_WEIGHT weight = DWRITE_FONT_WEIGHT_NORMAL;			// フォントの太さ
+				DWRITE_FONT_STYLE style = DWRITE_FONT_STYLE_NORMAL;			// フォントスタイル
+				DWRITE_FONT_STRETCH stretch = DWRITE_FONT_STRETCH_NORMAL;		// フォントの幅
+				float size = 20.0f;					// フォントサイズ
+				string locale = L"";			// ロケール名
+				DWRITE_TEXT_ALIGNMENT alignment = DWRITE_TEXT_ALIGNMENT_LEADING;		// テキストの配置
+				color_f color = color_f(255, 255, 255, 255);				// フォントの色
 			};
 
 			void init(canvas_id window);
 			void set(const font_data& font, canvas_id window);
-			void draw(string str, point<float> pos, canvas_id window, D2D1_DRAW_TEXT_OPTIONS options = D2D1_DRAW_TEXT_OPTIONS::D2D1_DRAW_TEXT_OPTIONS_NONE);
+			void set(const string& font, DWRITE_FONT_WEIGHT weight, DWRITE_FONT_STYLE style, DWRITE_FONT_STRETCH stretch, float size, const string& locale, DWRITE_TEXT_ALIGNMENT alignment, canvas_id window);
+			void draw(string str, point<float> pos, canvas_id window, const color_f& color, D2D1_DRAW_TEXT_OPTIONS options = D2D1_DRAW_TEXT_OPTIONS::D2D1_DRAW_TEXT_OPTIONS_NONE, float alpha = 1.0f);
+			void draw(string font, float size, string str, point<float> pos, canvas_id window, const color_f& color, uint32 edge_px, const color_f& edge_color, D2D1_DRAW_TEXT_OPTIONS options = D2D1_DRAW_TEXT_OPTIONS::D2D1_DRAW_TEXT_OPTIONS_NONE, float alpha = 1.0f, const string& key = "");
+			point<float> get_size(string str, canvas_id window);
+			point<float> get_size_edged(const string& font, const string& str, float size, uint32 edge_width, const string& key);
 			void free();
 		}
 	}

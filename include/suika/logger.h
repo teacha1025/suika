@@ -44,7 +44,6 @@ namespace suika {
 		/// ログファイルの設定
 		/// </summary>
 		/// <param name="output_flag">ログ出力するか</param>
-		/// <param name="use_original">DXライブラリのログ機能を使用するか</param>
 		/// <param name="name">ログファイルの名前</param>
 		void set(bool output_flag, const string& name = "Log.txt");
 

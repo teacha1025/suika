@@ -165,6 +165,7 @@
   <ItemGroup>
     <ClCompile Include="canvas.cpp" />
     <ClCompile Include="cbuffer.cpp" />
+    <ClCompile Include="circle.cpp" />
     <ClCompile Include="codecvt.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="d3d\blend.cpp" />
@@ -179,7 +180,9 @@
     <ClCompile Include="d3d\d3d_texture.cpp" />
     <ClCompile Include="d3d\viewport.cpp" />
     <ClCompile Include="d3d\vs.cpp" />
+    <ClCompile Include="font.cpp" />
     <ClCompile Include="keyboard.cpp" />
+    <ClCompile Include="line.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="matrix.cpp" />
@@ -198,6 +201,7 @@
     <ClInclude Include="..\include\suika\blend.h" />
     <ClInclude Include="..\include\suika\canvas.h" />
     <ClInclude Include="..\include\suika\cbuffer.h" />
+    <ClInclude Include="..\include\suika\circle.h" />
     <ClInclude Include="..\include\suika\codecvt.h" />
     <ClInclude Include="..\include\suika\color.h" />
     <ClInclude Include="..\include\suika\concepts.h" />
@@ -217,8 +221,10 @@
     <ClInclude Include="..\include\suika\detail\string.ipp" />
     <ClInclude Include="..\include\suika\draw.h" />
     <ClInclude Include="..\include\suika\except.h" />
+    <ClInclude Include="..\include\suika\font.h" />
     <ClInclude Include="..\include\suika\input_base.h" />
     <ClInclude Include="..\include\suika\keyboard.h" />
+    <ClInclude Include="..\include\suika\line.h" />
     <ClInclude Include="..\include\suika\logger.h" />
     <ClInclude Include="..\include\suika\math.h" />
     <ClInclude Include="..\include\suika\matrix.h" />

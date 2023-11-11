@@ -13,7 +13,6 @@ namespace suika {
 	namespace d3d {
 		namespace vertex {
 			std::vector<uint16> index;
-			//std::vector<DirectX::XMMATRIX> instance_matrix;
 			std::vector<matrix4x4<float>> instance_matrix;
 
 			std::any now_vertex;
@@ -65,7 +64,7 @@ namespace suika {
 			}
 			template<concepts::numbers T>
 			DirectX::XMMATRIX to_matrix(matrix<T> m) {
-				DirectX::XMMATRIX ret;
+				DirectX::XMMATRIX ret = {};
 				for (int i = 0; i < 4; i++) {
 					ret.r[i].m128_f32[0] = m.at(i, 0);
 					ret.r[i].m128_f32[1] = m.at(i, 1);
@@ -135,55 +134,6 @@ namespace suika {
 				log_d3d.info("Initialize Vertex");
 			}
 
-			//void set_vertex(const void* vertices, uint vertices_size, uint stride) {
-			//	D3D11_MAPPED_SUBRESOURCE mapped;
-			//	D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
-			//	auto er = suika::d3d::pContext->Map(g_vertexBuffer.Get(), 0, map_type, 0, &mapped);
-			//	if (FAILED(er)) {
-			//		d3d::log_d3d.error("Failed to Update VertexBuffer");
-			//		d3d::log_d3d.result(er);
-			//		return;
-			//	}
-			//	if (void* const p = mapped.pData) {
-			//		std::memcpy(p, vertices, vertices_size);
-			//	}
-			//	suika::d3d::pContext->Unmap(g_vertexBuffer.Get(), 0);
-			//
-			//	suika::d3d::pContext->IASetVertexBuffers(0, 1, g_vertexBuffer.GetAddressOf(), &stride, &offset);
-			//}
-			//
-			/*void set_vertex_instance(const void* vertices, uint vertices_size, uint stride) {
-				D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
-				{
-					D3D11_MAPPED_SUBRESOURCE mapped;
-					auto er = suika::d3d::pContext->Map(g_vertexBuffer.Get(), 0, map_type, 0, &mapped);
-					if (FAILED(er)) {
-						d3d::log_d3d.error("Failed to Update VertexBuffer");
-						d3d::log_d3d.result(er);
-						return;
-					}
-					if (void* const p = mapped.pData) {
-						std::memcpy(p, vertices, vertices_size);
-					}
-					suika::d3d::pContext->Unmap(g_vertexBuffer.Get(), 0);
-				}
-				{
-					D3D11_MAPPED_SUBRESOURCE mapped;
-					auto er = suika::d3d::pContext->Map(g_instanceMatrix.Get(), 0, map_type, 0, &mapped);
-					if (FAILED(er)) {
-						d3d::log_d3d.error("Failed to Update VertexBuffer");
-						d3d::log_d3d.result(er);
-						return;
-					}
-					if (void* const p = mapped.pData) {
-						std::memcpy(p, instance_matrix.data(), sizeof(DirectX::XMMATRIX) * instance_matrix.size());
-					}
-					suika::d3d::pContext->Unmap(g_instanceMatrix.Get(), 0);
-				}
-				uint st[] = { stride, sizeof(DirectX::XMMATRIX) };
-				ID3D11Buffer* buf[] = { g_vertexBuffer.Get(), g_instanceMatrix.Get() };
-				suika::d3d::pContext->IASetVertexBuffers(0, 2, buf, st, offset_ins);
-			}*/
 
 			void set_index(const std::vector<uint16>& index, D3D11_PRIMITIVE_TOPOLOGY topology) {
 				static std::vector<uint16> old_index(0);
@@ -216,7 +166,7 @@ namespace suika {
 				return (to_matrix4x4<float>(DirectX::XMMatrixTranspose(m)));
 			}
 
-			void add_index(const suika::vector3<float>& origine, const suika::vector3<float>& translate, const suika::vector3<float>& rotate, const suika::vector3<float>& extend) {
+			void add_index(const suika::float3& origine, const suika::float3& translate, const suika::float3& rotate, const suika::float3& extend, const suika::float4& color, const suika::float2 uv) {
 				if (instance_matrix.size() > 2048) {
 					flush();
 				}
@@ -235,11 +185,11 @@ namespace suika {
 			void flush() {
 				if (instance_matrix.size() > 0) {
 					{
-						const D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
-						D3D11_MAPPED_SUBRESOURCE mapped;
+						static const D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
+						D3D11_MAPPED_SUBRESOURCE mapped = {};
 						auto er = suika::d3d::pContext->Map(g_instanceMatrix.Get(), 0, map_type, 0, &mapped);
 						if (FAILED(er)) {
-							d3d::log_d3d.error("Failed to Update VertexBuffer");
+							d3d::log_d3d.error("Failed to Update instanceMatrix");
 							d3d::log_d3d.result(er);
 							return;
 						}
@@ -249,8 +199,7 @@ namespace suika {
 						suika::d3d::pContext->Unmap(g_instanceMatrix.Get(), 0);
 					}
 					stride_ins[1] = sizeof(matrix4x4<float>);
-
-					ID3D11Buffer* buf[] = { g_vertexBuffer.Get(), g_instanceMatrix.Get() };
+					ID3D11Buffer* buf[] = { g_vertexBuffer.Get(), g_instanceMatrix.Get()};
 					suika::d3d::pContext->IASetVertexBuffers(0, 2, buf, stride_ins, offset_ins);
 					d3d::pContext->DrawIndexedInstanced(static_cast<UINT>(index.size()), static_cast<UINT>(instance_matrix.size()), 0, 0, 0);
 					instance_matrix.resize(0);

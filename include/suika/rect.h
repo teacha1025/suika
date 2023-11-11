@@ -2,6 +2,7 @@
 #include "draw.h"
 #include "vertex.h"
 #include "palette.h"
+#include "shader.h"
 
 namespace suika {
 	class rect : public detail::ishape<rect> {

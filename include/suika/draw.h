@@ -7,6 +7,7 @@
 #include "def.h"
 #include "string.h"
 #include "blend.h"
+#include "vertex.h"
 
 namespace suika {
 	namespace detail {

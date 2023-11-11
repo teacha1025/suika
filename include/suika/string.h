@@ -1,5 +1,5 @@
 ﻿/**
-* @file text.h
+* @file string.h
 * @brief 文字列関係
 */
 #if _MSC_VER > 1000

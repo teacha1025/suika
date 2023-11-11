@@ -89,6 +89,9 @@
     <ClCompile Include="line.cpp">
       <Filter>suika\shape\line</Filter>
     </ClCompile>
+    <ClCompile Include="font.cpp">
+      <Filter>suika\font</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -204,6 +207,9 @@
     </Filter>
     <Filter Include="suika\shape\line">
       <UniqueIdentifier>{a8e6e369-374d-4b8d-afde-94456cd5e3a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\font">
+      <UniqueIdentifier>{229bdeea-5818-4c9e-844c-82fd2ae08443}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -374,6 +380,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\line.h">
       <Filter>suika\shape\line</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\font.h">
+      <Filter>suika\font</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

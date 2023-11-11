@@ -13,7 +13,7 @@ namespace suika {
 		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::font);
 		set(_cid);
 		auto p = float2{ _transition.x - _center.x, _transition.y - _center.y };
-		d3d::dwrite::draw(_text, p, _cid, D2D1_DRAW_TEXT_OPTIONS_NONE, _color.a);
+		d3d::dwrite::draw(_text, p, _cid, D2D1_DRAW_TEXT_OPTIONS_ENABLE_COLOR_FONT, _color.a);
 	}
 
 	rect font::rect()const{

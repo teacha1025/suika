@@ -6,55 +6,56 @@
 #include "rect.h"
 
 namespace suika {
+	enum class font_alignment {
+		leading = 0,
+		trailing = 1,
+		center = 2,
+		justified = 3
+	};
+
+	enum class font_stretch {
+		undefined = 0,
+		ultra_condensed = 1,
+		extra_condensed = 2,
+		condensed = 3,
+		semi_condensed = 4,
+		normal = 5,
+		semi_expanded = 6,
+		expanded = 7,
+		extra_expanded = 8,
+		ultra_expanded = 9
+	};
+
+	enum class font_style {
+		normal = 0,
+		oblique = 1,
+		italic = 2
+	};
+
+	enum class font_weight {
+		thin = 100,
+		extra_light = 200,
+		light = 300,
+		semi_light = 350,
+		normal = 400,
+		semi_bold = 600,
+		bold = 700,
+		extra_bold = 800,
+		black = 900,
+		extra_black = 950
+	};
 	class font : public detail::ibase {
 	public:
-		enum class alignment {
-			leading = 0,
-			trailing = 1,
-			center = 2,
-			justified = 3
-		};
-
-		enum class stretch {
-			undefined = 0,
-			ultra_condensed = 1,
-			extra_condensed = 2,
-			condensed = 3,
-			semi_condensed = 4,
-			normal = 5,
-			semi_expanded = 6,
-			expanded = 7,
-			extra_expanded = 8,
-			ultra_expanded = 9
-		};
-
-		enum class style {
-			normal = 0,
-			oblique = 1,
-			italic = 2
-		};
-
-		enum class weight {
-			thin = 100,
-			extra_light = 200,
-			light = 300,
-			semi_light = 350,
-			normal = 400,
-			semi_bold = 600,
-			bold = 700,
-			extra_bold = 800,
-			black = 900,
-			extra_black = 950
-		};
+		
 	private:
 		color_f _color;
-		std::string _font;
+		string _font;
 		float _size;
-		alignment _alignment;
-		std::string _locale;
-		stretch _stretch;
-		style _style;
-		weight _weight;
+		font_alignment _alignment;
+		string _locale;
+		font_stretch _stretch;
+		font_style _style;
+		font_weight _weight;
 
 		using position_type = float;
 		//原点からの移動量
@@ -78,15 +79,40 @@ namespace suika {
 
 		canvas::canvas_id _cid;
 	public:
+		/// <summary>
+		/// デフォルトのフォントを作成
+		/// </summary>
 		font() {
 			_color = palette::black;
 			_size = 16;
-			_alignment = alignment::leading;
+			_alignment = font_alignment::leading;
 			_font = "メイリオ";
 			_locale = "";
-			_stretch = stretch::normal;
-			_style = style::normal;
-			_weight = weight::normal;
+			_stretch = font_stretch::normal;
+			_style = font_style::normal;
+			_weight = font_weight::normal;
+			_text = "";
+			_cid = window::canvas()->id;
+		}
+
+		/// <summary>
+		/// フォントを作成する
+		/// </summary>
+		/// <param name="font_name">フォント名(e.g.メイリオ)</param>
+		/// <param name="size">フォントサイズ</param>
+		/// <param name="w">フォントの太さ</param>
+		/// <param name="s">フォントの斜体設定</param>
+		/// <param name="a">フォントの配置</param>
+		/// <param name="st">フォントストレッチ</param>
+		font(const string& font_name, float size = 16.0f, font_weight w = font_weight::normal , font_style s = font_style::normal, font_alignment a = font_alignment::leading, font_stretch st = font_stretch::normal) {
+			_color = palette::black;
+			_size = size;
+			_alignment = a;
+			_font = font_name;
+			_locale = "";
+			_stretch = st;
+			_style = s;
+			_weight = w;
 			_text = "";
 			_cid = window::canvas()->id;
 		}
@@ -177,6 +203,58 @@ namespace suika {
 			_center = vector3<position_type>{ center.x, center.y, 0.0 };
 			return dynamic_cast<font&>(*this);
 		}
+
+		virtual font font_name(const string& font_name)&& {
+			_font = font_name;
+			return static_cast<font&&>(std::move(*this));
+		}
+
+		virtual font& font_name(const string& font_name)& {
+			_font = font_name;
+			return static_cast<font&>(*this);
+		}
+
+		virtual font stretch(font_stretch stretch)&& {
+			_stretch = stretch;
+			return static_cast<font&&>(std::move(*this));
+		}
+
+
+		virtual font& stretch(font_stretch stretch)& {
+			_stretch = stretch;
+			return static_cast<font&>(*this);
+		}
+
+		virtual font style(font_style style)&& {
+			_style = style;
+			return static_cast<font&&>(std::move(*this));
+		}
+
+		virtual font& style(font_style style)& {
+			_style = style;
+			return static_cast<font&>(*this);
+		}
+
+		virtual font weight(font_weight weight)&& {
+			_weight = weight;
+			return static_cast<font&&>(std::move(*this));
+		}
+
+		virtual font& weight(font_weight weight)& {
+			_weight = weight;
+			return static_cast<font&>(*this);
+		}
+
+		virtual font alignment(font_alignment alignment)&& {
+			_alignment = alignment;
+			return static_cast<font&&>(std::move(*this));
+		}
+
+		virtual font& alignment(font_alignment alignment)& {
+			_alignment = alignment;
+			return static_cast<font&>(*this);
+		}
+
 
 		/// <summary>
 		/// 回転量の設定

@@ -23,13 +23,13 @@ int main() {
 	//fd.font = "游明朝";
 	//suika::d3d::dwrite::set(fd, cid);
 
-	suika::font f;
+	suika::font f("HG創英角ﾎﾟｯﾌﾟ体",32,suika::font::weight::bold);
 	
 
 	suika::texture tex("test.bmp");
 
 	define w = 64, h = 64;
-	int i = 0;
+	int i = 0, j = 0;
 	//6float f = 0;
 
 	suika::rect r({ w - 1,h - 1 });
@@ -53,9 +53,25 @@ int main() {
 			i--;
 		}*/
 		
-		if (suika::mouse::Right.press()) {
-			suika::mouse::position({ 640,480 });
+		if (suika::mouse::Right.down()) {
+			static bool flag = false;
+			//suika::mouse::position({ 640,480 });
 			//SetCursor(LoadCursor(NULL, IDC_HAND));
+
+			while (true) {
+				if (flag) {
+					auto r = ShowCursor(TRUE);
+					if (r >= 0)
+						break;
+				}
+				else {
+					auto r = ShowCursor(FALSE);
+					if (r < 0)
+						break;
+				}
+			}
+
+			flag ^= 1;
 		}
 		else if (suika::mouse::Left.down()) {
 			cursor++;
@@ -64,9 +80,11 @@ int main() {
 		suika::mouse::style((suika::mouse::cursor)cursor);
 		c.at(suika::mouse::position()).resolution(24).colored(suika::color(suika::palette::red, i)).blended(suika::blend::add).draw();
 		l.B(suika::mouse::position()).colored(suika::color(suika::palette::white, i)).blended(suika::blend::sub).draw(8.0f,false);
-		f.text(L"TEST☺").at({ 128,128 }).resized(32);
+		f.text(L"🍔🍝 こんにちは！！ 🍇🍣").at(suika::mouse::position()).centered(f.rect().size() / 2).resized(64);
 		f.rect().colored(suika::color(suika::palette::gray,255)).blended(suika::blend::alpha).draw();
-		f.colored(suika::color(suika::palette::white, i)).draw();
+		f.colored(suika::hsv(j, 1.0f,1.0f).to_color()).draw();
+		j++;
+		j %= 360;
 #if 0
 		if (i == 60) {
 			fd.color = suika::palette::yellow;

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['texture_0',['texture',['../classsuika_1_1texture.html',1,'suika']]]
+  ['string_0',['string',['../classsuika_1_1string.html',1,'suika']]]
 ];

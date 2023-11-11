@@ -16,5 +16,6 @@ var searchData=
   ['inv_5fdest_13',['inv_dest',['../namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6ab82a2c71c7ac20cb61da730f02eb26ce',1,'suika']]],
   ['inv_5fsrc_14',['inv_src',['../namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a452c1e667fc4f9a4377d8415e04c9fbe',1,'suika']]],
   ['inverse_15',['inverse',['../namespacesuika_1_1vector.html#a0cbc54b1d11f05afb94a53a8a89b0d6c',1,'suika::vector']]],
-  ['ivory_16',['ivory',['../namespacesuika_1_1palette.html#ad4ab87bcb8dc1ead27f3fdf291e943a9',1,'suika::palette']]]
+  ['italic_16',['italic',['../namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3dea030c5b6d1e5715105943ac111d9671bf',1,'suika']]],
+  ['ivory_17',['ivory',['../namespacesuika_1_1palette.html#ad4ab87bcb8dc1ead27f3fdf291e943a9',1,'suika::palette']]]
 ];

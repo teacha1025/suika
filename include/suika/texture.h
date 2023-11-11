@@ -51,7 +51,7 @@ namespace suika {
 		/// <summary>
 		/// テクスチャ反転を取得
 		/// </summary>
-		/// <param name="turn">各方向の反転</param>
+		/// <returns>各方向の反転</returns>
 		point<bool> turn() const;
 		/// <summary>
 		/// テクスチャの大きさを取得

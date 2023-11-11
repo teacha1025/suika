@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cross_0',['cross',['../namespacesuika_1_1mouse.html#abb03e2c7d195ce8874cf726dbe08c0e7af4376157c165d3c687275ec1bebf8853',1,'suika::mouse']]]
+  ['bold_0',['bold',['../namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a69dcab4a73aeec2113f69b61e6263da8',1,'suika']]]
 ];

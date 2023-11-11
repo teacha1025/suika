@@ -3,7 +3,9 @@ var annotated_dup =
     [ "suika", "namespacesuika.html", [
       [ "color", "structsuika_1_1color.html", "structsuika_1_1color" ],
       [ "color_f", "structsuika_1_1color__f.html", "structsuika_1_1color__f" ],
+      [ "font", "classsuika_1_1font.html", "classsuika_1_1font" ],
       [ "hsv", "structsuika_1_1hsv.html", "structsuika_1_1hsv" ],
+      [ "line", "classsuika_1_1line.html", "classsuika_1_1line" ],
       [ "logger", "classsuika_1_1logger.html", "classsuika_1_1logger" ],
       [ "matrix", "structsuika_1_1matrix.html", "structsuika_1_1matrix" ],
       [ "polar2", "classsuika_1_1polar2.html", "classsuika_1_1polar2" ],

@@ -76,7 +76,7 @@ namespace suika {
 		/// <summary>
 		/// 線分の点を設定
 		/// </summary>
-		/// <param name="A">終点</param>
+		/// <param name="B">終点</param>
 		virtual line& B(const point<float>& B)& {
 			this->_B = B;
 			return static_cast<line&>(*this);
@@ -84,7 +84,7 @@ namespace suika {
 		/// <summary>
 		/// 線分の点を設定
 		/// </summary>
-		/// <param name="A">終点</param>
+		/// <param name="B">終点</param>
 		virtual line B(point<float>&& B)&& {
 			this->_B = B;
 			return static_cast<line&&>(std::move(*this));

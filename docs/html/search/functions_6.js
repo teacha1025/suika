@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hsv_0',['hsv',['../structsuika_1_1hsv.html#ac4e1cb416cc5926973ec490dd454efed',1,'suika::hsv::hsv()'],['../structsuika_1_1hsv.html#afde07a8b5ecdc9611fe867e80538833c',1,'suika::hsv::hsv(int h, range&lt; 0.0, 1.0 &gt; s, range&lt; 0.0, 1.0 &gt; v, ubyte a=255)'],['../structsuika_1_1hsv.html#a0a317d81864491400c6b11bab95eeea6',1,'suika::hsv::hsv(const hsv &amp;color, ubyte a)']]]
+  ['get_0',['get',['../structsuika_1_1range.html#a62afe2b533c98a61507f283052e10c8b',1,'suika::range::get()'],['../classsuika_1_1vrange.html#a5ce9ff4effa5de4e7e4fe5c39ec522db',1,'suika::vrange::get()']]]
 ];

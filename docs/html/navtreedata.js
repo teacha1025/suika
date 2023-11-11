@@ -53,9 +53,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"namespacesuika.html#a0e358265197376b86cef48115652677b",
-"namespacesuika_1_1mouse.html#abb03e2c7d195ce8874cf726dbe08c0e7a15ce4495953c34c00e7748004d968814",
-"structsuika_1_1color.html#a2fcd68bf00c1dab41b71ede6583226fe"
+"classsuika_1_1vector2.html#a6c334166c0f71951b26796e60469f40d",
+"namespacesuika.html#ad1a2d6c0e20eb8929b400a541ef10cc2",
+"namespacesuika_1_1palette.html#a7674c8685c8a81422475ef5348b2ebaa",
+"structsuika_1_1range.html#a230c6adb0dea40c565df395bc6d9790d"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';

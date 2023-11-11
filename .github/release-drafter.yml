@@ -5,6 +5,7 @@ categories:
   - title: '🚀 Features'🍉
     labels:
       - 'feature'
+      - '新機能'
   - title: '💪 Enhancement'
     labels:
       - 'enhancement'
@@ -13,6 +14,7 @@ categories:
       - 'fix'
       - 'bugfix'
       - 'bug'
+      - 'バグ';
   - title: '🧰 Maintenance'
     label: 'chore'
   - title: '🔧 Refactoring'
@@ -25,6 +27,9 @@ categories:
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 
 change-title-escapes: '\<*_&' # You can add # and @ to disable mentions, and add ` to disable code blocks.
+
+exclude-labels:
+  - 'exclude from changelog'
 
 version-resolver:
   major:

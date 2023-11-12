@@ -180,7 +180,7 @@ namespace suika {
 		class gamepad {
 		private:
 			ubyte	  ID = 255;
-			pad_states _states = pad_states::disable;
+			pad_states states = pad_states::disable;
 
 			friend void init(gamepad& gp, ubyte id);
 			friend void update(gamepad& gp);
@@ -271,7 +271,7 @@ namespace suika {
 			/// </summary>
 			/// <returns>現在の処理状態</returns>
 			pad_states states() const {
-				return _states;
+				return states;
 			}
 
 			/// <summary>
@@ -291,10 +291,14 @@ namespace suika {
 		define MAX_JOYPAD_NUM = 16;
 		struct info {
 			ubyte		index = 255;
-			pad_states	_states = pad_states::disable;
+			pad_states	states = pad_states::disable;
 			string		name;
+			string		pid;
+			string		vid;
 		};
 
+
+		void load_gamepads();
 
 		/// <summary>
 		/// ゲームパッド(0~15)

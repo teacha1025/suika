@@ -6,6 +6,7 @@
 #include <wbemidl.h>
 #include <oleauto.h>
 #include "info.hpp"
+#include "dinput.hpp"
 
 #pragma comment(lib, "dinput8.lib")
 #pragma comment(lib, "dxguid.lib")
@@ -17,11 +18,17 @@ namespace suika {
 		namespace dinput {
 			ComPtr<IDirectInputDevice8> key_dev;
 			ComPtr<IDirectInputDevice8> mouse_dev;
+			std::unordered_map<string, ComPtr<IDirectInputDevice8>> gamepad_dev;
+			
 			ComPtr<IDirectInput8> key_input;
 			ComPtr<IDirectInput8> mouse_input;
 			ComPtr<IDirectInput8> gamepad_input;
+
 			DIMOUSESTATE mouse_state;
 			BYTE key[256];
+			std::unordered_map<string, DIJOYSTATE> gamepad_state;
+
+			std::vector<info> gamepad_list;
 
 			class BString {
 			public:
@@ -30,15 +37,9 @@ namespace suika {
 				~BString() { if (m_bstr != NULL) SysFreeString(m_bstr); }
 				operator BSTR& () { return m_bstr; }
 			};
+			
 
-			struct info {
-				ubyte	index = 255;
-				int		_states = 0;//0:disable 1:dinput 2:xinput
-				string pid, vid;
-				string	name;
-			};
-
-			info get_info(const GUID* pGuid) {
+			info get_pad_info(const GUID* pGuid) {
 				info ret;
 				BOOL bIsXinput = FALSE;
 				IWbemLocator* pIWbemLocator = NULL;
@@ -95,7 +96,7 @@ namespace suika {
 												bIsXinput = TRUE;
 												ret.pid = std::format(L"{:04x}", dwPid);
 												ret.vid = std::format(L"{:04x}", dwVid);
-												ret._states = 2;
+												ret.states = 2;
 												break;
 											}
 										}
@@ -117,16 +118,133 @@ namespace suika {
 				std::vector<info>* ptr = (std::vector<info>*)pvRef;
 				DIDEVICEINSTANCE tmp = *pdidInstance;
 				
-				auto i = get_info(&(pdidInstance->guidProduct));
+				auto i = get_pad_info(&(pdidInstance->guidProduct));
+				i.guid = pdidInstance->guidProduct;
 				i.name = pdidInstance->tszProductName;
-				if (i._states != 2) {
+				if (i.states != 2) {
 					i.pid = std::format(L"{:04x}", pdidInstance->guidProduct.Data1);
 					i.vid = std::format(L"{:04x}", pdidInstance->guidProduct.Data2);
-					i._states = 1;
+					i.states = 1;
 				}
-				ptr->push_back(i);
-				
+				bool f = false;
+				for(auto& gp : *ptr){
+					if (gp.guid == i.guid) {
+						gp = i;
+						f = true;
+						break;
+					}
+				}
+				if (!f) {
+					ptr->push_back(i);
+				}
 				return DIENUM_CONTINUE;
+			}
+
+			void init_gamepad(HWND hWnd) {
+				auto er = DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)(gamepad_input.GetAddressOf()), NULL);
+				if (FAILED(er)) {
+					log_d3d.error("Failed to create GamepadInput");
+					log_d3d.result(er);
+					return;
+				}
+				for (auto& gp : gamepad_list) {
+					gp.states = 0;
+				}
+
+				er = gamepad_input->EnumDevices(DI8DEVCLASS_GAMECTRL, EnumJoysticksCallback, &gamepad_list, DIEDFL_ATTACHEDONLY);
+				if (FAILED(er)) {
+					log_d3d.error("Failed to Enum XInput Gamepad");
+					log_d3d.result(er);
+				}
+				er = gamepad_input->EnumDevices(DI8DEVTYPE_JOYSTICK, EnumJoysticksCallback, &gamepad_list, DIEDFL_ATTACHEDONLY);
+				if (FAILED(er)) {
+					log_d3d.error("Failed to Enum DirectInput Gamepad");
+					log_d3d.result(er);
+				}
+				
+				for (const auto& pad : gamepad_list) {
+					log_d3d.info(std::format(L"Gamepad({}):{}", pad.states == 0 ? L"利用不可" : pad.states == 1 ? L"DirectInput" : L"XInput", pad.name.to_wstring()));
+				}
+
+				for (auto& i : gamepad_list) {
+					if (i.states == 1) {
+						string key = i.vid.to_string() + i.pid.to_string();
+						if (!gamepad_dev.contains(key)) {
+							gamepad_dev.insert({ key, {} });
+							gamepad_state.insert({ key, {} });
+						}
+						er = gamepad_input->CreateDevice(i.guid, &(gamepad_dev[key]), NULL);
+						if(FAILED(er)){
+							log_d3d.error("Failed to create GamepadInputDevice (" + i.name.to_string() + ")");
+							log_d3d.result(er);
+							i.states = 0;
+							continue;
+						}
+						er = gamepad_dev[key]->SetDataFormat(&c_dfDIJoystick);
+						if (FAILED(er)) {
+							log_d3d.error("Failed to SetDataFormat Gamepad (" + i.name.to_string() + ")");
+							log_d3d.result(er);
+							i.states = 0;
+							continue;
+						}
+
+						// 軸モードを絶対値モードとして設定
+						DIPROPDWORD diprop;
+						ZeroMemory(&diprop, sizeof(diprop));
+						diprop.diph.dwSize = sizeof(diprop);
+						diprop.diph.dwHeaderSize = sizeof(diprop.diph);
+						diprop.diph.dwHow = DIPH_DEVICE;
+						diprop.diph.dwObj = 0;
+						diprop.dwData = DIPROPAXISMODE_ABS;	// 絶対値モードの指定(DIPROPAXISMODE_RELにしたら相対値)
+
+						er = gamepad_dev[key]->SetProperty(DIPROP_AXISMODE, &diprop.diph);
+						if (FAILED(er)) {
+							log_d3d.error("Failed to SetProperty Axismode Gamepad (" + i.name.to_string() + ")");
+							log_d3d.result(er);
+							i.states = 0;
+							continue;
+						}
+
+						// X軸の値の範囲設定
+						DIPROPRANGE diprg;
+						ZeroMemory(&diprg, sizeof(diprg));
+						diprg.diph.dwSize = sizeof(diprg);
+						diprg.diph.dwHeaderSize = sizeof(diprg.diph);
+						diprg.diph.dwHow = DIPH_BYOFFSET;
+						diprg.diph.dwObj = DIJOFS_X;
+						diprg.lMin = -1000;
+						diprg.lMax = 1000;
+
+						er = gamepad_dev[key]->SetProperty(DIPROP_RANGE, &diprg.diph);
+						if (FAILED(er)) {
+							log_d3d.error("Failed to SetProperty XRange Gamepad (" + i.name.to_string() + ")");
+							log_d3d.result(er);
+							i.states = 0;
+							continue;
+						}
+
+						// Y軸の値の範囲設定
+						diprg.diph.dwObj = DIJOFS_Y;
+						er = gamepad_dev[key]->SetProperty(DIPROP_RANGE, &diprg.diph);
+						if (FAILED(er)) {
+							log_d3d.error("Failed to SetProperty YRange Gamepad (" + i.name.to_string() + ")");
+							log_d3d.result(er);
+							i.states = 0;
+							continue;
+						}
+
+						er = gamepad_dev[key]->SetCooperativeLevel(hWnd, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);
+						if (FAILED(er)) {
+							log_d3d.error("Failed to SetCooperativeLevel Gamepad (" + i.name.to_string() + ")");
+							log_d3d.result(er);
+							i.states = 0;
+							continue;
+						}
+
+						gamepad_dev[key]->Poll();
+						gamepad_dev[key]->Acquire();
+					}
+				}
 			}
 
 			bool init(HWND hWnd) {
@@ -188,21 +306,7 @@ namespace suika {
 					return false;
 				}
 
-				er = DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)(gamepad_input.GetAddressOf()), NULL);
-				if (FAILED(er)) {
-					log_d3d.error("Failed to create GamepadInput");
-					log_d3d.result(er);
-					return false;
-				}
-				std::vector<info> gamepad_list;
-				er = gamepad_input->EnumDevices(DI8DEVCLASS_GAMECTRL, EnumJoysticksCallback, &gamepad_list, DIEDFL_ATTACHEDONLY);
-				if (FAILED(er)) {
-					log_d3d.error("Failed to Enum Gamepad");
-					log_d3d.result(er);
-				}
-				for(const auto& pad : gamepad_list){
-					log_d3d.info(std::format(L"Gamepad({}):{}", pad._states == 0 ? L"利用不可" : pad._states == 1 ? L"DirectInput" : L"XInput", pad.name.to_wstring()));
-				}
+				init_gamepad(hWnd);
 
 				key_dev->Poll();
 				key_dev->Acquire();
@@ -217,6 +321,9 @@ namespace suika {
 				key_dev->Unacquire();
 				mouse_dev->Unacquire();
 				log_d3d.info("Finalize DirectInput Device");
+				for(auto& gp : gamepad_dev){
+					gp.second->Unacquire();
+				}
 				//key_dev->Release();
 			}
 
@@ -227,7 +334,7 @@ namespace suika {
 						key_dev->Acquire();
 					}
 					//log_d3d.error("Failed to get key acquire");
-					log_d3d.result(er);
+					//log_d3d.result(er);
 					//return;
 				}
 				er = mouse_dev->Acquire();
@@ -236,8 +343,20 @@ namespace suika {
 						mouse_dev->Acquire();
 					}
 					//log_d3d.error("Failed to get mouse acquire");
-					log_d3d.result(er);
+					//log_d3d.result(er);
 					//return;
+				}
+
+				for (auto& gp : gamepad_dev) {
+					er = gp.second->Acquire();
+					if (FAILED(er)) {
+						if (key_reset && er == DIERR_INPUTLOST) {
+							gp.second->Acquire();
+						}
+						//log_d3d.error("Failed to get mouse acquire");
+						//log_d3d.result(er);
+						//return;
+					}
 				}
 
 				er = key_dev->GetDeviceState(256, key);
@@ -259,6 +378,18 @@ namespace suika {
 					//log_d3d.error("Failed to get mouse state");
 					//log_d3d.result(er);
 					return;
+				}
+				for (auto& gp : gamepad_dev) {
+					er = mouse_dev->GetDeviceState(sizeof(DIJOYSTATE), &gamepad_state[gp.first]);
+					if (FAILED(er)) {
+						if (key_reset && er == DIERR_INPUTLOST) {
+							gp.second->Acquire();
+							update(false);
+						}
+						//log_d3d.error("Failed to get mouse state");
+						//log_d3d.result(er);
+						return;
+					}
 				}
 			}
 

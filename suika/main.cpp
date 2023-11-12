@@ -86,6 +86,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		suika::set_cbuffer(sizeof(cb), &cb, 0);
 		suika::d3d::blend::blends[suika::blend::alpha].set();
 
+		suika::log.info("initialized");
 		auto res = main();
 
 		suika::log.info("fin");

@@ -20,13 +20,15 @@ namespace suika {
 		disable
 	};
 	namespace detail {
-		/*class gamepad_button : public input_base {
+		class gamepad_button : public input_base {
 			ubyte _id = 0;
-
+			ubyte _dcode = 0;
+			string _dname = "";
+			bool _is_use_xinput = true;
 		public:
-			gamepad_button(unsigned int code, const string& name, ubyte id);
+			gamepad_button(ubyte xcode, ubyte dcode, const string& xname, const string& dname, ubyte id);
 			gamepad_button() {}
-			virtual void update() override;
+			void update();
 		};
 		class gamepad_stick : public input_base {
 		private:
@@ -34,11 +36,13 @@ namespace suika {
 			gamepad_button button;
 			ubyte		   _id = 0;
 			range<0.0, 1.0> _deadzone = 0.05;
-
+			ubyte _dcode = 0;
+			string _dname = "";
+			bool _is_use_xinput = true;
 		public:
-			gamepad_stick(const unsigned int code, const string& name, ubyte id);
+			gamepad_stick(ubyte xcode, ubyte dcode, const string& xname, const string& dname, ubyte id);
 			gamepad_stick() {}
-			void update(unsigned char key[], point<double> value, short MAX);
+			void update();
 
 			/// <summary>
 			/// スティックの入力値の取得
@@ -105,14 +109,17 @@ namespace suika {
 		class gamepad_trigger : public input_base {
 		private:
 			double		  _value = 0;
-			gamepad_button button;
+			gamepad_button _button;
 			ubyte		   _id = 0;
 			range<0.0, 1.0> _deadzone = 0.05;
+			ubyte _dcode = 0;
+			string _dname = "";
+			bool _is_use_xinput = true;
 
 		public:
-			gamepad_trigger(unsigned int Code, const string& name, ubyte id);
+			gamepad_trigger(ubyte xcode, ubyte dcode, const string& xname, const string& dname, ubyte id);
 			gamepad_trigger() {}
-			void update(unsigned char key[], double value, short MAX);
+			void update();
 
 			/// <summary>
 			/// トリガーの入力値の取得
@@ -285,7 +292,7 @@ namespace suika {
 			/// </summary>
 			/// <returns>デバイス名+製品名</returns>
 			string to_string();
-		};*/
+		};
 	} // namespace detail
 	namespace gamepad {
 		define MAX_JOYPAD_NUM = 16;

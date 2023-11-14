@@ -1,3 +1,4 @@
+#include <typeinfo>
 #include <Windows.h>
 #include <Xinput.h>
 #include "../../include/suika/type.h"
@@ -36,7 +37,7 @@ namespace suika {
 			}
 
 			void enable(bool flag) {
-				XInputEnable(flag);
+				//XInputEnable(flag);
 			}
 		}
 	}

@@ -4,6 +4,7 @@
 #endif
 #include <dinput.h>
 #include <vector>
+#include <unordered_map>
 #include "../../include/suika/def.h"
 #include "../../include/suika/type.h"
 #include "../../include/suika/string.h"
@@ -21,6 +22,7 @@ namespace suika {
 			extern std::vector<info> gamepad_list;
 			extern BYTE key[256];
 			extern DIMOUSESTATE mouse_state;
+			extern std::unordered_map<string, DIJOYSTATE> gamepad_state;
 			void update(bool = true);
 		}
 	}

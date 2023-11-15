@@ -19,6 +19,9 @@ namespace suika {
 		//! ゲームパッドは未接続、あるいは使用不可
 		disable
 	};
+	namespace gamepad {
+		struct info;
+	}
 	namespace detail {
 		class gamepad_button : public input_base {
 			ubyte _id = 0;
@@ -132,7 +135,7 @@ namespace suika {
 			/// </summary>
 			/// <returns>キーやボタンが押されたフレーム数</returns>
 			unsigned int count() const override {
-				return button.count();
+				return _button.count();
 			}
 
 			/// <summary>
@@ -140,7 +143,7 @@ namespace suika {
 			/// </summary>
 			/// <returns>押されているかどうか</returns>
 			bool press() const override {
-				return button.press();
+				return _button.press();
 			}
 
 			/// <summary>
@@ -148,7 +151,7 @@ namespace suika {
 			/// </summary>
 			/// <returns>離されているかどうか</returns>
 			bool release() const override {
-				return button.release();
+				return _button.release();
 			}
 
 			/// <summary>
@@ -156,7 +159,7 @@ namespace suika {
 			/// </summary>
 			/// <returns>離された瞬間かどうか</returns>
 			bool up() const override {
-				return button.up();
+				return _button.up();
 			}
 
 			/// <summary>
@@ -164,7 +167,7 @@ namespace suika {
 			/// </summary>
 			/// <returns>押された瞬間かどうか</returns>
 			bool down() const override {
-				return button.down();
+				return _button.down();
 			}
 
 			/// <summary>
@@ -187,9 +190,10 @@ namespace suika {
 		class gamepad {
 		private:
 			ubyte	  ID = 255;
-			pad_states states = pad_states::disable;
+			pad_states _states = pad_states::disable;
+			string _name;
 
-			friend void init(gamepad& gp, ubyte id);
+			friend void init(gamepad& gp, ubyte id, suika::gamepad::info info);
 			friend void update(gamepad& gp);
 
 		public:
@@ -278,7 +282,7 @@ namespace suika {
 			/// </summary>
 			/// <returns>現在の処理状態</returns>
 			pad_states states() const {
-				return states;
+				return _states;
 			}
 
 			/// <summary>
@@ -310,7 +314,7 @@ namespace suika {
 		/// <summary>
 		/// ゲームパッド(0~15)
 		/// </summary>
-		//extern std::array<detail::gamepad, MAX_JOYPAD_NUM> pad;
+		extern std::array<detail::gamepad, MAX_JOYPAD_NUM> pad;
 		/// <summary>
 		/// 現在押されているボタンを取得
 		/// </summary>

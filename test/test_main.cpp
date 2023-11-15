@@ -23,19 +23,23 @@ int main() {
 	//fd.font = "游明朝";
 	//suika::d3d::dwrite::set(fd, cid);
 
-	suika::font f("HG創英角ﾎﾟｯﾌﾟ体",32,true,2,suika::font_weight::bold, suika::font_style::normal, suika::font_alignment::justified);
+	suika::font f("メイリオ");
 
 	suika::texture tex("test.bmp");
 
 	define w = 64, h = 64;
 	int i = 0, j = 0, edge = 0;
-	//6float f = 0;
+	//float f = 0;
 
 	suika::rect r({ w - 1,h - 1 });
 	suika::circle c(32);
 	int cursor = suika::mouse::arrow;
 	suika::line l(suika::window::size()/2, {0,0});
 	while (suika::sys::update()) {
+		if (suika::gamepad::pad[0].A.press()) {
+			f.text("A").centered({ 0,0 }).at({ 0,0 }).draw();
+		}
+#if 0
 		edge += suika::mouse::wheel();
 		i %= 256;
 		suika::window::title(std::format("{:4.1f}fps,{}, [{},{}], {}", suika::sys::fps(), edge, suika::mouse::position().x, suika::mouse::position().y, cursor));
@@ -45,12 +49,6 @@ int main() {
 				//tex.centered({ 0, 0 }).at({ x * w + w / 2,y * h + h / 2 }).blended(suika::blend::alpha).rotated(i / 20.0f).draw();
 			}
 		}
-		/*if (suika::keyboard::A.press()) {
-			i++;
-		}
-		if (suika::mouse::Left.press()) {
-			i--;
-		}*/
 		
 		if (suika::mouse::Right.down()) {
 			static bool flag = false;
@@ -86,6 +84,7 @@ int main() {
 		f.colored(suika::hsv(j, 1.0f,1.0f).to_color(),suika::palette::white).draw();
 		j++;
 		j %= 360;
+#endif
 #if 0
 		if (i == 60) {
 			fd.color = suika::palette::yellow;

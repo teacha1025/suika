@@ -328,68 +328,82 @@ namespace suika {
 			}
 
 			void update(bool key_reset) {
-				auto er = key_dev->Acquire();
-				if (FAILED(er)) {
-					if (key_reset && er == DIERR_INPUTLOST) {
-						key_dev->Acquire();
-					}
-					//log_d3d.error("Failed to get key acquire");
-					//log_d3d.result(er);
-					//return;
-				}
-				er = mouse_dev->Acquire();
-				if (FAILED(er)) {
-					if (key_reset && er == DIERR_INPUTLOST) {
-						mouse_dev->Acquire();
-					}
-					//log_d3d.error("Failed to get mouse acquire");
-					//log_d3d.result(er);
-					//return;
-				}
+				//auto er = key_dev->Acquire();
+				//if (FAILED(er)) {
+				//	if (key_reset && er == DIERR_INPUTLOST) {
+				//		key_dev->Acquire();
+				//	}
+				//	//log_d3d.error("Failed to get key acquire");
+				//	//log_d3d.result(er);
+				//	//return;
+				//}
+				//er = mouse_dev->Acquire();
+				//if (FAILED(er)) {
+				//	if (key_reset && er == DIERR_INPUTLOST) {
+				//		mouse_dev->Acquire();
+				//	}
+				//	//log_d3d.error("Failed to get mouse acquire");
+				//	//log_d3d.result(er);
+				//	//return;
+				//}
 
-				for (auto& gp : gamepad_dev) {
-					er = gp.second->Acquire();
+				//for (auto& gp : gamepad_dev) {
+				//	er = gp.second->Acquire();
+				//	if (FAILED(er)) {
+				//		if (key_reset && er == DIERR_INPUTLOST) {
+				//			gp.second->Acquire();
+				//		}
+				//		//log_d3d.error("Failed to get mouse acquire");
+				//		//log_d3d.result(er);
+				//		//return;
+				//	}
+				//}
+
+				auto er = key_dev->GetDeviceState(256, key);
+				if (FAILED(er)) {
+					er = key_dev->Acquire();
 					if (FAILED(er)) {
-						if (key_reset && er == DIERR_INPUTLOST) {
-							gp.second->Acquire();
-						}
-						//log_d3d.error("Failed to get mouse acquire");
-						//log_d3d.result(er);
-						//return;
+						log_d3d.error("Failed to get keyboard state");
+						log_d3d.result(er);
 					}
-				}
-
-				er = key_dev->GetDeviceState(256, key);
-				if (FAILED(er)) {
-					if (key_reset && er == DIERR_INPUTLOST) {
-						key_dev->Acquire();
-						update(false);
+					key_dev->Poll();
+					er = key_dev->GetDeviceState(256, key);
+					if (FAILED(er)) {
+						log_d3d.error("Failed to get keyboard state");
+						log_d3d.result(er);
 					}
-					//log_d3d.error("Failed to get key state");
-					//log_d3d.result(er);
-					return;
 				}
 				er = mouse_dev->GetDeviceState(sizeof(DIMOUSESTATE), &mouse_state);
 				if (FAILED(er)) {
-					if (key_reset && er == DIERR_INPUTLOST) {
-						mouse_dev->Acquire();
-						update(false);
+					er = mouse_dev->Acquire();
+					if (FAILED(er)) {
+						log_d3d.error("Failed to get mouse state");
+						log_d3d.result(er);
 					}
-					//log_d3d.error("Failed to get mouse state");
-					//log_d3d.result(er);
-					return;
+					mouse_dev->Poll();
+					er = mouse_dev->GetDeviceState(sizeof(DIMOUSESTATE), &mouse_state);
+					if (FAILED(er)) {
+						log_d3d.error("Failed to get mouse state");
+						log_d3d.result(er);
+					}
 				}
 				for (auto& gp : gamepad_dev) {
-					er = mouse_dev->GetDeviceState(sizeof(DIJOYSTATE), &gamepad_state[gp.first]);
+					er = gp.second->GetDeviceState(sizeof(DIJOYSTATE), &gamepad_state[gp.first]);
 					if (FAILED(er)) {
-						if (key_reset && er == DIERR_INPUTLOST) {
-							gp.second->Acquire();
-							update(false);
+						er = gp.second->Acquire();
+						if (FAILED(er)) {
+							log_d3d.error("Failed to get gamepad state");
+							log_d3d.result(er);
+							continue;
 						}
-						//log_d3d.error("Failed to get mouse state");
-						//log_d3d.result(er);
-						return;
+						gp.second->Poll();
+						er = gp.second->GetDeviceState(sizeof(DIJOYSTATE), &gamepad_state[gp.first]);
+						if (FAILED(er)) {
+							log_d3d.error("Failed to get gamepad state");
+							log_d3d.result(er);
+						}
 					}
+
 				}
 			}
 

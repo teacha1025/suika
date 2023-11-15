@@ -396,5 +396,8 @@
     <ClInclude Include="d3d\xinput.h">
       <Filter>d3d\input</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\suika\detail\math\rad_deg.ipp">
+      <Filter>suika\math</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

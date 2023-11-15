@@ -2,10 +2,14 @@
 #include "d3d/dinput.hpp"
 #include "../include/suika/gamepad.h"
 #include "../include/suika/logger.h"
+#include "../include/suika/math.h"
 
 
 
 namespace suika {
+	namespace detail {
+		ubyte xinput_count = 0;
+	}
 	namespace gamepad {
 		//std::vector<info> gamepads;
 		std::unordered_map<ubyte,info> gamepads;
@@ -13,6 +17,7 @@ namespace suika {
 
 		void load_gamepads() {
             gamepads.reserve(suika::d3d::dinput::gamepad_list.size());
+			detail::xinput_count = 0;
 			for (ubyte i = 0; i < suika::d3d::dinput::gamepad_list.size(); i++) {
 				auto d = info{
 					.index = i,
@@ -71,9 +76,9 @@ namespace suika {
 		//TODO:gamepads‚ðvector‚©‚çmap‚É•Ï‚¦‚é
 		void init(gamepad& gp, ubyte id, suika::gamepad::info info) {
 			gp.A = gamepad_button(XINPUT_GAMEPAD_A, PAD_A, "A", "Button 01", id);
-			gp.B = gamepad_button(XINPUT_GAMEPAD_B, PAD_A, "B", "Button 02", id);
-			gp.X = gamepad_button(XINPUT_GAMEPAD_X, PAD_A, "X", "Button 03", id);
-			gp.Y = gamepad_button(XINPUT_GAMEPAD_Y, PAD_A, "Y", "Button 04", id);
+			gp.B = gamepad_button(XINPUT_GAMEPAD_B, PAD_B, "B", "Button 02", id);
+			gp.X = gamepad_button(XINPUT_GAMEPAD_X, PAD_X, "X", "Button 03", id);
+			gp.Y = gamepad_button(XINPUT_GAMEPAD_Y, PAD_Y, "Y", "Button 04", id);
 
 			gp.LShoulder = gamepad_button(XINPUT_GAMEPAD_LEFT_SHOULDER, PAD_LB, "LB", "Button 05", id);
 			gp.RShoulder = gamepad_button(XINPUT_GAMEPAD_RIGHT_SHOULDER, PAD_RB, "RB", "Button 06", id);
@@ -92,12 +97,33 @@ namespace suika {
 			gp.Left = gamepad_button(XINPUT_GAMEPAD_DPAD_LEFT, PAD_LEFT, "Left", "Button 13", id);
 			gp.Right = gamepad_button(XINPUT_GAMEPAD_DPAD_RIGHT, PAD_RIGHT, "Right", "Button 14", id);
 
-			gp._states = info.states;
-			gp.ID = id;
-			gp._name = info.name;
+			gp._info.states = info.states;
+			
+			gp._info.name = info.name;
+
+			if (info.states != suika::pad_states::xinput) {
+				gp._info.index = id + 10;
+			}
+			else {
+				xinput_count++;
+				ubyte index = 0, count = 0;
+				for (int i = 0; i < 4; i++) {
+					XINPUT_STATE s;
+					if (XInputGetState(i, &s) == ERROR_SUCCESS) {
+						count++;
+						if (xinput_count == count) {
+							index = i;
+							break;
+						}
+					}
+				}
+				gp._info.index = index;
+			}
 		}
 		void update(gamepad& gp) {
-			d3d::xinput::get_state(gp.ID);
+			if (gp._is_use_xinput && gp._info.states == suika::pad_states::xinput) {
+				d3d::xinput::get_state(gp._info.index);
+			}
 			gp.A.update();
 			gp.B.update();
 			gp.X.update();
@@ -153,7 +179,47 @@ namespace suika {
 			}
 			else {
 				auto tmp = _press_count;
-				if (d3d::dinput::gamepad_state[suika::gamepad::gamepads[_id].vid.to_string() + suika::gamepad::gamepads[_id].pid.to_string()].rgbButtons[_dcode] & 0x80) {
+				bool flag = false;
+				if (_dcode == PAD_UP || _dcode == PAD_DOWN || _dcode == PAD_LEFT || _dcode == PAD_RIGHT) {
+					auto d = d3d::dinput::gamepad_state[suika::gamepad::gamepads[_id].vid.to_string() + suika::gamepad::gamepads[_id].pid.to_string()].rgdwPOV[0];
+					if (d != ULONG_MAX) {
+						double rad = math::radian((d / 100.0));
+						float x = sin(rad);
+						float y = cos(rad);
+						bool f[4] = { false };//u,d,l,r
+						if (x < -0.01f) {
+							f[2] = true;
+						}
+						else if (x > 0.01f) {
+							f[3] = true;
+						}
+
+						if (y > 0.01f) {
+							f[0] = true;
+						}
+						else if (y < -0.01f) {
+							f[1] = true;
+						}
+						switch (_dcode) {
+							case PAD_UP:
+								flag = f[0];
+								break;
+							case PAD_DOWN:
+								flag = f[1];
+								break;
+							case PAD_LEFT:
+								flag = f[2];
+								break;
+							case PAD_RIGHT:
+								flag = f[3];
+								break;
+						}
+					}
+				}
+				else {
+					flag = d3d::dinput::gamepad_state[suika::gamepad::gamepads[_id].vid.to_string() + suika::gamepad::gamepads[_id].pid.to_string()].rgbButtons[_dcode] & 0x80;
+				}
+				if (flag) {
 					_press_count++;
 					_state = _press_count > 1 ? input_state::press : input_state::down;
 					//gamepad::pressed_button.emplace_back(*this);
@@ -169,9 +235,38 @@ namespace suika {
 				}
 			}
 		}
-
-		gamepad_trigger::gamepad_trigger(ubyte xcode, ubyte dcode, const string& xname, const string& dname, ubyte id) {
-			_code = xcode;
+		void gamepad_button::update_trigger(double value) {
+			if (suika::gamepad::gamepads[_id].states == suika::pad_states::disable) {
+				return;
+			}
+			else {
+				auto tmp = _press_count;
+				if (value >= 0.5) {
+					_press_count++;
+					_state = _press_count > 1 ? input_state::press : input_state::down;
+					//gamepad::pressed_button.emplace_back(*this);
+				}
+				else {
+					if (tmp > 0) {
+						_state = input_state::up;
+					}
+					else {
+						_state = input_state::release;
+					}
+					_press_count = 0;
+				}
+			}
+		}
+		string gamepad_button::to_string() const {
+			if (_is_use_xinput && suika::gamepad::gamepads[_id].states == suika::pad_states::xinput) {
+				return _device_name;
+			}
+			else {
+				return _dname;
+			}
+		}
+		gamepad_trigger::gamepad_trigger(ulong xcode, ulong dcode, const string& xname, const string& dname, ubyte id) {
+			_xcode = xcode;
 			_dcode = dcode;
 			_device_name = xname;
 			_dname = dname;
@@ -188,21 +283,34 @@ namespace suika {
 			
 			if (_is_use_xinput && suika::gamepad::gamepads[_id].states == suika::pad_states::xinput) {
 				define TRIGGER_MAX = 255.0;
-				auto t = d3d::xinput::xstate.Gamepad.bLeftTrigger / TRIGGER_MAX;
+				auto trg = _xcode == XPAD_LT ? d3d::xinput::xstate.Gamepad.bLeftTrigger : d3d::xinput::xstate.Gamepad.bRightTrigger;
+				auto t = trg / TRIGGER_MAX;
 				_value =  (t < _deadzone) ? 0 : t;
+				_button.update_trigger(_value);
 			}
 			else {
 				define TRIGGER_MAX = 1000.0;
 				_button.update();
+				_value = _button.press() ? 1.0 : 0.0;
+			}
+		}
+		string gamepad_trigger::to_string() const {
+			if (_is_use_xinput && suika::gamepad::gamepads[_id].states == suika::pad_states::xinput) {
+				return _device_name;
+			}
+			else {
+				return _dname;
 			}
 		}
 
-		gamepad_stick::gamepad_stick(ubyte xcode, ubyte dcode, const string& xname, const string& dname, ubyte id) {
-			_code = xcode;
+		gamepad_stick::gamepad_stick(ulong xcode, ulong dcode, const string& xname, const string& dname, ubyte id) {
+			_xcode = xcode;
 			_dcode = dcode;
 			_device_name = xname;
 			_dname = dname;
 			_id = id;
+
+			button = gamepad_button(xcode, dcode, xname, dname, id);
 		}
 
 		void gamepad_stick::update() {
@@ -212,10 +320,33 @@ namespace suika {
 			}
 
 			if (_is_use_xinput && suika::gamepad::gamepads[_id].states == suika::pad_states::xinput) {
-
+				if (_xcode == XINPUT_GAMEPAD_LEFT_THUMB) {
+					_value.x = d3d::xinput::xstate.Gamepad.sThumbLX / 32767.0;
+					_value.y = d3d::xinput::xstate.Gamepad.sThumbLY / 32767.0;
+				}
+				else if(_xcode == XINPUT_GAMEPAD_RIGHT_THUMB) {
+					_value.x = d3d::xinput::xstate.Gamepad.sThumbRX / 32767.0;
+					_value.y = d3d::xinput::xstate.Gamepad.sThumbRY / 32767.0;
+				}
 			}
 			else {
-
+				if (_dcode == PAD_LSTICK) {
+					_value.x = d3d::dinput::gamepad_state[suika::gamepad::gamepads[_id].vid.to_string() + suika::gamepad::gamepads[_id].pid.to_string()].lX / 1000.0;
+					_value.y = d3d::dinput::gamepad_state[suika::gamepad::gamepads[_id].vid.to_string() + suika::gamepad::gamepads[_id].pid.to_string()].lY / 1000.0;
+				}
+				else if (_dcode == PAD_RSTICK) {
+					_value.x = d3d::dinput::gamepad_state[suika::gamepad::gamepads[_id].vid.to_string() + suika::gamepad::gamepads[_id].pid.to_string()].lZ /  (double)(SHRT_MAX) - 1.0;
+					_value.y = d3d::dinput::gamepad_state[suika::gamepad::gamepads[_id].vid.to_string() + suika::gamepad::gamepads[_id].pid.to_string()].lRz / (double)(SHRT_MAX) - 1.0;
+				}
+			}
+			button.update();
+		}
+		string gamepad_stick::to_string() const {
+			if (_is_use_xinput && suika::gamepad::gamepads[_id].states == suika::pad_states::xinput) {
+				return _device_name;
+			}
+			else {
+				return _dname;
 			}
 		}
 	}

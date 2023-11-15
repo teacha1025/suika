@@ -216,6 +216,7 @@
     <ClInclude Include="..\include\suika\detail\math\fmod.ipp" />
     <ClInclude Include="..\include\suika\detail\math\log.ipp" />
     <ClInclude Include="..\include\suika\detail\math\pow.ipp" />
+    <ClInclude Include="..\include\suika\detail\math\rad_deg.ipp" />
     <ClInclude Include="..\include\suika\detail\math\round.ipp" />
     <ClInclude Include="..\include\suika\detail\math\sin_con_tan.ipp" />
     <ClInclude Include="..\include\suika\detail\math\sqrt.ipp" />

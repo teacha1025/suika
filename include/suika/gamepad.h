@@ -20,19 +20,38 @@ namespace suika {
 		disable
 	};
 	namespace gamepad {
-		struct info;
+		struct info {
+			ubyte		index = 255;
+			pad_states	states = pad_states::disable;
+			string		name;
+			string		pid;
+			string		vid;
+		};
 	}
 	namespace detail {
+		class gamepad;
+		class gamepad_trigger;
+		class gamepad_stick;
 		class gamepad_button : public input_base {
 			ubyte _id = 0;
 			ulong _xcode = 0;
 			ulong _dcode = 0;
 			string _dname = "";
 			bool _is_use_xinput = true;
+
+			friend gamepad;
+			friend gamepad_trigger;
+			friend gamepad_stick;
+			void update_trigger(double value);
 		public:
 			gamepad_button(ulong xcode, ulong dcode, const string& xname, const string& dname, ubyte id);
 			gamepad_button() {}
 			void update();
+			/// <summary>
+			/// 名前を取得
+			/// </summary>
+			/// <returns>ボタンの名前</returns>
+			virtual string to_string() const override;
 		};
 		class gamepad_stick : public input_base {
 		private:
@@ -40,11 +59,16 @@ namespace suika {
 			gamepad_button button;
 			ubyte		   _id = 0;
 			range<0.0, 1.0> _deadzone = 0.05;
-			ubyte _dcode = 0;
+			ulong _xcode = 0;
+			ulong _dcode = 0;
 			string _dname = "";
 			bool _is_use_xinput = true;
+
+			friend gamepad;
+			friend gamepad_trigger;
+			friend gamepad_button;
 		public:
-			gamepad_stick(ubyte xcode, ubyte dcode, const string& xname, const string& dname, ubyte id);
+			gamepad_stick(ulong xcode, ulong dcode, const string& xname, const string& dname, ubyte id);
 			gamepad_stick() {}
 			void update();
 
@@ -52,7 +76,9 @@ namespace suika {
 			/// スティックの入力値の取得
 			/// </summary>
 			/// <returns>横:x[-1~1] 縦:y[-1~1]</returns>
-			point<double> value() const;
+			point<double> value() const {
+				return _value;
+			}
 
 			/// <summary>
 			/// 押された時間の取得
@@ -109,6 +135,12 @@ namespace suika {
 			double threshold() const {
 				return _deadzone;
 			}
+
+			/// <summary>
+			/// 名前を取得
+			/// </summary>
+			/// <returns>スティックの名前</returns>
+			virtual string to_string() const override;
 		};
 		class gamepad_trigger : public input_base {
 		private:
@@ -116,12 +148,16 @@ namespace suika {
 			gamepad_button _button;
 			ubyte		   _id = 0;
 			range<0.0, 1.0> _deadzone = 0.05;
-			ubyte _dcode = 0;
+			ulong _xcode = 0;
+			ulong _dcode = 0;
 			string _dname = "";
 			bool _is_use_xinput = true;
 
+			friend gamepad;
+			friend gamepad_button;
+			friend gamepad_stick;
 		public:
-			gamepad_trigger(ubyte xcode, ubyte dcode, const string& xname, const string& dname, ubyte id);
+			gamepad_trigger(ulong xcode, ulong dcode, const string& xname, const string& dname, ubyte id);
 			gamepad_trigger() {}
 			void update();
 
@@ -129,7 +165,9 @@ namespace suika {
 			/// トリガーの入力値の取得
 			/// </summary>
 			/// <returns>解放:0 押下:1</returns>
-			double value() const;
+			double value() const {
+				return _value;
+			}
 
 			/// <summary>
 			/// 押された時間の取得
@@ -182,21 +220,28 @@ namespace suika {
 			/// <summary>
 			/// 現在の閾値を取得
 			/// </summary>
-			/// <returns></returns>
+			/// <returns>入力を検知するまでの閾値(デッドゾーン)</returns>
 			double threshold() const {
 				return _deadzone;
 			}
+
+			/// <summary>
+			/// 名前を取得
+			/// </summary>
+			/// <returns>トリガーの名前</returns>
+			virtual string to_string() const override;
 		};
 
 		class gamepad {
 		private:
-			ubyte	  ID = 255;
-			pad_states _states = pad_states::disable;
-			string _name;
+			//ubyte	  ID = 255;
+			//pad_states _states = pad_states::disable;
+			//string _name;
 
 			friend void init(gamepad& gp, ubyte id, suika::gamepad::info info);
 			friend void update(gamepad& gp);
-
+			suika::gamepad::info _info;
+			bool _is_use_xinput = true;
 		public:
 			/// <summary>
 			/// 十字上
@@ -283,7 +328,7 @@ namespace suika {
 			/// </summary>
 			/// <returns>現在の処理状態</returns>
 			pad_states states() const {
-				return _states;
+				return _info.states;
 			}
 
 			/// <summary>
@@ -292,22 +337,54 @@ namespace suika {
 			/// <returns>ボタンへの参照を返す</returns>
 			std::vector<std::reference_wrapper<detail::gamepad_button>> pressed_button();
 
+			suika::gamepad::info info() const{
+				return _info;
+			}
+
+			/// <summary>
+			/// xinputに対応している場合、入力処理にxinputを使用するか設定
+			/// </summary>
+			/// <param name="flag">xinputを使用するか</param>
+			void enable_xinput(bool flag) {
+				_is_use_xinput = flag;
+				A._is_use_xinput = flag;
+				B._is_use_xinput = flag;
+				X._is_use_xinput = flag;
+				Y._is_use_xinput = flag;
+
+				Up._is_use_xinput = flag;
+				Down._is_use_xinput = flag;
+				Left._is_use_xinput = flag;
+				Right._is_use_xinput = flag;
+
+				Start._is_use_xinput = flag;
+				Back._is_use_xinput = flag;
+
+				LShoulder._is_use_xinput = flag;
+				RShoulder._is_use_xinput = flag;
+
+				LStick._is_use_xinput = flag;
+				RStick._is_use_xinput = flag;
+
+				LStick.button._is_use_xinput = flag;
+				RStick.button._is_use_xinput = flag;
+
+				LTrigger._is_use_xinput = flag;
+				RTrigger._is_use_xinput = flag;
+			}
+
 			/// <summary>
 			/// ゲームパッドの名前を取得
 			/// </summary>
 			/// <returns>デバイス名+製品名</returns>
-			string to_string();
+			string to_string() const{
+				return _info.name;
+			}
 		};
 	} // namespace detail
 	namespace gamepad {
 		define MAX_JOYPAD_NUM = 16;
-		struct info {
-			ubyte		index = 255;
-			pad_states	states = pad_states::disable;
-			string		name;
-			string		pid;
-			string		vid;
-		};
+		
 
 
 		void load_gamepads();

@@ -29,9 +29,9 @@ namespace suika {
 				return ULONG_MAX;
 			}
 
-			XINPUT_STATE get_state(ulong index) {
+			void get_state(ulong index) {
 				auto i = convert_index(index);
-				if (i == ULONG_MAX) return {};
+				if (i == ULONG_MAX) return;
 				init();
 				auto er = XInputGetState(i, &xstate);
 			}

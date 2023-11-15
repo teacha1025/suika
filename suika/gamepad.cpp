@@ -97,7 +97,7 @@ namespace suika {
 			gp._name = info.name;
 		}
 		void update(gamepad& gp) {
-			auto state = d3d::xinput::get_state(gp.ID);
+			d3d::xinput::get_state(gp.ID);
 			gp.A.update();
 			gp.B.update();
 			gp.X.update();
@@ -121,8 +121,8 @@ namespace suika {
 			gp.Right.update();
 		}
 
-		gamepad_button::gamepad_button(ubyte xcode, ubyte dcode, const string& xname, const string& dname, ubyte id) {
-			_code = xcode;
+		gamepad_button::gamepad_button(ulong xcode, ulong dcode, const string& xname, const string& dname, ubyte id) {
+			_xcode = xcode;
 			_dcode = dcode;
 			_device_name = xname;
 			_dname = dname;
@@ -136,7 +136,7 @@ namespace suika {
 			if (_is_use_xinput && suika::gamepad::gamepads[_id].states == suika::pad_states::xinput) {
 				auto tmp = _press_count;
 
-				if (d3d::xinput::xstate.Gamepad.wButtons & _code) {
+				if (d3d::xinput::xstate.Gamepad.wButtons & _xcode) {
 					_press_count++;
 					_state = _press_count > 1 ? input_state::press : input_state::down;
 					//gamepad::pressed_button.emplace_back(*this);

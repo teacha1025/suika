@@ -25,11 +25,12 @@ namespace suika {
 	namespace detail {
 		class gamepad_button : public input_base {
 			ubyte _id = 0;
-			ubyte _dcode = 0;
+			ulong _xcode = 0;
+			ulong _dcode = 0;
 			string _dname = "";
 			bool _is_use_xinput = true;
 		public:
-			gamepad_button(ubyte xcode, ubyte dcode, const string& xname, const string& dname, ubyte id);
+			gamepad_button(ulong xcode, ulong dcode, const string& xname, const string& dname, ubyte id);
 			gamepad_button() {}
 			void update();
 		};

@@ -8,7 +8,7 @@ namespace suika {
 		namespace xinput {
 			extern XINPUT_STATE xstate;
 
-			XINPUT_STATE get_state(ulong index);
+			void get_state(ulong index);
 
 			void enable(bool flag);
 		}

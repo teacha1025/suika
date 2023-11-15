@@ -13,16 +13,16 @@ namespace suika {
 	/// </summary>
 	enum class pad_states {
 		//! XInputで入力処理
-		xinput,
+		XInput,
 		//! DirectInputで入力処理
-		direct_input,
+		DirectInput,
 		//! ゲームパッドは未接続、あるいは使用不可
-		disable
+		Disable
 	};
 	namespace gamepad {
 		struct info {
 			ubyte		index = 255;
-			pad_states	states = pad_states::disable;
+			pad_states	states = pad_states::Disable;
 			string		name;
 			string		pid;
 			string		vid;
@@ -83,7 +83,7 @@ namespace suika {
 			/// <summary>
 			/// 押された時間の取得
 			/// </summary>
-			/// <returns>キーやボタンが押されたフレーム数</returns>
+			/// <returns>スティックが押し込まれたフレーム数</returns>
 			unsigned int count() const override {
 				return button.count();
 			}
@@ -234,8 +234,8 @@ namespace suika {
 
 		class gamepad {
 		private:
-			//ubyte	  ID = 255;
-			//pad_states _states = pad_states::disable;
+			ubyte	  _id = 255;
+			//pad_states _states = pad_states::Disable;
 			//string _name;
 
 			friend void init(gamepad& gp, ubyte id, suika::gamepad::info info);
@@ -337,6 +337,10 @@ namespace suika {
 			/// <returns>ボタンへの参照を返す</returns>
 			std::vector<std::reference_wrapper<detail::gamepad_button>> pressed_button();
 
+			/// <summary>
+			/// 現在の情報を取得する
+			/// </summary>
+			/// <returns>ゲームパッドの情報</returns>
 			suika::gamepad::info info() const{
 				return _info;
 			}

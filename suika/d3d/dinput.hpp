@@ -13,7 +13,7 @@ namespace suika {
 		namespace dinput {
 			struct info {
 				ubyte	index = 255;
-				int		states = 0;//0:disable 1:dinput 2:xinput
+				int		states = 0;//0:Disable 1:dinput 2:XInput
 				string pid, vid;
 				GUID guid;
 				string	name;
@@ -24,6 +24,9 @@ namespace suika {
 			extern DIMOUSESTATE mouse_state;
 			extern std::unordered_map<string, DIJOYSTATE> gamepad_state;
 			void update(bool = true);
+			bool gp_update(const string& key);
+
+			void load_gamepad(HWND hWnd);
 		}
 	}
 }

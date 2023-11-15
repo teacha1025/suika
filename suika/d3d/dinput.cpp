@@ -85,7 +85,7 @@ namespace suika {
 										if (wcsstr(var.bstrVal, L"IG_")) {
 
 											// If it does, then get the VID/PID from var.bstrVal
-											dwVid = dwVid = 0;
+											dwVid = dwPid = 0;
 											strVid = wcsstr(var.bstrVal, L"VID_");
 											strPid = wcsstr(var.bstrVal, L"PID_");
 											if (strVid && swscanf_s(strVid, L"VID_%4X", &dwVid) != 1) dwVid = 0;
@@ -122,8 +122,10 @@ namespace suika {
 				i.guid = pdidInstance->guidProduct;
 				i.name = pdidInstance->tszProductName;
 				if (i.states != 2) {
-					i.pid = std::format(L"{:04x}", pdidInstance->guidProduct.Data1);
-					i.vid = std::format(L"{:04x}", pdidInstance->guidProduct.Data2);
+					auto pid = pdidInstance->guidProduct.Data1 / 0x10000;
+					auto vid = pdidInstance->guidProduct.Data1 % 0x10000;
+					i.pid = std::format(L"{:04x}", pid);
+					i.vid = std::format(L"{:04x}", vid);
 					i.states = 1;
 				}
 				bool f = false;
@@ -140,18 +142,12 @@ namespace suika {
 				return DIENUM_CONTINUE;
 			}
 
-			void init_gamepad(HWND hWnd) {
-				auto er = DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)(gamepad_input.GetAddressOf()), NULL);
-				if (FAILED(er)) {
-					log_d3d.error("Failed to create GamepadInput");
-					log_d3d.result(er);
-					return;
-				}
+			void load_gamepad(HWND hWnd) {
 				for (auto& gp : gamepad_list) {
 					gp.states = 0;
 				}
 
-				er = gamepad_input->EnumDevices(DI8DEVCLASS_GAMECTRL, EnumJoysticksCallback, &gamepad_list, DIEDFL_ATTACHEDONLY);
+				auto er = gamepad_input->EnumDevices(DI8DEVCLASS_GAMECTRL, EnumJoysticksCallback, &gamepad_list, DIEDFL_ATTACHEDONLY);
 				if (FAILED(er)) {
 					log_d3d.error("Failed to Enum XInput Gamepad");
 					log_d3d.result(er);
@@ -161,7 +157,7 @@ namespace suika {
 					log_d3d.error("Failed to Enum DirectInput Gamepad");
 					log_d3d.result(er);
 				}
-				
+
 				for (const auto& pad : gamepad_list) {
 					log_d3d.info(std::format(L"Gamepad({}):{}", pad.states == 0 ? L"—˜—p•s‰Â" : pad.states == 1 ? L"DirectInput" : L"XInput", pad.name.to_wstring()));
 				}
@@ -174,7 +170,7 @@ namespace suika {
 							gamepad_state.insert({ key, {} });
 						}
 						er = gamepad_input->CreateDevice(i.guid, &(gamepad_dev[key]), NULL);
-						if(FAILED(er)){
+						if (FAILED(er)) {
 							log_d3d.error("Failed to create GamepadInputDevice (" + i.name.to_string() + ")");
 							log_d3d.result(er);
 							i.states = 0;
@@ -245,6 +241,16 @@ namespace suika {
 						gamepad_dev[key]->Acquire();
 					}
 				}
+			}
+
+			void init_gamepad(HWND hWnd) {
+				auto er = DirectInput8Create(GetModuleHandle(NULL), DIRECTINPUT_VERSION, IID_IDirectInput8, (void**)(gamepad_input.GetAddressOf()), NULL);
+				if (FAILED(er)) {
+					log_d3d.error("Failed to create GamepadInput");
+					log_d3d.result(er);
+					return;
+				}
+				load_gamepad(hWnd);
 			}
 
 			bool init(HWND hWnd) {
@@ -363,51 +369,52 @@ namespace suika {
 				if (FAILED(er)) {
 					er = key_dev->Acquire();
 					if (FAILED(er)) {
-						log_d3d.error("Failed to get keyboard state");
-						log_d3d.result(er);
+						//log_d3d.error("Failed to get keyboard state");
+						//log_d3d.result(er);
 					}
 					key_dev->Poll();
 					er = key_dev->GetDeviceState(256, key);
 					if (FAILED(er)) {
-						log_d3d.error("Failed to get keyboard state");
-						log_d3d.result(er);
+						//log_d3d.error("Failed to get keyboard state");
+						//log_d3d.result(er);
 					}
 				}
 				er = mouse_dev->GetDeviceState(sizeof(DIMOUSESTATE), &mouse_state);
 				if (FAILED(er)) {
 					er = mouse_dev->Acquire();
 					if (FAILED(er)) {
-						log_d3d.error("Failed to get mouse state");
-						log_d3d.result(er);
+						//log_d3d.error("Failed to get mouse state");
+						//log_d3d.result(er);
 					}
 					mouse_dev->Poll();
 					er = mouse_dev->GetDeviceState(sizeof(DIMOUSESTATE), &mouse_state);
 					if (FAILED(er)) {
-						log_d3d.error("Failed to get mouse state");
-						log_d3d.result(er);
+						//log_d3d.error("Failed to get mouse state");
+						//log_d3d.result(er);
 					}
-				}
-				for (auto& gp : gamepad_dev) {
-					er = gp.second->GetDeviceState(sizeof(DIJOYSTATE), &gamepad_state[gp.first]);
-					if (FAILED(er)) {
-						er = gp.second->Acquire();
-						if (FAILED(er)) {
-							log_d3d.error("Failed to get gamepad state");
-							log_d3d.result(er);
-							continue;
-						}
-						gp.second->Poll();
-						er = gp.second->GetDeviceState(sizeof(DIJOYSTATE), &gamepad_state[gp.first]);
-						if (FAILED(er)) {
-							log_d3d.error("Failed to get gamepad state");
-							log_d3d.result(er);
-						}
-					}
-
 				}
 			}
 
-
+			bool gp_update(const string& key) {
+				auto& dev = gamepad_dev[key];
+				auto er =dev->GetDeviceState(sizeof(DIJOYSTATE), &gamepad_state[key]);
+				if (FAILED(er)) {
+					er = dev->Acquire();
+					if (FAILED(er)) {
+						//log_d3d.error("Failed to get gamepad state");
+						//log_d3d.result(er);
+						return false;
+					}
+					dev->Poll();
+					er = dev->GetDeviceState(sizeof(DIJOYSTATE), &gamepad_state[key]);
+					if (FAILED(er)) {
+						//log_d3d.error("Failed to get gamepad state");
+						//log_d3d.result(er);
+						return false;
+					}
+				}
+				return true;
+			}
 		}
 	}
 }

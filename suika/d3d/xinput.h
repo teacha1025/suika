@@ -5,10 +5,10 @@
 
 namespace suika {
 	namespace d3d {
-		namespace xinput {
+		namespace XInput {
 			extern XINPUT_STATE xstate;
 
-			void get_state(ulong index);
+			bool get_state(ulong index);
 
 			void enable(bool flag);
 		}

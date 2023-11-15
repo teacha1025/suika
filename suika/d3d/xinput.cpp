@@ -10,7 +10,7 @@
 
 namespace suika {
 	namespace d3d{
-		namespace xinput {
+		namespace XInput {
 			XINPUT_STATE xstate;
 			XINPUT_VIBRATION xvibration;
 
@@ -30,21 +30,23 @@ namespace suika {
 				return ULONG_MAX;
 			}
 
-			void get_state(ulong index) {
+			bool get_state(ulong index) {
 				//auto i = convert_index(index);
 				auto i = index;
-				if (i == ULONG_MAX) return;
+				if (i == ULONG_MAX) return false;
 				init();
 				auto er = XInputGetState(i, &xstate);
 				if (er == ERROR_SUCCESS) {
 					//XInputGetState(i, &xstate);
+					return true;
 				}
 				else if (er == ERROR_DEVICE_NOT_CONNECTED) {
-					log_d3d.error(std::format(L"XInputGetState({}) failed:Device Not Connected", i));
+					//log_d3d.error(std::format(L"XInputGetState({}) failed:Device Not Connected", i));
 				}
 				else {
-					log_d3d.error(std::format(L"XInputGetState({}) failed:{}", i, er));
+					//log_d3d.error(std::format(L"XInputGetState({}) failed:{}", i, er));
 				}
+				return false;
 			}
 
 			void enable(bool flag) {

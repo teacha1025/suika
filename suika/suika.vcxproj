@@ -190,6 +190,7 @@
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="mouse.cpp" />
     <ClCompile Include="rect.cpp" />
+    <ClCompile Include="scene.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="string_function.cpp" />
     <ClCompile Include="system.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="..\include\suika\point.h" />
     <ClInclude Include="..\include\suika\range.h" />
     <ClInclude Include="..\include\suika\rect.h" />
+    <ClInclude Include="..\include\suika\scene.h" />
     <ClInclude Include="..\include\suika\shader.h" />
     <ClInclude Include="..\include\suika\string.h" />
     <ClInclude Include="..\include\suika\string_function.h" />

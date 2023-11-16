@@ -57,17 +57,43 @@ void test_pad(int i) {
 	
 }
 
-int main() {
-	//auto cid = suika::window::canvas().get()->id;
-	//
-	//suika::d3d::dwrite::font_data fd;
-	//fd.color = suika::palette::white;
-	//fd.color.a = 1.0f;
-	//fd.weight = DWRITE_FONT_WEIGHT_BOLD;
-	//fd.size = 64.0f;
-	//fd.font = "游明朝";
-	//suika::d3d::dwrite::set(fd, cid);
+class S2;
 
+class S1 : suika::iscene {
+	suika::font f;
+public:
+	S1() {
+		f.resized(32).colored(suika::palette::red).text("S1");
+	}
+
+	virtual void draw() override {
+		f.draw();
+	}
+	virtual void update() override {
+		if (suika::keyboard::A.down()) {
+			_p_manager->change<S2>([](double t) {suika::rect(suika::window::size()).blended(suika::blend::alpha).centered({0,0}).at({0,0}).colored(suika::color_f(suika::palette::black, t)).draw(); }, 1.0, [](double t) {suika::rect(suika::window::size()).blended(suika::blend::alpha).centered({0,0}).at({0,0}).colored(suika::color_f(suika::palette::black, 1-t)).draw(); }, 1.0);
+		}
+	}
+};
+
+class S2 : suika::iscene {
+	suika::font f;
+public:
+	S2() {
+		f.resized(48).colored(suika::palette::red).text("S2");
+	}
+
+	virtual void draw() override {
+		f.draw();
+	}
+	virtual void update() override {
+		if (suika::keyboard::A.down()) {
+			_p_manager->back([](double t) {suika::rect(suika::window::size()).blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 }).colored(suika::color_f(suika::palette::black, t)).draw(); }, 1.0, [](double t) {suika::rect(suika::window::size()).blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 }).colored(suika::color_f(suika::palette::black, 1-t)).draw(); }, 1.0);
+		}
+	}
+};
+
+int main() {
 	suika::font f("メイリオ");
 
 	suika::texture tex("test.bmp");
@@ -80,7 +106,13 @@ int main() {
 	suika::circle c(32);
 	int cursor = suika::mouse::arrow;
 	suika::line l(suika::window::size()/2, {0,0});
+
+	suika::scene_manager sm;
+	sm.change<S1>([](double) {}, 0, [](double) {}, 0);
 	while (suika::sys::update()) {
+		sm.update(1.0 / 60.0);
+		sm.draw();
+#if 0
 		test_pad(0);
 		test_pad(1);
 		test_pad(2);
@@ -89,6 +121,7 @@ int main() {
 		if (suika::keyboard::Return.down()) {
 			suika::gamepad::load_gamepads();
 		}
+#endif
 #if 0
 		edge += suika::mouse::wheel();
 		i %= 256;
@@ -156,6 +189,5 @@ int main() {
 		suika::d3d::dwrite::draw(L"TEST☺", { 128,128 }, cid);
 		i++;
 #endif
-		
 	}
 }

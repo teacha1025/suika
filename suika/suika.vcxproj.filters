@@ -98,6 +98,9 @@
     <ClCompile Include="d3d\xinput.cpp">
       <Filter>d3d\input</Filter>
     </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>suika\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -216,6 +219,9 @@
     </Filter>
     <Filter Include="d3d\input">
       <UniqueIdentifier>{6c1d956e-6aa6-4ff8-b35a-dcb9eca08820}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\scene">
+      <UniqueIdentifier>{3145dd0f-f07c-46e3-9efc-297237f255fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -398,6 +404,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\detail\math\rad_deg.ipp">
       <Filter>suika\math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\scene.h">
+      <Filter>suika\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

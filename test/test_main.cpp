@@ -11,6 +11,51 @@ void init() {
 	suika::window::vsync(true);
 }
 
+void test_pad(int i) {
+	static suika::font f("メイリオ");
+	define X = 280, OFS = 40;
+	auto btn = [&](suika::detail::gamepad_button b, int y) {
+		auto c = suika::palette::gray;
+		if (b.press()) {
+			c = suika::palette::white;
+		}
+		if (b.down()) {
+			c = suika::palette::blue;
+		}
+		if (b.up()) {
+			c = suika::palette::red;
+		}
+		f.text(b.to_string()).colored(c).at({ i*X,y*20 + OFS }).draw();
+	};
+	auto trg = [&](suika::detail::gamepad_trigger t, int y) {
+		auto c = suika::hsv(0, 0, t.value() / 2.0 + 0.5, 255).to_color();
+		f.text(std::format("{}:{:1.3f}", t.to_string().to_string(), t.value())).colored(c).at({ i * X,y * 20 + OFS }).draw();
+	};
+	auto stk = [&](suika::detail::gamepad_stick s, int y) {
+		f.text(s.to_string()).colored(s.press() ? suika::palette::white : suika::palette::gray).at({ i * X,y * 20 + OFS }).draw();
+		f.text(std::format("{}:{}", s.to_string().to_string(), s.value().to_string().to_string())).at({i * X,y * 20 + OFS }).draw();
+	};
+	auto& pad = suika::gamepad::pad[i];
+	f.text(pad.info().name).colored(suika::palette::white).at({i * X,0}).draw();
+	f.text(std::format("{}, VID:{},PID:{}", std::string(magic_enum::enum_name(pad.info().states)), pad.info().vid.to_string(), pad.info().pid.to_string())).colored(suika::palette::white).at({i * X,20}).draw();
+	btn(pad.A, 0);
+	btn(pad.B, 1);
+	btn(pad.X, 2);
+	btn(pad.Y, 3);
+	btn(pad.Up, 4);
+	btn(pad.Down, 5);
+	btn(pad.Left, 6);
+	btn(pad.Right, 7);
+	btn(pad.Back, 8);
+	btn(pad.Start, 9);
+	btn(pad.LShoulder, 10);
+	btn(pad.RShoulder, 11);
+	stk(pad.LStick, 13);
+	stk(pad.RStick, 14);
+	trg(pad.LTrigger, 15);
+	trg(pad.RTrigger, 16);
+	
+}
 
 int main() {
 	//auto cid = suika::window::canvas().get()->id;
@@ -23,19 +68,28 @@ int main() {
 	//fd.font = "游明朝";
 	//suika::d3d::dwrite::set(fd, cid);
 
-	suika::font f("HG創英角ﾎﾟｯﾌﾟ体",32,true,2,suika::font_weight::bold, suika::font_style::normal, suika::font_alignment::justified);
+	suika::font f("メイリオ");
 
 	suika::texture tex("test.bmp");
 
 	define w = 64, h = 64;
 	int i = 0, j = 0, edge = 0;
-	//6float f = 0;
+	//float f = 0;
 
 	suika::rect r({ w - 1,h - 1 });
 	suika::circle c(32);
 	int cursor = suika::mouse::arrow;
 	suika::line l(suika::window::size()/2, {0,0});
 	while (suika::sys::update()) {
+		test_pad(0);
+		test_pad(1);
+		test_pad(2);
+		test_pad(3);
+
+		if (suika::keyboard::Return.down()) {
+			suika::gamepad::load_gamepads();
+		}
+#if 0
 		edge += suika::mouse::wheel();
 		i %= 256;
 		suika::window::title(std::format("{:4.1f}fps,{}, [{},{}], {}", suika::sys::fps(), edge, suika::mouse::position().x, suika::mouse::position().y, cursor));
@@ -45,12 +99,6 @@ int main() {
 				//tex.centered({ 0, 0 }).at({ x * w + w / 2,y * h + h / 2 }).blended(suika::blend::alpha).rotated(i / 20.0f).draw();
 			}
 		}
-		/*if (suika::keyboard::A.press()) {
-			i++;
-		}
-		if (suika::mouse::Left.press()) {
-			i--;
-		}*/
 		
 		if (suika::mouse::Right.down()) {
 			static bool flag = false;
@@ -86,6 +134,7 @@ int main() {
 		f.colored(suika::hsv(j, 1.0f,1.0f).to_color(),suika::palette::white).draw();
 		j++;
 		j %= 360;
+#endif
 #if 0
 		if (i == 60) {
 			fd.color = suika::palette::yellow;

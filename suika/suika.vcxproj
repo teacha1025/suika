@@ -180,7 +180,9 @@
     <ClCompile Include="d3d\d3d_texture.cpp" />
     <ClCompile Include="d3d\viewport.cpp" />
     <ClCompile Include="d3d\vs.cpp" />
+    <ClCompile Include="d3d\xinput.cpp" />
     <ClCompile Include="font.cpp" />
+    <ClCompile Include="gamepad.cpp" />
     <ClCompile Include="keyboard.cpp" />
     <ClCompile Include="line.cpp" />
     <ClCompile Include="logger.cpp" />
@@ -214,6 +216,7 @@
     <ClInclude Include="..\include\suika\detail\math\fmod.ipp" />
     <ClInclude Include="..\include\suika\detail\math\log.ipp" />
     <ClInclude Include="..\include\suika\detail\math\pow.ipp" />
+    <ClInclude Include="..\include\suika\detail\math\rad_deg.ipp" />
     <ClInclude Include="..\include\suika\detail\math\round.ipp" />
     <ClInclude Include="..\include\suika\detail\math\sin_con_tan.ipp" />
     <ClInclude Include="..\include\suika\detail\math\sqrt.ipp" />
@@ -222,6 +225,7 @@
     <ClInclude Include="..\include\suika\draw.h" />
     <ClInclude Include="..\include\suika\except.h" />
     <ClInclude Include="..\include\suika\font.h" />
+    <ClInclude Include="..\include\suika\gamepad.h" />
     <ClInclude Include="..\include\suika\input_base.h" />
     <ClInclude Include="..\include\suika\keyboard.h" />
     <ClInclude Include="..\include\suika\line.h" />
@@ -255,6 +259,7 @@
     <ClInclude Include="d3d\vertex.h" />
     <ClInclude Include="d3d\viewport.hpp" />
     <ClInclude Include="d3d\vs.hpp" />
+    <ClInclude Include="d3d\xinput.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

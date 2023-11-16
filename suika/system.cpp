@@ -15,6 +15,9 @@ namespace suika {
 	namespace mouse {
 		void update();
 	}
+	namespace gamepad {
+		void update();
+	}
 
 
 	namespace sys {
@@ -49,6 +52,7 @@ namespace suika {
 
 			keyboard::update();
 			mouse::update();
+			gamepad::update();
 
 			return window::process();
 		}

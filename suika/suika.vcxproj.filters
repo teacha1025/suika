@@ -75,7 +75,7 @@
       <Filter>suika\matrix</Filter>
     </ClCompile>
     <ClCompile Include="d3d\dinput.cpp">
-      <Filter>d3d\dinput</Filter>
+      <Filter>d3d\input</Filter>
     </ClCompile>
     <ClCompile Include="keyboard.cpp">
       <Filter>suika\input</Filter>
@@ -91,6 +91,12 @@
     </ClCompile>
     <ClCompile Include="font.cpp">
       <Filter>suika\font</Filter>
+    </ClCompile>
+    <ClCompile Include="gamepad.cpp">
+      <Filter>suika\input</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d\xinput.cpp">
+      <Filter>d3d\input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -184,9 +190,6 @@
     <Filter Include="suika\exception">
       <UniqueIdentifier>{ff93511c-6246-4cf1-af5c-2f4dc83cbe0f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="d3d\dinput">
-      <UniqueIdentifier>{6c1d956e-6aa6-4ff8-b35a-dcb9eca08820}</UniqueIdentifier>
-    </Filter>
     <Filter Include="suika\input">
       <UniqueIdentifier>{864ce1b5-399f-4ee8-8efa-953178605f93}</UniqueIdentifier>
     </Filter>
@@ -210,6 +213,9 @@
     </Filter>
     <Filter Include="suika\font">
       <UniqueIdentifier>{229bdeea-5818-4c9e-844c-82fd2ae08443}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d\input">
+      <UniqueIdentifier>{6c1d956e-6aa6-4ff8-b35a-dcb9eca08820}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -364,7 +370,7 @@
       <Filter>suika\exception</Filter>
     </ClInclude>
     <ClInclude Include="d3d\dinput.hpp">
-      <Filter>d3d\dinput</Filter>
+      <Filter>d3d\input</Filter>
     </ClInclude>
     <ClInclude Include="..\include\suika\input_base.h">
       <Filter>suika\input</Filter>
@@ -383,6 +389,15 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\font.h">
       <Filter>suika\font</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\gamepad.h">
+      <Filter>suika\input</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\xinput.h">
+      <Filter>d3d\input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\detail\math\rad_deg.ipp">
+      <Filter>suika\math</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

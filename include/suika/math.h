@@ -241,6 +241,19 @@ namespace suika {
 		template<std::integral T>
 		constexpr double atan(T x);
 
+		/// @brief 度数法から弧度法に変換
+		/// @tparam T 数値型
+		/// @param x 角度(°)
+		/// @return 角度(ラジアン)
+		template<concepts::numbers T>
+		constexpr double radian(T x);
+		/// @brief 弧度法から度数法に変換
+		/// @tparam T 数値型
+		/// @param x 角度(ラジアン)
+		/// @return 角度(°)
+		template<concepts::numbers T>
+		constexpr double degree(T x);
+
 		//template<concepts::numbers T>
 		//constexpr T factorial(T n);
 	} // namespace math
@@ -258,4 +271,5 @@ namespace suika {
 #include "detail/math/trunc.ipp"
 #include "detail/math/fmod.ipp"
 #include "detail/math/asin_acos_atan.ipp"
+#include "detail/math/rad_deg.ipp"
 #endif

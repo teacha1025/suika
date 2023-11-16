@@ -19,6 +19,7 @@ namespace suika {
 					if(_now_scene) _now_scene->fin();
 					_scenes.push(std::move(_now_scene));
 					_now_scene = std::move(_next_scene);
+					_now_scene->init();
 					_next_scene = nullptr;
 
 					if (_fade_time >= _data.fadein_time) {
@@ -36,6 +37,7 @@ namespace suika {
 					if (_now_scene) _now_scene->fin();
 					_scenes.push(std::move(_now_scene));
 					_now_scene = std::move(_next_scene);
+					_now_scene->init();
 					_next_scene = nullptr;
 				}
 			}

@@ -12,6 +12,7 @@ namespace suika {
 	protected:
 		scene_manager* _p_manager;
 	public:
+		virtual void init() {};
 		virtual void update() = 0;
 		virtual void draw() = 0;
 		virtual void fin() {};

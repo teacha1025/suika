@@ -6,7 +6,7 @@
 
 
 void init() {
-	suika::window::background(suika::palette::skyblue);
+	suika::window::background(suika::palette::black);
 	suika::window::title("APP");
 	suika::window::vsync(true);
 }
@@ -65,13 +65,19 @@ public:
 	S1() {
 		f.resized(32).colored(suika::palette::red).text("S1");
 	}
-
+	virtual void init() override {
+		suika::window::background(suika::palette::skyblue);
+	}
 	virtual void draw() override {
 		f.draw();
 	}
 	virtual void update() override {
 		if (suika::keyboard::A.down()) {
-			_p_manager->change<S2>([](double t) {suika::rect(suika::window::size()).blended(suika::blend::alpha).centered({0,0}).at({0,0}).colored(suika::color_f(suika::palette::black, t)).draw(); }, 1.0, [](double t) {suika::rect(suika::window::size()).blended(suika::blend::alpha).centered({0,0}).at({0,0}).colored(suika::color_f(suika::palette::black, 1-t)).draw(); }, 1.0);
+			static suika::rect r(suika::window::size());
+			r.blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 });
+			static auto out = [](double t) {r.colored(suika::color_f(suika::palette::black, t)).draw(); };
+			static auto in = [](double t) {r.colored(suika::color_f(suika::palette::black, 1 - t)).draw(); };
+			_p_manager->change<S2>(out, 1.0, in, 1.0);
 		}
 	}
 };
@@ -82,13 +88,19 @@ public:
 	S2() {
 		f.resized(48).colored(suika::palette::red).text("S2");
 	}
-
+	virtual void init() override {
+		suika::window::background(suika::palette::yellowgreen);
+	}
 	virtual void draw() override {
 		f.draw();
 	}
 	virtual void update() override {
 		if (suika::keyboard::A.down()) {
-			_p_manager->back([](double t) {suika::rect(suika::window::size()).blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 }).colored(suika::color_f(suika::palette::black, t)).draw(); }, 1.0, [](double t) {suika::rect(suika::window::size()).blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 }).colored(suika::color_f(suika::palette::black, 1-t)).draw(); }, 1.0);
+			static suika::rect r(suika::window::size());
+			r.blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 });
+			static auto out = [](double t) {r.colored(suika::color_f(suika::palette::black, t)).draw(); };
+			static auto in = [](double t) {r.colored(suika::color_f(suika::palette::black, 1 - t)).draw(); };
+			_p_manager->back(out, 1.0, in, 1.0);
 		}
 	}
 };
@@ -108,7 +120,11 @@ int main() {
 	suika::line l(suika::window::size()/2, {0,0});
 
 	suika::scene_manager sm;
-	sm.change<S1>([](double) {}, 0, [](double) {}, 0);
+	static suika::rect rc(suika::window::size());
+	rc.blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 });
+	static auto out = [](double t) { };
+	static auto in = [](double t) {rc.colored(suika::color_f(suika::palette::black, 1 - t)).draw(); };
+	sm.change<S1>(out, 0.0, in, 1.0);
 	while (suika::sys::update()) {
 		sm.update(1.0 / 60.0);
 		sm.draw();

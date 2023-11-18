@@ -197,6 +197,7 @@
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="vertex.cpp" />
     <ClCompile Include="window.cpp" />
+    <ClCompile Include="easing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\suika.h" />
@@ -224,6 +225,7 @@
     <ClInclude Include="..\include\suika\detail\math\trunc.ipp" />
     <ClInclude Include="..\include\suika\detail\string.ipp" />
     <ClInclude Include="..\include\suika\draw.h" />
+    <ClInclude Include="..\include\suika\easing.h" />
     <ClInclude Include="..\include\suika\except.h" />
     <ClInclude Include="..\include\suika\font.h" />
     <ClInclude Include="..\include\suika\gamepad.h" />

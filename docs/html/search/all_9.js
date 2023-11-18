@@ -1,5 +1,30 @@
 var searchData=
 [
-  ['j_0',['J',['../namespacesuika_1_1keyboard.html#a93ba54e5dd075317b9a3774bb88206e1',1,'suika::keyboard']]],
-  ['justified_1',['justified',['../namespacesuika.html#ab6cedadeb6dfafe6a913fdb7df79dce1a9f7a87861baf27aa6e2d0e23dfccd4a7',1,'suika']]]
+  ['i_0',['I',['../namespacesuika_1_1keyboard.html#a87123f3f12d8fbcf242351e501fa706f',1,'suika::keyboard']]],
+  ['ibase_1',['ibase',['../classsuika_1_1detail_1_1ibase.html',1,'suika::detail']]],
+  ['ibeam_2',['ibeam',['../namespacesuika_1_1mouse.html#abb03e2c7d195ce8874cf726dbe08c0e7a779dfbe692eaf3a210b41b730c0d8b94',1,'suika::mouse']]],
+  ['icon_3',['icon',['../namespacesuika_1_1mouse.html#abb03e2c7d195ce8874cf726dbe08c0e7aa99e0b8e3c3577a9dc0ae96fcdce4b45',1,'suika::mouse']]],
+  ['identity_4',['identity',['../namespacesuika_1_1vector.html#a01bbd7f1589237e7870bfea847e8b98c',1,'suika::vector']]],
+  ['index_5',['index',['../structsuika_1_1gamepad_1_1info.html#a41478610f334f037ce6ceb3e9b271e81',1,'suika::gamepad::info']]],
+  ['indianred_6',['indianred',['../namespacesuika_1_1palette.html#a4a8d4de8c980d93b1bdb81642ca2844f',1,'suika::palette']]],
+  ['indigo_7',['indigo',['../namespacesuika_1_1palette.html#aa3c39235e4d85e2e60637ab8d0499549',1,'suika::palette']]],
+  ['info_8',['info',['../classsuika_1_1detail_1_1gamepad.html#a2681a683e6acc8e076a9d85e4af2e9e8',1,'suika::detail::gamepad::info()'],['../classsuika_1_1logger.html#a4b71a0486f2ee2487ed5efb29fda473f',1,'suika::logger::info()'],['../structsuika_1_1gamepad_1_1info.html',1,'suika::gamepad::info']]],
+  ['init_9',['init',['../classsuika_1_1logger.html#a595be4392df5ab54252623658366ecb6',1,'suika::logger::init()'],['../classsuika_1_1iscene.html#ad58dd09aaea57e1fa14cfae1377c559b',1,'suika::iscene::init()']]],
+  ['input_5fbase_10',['input_base',['../classsuika_1_1input__base.html',1,'suika']]],
+  ['insert_11',['Insert',['../namespacesuika_1_1keyboard.html#a60b15e06070dbb076b9cb264c8a5bbd8',1,'suika::keyboard']]],
+  ['int16_12',['int16',['../namespacesuika.html#a705d7970bb28ca1b269d5ad407318880',1,'suika']]],
+  ['int32_13',['int32',['../namespacesuika.html#ac3533c819885af7fe8ad6e082bc328fd',1,'suika']]],
+  ['int64_14',['int64',['../namespacesuika.html#a2c61d6c20803b4c51c2f89f9e9917781',1,'suika']]],
+  ['int8_15',['int8',['../namespacesuika.html#ad1a2d6c0e20eb8929b400a541ef10cc2',1,'suika']]],
+  ['inv_5fdest_16',['inv_dest',['../namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6ab82a2c71c7ac20cb61da730f02eb26ce',1,'suika']]],
+  ['inv_5fsrc_17',['inv_src',['../namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a452c1e667fc4f9a4377d8415e04c9fbe',1,'suika']]],
+  ['inverse_18',['inverse',['../namespacesuika_1_1vector.html#a0cbc54b1d11f05afb94a53a8a89b0d6c',1,'suika::vector']]],
+  ['iscene_19',['iscene',['../classsuika_1_1iscene.html',1,'suika']]],
+  ['ishape_20',['ishape',['../classsuika_1_1detail_1_1ishape.html',1,'suika::detail']]],
+  ['ishape_3c_20circle_20_3e_21',['ishape&lt; circle &gt;',['../classsuika_1_1detail_1_1ishape.html',1,'suika::detail']]],
+  ['ishape_3c_20line_20_3e_22',['ishape&lt; line &gt;',['../classsuika_1_1detail_1_1ishape.html',1,'suika::detail']]],
+  ['ishape_3c_20rect_20_3e_23',['ishape&lt; rect &gt;',['../classsuika_1_1detail_1_1ishape.html',1,'suika::detail']]],
+  ['ishape_3c_20texture_20_3e_24',['ishape&lt; texture &gt;',['../classsuika_1_1detail_1_1ishape.html',1,'suika::detail']]],
+  ['italic_25',['italic',['../namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3dea030c5b6d1e5715105943ac111d9671bf',1,'suika']]],
+  ['ivory_26',['ivory',['../namespacesuika_1_1palette.html#ad4ab87bcb8dc1ead27f3fdf291e943a9',1,'suika::palette']]]
 ];

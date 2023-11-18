@@ -1,19 +1,14 @@
 var searchData=
 [
-  ['c_0',['C',['../namespacesuika_1_1keyboard.html#a1a9eab6041dedeca499e9506f575b367',1,'suika::keyboard']]],
-  ['cadetblue_1',['cadetblue',['../namespacesuika_1_1palette.html#abc39548993fcb7df3022fba8682b7209',1,'suika::palette']]],
-  ['capaslock_2',['Capaslock',['../namespacesuika_1_1keyboard.html#a11c742e71e97f2486560d07f94546a30',1,'suika::keyboard']]],
-  ['caret_3',['Caret',['../namespacesuika_1_1keyboard.html#afc0afc925e15898430230ed478c24b9b',1,'suika::keyboard']]],
-  ['centi_4',['CENTI',['../namespacesuika_1_1suffix.html#ad14b3e5f44e56027da5616258fedb0b6',1,'suika::suffix']]],
-  ['centi_5ff_5',['CENTI_F',['../namespacesuika_1_1suffix.html#ac86ace3cc955bfbc353e6e7d6a20994d',1,'suika::suffix']]],
-  ['chartreuse_6',['chartreuse',['../namespacesuika_1_1palette.html#aff69075d8c0fc8f6863a75b6bd26ba08',1,'suika::palette']]],
-  ['chocolate_7',['chocolate',['../namespacesuika_1_1palette.html#a4f325085c6726916641a00393e1a738a',1,'suika::palette']]],
-  ['colon_8',['Colon',['../namespacesuika_1_1keyboard.html#ad13fa4ba1b9a462596c6595ce0c754d8',1,'suika::keyboard']]],
-  ['comma_9',['Comma',['../namespacesuika_1_1keyboard.html#a84faf636589e73fcf7f636e19c812f89',1,'suika::keyboard']]],
-  ['convert_10',['Convert',['../namespacesuika_1_1keyboard.html#a0f9aa8d851a1d34374f6dde26f9cd25e',1,'suika::keyboard']]],
-  ['coral_11',['coral',['../namespacesuika_1_1palette.html#a2247873ad3e95e9f3366a0861b38856e',1,'suika::palette']]],
-  ['cornflowerblue_12',['cornflowerblue',['../namespacesuika_1_1palette.html#a959780c2336858d10263adaa119eeeac',1,'suika::palette']]],
-  ['cornsilk_13',['cornsilk',['../namespacesuika_1_1palette.html#a53e8550971997b065be2d2efc2655df8',1,'suika::palette']]],
-  ['crimson_14',['crimson',['../namespacesuika_1_1palette.html#a62a9db56b7af483594ad5ee1b53a9baf',1,'suika::palette']]],
-  ['cyan_15',['cyan',['../namespacesuika_1_1palette.html#a9ae5907475b7c04fcf352d729307dbef',1,'suika::palette']]]
+  ['b_0',['B',['../classsuika_1_1detail_1_1gamepad.html#addf1527f207b2d8c9d16ecb34aad82ca',1,'suika::detail::gamepad::B()'],['../namespacesuika_1_1keyboard.html#a11dd0fc06a38c96a250d085813f34e7f',1,'suika::keyboard::B()']]],
+  ['back_1',['Back',['../classsuika_1_1detail_1_1gamepad.html#a0fe60131e4a2322dc0c0769e51f1de99',1,'suika::detail::gamepad::Back()'],['../namespacesuika_1_1keyboard.html#a750bd936d1c48eb7780078d4eaff704c',1,'suika::keyboard::Back()']]],
+  ['backslash_2',['Backslash',['../namespacesuika_1_1keyboard.html#a68d3f94eba7644cc7d657dc91846b73d',1,'suika::keyboard']]],
+  ['beige_3',['beige',['../namespacesuika_1_1palette.html#ab7766c75d6f94d2b885756e406cc319f',1,'suika::palette']]],
+  ['bisque_4',['bisque',['../namespacesuika_1_1palette.html#a5964807c7d81cc08dc97f43c871ba4f5',1,'suika::palette']]],
+  ['black_5',['black',['../namespacesuika_1_1palette.html#ae631071e3cfd286b6b9f82aba2749bc3',1,'suika::palette']]],
+  ['blanchedalmond_6',['blanchedalmond',['../namespacesuika_1_1palette.html#ad36fc90cfeca2c077d47e8fce554834c',1,'suika::palette']]],
+  ['blue_7',['blue',['../namespacesuika_1_1palette.html#abf9f90109b9759a8e8c0edf3db79fb08',1,'suika::palette']]],
+  ['blueviolet_8',['blueviolet',['../namespacesuika_1_1palette.html#a5420c24b668974aebe01f150783c37fb',1,'suika::palette']]],
+  ['brown_9',['brown',['../namespacesuika_1_1palette.html#a82209f09acd8310fb6b26027b8d2cc76',1,'suika::palette']]],
+  ['burlywood_10',['burlywood',['../namespacesuika_1_1palette.html#a6c201051c9cd026d78a85d53a5774396',1,'suika::palette']]]
 ];

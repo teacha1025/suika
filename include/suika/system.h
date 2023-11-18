@@ -41,6 +41,18 @@ namespace suika {
 		/// </summary>
 		/// <returns>現在のフレームレート</returns>
 		float fps();
+
+		/// <summary>
+		/// 前のフレームからの経過時間を取得
+		/// </summary>
+		/// <returns>経過時間(秒)</returns>
+		double delta();
+
+		/// <summary>
+		/// 前のフレームからの経過時間を取得
+		/// </summary>
+		/// <returns>経過時間(ナノ秒)</returns>
+		long long delta_nano();
 	}
 }
 

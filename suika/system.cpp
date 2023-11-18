@@ -15,6 +15,9 @@ namespace suika {
 	namespace mouse {
 		void update();
 	}
+	namespace gamepad {
+		void update();
+	}
 
 
 	namespace sys {
@@ -24,20 +27,24 @@ namespace suika {
 
 		std::mutex mtxA,mtxB;
 
+		std::chrono::nanoseconds delta_time = std::chrono::nanoseconds(0);
+
 		bool update() {
 			if (exit_flag)return false;
 
 			{
 				static int  cnt = 0;
-				static auto _old = std::chrono::system_clock::now(), _now = std::chrono::system_clock::now();
+				static auto _fps_old = std::chrono::system_clock::now(), _old = std::chrono::system_clock::now(), _now = std::chrono::system_clock::now();
 				_now = std::chrono::system_clock::now();
-				if (auto d = std::chrono::duration_cast<std::chrono::nanoseconds>(_now - _old); d >= std::chrono::milliseconds(500)) {
+				if (auto d = std::chrono::duration_cast<std::chrono::nanoseconds>(_now - _fps_old); d >= std::chrono::milliseconds(500)) {
 					//fpsŒv‘ª
 					now_fps = static_cast<float>(cnt / (d.count() * suffix::NANO));
-					_old = _now;
+					_fps_old = _now;
 					cnt = 0;
 
 				}
+				delta_time = std::chrono::duration_cast<std::chrono::nanoseconds>(_now - _old);
+				_old = _now;
 				cnt++;
 			}
 
@@ -49,6 +56,7 @@ namespace suika {
 
 			keyboard::update();
 			mouse::update();
+			gamepad::update();
 
 			return window::process();
 		}
@@ -72,6 +80,14 @@ namespace suika {
 
 		float fps() {
 			return now_fps;
+		}
+
+		double delta() {
+			return delta_time.count() * suffix::NANO;
+		}
+
+		long long delta_nano() {
+			return delta_time.count();
 		}
 	}
 }

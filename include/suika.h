@@ -30,6 +30,9 @@
 
 #include "../include/suika/keyboard.h"
 #include "../include/suika/mouse.h"
+#include "../include/suika/gamepad.h"
+
+#include "../include/suika/scene.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "suika_d.lib")

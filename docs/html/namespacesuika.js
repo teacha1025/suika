@@ -1,5 +1,7 @@
 var namespacesuika =
 [
+    [ "detail", "namespacesuika_1_1detail.html", "namespacesuika_1_1detail" ],
+    [ "gamepad", "namespacesuika_1_1gamepad.html", "namespacesuika_1_1gamepad" ],
     [ "keyboard", "namespacesuika_1_1keyboard.html", [
       [ "pressed_key", "namespacesuika_1_1keyboard.html#afaa2d5d82a08e7bb1c7b218df0461907", null ],
       [ "A", "namespacesuika_1_1keyboard.html#af8001256fc616ab8468076a443b99745", null ],
@@ -124,6 +126,7 @@ var namespacesuika =
       [ "ceil", "namespacesuika_1_1math.html#ad342300deee00ba4248ba99f3c422695", null ],
       [ "cos", "namespacesuika_1_1math.html#a0538c930a32ce3469de3dd480d1a2ec1", null ],
       [ "cos", "namespacesuika_1_1math.html#a41a43f01f4c3422035f128a3eacf5f0c", null ],
+      [ "degree", "namespacesuika_1_1math.html#a105a8796f81219999e33051685eb82e1", null ],
       [ "exp", "namespacesuika_1_1math.html#ad80865d07cdfbccee654606457ab92d7", null ],
       [ "exp", "namespacesuika_1_1math.html#a0080d2a8a68daaa42d0d961ee8a9828b", null ],
       [ "floor", "namespacesuika_1_1math.html#af0eeb07ac3e17ef460cde0f8b4020221", null ],
@@ -137,6 +140,7 @@ var namespacesuika =
       [ "pow", "namespacesuika_1_1math.html#a4c3c69fe92659522651b25bb2de461d7", null ],
       [ "pow", "namespacesuika_1_1math.html#af105a8fbeddfe7e09edbb5f33eb28a1e", null ],
       [ "pow", "namespacesuika_1_1math.html#a606985a1e9397ca62eca1a54604e96cf", null ],
+      [ "radian", "namespacesuika_1_1math.html#a5f8a42764dedd2ad892fb8a519f2d252", null ],
       [ "round", "namespacesuika_1_1math.html#a7f35502265459a7ffc0f643adf1e9a1a", null ],
       [ "round", "namespacesuika_1_1math.html#a9c42614ec54c8d93486b2326defab1b7", null ],
       [ "sin", "namespacesuika_1_1math.html#a732e7e81c3b1e301a5e796085f8e42ea", null ],
@@ -409,11 +413,14 @@ var namespacesuika =
     [ "color_f", "structsuika_1_1color__f.html", "structsuika_1_1color__f" ],
     [ "font", "classsuika_1_1font.html", "classsuika_1_1font" ],
     [ "hsv", "structsuika_1_1hsv.html", "structsuika_1_1hsv" ],
+    [ "input_base", "classsuika_1_1input__base.html", "classsuika_1_1input__base" ],
+    [ "iscene", "classsuika_1_1iscene.html", "classsuika_1_1iscene" ],
     [ "line", "classsuika_1_1line.html", "classsuika_1_1line" ],
     [ "logger", "classsuika_1_1logger.html", "classsuika_1_1logger" ],
     [ "matrix", "structsuika_1_1matrix.html", "structsuika_1_1matrix" ],
     [ "polar2", "classsuika_1_1polar2.html", "classsuika_1_1polar2" ],
     [ "range", "structsuika_1_1range.html", "structsuika_1_1range" ],
+    [ "scene_manager", "classsuika_1_1scene__manager.html", "classsuika_1_1scene__manager" ],
     [ "string", "classsuika_1_1string.html", "classsuika_1_1string" ],
     [ "texture", "classsuika_1_1texture.html", "classsuika_1_1texture" ],
     [ "vector2", "classsuika_1_1vector2.html", "classsuika_1_1vector2" ],
@@ -488,6 +495,11 @@ var namespacesuika =
       [ "extra_bold", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00ad7c79537c888b457d7633e5296835c82", null ],
       [ "heavy", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a7cfe64ea44dc3bbeb63b29ff3039a481", null ],
       [ "extra_heavy", "namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a5caacb8b8ca6d783572f2777ef6d865b", null ]
+    ] ],
+    [ "pad_states", "namespacesuika.html#a0a2bc6c8c27b985fb6fe8b8e0fbfa42c", [
+      [ "XInput", "namespacesuika.html#a0a2bc6c8c27b985fb6fe8b8e0fbfa42ca9fb4bed4b739ad953b035208092def08", null ],
+      [ "DirectInput", "namespacesuika.html#a0a2bc6c8c27b985fb6fe8b8e0fbfa42cac8789740ffce3e708d1f75f962fdcc10", null ],
+      [ "Disable", "namespacesuika.html#a0a2bc6c8c27b985fb6fe8b8e0fbfa42cabcfaccebf745acfd5e75351095a5394a", null ]
     ] ],
     [ "primitive_topology", "namespacesuika.html#a97235e02f66ea12749752542f28a058a", [
       [ "PRIMITIVE_TOPOLOGY_UNDEFINED", "namespacesuika.html#a97235e02f66ea12749752542f28a058aacce780b5d18caab2000f94991a63d6e2", null ],

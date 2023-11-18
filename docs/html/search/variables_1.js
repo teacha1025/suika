@@ -1,14 +1,14 @@
 var searchData=
 [
-  ['b_0',['B',['../namespacesuika_1_1keyboard.html#a11dd0fc06a38c96a250d085813f34e7f',1,'suika::keyboard']]],
-  ['back_1',['Back',['../namespacesuika_1_1keyboard.html#a750bd936d1c48eb7780078d4eaff704c',1,'suika::keyboard']]],
-  ['backslash_2',['Backslash',['../namespacesuika_1_1keyboard.html#a68d3f94eba7644cc7d657dc91846b73d',1,'suika::keyboard']]],
-  ['beige_3',['beige',['../namespacesuika_1_1palette.html#ab7766c75d6f94d2b885756e406cc319f',1,'suika::palette']]],
-  ['bisque_4',['bisque',['../namespacesuika_1_1palette.html#a5964807c7d81cc08dc97f43c871ba4f5',1,'suika::palette']]],
-  ['black_5',['black',['../namespacesuika_1_1palette.html#ae631071e3cfd286b6b9f82aba2749bc3',1,'suika::palette']]],
-  ['blanchedalmond_6',['blanchedalmond',['../namespacesuika_1_1palette.html#ad36fc90cfeca2c077d47e8fce554834c',1,'suika::palette']]],
-  ['blue_7',['blue',['../namespacesuika_1_1palette.html#abf9f90109b9759a8e8c0edf3db79fb08',1,'suika::palette']]],
-  ['blueviolet_8',['blueviolet',['../namespacesuika_1_1palette.html#a5420c24b668974aebe01f150783c37fb',1,'suika::palette']]],
-  ['brown_9',['brown',['../namespacesuika_1_1palette.html#a82209f09acd8310fb6b26027b8d2cc76',1,'suika::palette']]],
-  ['burlywood_10',['burlywood',['../namespacesuika_1_1palette.html#a6c201051c9cd026d78a85d53a5774396',1,'suika::palette']]]
+  ['a_0',['A',['../classsuika_1_1detail_1_1gamepad.html#a95f6b4db68d363bba5d3e991cc37529c',1,'suika::detail::gamepad']]],
+  ['a_1',['a',['../structsuika_1_1hsv.html#a449c68d6b59aad6a72df118aabd191aa',1,'suika::hsv']]],
+  ['a_2',['A',['../namespacesuika_1_1keyboard.html#af8001256fc616ab8468076a443b99745',1,'suika::keyboard']]],
+  ['aliceblue_3',['aliceblue',['../namespacesuika_1_1palette.html#ab06e42bf7a8d2aad2bdaf52776287fc5',1,'suika::palette']]],
+  ['antiquewhite_4',['antiquewhite',['../namespacesuika_1_1palette.html#a50495daa0da2edb77789ef0ca6e1970a',1,'suika::palette']]],
+  ['aqua_5',['aqua',['../namespacesuika_1_1palette.html#ad45bdc248a312e0600c3b957db141a1a',1,'suika::palette']]],
+  ['aquamarine_6',['aquamarine',['../namespacesuika_1_1palette.html#a69330c8b45ad38575211bbf9bc0382d6',1,'suika::palette']]],
+  ['at_7',['At',['../namespacesuika_1_1keyboard.html#ab0368bd84b2a154507c5018a98181a2d',1,'suika::keyboard']]],
+  ['atto_8',['ATTO',['../namespacesuika_1_1suffix.html#a379dfcff00b52f803f2c3c003a445d68',1,'suika::suffix']]],
+  ['atto_5ff_9',['ATTO_F',['../namespacesuika_1_1suffix.html#a0b1684fcfeae2a26c7b39a8f7cad332b',1,'suika::suffix']]],
+  ['azure_10',['azure',['../namespacesuika_1_1palette.html#ac138bd24f8dc3c78cab652ce23773cec',1,'suika::palette']]]
 ];

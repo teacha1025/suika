@@ -8,7 +8,13 @@
 #include "string.h"
 
 namespace suika {
+	/// <summary>
+	/// 内部的な実装
+	/// </summary>
 	namespace detail {
+		/// <summary>
+	/// 全クラスのベースクラス
+	/// </summary>
 		class ibase {
 		public:
 			constexpr ibase() {}

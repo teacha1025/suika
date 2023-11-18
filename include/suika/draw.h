@@ -10,7 +10,13 @@
 #include "vertex.h"
 
 namespace suika {
+	/// <summary>
+	/// “à•”“I‚ÈÀ‘•
+	/// </summary>
 	namespace detail {
+		/// <summary>
+		/// •`‰æŒnƒNƒ‰ƒX
+		/// </summary>
 		template<class T>
 		class ishape : public ibase {
 		protected:

@@ -14,6 +14,7 @@ namespace suika {
 	}
 
 	void font::draw()const {
+		if(_size == 0.0f) return;
 		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::font);
 		set(_cid);
 		auto p = float2{ _transition.x - _center.x, _transition.y - _center.y };
@@ -26,6 +27,7 @@ namespace suika {
 	}
 
 	rect font::rect()const {
+		if (_size == 0.0f) return suika::rect({ 0,0 });
 		set(_cid);
 		if (_edge_enabled) {
 			const auto r = d3d::dwrite::get_size_edged(_font, _text, _size, _edge_width, create_key());

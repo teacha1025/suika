@@ -19,27 +19,27 @@ namespace suika {
 	/// <summary>
 	/// ライブラリのバージョン
 	/// </summary>
-	define VERSION = 0x002;
+	define VERSION = 0x003;
 	/// <summary>
 	/// ライブラリのバージョン(文字列)
 	/// </summary>
-	define VERSION_S = "0.0.2";
+	define VERSION_S = "0.0.3";
 	/// <summary>
 	/// ライブラリのバージョン(ワイド文字列)
 	/// </summary>
-	define VERSION_WS = L"0.0.2";
+	define VERSION_WS = L"0.0.3";
 	/// <summary>
 	/// ライブラリのバージョン(UTF8文字列)
 	/// </summary>
-	define VERSION_UTF8 = u8"0.0.2";
+	define VERSION_UTF8 = u8"0.0.3";
 	/// <summary>
 	/// ライブラリのバージョン(UTF16文字列)
 	/// </summary>
-	define VERSION_UTF16 = u"0.0.2";
+	define VERSION_UTF16 = u"0.0.3";
 	/// <summary>
 	/// ライブラリのバージョン(UTF32文字列)
 	/// </summary>
-	define VERSION_UTF32 = U"0.0.2";
+	define VERSION_UTF32 = U"0.0.3";
 #pragma endregion
 
 #pragma region constant

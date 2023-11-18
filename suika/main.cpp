@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include "../include/suika/except.h"
 #include "../include/suika/logger.h"
 #include "../include/suika/window.h"
 #include "../include/suika/shader.h"
@@ -33,6 +34,9 @@ namespace suika {
 	namespace mouse {
 		void init();
 	}
+	namespace gamepad {
+		void init();
+	}
 	namespace d3d {
 		namespace vertex {
 			void init();
@@ -40,6 +44,10 @@ namespace suika {
 
 		namespace dinput {
 			bool init(HWND hWnd);
+			void fin();
+		}
+
+		namespace texture {
 			void fin();
 		}
 	}
@@ -81,21 +89,38 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		suika::d3d::dinput::init(wid);
 		suika::keyboard::init();
 		suika::mouse::init();
+		suika::gamepad::init();
 
 		auto cb = suika::set_view(suika::window::size(wid));
 		suika::set_cbuffer(sizeof(cb), &cb, 0);
 		suika::d3d::blend::blends[suika::blend::alpha].set();
 
+		suika::log.info("initialized");
 		auto res = main();
 
 		suika::log.info("fin");
 		suika::d3d::dwrite::free();
 		suika::d3d::dinput::fin();
+		suika::d3d::texture::fin();
 
 		if (SUCCEEDED(hr_init)) {
 			CoUninitialize();
 		}
 		return res;
+	}
+	catch (suika::exception e) {
+		suika::log.exception(e.what());
+		if (SUCCEEDED(hr_init)) {
+			CoUninitialize();
+		}
+		return 0;
+	}
+	catch (std::exception e) {
+		suika::log.exception(e.what());
+		if (SUCCEEDED(hr_init)) {
+			CoUninitialize();
+		}
+		return 0;
 	}
 	catch(...) {
 		suika::log.exception("unknown exception occured.");

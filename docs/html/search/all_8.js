@@ -1,21 +1,15 @@
 var searchData=
 [
-  ['i_0',['I',['../namespacesuika_1_1keyboard.html#a87123f3f12d8fbcf242351e501fa706f',1,'suika::keyboard']]],
-  ['ibeam_1',['ibeam',['../namespacesuika_1_1mouse.html#abb03e2c7d195ce8874cf726dbe08c0e7a779dfbe692eaf3a210b41b730c0d8b94',1,'suika::mouse']]],
-  ['icon_2',['icon',['../namespacesuika_1_1mouse.html#abb03e2c7d195ce8874cf726dbe08c0e7aa99e0b8e3c3577a9dc0ae96fcdce4b45',1,'suika::mouse']]],
-  ['identity_3',['identity',['../namespacesuika_1_1vector.html#a01bbd7f1589237e7870bfea847e8b98c',1,'suika::vector']]],
-  ['indianred_4',['indianred',['../namespacesuika_1_1palette.html#a4a8d4de8c980d93b1bdb81642ca2844f',1,'suika::palette']]],
-  ['indigo_5',['indigo',['../namespacesuika_1_1palette.html#aa3c39235e4d85e2e60637ab8d0499549',1,'suika::palette']]],
-  ['info_6',['info',['../classsuika_1_1logger.html#a4b71a0486f2ee2487ed5efb29fda473f',1,'suika::logger']]],
-  ['init_7',['init',['../classsuika_1_1logger.html#a595be4392df5ab54252623658366ecb6',1,'suika::logger']]],
-  ['insert_8',['Insert',['../namespacesuika_1_1keyboard.html#a60b15e06070dbb076b9cb264c8a5bbd8',1,'suika::keyboard']]],
-  ['int16_9',['int16',['../namespacesuika.html#a705d7970bb28ca1b269d5ad407318880',1,'suika']]],
-  ['int32_10',['int32',['../namespacesuika.html#ac3533c819885af7fe8ad6e082bc328fd',1,'suika']]],
-  ['int64_11',['int64',['../namespacesuika.html#a2c61d6c20803b4c51c2f89f9e9917781',1,'suika']]],
-  ['int8_12',['int8',['../namespacesuika.html#ad1a2d6c0e20eb8929b400a541ef10cc2',1,'suika']]],
-  ['inv_5fdest_13',['inv_dest',['../namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6ab82a2c71c7ac20cb61da730f02eb26ce',1,'suika']]],
-  ['inv_5fsrc_14',['inv_src',['../namespacesuika.html#a78b27589d03e611b465eb71f50ed42f6a452c1e667fc4f9a4377d8415e04c9fbe',1,'suika']]],
-  ['inverse_15',['inverse',['../namespacesuika_1_1vector.html#a0cbc54b1d11f05afb94a53a8a89b0d6c',1,'suika::vector']]],
-  ['italic_16',['italic',['../namespacesuika.html#a971f028ead6e203fe5e46174dc8ef3dea030c5b6d1e5715105943ac111d9671bf',1,'suika']]],
-  ['ivory_17',['ivory',['../namespacesuika_1_1palette.html#ad4ab87bcb8dc1ead27f3fdf291e943a9',1,'suika::palette']]]
+  ['h_0',['h',['../structsuika_1_1hsv.html#a61f2f0700dbb071fd7acd4e0ddfe9b23',1,'suika::hsv']]],
+  ['h_1',['H',['../namespacesuika_1_1keyboard.html#a5034468af3c219ccd513b499f47f1247',1,'suika::keyboard']]],
+  ['hand_2',['hand',['../namespacesuika_1_1mouse.html#abb03e2c7d195ce8874cf726dbe08c0e7a5900ed45f4403c6df133447adcf94f56',1,'suika::mouse']]],
+  ['heavy_3',['heavy',['../namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a7cfe64ea44dc3bbeb63b29ff3039a481',1,'suika']]],
+  ['hecto_4',['HECTO',['../namespacesuika_1_1suffix.html#a4dfd8ad827572ea5eb10c2ce6d01de66',1,'suika::suffix']]],
+  ['hecto_5ff_5',['HECTO_F',['../namespacesuika_1_1suffix.html#a0643d5c00f842282a0cd5f391cbafff5',1,'suika::suffix']]],
+  ['hecto_5ful_6',['HECTO_UL',['../namespacesuika_1_1suffix.html#a333ce98e9e182108f310d9af9bf5db03',1,'suika::suffix']]],
+  ['help_7',['help',['../namespacesuika_1_1mouse.html#abb03e2c7d195ce8874cf726dbe08c0e7a12497baf196acf812fc43c1b74ba0a4c',1,'suika::mouse']]],
+  ['home_8',['Home',['../namespacesuika_1_1keyboard.html#ab7e2bbb4b6d981a0307129aa7691fa98',1,'suika::keyboard']]],
+  ['honeydew_9',['honeydew',['../namespacesuika_1_1palette.html#a0aea5c833a093209f33dbd865cac4516',1,'suika::palette']]],
+  ['hotpink_10',['hotpink',['../namespacesuika_1_1palette.html#a5184bc8f9efd0376499e8b32e8d54e78',1,'suika::palette']]],
+  ['hsv_11',['hsv',['../structsuika_1_1hsv.html#ac4e1cb416cc5926973ec490dd454efed',1,'suika::hsv::hsv()'],['../structsuika_1_1hsv.html#afde07a8b5ecdc9611fe867e80538833c',1,'suika::hsv::hsv(int h, range&lt; 0.0, 1.0 &gt; s, range&lt; 0.0, 1.0 &gt; v, ubyte a=255)'],['../structsuika_1_1hsv.html#a0a317d81864491400c6b11bab95eeea6',1,'suika::hsv::hsv(const hsv &amp;color, ubyte a)'],['../structsuika_1_1hsv.html',1,'suika::hsv']]]
 ];

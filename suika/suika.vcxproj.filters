@@ -101,6 +101,9 @@
     <ClCompile Include="scene.cpp">
       <Filter>suika\scene</Filter>
     </ClCompile>
+    <ClCompile Include="easing.cpp">
+      <Filter>suika\easing</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -222,6 +225,9 @@
     </Filter>
     <Filter Include="suika\scene">
       <UniqueIdentifier>{3145dd0f-f07c-46e3-9efc-297237f255fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\easing">
+      <UniqueIdentifier>{2e6ec2cb-db64-495b-b586-0c89048be76e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -407,6 +413,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\scene.h">
       <Filter>suika\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\easing.h">
+      <Filter>suika\easing</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

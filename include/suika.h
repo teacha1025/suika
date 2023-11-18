@@ -34,6 +34,8 @@
 
 #include "../include/suika/scene.h"
 
+#include "../include/suika/easing.h"
+
 #ifdef _DEBUG
 #pragma comment(lib, "suika_d.lib")
 #else

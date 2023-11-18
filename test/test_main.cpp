@@ -126,6 +126,7 @@ public:
 	}
 };
 
+class start;
 class title : suika::iscene {
 private:
 	suika::font f_elm;
@@ -158,11 +159,17 @@ public:
 			f_elm.text(str).at({ e == elm ? 64 : 48 , e * 40 + 720 }).colored(e == elm ? palette::white : palette::gray, palette::black).draw();
 		}
 	}
-	virtual void fadein(double t) override {
-
-	}
 	virtual void fadeout(double t) override {
-
+		f_title.centered(f_title.rect().size() / 2).at({ 640 - (2 * t) * 1280, 200 }).draw();
+		for (const auto& [e, str] : elm_str) {
+			f_elm.text(str).at({ (e == elm ? 64 : 48) - (2 * t) * 160 , e * 40 + 720 }).colored(e == elm ? palette::white : palette::gray, palette::black).draw();
+		}
+	}
+	virtual void fadein(double t) override {
+		f_title.centered(f_title.rect().size() / 2).at({ 640 - (1 - 2 * t) * 1280, 200 }).draw();
+		for (const auto& [e, str] : elm_str) {
+			f_elm.text(str).at({ (e == elm ? 64 : 48) - (1-2*t) * 160 , e * 40 + 720 }).colored(e == elm ? palette::white : palette::gray, palette::black).draw();
+		}
 	}
 	virtual void update() override {
 		if(suika::keyboard::Up.down()) {
@@ -174,6 +181,47 @@ public:
 			int e = (int)elm;
 			e = (e + 1) % size;
 			elm = (element)e;
+		}
+if (suika::keyboard::Return.down()) {
+			switch (elm) {
+			case start:
+				_p_manager->change<::start>(0.5, 0.5, true);
+				break;
+			case option:
+				break;
+			case exit:
+				suika::sys::exit();
+				break;
+			}
+		}
+	}
+};
+
+class start : suika::iscene {
+private:
+	suika::font f_elm;
+	suika::font f_title;
+public:
+	start() {
+		f_elm = suika::font("UD デジタル 教科書体 N-B", 24);
+		f_elm.colored(suika::palette::white, 1.0).blended(suika::blend::alpha);
+		f_title.resized(48).colored(suika::palette::white, 1.0).blended(suika::blend::alpha).text("難易度選択").centered(f_title.rect().size()/2);
+	}
+	virtual void init() override {
+
+	}
+	virtual void draw() override {
+		f_title.at({ 640, 72 }).draw();
+	}
+	virtual void fadein(double t) override {
+		f_title.at({ 640, -48 + (2*t) * 120 }).colored(palette::white,1.0f).draw();
+	}
+	virtual void fadeout(double t) override {
+		f_title.at({ 640, 72 }).colored(palette::white,(1-2*t)).draw();
+	}
+	virtual void update() override {
+		if (suika::keyboard::Escape.down()) {
+			_p_manager->back(0.5, 0.5, true);
 		}
 	}
 };

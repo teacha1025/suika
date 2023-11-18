@@ -4,9 +4,10 @@
 //#include "../suika/d3d/texture.hpp"
 //#include "../suika/d3d/vertex.h"
 
+namespace palette = suika::palette;
 
 void init() {
-	suika::window::background(suika::palette::black);
+	suika::window::background(suika::palette::skyblue);
 	suika::window::title("APP");
 	suika::window::vsync(true);
 }
@@ -61,46 +62,118 @@ class S2;
 
 class S1 : suika::iscene {
 	suika::font f;
+	suika::rect r;
 public:
 	S1() {
-		f.resized(32).colored(suika::palette::red).text("S1");
+		f.resized(32).colored(suika::palette::red).blended(suika::blend::alpha).text("S1");
+		r = suika::rect(suika::window::size());
+		r.blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 });
 	}
 	virtual void init() override {
-		suika::window::background(suika::palette::skyblue);
+		f.resized(32).at({ 0,0 }).colored(suika::palette::red);
 	}
 	virtual void draw() override {
 		f.draw();
 	}
+	virtual void fadein(double t) override{
+		//r.colored(suika::color_f(suika::palette::black, 1 - t)).draw();
+		auto _t = 1 - t;
+		f.resized(32 * t).colored(suika::color_f(suika::palette::red, t)).text("S1").at({ 0,920 * _t * _t }).draw();
+		//f.resized(20).colored(suika::color_f(1, 1, 1, 1)).text("S1FI").at({ 0,160 });
+	}
+	virtual void fadeout(double t) override{
+		//r.colored(suika::color_f(suika::palette::black, t)).draw();
+		auto _t = 1 - t;
+		f.resized(32 * _t).colored(suika::color_f(suika::palette::red, _t)).at({ 0,920 * t * t }).draw();
+	}
 	virtual void update() override {
 		if (suika::keyboard::A.down()) {
-			static suika::rect r(suika::window::size());
-			r.blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 });
-			static auto out = [](double t) {r.colored(suika::color_f(suika::palette::black, t)).draw(); };
-			static auto in = [](double t) {r.colored(suika::color_f(suika::palette::black, 1 - t)).draw(); };
-			_p_manager->change<S2>(out, 1.0, in, 1.0);
+			_p_manager->change<S2>(1.0, 1.0, true);
 		}
 	}
 };
 
 class S2 : suika::iscene {
 	suika::font f;
+	suika::rect r;
 public:
 	S2() {
-		f.resized(48).colored(suika::palette::red).text("S2");
+		f.resized(48).colored(suika::palette::red).blended(suika::blend::alpha).text("S2");
+		r = suika::rect(suika::window::size());
+		r.blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 });
 	}
 	virtual void init() override {
-		suika::window::background(suika::palette::yellowgreen);
+		//suika::window::background(suika::palette::yellowgreen);
+		f.resized(32).at({ 0,0 }).colored(suika::palette::red);
 	}
 	virtual void draw() override {
 		f.draw();
 	}
+	virtual void fadein(double t) override {
+		//r.colored(suika::color_f(suika::palette::black, 1 - t)).draw();
+		auto _t = 1 - t;
+		f.resized(48 * t).colored(suika::color_f(suika::palette::red, t)).at({ 0,920 * _t * _t }).draw();
+	}
+	virtual void fadeout(double t) override {
+		//r.colored(suika::color_f(suika::palette::black, t)).draw();
+		auto _t = 1 - t;
+		f.resized(48 * _t).colored(suika::color_f(suika::palette::red, _t)).at({ 0,920 * t * t }).draw();
+	}
 	virtual void update() override {
 		if (suika::keyboard::A.down()) {
-			static suika::rect r(suika::window::size());
-			r.blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 });
-			static auto out = [](double t) {r.colored(suika::color_f(suika::palette::black, t)).draw(); };
-			static auto in = [](double t) {r.colored(suika::color_f(suika::palette::black, 1 - t)).draw(); };
-			_p_manager->back(out, 1.0, in, 1.0);
+			_p_manager->back(1.0, 1.0, true);
+		}
+	}
+};
+
+class title : suika::iscene {
+private:
+	suika::font f_elm;
+	suika::font f_title;
+
+	enum element {
+		start,
+		option,
+		exit,
+		size
+	} elm = start;
+
+	std::unordered_map<element, suika::string> elm_str = {
+		{start, L"スタート"},
+		{option, L"オプション"},
+		{exit, L"終了"},
+	};
+public:
+	title() {
+		f_elm = suika::font("UD デジタル 教科書体 N-B", 24);
+		f_elm.colored(suika::palette::white, 1.0).blended(suika::blend::alpha);
+		f_title.resized(64).colored(suika::palette::white, 1.0).blended(suika::blend::alpha).text("ゲームタイトル");
+	}
+	virtual void init() override {
+
+	}
+	virtual void draw() override {
+		f_title.centered(f_title.rect().size() / 2).at({ 640, 200 }).draw();
+		for(const auto& [e, str] : elm_str) {
+			f_elm.text(str).at({ e == elm ? 64 : 48 , e * 40 + 720 }).colored(e == elm ? palette::white : palette::gray, palette::black).draw();
+		}
+	}
+	virtual void fadein(double t) override {
+
+	}
+	virtual void fadeout(double t) override {
+
+	}
+	virtual void update() override {
+		if(suika::keyboard::Up.down()) {
+			int e = (int)elm;
+			e = (e+size-1)%size;
+			elm = (element)e;
+		}
+		if (suika::keyboard::Down.down()) {
+			int e = (int)elm;
+			e = (e + 1) % size;
+			elm = (element)e;
 		}
 	}
 };
@@ -112,7 +185,6 @@ int main() {
 
 	define w = 64, h = 64;
 	int i = 0, j = 0, edge = 0;
-	//float f = 0;
 
 	suika::rect r({ w - 1,h - 1 });
 	suika::circle c(32);
@@ -122,11 +194,9 @@ int main() {
 	suika::scene_manager sm;
 	static suika::rect rc(suika::window::size());
 	rc.blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 });
-	static auto out = [](double t) { };
-	static auto in = [](double t) {rc.colored(suika::color_f(suika::palette::black, 1 - t)).draw(); };
-	sm.change<S1>(out, 0.0, in, 1.0);
+	sm.change<title>(0.0, 0.0, true);
 	while (suika::sys::update()) {
-		sm.update(1.0 / 60.0);
+		sm.update();
 		sm.draw();
 #if 0
 		test_pad(0);

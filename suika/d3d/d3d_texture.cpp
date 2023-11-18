@@ -198,6 +198,12 @@ namespace suika {
                 d3d::pContext->PSSetShaderResources(0, 1, image.g_srv.GetAddressOf());
                 d3d::pContext->PSSetSamplers(0, 1, image.g_sampler.GetAddressOf());
             }
+
+            void fin() {
+                frame.Reset();
+                decoder.Reset();
+                m_factory.Reset();
+            }
         }
     }
 }

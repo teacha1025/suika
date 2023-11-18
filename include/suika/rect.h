@@ -12,6 +12,10 @@ namespace suika {
 
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
 	public:
+		rect() { 
+			_shaders = { .vs = SHAPE_VERTEX, .ps = SHAPE_PIXEL };
+		}
+
 		/// <summary>
 		/// ‹éŒ`ì¬
 		/// </summary>

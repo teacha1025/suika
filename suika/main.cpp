@@ -1,4 +1,5 @@
 #include <Windows.h>
+#include "../include/suika/except.h"
 #include "../include/suika/logger.h"
 #include "../include/suika/window.h"
 #include "../include/suika/shader.h"
@@ -101,6 +102,20 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			CoUninitialize();
 		}
 		return res;
+	}
+	catch (suika::exception e) {
+		suika::log.exception(e.what());
+		if (SUCCEEDED(hr_init)) {
+			CoUninitialize();
+		}
+		return 0;
+	}
+	catch (std::exception e) {
+		suika::log.exception(e.what());
+		if (SUCCEEDED(hr_init)) {
+			CoUninitialize();
+		}
+		return 0;
 	}
 	catch(...) {
 		suika::log.exception("unknown exception occured.");

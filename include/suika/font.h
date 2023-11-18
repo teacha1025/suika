@@ -597,10 +597,28 @@ namespace suika {
 		/// 色を設定
 		/// </summary>
 		/// <param name="color">塗りつぶしの色</param>
+		/// <param name="a">透明度</param>
+		virtual font colored(const color_f& color, float a)&& {
+			this->_color = color_f(color, a);
+			return static_cast<font&&>(std::move(*this));
+		}
+		/// <summary>
+		/// 色を設定
+		/// </summary>
+		/// <param name="color">塗りつぶしの色</param>
+		/// <param name="a">透明度</param>
+		virtual font& colored(const color_f& color, float a)& {
+			this->_color = color_f(color, a);
+			return static_cast<font&>(*this);
+		}
+		/// <summary>
+		/// 色を設定
+		/// </summary>
+		/// <param name="color">塗りつぶしの色</param>
 		/// <param name="edge">エッジの色</param>
 		virtual font colored(const color_f& color, const color_f& edge)&& {
 			this->_color = color;
-			_edge_color = edge;
+			this->_edge_color = edge;
 			return static_cast<font&&>(std::move(*this));
 		}
 		/// <summary>
@@ -610,7 +628,29 @@ namespace suika {
 		/// <param name="edge">エッジの色</param>
 		virtual font& colored(const color_f& color, const color_f& edge)& {
 			this->_color = color;
-			_edge_color = edge;
+			this->_edge_color = edge;
+			return static_cast<font&>(*this);
+		}
+		/// <summary>
+		/// 色を設定
+		/// </summary>
+		/// <param name="color">塗りつぶしの色</param>
+		/// <param name="edge">エッジの色</param>
+		/// <param name="a">透明度</param>
+		virtual font colored(const color_f& color, const color_f& edge, float a)&& {
+			this->_color = color_f(color, a);
+			this->_edge_color = color_f(edge, a);
+			return static_cast<font&&>(std::move(*this));
+		}
+		/// <summary>
+		/// 色を設定
+		/// </summary>
+		/// <param name="color">塗りつぶしの色</param>
+		/// <param name="edge">エッジの色</param>
+		/// <param name="a">透明度</param>
+		virtual font& colored(const color_f& color, const color_f& edge, float a)& {
+			this->_color = color_f(color, a);
+			this->_edge_color = color_f(edge, a);
 			return static_cast<font&>(*this);
 		}
 		/// <summary>

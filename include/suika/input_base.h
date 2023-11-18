@@ -10,6 +10,9 @@ namespace suika {
 		down
 	};
 
+	/// <summary>
+	/// デバイス入力
+	/// </summary>
 	class input_base : public detail::ibase {
 	protected:
 		unsigned int _code = 0;

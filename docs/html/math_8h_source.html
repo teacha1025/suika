@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.2</span>
+   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.3</span>
    </div>
   </td>
  </tr>
@@ -186,25 +186,32 @@ $(document).ready(function(){initNavTree('math_8h_source.html',''); initResizabl
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="keyword">template</span>&lt;std::<span class="keywordtype">int</span>egral T&gt;</div>
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno"><a class="line" href="namespacesuika_1_1math.html#ab13e027def33a1f5b0d3cd015f9745cb">  242</a></span>        <span class="keyword">constexpr</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespacesuika_1_1math.html#aeb064380c4e45f6a62dcbd42aee87722">atan</a>(T x);</div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <span class="comment">//template&lt;concepts::numbers T&gt;</span></div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="comment">//constexpr T factorial(T n);</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>    } <span class="comment">// namespace math</span></div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>} <span class="comment">// namespace suika</span></div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span><span class="preprocessor">#include &quot;detail/math/abs.ipp&quot;</span></div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span><span class="preprocessor">#include &quot;detail/math/exp.ipp&quot;</span></div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span><span class="preprocessor">#include &quot;detail/math/log.ipp&quot;</span></div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span><span class="preprocessor">#include &quot;detail/math/pow.ipp&quot;</span></div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span><span class="preprocessor">#include &quot;detail/math/sqrt.ipp&quot;</span></div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span><span class="preprocessor">#include &quot;detail/math/sin_con_tan.ipp&quot;</span></div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span><span class="preprocessor">#include &quot;detail/math/ceil.ipp&quot;</span></div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span><span class="preprocessor">#include &quot;detail/math/floor.ipp&quot;</span></div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span><span class="preprocessor">#include &quot;detail/math/round.ipp&quot;</span></div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span><span class="preprocessor">#include &quot;detail/math/trunc.ipp&quot;</span></div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span><span class="preprocessor">#include &quot;detail/math/fmod.ipp&quot;</span></div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span><span class="preprocessor">#include &quot;detail/math/asin_acos_atan.ipp&quot;</span></div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <span class="keyword">template</span>&lt;concepts::numbers T&gt;</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno"><a class="line" href="namespacesuika_1_1math.html#a5f8a42764dedd2ad892fb8a519f2d252">  249</a></span>        <span class="keyword">constexpr</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespacesuika_1_1math.html#a5f8a42764dedd2ad892fb8a519f2d252">radian</a>(T x);</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        <span class="keyword">template</span>&lt;concepts::numbers T&gt;</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno"><a class="line" href="namespacesuika_1_1math.html#a105a8796f81219999e33051685eb82e1">  255</a></span>        <span class="keyword">constexpr</span> <span class="keywordtype">double</span> <a class="code hl_function" href="namespacesuika_1_1math.html#a105a8796f81219999e33051685eb82e1">degree</a>(T x);</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span> </div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        <span class="comment">//template&lt;concepts::numbers T&gt;</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        <span class="comment">//constexpr T factorial(T n);</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    } <span class="comment">// namespace math</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>} <span class="comment">// namespace suika</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span> </div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span><span class="preprocessor">#include &quot;detail/math/abs.ipp&quot;</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span><span class="preprocessor">#include &quot;detail/math/exp.ipp&quot;</span></div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span><span class="preprocessor">#include &quot;detail/math/log.ipp&quot;</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span><span class="preprocessor">#include &quot;detail/math/pow.ipp&quot;</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span><span class="preprocessor">#include &quot;detail/math/sqrt.ipp&quot;</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span><span class="preprocessor">#include &quot;detail/math/sin_con_tan.ipp&quot;</span></div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span><span class="preprocessor">#include &quot;detail/math/ceil.ipp&quot;</span></div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span><span class="preprocessor">#include &quot;detail/math/floor.ipp&quot;</span></div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span><span class="preprocessor">#include &quot;detail/math/round.ipp&quot;</span></div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span><span class="preprocessor">#include &quot;detail/math/trunc.ipp&quot;</span></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span><span class="preprocessor">#include &quot;detail/math/fmod.ipp&quot;</span></div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span><span class="preprocessor">#include &quot;detail/math/asin_acos_atan.ipp&quot;</span></div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span><span class="preprocessor">#include &quot;detail/math/rad_deg.ipp&quot;</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="anamespacesuika_1_1math_html_a0538c930a32ce3469de3dd480d1a2ec1"><div class="ttname"><a href="namespacesuika_1_1math.html#a0538c930a32ce3469de3dd480d1a2ec1">suika::math::cos</a></div><div class="ttdeci">constexpr T cos(T x)</div><div class="ttdoc">xの余弦を取得</div></div>
+<div class="ttc" id="anamespacesuika_1_1math_html_a105a8796f81219999e33051685eb82e1"><div class="ttname"><a href="namespacesuika_1_1math.html#a105a8796f81219999e33051685eb82e1">suika::math::degree</a></div><div class="ttdeci">constexpr double degree(T x)</div><div class="ttdoc">弧度法から度数法に変換</div></div>
 <div class="ttc" id="anamespacesuika_1_1math_html_a141baaa1d070b527fc8f70fea878b316"><div class="ttname"><a href="namespacesuika_1_1math.html#a141baaa1d070b527fc8f70fea878b316">suika::math::ceil</a></div><div class="ttdeci">constexpr T ceil(T x)</div><div class="ttdoc">天井関数</div></div>
 <div class="ttc" id="anamespacesuika_1_1math_html_a266808bf3bedea8d926aefd9c4f61b4f"><div class="ttname"><a href="namespacesuika_1_1math.html#a266808bf3bedea8d926aefd9c4f61b4f">suika::math::tan</a></div><div class="ttdeci">constexpr T tan(T x)</div><div class="ttdoc">xの正接を取得</div></div>
 <div class="ttc" id="anamespacesuika_1_1math_html_a318306469f801ed51057e563e252b59b"><div class="ttname"><a href="namespacesuika_1_1math.html#a318306469f801ed51057e563e252b59b">suika::math::sqrt</a></div><div class="ttdeci">constexpr T sqrt(T x)</div><div class="ttdoc">入力値の2乗を取得</div></div>
@@ -212,6 +219,7 @@ $(document).ready(function(){initNavTree('math_8h_source.html',''); initResizabl
 <div class="ttc" id="anamespacesuika_1_1math_html_a41219b126d6d50ac09b579fb9a460e78"><div class="ttname"><a href="namespacesuika_1_1math.html#a41219b126d6d50ac09b579fb9a460e78">suika::math::abs</a></div><div class="ttdeci">constexpr T abs(T x)</div><div class="ttdoc">絶対値を取得</div></div>
 <div class="ttc" id="anamespacesuika_1_1math_html_a4a0de0b450ba3349f8660accb34fd12d"><div class="ttname"><a href="namespacesuika_1_1math.html#a4a0de0b450ba3349f8660accb34fd12d">suika::math::asin</a></div><div class="ttdeci">constexpr T asin(T x)</div><div class="ttdoc">sinの逆関数</div></div>
 <div class="ttc" id="anamespacesuika_1_1math_html_a4c3c69fe92659522651b25bb2de461d7"><div class="ttname"><a href="namespacesuika_1_1math.html#a4c3c69fe92659522651b25bb2de461d7">suika::math::pow</a></div><div class="ttdeci">constexpr T pow(T x, I y)</div><div class="ttdoc">xのn乗を取得</div></div>
+<div class="ttc" id="anamespacesuika_1_1math_html_a5f8a42764dedd2ad892fb8a519f2d252"><div class="ttname"><a href="namespacesuika_1_1math.html#a5f8a42764dedd2ad892fb8a519f2d252">suika::math::radian</a></div><div class="ttdeci">constexpr double radian(T x)</div><div class="ttdoc">度数法から弧度法に変換</div></div>
 <div class="ttc" id="anamespacesuika_1_1math_html_a65bbe82ddb73932c0191b52d15ab2a53"><div class="ttname"><a href="namespacesuika_1_1math.html#a65bbe82ddb73932c0191b52d15ab2a53">suika::math::trunc</a></div><div class="ttdeci">constexpr T trunc(T x)</div><div class="ttdoc">0方向まるめ関数</div></div>
 <div class="ttc" id="anamespacesuika_1_1math_html_a732e7e81c3b1e301a5e796085f8e42ea"><div class="ttname"><a href="namespacesuika_1_1math.html#a732e7e81c3b1e301a5e796085f8e42ea">suika::math::sin</a></div><div class="ttdeci">constexpr T sin(T x)</div><div class="ttdoc">xの正弦を取得</div></div>
 <div class="ttc" id="anamespacesuika_1_1math_html_a7f35502265459a7ffc0f643adf1e9a1a"><div class="ttname"><a href="namespacesuika_1_1math.html#a7f35502265459a7ffc0f643adf1e9a1a">suika::math::round</a></div><div class="ttdeci">constexpr T round(T x)</div><div class="ttdoc">四捨五入関数</div></div>

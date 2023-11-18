@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.2</span>
+   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.3</span>
    </div>
   </td>
  </tr>
@@ -114,7 +114,7 @@ $(document).ready(function(){initNavTree('range_8h_source.html',''); initResizab
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesuika.html">suika</a> {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keyword">template</span>&lt;auto minimum, decltype(minimum) maximum&gt;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structsuika_1_1range.html">   30</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsuika_1_1range.html">range</a> : <span class="keyword">public</span> detail::ibase{</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="structsuika_1_1range.html">   30</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structsuika_1_1range.html">range</a> : <span class="keyword">public</span> <a class="code hl_class" href="classsuika_1_1detail_1_1ibase.html">detail::ibase</a>{</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keyword">using </span>type = <span class="keyword">decltype</span>(minimum);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        type val;</div>
@@ -218,7 +218,7 @@ $(document).ready(function(){initNavTree('range_8h_source.html',''); initResizab
 <div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    };</div>
 <div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keyword">template</span>&lt;concepts::numbers T&gt;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classsuika_1_1vrange.html">  161</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classsuika_1_1vrange.html">vrange</a> : <span class="keyword">public</span> detail::ibase{</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno"><a class="line" href="classsuika_1_1vrange.html">  161</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classsuika_1_1vrange.html">vrange</a> : <span class="keyword">public</span> <a class="code hl_class" href="classsuika_1_1detail_1_1ibase.html">detail::ibase</a>{</div>
 <div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        T minimum, maximum;</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        T val;</div>
@@ -345,6 +345,7 @@ $(document).ready(function(){initNavTree('range_8h_source.html',''); initResizab
 <div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>    };</div>
 <div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>} <span class="comment">// namespace suika</span></div>
 <div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclasssuika_1_1detail_1_1ibase_html"><div class="ttname"><a href="classsuika_1_1detail_1_1ibase.html">suika::detail::ibase</a></div><div class="ttdef"><b>Definition:</b> base.h:18</div></div>
 <div class="ttc" id="aclasssuika_1_1vrange_html"><div class="ttname"><a href="classsuika_1_1vrange.html">suika::vrange</a></div><div class="ttdoc">可変の範囲内の値を持つするクラス</div><div class="ttdef"><b>Definition:</b> range.h:161</div></div>
 <div class="ttc" id="aclasssuika_1_1vrange_html_a0010e27a341cf52dbf4f146ddba3843d"><div class="ttname"><a href="classsuika_1_1vrange.html#a0010e27a341cf52dbf4f146ddba3843d">suika::vrange::vrange</a></div><div class="ttdeci">constexpr vrange(T min, T max, T val)</div><div class="ttdoc">最小値、最大値、初期値を指定して範囲の作成</div><div class="ttdef"><b>Definition:</b> range.h:197</div></div>
 <div class="ttc" id="aclasssuika_1_1vrange_html_a0dc7f2426bf9c932ec59ba0b46d39cc4"><div class="ttname"><a href="classsuika_1_1vrange.html#a0dc7f2426bf9c932ec59ba0b46d39cc4">suika::vrange::to_string</a></div><div class="ttdeci">virtual string to_string() const override</div><div class="ttdoc">範囲の情報を文字列にして返す</div><div class="ttdef"><b>Definition:</b> range.h:324</div></div>

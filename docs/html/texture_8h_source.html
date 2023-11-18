@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.2</span>
+   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.3</span>
    </div>
   </td>
  </tr>
@@ -107,7 +107,7 @@ $(document).ready(function(){initNavTree('texture_8h_source.html',''); initResiz
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;../../suika/d3d/texture.hpp&quot;</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesuika.html">suika</a> {</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classsuika_1_1texture.html">   21</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classsuika_1_1texture.html">texture</a> : <span class="keyword">public</span> detail::ishape&lt;texture&gt; {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="classsuika_1_1texture.html">   21</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classsuika_1_1texture.html">texture</a> : <span class="keyword">public</span> <a class="code hl_class" href="classsuika_1_1detail_1_1ishape.html">detail::ishape</a>&lt;texture&gt; {</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">private</span>:</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;bool&gt;</a> _turn;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;float&gt;</a> _size = { 64,64 };</div>
@@ -131,6 +131,7 @@ $(document).ready(function(){initNavTree('texture_8h_source.html',''); initResiz
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    };</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclasssuika_1_1detail_1_1ishape_html"><div class="ttname"><a href="classsuika_1_1detail_1_1ishape.html">suika::detail::ishape</a></div><div class="ttdoc">描画系クラス</div><div class="ttdef"><b>Definition:</b> draw.h:21</div></div>
 <div class="ttc" id="aclasssuika_1_1texture_html"><div class="ttname"><a href="classsuika_1_1texture.html">suika::texture</a></div><div class="ttdoc">テクスチャ描画に関するクラス</div><div class="ttdef"><b>Definition:</b> texture.h:21</div></div>
 <div class="ttc" id="aclasssuika_1_1texture_html_a1634d9218bf051342b3c92d01c7492eb"><div class="ttname"><a href="classsuika_1_1texture.html#a1634d9218bf051342b3c92d01c7492eb">suika::texture::turned</a></div><div class="ttdeci">virtual texture &amp; turned(const point&lt; bool &gt; &amp;turn) &amp;</div><div class="ttdoc">テクスチャを反転させる</div></div>
 <div class="ttc" id="aclasssuika_1_1texture_html_a1a5d85e1b8dabec1dccceed620d09ce2"><div class="ttname"><a href="classsuika_1_1texture.html#a1a5d85e1b8dabec1dccceed620d09ce2">suika::texture::turned</a></div><div class="ttdeci">virtual texture turned(const point&lt; bool &gt; &amp;turn) &amp;&amp;</div><div class="ttdoc">テクスチャを反転させる</div></div>

@@ -7,10 +7,17 @@
 
 namespace suika {
 	class scene_manager;
+
+	/// <summary>
+	/// シーンクラスのベースクラス
+	/// </summary>
 	class iscene {
 	private:
 		friend scene_manager;
 	protected:
+		/// <summary>
+		/// シーン管理クラスへのポインタ
+		/// </summary>
 		scene_manager* _p_manager;
 	public:
 		/// <summary>
@@ -42,6 +49,9 @@ namespace suika {
 		virtual ~iscene() = default;
 	};
 
+	/// <summary>
+	/// シーン管理クラス
+	/// </summary>
 	class scene_manager {
 	private:
 		struct scene_data {

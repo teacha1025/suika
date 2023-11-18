@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['suikaについて_0',['suikaについて',['../index.html',1,'']]]
+  ['suika_20について_0',['suika について',['../index.html',1,'']]]
 ];

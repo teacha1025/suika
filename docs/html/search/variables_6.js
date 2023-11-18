@@ -1,14 +1,22 @@
 var searchData=
 [
-  ['g_0',['G',['../namespacesuika_1_1keyboard.html#a01efd55e723117695c63d33ee869d3b0',1,'suika::keyboard']]],
-  ['gainsboro_1',['gainsboro',['../namespacesuika_1_1palette.html#a469ddf44ef3e166862b5afd45c027de1',1,'suika::palette']]],
-  ['ghostwhite_2',['ghostwhite',['../namespacesuika_1_1palette.html#a2452f70cf1b4e15653928f95f720964b',1,'suika::palette']]],
-  ['giga_3',['GIGA',['../namespacesuika_1_1suffix.html#a473196d4f4ff81e1679b9f451e45a4b7',1,'suika::suffix']]],
-  ['giga_5ff_4',['GIGA_F',['../namespacesuika_1_1suffix.html#a585b2945a0ae69c2a790c1d81791d89b',1,'suika::suffix']]],
-  ['giga_5ful_5',['GIGA_UL',['../namespacesuika_1_1suffix.html#a86e69fa12e7a382f675032b3219b998e',1,'suika::suffix']]],
-  ['gold_6',['gold',['../namespacesuika_1_1palette.html#ae24b6d4e7d92768a7d6ee1b6d9fe13b9',1,'suika::palette']]],
-  ['goldenrod_7',['goldenrod',['../namespacesuika_1_1palette.html#a7674c8685c8a81422475ef5348b2ebaa',1,'suika::palette']]],
-  ['gray_8',['gray',['../namespacesuika_1_1palette.html#a21d6639b8d3782d9cd5081babb7722d6',1,'suika::palette']]],
-  ['green_9',['green',['../namespacesuika_1_1palette.html#ac41a6a70c93eeafddd3207dbf82466a0',1,'suika::palette']]],
-  ['greenyellow_10',['greenyellow',['../namespacesuika_1_1palette.html#aacb7fc148fdacaf64da5fdd5527e3647',1,'suika::palette']]]
+  ['f_0',['F',['../namespacesuika_1_1keyboard.html#aa036e62da06b722684bd340143bb139b',1,'suika::keyboard']]],
+  ['f1_1',['F1',['../namespacesuika_1_1keyboard.html#ae006aac839aedbdad1eec7d829d1ef7b',1,'suika::keyboard']]],
+  ['f10_2',['F10',['../namespacesuika_1_1keyboard.html#ab48c0e80badf5c5be8b18776c82b0508',1,'suika::keyboard']]],
+  ['f11_3',['F11',['../namespacesuika_1_1keyboard.html#aca2e48fbef2d889b5a3e033bcf55e393',1,'suika::keyboard']]],
+  ['f12_4',['F12',['../namespacesuika_1_1keyboard.html#aa911f0dc05f7fdb5cfbc0fe7fae1b8ff',1,'suika::keyboard']]],
+  ['f2_5',['F2',['../namespacesuika_1_1keyboard.html#a40bdc724bd694f879828a804b870b04d',1,'suika::keyboard']]],
+  ['f3_6',['F3',['../namespacesuika_1_1keyboard.html#a95f9e179ad16776d2b790bca8c2618d4',1,'suika::keyboard']]],
+  ['f4_7',['F4',['../namespacesuika_1_1keyboard.html#ae4b1d39c67a02019b35702b9a56a2b79',1,'suika::keyboard']]],
+  ['f5_8',['F5',['../namespacesuika_1_1keyboard.html#a24249a0ca1415e54c124b3b93902264a',1,'suika::keyboard']]],
+  ['f6_9',['F6',['../namespacesuika_1_1keyboard.html#adcf393a261eb327d5a7052ae2b765a5b',1,'suika::keyboard']]],
+  ['f7_10',['F7',['../namespacesuika_1_1keyboard.html#a59e7b208e3f891caa56b4d30d0ffde76',1,'suika::keyboard']]],
+  ['f8_11',['F8',['../namespacesuika_1_1keyboard.html#ae07edd140467de0f55eb9f4d90ea087a',1,'suika::keyboard']]],
+  ['f9_12',['F9',['../namespacesuika_1_1keyboard.html#a4ba77a2442c5c24820fd6a3729d5b494',1,'suika::keyboard']]],
+  ['femto_13',['FEMTO',['../namespacesuika_1_1suffix.html#acdb8b6e7aae05571850e4a0bfd45c95d',1,'suika::suffix']]],
+  ['femto_5ff_14',['FEMTO_F',['../namespacesuika_1_1suffix.html#ab8a97a6091993f5e6dca0c78ce51d9b0',1,'suika::suffix']]],
+  ['firebrick_15',['firebrick',['../namespacesuika_1_1palette.html#ae32d19184467f2c20f9bcb3e5d44d33f',1,'suika::palette']]],
+  ['floralwhite_16',['floralwhite',['../namespacesuika_1_1palette.html#a72f6ea6a3ea120fe182c2358e39b2882',1,'suika::palette']]],
+  ['forestgreen_17',['forestgreen',['../namespacesuika_1_1palette.html#a26ffbf0375aa4240f1d8cda59ff3552c',1,'suika::palette']]],
+  ['fuchsia_18',['fuchsia',['../namespacesuika_1_1palette.html#a4a17e9f84fcaf1d77e2a1cd7b64b6366',1,'suika::palette']]]
 ];

@@ -1,15 +1,19 @@
 var searchData=
 [
-  ['h_0',['h',['../structsuika_1_1hsv.html#a61f2f0700dbb071fd7acd4e0ddfe9b23',1,'suika::hsv']]],
-  ['h_1',['H',['../namespacesuika_1_1keyboard.html#a5034468af3c219ccd513b499f47f1247',1,'suika::keyboard']]],
-  ['hand_2',['hand',['../namespacesuika_1_1mouse.html#abb03e2c7d195ce8874cf726dbe08c0e7a5900ed45f4403c6df133447adcf94f56',1,'suika::mouse']]],
-  ['heavy_3',['heavy',['../namespacesuika.html#a16a15ec693ea60a79a285c89184f9d00a7cfe64ea44dc3bbeb63b29ff3039a481',1,'suika']]],
-  ['hecto_4',['HECTO',['../namespacesuika_1_1suffix.html#a4dfd8ad827572ea5eb10c2ce6d01de66',1,'suika::suffix']]],
-  ['hecto_5ff_5',['HECTO_F',['../namespacesuika_1_1suffix.html#a0643d5c00f842282a0cd5f391cbafff5',1,'suika::suffix']]],
-  ['hecto_5ful_6',['HECTO_UL',['../namespacesuika_1_1suffix.html#a333ce98e9e182108f310d9af9bf5db03',1,'suika::suffix']]],
-  ['help_7',['help',['../namespacesuika_1_1mouse.html#abb03e2c7d195ce8874cf726dbe08c0e7a12497baf196acf812fc43c1b74ba0a4c',1,'suika::mouse']]],
-  ['home_8',['Home',['../namespacesuika_1_1keyboard.html#ab7e2bbb4b6d981a0307129aa7691fa98',1,'suika::keyboard']]],
-  ['honeydew_9',['honeydew',['../namespacesuika_1_1palette.html#a0aea5c833a093209f33dbd865cac4516',1,'suika::palette']]],
-  ['hotpink_10',['hotpink',['../namespacesuika_1_1palette.html#a5184bc8f9efd0376499e8b32e8d54e78',1,'suika::palette']]],
-  ['hsv_11',['hsv',['../structsuika_1_1hsv.html#ac4e1cb416cc5926973ec490dd454efed',1,'suika::hsv::hsv()'],['../structsuika_1_1hsv.html#afde07a8b5ecdc9611fe867e80538833c',1,'suika::hsv::hsv(int h, range&lt; 0.0, 1.0 &gt; s, range&lt; 0.0, 1.0 &gt; v, ubyte a=255)'],['../structsuika_1_1hsv.html#a0a317d81864491400c6b11bab95eeea6',1,'suika::hsv::hsv(const hsv &amp;color, ubyte a)'],['../structsuika_1_1hsv.html',1,'suika::hsv']]]
+  ['g_0',['G',['../namespacesuika_1_1keyboard.html#a01efd55e723117695c63d33ee869d3b0',1,'suika::keyboard']]],
+  ['gainsboro_1',['gainsboro',['../namespacesuika_1_1palette.html#a469ddf44ef3e166862b5afd45c027de1',1,'suika::palette']]],
+  ['gamepad_2',['gamepad',['../classsuika_1_1detail_1_1gamepad.html',1,'suika::detail']]],
+  ['gamepad_5fbutton_3',['gamepad_button',['../classsuika_1_1detail_1_1gamepad__button.html',1,'suika::detail']]],
+  ['gamepad_5fstick_4',['gamepad_stick',['../classsuika_1_1detail_1_1gamepad__stick.html',1,'suika::detail']]],
+  ['gamepad_5ftrigger_5',['gamepad_trigger',['../classsuika_1_1detail_1_1gamepad__trigger.html',1,'suika::detail']]],
+  ['get_6',['get',['../structsuika_1_1range.html#a62afe2b533c98a61507f283052e10c8b',1,'suika::range::get()'],['../classsuika_1_1vrange.html#a5ce9ff4effa5de4e7e4fe5c39ec522db',1,'suika::vrange::get()']]],
+  ['ghostwhite_7',['ghostwhite',['../namespacesuika_1_1palette.html#a2452f70cf1b4e15653928f95f720964b',1,'suika::palette']]],
+  ['giga_8',['GIGA',['../namespacesuika_1_1suffix.html#a473196d4f4ff81e1679b9f451e45a4b7',1,'suika::suffix']]],
+  ['giga_5ff_9',['GIGA_F',['../namespacesuika_1_1suffix.html#a585b2945a0ae69c2a790c1d81791d89b',1,'suika::suffix']]],
+  ['giga_5ful_10',['GIGA_UL',['../namespacesuika_1_1suffix.html#a86e69fa12e7a382f675032b3219b998e',1,'suika::suffix']]],
+  ['gold_11',['gold',['../namespacesuika_1_1palette.html#ae24b6d4e7d92768a7d6ee1b6d9fe13b9',1,'suika::palette']]],
+  ['goldenrod_12',['goldenrod',['../namespacesuika_1_1palette.html#a7674c8685c8a81422475ef5348b2ebaa',1,'suika::palette']]],
+  ['gray_13',['gray',['../namespacesuika_1_1palette.html#a21d6639b8d3782d9cd5081babb7722d6',1,'suika::palette']]],
+  ['green_14',['green',['../namespacesuika_1_1palette.html#ac41a6a70c93eeafddd3207dbf82466a0',1,'suika::palette']]],
+  ['greenyellow_15',['greenyellow',['../namespacesuika_1_1palette.html#aacb7fc148fdacaf64da5fdd5527e3647',1,'suika::palette']]]
 ];

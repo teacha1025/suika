@@ -4,7 +4,13 @@
 #include "input_base.h"
 
 namespace suika {
+	/// <summary>
+	/// 内部的な実装
+	/// </summary>
 	namespace detail {
+		/// <summary>
+		/// マウス
+		/// </summary>
 		class mouse : public input_base {
 		public:
 			/// <summary>

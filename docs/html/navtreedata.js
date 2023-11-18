@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "suika", "index.html", [
-    [ "suikaについて", "index.html", "index" ],
+    [ "suika について", "index.html", "index" ],
     [ "名前空間", "namespaces.html", [
       [ "名前空間一覧", "namespaces.html", "namespaces_dup" ],
       [ "名前空間メンバ", "namespacemembers.html", [
@@ -41,9 +41,10 @@ var NAVTREE =
     [ "クラス", "annotated.html", [
       [ "クラス一覧", "annotated.html", "annotated_dup" ],
       [ "クラス索引", "classes.html", null ],
+      [ "クラス階層", "hierarchy.html", "hierarchy" ],
       [ "クラスメンバ", "functions.html", [
-        [ "全て", "functions.html", null ],
-        [ "関数", "functions_func.html", null ],
+        [ "全て", "functions.html", "functions_dup" ],
+        [ "関数", "functions_func.html", "functions_func" ],
         [ "変数", "functions_vars.html", null ]
       ] ]
     ] ]
@@ -53,10 +54,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classsuika_1_1vector2.html#a6c334166c0f71951b26796e60469f40d",
-"namespacesuika.html#ad1a2d6c0e20eb8929b400a541ef10cc2",
-"namespacesuika_1_1palette.html#a7674c8685c8a81422475ef5348b2ebaa",
-"structsuika_1_1range.html#a230c6adb0dea40c565df395bc6d9790d"
+"classsuika_1_1font.html#a92cc9ed63ffae5525d33d326c8f532b1",
+"classsuika_1_1vector4.html#ae0c271080ef9ea730761b78fee68403b",
+"namespacesuika.html#aa9fd94427e9cc72fd3c49ac7edaf2eb5",
+"namespacesuika_1_1palette.html#a50495daa0da2edb77789ef0ca6e1970a",
+"structsuika_1_1hsv.html#a61f2f0700dbb071fd7acd4e0ddfe9b23"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';

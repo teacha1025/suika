@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.2</span>
+   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.3</span>
    </div>
   </td>
  </tr>
@@ -237,6 +237,14 @@ $(document).ready(function(){initNavTree('namespacesuika_1_1math.html',''); init
 <tr class="memitem:ab13e027def33a1f5b0d3cd015f9745cb"><td class="memTemplItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesuika_1_1math.html#ab13e027def33a1f5b0d3cd015f9745cb">atan</a> (T x)</td></tr>
 <tr class="memdesc:ab13e027def33a1f5b0d3cd015f9745cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">tanの逆関数  <br /></td></tr>
 <tr class="separator:ab13e027def33a1f5b0d3cd015f9745cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f8a42764dedd2ad892fb8a519f2d252"><td class="memTemplParams" colspan="2">template&lt;concepts::numbers T&gt; </td></tr>
+<tr class="memitem:a5f8a42764dedd2ad892fb8a519f2d252"><td class="memTemplItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesuika_1_1math.html#a5f8a42764dedd2ad892fb8a519f2d252">radian</a> (T x)</td></tr>
+<tr class="memdesc:a5f8a42764dedd2ad892fb8a519f2d252"><td class="mdescLeft">&#160;</td><td class="mdescRight">度数法から弧度法に変換  <br /></td></tr>
+<tr class="separator:a5f8a42764dedd2ad892fb8a519f2d252"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a105a8796f81219999e33051685eb82e1"><td class="memTemplParams" colspan="2">template&lt;concepts::numbers T&gt; </td></tr>
+<tr class="memitem:a105a8796f81219999e33051685eb82e1"><td class="memTemplItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacesuika_1_1math.html#a105a8796f81219999e33051685eb82e1">degree</a> (T x)</td></tr>
+<tr class="memdesc:a105a8796f81219999e33051685eb82e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">弧度法から度数法に変換  <br /></td></tr>
+<tr class="separator:a105a8796f81219999e33051685eb82e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>数学関係 </p>
@@ -711,6 +719,49 @@ template&lt;std::integral T&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>cos(x) </dd></dl>
+
+</div>
+</div>
+<a id="a105a8796f81219999e33051685eb82e1" name="a105a8796f81219999e33051685eb82e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a105a8796f81219999e33051685eb82e1">&#9670;&#160;</a></span>degree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;concepts::numbers T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr double suika::math::degree </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>弧度法から度数法に変換 </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>数値型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>角度(ラジアン) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>角度(°) </dd></dl>
 
 </div>
 </div>
@@ -1350,6 +1401,49 @@ template&lt;std::integral T&gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>x^n </dd></dl>
+
+</div>
+</div>
+<a id="a5f8a42764dedd2ad892fb8a519f2d252" name="a5f8a42764dedd2ad892fb8a519f2d252"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f8a42764dedd2ad892fb8a519f2d252">&#9670;&#160;</a></span>radian()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;concepts::numbers T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr double suika::math::radian </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>度数法から弧度法に変換 </p>
+<dl class="tparams"><dt>テンプレート引数</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>数値型 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>角度(°) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>角度(ラジアン) </dd></dl>
 
 </div>
 </div>

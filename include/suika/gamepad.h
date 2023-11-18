@@ -19,19 +19,51 @@ namespace suika {
 		//! ゲームパッドは未接続、あるいは使用不可
 		Disable
 	};
+	/// <summary>
+	/// ゲームパッド入力に関する定義及び関数
+	/// </summary>
 	namespace gamepad {
+		/// <summary>
+		/// ゲームパッドに関する情報
+		/// </summary>
 		struct info {
+			/// <summary>
+			/// ゲームパッドのID
+			/// </summary>
 			ubyte		index = 255;
+
+			/// <summary>
+			/// 接続の種類
+			/// </summary>
 			pad_states	states = pad_states::Disable;
+
+			/// <summary>
+			/// デバイス名
+			/// </summary>
 			string		name;
+
+			/// <summary>
+			/// PID
+			/// </summary>
 			string		pid;
+
+			/// <summary>
+			/// VID
+			/// </summary>
 			string		vid;
 		};
 	}
+	/// <summary>
+	/// 内部的な実装
+	/// </summary>
 	namespace detail {
 		class gamepad;
 		class gamepad_trigger;
 		class gamepad_stick;
+
+		/// <summary>
+		/// ゲームパッドのボタン
+		/// </summary>
 		class gamepad_button : public input_base {
 			ubyte _id = 0;
 			ulong _xcode = 0;
@@ -53,6 +85,9 @@ namespace suika {
 			/// <returns>ボタンの名前</returns>
 			virtual string to_string() const override;
 		};
+		/// <summary>
+		/// ゲームパッドのスティック
+		/// </summary>
 		class gamepad_stick : public input_base {
 		private:
 			point<double>   _value;
@@ -142,6 +177,9 @@ namespace suika {
 			/// <returns>スティックの名前</returns>
 			virtual string to_string() const override;
 		};
+		/// <summary>
+		/// ゲームパッドのトリガー
+		/// </summary>
 		class gamepad_trigger : public input_base {
 		private:
 			double		  _value = 0;
@@ -231,7 +269,9 @@ namespace suika {
 			/// <returns>トリガーの名前</returns>
 			virtual string to_string() const override;
 		};
-
+		/// <summary>
+		/// ゲームパッド
+		/// </summary>
 		class gamepad {
 		private:
 			ubyte	  _id = 255;
@@ -386,11 +426,17 @@ namespace suika {
 			}
 		};
 	} // namespace detail
+
+	/// <summary>
+	/// ゲームパッド入力に関する定義及び関数
+	/// </summary>
 	namespace gamepad {
 		define MAX_JOYPAD_NUM = 16;
 		
 
-
+		/// <summary>
+		/// 接続されているゲームパッドを再更新する
+		/// </summary>
 		void load_gamepads();
 
 		/// <summary>

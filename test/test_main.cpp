@@ -35,7 +35,6 @@ void test_pad(int i) {
 	auto stk = [&](suika::detail::gamepad_stick s, int y) {
 		f.text(s.to_string()).colored(s.press() ? suika::palette::white : suika::palette::gray).at({ i * X,y * 20 + OFS }).draw();
 		f.text(std::format("{}:{}", s.to_string(), s.value().to_string())).at({i * X,y * 20 + OFS }).draw();
-		std::format(L"");
 	};
 	auto& pad = suika::gamepad::pad[i];
 	f.text(pad.info().name).colored(suika::palette::white).at({i * X,0}).draw();
@@ -244,6 +243,8 @@ int main() {
 	static suika::rect rc(suika::window::size());
 	rc.blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 });
 	sm.change<title>(0.0, 0.0, true);
+
+	suika::string s = suika::string(suika::string("Hello, World!"));
 	while (suika::sys::update()) {
 		sm.update();
 		sm.draw();

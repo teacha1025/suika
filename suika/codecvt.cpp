@@ -5,12 +5,17 @@
 #include "../include/suika/except.h"
 
 #define CODECVT_CONSTEXPR 
+#if !CODECVT_USE_STRING_VIEW
+#define C_STR .c_str()
+#else 
+#define C_STR
+#endif
 namespace {
 	define WC_SIZE = sizeof(wchar_t);
 	//string;CP932
 	//u8string:UTF8
 	//wstring:UTF16
-	static CODECVT_CONSTEXPR std::wstring cp_to_wide(const std::string_view& s, UINT codepage) {
+	static CODECVT_CONSTEXPR std::wstring cp_to_wide(std::string s, UINT codepage) {
 		int in_length = (int)s.length();
 		int out_length =
 			MultiByteToWideChar(codepage, 0, s.data(), in_length, 0, 0);
@@ -20,7 +25,7 @@ namespace {
 				out_length);
 		return result;
 	}
-	static CODECVT_CONSTEXPR std::string wide_to_cp(const std::wstring_view& s, UINT codepage) {
+	static CODECVT_CONSTEXPR std::string wide_to_cp(std::wstring s, UINT codepage) {
 		int in_length = (int)s.length();
 		int out_length =
 			WideCharToMultiByte(codepage, 0, s.data(), in_length, 0, 0, 0, 0);
@@ -207,12 +212,17 @@ namespace {
 	}
 }
 namespace suika {
-	CODECVT_CONSTEXPR std::u32string to_u32string(const std::string_view& str) {
-		return to_u32string(to_wstring(str));
+	CODECVT_CONSTEXPR std::u32string to_u32string(ARG_CODECVT_STR str) {
+		return to_u32string(to_wstring(str) C_STR);
 	}
-	CODECVT_CONSTEXPR std::u32string to_u32string(const std::u8string_view& str) {
+	CODECVT_CONSTEXPR std::u32string to_u32string(ARG_CODECVT_U8 str) {
 		std::u32string ret;
-		for (auto u8It = str.begin(); u8It != str.end(); ++u8It) {
+#if CODECVT_USE_STRING_VIEW
+		std::u8string_view& s = str;
+#else
+		std::u8string_view s(str);
+#endif
+		for (auto u8It = s.begin(); u8It != s.end(); ++u8It) {
 			auto bytes = u8_count((*u8It));
 			if (bytes == 0) {
 				throw exception("invalid string. (utf8 to utf32)");
@@ -222,7 +232,7 @@ namespace suika {
 			u8[0] = (*u8It);
 			for (int i = 1; i < bytes; i++) {
 				++u8It;
-				if (u8It == str.end()) {
+				if (u8It == s.end()) {
 					throw exception("invalid string. (utf8 to utf32)");
 				}
 				u8[i] = (*u8It);
@@ -232,15 +242,20 @@ namespace suika {
 		}
 		return ret;
 	}
-	CODECVT_CONSTEXPR std::u32string to_u32string(const std::wstring_view& str) {
+	CODECVT_CONSTEXPR std::u32string to_u32string(ARG_CODECVT_WSTR str) {
 		std::u32string ret;
-		for (auto u16It = str.begin(); u16It != str.end(); ++u16It) {
+#if CODECVT_USE_STRING_VIEW
+		std::wstring_view& s = str;
+#else
+		std::wstring_view s(str);
+#endif
+		for (auto u16It = s.begin(); u16It != s.end(); ++u16It) {
 			std::array<wchar_t, 2> u16;
 
 			if (u16_h((*u16It))) {
 				u16[0] = (*u16It);
 				++u16It;
-				if (u16It == str.end()) {
+				if (u16It == s.end()) {
 					throw exception("invalid string. (wstring to utf32)");
 				}
 				u16[1] = (*u16It);
@@ -254,15 +269,20 @@ namespace suika {
 		}
 		return ret;
 	}
-	CODECVT_CONSTEXPR std::u32string to_u32string(const std::u16string_view& str) {
+	CODECVT_CONSTEXPR std::u32string to_u32string(ARG_CODECVT_U16 str) {
 		std::u32string ret;
-		for (auto u16It = str.begin(); u16It != str.end(); ++u16It) {
+#if CODECVT_USE_STRING_VIEW
+		std::u16string_view& s = str;
+#else
+		std::u16string_view s(str);
+#endif
+		for (auto u16It = s.begin(); u16It != s.end(); ++u16It) {
 			std::array<char16_t, 2> u16;
 
 			if (u16_h((*u16It))) {
 				u16[0] = (*u16It);
 				++u16It;
-				if (u16It == str.end()) {
+				if (u16It == s.end()) {
 					throw exception("invalid string. (utf16 to utf32)");
 				}
 				u16[1] = (*u16It);
@@ -276,19 +296,19 @@ namespace suika {
 		}
 		return ret;
 	}
-	CODECVT_CONSTEXPR std::string to_string(const std::u8string_view& src) {
-		return to_string(to_wstring(src));
+	CODECVT_CONSTEXPR std::string to_string(ARG_CODECVT_U8 src) {
+		return to_string(to_wstring(src) C_STR);
 	}
-	CODECVT_CONSTEXPR std::string to_string(const std::u16string_view& src) {
-		return to_string(to_wstring(src));
+	CODECVT_CONSTEXPR std::string to_string(ARG_CODECVT_U16 src) {
+		return to_string(to_wstring(src) C_STR);
 	}
-	CODECVT_CONSTEXPR std::string to_string(const std::u32string_view& src) {
-		return to_string(to_wstring(src));
+	CODECVT_CONSTEXPR std::string to_string(ARG_CODECVT_U32 src) {
+		return to_string(to_wstring(src) C_STR);
 	}
-	CODECVT_CONSTEXPR std::string to_string(const std::wstring_view& src) {
-		return ::wide_to_cp(src, 932);
+	CODECVT_CONSTEXPR std::string to_string(ARG_CODECVT_WSTR src) {
+		return ::wide_to_cp(std::wstring(src.data()), 932);
 	}
-	CODECVT_CONSTEXPR std::wstring to_wstring(const std::u8string_view& src) {
+	CODECVT_CONSTEXPR std::wstring to_wstring(ARG_CODECVT_U8 src) {
 		if constexpr (WC_SIZE == 2) {
 			auto s = to_u16string(src);
 			return std::wstring(s.begin(), s.end());
@@ -302,12 +322,17 @@ namespace suika {
 		}
 		return L"";
 	}
-	CODECVT_CONSTEXPR std::wstring to_wstring(const std::u16string_view& src) {
+	CODECVT_CONSTEXPR std::wstring to_wstring(ARG_CODECVT_U16 str) {
 		if constexpr (WC_SIZE == 2) {
-			return std::wstring(src.begin(), src.end());
+#if CODECVT_USE_STRING_VIEW
+			std::u16string_view& st = str;
+#else
+			std::u16string_view st(str);
+#endif
+			return std::wstring(st.begin(), st.end());
 		}
 		else if constexpr (WC_SIZE == 4) {
-			auto s = to_u32string(src);
+			auto s = to_u32string(str);
 			return std::wstring(s.begin(), s.end());
 		}
 		else {
@@ -315,30 +340,40 @@ namespace suika {
 		}
 		return L"";
 	}
-	CODECVT_CONSTEXPR std::wstring to_wstring(const std::u32string_view& src) {
+	CODECVT_CONSTEXPR std::wstring to_wstring(ARG_CODECVT_U32 src) {
 		if constexpr (WC_SIZE == 2) {
 			auto s = to_u16string(src);
 			return std::wstring(s.begin(), s.end());
 		}
 		else if constexpr (WC_SIZE == 4) {
-			return std::wstring(src.begin(), src.end());
+#if CODECVT_USE_STRING_VIEW
+			std::u32string_view& st = src;
+#else
+			std::u32string_view st(src);
+#endif
+			return std::wstring(st.begin(), st.end());
 		}
 		else {
 			throw exception("invalid string. (utf32 to wstring)");
 		}
 		return L"";
 	}
-	CODECVT_CONSTEXPR std::wstring to_wstring(const std::string_view& src) {
-		return ::cp_to_wide(src, 932);
+	CODECVT_CONSTEXPR std::wstring to_wstring(ARG_CODECVT_STR src) {
+		return ::cp_to_wide(std::string(src.data()), 932);
 	}
-	CODECVT_CONSTEXPR std::u8string to_u8string(const std::u16string_view& src) {
+	CODECVT_CONSTEXPR std::u8string to_u8string(ARG_CODECVT_U16 src) {
 		std::u8string u8Str;
-		for (auto u16It = src.begin(); u16It != src.end(); ++u16It) {
+#if CODECVT_USE_STRING_VIEW
+		std::u16string_view& s = src;
+#else
+		std::u16string_view s(src);
+#endif
+		for (auto u16It = s.begin(); u16It != s.end(); ++u16It) {
 			std::array<char16_t, 2> u16Ch;
 			if (u16_h((*u16It))) {
 				u16Ch[0] = (*u16It);
 				++u16It;
-				if (u16It == src.end()) {
+				if (u16It == s.end()) {
 					throw exception("invalid string. (utf16 to utf8)");
 				}
 				u16Ch[1] = (*u16It);
@@ -364,9 +399,14 @@ namespace suika {
 		}
 		return u8Str;
 	}
-	CODECVT_CONSTEXPR std::u8string to_u8string(const std::u32string_view& src) {
+	CODECVT_CONSTEXPR std::u8string to_u8string(ARG_CODECVT_U32 src) {
+#if CODECVT_USE_STRING_VIEW
+		std::u32string_view& s = src;
+#else
+		std::u32string_view s(src);
+#endif
 		std::u8string u8Str;
-		for (auto u32It = src.begin(); u32It != src.end(); ++u32It) {
+		for (auto u32It = s.begin(); u32It != s.end(); ++u32It) {
 			std::array<char8_t, 4> u8Ch=to_u8_c(*u32It);
 
 			if (u8Ch[0] != 0) {
@@ -385,15 +425,20 @@ namespace suika {
 		}
 		return u8Str;
 	}
-	CODECVT_CONSTEXPR std::u8string to_u8string(const std::string_view& src) {
-		return to_u8string(to_u32string(src));
+	CODECVT_CONSTEXPR std::u8string to_u8string(ARG_CODECVT_STR src) {
+		return to_u8string(to_u32string(src) C_STR);
 	}
-	CODECVT_CONSTEXPR std::u8string to_u8string(const std::wstring_view& src) {
-		return to_u8string(to_u16string(src));
+	CODECVT_CONSTEXPR std::u8string to_u8string(ARG_CODECVT_WSTR src) {
+		return to_u8string(to_u16string(src) C_STR);
 	}
-	CODECVT_CONSTEXPR std::u16string to_u16string(const std::u8string_view& src) {
+	CODECVT_CONSTEXPR std::u16string to_u16string(ARG_CODECVT_U8 src) {
 		std::u16string u16Str;
-		for (auto u8It = src.begin(); u8It != src.end(); ++u8It) {
+#if CODECVT_USE_STRING_VIEW
+		std::u8string_view& s = src;
+#else
+		std::u8string_view s(src);
+#endif
+		for (auto u8It = s.begin(); u8It != s.end(); ++u8It) {
 			auto numBytes = u8_count((*u8It));
 			if (numBytes == 0) {
 				throw exception("invalid string. (utf8 to utf16)");
@@ -403,7 +448,7 @@ namespace suika {
 			u8Ch[0] = (*u8It);
 			for (int i = 1; i < numBytes; i++) {
 				++u8It;
-				if (u8It == src.end()) {
+				if (u8It == s.end()) {
 					throw exception("invalid string. (utf8 to utf16)");
 				}
 				u8Ch[i] = (*u8It);
@@ -417,9 +462,14 @@ namespace suika {
 		}
 		return u16Str;
 	}
-	CODECVT_CONSTEXPR std::u16string to_u16string(const std::u32string_view& src) {
+	CODECVT_CONSTEXPR std::u16string to_u16string(ARG_CODECVT_U32 src) {
 		std::u16string u16Str;
-		for (auto u32It = src.begin(); u32It != src.end(); ++u32It) {
+#if CODECVT_USE_STRING_VIEW
+		const std::u32string_view& s = src;
+#else
+		std::u32string_view s(src);
+#endif
+		for (auto u32It = s.begin(); u32It != s.end(); ++u32It) {
 			std::array<char16_t, 2> u16Ch = to_u16_c((*u32It));
 
 			if (u16Ch[0] != 0) {
@@ -431,35 +481,40 @@ namespace suika {
 		}
 		return u16Str;
 	}
-	CODECVT_CONSTEXPR std::u16string to_u16string(const std::string_view& src) {
-		return to_u16string(to_wstring(src));
+	CODECVT_CONSTEXPR std::u16string to_u16string(ARG_CODECVT_STR src) {
+		return to_u16string(to_wstring(src) C_STR);
 	}
-	CODECVT_CONSTEXPR std::u16string to_u16string(const std::wstring_view& src) {
+	CODECVT_CONSTEXPR std::u16string to_u16string(ARG_CODECVT_WSTR src) {
+#if CODECVT_USE_STRING_VIEW
+		std::wstring_view& st = src;
+#else
+		std::wstring_view st(src);
+#endif
 		if constexpr (WC_SIZE == 2) {
-			return std::u16string(src.begin(), src.end());
+			return std::u16string(st.begin(), st.end());
 		}
 		else if constexpr (WC_SIZE == 4) {
-			return to_u16string(std::u32string(src.begin(), src.end()));
+			return to_u16string(std::u32string(st.begin(), st.end()) C_STR);
 		}
 		else {
 			throw exception("invalid string. (wstring to utf16)");
 		}
 		return u"";
 	}
-	CODECVT_CONSTEXPR std::string to_string(const std::string_view& src) {
-		return std::string(src.begin(), src.end());
+	CODECVT_CONSTEXPR std::string to_string(ARG_CODECVT_STR src) {
+		return std::string(src);
 	}
-	CODECVT_CONSTEXPR std::wstring to_wstring(const std::wstring_view& src) {
-		return std::wstring(src.begin(), src.end());
+	CODECVT_CONSTEXPR std::wstring to_wstring(ARG_CODECVT_WSTR src) {
+		return std::wstring(src);
 	}
-	CODECVT_CONSTEXPR std::u8string to_u8string(const std::u8string_view& src) {
-		return std::u8string(src.begin(), src.end());
+	CODECVT_CONSTEXPR std::u8string to_u8string(ARG_CODECVT_U8 src) {
+		return std::u8string(src);
 	}
-	CODECVT_CONSTEXPR std::u16string to_u16string(const std::u16string_view& src) {
-		return std::u16string(src.begin(), src.end());
+	CODECVT_CONSTEXPR std::u16string to_u16string(ARG_CODECVT_U16 src) {
+		return std::u16string(src);
 	}
-	CODECVT_CONSTEXPR std::u32string to_u32string(const std::u32string_view& src) {
-		return std::u32string(src.begin(), src.end());
+	CODECVT_CONSTEXPR std::u32string to_u32string(ARG_CODECVT_U32 src) {
+		return std::u32string(src);
 	}
 } // namespace suika
 #undef CODECVT_CONSTEXPR 

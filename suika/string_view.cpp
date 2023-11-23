@@ -8,16 +8,6 @@
 #include <Windows.h>
 
 namespace suika {
-	constexpr string_view::string_view(const string_view_type& str) noexcept {
-		_str = str;
-	}
-	constexpr string_view::string_view(const char_t* str) noexcept {
-		_str = string_view_type(str);
-	}
-	constexpr string_view::string_view(const char_t* str, size_type len) noexcept{
-		_str = string_view_type(str, len);
-	}
-
 	string_view::str string_view::to_string() const {
 		return suika::to_string(_str);
 	}

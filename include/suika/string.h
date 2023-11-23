@@ -532,12 +532,16 @@ namespace suika {
 } // namespace suika
 
 namespace std {
-template<>
-struct formatter<suika::string>: formatter<suika::string::string_type, suika::string::string_type::value_type> {
-	auto format(suika::string str, wformat_context& ctx) const {
-		return formatter<suika::string::string_type, suika::string::string_type::value_type>::format(str.to_wstring(), ctx);
-	}
-};
+	template<>
+	struct formatter<suika::string> : formatter<suika::string::str, suika::string::str::value_type> {
+		auto format(suika::string str, format_context& ctx) const {
+			return formatter<suika::string::str, suika::string::str::value_type>::format(str.to_string(), ctx);
+		}
+
+		/*auto format(suika::string str, wformat_context& ctx) const {
+			return formatter<suika::string::wstr, suika::string::wstr::value_type>::format(str.to_wstring(), ctx);
+		}*/
+	};
 
 	template<>
 	struct hash<suika::string> {

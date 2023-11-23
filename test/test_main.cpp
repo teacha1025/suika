@@ -30,15 +30,16 @@ void test_pad(int i) {
 	};
 	auto trg = [&](suika::detail::gamepad_trigger t, int y) {
 		auto c = suika::hsv(0, 0, t.value() / 2.0 + 0.5, 255).to_color();
-		f.text(std::format("{}:{:1.3f}", t.to_string().to_string(), t.value())).colored(c).at({ i * X,y * 20 + OFS }).draw();
+		f.text(std::format("{}:{:1.3f}", t.to_string(), t.value())).colored(c).at({ i * X,y * 20 + OFS }).draw();
 	};
 	auto stk = [&](suika::detail::gamepad_stick s, int y) {
 		f.text(s.to_string()).colored(s.press() ? suika::palette::white : suika::palette::gray).at({ i * X,y * 20 + OFS }).draw();
-		f.text(std::format("{}:{}", s.to_string().to_string(), s.value().to_string().to_string())).at({i * X,y * 20 + OFS }).draw();
+		f.text(std::format("{}:{}", s.to_string(), s.value().to_string())).at({i * X,y * 20 + OFS }).draw();
+		std::format(L"");
 	};
 	auto& pad = suika::gamepad::pad[i];
 	f.text(pad.info().name).colored(suika::palette::white).at({i * X,0}).draw();
-	f.text(std::format("{}, VID:{},PID:{}", std::string(magic_enum::enum_name(pad.info().states)), pad.info().vid.to_string(), pad.info().pid.to_string())).colored(suika::palette::white).at({i * X,20}).draw();
+	f.text(std::format("{}, VID:{},PID:{}", std::string(magic_enum::enum_name(pad.info().states)), pad.info().vid, pad.info().pid)).colored(suika::palette::white).at({i * X,20}).draw();
 	btn(pad.A, 0);
 	btn(pad.B, 1);
 	btn(pad.X, 2);

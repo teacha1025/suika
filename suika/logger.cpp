@@ -9,6 +9,7 @@
 
 #include "../include/suika/def.h"
 #include "../include/suika/logger.h"
+#include <mutex>
 //#include "../include/suika/text.h"
 
 namespace suika {

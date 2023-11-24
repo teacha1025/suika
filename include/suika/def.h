@@ -13,6 +13,7 @@
 #include "type.h"
 #define define constexpr auto
 #define DXENGINE suika
+#define NODISCARD [[nodiscard]]
 
 namespace suika {
 #pragma region

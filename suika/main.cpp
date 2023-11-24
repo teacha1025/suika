@@ -1,5 +1,7 @@
 #include <Windows.h>
+#include "../include/suika/codecvt.h"
 #include "../include/suika/except.h"
+#include "../include/suika/string.h"
 #include "../include/suika/logger.h"
 #include "../include/suika/window.h"
 #include "../include/suika/shader.h"

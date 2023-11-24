@@ -7,6 +7,7 @@
 
 #include "d3d\vertex.h"
 #include "d3d\dinput.hpp"
+#include <mutex>
 
 namespace suika {
 	namespace keyboard {

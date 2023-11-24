@@ -181,6 +181,7 @@
     <ClCompile Include="d3d\viewport.cpp" />
     <ClCompile Include="d3d\vs.cpp" />
     <ClCompile Include="d3d\xinput.cpp" />
+    <ClCompile Include="easing.cpp" />
     <ClCompile Include="font.cpp" />
     <ClCompile Include="gamepad.cpp" />
     <ClCompile Include="keyboard.cpp" />
@@ -193,6 +194,7 @@
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="string_function.cpp" />
+    <ClCompile Include="string_view.cpp" />
     <ClCompile Include="system.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="vertex.cpp" />
@@ -244,6 +246,7 @@
     <ClInclude Include="..\include\suika\shader.h" />
     <ClInclude Include="..\include\suika\string.h" />
     <ClInclude Include="..\include\suika\string_function.h" />
+    <ClInclude Include="..\include\suika\string_view.h" />
     <ClInclude Include="..\include\suika\system.h" />
     <ClInclude Include="..\include\suika\texture.h" />
     <ClInclude Include="..\include\suika\type.h" />

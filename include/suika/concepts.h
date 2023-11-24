@@ -24,7 +24,7 @@ namespace suika {
 		/// 数値型
 		/// </summary>
 		template<typename T>
-		concept numbers = std::integral<T> || std::floating_point<T>;
+		concept numbers = std::is_arithmetic_v<T>;
 
 		/// <summary>
 		/// 文字列型
@@ -32,14 +32,14 @@ namespace suika {
 		template<class T>
 		concept string = std::is_convertible_v<T, std::string_view>;
 
+		template <class Type>
+		concept trivially = std::is_trivially_copyable_v<Type>;
+
 		/// <summary>
 		/// 列挙型
 		/// </summary>
 		template<class T>
-		concept enum_elements =
-			requires(T elem) {
-				magic_enum::enum_name(elem);
-			};
+		concept enum_elements = std::is_enum_v<T>;
 	} // namespace concepts
 } // namespace suika
 #endif

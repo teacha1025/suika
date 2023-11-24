@@ -8,9 +8,6 @@
     <ClCompile Include="logger.cpp">
       <Filter>suika\logger</Filter>
     </ClCompile>
-    <ClCompile Include="codecvt.cpp">
-      <Filter>suika\string</Filter>
-    </ClCompile>
     <ClCompile Include="color.cpp">
       <Filter>suika\color</Filter>
     </ClCompile>
@@ -100,6 +97,12 @@
     </ClCompile>
     <ClCompile Include="scene.cpp">
       <Filter>suika\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="string_view.cpp">
+      <Filter>suika\string</Filter>
+    </ClCompile>
+    <ClCompile Include="codecvt.cpp">
+      <Filter>suika\string</Filter>
     </ClCompile>
     <ClCompile Include="easing.cpp">
       <Filter>suika\easing</Filter>
@@ -227,7 +230,7 @@
       <UniqueIdentifier>{3145dd0f-f07c-46e3-9efc-297237f255fe}</UniqueIdentifier>
     </Filter>
     <Filter Include="suika\easing">
-      <UniqueIdentifier>{2e6ec2cb-db64-495b-b586-0c89048be76e}</UniqueIdentifier>
+      <UniqueIdentifier>{955a55a2-31ab-4d42-b15b-4bf2b6cdabe3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -413,6 +416,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\scene.h">
       <Filter>suika\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\string_view.h">
+      <Filter>suika\string</Filter>
     </ClInclude>
     <ClInclude Include="..\include\suika\easing.h">
       <Filter>suika\easing</Filter>

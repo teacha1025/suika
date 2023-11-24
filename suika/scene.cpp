@@ -5,7 +5,7 @@
 
 namespace suika {
 	void scene_manager::back(double fadeout_time, double fadein_time, bool is_fade_sametime) {
-		if(_scenes.empty()) throw exception("Scene is empty.");
+		if (_scenes.empty() || _fade_state != fade_state::none) return;
 		_next_scene = std::move(_scenes.top());
 		_change_state = change_state::back;
 		_fade_state = fade_state::none;

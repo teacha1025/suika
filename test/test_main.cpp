@@ -1,9 +1,4 @@
 ﻿#include "suika.h"
-#include "../suika/d3d/dwrite.h"
-//#include "../suika/d3d/blend.hpp"
-//#include "../suika/d3d/texture.hpp"
-//#include "../suika/d3d/vertex.h"
-
 namespace palette = suika::palette;
 
 void init() {
@@ -156,19 +151,21 @@ public:
 	virtual void draw() override {
 		f_title.centered(f_title.rect().size() / 2).at({ 640, 200 }).draw();
 		for(const auto& [e, str] : elm_str) {
-			f_elm.text(str).at({ e == elm ? 64 : 48 , e * 40 + 720 }).colored(e == elm ? palette::white : palette::gray, palette::black).draw();
+			f_elm.text(str).at({ 48 , e * 40 + 720 }).colored(e == elm ? palette::white : palette::gray, palette::black).draw();
 		}
 	}
 	virtual void fadeout(double t) override {
-		f_title.centered(f_title.rect().size() / 2).at({ 640 - (2 * t) * 1280, 200 }).draw();
+		double _t = suika::ease::out_expo(t*2);
+		f_title.at({ 640, 200 }).resized(64+_t*100).colored(palette::white,1-_t).centered(f_title.rect().size() / 2).draw();
 		for (const auto& [e, str] : elm_str) {
-			f_elm.text(str).at({ (e == elm ? 64 : 48) - (2 * t) * 160 , e * 40 + 720 }).colored(e == elm ? palette::white : palette::gray, palette::black).draw();
+			f_elm.text(str).at({ 48 - _t * 180 , e * 40 + 720 }).colored(e == elm ? palette::white : palette::gray, palette::black).draw();
 		}
 	}
 	virtual void fadein(double t) override {
-		f_title.centered(f_title.rect().size() / 2).at({ 640 - (1 - 2 * t) * 1280, 200 }).draw();
+		double _t = 1-suika::ease::out_expo(t * 2);
+		f_title.resized(64).colored(palette::white, 1).centered(f_title.rect().size() / 2).at({ 640 - _t * 1280, 200 }).draw();
 		for (const auto& [e, str] : elm_str) {
-			f_elm.text(str).at({ (e == elm ? 64 : 48) - (1-2*t) * 160 , e * 40 + 720 }).colored(e == elm ? palette::white : palette::gray, palette::black).draw();
+			f_elm.text(str).at({ 48 - _t * 180 , e * 40 + 720 }).colored(e == elm ? palette::white : palette::gray, palette::black).draw();
 		}
 	}
 	virtual void update() override {
@@ -185,7 +182,7 @@ public:
 if (suika::keyboard::Return.down()) {
 			switch (elm) {
 			case start:
-				_p_manager->change<::start>(0.5, 0.5, true);
+				_p_manager->change<::start>(0.3, 0.3, true);
 				break;
 			case option:
 				break;
@@ -214,116 +211,27 @@ public:
 		f_title.at({ 640, 72 }).draw();
 	}
 	virtual void fadein(double t) override {
-		f_title.at({ 640, -48 + (2*t) * 120 }).colored(palette::white,1.0f).draw();
+		double _t = suika::ease::out_expo(t * 2);
+		f_title.at({ 640, -48 + _t * 120 }).colored(palette::white,1.0f).draw();
 	}
 	virtual void fadeout(double t) override {
 		f_title.at({ 640, 72 }).colored(palette::white,(1-2*t)).draw();
 	}
 	virtual void update() override {
 		if (suika::keyboard::Escape.down()) {
-			_p_manager->back(0.5, 0.5, true);
+			_p_manager->back(0.3, 0.3, true);
 		}
 	}
 };
 
 int main() {
 	suika::font f("メイリオ");
-
-	suika::texture tex("test.bmp");
-
-	define w = 64, h = 64;
-	int i = 0, j = 0, edge = 0;
-
-	suika::rect r({ w - 1,h - 1 });
-	suika::circle c(32);
-	int cursor = suika::mouse::arrow;
-	suika::line l(suika::window::size()/2, {0,0});
-
 	suika::scene_manager sm;
-	static suika::rect rc(suika::window::size());
-	rc.blended(suika::blend::alpha).centered({ 0,0 }).at({ 0,0 });
 	sm.change<title>(0.0, 0.0, true);
 
 	suika::string s = suika::string(suika::string("Hello, World!"));
 	while (suika::sys::update()) {
 		sm.update();
 		sm.draw();
-#if 0
-		test_pad(0);
-		test_pad(1);
-		test_pad(2);
-		test_pad(3);
-
-		if (suika::keyboard::Return.down()) {
-			suika::gamepad::load_gamepads();
-		}
-#endif
-#if 0
-		edge += suika::mouse::wheel();
-		i %= 256;
-		suika::window::title(std::format("{:4.1f}fps,{}, [{},{}], {}", suika::sys::fps(), edge, suika::mouse::position().x, suika::mouse::position().y, cursor));
-		for (int y = 0; y < 16; y++) {
-			for (int x = 0; x < 16; x++) {
-				r.at({x*w, y*h}).colored(suika::color(suika::palette::gray, (x+y)*8)).blended(suika::blend::alpha).draw();
-				//tex.centered({ 0, 0 }).at({ x * w + w / 2,y * h + h / 2 }).blended(suika::blend::alpha).rotated(i / 20.0f).draw();
-			}
-		}
-		
-		if (suika::mouse::Right.down()) {
-			static bool flag = false;
-			//suika::mouse::position({ 640,480 });
-			//SetCursor(LoadCursor(NULL, IDC_HAND));
-
-			while (true) {
-				if (flag) {
-					auto r = ShowCursor(TRUE);
-					if (r >= 0)
-						break;
-				}
-				else {
-					auto r = ShowCursor(FALSE);
-					if (r < 0)
-						break;
-				}
-			}
-
-			flag ^= 1;
-
-			f.edged(flag, 2);
-		}
-		else if (suika::mouse::Left.down()) {
-			cursor++;
-			cursor %= 17;
-		}
-		suika::mouse::style((suika::mouse::cursor)cursor);
-		c.at(suika::mouse::position()).resolution(24).colored(suika::color(suika::palette::red, i)).blended(suika::blend::add).draw();
-		l.B(suika::mouse::position()).colored(suika::color(suika::palette::white, i)).blended(suika::blend::sub).draw(8.0f,false);
-		f.text(L"こんにちは！！").centered({0,0}).at(suika::mouse::position()).resized(64).edged(true,edge).centered(f.rect().size() / 2);
-		f.rect().centered(f.rect().size()/2).colored(suika::color(suika::palette::gray, 255)).blended(suika::blend::alpha).draw();
-		f.colored(suika::hsv(j, 1.0f,1.0f).to_color(),suika::palette::white).draw();
-		j++;
-		j %= 360;
-#endif
-#if 0
-		if (i == 60) {
-			fd.color = suika::palette::yellow;
-			fd.color.a = 1.0f;
-			fd.weight = DWRITE_FONT_WEIGHT_LIGHT;
-			fd.size = 32.0f;
-			fd.font = "游明朝";
-			suika::d3d::dwrite::set(fd, cid);
-		}
-		if (i ==120) {
-			i = 0;
-			fd.color = suika::palette::white;
-			fd.color.a = 1.0f;
-			fd.weight = DWRITE_FONT_WEIGHT_BOLD;
-			fd.size = 64.0f;
-			fd.font = "ＭＳゴシック";
-			suika::d3d::dwrite::set(fd, cid);
-		}
-		suika::d3d::dwrite::draw(L"TEST☺", { 128,128 }, cid);
-		i++;
-#endif
 	}
 }

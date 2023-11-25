@@ -199,7 +199,6 @@
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="vertex.cpp" />
     <ClCompile Include="window.cpp" />
-    <ClCompile Include="easing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\suika.h" />

@@ -1,4 +1,24 @@
-﻿#define NOMINMAX
+﻿// -----------------------------------------------------------
+// 
+// logger.
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
+#define NOMINMAX
 #include <stdlib.h>
 #include <iomanip>
 #include <string>
@@ -6,17 +26,17 @@
 #include <chrono>
 #include <Windows.h>
 #include <system_error>
+#include <mutex>
 
 #include "../include/suika/def.h"
 #include "../include/suika/logger.h"
-#include <mutex>
-//#include "../include/suika/text.h"
 
 namespace suika {
 	logger::logger() {
 		_startup_count = std::chrono::system_clock::now();
 		fp			 = nullptr;
 	}
+
 	logger::~logger() {
 		if (!flag)
 			return;
@@ -24,6 +44,7 @@ namespace suika {
 			fclose(fp);
 		}
 	}
+
 	bool logger::init() {
 		if (!flag)
 			return 0;
@@ -59,6 +80,7 @@ namespace suika {
 			return true;
 		}
 	}
+
 	void logger::set(bool output_flag, const string& name) {
 		filename	   = name.to_string();
 		this->flag	 = output_flag;
@@ -81,24 +103,31 @@ namespace suika {
 		if (fp != nullptr)
 			fprintf(fp, log.to_string().c_str());
 	}
+
 	void logger::exception(const string& str) {
 		add(L"Exception: " + str.to_wstring());
 	}
+
 	void logger::critical(const string& str) {
 		add(L"Critical: " + str.to_wstring());
 	}
+
 	void logger::error(const string& str) {
 		add(L"Error: " + str.to_wstring());
 	}
+
 	void logger::warn(const string& str) {
 		add(L"Warning: " + str.to_wstring());
 	}
+
 	void logger::info(const string& str) {
 		add(L"Info: " + str.to_wstring());
 	}
+
 	void logger::debug(const string& str) {
 		add(L"Debug: " + str.to_wstring());
 	}
+
 	void logger::result(long result) {
 		switch (result) {
 		case S_OK:
@@ -162,9 +191,10 @@ namespace suika {
 		}
 		}
 	}
+
 	string logger::to_string() const {
 		return std::format("logfile:{}", filename);
 	}
+
 	logger log;
 } // namespace suika
-#undef CVS

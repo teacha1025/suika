@@ -32,13 +32,13 @@
     <ClCompile Include="d3d\ps.cpp">
       <Filter>d3d\shader\ps</Filter>
     </ClCompile>
-    <ClCompile Include="d3d\c_buffer.cpp">
+    <ClCompile Include="d3d\cbuffer.cpp">
       <Filter>d3d\shader\constant</Filter>
     </ClCompile>
     <ClCompile Include="shader.cpp">
       <Filter>suika\shader</Filter>
     </ClCompile>
-    <ClCompile Include="cbuffer.cpp">
+    <ClCompile Include="constant_buffer.cpp">
       <Filter>suika\shader</Filter>
     </ClCompile>
     <ClCompile Include="d3d\dwrite.cpp">
@@ -103,9 +103,6 @@
     </ClCompile>
     <ClCompile Include="codecvt.cpp">
       <Filter>suika\string</Filter>
-    </ClCompile>
-    <ClCompile Include="easing.cpp">
-      <Filter>suika\easing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -423,5 +420,8 @@
     <ClInclude Include="..\include\suika\easing.h">
       <Filter>suika\easing</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

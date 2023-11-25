@@ -1,23 +1,38 @@
+// -----------------------------------------------------------
+// 
+// window
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #include <string>
 #include <unordered_map>
 #include <memory>
 #include <windows.h>
-#include "..\include\suika\def.h"
 
+#include "..\include\suika\def.h"
 #include "..\include\suika\point.h"
 #include "..\include\suika\color.h"
 #include "..\include\suika\palette.h"
 #include "..\include\suika\logger.h"
 #include "..\include\suika\canvas.h"
-
 #include "..\include\suika\window.h"
 #include "..\include\suika\string.h"
-
 #include "d3d/device.hpp"
 #include "..\include\suika\vertex.h"
-
-
-
 
 namespace suika {
 	namespace sys {
@@ -84,7 +99,6 @@ namespace suika {
 			clientRect.right = width;
 			clientRect.bottom = height;
 
-
 			AdjustWindowRect(
 				&clientRect,
 				static_cast<DWORD>(GetWindowLongPtr(hWnd, GWL_STYLE)),
@@ -111,6 +125,7 @@ namespace suika {
 			auto lt = point<uint>(x, y); lt -= size; lt /= 2u;
 			return create(size, rate, bg, title, vsync, lt);
 		}
+
 		id create(const point<uint>& size, point<double> rate, const color& bg, const string& title, bool vsync, const point<uint>& pos) {
 			auto			  wtitle = title.to_wstring();
 			std::wstring_view title_view = wtitle;

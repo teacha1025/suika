@@ -1,3 +1,23 @@
+// -----------------------------------------------------------
+// 
+// d3d11 shader:vertex shader.
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #include <d3d11.h>
 #include <d3dcompiler.h>
 #include <dxgi.h>
@@ -18,10 +38,9 @@ using namespace Microsoft::WRL;
 namespace suika {
 	namespace d3d {
 		std::unordered_map<std::string, vertex_shader> vertex_shader_list;
-		DXGI_FORMAT GetDxgiFormat(D3D_REGISTER_COMPONENT_TYPE type, BYTE mask) {
+		static DXGI_FORMAT GetDxgiFormat(D3D_REGISTER_COMPONENT_TYPE type, BYTE mask) {
 			if (mask & 0x0F)
 			{
-				// xyzw
 				switch (type)
 				{
 				case D3D10_REGISTER_COMPONENT_FLOAT32:
@@ -36,7 +55,6 @@ namespace suika {
 
 			if (mask & 0x07)
 			{
-				// xyz
 				switch (type)
 				{
 				case D3D10_REGISTER_COMPONENT_FLOAT32:
@@ -50,7 +68,6 @@ namespace suika {
 
 			if (mask & 0x3)
 			{
-				// xy
 				switch (type)
 				{
 				case D3D10_REGISTER_COMPONENT_FLOAT32:
@@ -64,7 +81,6 @@ namespace suika {
 
 			if (mask & 0x1)
 			{
-				// x
 				switch (type)
 				{
 				case D3D10_REGISTER_COMPONENT_FLOAT32:
@@ -125,7 +141,6 @@ namespace suika {
 			D3D11_SHADER_DESC shaderdesc;
 			pReflector->GetDesc(&shaderdesc);
 
-			// Create InputLayout
 			std::vector<D3D11_INPUT_ELEMENT_DESC> vbElement;
 			uint ins_mat_index = 0;
 			for (UINT i = 0U; i < shaderdesc.InputParameters; ++i) {
@@ -139,32 +154,31 @@ namespace suika {
 				}
 				if (std::string(sigdesc.SemanticName) == ("INS_MATRIX")) {
 					eledesc = {
-						.SemanticName = sigdesc.SemanticName // Semantic–¼
-						, .SemanticIndex = sigdesc.SemanticIndex // POSITION0‚Æ‚©‚Ì”ŽšB–³‚¯‚ê‚Î0
-						, .Format = format // DXGI_FORMAT
-						, .InputSlot = 1 // Œˆ‚ß‘Å‚¿
-						, .AlignedByteOffset = (ins_mat_index++)*16 // Œˆ‚ß‘Å‚¿
-						, .InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA // Œˆ‚ß‘Å‚¿
-						, .InstanceDataStepRate = 1 // Œˆ‚ß‘Å‚¿
+						.SemanticName = sigdesc.SemanticName
+						, .SemanticIndex = sigdesc.SemanticIndex
+						, .Format = format
+						, .InputSlot = 1
+						, .AlignedByteOffset = (ins_mat_index++)*16
+						, .InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA
+						, .InstanceDataStepRate = 1
 					};
 				}
 				else {
 
 					eledesc = {
-						.SemanticName = sigdesc.SemanticName // Semantic–¼
-						, .SemanticIndex = sigdesc.SemanticIndex // POSITION0‚Æ‚©‚Ì”ŽšB–³‚¯‚ê‚Î0
-						, .Format = format // DXGI_FORMAT
-						, .InputSlot = 0 // Œˆ‚ß‘Å‚¿
-						, .AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT // Œˆ‚ß‘Å‚¿
-						, .InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA // Œˆ‚ß‘Å‚¿
-						, .InstanceDataStepRate = 0 // Œˆ‚ß‘Å‚¿
+						.SemanticName = sigdesc.SemanticName
+						, .SemanticIndex = sigdesc.SemanticIndex
+						, .Format = format
+						, .InputSlot = 0
+						, .AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT
+						, .InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA
+						, .InstanceDataStepRate = 0
 					};
 				}
 				vbElement.push_back(eledesc);
 			}
 
 			if (!vbElement.empty()) {
-				//error
 				er = pDevice->CreateInputLayout(&vbElement[0], static_cast<UINT>(vbElement.size()),
 					key_input, static_cast<SIZE_T>(size), pIL.GetAddressOf());
 				if (FAILED(er)) {
@@ -176,7 +190,7 @@ namespace suika {
 
 			log_d3d.info("Create VS");
 		}
-		void vertex_shader::set() {
+		void vertex_shader::set() const {
 			pContext->IASetInputLayout(pIL.Get());
 			pContext->VSSetShader(pVS.Get(), nullptr, 0);
 		}

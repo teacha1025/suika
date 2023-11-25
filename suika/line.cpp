@@ -1,4 +1,25 @@
+// -----------------------------------------------------------
+// 
+// line
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #pragma once
+
 #include "d3d/vertex.h"
 #include "d3d/blend.hpp"
 #include "../include/suika/shader.h"
@@ -15,6 +36,7 @@ namespace suika {
 			vertex::create_2d(this->_B, this->_color, { 0,0 })
 		};
 	}
+
 	std::vector<suika::vertex::vertex_2d> line::create_vertex_bold(float b) {
 		index = { 0,1,2,2,1,3 };
 		const suika::point<float> a = { this->_B - this->_A };
@@ -27,12 +49,14 @@ namespace suika {
 			vertex::create_2d(vector::set_length(v, b / 2.0f) + _B, this->_color, { 1,1 })
 		};
 	}
+
 	std::vector<suika::vertex::vertex_2d> line::create_vertex_bold_round(float b) {
 		return {
 			vertex::create_2d(this->_A, this->_color, { 0,0 }),
 			vertex::create_2d(this->_B, this->_color, { 0,0 })
 		};
 	}
+
 	void line::draw() {
 		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::line);
 		set_vs(this->_shaders.vs);

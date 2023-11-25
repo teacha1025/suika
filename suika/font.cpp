@@ -1,5 +1,23 @@
-//https://deep-verdure.hatenablog.com/entry/2022/07/26/012943
-//https://deep-verdure.hatenablog.com/entry/2022/07/23/190449
+// -----------------------------------------------------------
+// 
+// font draw.
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #include "d3d/dwrite.h"
 #include "d3d/vertex.h"
 #include "../include/suika/font.h"
@@ -13,7 +31,7 @@ namespace suika {
 		d3d::dwrite::set(_font, (DWRITE_FONT_WEIGHT)_weight, (DWRITE_FONT_STYLE)_style, (DWRITE_FONT_STRETCH)_stretch, _size, _locale, (DWRITE_TEXT_ALIGNMENT)_alignment, id);
 	}
 
-	void font::draw()const {
+	void font::draw() const {
 		if(_size == 0.0f) return;
 		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::font);
 		set(_cid);
@@ -26,7 +44,7 @@ namespace suika {
 		}
 	}
 
-	rect font::rect()const {
+	rect font::rect() const {
 		if (_size == 0.0f) return suika::rect({ 0,0 });
 		set(_cid);
 		if (_edge_enabled) {

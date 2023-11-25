@@ -1,3 +1,23 @@
+// -----------------------------------------------------------
+// 
+// texture
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #include "d3d/vs.hpp"
 #include "d3d/ps.hpp"
 #include "d3d/cbuffer.hpp"
@@ -18,8 +38,6 @@ static const std::vector<suika::uint16> index =
 };
 
 namespace suika {
-	//std::unordered_map<string,d3d::texture::texture> textures;
-
 	std::vector<suika::vertex::vertex_2d> texture::create_vertex() {
 		return {
 				vertex::create_2d({0.f,0.f},{0,0,0,0.5f},{_turn.x ? 1 : 0,_turn.y ? 1 : 0}),
@@ -33,6 +51,7 @@ namespace suika {
 		_turn = turn;
 		return static_cast<texture&>(*this);
 	}
+
 	texture texture::turned(const point<bool>& turn)&& {
 		_turn = turn;
 		return static_cast<texture&&>(std::move(*this));
@@ -41,6 +60,7 @@ namespace suika {
 	point<bool> texture::turn() const {
 		return _turn;
 	}
+
 	point<float> texture::size() const {
 		return _size;
 	}

@@ -1,9 +1,29 @@
-#pragma once
+// -----------------------------------------------------------
+// 
+// d3d11 texture.
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #include <unordered_map>
 #include <d3d11.h>
 #include <wincodec.h>
 #include <wrl/client.h>
 #include <Windows.h>
+
 #include "texture.hpp"
 #include "vertex.h"
 #include "info.hpp"
@@ -16,8 +36,8 @@ namespace suika {
             Microsoft::WRL::ComPtr<IWICImagingFactory> m_factory;
             Microsoft::WRL::ComPtr<IWICBitmapDecoder> decoder;
             Microsoft::WRL::ComPtr<IWICBitmapFrameDecode> frame;
-            
             std::unordered_map<string, texture> texture_list;
+
             texture* currentTexture;
 
             texture::texture() {
@@ -46,8 +66,6 @@ namespace suika {
                     return;
                 }
 
-                // decoder作ってファイルを渡す
-
                 er = m_factory->CreateDecoderFromFilename(path.to_wstring().c_str(), 0
                     , GENERIC_READ, WICDecodeMetadataCacheOnDemand, &decoder);
                 if (FAILED(er)) {
@@ -56,8 +74,6 @@ namespace suika {
                     return;
                 }
 
-                // decoderからframeを取得
-
                 er = decoder->GetFrame(0, &frame);
                 if (FAILED(er)) {
                     log_d3d.error("Failed to Get Frame");
@@ -65,7 +81,6 @@ namespace suika {
                     return;
                 }
 
-                // フレームからサイズとピクセルフォーマットとデータを得る
                 size = { 0,0 };
                 er = frame->GetSize(&size.x, &size.y);
                 if (FAILED(er)) {
@@ -78,7 +93,6 @@ namespace suika {
                     return;
                 }
 
-                // Determine format
                 WICPixelFormatGUID pixelFormat;
                 er = frame->GetPixelFormat(&pixelFormat);
                 if (FAILED(er)) {
@@ -86,13 +100,10 @@ namespace suika {
                     log_d3d.result(er);
                     return;
                 }
-                //auto bpp = ;
-                //size_t rowPitch = (size.x * bpp + 7) / 8;
+
                 buffer.resize(static_cast<size_t>(size.x) * static_cast<size_t>(size.y) * static_cast<size_t>(pixelBytes));
 
                 if (pixelFormat != GUID_WICPixelFormat32bppRGBA) {
-                    // 変換する
-
                     er = m_factory->CreateFormatConverter(&FC);
                     if (FAILED(er)) {
                         log_d3d.error("Failed to Create FormatConverter");
@@ -109,7 +120,6 @@ namespace suika {
                         return;
                     }
 
-                    // copy
                     er = FC->CopyPixels(0, size.x * pixelBytes, static_cast<UINT>(buffer.size()), pointer());
                     if (FAILED(er)) {
                         log_d3d.error("Failed to Copy Pixel");
@@ -118,7 +128,6 @@ namespace suika {
                     }
                 }
                 else {
-                    // copy
                     er = frame->CopyPixels(0, size.x * pixelBytes, static_cast<UINT>(buffer.size()), pointer());
                     if (FAILED(er)) {
                         log_d3d.error("Failed to Copy Pixel");

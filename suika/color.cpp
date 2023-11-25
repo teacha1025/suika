@@ -1,11 +1,31 @@
-﻿#include <format>
+﻿// -----------------------------------------------------------
+// 
+// color.
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
+#include <format>
+
 #include "../include/suika/def.h"
 #include "../include/suika/color.h"
 
 namespace suika {
 	unsigned int color::to_int() const {
 		return 0;
-		//return GetColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b));
 	}
 
 	string color::to_string() const {
@@ -62,7 +82,6 @@ namespace suika {
 
 	unsigned int color_f::to_int() const {
 		return 0;
-		//return GetColor(static_cast<int>(r), static_cast<int>(g), static_cast<int>(b));
 	}
 
 	string color_f::to_string() const {
@@ -86,7 +105,6 @@ namespace suika {
 	}
 
 
-
 	color hsv::to_color() const {
 		double hh, ff;
 		long   i;
@@ -97,7 +115,7 @@ namespace suika {
 
 		_v = (ubyte)(v * 255);
 
-		if (s <= 0.0) { // < is bogus, just shuts up warnings
+		if (s <= 0.0) {
 			out.r = _v;
 			out.g = _v;
 			out.b = _v;

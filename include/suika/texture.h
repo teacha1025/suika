@@ -32,12 +32,13 @@ namespace suika {
 	/// テクスチャ描画に関するクラス
 	/// </summary>
 	class texture : public detail::ishape<texture> {
-	private:
+	protected:
 		point<bool> _turn;
 		point<float> _size = { 64,64 };
 		string path;
 		d3d::texture::texture _tex;
-	protected:
+
+		point<float> _uv_lt, _uv_rt, _uv_lb, _uv_rb;
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
 	public:
 		/// <summary>
@@ -61,6 +62,38 @@ namespace suika {
 		/// </summary>
 		/// <param name="turn">各方向の反転</param>
 		virtual texture& turned(const point<bool>& turn)&;
+
+		/// <summary>
+		/// テクスチャのUV座標を設定する
+		/// </summary>
+		/// <param name="lt">左上</param>
+		/// <param name="rb">右下</param>
+		virtual texture uv(const point<float>& lt, const point<float>& rb)&&;
+
+		/// <summary>
+		/// テクスチャのUV座標を設定する
+		/// </summary>
+		/// <param name="lt">左上</param>
+		/// <param name="rb">右下</param>
+		virtual texture& uv(const point<float>& lt, const point<float>& rb)&;
+
+		/// <summary>
+		/// テクスチャのUV座標を設定する
+		/// </summary>
+		/// <param name="lt">左上</param>
+		/// <param name="rt">右上</param>
+		/// <param name="lb">左下</param>
+		/// <param name="rb">右下</param>
+		virtual texture uv(const point<float>& lt, const point<float>& rt, const point<float>& lb, const point<float>& rb)&&;
+
+		/// <summary>
+		/// テクスチャのUV座標を設定する
+		/// </summary>
+		/// <param name="lt">左上</param>
+		/// <param name="rt">右上</param>
+		/// <param name="lb">左下</param>
+		/// <param name="rb">右下</param>
+		virtual texture& uv(const point<float>& lt, const point<float>& rt, const point<float>& lb, const point<float>& rb)&;
 
 		/// <summary>
 		/// テクスチャ反転を取得

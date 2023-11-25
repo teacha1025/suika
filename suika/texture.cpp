@@ -39,11 +39,15 @@ static const std::vector<suika::uint16> index =
 
 namespace suika {
 	std::vector<suika::vertex::vertex_2d> texture::create_vertex() {
+		const auto left = _turn.x ? _uv_rb.x : _uv_lt.x;
+		const auto right = _turn.x ? _uv_lt.x : _uv_rb.x;
+		const auto top = _turn.y ? _uv_rb.y : _uv_lt.y;
+		const auto bottom = _turn.y ? _uv_lt.y : _uv_rb.y;
 		return {
-				vertex::create_2d({0.f,0.f},{0,0,0,0.5f},{_turn.x ? 1 : 0,_turn.y ? 1 : 0}),
-				vertex::create_2d({this->_size.x,0.f},{0,0,0,0.5f},{_turn.x ? 0 : 1,_turn.y ? 1 : 0}),
-				vertex::create_2d({0.f,this->_size.y},{0,0,0,0.5f},{_turn.x ? 1 : 0,_turn.y ? 0 : 1}),
-				vertex::create_2d({this->_size.x,this->_size.y},{0,0,0,0.5f},{_turn.x ? 0 : 1,_turn.y ? 0 : 1}),
+				vertex::create_2d({0.f,0.f},{0,0,0,0.5f},{left,top}),
+				vertex::create_2d({this->_size.x,0.f},{0,0,0,0.5f},{right,top}),
+				vertex::create_2d({0.f,this->_size.y},{0,0,0,0.5f},{left,bottom}),
+				vertex::create_2d({this->_size.x,this->_size.y},{0,0,0,0.5f},{right, bottom}),
 		};
 	}
 
@@ -55,6 +59,38 @@ namespace suika {
 	texture texture::turned(const point<bool>& turn)&& {
 		_turn = turn;
 		return static_cast<texture&&>(std::move(*this));
+	}
+
+	texture texture::uv(const point<float>& lt, const point<float>& rb)&& {
+		_uv_lt = lt;
+		_uv_rb = rb;
+		_uv_lb = { lt.x,rb.y };
+		_uv_rt = { rb.x,lt.y };
+		return static_cast<texture&&>(std::move(*this));
+	}
+
+	texture& texture::uv(const point<float>& lt, const point<float>& rb)& {
+		_uv_lt = lt;
+		_uv_rb = rb;
+		_uv_lb = { lt.x,rb.y };
+		_uv_rt = { rb.x,lt.y };
+		return static_cast<texture&>(*this);
+	}
+
+	texture texture::uv(const point<float>& lt, const point<float>& rt, const point<float>& lb, const point<float>& rb)&& {
+		_uv_lt = lt;
+		_uv_rt = rt;
+		_uv_lb = lb;
+		_uv_rb = rb;
+		return static_cast<texture&&>(std::move(*this));
+	}
+
+	texture& texture::uv(const point<float>& lt, const point<float>& rt, const point<float>& lb, const point<float>& rb)& {
+		_uv_lt = lt;
+		_uv_rt = rt;
+		_uv_lb = lb;
+		_uv_rb = rb;
+		return static_cast<texture&>(*this);
 	}
 
 	point<bool> texture::turn() const {

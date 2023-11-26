@@ -38,7 +38,7 @@ namespace suika {
 		string path;
 		d3d::texture::texture _tex;
 
-		point<float> _uv_lt, _uv_rt, _uv_lb, _uv_rb;
+		point<float> _uv_lt = { 0,0 }, _uv_rb = { 1,1 };
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
 	public:
 		/// <summary>
@@ -76,24 +76,6 @@ namespace suika {
 		/// <param name="lt">左上</param>
 		/// <param name="rb">右下</param>
 		virtual texture& uv(const point<float>& lt, const point<float>& rb)&;
-
-		/// <summary>
-		/// テクスチャのUV座標を設定する
-		/// </summary>
-		/// <param name="lt">左上</param>
-		/// <param name="rt">右上</param>
-		/// <param name="lb">左下</param>
-		/// <param name="rb">右下</param>
-		virtual texture uv(const point<float>& lt, const point<float>& rt, const point<float>& lb, const point<float>& rb)&&;
-
-		/// <summary>
-		/// テクスチャのUV座標を設定する
-		/// </summary>
-		/// <param name="lt">左上</param>
-		/// <param name="rt">右上</param>
-		/// <param name="lb">左下</param>
-		/// <param name="rb">右下</param>
-		virtual texture& uv(const point<float>& lt, const point<float>& rt, const point<float>& lb, const point<float>& rb)&;
 
 		/// <summary>
 		/// テクスチャ反転を取得

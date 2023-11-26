@@ -78,6 +78,7 @@ namespace suika {
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd) {
 	
 	HRESULT hr_init = S_OK;
+#ifndef _DEBUG
 	_set_se_translator([](unsigned int code, _EXCEPTION_POINTERS* ep) -> void {
 		std::string exp = "";
 		switch (code) {
@@ -140,7 +141,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}
 		throw std::exception(std::format("SEH Exception code:0x{:X}  {}", code, exp).c_str());
 		});
-	try {
+#endif
+#ifndef _DEBUG
+	try
+#endif
+	{
 		hr_init = CoInitialize(NULL);
 		suika::window::init();
 		init();
@@ -151,12 +156,12 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			suika::log.error("d3d error");
 			return 0;
 		}
-		suika::add_vs("../suika/d3d/shader/shape.hlsl", "shape");
-		suika::add_vs("../suika/d3d/shader/texture.hlsl", "texture");
-		suika::add_ps("../suika/d3d/shader/shape.hlsl", "shape");
-		suika::add_ps("../suika/d3d/shader/texture.hlsl", "texture");
-		suika::set_vs("shape");
-		suika::set_ps("shape");
+		suika::add_vs("../suika/d3d/shader/shape.hlsl",   suika::SHAPE_VERTEX);
+		suika::add_vs("../suika/d3d/shader/texture.hlsl", suika::TEXTURE_VERTEX);
+		suika::add_ps("../suika/d3d/shader/shape.hlsl",   suika::SHAPE_PIXEL);
+		suika::add_ps("../suika/d3d/shader/texture.hlsl", suika::TEXTURE_PIXEL);
+		suika::set_vs(suika::SHAPE_VERTEX);
+		suika::set_ps(suika::SHAPE_PIXEL);
 
 		suika::d3d::blend::init();
 		suika::d3d::vertex::init();
@@ -194,6 +199,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}
 		return res;
 	}
+#ifndef _DEBUG
 	catch (suika::exception e) {
 		suika::log.exception(e.what());
 		if (SUCCEEDED(hr_init)) {
@@ -215,4 +221,5 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}
 		return 0;
 	}
+#endif
 }

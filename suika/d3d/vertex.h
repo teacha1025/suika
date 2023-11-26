@@ -19,6 +19,7 @@
 // -----------------------------------------------------------
 
 #pragma once
+#include <array>
 #include <vector>
 #include <any>
 #include <d3d11.h>
@@ -36,12 +37,14 @@
 namespace suika {
 	namespace d3d {
 		namespace vertex {
+			define INSTANCE_PARAM = 3;
 			extern Microsoft::WRL::ComPtr<ID3D11Buffer> g_vertexBuffer;
 			extern Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceMatrix;
 			extern std::vector<matrix4x4<float>> instance_matrix;
+			extern std::vector<matrix2x2<float>> instance_uv;
 			extern UINT offset;
-			extern UINT offset_ins[2];
-			extern uint stride_ins[2];
+			extern UINT offset_ins[INSTANCE_PARAM];
+			extern uint stride_ins[INSTANCE_PARAM];
 			extern std::any now_vertex;
 
 			enum class ins_type {
@@ -84,7 +87,7 @@ namespace suika {
 
 			matrix4x4<float> calc_matrix(const suika::vector3<float>& origine, const suika::vector3<float>& translate, const suika::vector3<float>& rotate, const suika::vector3<float>& extend);
 
-			void add_index(const suika::float3& origine, const suika::float3& translate, const suika::float3& rotate, const suika::float3& extend, const suika::float4& color, const suika::float2 uv);
+			void add_index(const suika::float3& origine, const suika::float3& translate, const suika::float3& rotate, const suika::float3& extend, const suika::float4& color, std::array<suika::float2, 2> uv);
 			template<class T>
 			void set_vertex_instance(const std::vector<T>& vertices) {
 				if (now_vertex.has_value() && now_vertex.type() == typeid(std::vector<T>)) {

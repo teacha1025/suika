@@ -39,15 +39,11 @@ static const std::vector<suika::uint16> index =
 
 namespace suika {
 	std::vector<suika::vertex::vertex_2d> texture::create_vertex() {
-		const auto left = _turn.x ? _uv_rb.x : _uv_lt.x;
-		const auto right = _turn.x ? _uv_lt.x : _uv_rb.x;
-		const auto top = _turn.y ? _uv_rb.y : _uv_lt.y;
-		const auto bottom = _turn.y ? _uv_lt.y : _uv_rb.y;
 		return {
-				vertex::create_2d({0.f,0.f},{0,0,0,0.5f},{left,top}),
-				vertex::create_2d({this->_size.x,0.f},{0,0,0,0.5f},{right,top}),
-				vertex::create_2d({0.f,this->_size.y},{0,0,0,0.5f},{left,bottom}),
-				vertex::create_2d({this->_size.x,this->_size.y},{0,0,0,0.5f},{right, bottom}),
+				vertex::create_2d({0.f,0.f},{0,0,0,1.0f},{0.0f,0.0f}),
+				vertex::create_2d({this->_size.x,0.f},{0,0,0,1.0f},{1.0f,0.0f}),
+				vertex::create_2d({0.f,this->_size.y},{0,0,0,1.0f},{0.0f,1.0f}),
+				vertex::create_2d({this->_size.x,this->_size.y},{0,0,0,1.0f},{1.0f, 1.0f}),
 		};
 	}
 
@@ -64,31 +60,11 @@ namespace suika {
 	texture texture::uv(const point<float>& lt, const point<float>& rb)&& {
 		_uv_lt = lt;
 		_uv_rb = rb;
-		_uv_lb = { lt.x,rb.y };
-		_uv_rt = { rb.x,lt.y };
 		return static_cast<texture&&>(std::move(*this));
 	}
 
 	texture& texture::uv(const point<float>& lt, const point<float>& rb)& {
 		_uv_lt = lt;
-		_uv_rb = rb;
-		_uv_lb = { lt.x,rb.y };
-		_uv_rt = { rb.x,lt.y };
-		return static_cast<texture&>(*this);
-	}
-
-	texture texture::uv(const point<float>& lt, const point<float>& rt, const point<float>& lb, const point<float>& rb)&& {
-		_uv_lt = lt;
-		_uv_rt = rt;
-		_uv_lb = lb;
-		_uv_rb = rb;
-		return static_cast<texture&&>(std::move(*this));
-	}
-
-	texture& texture::uv(const point<float>& lt, const point<float>& rt, const point<float>& lb, const point<float>& rb)& {
-		_uv_lt = lt;
-		_uv_rt = rt;
-		_uv_lb = lb;
 		_uv_rb = rb;
 		return static_cast<texture&>(*this);
 	}
@@ -109,6 +85,10 @@ namespace suika {
 		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		suika::d3d::texture::set(_tex);
 		d3d::vertex::set_vertex_instance(create_vertex());
-		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { 0,0,0,0 }, { 0,0 });
+		const auto left = _turn.x ? _uv_rb.x : _uv_lt.x;
+		const auto right = _turn.x ? _uv_lt.x : _uv_rb.x;
+		const auto top = _turn.y ? _uv_rb.y : _uv_lt.y;
+		const auto bottom = _turn.y ? _uv_lt.y : _uv_rb.y;
+		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { 0,0,0,0 }, { float2{left,top},float2{right, bottom} });
 	}
 }

@@ -34,7 +34,7 @@ namespace suika {
 		const double dt = PI_2 / this->_resolution;
 		static std::vector<suika::vertex::vertex_2d> ret;
 		ret.clear();
-		ret.reserve((uint64)(this->_resolution) * 3);
+		ret.reserve((uint64)(this->_resolution) * 3 + 1);
 		ret.emplace_back(vertex::create_2d({ 0,0 }, this->_color, { 0.5f, 0.5f }));
 		for (uint16 i = 0; i < this->_resolution; i++) {
 			const double theta1 = dt * i;
@@ -58,7 +58,7 @@ namespace suika {
 		d3d::blend::blends[_blend].set();
 		d3d::vertex::set_vertex_instance(create_vertex());
 		d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { _color.r, _color.g, _color.b, _color.a }, { 0,0 });
+		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { _color.r, _color.g, _color.b, _color.a }, { float2{0,0},float2{1,1} });
 
 	}
 }

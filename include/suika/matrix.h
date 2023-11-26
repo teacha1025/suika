@@ -32,6 +32,59 @@ namespace suika {
 	struct matrix;
 
 	template<concepts::numbers T>
+	struct matrix2x2 {
+	private:
+		T vec[2][2];
+
+	public:
+		matrix2x2() {
+			vec[0][0] = vec[0][1] = vec[1][0] = vec[1][1] = static_cast<T>(0);
+		}
+
+		matrix2x2(const std::vector<T>& ary) {
+			if (ary.size() != 4) {
+				throw;
+			}
+			vec[0][0] = ary[0];
+			vec[0][1] = ary[1];
+			vec[1][0] = ary[2];
+			vec[1][1] = ary[3];
+		}
+
+		matrix2x2(float v[2][2]) {
+			std::memcpy(vec, v, sizeof(float) * 4);
+		}
+
+		const T& at(uint n, uint m) const {
+			return vec[n][m];
+		}
+
+		T& at(uint n, uint m) {
+			return vec[n][m];
+		}
+
+		template<concepts::numbers t>
+		operator matrix<t>() const {
+			matrix<t> ret(2, 2);
+			ret.at(0, 0) = vec[0][0];
+			ret.at(0, 1) = vec[0][1];
+			ret.at(1, 0) = vec[1][0];
+			ret.at(1, 1) = vec[1][1];
+			return ret;
+		}
+
+		template<concepts::numbers t>
+		operator matrix2x2<t>() const {
+			matrix2x2<t> ret;
+			ret.vec[0][0] = vec[0][0];
+			ret.vec[0][1] = vec[0][1];
+			ret.vec[1][0] = vec[1][0];
+			ret.vec[1][1] = vec[1][1];
+			return ret;
+		}
+	};
+
+	template<concepts::numbers T>
 	struct matrix4x4 {
 	private:
 		T vec[4][4];
@@ -80,7 +133,7 @@ namespace suika {
 			matrix4x4<t> ret;
 			for (uint y = 0; y < 4; y++) {
 				for (uint x = 0; x < 4; x++) {
-					ret.at(y, x) = vec[y][x];
+					ret.vec[y][x] = vec[y][x];
 				}
 			}
 			return ret;

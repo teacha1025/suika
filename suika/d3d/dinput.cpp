@@ -256,7 +256,7 @@ namespace suika {
 					log_d3d.result(er);
 					return;
 				}
-				load_gamepad(hWnd);
+				//load_gamepad(hWnd);
 			}
 
 			bool init(HWND hWnd) {

@@ -108,6 +108,7 @@
     <ClCompile Include="d3d\RTV.cpp" />
     <ClCompile Include="d3d\swapchain.cpp" />
     <ClCompile Include="d3d\d3d_texture.cpp" />
+    <ClCompile Include="d3d\target_texture.cpp" />
     <ClCompile Include="d3d\viewport.cpp" />
     <ClCompile Include="d3d\vs.cpp" />
     <ClCompile Include="d3d\xinput.cpp" />
@@ -190,6 +191,7 @@
     <ClInclude Include="d3d\ps.hpp" />
     <ClInclude Include="d3d\RTV.hpp" />
     <ClInclude Include="d3d\swapchain.hpp" />
+    <ClInclude Include="d3d\target_texture.h" />
     <ClInclude Include="d3d\texture.hpp" />
     <ClInclude Include="d3d\vertex.h" />
     <ClInclude Include="d3d\viewport.hpp" />

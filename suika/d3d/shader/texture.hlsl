@@ -16,7 +16,6 @@ namespace suika
 		float4 position : SV_POSITION;
 		float4 color : COLOR0;
 		float2 uv : TEXCOORD0;
-		//float2 dummy : TEXCOORD1;
 	};
 }
 
@@ -27,6 +26,7 @@ cbuffer ConstantBuffer : register(b0)
 
 Texture2D    g_texture : register(t0);
 SamplerState g_sampler : register(s0);
+
 suika::PSInput vs_main( suika::VSInput input )
 {
 	suika::PSInput output;

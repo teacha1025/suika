@@ -35,6 +35,8 @@ namespace suika {
 		using canvas_id = uint;
 		extern std::unordered_map<canvas_id, Microsoft::WRL::ComPtr<IDXGISwapChain>> pSwapChain;
 		extern std::unordered_map<canvas_id, Microsoft::WRL::ComPtr<ID3D11RenderTargetView>> pRTView;
+		extern std::unordered_map<canvas_id, Microsoft::WRL::ComPtr<ID3D11Texture2D>> pTargetTexture;
+		extern std::unordered_map<canvas_id, Microsoft::WRL::ComPtr<ID3D11SamplerState>> pSamplerState;
 		extern std::unordered_map<canvas_id, D3D11_VIEWPORT> ViewPort;
 		extern std::unordered_map<canvas_id, window::id> WindowID;
 		extern logger log_d3d;

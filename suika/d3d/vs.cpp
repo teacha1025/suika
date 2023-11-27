@@ -38,7 +38,7 @@ using namespace Microsoft::WRL;
 namespace suika {
 	namespace d3d {
 		std::unordered_map<std::string, vertex_shader> vertex_shader_list;
-		static std::pair<DXGI_FORMAT, uint> GetDxgiFormat(D3D_REGISTER_COMPONENT_TYPE type, BYTE mask) {
+		static std::pair<DXGI_FORMAT, ULONGLONG> GetDxgiFormat(D3D_REGISTER_COMPONENT_TYPE type, BYTE mask) {
 			if (mask & 0x08)
 			{
 				switch (type)
@@ -142,7 +142,7 @@ namespace suika {
 			pReflector->GetDesc(&shaderdesc);
 
 			std::vector<D3D11_INPUT_ELEMENT_DESC> vbElement;
-			uint offset[3] = { 0 };
+			UINT offset[3] = { 0 };
 			for (UINT i = 0U; i < shaderdesc.InputParameters; ++i) {
 				D3D11_SIGNATURE_PARAMETER_DESC sigdesc;
 				pReflector->GetInputParameterDesc(i, &sigdesc);
@@ -162,7 +162,7 @@ namespace suika {
 						, .InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA
 						, .InstanceDataStepRate = 1
 					};
-					offset[1] += size;
+					offset[1] += (UINT)size;
 				}
 				else if (std::string(sigdesc.SemanticName).starts_with("INS1")) {
 					eledesc = {
@@ -174,7 +174,7 @@ namespace suika {
 						, .InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA
 						, .InstanceDataStepRate = 1
 					};
-					offset[2] += size;
+					offset[2] += (UINT)size;
 				}
 				else {
 
@@ -187,7 +187,7 @@ namespace suika {
 						, .InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA
 						, .InstanceDataStepRate = 0
 					};
-					offset[0] += size;
+					offset[0] += (UINT)size;
 				}
 				vbElement.push_back(eledesc);
 			}

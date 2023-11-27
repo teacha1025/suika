@@ -26,6 +26,7 @@ namespace {
 	template<std::floating_point T, std::integral I>
 	constexpr inline T ipow(T x, I n) {
 		return n == I { 1 } ? x :
+			   n == I { 0 } ? T { 1 } :
 			   n > T { 1 }  ? ((n & 1) ? x * ipow(x, n - 1) : ipow(x, n / 2) * ipow(x, n / 2)) :
 							  T { 1 } / ipow(x, -n);
 	}

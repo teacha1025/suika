@@ -33,7 +33,7 @@ namespace suika {
 		index = { 0,1 };
 		return {
 			vertex::create_2d(this->_A, this->_color, { 0,0 }),
-			vertex::create_2d(this->_B, this->_color, { 0,0 })
+			vertex::create_2d(this->_B, this->_color, { 1,1 })
 		};
 	}
 
@@ -65,7 +65,7 @@ namespace suika {
 		
 		d3d::vertex::set_vertex_instance(create_vertex());
 		d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_LINELIST);
-		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { _color.r, _color.g, _color.b, _color.a }, { 0,0 });
+		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { _color.r, _color.g, _color.b, _color.a }, { float2{ 0,0 },float2{1,1} });
 
 	}
 
@@ -86,6 +86,6 @@ namespace suika {
 			d3d::vertex::set_vertex_instance(create_vertex_bold(b));
 		}
 		d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { _color.r, _color.g, _color.b, _color.a }, { 0,0 });
+		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { _color.r, _color.g, _color.b, _color.a }, { float2{ 0,0 },float2{1,1} });
 	}
 }

@@ -104,6 +104,9 @@
     <ClCompile Include="codecvt.cpp">
       <Filter>suika\string</Filter>
     </ClCompile>
+    <ClCompile Include="d3d\target_texture.cpp">
+      <Filter>d3d\canvas\texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -228,6 +231,9 @@
     </Filter>
     <Filter Include="suika\easing">
       <UniqueIdentifier>{955a55a2-31ab-4d42-b15b-4bf2b6cdabe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d\canvas\texture">
+      <UniqueIdentifier>{05fdbf4e-0267-4611-8c05-72402684726d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -419,6 +425,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\easing.h">
       <Filter>suika\easing</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\target_texture.h">
+      <Filter>d3d\canvas\texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

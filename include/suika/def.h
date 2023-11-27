@@ -31,7 +31,7 @@
 #define NODISCARD [[nodiscard]]
 
 namespace suika {
-#pragma region
+#pragma region version
 #define MAJOR_VERSION 0
 #define MINOR_VERSION 0
 #define PATCH_VERSION 3
@@ -73,7 +73,6 @@ namespace suika {
 #undef VERSION_STRING
 
 #pragma endregion
-
 #pragma region constant
 	/// <summary>
 	/// 円周率π

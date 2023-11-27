@@ -23,10 +23,10 @@
 #include "def.h"
 #include "string.h"
 namespace suika {
-	const string SHAPE_VERTEX = "shape";
-	const string SHAPE_PIXEL  = "shape";
-	const string TEXTURE_VERTEX = "texture";
-	const string TEXTURE_PIXEL  = "texture";
+	const string SHAPE_VERTEX = "suika_shader_internal_shape";
+	const string SHAPE_PIXEL  = "suika_shader_internal_shape";
+	const string TEXTURE_VERTEX = "suika_shader_internal_texture";
+	const string TEXTURE_PIXEL  = "suika_shader_internal_texture";
 
 	/// <summary>
 	/// HLSLファイルからバーテックスシェーダーを作成

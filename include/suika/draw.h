@@ -75,7 +75,7 @@ namespace suika {
 				_center({ 0, 0, 0 }),
 				_rotation({ 0, 0, 0 }),
 				_extend({ 1.0, 1.0, 1.0 }),
-				_blend(blend::none){}
+				_blend(blend::alpha){}
 
 			//İ’èŒn
 

@@ -25,6 +25,7 @@
 #include "draw.h"
 #include "vertex.h"
 #include "point.h"
+#include "rect.h"
 
 namespace suika {
 	/// <summary>
@@ -40,6 +41,7 @@ namespace suika {
 		double dt = 0;
 		uint _index = 0;
 		string _path;
+		bool _is_loop = true, _is_finished = false;
 
 		point<float> _uv_lt = { 0,0 }, _uv_rb = { 1,1 };
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
@@ -68,16 +70,48 @@ namespace suika {
 		/// <param name="turn">各方向の反転</param>
 		virtual animation& turned(const point<bool>& turn)&;
 
-		virtual animation patterned(const std::vector<uint>& pattern, const std::vector<double>& interval)&&;
+		/// <summary>
+		/// アニメーションのパターンを設定する
+		/// </summary>
+		/// <param name="pattern">パターンの示した配列</param>
+		/// <param name="interval">切り替えの間隔を示した配列</param>
+		/// <param name="loop">アニメーションを繰り返すか</param>
+		virtual animation patterned(const std::vector<uint>& pattern, const std::vector<double>& interval, bool loop = true)&&;
 
-		virtual animation& patterned(const std::vector<uint>& pattern, const std::vector<double>& interval)&;
+		/// <summary>
+		/// アニメーションのパターンを設定する
+		/// </summary>
+		/// <param name="pattern">パターンの示した配列</param>
+		/// <param name="interval">切り替えの間隔を示した配列</param>
+		/// <param name="loop">アニメーションを繰り返すか</param>
+		virtual animation& patterned(const std::vector<uint>& pattern, const std::vector<double>& interval, bool loop = true)&;
 
-		virtual animation patterned(const std::vector<uint>& pattern, double interval = 1)&&;
+		/// <summary>
+		/// アニメーションのパターンを設定する
+		/// </summary>
+		/// <param name="pattern">パターンの示した配列</param>
+		/// <param name="interval">切り替えの間隔</param>
+		/// <param name="loop">アニメーションを繰り返すか</param>
+		virtual animation patterned(const std::vector<uint>& pattern, double interval = 1, bool loop = true)&&;
 
-		virtual animation& patterned(const std::vector<uint>& pattern, double interval = 1)&;
+		/// <summary>
+		/// アニメーションのパターンを設定する
+		/// </summary>
+		/// <param name="pattern">パターンの示した配列</param>
+		/// <param name="interval">切り替えの間隔</param>
+		/// <param name="loop">アニメーションを繰り返すか</param>
+		virtual animation& patterned(const std::vector<uint>& pattern, double interval = 1, bool loop = true)&;
 
+		/// <summary>
+		/// アニメーションを更新する
+		/// </summary>
+		/// <param name="t">変化時間</param>
 		virtual animation updated(double t)&&;
 
+		/// <summary>
+		/// アニメーションを更新する
+		/// </summary>
+		/// <param name="t">変化時間</param>
 		virtual animation& updated(double t)&;
 
 		/// <summary>
@@ -91,6 +125,11 @@ namespace suika {
 		/// </summary>
 		/// <returns>テクスチャの大きさ</returns>
 		point<float> size() const;
+
+
+		bool finished() const;
+
+		rect rect() const;
 
 		/// <summary>
 		/// テクスチャを描画する

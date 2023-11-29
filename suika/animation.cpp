@@ -32,6 +32,7 @@
 #include "../include/suika/shader.h"
 #include "../include/suika/animation.h"
 #include "../include/suika/vertex.h"
+#include "../include/suika/rect.h"
 #include "../include/suika/palette.h"
 
 static const std::vector<suika::uint16> index =
@@ -50,7 +51,13 @@ namespace suika {
 		_div = div;
 		_draw_size = _size / _div;
 		_shaders = { TEXTURE_VERTEX, TEXTURE_PIXEL };
-
+		_pattern = { 0 };
+		auto& idx = _pattern[0];
+		point<uint> i = { idx % _div.x, idx / _div.x };
+		_uv_lt = { (float)i.x / _div.x, (float)i.y / _div.y };
+		_uv_rb = { (float)(i.x + 1) / _div.x, (float)(i.y + 1) / _div.y };
+		_uv_lt = _region_lt + (_region_rb - _region_lt) * _uv_lt;
+		_uv_rb = _region_lt + (_region_rb - _region_lt) * _uv_rb;
 	}
 	animation::animation(string path, const point<uint>& div, const point<float>& region_lt, const point<float>& region_rb) :_path(path) {
 		if (!textures.contains(path)) {
@@ -59,6 +66,13 @@ namespace suika {
 		_size = textures[path].size;
 		_draw_size = _size;
 		_shaders = { TEXTURE_VERTEX, TEXTURE_PIXEL };
+		_pattern = { 0 };
+		auto& idx = _pattern[0];
+		point<uint> i = { idx % _div.x, idx / _div.x };
+		_uv_lt = { (float)i.x / _div.x, (float)i.y / _div.y };
+		_uv_rb = { (float)(i.x + 1) / _div.x, (float)(i.y + 1) / _div.y };
+		_uv_lt = _region_lt + (_region_rb - _region_lt) * _uv_lt;
+		_uv_rb = _region_lt + (_region_rb - _region_lt) * _uv_rb;
 	}
 
 	std::vector<suika::vertex::vertex_2d> animation::create_vertex() {
@@ -80,35 +94,58 @@ namespace suika {
 		return static_cast<animation&&>(std::move(*this));
 	}
 
-	animation& animation::patterned(const std::vector<uint>& pattern, const std::vector<double>& interval)& {
-		if (((ulonglong)_div.x + _div.y) != _pattern.size()) {
-			throw suika::exception("animation pattern size is invalid.");
+	animation& animation::patterned(const std::vector<uint>& pattern, const std::vector<double>& interval, bool loop)& {
+		if (_pattern != pattern) {
+			_pattern = pattern;
+			auto& idx = _pattern[0];
+			point<uint> i = { idx % _div.x, idx / _div.x };
+			_uv_lt = { (float)i.x / _div.x, (float)i.y / _div.y };
+			_uv_rb = { (float)(i.x + 1) / _div.x, (float)(i.y + 1) / _div.y };
+			_uv_lt = _region_lt + (_region_rb - _region_lt) * _uv_lt;
+			_uv_rb = _region_lt + (_region_rb - _region_lt) * _uv_rb;
 		}
-		_pattern = pattern;
 		_interval = interval;
+		_index %= _pattern.size();
+		_is_finished = false;
+		_is_loop = loop;
 		return static_cast<animation&>(*this);
 	}
 
-	animation animation::patterned(const std::vector<uint>& pattern, const std::vector<double>& interval)&& {
-		if (((ulonglong)_div.x + _div.y) != _pattern.size()) {
-			throw suika::exception("animation pattern size is invalid.");
+	animation animation::patterned(const std::vector<uint>& pattern, const std::vector<double>& interval, bool loop)&& {
+		if (_pattern != pattern) {
+			_pattern = pattern;
+			auto& idx = _pattern[0];
+			point<uint> i = { idx % _div.x, idx / _div.x };
+			_uv_lt = { (float)i.x / _div.x, (float)i.y / _div.y };
+			_uv_rb = { (float)(i.x + 1) / _div.x, (float)(i.y + 1) / _div.y };
+			_uv_lt = _region_lt + (_region_rb - _region_lt) * _uv_lt;
+			_uv_rb = _region_lt + (_region_rb - _region_lt) * _uv_rb;
 		}
 		_pattern = pattern;
 		_interval = interval;
+		_index %= _pattern.size();
+		_is_finished = false;
+		_is_loop = loop;
 		return static_cast<animation&&>(std::move(*this));
 	}
 
-	animation& animation::patterned(const std::vector<uint>& pattern, double interval)& {
+	animation& animation::patterned(const std::vector<uint>& pattern, double interval, bool loop)& {
 		_pattern = pattern;
 		_interval.resize(_pattern.size());
 		std::fill(_interval.begin(), _interval.end(), interval);
+		_index %= _pattern.size();
+		_is_finished = false;
+		_is_loop = loop;
 		return static_cast<animation&>(*this);
 	}
 
-	animation animation::patterned(const std::vector<uint>& pattern, double interval)&& {
+	animation animation::patterned(const std::vector<uint>& pattern, double interval, bool loop)&& {
 		_pattern = pattern;
 		_interval.resize(_pattern.size());
 		std::fill(_interval.begin(), _interval.end(), interval);
+		_index %= _pattern.size();
+		_is_finished = false;
+		_is_loop = loop;
 		return static_cast<animation&&>(std::move(*this));
 	}
 
@@ -130,14 +167,26 @@ namespace suika {
 		return _draw_size;
 	}
 
+	bool animation::finished() const {
+		return _is_finished;
+	}
+
+	rect animation::rect() const
+	{
+		return suika::rect(_draw_size).at(_transition).rotated(_rotation).centered(_center).extended(_extend);
+	}
+
 	void animation::draw() {
-		if (dt >= _interval[_pattern[_index]]) {
+		if (!_is_finished && dt >= _interval[_index]) {
 			dt = 0;
+			if (!_is_loop && _index + 1 == _pattern.size()) {
+				_is_finished = true;
+			}
 			_index++;
 			_index %= _pattern.size();
 			auto & idx = _pattern[_index];
 
-			point<uint> i = {idx % _div.x, idx / _div.y};
+			point<uint> i = {idx % _div.x, idx / _div.x};
 			_uv_lt = { (float)i.x / _div.x, (float)i.y / _div.y };
 			_uv_rb = { (float)(i.x + 1) / _div.x, (float)(i.y + 1) / _div.y };
 			_uv_lt = _region_lt + (_region_rb - _region_lt) * _uv_lt;

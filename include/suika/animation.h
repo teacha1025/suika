@@ -126,9 +126,16 @@ namespace suika {
 		/// <returns>テクスチャの大きさ</returns>
 		point<float> size() const;
 
-
+		/// <summary>
+		/// アニメーションの再生が終了したか取得
+		/// </summary>
+		/// <returns>アニメーションの再生が終了したか</returns>
 		bool finished() const;
 
+		/// <summary>
+		/// テクスチャの領域を示す矩形を取得する
+		/// </summary>
+		/// <returns>テクスチャの領域を示す矩形</returns>
 		rect rect() const;
 
 		/// <summary>

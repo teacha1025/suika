@@ -46,6 +46,8 @@ namespace suika {
 		point<float> _uv_lt = { 0,0 }, _uv_rb = { 1,1 };
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
 	public:
+		animation() = default;
+
 		/// <summary>
 		/// テクスチャを作成
 		/// </summary>
@@ -106,13 +108,19 @@ namespace suika {
 		/// アニメーションを更新する
 		/// </summary>
 		/// <param name="t">変化時間</param>
-		virtual animation updated(double t)&&;
+		virtual void updated(double t);
 
 		/// <summary>
-		/// アニメーションを更新する
+		/// アニメーションのインデックスを設定する
 		/// </summary>
-		/// <param name="t">変化時間</param>
-		virtual animation& updated(double t)&;
+		/// <param name="t">インデックス</param>
+		virtual void indexed(uint index);
+
+		/// <summary>
+		/// 再生中のアニメーションのインデックスを取得
+		/// </summary>
+		/// <returns>インデックス</returns>
+		virtual uint index() const;
 
 		/// <summary>
 		/// テクスチャ反転を取得

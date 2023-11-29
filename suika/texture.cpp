@@ -51,9 +51,9 @@ namespace suika {
 	std::vector<suika::vertex::vertex_2d> texture::create_vertex() {
 		return {
 				vertex::create_2d({0.f,0.f},{0,0,0,1.0f},{0.0f,0.0f}),
-				vertex::create_2d({this->_draw_size.x,0.f},{0,0,0,1.0f},{1.0f,0.0f}),
-				vertex::create_2d({0.f,this->_draw_size.y},{0,0,0,1.0f},{0.0f,1.0f}),
-				vertex::create_2d({this->_draw_size.x,this->_draw_size.y},{0,0,0,1.0f},{1.0f, 1.0f}),
+				vertex::create_2d({1.f,0.f},{0,0,0,1.0f},{1.0f,0.0f}),
+				vertex::create_2d({0.f,1.0},{0,0,0,1.0f},{0.0f,1.0f}),
+				vertex::create_2d({1.f,1.f},{0,0,0,1.0f},{1.0f, 1.0f}),
 		};
 	}
 
@@ -107,6 +107,6 @@ namespace suika {
 		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		
 		d3d::vertex::set_vertex_instance(create_vertex());
-		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { 0,0,0,0 }, { float2{left,top},float2{right, bottom} });
+		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, double3{ this->_extend.x * this->_draw_size.x, this->_extend.y * this->_draw_size.y, this->_extend.z }, { 0,0,0,0 }, { float2{left,top},float2{right, bottom} });
 	}
 }

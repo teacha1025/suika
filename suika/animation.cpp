@@ -78,9 +78,9 @@ namespace suika {
 	std::vector<suika::vertex::vertex_2d> animation::create_vertex() {
 		return {
 			vertex::create_2d({0.f,0.f},{0,0,0,1.0f},{0.0f,0.0f}),
-			vertex::create_2d({this->_draw_size.x,0.f},{0,0,0,1.0f},{1.0f,0.0f}),
-			vertex::create_2d({0.f,this->_draw_size.y},{0,0,0,1.0f},{0.0f,1.0f}),
-			vertex::create_2d({this->_draw_size.x,this->_draw_size.y},{0,0,0,1.0f},{1.0f, 1.0f}),
+			vertex::create_2d({1.f,0.f},{0,0,0,1.0f},{1.0f,0.0f}),
+			vertex::create_2d({0.f,1.f},{0,0,0,1.0f},{0.0f,1.0f}),
+			vertex::create_2d({1.f,1.f},{0,0,0,1.0f},{1.0f,1.0f}),
 		};
 	}
 
@@ -96,6 +96,8 @@ namespace suika {
 
 	animation& animation::patterned(const std::vector<uint>& pattern, const std::vector<double>& interval, bool loop)& {
 		if (_pattern != pattern) {
+			dt = 0;
+			_index = 0;
 			_pattern = pattern;
 			auto& idx = _pattern[0];
 			point<uint> i = { idx % _div.x, idx / _div.x };
@@ -104,7 +106,7 @@ namespace suika {
 			_uv_lt = _region_lt + (_region_rb - _region_lt) * _uv_lt;
 			_uv_rb = _region_lt + (_region_rb - _region_lt) * _uv_rb;
 		}
-		_interval = interval;
+
 		_index %= _pattern.size();
 		_is_finished = false;
 		_is_loop = loop;
@@ -113,7 +115,9 @@ namespace suika {
 
 	animation animation::patterned(const std::vector<uint>& pattern, const std::vector<double>& interval, bool loop)&& {
 		if (_pattern != pattern) {
+			dt = 0;
 			_pattern = pattern;
+			_index = 0;
 			auto& idx = _pattern[0];
 			point<uint> i = { idx % _div.x, idx / _div.x };
 			_uv_lt = { (float)i.x / _div.x, (float)i.y / _div.y };
@@ -121,7 +125,7 @@ namespace suika {
 			_uv_lt = _region_lt + (_region_rb - _region_lt) * _uv_lt;
 			_uv_rb = _region_lt + (_region_rb - _region_lt) * _uv_rb;
 		}
-		_pattern = pattern;
+
 		_interval = interval;
 		_index %= _pattern.size();
 		_is_finished = false;
@@ -130,33 +134,68 @@ namespace suika {
 	}
 
 	animation& animation::patterned(const std::vector<uint>& pattern, double interval, bool loop)& {
-		_pattern = pattern;
+		if (_pattern != pattern) {
+			dt = 0;
+			_pattern = pattern;
+			_index = 0;
+			auto& idx = _pattern[0];
+			point<uint> i = { idx % _div.x, idx / _div.x };
+			_uv_lt = { (float)i.x / _div.x, (float)i.y / _div.y };
+			_uv_rb = { (float)(i.x + 1) / _div.x, (float)(i.y + 1) / _div.y };
+			_uv_lt = _region_lt + (_region_rb - _region_lt) * _uv_lt;
+			_uv_rb = _region_lt + (_region_rb - _region_lt) * _uv_rb;
+		}
+
 		_interval.resize(_pattern.size());
 		std::fill(_interval.begin(), _interval.end(), interval);
 		_index %= _pattern.size();
 		_is_finished = false;
 		_is_loop = loop;
+
 		return static_cast<animation&>(*this);
 	}
 
 	animation animation::patterned(const std::vector<uint>& pattern, double interval, bool loop)&& {
-		_pattern = pattern;
+		if (_pattern != pattern) {
+			dt = 0;
+			_pattern = pattern;
+			_index = 0;
+			auto& idx = _pattern[0];
+			point<uint> i = { idx % _div.x, idx / _div.x };
+			_uv_lt = { (float)i.x / _div.x, (float)i.y / _div.y };
+			_uv_rb = { (float)(i.x + 1) / _div.x, (float)(i.y + 1) / _div.y };
+			_uv_lt = _region_lt + (_region_rb - _region_lt) * _uv_lt;
+			_uv_rb = _region_lt + (_region_rb - _region_lt) * _uv_rb;
+		}
+
 		_interval.resize(_pattern.size());
 		std::fill(_interval.begin(), _interval.end(), interval);
 		_index %= _pattern.size();
 		_is_finished = false;
 		_is_loop = loop;
+
 		return static_cast<animation&&>(std::move(*this));
 	}
 
-	animation& animation::updated(double t)& {
+	void animation::updated(double t) {
 		dt += t;
-		return static_cast<animation&>(*this);
-	}
+		if (!_is_finished && dt >= _interval[_index]) {
+			dt = 0;
+			if (!_is_loop && _index + 1 == _pattern.size()) {
+				_is_finished = true;
+			}
+			else {
+				_index++;
+				_index %= _pattern.size();
+				auto& idx = _pattern[_index];
 
-	animation animation::updated(double t)&& {
-		dt += t;
-		return static_cast<animation&&>(std::move(*this));
+				point<uint> i = { idx % _div.x, idx / _div.x };
+				_uv_lt = { (float)i.x / _div.x, (float)i.y / _div.y };
+				_uv_rb = { (float)(i.x + 1) / _div.x, (float)(i.y + 1) / _div.y };
+				_uv_lt = _region_lt + (_region_rb - _region_lt) * _uv_lt;
+				_uv_rb = _region_lt + (_region_rb - _region_lt) * _uv_rb;
+			}
+		}
 	}
 
 	point<bool> animation::turn() const {
@@ -176,23 +215,21 @@ namespace suika {
 		return suika::rect(_draw_size).at(_transition).rotated(_rotation).centered(_center).extended(_extend);
 	}
 
+	void animation::indexed(uint i) {
+		_index = i;
+		auto& idx = _pattern[_index];
+		point<uint> j = { idx % _div.x, idx / _div.x };
+		_uv_lt = { (float)j.x / _div.x, (float)j.y / _div.y };
+		_uv_rb = { (float)(j.x + 1) / _div.x, (float)(j.y + 1) / _div.y };
+		_uv_lt = _region_lt + (_region_rb - _region_lt) * _uv_lt;
+		_uv_rb = _region_lt + (_region_rb - _region_lt) * _uv_rb;
+	}
+
+	uint animation::index() const {
+		return _index;
+	}
+
 	void animation::draw() {
-		if (!_is_finished && dt >= _interval[_index]) {
-			dt = 0;
-			if (!_is_loop && _index + 1 == _pattern.size()) {
-				_is_finished = true;
-			}
-			_index++;
-			_index %= _pattern.size();
-			auto & idx = _pattern[_index];
-
-			point<uint> i = {idx % _div.x, idx / _div.x};
-			_uv_lt = { (float)i.x / _div.x, (float)i.y / _div.y };
-			_uv_rb = { (float)(i.x + 1) / _div.x, (float)(i.y + 1) / _div.y };
-			_uv_lt = _region_lt + (_region_rb - _region_lt) * _uv_lt;
-			_uv_rb = _region_lt + (_region_rb - _region_lt) * _uv_rb;
-		}
-
 		const auto left = _turn.x ? _uv_rb.x : _uv_lt.x;
 		const auto right = _turn.x ? _uv_lt.x : _uv_rb.x;
 		const auto top = _turn.y ? _uv_rb.y : _uv_lt.y;
@@ -203,9 +240,9 @@ namespace suika {
 		set_vs(this->_shaders.vs);
 		set_ps(this->_shaders.ps);
 		suika::d3d::blend::blends[_blend].set();
-		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		suika::d3d::vertex::set_index(::index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 		d3d::vertex::set_vertex_instance(create_vertex());
-		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { 0,0,0,0 }, { float2{left,top},float2{right, bottom} });
+		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, double3{ this->_extend.x* this->_draw_size.x, this->_extend.y* this->_draw_size.y, this->_extend.z }, { 0,0,0,0 }, { float2{left,top},float2{right, bottom} });
 	}
 }

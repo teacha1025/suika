@@ -39,6 +39,7 @@
 #include "../include/suika/string_function.h"
 
 #include "../include/suika/texture.h"
+#include "../include/suika/animation.h"
 
 #include "../include/suika/font.h"
 #include "../include/suika/rect.h"

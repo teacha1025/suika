@@ -1,6 +1,6 @@
 // -----------------------------------------------------------
 // 
-// texture
+// animation
 // 
 // Copyright 2023 teacha1025
 // 
@@ -28,12 +28,17 @@
 
 namespace suika {
 	/// <summary>
-	/// テクスチャ描画に関するクラス
+	/// アニメーションを再生するクラス
 	/// </summary>
-	class texture : public detail::ishape<texture> {
+	class animation : public detail::ishape<animation> {
 	protected:
 		point<bool> _turn;
-		point<float> _size = { 64,64 }, _draw_size = { 64,64 };
+		point<float> _size = { 64,64 }, _draw_size = { 64,64 }, _region_lt = { 0,0 }, _region_rb = { 1,1 };
+		point<uint> _div = { 1,1 };
+		std::vector<uint> _pattern;
+		std::vector<double> _interval;
+		double dt = 0;
+		uint _index = 0;
 		string _path;
 
 		point<float> _uv_lt = { 0,0 }, _uv_rb = { 1,1 };
@@ -43,33 +48,37 @@ namespace suika {
 		/// テクスチャを作成
 		/// </summary>
 		/// <param name="_path">テクスチャのパス</param>
-		texture(string path);
+		animation(string path, const point<uint>& div);
+
+		/// <summary>
+		/// テクスチャを作成
+		/// </summary>
+		/// <param name="_path">テクスチャのパス</param>
+		animation(string path, const point<uint>& div, const point<float>& region_lt, const point<float>& region_rb);
 
 		/// <summary>
 		/// テクスチャを反転させる
 		/// </summary>
 		/// <param name="turn">各方向の反転</param>
-		virtual texture turned(const point<bool>& turn)&&;
+		virtual animation turned(const point<bool>& turn)&&;
 
 		/// <summary>
 		/// テクスチャを反転させる
 		/// </summary>
 		/// <param name="turn">各方向の反転</param>
-		virtual texture& turned(const point<bool>& turn)&;
+		virtual animation& turned(const point<bool>& turn)&;
 
-		/// <summary>
-		/// テクスチャのUV座標を設定する
-		/// </summary>
-		/// <param name="lt">左上</param>
-		/// <param name="rb">右下</param>
-		virtual texture uv(const point<float>& lt, const point<float>& rb)&&;
+		virtual animation patterned(const std::vector<uint>& pattern, const std::vector<double>& interval)&&;
 
-		/// <summary>
-		/// テクスチャのUV座標を設定する
-		/// </summary>
-		/// <param name="lt">左上</param>
-		/// <param name="rb">右下</param>
-		virtual texture& uv(const point<float>& lt, const point<float>& rb)&;
+		virtual animation& patterned(const std::vector<uint>& pattern, const std::vector<double>& interval)&;
+
+		virtual animation patterned(const std::vector<uint>& pattern, double interval = 1)&&;
+
+		virtual animation& patterned(const std::vector<uint>& pattern, double interval = 1)&;
+
+		virtual animation updated(double t)&&;
+
+		virtual animation& updated(double t)&;
 
 		/// <summary>
 		/// テクスチャ反転を取得

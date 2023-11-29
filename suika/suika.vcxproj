@@ -93,6 +93,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animation.cpp" />
     <ClCompile Include="canvas.cpp" />
     <ClCompile Include="constant_buffer.cpp" />
     <ClCompile Include="circle.cpp" />
@@ -132,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\suika.h" />
+    <ClInclude Include="..\include\suika\animation.h" />
     <ClInclude Include="..\include\suika\base.h" />
     <ClInclude Include="..\include\suika\blend.h" />
     <ClInclude Include="..\include\suika\canvas.h" />

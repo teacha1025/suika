@@ -201,8 +201,8 @@ namespace suika {
 					flush();
 				}
 				uv[1] -= uv[0];
-				auto ext = extend * float3(uv[1].x,uv[1].y,1.0f);
-				instance_matrix.emplace_back(calc_matrix(origine, translate, rotate, ext));
+				
+				instance_matrix.emplace_back(calc_matrix(origine, translate, rotate, extend));
 				
 				float uv_mat[2][2] = {{uv[1].x,uv[0].x} ,{uv[0].y,uv[1].y}};
 				instance_uv.emplace_back(uv_mat);

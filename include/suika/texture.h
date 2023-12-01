@@ -25,7 +25,6 @@
 #include "draw.h"
 #include "vertex.h"
 #include "point.h"
-#include "../../suika/d3d/texture.hpp"
 
 namespace suika {
 	/// <summary>
@@ -34,9 +33,8 @@ namespace suika {
 	class texture : public detail::ishape<texture> {
 	protected:
 		point<bool> _turn;
-		point<float> _size = { 64,64 };
-		string path;
-		d3d::texture::texture _tex;
+		point<float> _size = { 64,64 }, _draw_size = { 64,64 };
+		string _path;
 
 		point<float> _uv_lt = { 0,0 }, _uv_rb = { 1,1 };
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
@@ -44,12 +42,8 @@ namespace suika {
 		/// <summary>
 		/// テクスチャを作成
 		/// </summary>
-		/// <param name="path">テクスチャのパス</param>
-		texture(string path) :path(path) {
-			_tex = d3d::texture::texture(path);
-			_size = _tex.size;
-			_shaders = { TEXTURE_VERTEX, TEXTURE_PIXEL };
-		}
+		/// <param name="_path">テクスチャのパス</param>
+		texture(string path);
 
 		/// <summary>
 		/// テクスチャを反転させる

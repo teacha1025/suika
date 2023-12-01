@@ -45,7 +45,8 @@ var NAVTREE =
       [ "クラスメンバ", "functions.html", [
         [ "全て", "functions.html", "functions_dup" ],
         [ "関数", "functions_func.html", "functions_func" ],
-        [ "変数", "functions_vars.html", null ]
+        [ "変数", "functions_vars.html", null ],
+        [ "関連関数", "functions_rela.html", null ]
       ] ]
     ] ]
   ] ]
@@ -54,11 +55,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classsuika_1_1font.html#a92cc9ed63ffae5525d33d326c8f532b1",
-"classsuika_1_1vector4.html#ae0c271080ef9ea730761b78fee68403b",
-"namespacesuika.html#aa9fd94427e9cc72fd3c49ac7edaf2eb5",
-"namespacesuika_1_1palette.html#a50495daa0da2edb77789ef0ca6e1970a",
-"structsuika_1_1hsv.html#a61f2f0700dbb071fd7acd4e0ddfe9b23"
+"classsuika_1_1detail_1_1ishape.html#afba0517df90f33890dd8443504bc514a",
+"classsuika_1_1rect.html#ac6fb8e279b102eaf6a95c9f841f64089",
+"classsuika_1_1string.html#ac200ea1224fa00b3d5957442947ac0a9",
+"namespacemembers_vars_h.html",
+"namespacesuika_1_1keyboard.html#aba67354dd999b16b1279d3d2ff0604d3",
+"namespacesuika_1_1suffix.html#a585b2945a0ae69c2a790c1d81791d89b"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';

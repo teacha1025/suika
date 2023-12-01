@@ -38,12 +38,22 @@ static const std::vector<suika::uint16> index =
 };
 
 namespace suika {
+	std::unordered_map<string, d3d::texture::texture> textures;
+	texture::texture(string path) :_path(path) {
+		if (!textures.contains(path)) {
+			textures[path] = d3d::texture::texture(path);
+		}
+		_size = textures[path].size;
+		_draw_size = _size;
+		_shaders = { TEXTURE_VERTEX, TEXTURE_PIXEL };
+	}
+	
 	std::vector<suika::vertex::vertex_2d> texture::create_vertex() {
 		return {
 				vertex::create_2d({0.f,0.f},{0,0,0,1.0f},{0.0f,0.0f}),
-				vertex::create_2d({this->_size.x,0.f},{0,0,0,1.0f},{1.0f,0.0f}),
-				vertex::create_2d({0.f,this->_size.y},{0,0,0,1.0f},{0.0f,1.0f}),
-				vertex::create_2d({this->_size.x,this->_size.y},{0,0,0,1.0f},{1.0f, 1.0f}),
+				vertex::create_2d({1.f,0.f},{0,0,0,1.0f},{1.0f,0.0f}),
+				vertex::create_2d({0.f,1.0},{0,0,0,1.0f},{0.0f,1.0f}),
+				vertex::create_2d({1.f,1.f},{0,0,0,1.0f},{1.0f, 1.0f}),
 		};
 	}
 
@@ -60,12 +70,18 @@ namespace suika {
 	texture texture::uv(const point<float>& lt, const point<float>& rb)&& {
 		_uv_lt = lt;
 		_uv_rb = rb;
+		const auto uv_region = rb - lt;
+		const float2 ext = float2(_extend.x, _extend.y) * float2(uv_region.x, uv_region.y);
+		_draw_size = _size * ext;
 		return static_cast<texture&&>(std::move(*this));
 	}
 
 	texture& texture::uv(const point<float>& lt, const point<float>& rb)& {
 		_uv_lt = lt;
 		_uv_rb = rb;
+		const auto uv_region = rb - lt;
+		const float2 ext = float2(_extend.x,_extend.y) * float2(uv_region.x, uv_region.y);
+		_draw_size = _size * ext;
 		return static_cast<texture&>(*this);
 	}
 
@@ -74,21 +90,23 @@ namespace suika {
 	}
 
 	point<float> texture::size() const {
-		return _size;
+		return _draw_size;
 	}
 
 	void texture::draw() {
-		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::texture);
-		set_vs(this->_shaders.vs);
-		set_ps(this->_shaders.ps);
-		suika::d3d::blend::blends[_blend].set();
-		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		suika::d3d::texture::set(_tex);
-		d3d::vertex::set_vertex_instance(create_vertex());
 		const auto left = _turn.x ? _uv_rb.x : _uv_lt.x;
 		const auto right = _turn.x ? _uv_lt.x : _uv_rb.x;
 		const auto top = _turn.y ? _uv_rb.y : _uv_lt.y;
 		const auto bottom = _turn.y ? _uv_lt.y : _uv_rb.y;
-		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { 0,0,0,0 }, { float2{left,top},float2{right, bottom} });
+
+		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::texture);
+		suika::d3d::texture::set(textures[_path]);
+		set_vs(this->_shaders.vs);
+		set_ps(this->_shaders.ps);
+		suika::d3d::blend::blends[_blend].set();
+		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		
+		d3d::vertex::set_vertex_instance(create_vertex());
+		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, double3{ this->_extend.x * this->_draw_size.x, this->_extend.y * this->_draw_size.y, this->_extend.z }, { 0,0,0,0 }, { float2{left,top},float2{right, bottom} });
 	}
 }

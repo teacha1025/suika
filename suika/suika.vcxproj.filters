@@ -107,6 +107,12 @@
     <ClCompile Include="d3d\target_texture.cpp">
       <Filter>d3d\canvas\texture</Filter>
     </ClCompile>
+    <ClCompile Include="animation.cpp">
+      <Filter>suika\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="animator.cpp">
+      <Filter>suika\animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -234,6 +240,9 @@
     </Filter>
     <Filter Include="d3d\canvas\texture">
       <UniqueIdentifier>{05fdbf4e-0267-4611-8c05-72402684726d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\animation">
+      <UniqueIdentifier>{332fbce4-47b4-4b5f-954c-9e3e73930c34}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -428,6 +437,12 @@
     </ClInclude>
     <ClInclude Include="d3d\target_texture.h">
       <Filter>d3d\canvas\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\animation.h">
+      <Filter>suika\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\animator.h">
+      <Filter>suika\animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

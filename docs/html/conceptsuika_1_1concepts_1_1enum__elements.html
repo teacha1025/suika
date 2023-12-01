@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.3</span>
+   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.4</span>
    </div>
   </td>
  </tr>
@@ -98,11 +98,8 @@ $(document).ready(function(){initNavTree('conceptsuika_1_1concepts_1_1enum__elem
 <a href="conceptsuika_1_1concepts_1_1enum__elements.html#details">[詳解]</a></p>
 <h2 class="groupheader">Concept definition</h2>
 <div class="fragment"><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptsuika_1_1concepts_1_1enum__elements.html">suika::concepts::enum_elements</a> = </div>
-<div class="line">            <span class="keyword">requires</span>(T elem) {</div>
-<div class="line">                magic_enum::enum_name(elem);</div>
-<div class="line">            }</div>
-<div class="ttc" id="aconceptsuika_1_1concepts_1_1enum__elements_html"><div class="ttname"><a href="conceptsuika_1_1concepts_1_1enum__elements.html">suika::concepts::enum_elements</a></div><div class="ttdoc">列挙型</div><div class="ttdef"><b>Definition:</b> concepts.h:39</div></div>
+<div class="line"><span class="keyword">concept </span><a class="code hl_concept" href="conceptsuika_1_1concepts_1_1enum__elements.html">suika::concepts::enum_elements</a> =  std::is_enum_v&lt;T&gt;</div>
+<div class="ttc" id="aconceptsuika_1_1concepts_1_1enum__elements_html"><div class="ttname"><a href="conceptsuika_1_1concepts_1_1enum__elements.html">suika::concepts::enum_elements</a></div><div class="ttdoc">列挙型</div><div class="ttdef"><b>Definition:</b> concepts.h:61</div></div>
 </div><!-- fragment --><a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>列挙型 </p>
 </div></div><!-- contents -->

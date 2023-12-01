@@ -34,9 +34,9 @@ namespace suika {
 	std::vector<suika::vertex::vertex_2d> rect::create_vertex() {
 		return {
 			vertex::create_2d({0.f,0.f},this->_color,{0,0}),
-			vertex::create_2d({this->_size.x,0.f},this->_color,{1,0}),
-			vertex::create_2d({0.f,this->_size.y},this->_color,{0,1}),
-			vertex::create_2d({this->_size.x,this->_size.y},this->_color,{1,1}),
+			vertex::create_2d({1.f,0.f},this->_color,{1,0}),
+			vertex::create_2d({0.f,1.f},this->_color,{0,1}),
+			vertex::create_2d({1.f,1.f},this->_color,{1,1}),
 		};
 	}
 	void rect::draw() {
@@ -47,7 +47,7 @@ namespace suika {
 		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		
 		d3d::vertex::set_vertex_instance(create_vertex());
-		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { _color.r, _color.g, _color.b, _color.a }, { float2{ 0,0 },float2{1,1} });
+		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, double3{ this->_extend.x * this->_size.x,this->_extend.y * this->_size.y,this->_extend.z }, { _color.r, _color.g, _color.b, _color.a }, { float2{ 0,0 },float2{1,1} });
 	}
 #endif
 }

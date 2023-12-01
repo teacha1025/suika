@@ -110,6 +110,9 @@
     <ClCompile Include="animation.cpp">
       <Filter>suika\animation</Filter>
     </ClCompile>
+    <ClCompile Include="animator.cpp">
+      <Filter>suika\animation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -436,6 +439,9 @@
       <Filter>d3d\canvas\texture</Filter>
     </ClInclude>
     <ClInclude Include="..\include\suika\animation.h">
+      <Filter>suika\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\animator.h">
       <Filter>suika\animation</Filter>
     </ClInclude>
   </ItemGroup>

@@ -25,6 +25,9 @@
 #include "palette.h"
 
 namespace suika {
+	/// <summary>
+	/// ‰~Œ`ƒNƒ‰ƒX
+	/// </summary>
 	class circle : public detail::ishape<circle> {
 	protected:
 		float _radius = 64;

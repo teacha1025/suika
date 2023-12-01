@@ -40,6 +40,7 @@
 
 #include "../include/suika/texture.h"
 #include "../include/suika/animation.h"
+#include "../include/suika/animator.h"
 
 #include "../include/suika/font.h"
 #include "../include/suika/rect.h"

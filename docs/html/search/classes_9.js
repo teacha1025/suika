@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['range_0',['range',['../structsuika_1_1range.html',1,'suika']]],
-  ['range_3c_200_2e0_2c_201_2e0_20_3e_1',['range&lt; 0.0, 1.0 &gt;',['../structsuika_1_1range.html',1,'suika']]]
+  ['matrix_0',['matrix',['../structsuika_1_1matrix.html',1,'suika']]],
+  ['mouse_1',['mouse',['../classsuika_1_1detail_1_1mouse.html',1,'suika::detail']]]
 ];

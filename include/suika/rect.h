@@ -25,6 +25,9 @@
 #include "shader.h"
 
 namespace suika {
+	/// <summary>
+	/// ‹éŒ`ƒNƒ‰ƒX
+	/// </summary>
 	class rect : public detail::ishape<rect> {
 	protected:
 		point<float> _size = { 64,64 };

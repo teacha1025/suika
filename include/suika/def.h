@@ -43,7 +43,7 @@ namespace suika {
 	/// <summary>
 	/// ライブラリのバージョン
 	/// </summary>
-	define VERSION = MAJOR_VERSION * 100 + MINOR_VERSION * 10 + PATCH_VERSION;
+	define VERSION = MAJOR_VERSION * 0x100 + MINOR_VERSION * 0x10 + PATCH_VERSION;
 	/// <summary>
 	/// ライブラリのバージョン(文字列)
 	/// </summary>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hsv_0',['hsv',['../structsuika_1_1hsv.html',1,'suika']]]
+  ['font_0',['font',['../classsuika_1_1font.html',1,'suika']]]
 ];

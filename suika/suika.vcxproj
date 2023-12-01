@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|Win32">
-      <Configuration>Debug</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|Win32">
-      <Configuration>Release</Configuration>
-      <Platform>Win32</Platform>
-    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
@@ -26,19 +18,6 @@
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
@@ -57,12 +36,6 @@
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
@@ -70,12 +43,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>../bin/</OutDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>../bin/</OutDir>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>../bin/</OutDir>
     <TargetName>suika_d</TargetName>
@@ -84,45 +51,6 @@
     <OutDir>../bin/</OutDir>
     <TargetName>suika</TargetName>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-    <Lib>
-      <SubSystem>Windows</SubSystem>
-    </Lib>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <WholeProgramOptimization>false</WholeProgramOptimization>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
-    <Lib>
-      <SubSystem>Windows</SubSystem>
-    </Lib>
-  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -131,6 +59,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,6 +80,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -163,13 +93,15 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="animation.cpp" />
+    <ClCompile Include="animator.cpp" />
     <ClCompile Include="canvas.cpp" />
-    <ClCompile Include="cbuffer.cpp" />
+    <ClCompile Include="constant_buffer.cpp" />
     <ClCompile Include="circle.cpp" />
     <ClCompile Include="codecvt.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="d3d\blend.cpp" />
-    <ClCompile Include="d3d\c_buffer.cpp" />
+    <ClCompile Include="d3d\cbuffer.cpp" />
     <ClCompile Include="d3d\d3d_vertex.cpp" />
     <ClCompile Include="d3d\device.cpp" />
     <ClCompile Include="d3d\dinput.cpp" />
@@ -178,6 +110,7 @@
     <ClCompile Include="d3d\RTV.cpp" />
     <ClCompile Include="d3d\swapchain.cpp" />
     <ClCompile Include="d3d\d3d_texture.cpp" />
+    <ClCompile Include="d3d\target_texture.cpp" />
     <ClCompile Include="d3d\viewport.cpp" />
     <ClCompile Include="d3d\vs.cpp" />
     <ClCompile Include="d3d\xinput.cpp" />
@@ -193,6 +126,7 @@
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="string_function.cpp" />
+    <ClCompile Include="string_view.cpp" />
     <ClCompile Include="system.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="vertex.cpp" />
@@ -200,6 +134,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\suika.h" />
+    <ClInclude Include="..\include\suika\animation.h" />
+    <ClInclude Include="..\include\suika\animator.h" />
     <ClInclude Include="..\include\suika\base.h" />
     <ClInclude Include="..\include\suika\blend.h" />
     <ClInclude Include="..\include\suika\canvas.h" />
@@ -224,6 +160,7 @@
     <ClInclude Include="..\include\suika\detail\math\trunc.ipp" />
     <ClInclude Include="..\include\suika\detail\string.ipp" />
     <ClInclude Include="..\include\suika\draw.h" />
+    <ClInclude Include="..\include\suika\easing.h" />
     <ClInclude Include="..\include\suika\except.h" />
     <ClInclude Include="..\include\suika\font.h" />
     <ClInclude Include="..\include\suika\gamepad.h" />
@@ -242,6 +179,7 @@
     <ClInclude Include="..\include\suika\shader.h" />
     <ClInclude Include="..\include\suika\string.h" />
     <ClInclude Include="..\include\suika\string_function.h" />
+    <ClInclude Include="..\include\suika\string_view.h" />
     <ClInclude Include="..\include\suika\system.h" />
     <ClInclude Include="..\include\suika\texture.h" />
     <ClInclude Include="..\include\suika\type.h" />
@@ -257,11 +195,15 @@
     <ClInclude Include="d3d\ps.hpp" />
     <ClInclude Include="d3d\RTV.hpp" />
     <ClInclude Include="d3d\swapchain.hpp" />
+    <ClInclude Include="d3d\target_texture.h" />
     <ClInclude Include="d3d\texture.hpp" />
     <ClInclude Include="d3d\vertex.h" />
     <ClInclude Include="d3d\viewport.hpp" />
     <ClInclude Include="d3d\vs.hpp" />
     <ClInclude Include="d3d\xinput.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

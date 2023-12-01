@@ -12,81 +12,147 @@ constexpr float eps_f = 1e-7f;
 #define EQ_F(A,B) std::abs((((A)) - ((B)))) < eps_f, suika::to_wstring(std::format("A:{}={}, B:{}={}, diff:{}", #A, A, #B, B, math::abs((((A)) - ((B)))))).c_str()
 #define EQ_D(A,B) std::abs((((A)) - ((B)))) < eps_d, suika::to_wstring(std::format("A:{}={}, B:{}={}, diff:{}", #A, A, #B, B, math::abs((((A)) - ((B)))))).c_str()
 
+#define EQ_STD_STR(A,B) A == B, suika::to_wstring(std::format("{}:{}, {}:{}", #A, suika::to_string(A), #B, suika::to_string(B))).c_str()
+#define EQ_STR(A,B) A == B, suika::to_wstring(std::format("{}:{}, {}:{}", #A, suika::to_string(A), #B, B)).c_str()
+
 namespace string_test
 {
+#define CONVERT_TEXT "‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚UŽµ”ª‹ã"
+	define STR_TEXT = CONVERT_TEXT;
+	define WSTR_TEXT = L"" CONVERT_TEXT;
+	define U8_TEXT = u8"" CONVERT_TEXT;
+	define U16_TEXT = u"" CONVERT_TEXT;
+	define U32_TEXT = U"" CONVERT_TEXT;
+#undef CONVERT_TEXT
+
+#define G1 "abc"
+#define G2 "defg"
+#define G3 "hijkl"
+#define DATA_A(x) x"" G1, x"" G2, x"" G3, x""
+#define DATA_B(x) x"" G1, x"" G2, x"" G3
+#define SPLIT_TEXT G1 "," G2 "," G3 ","
+	define U8_SPLIT_TEXT = u8"" SPLIT_TEXT;
+	define U16_SPLIT_TEXT = u"" SPLIT_TEXT;
+	define U32_SPLIT_TEXT = U"" SPLIT_TEXT;
+	define STR_SPLIT_TEXT = SPLIT_TEXT;
+	define WSTR_SPLIT_TEXT = L"" SPLIT_TEXT;
+#undef SPLIT_TEXT
+	void sv_test(string_view sv, string_view wsv, string_view sv8, string_view sv16, string_view sv32) {
+		Assert::IsTrue(EQ_STD_STR(sv.to_string(), STR_TEXT));
+		Assert::IsTrue(EQ_STD_STR(wsv.to_wstring(), WSTR_TEXT));
+		Assert::IsTrue(EQ_STD_STR(sv8.to_utf8(), U8_TEXT));
+		Assert::IsTrue(EQ_STD_STR(sv16.to_utf16(), U16_TEXT));
+		Assert::IsTrue(EQ_STD_STR(sv32.to_utf32(), U32_TEXT));
+	}
+
 	TEST_CLASS(Split) {
 	public:
 		TEST_METHOD(SplitUTF8) {
 			using string = std::u8string;
-			string              src = u8"abc,defg,hijkl,";
-			std::vector<string> splited_a = suika::split(src, u8',', true);
-			std::vector<string> splited_b = suika::split(src, u8',', false);
+			suika::string           src_a = U8_SPLIT_TEXT, src_b = U8_SPLIT_TEXT;
+			std::vector<string> spl_src_a = src_a.split(u8',', true);
+			std::vector<string> spl_src_b = src_b.split(u8',', false);
+			std::vector<string> splited_a = suika::split(U8_SPLIT_TEXT, u8',', true);
+			std::vector<string> splited_b = suika::split(U8_SPLIT_TEXT, u8',', false);
 
-			std::vector<string> data_a = { u8"abc", u8"defg", u8"hijkl", u8"" };
-			std::vector<string> data_b = { u8"abc", u8"defg", u8"hijkl" };
+			std::vector<string> data_a = { DATA_A(u8)};
+			std::vector<string> data_b = { DATA_B(u8)};
 
 			Assert::IsTrue(data_a == splited_a);
 			Assert::IsTrue(data_b == splited_b);
 			Assert::IsTrue(data_a != splited_b);
 			Assert::IsTrue(data_b != splited_a);
+			Assert::IsTrue(data_a == spl_src_a);
+			Assert::IsTrue(data_b == splited_b);
+			Assert::IsTrue(data_a != splited_b);
+			Assert::IsTrue(data_b != spl_src_a);
 		}
 		TEST_METHOD(SplitUTF16) {
 			using string = std::u16string;
-			string              src = u"abc,defg,hijkl,";
-			std::vector<string> splited_a = suika::split(src, u',', true);
-			std::vector<string> splited_b = suika::split(src, u',', false);
+			suika::string           src_a = U16_SPLIT_TEXT, src_b = U16_SPLIT_TEXT;
+			std::vector<string> spl_src_a = src_a.split(u',', true);
+			std::vector<string> spl_src_b = src_b.split(u',', false);
+			std::vector<string> splited_a = suika::split(U16_SPLIT_TEXT, u',', true);
+			std::vector<string> splited_b = suika::split(U16_SPLIT_TEXT, u',', false);
 
-			std::vector<string> data_a = { u"abc", u"defg", u"hijkl", u"" };
-			std::vector<string> data_b = { u"abc", u"defg", u"hijkl" };
+			std::vector<string> data_a = { DATA_A(u) };
+			std::vector<string> data_b = { DATA_B(u) };
 
 			Assert::IsTrue(data_a == splited_a);
 			Assert::IsTrue(data_b == splited_b);
 			Assert::IsTrue(data_a != splited_b);
 			Assert::IsTrue(data_b != splited_a);
+			Assert::IsTrue(data_a == spl_src_a);
+			Assert::IsTrue(data_b == splited_b);
+			Assert::IsTrue(data_a != splited_b);
+			Assert::IsTrue(data_b != spl_src_a);
 		}
 		TEST_METHOD(SplitUFT32) {
 			using string = std::u32string;
-			string              src = U"abc,defg,hijkl,";
-			std::vector<string> splited_a = suika::split(src, U',', true);
-			std::vector<string> splited_b = suika::split(src, U',', false);
+			suika::string           src_a = U32_SPLIT_TEXT, src_b = U32_SPLIT_TEXT;
+			std::vector<string> spl_src_a = src_a.split(U',', true);
+			std::vector<string> spl_src_b = src_b.split(U',', false);
+			std::vector<string> splited_a = suika::split(U32_SPLIT_TEXT, U',', true);
+			std::vector<string> splited_b = suika::split(U32_SPLIT_TEXT, U',', false);
 
-			std::vector<string> data_a = { U"abc", U"defg", U"hijkl", U"" };
-			std::vector<string> data_b = { U"abc", U"defg", U"hijkl" };
+			std::vector<string> data_a = { DATA_A(U) };
+			std::vector<string> data_b = { DATA_B(U) };
 
 			Assert::IsTrue(data_a == splited_a);
 			Assert::IsTrue(data_b == splited_b);
 			Assert::IsTrue(data_a != splited_b);
 			Assert::IsTrue(data_b != splited_a);
+			Assert::IsTrue(data_a == spl_src_a);
+			Assert::IsTrue(data_b == splited_b);
+			Assert::IsTrue(data_a != splited_b);
+			Assert::IsTrue(data_b != spl_src_a);
 		}
 		TEST_METHOD(SplitString) {
 			using string = std::string;
-			string              src = "abc,defg,hijkl,";
-			std::vector<string> splited_a = suika::split(src, ',', true);
-			std::vector<string> splited_b = suika::split(src, ',', false);
+			suika::string           src_a = STR_SPLIT_TEXT, src_b = STR_SPLIT_TEXT;
+			std::vector<string> spl_src_a = src_a.split(',', true);
+			std::vector<string> spl_src_b = src_b.split(',', false);
+			std::vector<string> splited_a = suika::split(STR_SPLIT_TEXT, ',', true);
+			std::vector<string> splited_b = suika::split(STR_SPLIT_TEXT, ',', false);
 
-			std::vector<string> data_a = { "abc", "defg", "hijkl", "" };
-			std::vector<string> data_b = { "abc", "defg", "hijkl" };
+			std::vector<string> data_a = { DATA_A() };
+			std::vector<string> data_b = { DATA_B() };
 
 			Assert::IsTrue(data_a == splited_a);
 			Assert::IsTrue(data_b == splited_b);
 			Assert::IsTrue(data_a != splited_b);
 			Assert::IsTrue(data_b != splited_a);
+			Assert::IsTrue(data_a == spl_src_a);
+			Assert::IsTrue(data_b == splited_b);
+			Assert::IsTrue(data_a != splited_b);
+			Assert::IsTrue(data_b != spl_src_a);
 		}
 		TEST_METHOD(SplitWString) {
 			using string = std::wstring;
-			string              src = L"abc,defg,hijkl,";
-			std::vector<string> splited_a = suika::split(src, L',', true);
-			std::vector<string> splited_b = suika::split(src, L',', false);
+			suika::string           src_a = WSTR_SPLIT_TEXT, src_b = WSTR_SPLIT_TEXT;
+			std::vector<string> spl_src_a = src_a.split(L',', true);
+			std::vector<string> spl_src_b = src_b.split(L',', false);
+			std::vector<string> splited_a = suika::split(WSTR_SPLIT_TEXT, L',', true);
+			std::vector<string> splited_b = suika::split(WSTR_SPLIT_TEXT, L',', false);
 
-			std::vector<string> data_a = { L"abc", L"defg", L"hijkl", L"" };
-			std::vector<string> data_b = { L"abc", L"defg", L"hijkl" };
+			std::vector<string> data_a = { DATA_A(L) };
+			std::vector<string> data_b = { DATA_B(L) };
 
 			Assert::IsTrue(data_a == splited_a);
 			Assert::IsTrue(data_b == splited_b);
 			Assert::IsTrue(data_a != splited_b);
 			Assert::IsTrue(data_b != splited_a);
+			Assert::IsTrue(data_a == spl_src_a);
+			Assert::IsTrue(data_b == splited_b);
+			Assert::IsTrue(data_a != splited_b);
+			Assert::IsTrue(data_b != spl_src_a);
 		}
 	};
+#undef G1
+#undef G2
+#undef G3
+#undef DATA_A
+#undef DATA_B
 	TEST_CLASS(Replace) {
 	public:
 		TEST_METHOD(ReplaceUTF8) {
@@ -294,6 +360,16 @@ namespace string_test
 			Assert::AreEqual(w.c_str(), c32.c_str());
 			Assert::AreEqual(w, cs);
 			Assert::AreEqual(w.c_str(), cs.c_str());
+		}
+	};
+	TEST_CLASS(StringView) {
+		TEST_METHOD(ToUTF32) {
+			sv_test(string(STR_TEXT), string(WSTR_TEXT), string(U8_TEXT), string(U16_TEXT), (U32_TEXT));
+
+			//Assert::AreEqual(u8.c_str(), c16.c_str());
+			//Assert::AreEqual(u8.c_str(), c32.c_str());
+			//Assert::AreEqual(u8.c_str(), cst.c_str());
+			//Assert::AreEqual(u8.c_str(), cws.c_str());
 		}
 	};
 }

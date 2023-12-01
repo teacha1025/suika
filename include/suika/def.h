@@ -1,47 +1,78 @@
-﻿/**
-* @file def.h
-* @brief 定数などの定義
-*/
-#if _MSC_VER > 1000
-#pragma once
-#endif
-#ifndef _SK_DEF
-#define _SK_DEF
+﻿// -----------------------------------------------------------
+// 
+// constant value definition
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
+#pragma once 
+
 #include <string>
 #include <numbers>
 #include <cstdint>
+
 #include "type.h"
+
 #define define constexpr auto
 #define DXENGINE suika
+#define NODISCARD [[nodiscard]]
 
 namespace suika {
-#pragma region
+#pragma region version
+#define MAJOR_VERSION 0
+#define MINOR_VERSION 0
+#define PATCH_VERSION 4
+#define VERSION_SIGN ""
+
+#define VER_HELPER(suf,M,m,p,s) suf""#M"."#m"."#p s
+#define VERSION_STRING(suf,M,m,p,s) VER_HELPER(suf,M,m,p,s)
+
 	/// <summary>
 	/// ライブラリのバージョン
 	/// </summary>
-	define VERSION = 0x003;
+	define VERSION = MAJOR_VERSION * 0x100 + MINOR_VERSION * 0x10 + PATCH_VERSION;
 	/// <summary>
 	/// ライブラリのバージョン(文字列)
 	/// </summary>
-	define VERSION_S = "0.0.3";
+	define VERSION_S = VERSION_STRING(,MAJOR_VERSION, MINOR_VERSION, PATCH_VERSION, VERSION_SIGN);
 	/// <summary>
 	/// ライブラリのバージョン(ワイド文字列)
 	/// </summary>
-	define VERSION_WS = L"0.0.3";
+	define VERSION_WS = VERSION_STRING(L,MAJOR_VERSION, MINOR_VERSION, PATCH_VERSION, VERSION_SIGN);
 	/// <summary>
 	/// ライブラリのバージョン(UTF8文字列)
 	/// </summary>
-	define VERSION_UTF8 = u8"0.0.3";
+	define VERSION_UTF8 = VERSION_STRING(u8, MAJOR_VERSION, MINOR_VERSION, PATCH_VERSION, VERSION_SIGN);
 	/// <summary>
 	/// ライブラリのバージョン(UTF16文字列)
 	/// </summary>
-	define VERSION_UTF16 = u"0.0.3";
+	define VERSION_UTF16 = VERSION_STRING(u, MAJOR_VERSION, MINOR_VERSION, PATCH_VERSION, VERSION_SIGN);
 	/// <summary>
 	/// ライブラリのバージョン(UTF32文字列)
 	/// </summary>
-	define VERSION_UTF32 = U"0.0.3";
-#pragma endregion
+	define VERSION_UTF32 = VERSION_STRING(U, MAJOR_VERSION, MINOR_VERSION, PATCH_VERSION, VERSION_SIGN);
 
+#undef MAJOR_VERSION
+#undef MINOR_VERSION
+#undef PATCH_VERSION
+#undef VERSION_SIGN
+#undef VER_HELPER
+#undef VERSION_STRING
+
+#pragma endregion
 #pragma region constant
 	/// <summary>
 	/// 円周率π
@@ -287,4 +318,3 @@ namespace suika {
 	} // namespace suffix
 #pragma endregion
 } // namespace suika
-#endif

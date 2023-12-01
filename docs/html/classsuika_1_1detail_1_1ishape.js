@@ -31,5 +31,10 @@ var classsuika_1_1detail_1_1ishape =
     [ "rotated", "classsuika_1_1detail_1_1ishape.html#ad5224f4c754e31836ac11924186b1b8b", null ],
     [ "rotated", "classsuika_1_1detail_1_1ishape.html#a9cbff36d1a8aed90a2ccd06746cfa0ba", null ],
     [ "vs", "classsuika_1_1detail_1_1ishape.html#a8e580395d5e86945da006f9d5778de07", null ],
-    [ "vs", "classsuika_1_1detail_1_1ishape.html#a7fda5613a2679488f070226e179ac9ef", null ]
+    [ "vs", "classsuika_1_1detail_1_1ishape.html#a7fda5613a2679488f070226e179ac9ef", null ],
+    [ "_blend", "classsuika_1_1detail_1_1ishape.html#a7de9faef3dee4e1aaa1499709274304e", null ],
+    [ "_center", "classsuika_1_1detail_1_1ishape.html#ae1d114215550e86340f9c14ee4fe1b25", null ],
+    [ "_extend", "classsuika_1_1detail_1_1ishape.html#ad5df618c1cab10015286e6fc2b654f8f", null ],
+    [ "_rotation", "classsuika_1_1detail_1_1ishape.html#a774c0c7c38b71d99bbd9969c442b78cd", null ],
+    [ "_transition", "classsuika_1_1detail_1_1ishape.html#afba0517df90f33890dd8443504bc514a", null ]
 ];

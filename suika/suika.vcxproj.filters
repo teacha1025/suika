@@ -8,9 +8,6 @@
     <ClCompile Include="logger.cpp">
       <Filter>suika\logger</Filter>
     </ClCompile>
-    <ClCompile Include="codecvt.cpp">
-      <Filter>suika\string</Filter>
-    </ClCompile>
     <ClCompile Include="color.cpp">
       <Filter>suika\color</Filter>
     </ClCompile>
@@ -35,13 +32,13 @@
     <ClCompile Include="d3d\ps.cpp">
       <Filter>d3d\shader\ps</Filter>
     </ClCompile>
-    <ClCompile Include="d3d\c_buffer.cpp">
+    <ClCompile Include="d3d\cbuffer.cpp">
       <Filter>d3d\shader\constant</Filter>
     </ClCompile>
     <ClCompile Include="shader.cpp">
       <Filter>suika\shader</Filter>
     </ClCompile>
-    <ClCompile Include="cbuffer.cpp">
+    <ClCompile Include="constant_buffer.cpp">
       <Filter>suika\shader</Filter>
     </ClCompile>
     <ClCompile Include="d3d\dwrite.cpp">
@@ -100,6 +97,21 @@
     </ClCompile>
     <ClCompile Include="scene.cpp">
       <Filter>suika\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="string_view.cpp">
+      <Filter>suika\string</Filter>
+    </ClCompile>
+    <ClCompile Include="codecvt.cpp">
+      <Filter>suika\string</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d\target_texture.cpp">
+      <Filter>d3d\canvas\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="animation.cpp">
+      <Filter>suika\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="animator.cpp">
+      <Filter>suika\animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +234,15 @@
     </Filter>
     <Filter Include="suika\scene">
       <UniqueIdentifier>{3145dd0f-f07c-46e3-9efc-297237f255fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\easing">
+      <UniqueIdentifier>{955a55a2-31ab-4d42-b15b-4bf2b6cdabe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d\canvas\texture">
+      <UniqueIdentifier>{05fdbf4e-0267-4611-8c05-72402684726d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\animation">
+      <UniqueIdentifier>{332fbce4-47b4-4b5f-954c-9e3e73930c34}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -408,5 +429,23 @@
     <ClInclude Include="..\include\suika\scene.h">
       <Filter>suika\scene</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\suika\string_view.h">
+      <Filter>suika\string</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\easing.h">
+      <Filter>suika\easing</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\target_texture.h">
+      <Filter>d3d\canvas\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\animation.h">
+      <Filter>suika\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\animator.h">
+      <Filter>suika\animation</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

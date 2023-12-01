@@ -1,8 +1,29 @@
+// -----------------------------------------------------------
+// 
+// d3d11 vertex.
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #include <d3d11.h>
 #include <DirectXMath.h>
 #include <windows.h>
 #include <wrl/client.h>
 #include <vector>
+
 #include "info.hpp"
 #include "vertex.h"
 #include "../../include/suika/matrix.h"
@@ -14,6 +35,7 @@ namespace suika {
 		namespace vertex {
 			std::vector<uint16> index;
 			std::vector<matrix4x4<float>> instance_matrix;
+			std::vector<matrix2x2<float>> instance_uv;
 
 			std::any now_vertex;
 			ins_type now_type= ins_type::none;
@@ -21,11 +43,12 @@ namespace suika {
 			D3D11_BUFFER_DESC bufferDesc;
 			D3D11_SUBRESOURCE_DATA initData;
 			UINT offset = 0;
-			UINT offset_ins[2] = { 0,0 };
-			uint stride_ins[2] = { 0,0 };
+			UINT offset_ins[INSTANCE_PARAM] = { 0,0,0 };
+			uint stride_ins[INSTANCE_PARAM] = { 0, sizeof(matrix4x4<float>), sizeof(matrix2x2<float>) };
 			Microsoft::WRL::ComPtr<ID3D11Buffer> g_indexBuffer;
 			Microsoft::WRL::ComPtr<ID3D11Buffer> g_vertexBuffer;
 			Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceMatrix;
+			Microsoft::WRL::ComPtr<ID3D11Buffer> g_instanceUV;
 
 			template<concepts::numbers T>
 			matrix<T> to_matrix(DirectX::XMMATRIX m) {
@@ -129,6 +152,13 @@ namespace suika {
 						d3d::log_d3d.result(er);
 						return;
 					}
+
+					er = suika::d3d::pDevice->CreateBuffer(&desc, nullptr, &g_instanceUV);
+					if (FAILED(er)) {
+						d3d::log_d3d.error("Failed to Create instanceUVBuffer");
+						d3d::log_d3d.result(er);
+						return;
+					}
 				}
 
 				log_d3d.info("Initialize Vertex");
@@ -166,11 +196,16 @@ namespace suika {
 				return (to_matrix4x4<float>(DirectX::XMMatrixTranspose(m)));
 			}
 
-			void add_index(const suika::float3& origine, const suika::float3& translate, const suika::float3& rotate, const suika::float3& extend, const suika::float4& color, const suika::float2 uv) {
+			void add_index(const suika::float3& origine, const suika::float3& translate, const suika::float3& rotate, const suika::float3& extend, const suika::float4& color, std::array<suika::float2, 2> uv) {
 				if (instance_matrix.size() > 2048) {
 					flush();
 				}
+				uv[1] -= uv[0];
+				
 				instance_matrix.emplace_back(calc_matrix(origine, translate, rotate, extend));
+				
+				float uv_mat[2][2] = {{uv[1].x,uv[0].x} ,{uv[0].y,uv[1].y}};
+				instance_uv.emplace_back(uv_mat);
 			}
 
 			void set_ins_mode(ins_type type) {
@@ -185,7 +220,7 @@ namespace suika {
 			void flush() {
 				if (instance_matrix.size() > 0) {
 					{
-						static const D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
+						constexpr D3D11_MAP map_type = D3D11_MAP_WRITE_DISCARD;
 						D3D11_MAPPED_SUBRESOURCE mapped = {};
 						auto er = suika::d3d::pContext->Map(g_instanceMatrix.Get(), 0, map_type, 0, &mapped);
 						if (FAILED(er)) {
@@ -197,12 +232,26 @@ namespace suika {
 							std::memcpy(p, instance_matrix.data(), sizeof(matrix4x4<float>) * instance_matrix.size());
 						}
 						suika::d3d::pContext->Unmap(g_instanceMatrix.Get(), 0);
+
+						mapped = {};
+						er = suika::d3d::pContext->Map(g_instanceUV.Get(), 0, map_type, 0, &mapped);
+						if (FAILED(er)) {
+							d3d::log_d3d.error("Failed to Update instanceUV");
+							d3d::log_d3d.result(er);
+							return;
+						}
+						if (void* const p = mapped.pData) {
+							std::memcpy(p, instance_uv.data(), sizeof(matrix2x2<float>) * instance_uv.size());
+						}
+						suika::d3d::pContext->Unmap(g_instanceUV.Get(), 0);
 					}
-					stride_ins[1] = sizeof(matrix4x4<float>);
-					ID3D11Buffer* buf[] = { g_vertexBuffer.Get(), g_instanceMatrix.Get()};
-					suika::d3d::pContext->IASetVertexBuffers(0, 2, buf, stride_ins, offset_ins);
+					//stride_ins[1] = sizeof(matrix4x4<float>);
+					//stride_ins[2] = sizeof(float2);
+					ID3D11Buffer* buf[] = { g_vertexBuffer.Get(), g_instanceMatrix.Get(), g_instanceUV.Get()};
+					suika::d3d::pContext->IASetVertexBuffers(0, 3, buf, stride_ins, offset_ins);
 					d3d::pContext->DrawIndexedInstanced(static_cast<UINT>(index.size()), static_cast<UINT>(instance_matrix.size()), 0, 0, 0);
 					instance_matrix.resize(0);
+					instance_uv.resize(0);
 				}
 			}
 		}

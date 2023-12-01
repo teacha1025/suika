@@ -1,3 +1,23 @@
+// -----------------------------------------------------------
+// 
+// d3d11 shader:vertex shader.
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #include <d3d11.h>
 #include <d3dcompiler.h>
 #include <dxgi.h>
@@ -18,65 +38,61 @@ using namespace Microsoft::WRL;
 namespace suika {
 	namespace d3d {
 		std::unordered_map<std::string, vertex_shader> vertex_shader_list;
-		DXGI_FORMAT GetDxgiFormat(D3D_REGISTER_COMPONENT_TYPE type, BYTE mask) {
-			if (mask & 0x0F)
+		static std::pair<DXGI_FORMAT, ULONGLONG> GetDxgiFormat(D3D_REGISTER_COMPONENT_TYPE type, BYTE mask) {
+			if (mask & 0x08)
 			{
-				// xyzw
 				switch (type)
 				{
 				case D3D10_REGISTER_COMPONENT_FLOAT32:
-					return DXGI_FORMAT_R32G32B32A32_FLOAT;
+					return { DXGI_FORMAT_R32G32B32A32_FLOAT,sizeof(FLOAT) * 4 };
 				
 				case D3D10_REGISTER_COMPONENT_UINT32: 
-					return DXGI_FORMAT_R32G32B32A32_UINT;
+					return { DXGI_FORMAT_R32G32B32A32_UINT,sizeof(UINT) * 4 };
 				case D3D10_REGISTER_COMPONENT_SINT32:
-					return DXGI_FORMAT_R32G32B32A32_SINT;
+					return { DXGI_FORMAT_R32G32B32A32_SINT,sizeof(INT) * 4 };
 				}
 			}
 
-			if (mask & 0x07)
+			if (mask & 0x04)
 			{
-				// xyz
 				switch (type)
 				{
 				case D3D10_REGISTER_COMPONENT_FLOAT32:
-					return DXGI_FORMAT_R32G32B32_FLOAT;
+					return { DXGI_FORMAT_R32G32B32_FLOAT ,sizeof(FLOAT) * 3 };
 				case D3D10_REGISTER_COMPONENT_UINT32:
-					return DXGI_FORMAT_R32G32B32_UINT;
+					return { DXGI_FORMAT_R32G32B32_UINT ,sizeof(UINT) * 3 };
 				case D3D10_REGISTER_COMPONENT_SINT32:
-					return DXGI_FORMAT_R32G32B32_SINT;
+					return { DXGI_FORMAT_R32G32B32_SINT ,sizeof(INT) * 3 };
 				}
 			}
 
-			if (mask & 0x3)
+			if (mask & 0x02)
 			{
-				// xy
 				switch (type)
 				{
 				case D3D10_REGISTER_COMPONENT_FLOAT32:
-					return DXGI_FORMAT_R32G32_FLOAT;
+					return { DXGI_FORMAT_R32G32_FLOAT ,sizeof(FLOAT) * 2 };
 				case D3D10_REGISTER_COMPONENT_UINT32:
-					return DXGI_FORMAT_R32G32_UINT;
+					return { DXGI_FORMAT_R32G32_UINT ,sizeof(UINT) * 2 };
 				case D3D10_REGISTER_COMPONENT_SINT32:
-					return DXGI_FORMAT_R32G32_SINT;
+					return { DXGI_FORMAT_R32G32_SINT,sizeof(INT) * 2 };
 				}
 			}
 
-			if (mask & 0x1)
+			if (mask & 0x01)
 			{
-				// x
 				switch (type)
 				{
 				case D3D10_REGISTER_COMPONENT_FLOAT32:
-					return DXGI_FORMAT_R32_FLOAT;
+					return { DXGI_FORMAT_R32_FLOAT,sizeof(FLOAT) * 1 };
 				case D3D10_REGISTER_COMPONENT_UINT32:
-					return DXGI_FORMAT_R32_UINT;
+					return { DXGI_FORMAT_R32_UINT ,sizeof(UINT) * 1 };
 				case D3D10_REGISTER_COMPONENT_SINT32:
-					return DXGI_FORMAT_R32_SINT;
+					return { DXGI_FORMAT_R32_SINT ,sizeof(INT) * 1 };
 				}
 			}
 
-			return DXGI_FORMAT_UNKNOWN;
+				return { DXGI_FORMAT_UNKNOWN,  D3D11_APPEND_ALIGNED_ELEMENT };
 		}
 		HRESULT CompileShaderFromFile(WCHAR* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3DBlob** ppBlobOut) {
 			HRESULT hr = S_OK;
@@ -125,46 +141,58 @@ namespace suika {
 			D3D11_SHADER_DESC shaderdesc;
 			pReflector->GetDesc(&shaderdesc);
 
-			// Create InputLayout
 			std::vector<D3D11_INPUT_ELEMENT_DESC> vbElement;
-			uint ins_mat_index = 0;
+			UINT offset[3] = { 0 };
 			for (UINT i = 0U; i < shaderdesc.InputParameters; ++i) {
 				D3D11_SIGNATURE_PARAMETER_DESC sigdesc;
 				pReflector->GetInputParameterDesc(i, &sigdesc);
 
-				auto format = GetDxgiFormat(sigdesc.ComponentType, sigdesc.Mask);
+				auto [format, size] = GetDxgiFormat(sigdesc.ComponentType, sigdesc.Mask);
 				D3D11_INPUT_ELEMENT_DESC eledesc;
 				if (std::string(sigdesc.SemanticName) == ("SV_InstanceID")) {
 					continue;
 				}
-				if (std::string(sigdesc.SemanticName) == ("INS_MATRIX")) {
+				if (std::string(sigdesc.SemanticName).starts_with("INS0")) {
 					eledesc = {
-						.SemanticName = sigdesc.SemanticName // Semantic–¼
-						, .SemanticIndex = sigdesc.SemanticIndex // POSITION0‚Æ‚©‚Ì”ŽšB–³‚¯‚ê‚Î0
-						, .Format = format // DXGI_FORMAT
-						, .InputSlot = 1 // Œˆ‚ß‘Å‚¿
-						, .AlignedByteOffset = (ins_mat_index++)*16 // Œˆ‚ß‘Å‚¿
-						, .InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA // Œˆ‚ß‘Å‚¿
-						, .InstanceDataStepRate = 1 // Œˆ‚ß‘Å‚¿
+						.SemanticName = sigdesc.SemanticName
+						, .SemanticIndex = sigdesc.SemanticIndex
+						, .Format = format
+						, .InputSlot = 1
+						, .AlignedByteOffset = /*sigdesc.SemanticIndex * size */(offset[1])
+						, .InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA
+						, .InstanceDataStepRate = 1
 					};
+					offset[1] += (UINT)size;
+				}
+				else if (std::string(sigdesc.SemanticName).starts_with("INS1")) {
+					eledesc = {
+						.SemanticName = sigdesc.SemanticName
+						, .SemanticIndex = sigdesc.SemanticIndex
+						, .Format = format
+						, .InputSlot = 2
+						, .AlignedByteOffset = /*sigdesc.SemanticIndex * size */(offset[2])
+						, .InputSlotClass = D3D11_INPUT_PER_INSTANCE_DATA
+						, .InstanceDataStepRate = 1
+					};
+					offset[2] += (UINT)size;
 				}
 				else {
 
 					eledesc = {
-						.SemanticName = sigdesc.SemanticName // Semantic–¼
-						, .SemanticIndex = sigdesc.SemanticIndex // POSITION0‚Æ‚©‚Ì”ŽšB–³‚¯‚ê‚Î0
-						, .Format = format // DXGI_FORMAT
-						, .InputSlot = 0 // Œˆ‚ß‘Å‚¿
-						, .AlignedByteOffset = D3D11_APPEND_ALIGNED_ELEMENT // Œˆ‚ß‘Å‚¿
-						, .InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA // Œˆ‚ß‘Å‚¿
-						, .InstanceDataStepRate = 0 // Œˆ‚ß‘Å‚¿
+						.SemanticName = sigdesc.SemanticName
+						, .SemanticIndex = sigdesc.SemanticIndex
+						, .Format = format
+						, .InputSlot = 0
+						, .AlignedByteOffset = offset[0]
+						, .InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA
+						, .InstanceDataStepRate = 0
 					};
+					offset[0] += (UINT)size;
 				}
 				vbElement.push_back(eledesc);
 			}
 
 			if (!vbElement.empty()) {
-				//error
 				er = pDevice->CreateInputLayout(&vbElement[0], static_cast<UINT>(vbElement.size()),
 					key_input, static_cast<SIZE_T>(size), pIL.GetAddressOf());
 				if (FAILED(er)) {
@@ -176,7 +204,7 @@ namespace suika {
 
 			log_d3d.info("Create VS");
 		}
-		void vertex_shader::set() {
+		void vertex_shader::set() const {
 			pContext->IASetInputLayout(pIL.Get());
 			pContext->VSSetShader(pVS.Get(), nullptr, 0);
 		}

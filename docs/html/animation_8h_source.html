@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>suika: include/suika/animation.h ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.4</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('animation_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">animation.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// -----------------------------------------------------------</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// </span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// animation</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// </span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// Copyright 2023 teacha1025</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">// </span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// you may not use this file except in compliance with the License.</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// You may obtain a copy of the License at</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">// </span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// http ://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// </span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// Unless required by applicable law or agreed to in writing, software</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment">// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// See the License for the specific language governing permissions and</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// limitations under the License.</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// </span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// -----------------------------------------------------------</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;def.h&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;base.h&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &quot;draw.h&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;vertex.h&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;point.h&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &quot;rect.h&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="namespacesuika.html">   30</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespacesuika.html">suika</a> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html">   34</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classsuika_1_1animation.html">animation</a> : <span class="keyword">public</span> <a class="code hl_class" href="classsuika_1_1detail_1_1ishape.html">detail::ishape</a>&lt;animation&gt; {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;bool&gt;</a> _turn;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;float&gt;</a> _size = { 64,64 }, _draw_size = { 64,64 }, _region_lt = { 0,0 }, _region_rb = { 1,1 };</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;uint&gt;</a> _div = { 1,1 };</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        std::vector&lt;uint&gt; _pattern;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        std::vector&lt;double&gt; _interval;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">double</span> dt = 0;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_typedef" href="namespacesuika.html#a85f9d12708ac4df230123ee5604a548a">uint</a> _index = 0;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordtype">string</span> _path;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">bool</span> _is_loop = <span class="keyword">true</span>, _is_finished = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;float&gt;</a> _uv_lt = { 0,0 }, _uv_rb = { 1,1 };</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">virtual</span> std::vector&lt;suika::vertex::vertex_2d&gt; create_vertex() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <a class="code hl_class" href="classsuika_1_1animation.html">animation</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#a3cc68ada254d47d6e28916091785e9c9">   56</a></span>        <a class="code hl_function" href="classsuika_1_1animation.html#a3cc68ada254d47d6e28916091785e9c9">animation</a>(<span class="keywordtype">string</span> path, <span class="keyword">const</span> <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;uint&gt;</a>&amp; div);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#a64e802aa9cbf13bbbda2afa56f4ea506">   65</a></span>        <a class="code hl_function" href="classsuika_1_1animation.html#a64e802aa9cbf13bbbda2afa56f4ea506">animation</a>(<span class="keywordtype">string</span> path, <span class="keyword">const</span> <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;uint&gt;</a>&amp; div, <span class="keyword">const</span> <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;float&gt;</a>&amp; region_lt, <span class="keyword">const</span> <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;float&gt;</a>&amp; region_rb);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#af5d58d05d470bb97cc861edcf681d9fc">   71</a></span>        <span class="keyword">virtual</span> <a class="code hl_class" href="classsuika_1_1animation.html">animation</a> <a class="code hl_function" href="classsuika_1_1animation.html#af5d58d05d470bb97cc861edcf681d9fc">turned</a>(<span class="keyword">const</span> <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;bool&gt;</a>&amp; <a class="code hl_function" href="classsuika_1_1animation.html#a2cc935f5a4aec64d5eeb730e7fafe848">turn</a>)&amp;&amp;;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#ae784252ce8e69db754818c2a296e5f48">   77</a></span>        <span class="keyword">virtual</span> <a class="code hl_class" href="classsuika_1_1animation.html">animation</a>&amp; <a class="code hl_function" href="classsuika_1_1animation.html#ae784252ce8e69db754818c2a296e5f48">turned</a>(<span class="keyword">const</span> <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;bool&gt;</a>&amp; <a class="code hl_function" href="classsuika_1_1animation.html#a2cc935f5a4aec64d5eeb730e7fafe848">turn</a>)&amp;;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#af006f55e9e0c2d4d9bb53f57291b126b">   85</a></span>        <span class="keyword">virtual</span> <a class="code hl_class" href="classsuika_1_1animation.html">animation</a> <a class="code hl_function" href="classsuika_1_1animation.html#af006f55e9e0c2d4d9bb53f57291b126b">patterned</a>(<span class="keyword">const</span> std::vector&lt;uint&gt;&amp; pattern, <span class="keyword">const</span> std::vector&lt;double&gt;&amp; interval, <span class="keywordtype">bool</span> loop = <span class="keyword">true</span>)&amp;&amp;;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#a888694fdfaa33452919c4c537cea192e">   93</a></span>        <span class="keyword">virtual</span> <a class="code hl_class" href="classsuika_1_1animation.html">animation</a>&amp; <a class="code hl_function" href="classsuika_1_1animation.html#a888694fdfaa33452919c4c537cea192e">patterned</a>(<span class="keyword">const</span> std::vector&lt;uint&gt;&amp; pattern, <span class="keyword">const</span> std::vector&lt;double&gt;&amp; interval, <span class="keywordtype">bool</span> loop = <span class="keyword">true</span>)&amp;;</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#adbe6438c709f792a31f7f58d3fc6654d">  101</a></span>        <span class="keyword">virtual</span> <a class="code hl_class" href="classsuika_1_1animation.html">animation</a> <a class="code hl_function" href="classsuika_1_1animation.html#adbe6438c709f792a31f7f58d3fc6654d">patterned</a>(<span class="keyword">const</span> std::vector&lt;uint&gt;&amp; pattern, <span class="keywordtype">double</span> interval = 1, <span class="keywordtype">bool</span> loop = <span class="keyword">true</span>)&amp;&amp;;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#a38b76e9d7d8408ef25f5aa46a29d2701">  109</a></span>        <span class="keyword">virtual</span> <a class="code hl_class" href="classsuika_1_1animation.html">animation</a>&amp; <a class="code hl_function" href="classsuika_1_1animation.html#a38b76e9d7d8408ef25f5aa46a29d2701">patterned</a>(<span class="keyword">const</span> std::vector&lt;uint&gt;&amp; pattern, <span class="keywordtype">double</span> interval = 1, <span class="keywordtype">bool</span> loop = <span class="keyword">true</span>)&amp;;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#a3cce4af52ea6591a79f574b8c0c832fc">  115</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classsuika_1_1animation.html#a3cce4af52ea6591a79f574b8c0c832fc">updated</a>(<span class="keywordtype">double</span> t);</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#ab7f103a64e4317421ca3abf3896c7bdc">  121</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classsuika_1_1animation.html#ab7f103a64e4317421ca3abf3896c7bdc">indexed</a>(<a class="code hl_typedef" href="namespacesuika.html#a85f9d12708ac4df230123ee5604a548a">uint</a> <a class="code hl_function" href="classsuika_1_1animation.html#aba7492084dbaaadf9cb0454a5299ea29">index</a>);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#aba7492084dbaaadf9cb0454a5299ea29">  127</a></span>        <span class="keyword">virtual</span> <a class="code hl_typedef" href="namespacesuika.html#a85f9d12708ac4df230123ee5604a548a">uint</a> <a class="code hl_function" href="classsuika_1_1animation.html#aba7492084dbaaadf9cb0454a5299ea29">index</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#a2cc935f5a4aec64d5eeb730e7fafe848">  133</a></span>        <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;bool&gt;</a> <a class="code hl_function" href="classsuika_1_1animation.html#a2cc935f5a4aec64d5eeb730e7fafe848">turn</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#acc45fa487fedb4392442d179e034ca80">  139</a></span>        <a class="code hl_class" href="classsuika_1_1vector2.html">point&lt;float&gt;</a> <a class="code hl_function" href="classsuika_1_1animation.html#acc45fa487fedb4392442d179e034ca80">size</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#a499a505a4bd31b88356c4e669995a6e2">  145</a></span>        <span class="keywordtype">bool</span> <a class="code hl_function" href="classsuika_1_1animation.html#a499a505a4bd31b88356c4e669995a6e2">finished</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#ae9fc06f6999b42650967e5b6f4166408">  151</a></span>        <a class="code hl_class" href="classsuika_1_1rect.html">rect</a> <a class="code hl_function" href="classsuika_1_1animation.html#ae9fc06f6999b42650967e5b6f4166408">rect</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="classsuika_1_1animation.html#a4c8e28649752e0b7143feb5814d2681f">  156</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classsuika_1_1animation.html#a4c8e28649752e0b7143feb5814d2681f">draw</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    };</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>}</div>
+<div class="ttc" id="aclasssuika_1_1animation_html"><div class="ttname"><a href="classsuika_1_1animation.html">suika::animation</a></div><div class="ttdoc">アニメーションを再生するクラス</div><div class="ttdef"><b>Definition:</b> animation.h:34</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_a2cc935f5a4aec64d5eeb730e7fafe848"><div class="ttname"><a href="classsuika_1_1animation.html#a2cc935f5a4aec64d5eeb730e7fafe848">suika::animation::turn</a></div><div class="ttdeci">point&lt; bool &gt; turn() const</div><div class="ttdoc">テクスチャ反転を取得</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_a38b76e9d7d8408ef25f5aa46a29d2701"><div class="ttname"><a href="classsuika_1_1animation.html#a38b76e9d7d8408ef25f5aa46a29d2701">suika::animation::patterned</a></div><div class="ttdeci">virtual animation &amp; patterned(const std::vector&lt; uint &gt; &amp;pattern, double interval=1, bool loop=true) &amp;</div><div class="ttdoc">アニメーションのパターンを設定する</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_a3cc68ada254d47d6e28916091785e9c9"><div class="ttname"><a href="classsuika_1_1animation.html#a3cc68ada254d47d6e28916091785e9c9">suika::animation::animation</a></div><div class="ttdeci">animation(string path, const point&lt; uint &gt; &amp;div)</div><div class="ttdoc">テクスチャを作成</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_a3cce4af52ea6591a79f574b8c0c832fc"><div class="ttname"><a href="classsuika_1_1animation.html#a3cce4af52ea6591a79f574b8c0c832fc">suika::animation::updated</a></div><div class="ttdeci">virtual void updated(double t)</div><div class="ttdoc">アニメーションを更新する</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_a499a505a4bd31b88356c4e669995a6e2"><div class="ttname"><a href="classsuika_1_1animation.html#a499a505a4bd31b88356c4e669995a6e2">suika::animation::finished</a></div><div class="ttdeci">bool finished() const</div><div class="ttdoc">アニメーションの再生が終了したか取得</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_a4c8e28649752e0b7143feb5814d2681f"><div class="ttname"><a href="classsuika_1_1animation.html#a4c8e28649752e0b7143feb5814d2681f">suika::animation::draw</a></div><div class="ttdeci">virtual void draw() override</div><div class="ttdoc">テクスチャを描画する</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_a64e802aa9cbf13bbbda2afa56f4ea506"><div class="ttname"><a href="classsuika_1_1animation.html#a64e802aa9cbf13bbbda2afa56f4ea506">suika::animation::animation</a></div><div class="ttdeci">animation(string path, const point&lt; uint &gt; &amp;div, const point&lt; float &gt; &amp;region_lt, const point&lt; float &gt; &amp;region_rb)</div><div class="ttdoc">テクスチャを作成</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_a888694fdfaa33452919c4c537cea192e"><div class="ttname"><a href="classsuika_1_1animation.html#a888694fdfaa33452919c4c537cea192e">suika::animation::patterned</a></div><div class="ttdeci">virtual animation &amp; patterned(const std::vector&lt; uint &gt; &amp;pattern, const std::vector&lt; double &gt; &amp;interval, bool loop=true) &amp;</div><div class="ttdoc">アニメーションのパターンを設定する</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_ab7f103a64e4317421ca3abf3896c7bdc"><div class="ttname"><a href="classsuika_1_1animation.html#ab7f103a64e4317421ca3abf3896c7bdc">suika::animation::indexed</a></div><div class="ttdeci">virtual void indexed(uint index)</div><div class="ttdoc">アニメーションのインデックスを設定する</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_aba7492084dbaaadf9cb0454a5299ea29"><div class="ttname"><a href="classsuika_1_1animation.html#aba7492084dbaaadf9cb0454a5299ea29">suika::animation::index</a></div><div class="ttdeci">virtual uint index() const</div><div class="ttdoc">再生中のアニメーションのインデックスを取得</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_acc45fa487fedb4392442d179e034ca80"><div class="ttname"><a href="classsuika_1_1animation.html#acc45fa487fedb4392442d179e034ca80">suika::animation::size</a></div><div class="ttdeci">point&lt; float &gt; size() const</div><div class="ttdoc">テクスチャの大きさを取得</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_adbe6438c709f792a31f7f58d3fc6654d"><div class="ttname"><a href="classsuika_1_1animation.html#adbe6438c709f792a31f7f58d3fc6654d">suika::animation::patterned</a></div><div class="ttdeci">virtual animation patterned(const std::vector&lt; uint &gt; &amp;pattern, double interval=1, bool loop=true) &amp;&amp;</div><div class="ttdoc">アニメーションのパターンを設定する</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_ae784252ce8e69db754818c2a296e5f48"><div class="ttname"><a href="classsuika_1_1animation.html#ae784252ce8e69db754818c2a296e5f48">suika::animation::turned</a></div><div class="ttdeci">virtual animation &amp; turned(const point&lt; bool &gt; &amp;turn) &amp;</div><div class="ttdoc">テクスチャを反転させる</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_ae9fc06f6999b42650967e5b6f4166408"><div class="ttname"><a href="classsuika_1_1animation.html#ae9fc06f6999b42650967e5b6f4166408">suika::animation::rect</a></div><div class="ttdeci">rect rect() const</div><div class="ttdoc">テクスチャの領域を示す矩形を取得する</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_af006f55e9e0c2d4d9bb53f57291b126b"><div class="ttname"><a href="classsuika_1_1animation.html#af006f55e9e0c2d4d9bb53f57291b126b">suika::animation::patterned</a></div><div class="ttdeci">virtual animation patterned(const std::vector&lt; uint &gt; &amp;pattern, const std::vector&lt; double &gt; &amp;interval, bool loop=true) &amp;&amp;</div><div class="ttdoc">アニメーションのパターンを設定する</div></div>
+<div class="ttc" id="aclasssuika_1_1animation_html_af5d58d05d470bb97cc861edcf681d9fc"><div class="ttname"><a href="classsuika_1_1animation.html#af5d58d05d470bb97cc861edcf681d9fc">suika::animation::turned</a></div><div class="ttdeci">virtual animation turned(const point&lt; bool &gt; &amp;turn) &amp;&amp;</div><div class="ttdoc">テクスチャを反転させる</div></div>
+<div class="ttc" id="aclasssuika_1_1detail_1_1ishape_html"><div class="ttname"><a href="classsuika_1_1detail_1_1ishape.html">suika::detail::ishape</a></div><div class="ttdoc">描画系クラス</div><div class="ttdef"><b>Definition:</b> draw.h:38</div></div>
+<div class="ttc" id="aclasssuika_1_1rect_html"><div class="ttname"><a href="classsuika_1_1rect.html">suika::rect</a></div><div class="ttdoc">矩形クラス</div><div class="ttdef"><b>Definition:</b> rect.h:31</div></div>
+<div class="ttc" id="aclasssuika_1_1vector2_html"><div class="ttname"><a href="classsuika_1_1vector2.html">suika::vector2</a></div><div class="ttdoc">2次元空間の位置ベクトル</div><div class="ttdef"><b>Definition:</b> point.h:45</div></div>
+<div class="ttc" id="anamespacesuika_html"><div class="ttname"><a href="namespacesuika.html">suika</a></div><div class="ttdoc">suika名前空間</div><div class="ttdef"><b>Definition:</b> animation.h:30</div></div>
+<div class="ttc" id="anamespacesuika_html_a85f9d12708ac4df230123ee5604a548a"><div class="ttname"><a href="namespacesuika.html#a85f9d12708ac4df230123ee5604a548a">suika::uint</a></div><div class="ttdeci">uint32 uint</div><div class="ttdoc">符号なし整数型(32bit)</div><div class="ttdef"><b>Definition:</b> type.h:77</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_0791a8f21def4af1626ddbe2fded6b50.html">suika</a></li><li class="navelem"><b>animation.h</b></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

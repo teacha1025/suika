@@ -1,5 +1,28 @@
+// -----------------------------------------------------------
+// 
+// suika entry point
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #include <Windows.h>
+
+#include "../include/suika/codecvt.h"
 #include "../include/suika/except.h"
+#include "../include/suika/string.h"
 #include "../include/suika/logger.h"
 #include "../include/suika/window.h"
 #include "../include/suika/shader.h"
@@ -24,7 +47,6 @@ extern void init();
 extern int main();
 
 namespace suika {
-	//logger log;
 	namespace window {
 		void init();
 	}
@@ -54,8 +76,77 @@ namespace suika {
 }
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nShowCmd) {
-	auto hr_init = CoInitialize(NULL);
-	try {
+	
+	HRESULT hr_init = S_OK;
+#ifndef _DEBUG
+	_set_se_translator([](unsigned int code, _EXCEPTION_POINTERS* ep) -> void {
+		std::string exp = "";
+		switch (code) {
+			case EXCEPTION_FLT_DIVIDE_BY_ZERO:
+			case EXCEPTION_INT_DIVIDE_BY_ZERO:
+				exp = "devide by zero.";
+				break;
+			case EXCEPTION_ACCESS_VIOLATION:
+				exp = "access violation.";
+				break;
+			case EXCEPTION_ARRAY_BOUNDS_EXCEEDED:
+				exp = "access to out of range.";
+				break;
+			case EXCEPTION_INT_OVERFLOW:
+			case EXCEPTION_FLT_OVERFLOW:
+				exp = "overflowed.";
+				break;
+			case EXCEPTION_FLT_UNDERFLOW:
+				exp = "underflowed";
+				break;
+			case EXCEPTION_INVALID_HANDLE:
+				exp = "invalid handle";
+				break;
+			case EXCEPTION_STACK_OVERFLOW:
+				exp = "stack over flowed";
+				break;
+			case EXCEPTION_INVALID_DISPOSITION:
+				exp = "invalid disposition.";
+				break;
+			case EXCEPTION_DATATYPE_MISALIGNMENT:
+				exp = "datatype misalignmented.";
+				break;
+			case EXCEPTION_BREAKPOINT:
+				exp = "breakpoint was found.";
+				break;
+			case EXCEPTION_SINGLE_STEP:
+				exp = "single step.";
+				break;
+			case EXCEPTION_NONCONTINUABLE_EXCEPTION:
+				exp = "noncontinuable exception has occurred.";
+				break;
+			case EXCEPTION_PRIV_INSTRUCTION:
+				exp = "unapproved instruction.";
+				break;
+			case EXCEPTION_IN_PAGE_ERROR:
+				exp = "cannot load page.";
+				break;
+			case EXCEPTION_ILLEGAL_INSTRUCTION:
+				exp = "invalid instruction.";
+				break;
+			case EXCEPTION_GUARD_PAGE:
+				exp = "guard page.";
+				break;
+			case 0xE06D7363:
+				exp = "C++ Exception";
+				break;
+			default:
+				exp = "unknown";
+				break;
+		}
+		throw std::exception(std::format("SEH Exception code:0x{:X}  {}", code, exp).c_str());
+		});
+#endif
+#ifndef _DEBUG
+	try
+#endif
+	{
+		hr_init = CoInitialize(NULL);
 		suika::window::init();
 		init();
 		if (!suika::log.init()) {
@@ -65,12 +156,12 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			suika::log.error("d3d error");
 			return 0;
 		}
-		suika::add_vs("../suika/d3d/shader/shape.hlsl", "shape");
-		suika::add_vs("../suika/d3d/shader/texture.hlsl", "texture");
-		suika::add_ps("../suika/d3d/shader/shape.hlsl", "shape");
-		suika::add_ps("../suika/d3d/shader/texture.hlsl", "texture");
-		suika::set_vs("shape");
-		suika::set_ps("shape");
+		suika::add_vs("../suika/d3d/shader/shape.hlsl",   suika::SHAPE_VERTEX);
+		suika::add_vs("../suika/d3d/shader/texture.hlsl", suika::TEXTURE_VERTEX);
+		suika::add_ps("../suika/d3d/shader/shape.hlsl",   suika::SHAPE_PIXEL);
+		suika::add_ps("../suika/d3d/shader/texture.hlsl", suika::TEXTURE_PIXEL);
+		suika::set_vs(suika::SHAPE_VERTEX);
+		suika::set_ps(suika::SHAPE_PIXEL);
 
 		suika::d3d::blend::init();
 		suika::d3d::vertex::init();
@@ -78,11 +169,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		if (wid == nullptr) {
 			return 0;
 		}
-
-		
-
-		//suika::window::background(suika::color(0, 0, 0));
-		//suika::window::title("APP");
 
 		suika::window::canvas().get()->set();
 		suika::d3d::dwrite::init(suika::window::canvas().get()->id);
@@ -96,7 +182,12 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		suika::d3d::blend::blends[suika::blend::alpha].set();
 
 		suika::log.info("initialized");
+
+		// ===========================================================
+
 		auto res = main();
+
+		// ===========================================================
 
 		suika::log.info("fin");
 		suika::d3d::dwrite::free();
@@ -108,6 +199,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}
 		return res;
 	}
+#ifndef _DEBUG
 	catch (suika::exception e) {
 		suika::log.exception(e.what());
 		if (SUCCEEDED(hr_init)) {
@@ -129,4 +221,5 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}
 		return 0;
 	}
+#endif
 }

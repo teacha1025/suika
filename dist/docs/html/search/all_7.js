@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['g_0',['G',['../namespacesuika_1_1keyboard.html#a01efd55e723117695c63d33ee869d3b0',1,'suika::keyboard']]],
+  ['gainsboro_1',['gainsboro',['../namespacesuika_1_1palette.html#a469ddf44ef3e166862b5afd45c027de1',1,'suika::palette']]],
+  ['gamepad_2',['gamepad',['../classsuika_1_1detail_1_1gamepad.html',1,'suika::detail']]],
+  ['gamepad_5fbutton_3',['gamepad_button',['../classsuika_1_1detail_1_1gamepad__button.html',1,'suika::detail']]],
+  ['gamepad_5fstick_4',['gamepad_stick',['../classsuika_1_1detail_1_1gamepad__stick.html',1,'suika::detail']]],
+  ['gamepad_5ftrigger_5',['gamepad_trigger',['../classsuika_1_1detail_1_1gamepad__trigger.html',1,'suika::detail']]],
+  ['get_6',['get',['../structsuika_1_1range.html#a62afe2b533c98a61507f283052e10c8b',1,'suika::range::get()'],['../classsuika_1_1vrange.html#a5ce9ff4effa5de4e7e4fe5c39ec522db',1,'suika::vrange::get()']]],
+  ['ghostwhite_7',['ghostwhite',['../namespacesuika_1_1palette.html#a2452f70cf1b4e15653928f95f720964b',1,'suika::palette']]],
+  ['giga_8',['GIGA',['../namespacesuika_1_1suffix.html#a473196d4f4ff81e1679b9f451e45a4b7',1,'suika::suffix']]],
+  ['giga_5ff_9',['GIGA_F',['../namespacesuika_1_1suffix.html#a585b2945a0ae69c2a790c1d81791d89b',1,'suika::suffix']]],
+  ['giga_5ful_10',['GIGA_UL',['../namespacesuika_1_1suffix.html#a86e69fa12e7a382f675032b3219b998e',1,'suika::suffix']]],
+  ['gold_11',['gold',['../namespacesuika_1_1palette.html#ae24b6d4e7d92768a7d6ee1b6d9fe13b9',1,'suika::palette']]],
+  ['goldenrod_12',['goldenrod',['../namespacesuika_1_1palette.html#a7674c8685c8a81422475ef5348b2ebaa',1,'suika::palette']]],
+  ['gray_13',['gray',['../namespacesuika_1_1palette.html#a21d6639b8d3782d9cd5081babb7722d6',1,'suika::palette']]],
+  ['green_14',['green',['../namespacesuika_1_1palette.html#ac41a6a70c93eeafddd3207dbf82466a0',1,'suika::palette']]],
+  ['greenyellow_15',['greenyellow',['../namespacesuika_1_1palette.html#aacb7fc148fdacaf64da5fdd5527e3647',1,'suika::palette']]]
+];

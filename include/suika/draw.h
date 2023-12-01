@@ -1,8 +1,25 @@
-#if _MSC_VER > 1000
+// -----------------------------------------------------------
+// 
+// draw base class.
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #pragma once
-#endif
-#ifndef _SK_DRAW
-#define _SK_DRAW
+
 #include "point.h"
 #include "def.h"
 #include "string.h"
@@ -21,19 +38,29 @@ namespace suika {
 		class ishape : public ibase {
 		protected:
 			using position_type = float;
-			//原点からの移動量
+			/// <summary>
+			/// 原点からの移動量
+			/// </summary>
 			vector3<position_type> _transition;
 
-			//オブジェクトの描画、回転の中心
+			/// <summary>
+			/// オブジェクトの描画、回転の中心
+			/// </summary>
 			vector3<position_type> _center;
 
-			//回転量
+			/// <summary>
+			/// 各方向の回転角度
+			/// </summary>
 			vector3<position_type> _rotation;
 
-			//拡大率
+			/// <summary>
+			/// 各方向の拡大率
+			/// </summary>
 			vector3<double> _extend;
 			
-			//ブレンド
+			/// <summary>
+			/// ブレンドの種類
+			/// </summary>
 			blend _blend;
 
 			struct shaders {
@@ -48,9 +75,7 @@ namespace suika {
 				_center({ 0, 0, 0 }),
 				_rotation({ 0, 0, 0 }),
 				_extend({ 1.0, 1.0, 1.0 }),
-				_blend(blend::none){}
-
-			//virtual string to_string() const = 0;
+				_blend(blend::alpha){}
 
 			//設定系
 
@@ -62,6 +87,7 @@ namespace suika {
 				_transition = position;
 				return static_cast<T&&>(std::move(*this));
 			}
+
 			/// <summary>
 			/// 座標を設定
 			/// </summary>
@@ -70,6 +96,7 @@ namespace suika {
 				_transition = position;
 				return static_cast<T&>(*this);
 			}
+
 			/// <summary>
 			/// 座標を設定
 			/// </summary>
@@ -78,6 +105,7 @@ namespace suika {
 				_transition = vector3<position_type>{ position.x, position.y, 0.0 };
 				return static_cast<T&&>(std::move(*this));
 			}
+
 			/// <summary>
 			/// 座標を設定
 			/// </summary>
@@ -95,6 +123,7 @@ namespace suika {
 				_center = center;
 				return static_cast<T&&>(std::move(*this));
 			}
+
 			/// <summary>
 			/// オブジェクトの中心を設定
 			/// </summary>
@@ -103,6 +132,7 @@ namespace suika {
 				_center = center;
 				return static_cast<T&>(*this);
 			}
+
 			/// <summary>
 			/// オブジェクトの中心を設定
 			/// </summary>
@@ -111,6 +141,7 @@ namespace suika {
 				_center = vector3<position_type>{ center.x, center.y, 0.0 };
 				return static_cast<T&&>(std::move(*this));
 			}
+
 			/// <summary>
 			/// オブジェクトの中心を設定
 			/// </summary>
@@ -123,23 +154,25 @@ namespace suika {
 			/// <summary>
 			/// 回転量の設定
 			/// </summary>
-			/// <param name="center">設定する各軸の回転量</param>
+			/// <param name="rotation">設定する各軸の回転量</param>
 			virtual T rotated(const vector3<position_type>& rotation)&& {
 				_rotation = rotation;
 				return static_cast<T&&>(std::move(*this));
 			}
+
 			/// <summary>
 			/// 回転量の設定
 			/// </summary>
-			/// <param name="center">設定する各軸の回転量</param>
+			/// <param name="rotation">設定する各軸の回転量</param>
 			virtual T& rotated(const vector3<position_type>& rotation)& {
 				_rotation = rotation;
 				return static_cast<T&>(*this);
 			}
+
 			/// <summary>
 			/// 回転量の設定
 			/// </summary>
-			/// <param name="center">設定する回転量</param>
+			/// <param name="rotation">設定する回転量</param>
 			virtual T rotated(const position_type& rotation)&& {
 				_rotation.z = rotation;
 				return static_cast<T&&>(std::move(*this));
@@ -147,11 +180,12 @@ namespace suika {
 			/// <summary>
 			/// 回転量の設定
 			/// </summary>
-			/// <param name="center">設定する回転量</param>
+			/// <param name="rotation">設定する回転量</param>
 			virtual T& rotated(const position_type& rotation)& {
 				_rotation.z = rotation;
 				return static_cast<T&>(*this);
 			}
+
 			/// <summary>
 			/// 拡大率の設定
 			/// </summary>
@@ -160,6 +194,7 @@ namespace suika {
 				_extend = rate;
 				return static_cast<T&&>(std::move(*this));
 			}
+
 			/// <summary>
 			/// 拡大率の設定
 			/// </summary>
@@ -168,6 +203,7 @@ namespace suika {
 				_extend = rate;
 				return static_cast<T&>(*this);
 			}
+
 			/// <summary>
 			/// 拡大率の設定
 			/// </summary>
@@ -176,6 +212,7 @@ namespace suika {
 				_extend = { rate.x, rate.y, 1 };
 				return static_cast<T&&>(std::move(*this));
 			}
+
 			/// <summary>
 			/// 拡大率の設定
 			/// </summary>
@@ -184,6 +221,7 @@ namespace suika {
 				_extend = { rate.x, rate.y, 1 };
 				return static_cast<T&>(*this);
 			}
+
 			/// <summary>
 			/// 拡大率の設定
 			/// </summary>
@@ -192,6 +230,7 @@ namespace suika {
 				_extend = { rate, rate, rate };
 				return static_cast<T&&>(std::move(*this));
 			}
+
 			/// <summary>
 			/// 拡大率の設定
 			/// </summary>
@@ -200,6 +239,7 @@ namespace suika {
 				_extend = { rate, rate, rate };
 				return static_cast<T&>(*this);
 			}
+
 			/// <summary>
 			/// ブレンドの設定
 			/// </summary>
@@ -208,6 +248,7 @@ namespace suika {
 				_blend = type;
 				return static_cast<T&&>(std::move(*this));
 			}
+
 			/// <summary>
 			/// ブレンドの設定
 			/// </summary>
@@ -216,6 +257,7 @@ namespace suika {
 				_blend = type;
 				return static_cast<T&>(*this);
 			}
+
 			/// <summary>
 			/// 頂点シェーダーの設定
 			/// </summary>
@@ -224,6 +266,7 @@ namespace suika {
 				_shaders.vs = shader;
 				return static_cast<T&&>(std::move(*this));
 			}
+
 			/// <summary>
 			/// 頂点シェーダーの設定
 			/// </summary>
@@ -232,6 +275,7 @@ namespace suika {
 				_shaders.vs = shader;
 				return static_cast<T&>(*this);
 			}
+
 			/// <summary>
 			/// ピクセルシェーダーの設定
 			/// </summary>
@@ -240,6 +284,7 @@ namespace suika {
 				_shaders.ps = shader;
 				return static_cast<T&&>(std::move(*this));
 			}
+
 			/// <summary>
 			/// ピクセルシェーダーの設定
 			/// </summary>
@@ -258,6 +303,7 @@ namespace suika {
 			virtual vector3<position_type> position_xyz() const {
 				return _transition;
 			}
+
 			/// <summary>
 			/// オブジェクトの原点からの移動量を取得
 			/// </summary>
@@ -334,4 +380,3 @@ namespace suika {
 		};
 	} // namespace detail
 } // namespace suika
-#endif

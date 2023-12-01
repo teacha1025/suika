@@ -1,19 +1,31 @@
 var hierarchy =
 [
+    [ "suika::exception", "classsuika_1_1exception.html", null ],
     [ "suika::detail::gamepad", "classsuika_1_1detail_1_1gamepad.html", null ],
     [ "suika::detail::ibase", "classsuika_1_1detail_1_1ibase.html", [
-      [ "suika::detail::ishape< circle >", "classsuika_1_1detail_1_1ishape.html", null ],
+      [ "suika::detail::ishape< animation >", "classsuika_1_1detail_1_1ishape.html", [
+        [ "suika::animation", "classsuika_1_1animation.html", null ]
+      ] ],
+      [ "suika::detail::ishape< animator >", "classsuika_1_1detail_1_1ishape.html", [
+        [ "suika::animator", "classsuika_1_1animator.html", null ]
+      ] ],
+      [ "suika::detail::ishape< circle >", "classsuika_1_1detail_1_1ishape.html", [
+        [ "suika::circle", "classsuika_1_1circle.html", null ]
+      ] ],
       [ "suika::detail::ishape< line >", "classsuika_1_1detail_1_1ishape.html", [
         [ "suika::line", "classsuika_1_1line.html", null ]
       ] ],
-      [ "suika::detail::ishape< rect >", "classsuika_1_1detail_1_1ishape.html", null ],
+      [ "suika::detail::ishape< rect >", "classsuika_1_1detail_1_1ishape.html", [
+        [ "suika::rect", "classsuika_1_1rect.html", null ]
+      ] ],
       [ "suika::detail::ishape< texture >", "classsuika_1_1detail_1_1ishape.html", [
         [ "suika::texture", "classsuika_1_1texture.html", null ]
       ] ],
       [ "suika::range< 0.0, 1.0 >", "structsuika_1_1range.html", null ],
-      [ "suika::vector2< double >", "classsuika_1_1vector2.html", null ],
-      [ "suika::vector2< float >", "classsuika_1_1vector2.html", null ],
       [ "suika::vector2< bool >", "classsuika_1_1vector2.html", null ],
+      [ "suika::vector2< float >", "classsuika_1_1vector2.html", null ],
+      [ "suika::vector2< uint >", "classsuika_1_1vector2.html", null ],
+      [ "suika::vector2< double >", "classsuika_1_1vector2.html", null ],
       [ "suika::vector3< position_type >", "classsuika_1_1vector3.html", null ],
       [ "suika::vector3< double >", "classsuika_1_1vector3.html", null ],
       [ "suika::vector4< float >", "classsuika_1_1vector4.html", null ],

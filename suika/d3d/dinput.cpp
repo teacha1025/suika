@@ -1,10 +1,32 @@
+// -----------------------------------------------------------
+// 
+// direct input.
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #ifndef DIRECTINPUT_VERSION
 #define DIRECTINPUT_VERSION 0x0800
 #endif
+
 #include <dinput.h>
 #include <dxgi.h>
 #include <wbemidl.h>
 #include <oleauto.h>
+
 #include "info.hpp"
 #include "dinput.hpp"
 
@@ -45,68 +67,55 @@ namespace suika {
 				IWbemLocator* pIWbemLocator = NULL;
 				auto hr = CoCreateInstance(__uuidof(WbemLocator), NULL, CLSCTX_INPROC_SERVER, __uuidof(IWbemLocator), (LPVOID*)&pIWbemLocator);
 				if (SUCCEEDED(hr) && pIWbemLocator != NULL) {
-
-					// Connect to WMI
 					BString    bstrNamespace(L"\\\\.\\root\\cimv2");
 					IWbemServices* pIWbemServices = NULL;
 					hr = pIWbemLocator->ConnectServer(bstrNamespace, NULL, NULL, 0L, 0L, NULL, NULL, &pIWbemServices);
 					if (SUCCEEDED(hr) && pIWbemServices != NULL) {
-
-						// Switch security level to IMPERSONATE.
 						BString bstrClassName(L"Win32_PNPEntity");
 						IEnumWbemClassObject* pEnumDevices = NULL;
-						CoSetProxyBlanket(pIWbemServices, RPC_C_AUTHN_WINNT, RPC_C_AUTHZ_NONE, NULL, RPC_C_AUTHN_LEVEL_CALL, RPC_C_IMP_LEVEL_IMPERSONATE, NULL, EOAC_NONE);
-						hr = pIWbemServices->CreateInstanceEnum(bstrClassName, 0, NULL, &pEnumDevices);
-						if (SUCCEEDED(hr) && pEnumDevices != NULL) {
+						hr = CoSetProxyBlanket(pIWbemServices, RPC_C_AUTHN_WINNT, RPC_C_AUTHZ_NONE, NULL, RPC_C_AUTHN_LEVEL_CALL, RPC_C_IMP_LEVEL_IMPERSONATE, NULL, EOAC_NONE);
+						if (SUCCEEDED(hr)) {
+							hr = pIWbemServices->CreateInstanceEnum(bstrClassName, 0, NULL, &pEnumDevices);
+							if (SUCCEEDED(hr) && pEnumDevices != NULL) {
+								DWORD    dwDevIdx, dwReturned;
+								DWORD    dwPid, dwVid;
+								WCHAR* strVid, * strPid;
+								VARIANT var;
+								BString bstrDeviceID(L"DeviceID");
+								IWbemClassObject* pDevices[20] = { 0 };
 
-							DWORD    dwDevIdx, dwReturned;
-							DWORD    dwPid, dwVid;
-							WCHAR* strVid, * strPid;
-							VARIANT var;
-							BString bstrDeviceID(L"DeviceID");
-							IWbemClassObject* pDevices[20] = { 0 };
+								for (; !bIsXinput;) {
+									dwDevIdx = dwReturned = 0;
+									hr = pEnumDevices->Next(10000, 20, pDevices, &dwReturned);
+									if (FAILED(hr) || dwReturned == 0) break;
 
-							// Loop over all devices
-							for (; !bIsXinput;) {
+									for (dwDevIdx = 0; dwDevIdx < dwReturned; dwDevIdx++) {
+										VariantInit(&var);
+										hr = pDevices[dwDevIdx]->Get(bstrDeviceID, 0L, &var, NULL, NULL);
+										if (SUCCEEDED(hr) && var.vt == VT_BSTR && var.bstrVal != NULL) {
+											if (wcsstr(var.bstrVal, L"IG_")) {
+												dwVid = dwPid = 0;
+												strVid = wcsstr(var.bstrVal, L"VID_");
+												strPid = wcsstr(var.bstrVal, L"PID_");
+												if (strVid && swscanf_s(strVid, L"VID_%4X", &dwVid) != 1) dwVid = 0;
+												if (strPid && swscanf_s(strPid, L"PID_%4X", &dwPid) != 1) dwPid = 0;
 
-								// Get 20 at a time
-								dwDevIdx = dwReturned = 0;
-								hr = pEnumDevices->Next(10000, 20, pDevices, &dwReturned);
-								if (FAILED(hr) || dwReturned == 0) break;
-
-								for (dwDevIdx = 0; dwDevIdx < dwReturned; dwDevIdx++) {
-
-									// For each device, get its device ID
-									hr = pDevices[dwDevIdx]->Get(bstrDeviceID, 0L, &var, NULL, NULL);
-									if (SUCCEEDED(hr) && var.vt == VT_BSTR && var.bstrVal != NULL) {
-
-										// Check if the device ID contains "IG_".  If it does, then it's an XInput device
-										// This information can not be found from DirectInput
-										if (wcsstr(var.bstrVal, L"IG_")) {
-
-											// If it does, then get the VID/PID from var.bstrVal
-											dwVid = dwPid = 0;
-											strVid = wcsstr(var.bstrVal, L"VID_");
-											strPid = wcsstr(var.bstrVal, L"PID_");
-											if (strVid && swscanf_s(strVid, L"VID_%4X", &dwVid) != 1) dwVid = 0;
-											if (strPid && swscanf_s(strPid, L"PID_%4X", &dwPid) != 1) dwPid = 0;
-
-											// Compare the VID/PID to the DInput device
-											if (MAKELONG(dwVid, dwPid) == pGuid->Data1) {
-												bIsXinput = TRUE;
-												ret.pid = std::format(L"{:04x}", dwPid);
-												ret.vid = std::format(L"{:04x}", dwVid);
-												ret.states = 2;
-												break;
+												if (MAKELONG(dwVid, dwPid) == pGuid->Data1) {
+													bIsXinput = TRUE;
+													ret.pid = std::format(L"{:04x}", dwPid);
+													ret.vid = std::format(L"{:04x}", dwVid);
+													ret.states = 2;
+													break;
+												}
 											}
 										}
+										SAFE_RELEASE(pDevices[dwDevIdx]);
 									}
-									SAFE_RELEASE(pDevices[dwDevIdx]);
 								}
-							}
 
-							for (dwDevIdx = 0; dwDevIdx < 20; dwDevIdx++) SAFE_RELEASE(pDevices[dwDevIdx]);
-							SAFE_RELEASE(pEnumDevices);
+								for (dwDevIdx = 0; dwDevIdx < 20; dwDevIdx++) SAFE_RELEASE(pDevices[dwDevIdx]);
+								SAFE_RELEASE(pEnumDevices);
+							}
 						}
 						SAFE_RELEASE(pIWbemServices);
 					}
@@ -184,14 +193,13 @@ namespace suika {
 							continue;
 						}
 
-						// 軸モードを絶対値モードとして設定
 						DIPROPDWORD diprop;
 						ZeroMemory(&diprop, sizeof(diprop));
 						diprop.diph.dwSize = sizeof(diprop);
 						diprop.diph.dwHeaderSize = sizeof(diprop.diph);
 						diprop.diph.dwHow = DIPH_DEVICE;
 						diprop.diph.dwObj = 0;
-						diprop.dwData = DIPROPAXISMODE_ABS;	// 絶対値モードの指定(DIPROPAXISMODE_RELにしたら相対値)
+						diprop.dwData = DIPROPAXISMODE_ABS;
 
 						er = gamepad_dev[key]->SetProperty(DIPROP_AXISMODE, &diprop.diph);
 						if (FAILED(er)) {
@@ -201,7 +209,6 @@ namespace suika {
 							continue;
 						}
 
-						// X軸の値の範囲設定
 						DIPROPRANGE diprg;
 						ZeroMemory(&diprg, sizeof(diprg));
 						diprg.diph.dwSize = sizeof(diprg);
@@ -219,7 +226,6 @@ namespace suika {
 							continue;
 						}
 
-						// Y軸の値の範囲設定
 						diprg.diph.dwObj = DIJOFS_Y;
 						er = gamepad_dev[key]->SetProperty(DIPROP_RANGE, &diprg.diph);
 						if (FAILED(er)) {
@@ -250,7 +256,7 @@ namespace suika {
 					log_d3d.result(er);
 					return;
 				}
-				load_gamepad(hWnd);
+				//load_gamepad(hWnd);
 			}
 
 			bool init(HWND hWnd) {
@@ -334,37 +340,6 @@ namespace suika {
 			}
 
 			void update(bool key_reset) {
-				//auto er = key_dev->Acquire();
-				//if (FAILED(er)) {
-				//	if (key_reset && er == DIERR_INPUTLOST) {
-				//		key_dev->Acquire();
-				//	}
-				//	//log_d3d.error("Failed to get key acquire");
-				//	//log_d3d.result(er);
-				//	//return;
-				//}
-				//er = mouse_dev->Acquire();
-				//if (FAILED(er)) {
-				//	if (key_reset && er == DIERR_INPUTLOST) {
-				//		mouse_dev->Acquire();
-				//	}
-				//	//log_d3d.error("Failed to get mouse acquire");
-				//	//log_d3d.result(er);
-				//	//return;
-				//}
-
-				//for (auto& gp : gamepad_dev) {
-				//	er = gp.second->Acquire();
-				//	if (FAILED(er)) {
-				//		if (key_reset && er == DIERR_INPUTLOST) {
-				//			gp.second->Acquire();
-				//		}
-				//		//log_d3d.error("Failed to get mouse acquire");
-				//		//log_d3d.result(er);
-				//		//return;
-				//	}
-				//}
-
 				auto er = key_dev->GetDeviceState(256, key);
 				if (FAILED(er)) {
 					er = key_dev->Acquire();

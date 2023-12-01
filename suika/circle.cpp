@@ -1,4 +1,25 @@
+// -----------------------------------------------------------
+// 
+// circle
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #pragma once
+
 #include "d3d/vertex.h"
 #include "d3d/blend.hpp"
 #include "../include/suika/shader.h"
@@ -9,11 +30,11 @@ static std::vector<suika::uint16> index;
 namespace suika {
 	std::vector<suika::vertex::vertex_2d> circle::create_vertex() {
 		index.clear();
-		index.reserve(this->_resolution * 3);
+		index.reserve((uint64)(this->_resolution) * 3);
 		const double dt = PI_2 / this->_resolution;
 		static std::vector<suika::vertex::vertex_2d> ret;
 		ret.clear();
-		ret.reserve(this->_resolution * 3);
+		ret.reserve((uint64)(this->_resolution) * 3 + 1);
 		ret.emplace_back(vertex::create_2d({ 0,0 }, this->_color, { 0.5f, 0.5f }));
 		for (uint16 i = 0; i < this->_resolution; i++) {
 			const double theta1 = dt * i;
@@ -29,6 +50,7 @@ namespace suika {
 		*(index.end()-1) = 1;
 		return ret;
 	}
+
 	void circle::draw() {
 		d3d::vertex::set_ins_mode(d3d::vertex::ins_type::circle);
 		set_vs(this->_shaders.vs);
@@ -36,7 +58,7 @@ namespace suika {
 		d3d::blend::blends[_blend].set();
 		d3d::vertex::set_vertex_instance(create_vertex());
 		d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { _color.r, _color.g, _color.b, _color.a }, { 0,0 });
+		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { _color.r, _color.g, _color.b, _color.a }, { float2{0,0},float2{1,1} });
 
 	}
 }

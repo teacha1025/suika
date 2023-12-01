@@ -1,5 +1,27 @@
+// -----------------------------------------------------------
+// 
+// matrix
+// 
+// Copyright 2023 teacha1025
+// 
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http ://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// 
+// -----------------------------------------------------------
+
 #pragma once
+
 #include <vector>
+
 #include "def.h"
 #include "type.h"
 #include "concepts.h"
@@ -10,6 +32,59 @@ namespace suika {
 	struct matrix;
 
 	template<concepts::numbers T>
+	struct matrix2x2 {
+	private:
+		T vec[2][2];
+
+	public:
+		matrix2x2() {
+			vec[0][0] = vec[0][1] = vec[1][0] = vec[1][1] = static_cast<T>(0);
+		}
+
+		matrix2x2(const std::vector<T>& ary) {
+			if (ary.size() != 4) {
+				throw;
+			}
+			vec[0][0] = ary[0];
+			vec[0][1] = ary[1];
+			vec[1][0] = ary[2];
+			vec[1][1] = ary[3];
+		}
+
+		matrix2x2(float v[2][2]) {
+			std::memcpy(vec, v, sizeof(float) * 4);
+		}
+
+		const T& at(uint n, uint m) const {
+			return vec[n][m];
+		}
+
+		T& at(uint n, uint m) {
+			return vec[n][m];
+		}
+
+		template<concepts::numbers t>
+		operator matrix<t>() const {
+			matrix<t> ret(2, 2);
+			ret.at(0, 0) = vec[0][0];
+			ret.at(0, 1) = vec[0][1];
+			ret.at(1, 0) = vec[1][0];
+			ret.at(1, 1) = vec[1][1];
+			return ret;
+		}
+
+		template<concepts::numbers t>
+		operator matrix2x2<t>() const {
+			matrix2x2<t> ret;
+			ret.vec[0][0] = vec[0][0];
+			ret.vec[0][1] = vec[0][1];
+			ret.vec[1][0] = vec[1][0];
+			ret.vec[1][1] = vec[1][1];
+			return ret;
+		}
+	};
+
+	template<concepts::numbers T>
 	struct matrix4x4 {
 	private:
 		T vec[4][4];
@@ -18,6 +93,7 @@ namespace suika {
 		matrix4x4() {
 			std::fill(&vec[0][0], &vec[3][3], static_cast<T>(0));
 		}
+
 		matrix4x4(const std::vector<T>& ary) {
 			if (ary.size() != 16) {
 				throw;
@@ -28,6 +104,7 @@ namespace suika {
 				}
 			}
 		}
+
 		matrix4x4(float v[4][4]) {
 			std::memcpy(vec, v, sizeof(float) * 16);
 		}
@@ -35,6 +112,7 @@ namespace suika {
 		const T& at(uint n, uint m) const {
 			return vec[n][m];
 		}
+
 		T& at(uint n, uint m) {
 			return vec[n][m];
 		}
@@ -55,7 +133,7 @@ namespace suika {
 			matrix4x4<t> ret;
 			for (uint y = 0; y < 4; y++) {
 				for (uint x = 0; x < 4; x++) {
-					ret.at(y, x) = vec[y][x];
+					ret.vec[y][x] = vec[y][x];
 				}
 			}
 			return ret;
@@ -748,8 +826,6 @@ namespace suika {
 				return ret;
 			}
 
-
-
 			matrix<double> ret(n, n);
 			matrix<double> tmp = mt;
 
@@ -923,7 +999,6 @@ namespace suika {
 		/// <returns>アフィン変換行列</returns>
 		template< concepts::numbers T>
 		matrix<T> affine_transformation(const vector3<T>& origine, const vector3<T>& transition, const vector3<T>& rot, const vector3<T>& scale) {
-			//return translation<double>(transition.x, transition.y, transition.z) * rotation<double>(rot.z, rot.x, rot.y) * scalling<double>(scale.x, scale.y, scale.z) * translation<double>(-origine.x, -origine.y, -origine.z);
 			double sp = std::sin(rot.x), sy = std::sin(rot.y), sr = std::sin(rot.z);
 			double cp = std::cos(rot.x), cy = std::cos(rot.y), cr = std::cos(rot.z);
 			matrix<T> ret(4,4,0);

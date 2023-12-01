@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /test/Log.txt
 /suika.zip
+/dist

@@ -51,13 +51,17 @@ namespace suika {
 		/// <summary>
 		/// テクスチャを作成
 		/// </summary>
-		/// <param name="_path">テクスチャのパス</param>
+		/// <param name="path">テクスチャのパス</param>
+		/// <param name="div">分割数</param>
 		animation(string path, const point<uint>& div);
 
 		/// <summary>
 		/// テクスチャを作成
 		/// </summary>
-		/// <param name="_path">テクスチャのパス</param>
+		/// <param name="path">テクスチャのパス</param>
+		/// <param name="div">分割数</param>
+		/// <param name="region_lt">テクスチャの領域の左上</param>
+		/// <param name="region_rb">テクスチャの領域の右下</param>
 		animation(string path, const point<uint>& div, const point<float>& region_lt, const point<float>& region_rb);
 
 		/// <summary>
@@ -113,7 +117,7 @@ namespace suika {
 		/// <summary>
 		/// アニメーションのインデックスを設定する
 		/// </summary>
-		/// <param name="t">インデックス</param>
+		/// <param name="index">インデックス</param>
 		virtual void indexed(uint index);
 
 		/// <summary>

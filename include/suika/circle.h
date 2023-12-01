@@ -39,7 +39,7 @@ namespace suika {
 		/// <summary>
 		/// ‰~‚Ìì¬
 		/// </summary>
-		/// <param name="size">‰~‚Ì”¼Œa</param>
+		/// <param name="r">‰~‚Ì”¼Œa</param>
 		circle(float r) : _radius(r) {
 			_shaders = { .vs = SHAPE_VERTEX, .ps = SHAPE_PIXEL };
 			_resolution = (uint16)r;
@@ -80,7 +80,7 @@ namespace suika {
 		/// <summary>
 		/// ”¼Œa‚ğ•Ï‚¦‚é
 		/// </summary>
-		/// <param name="size">•ÏXŒã‚Ì‘å‚«‚³</param>
+		/// <param name="r">•ÏXŒã‚Ì‘å‚«‚³</param>
 		virtual circle& resized(float r)& {
 			this->_radius = r;
 			return static_cast<circle&>(*this);

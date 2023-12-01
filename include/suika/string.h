@@ -914,7 +914,6 @@ namespace suika {
 		/// 文字列を入れ替え
 		/// </summary>
 		/// <param name="str">入れ替える文字列</param>
-		/// <returns>入れ替えられた文字列</returns>
 		constexpr void swap(string& str) noexcept {
 			_string_data.swap(str._string_data);
 		}

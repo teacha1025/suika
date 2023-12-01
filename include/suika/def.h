@@ -34,7 +34,7 @@ namespace suika {
 #pragma region version
 #define MAJOR_VERSION 0
 #define MINOR_VERSION 0
-#define PATCH_VERSION 3
+#define PATCH_VERSION 4
 #define VERSION_SIGN ""
 
 #define VER_HELPER(suf,M,m,p,s) suf""#M"."#m"."#p s

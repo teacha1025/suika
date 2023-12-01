@@ -42,7 +42,7 @@ namespace suika {
 		/// <summary>
 		/// テクスチャを作成
 		/// </summary>
-		/// <param name="_path">テクスチャのパス</param>
+		/// <param name="path">テクスチャのパス</param>
 		texture(string path);
 
 		/// <summary>

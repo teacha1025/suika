@@ -1227,23 +1227,23 @@ namespace suika {
 } // namespace suika
 
 template<suika::concepts::numbers T>
-struct std::formatter<suika::vector2<T>>: std::formatter<suika::string::string_type> {
+struct std::formatter<suika::vector2<T>>: std::formatter<suika::string::str> {
 	auto format(suika::vector2<T> v, std::format_context& ctx) const {
-		return std::formatter<suika::string::string_type>::format(v.to_string().to_string(), ctx);
+		return std::formatter<suika::string::str>::format(v.to_string().to_string(), ctx);
 	}
 };
 
 template<suika::concepts::numbers T>
-struct std::formatter<suika::vector3<T>>: std::formatter<suika::string::string_type> {
+struct std::formatter<suika::vector3<T>>: std::formatter<suika::string::str> {
 	auto format(suika::vector3<T> v, std::format_context& ctx) const {
-		return std::formatter<suika::string::string_type>::format(v.to_string().to_string(), ctx);
+		return std::formatter<suika::string::str>::format(v.to_string().to_string(), ctx);
 	}
 };
 
 template<suika::concepts::numbers T>
-struct std::formatter<suika::polar2<T>>: std::formatter<suika::string::string_type> {
+struct std::formatter<suika::polar2<T>>: std::formatter<suika::string::str> {
 	auto format(suika::polar2<T> v, std::format_context& ctx) const {
-		return std::formatter<suika::string::string_type>::format(v.to_string().to_string(), ctx);
+		return std::formatter<suika::string::str>::format(v.to_string().to_string(), ctx);
 	}
 };
 #undef SCAST

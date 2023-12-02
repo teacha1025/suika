@@ -37,7 +37,7 @@ namespace suika {
 		};
 		template<class Handle>
 		concept await_handler = requires(Handle handle) {
-			requires std::same_as<awaiter*, decltype(handle.promise().pAwaiter)>;
+			requires std::same_as<awaiter*, decltype(handle.promise().p_awaiter)>;
 			requires std::convertible_to<Handle, std::coroutine_handle<>>;
 		};
 		struct yield_awaiter : awaiter {
@@ -45,7 +45,7 @@ namespace suika {
 			bool await_ready() const noexcept { return yield.count == 0; }
 			template<await_handler handle>
 			void await_suspend(handle h) noexcept {
-				h.promise().pAwaiter = this;
+				h.promise().p_awaiter = this;
 			}
 			void await_resume() {}
 			bool resume() override {
@@ -59,11 +59,9 @@ namespace suika {
 		template<typename T>
 		struct task_awaiter;
 	}
-}
-inline auto operator co_await(const suika::yield_type& y) {
-	return suika::detail::yield_awaiter{ y };
-}
-namespace suika{
+	inline auto operator co_await(const suika::yield_type& y) {
+		return suika::detail::yield_awaiter{ y };
+	}
 	template<typename T = void>
 	class task {
 	public:
@@ -72,12 +70,25 @@ namespace suika{
 	private:
 		handle_type handle;
 	public:
+		task() {
+			handle = nullptr;
+		}
+
 		task(promise_type* p) : handle(std::coroutine_handle<promise_type>::from_promise(*p)) {}
 
 		task(const task&) = delete;
 
-		task(task&& rhs) :handle(rhs.handle) {
+		task(task&& rhs) noexcept :handle(rhs.handle) {
 			rhs.handle = nullptr;
+		}
+
+		task& operator =(task&& rhs) noexcept {
+			if (handle) {
+				handle.destroy();
+			}
+			handle = rhs.handle;
+			rhs.handle = nullptr;
+			return *this;
 		}
 
 		~task() {
@@ -87,10 +98,10 @@ namespace suika{
 		}
 
 		decltype(auto) value() const {
-			return handle.promise().value;
+			return handle.promise().get();
 		}
 
-		bool next() {
+		bool resume() const{
 			if (!handle) {
 				return false;
 			}
@@ -123,55 +134,56 @@ namespace suika{
 	};
 	
 	namespace detail {
+		
 		template<typename T>
-		struct promise_value {
+		struct promise_type{
+			awaiter* p_awaiter = nullptr;
+			std::exception_ptr exception;
 			T value;
-			void return_value(const T& v) {
+			void return_value(const T& v) noexcept {
 				value = v;
 			}
 			const T& get() const {
 				return value;
 			}
-		};
-		template<>
-		struct promise_value<void> {
-			void return_void() {}
-			void get() const {}
-		};
-		template<typename T>
-		struct promise_type :promise_value<T>{
-			awaiter* p_awaiter = nullptr;
-			std::exception_ptr exception;
 			auto initial_suspend() noexcept { return std::suspend_always{}; }
 			auto final_suspend() noexcept { return std::suspend_always{}; }
 			auto get_return_object() noexcept { return task<T>(this); }
 			void unhandled_exception() noexcept { exception = std::current_exception(); }
 			auto yield_value(const yield_type& y) noexcept { return operator co_await(y); }
+			auto yield_value(T y) noexcept {
+				value = y;
+				return std::suspend_always{};
+			}
+		};
+		template<>
+		struct promise_type<void> {
+			awaiter* p_awaiter = nullptr;
+			std::exception_ptr exception;
+			void return_void() {}
+			const void get() const {}
+			auto initial_suspend() noexcept { return std::suspend_always{}; }
+			auto final_suspend() noexcept { return std::suspend_always{}; }
+			auto get_return_object() noexcept { return task<void>(this); }
+			void unhandled_exception() noexcept { exception = std::current_exception(); }
+			auto yield_value(const yield_type& y) noexcept { return operator co_await(y); }
+			auto yield_value() noexcept {return std::suspend_always{};}
 		};
 		template<typename T>
 		struct task_awaiter :awaiter {
 			task_awaiter(task<T>&& t):task(std::move(t)){}
-			bool await_ready() const { return !task.next(); }
+			bool await_ready() const { return !(this->task).resume(); }
 			template<await_handler handle>
-			void await_suspend(handle h) noexcept {task.handle.promise().p_awaiter = this;}
-			decltype(auto) await_resume() const { return task.value(); }
-			bool resume() override { return task.next(); }
+			void await_suspend(handle h) noexcept { h.promise().p_awaiter = this;}
+			decltype(auto) await_resume() const { return this->task.value(); }
+			bool resume() override { return this->task.resume(); }
 			task<T> task;
 		};
 	}
+	template<typename T>
+	inline auto operator co_await(suika::task<T> other) {
+		return suika::detail::task_awaiter(std::move(other));
+	}
 }
 
-template<typename T>
-inline auto operator co_await(suika::task<T> other) {
-	return suika::detail::task_awaiter(std::move(other));
-}
-template<typename T>
-auto operator co_await(suika::task<T>&& t) {
-	struct awaiter {
-		suika::task<T>& t;
-		bool await_ready() const noexcept { return false; }
-		void await_suspend(std::coroutine_handle<> h) noexcept { t.handle.promise().continuation = h; }
-		T await_resume() { return t.value(); }
-	};
-	return suika::detail::awaiter{ t };
-}
+

@@ -55,6 +55,8 @@
 
 #include "../include/suika/easing.h"
 
+#include "../include/suika/task.h"
+
 #include "../include/suika/magic_enum.hpp"
 
 #ifdef _DEBUG

@@ -181,6 +181,7 @@
     <ClInclude Include="..\include\suika\string_function.h" />
     <ClInclude Include="..\include\suika\string_view.h" />
     <ClInclude Include="..\include\suika\system.h" />
+    <ClInclude Include="..\include\suika\task.h" />
     <ClInclude Include="..\include\suika\texture.h" />
     <ClInclude Include="..\include\suika\type.h" />
     <ClInclude Include="..\include\suika\vector.h" />

@@ -244,6 +244,9 @@
     <Filter Include="suika\animation">
       <UniqueIdentifier>{332fbce4-47b4-4b5f-954c-9e3e73930c34}</UniqueIdentifier>
     </Filter>
+    <Filter Include="suika\coroutine">
+      <UniqueIdentifier>{3895f116-82d8-4de7-b191-541bed0e5ef3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\suika\palette.h">
@@ -443,6 +446,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\animator.h">
       <Filter>suika\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\task.h">
+      <Filter>suika\coroutine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

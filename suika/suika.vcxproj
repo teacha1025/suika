@@ -181,6 +181,7 @@
     <ClInclude Include="..\include\suika\string_function.h" />
     <ClInclude Include="..\include\suika\string_view.h" />
     <ClInclude Include="..\include\suika\system.h" />
+    <ClInclude Include="..\include\suika\task.h" />
     <ClInclude Include="..\include\suika\texture.h" />
     <ClInclude Include="..\include\suika\type.h" />
     <ClInclude Include="..\include\suika\vector.h" />
@@ -203,6 +204,7 @@
     <ClInclude Include="d3d\xinput.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
     <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

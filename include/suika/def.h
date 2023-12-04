@@ -35,7 +35,7 @@ namespace suika {
 #define MAJOR_VERSION 0
 #define MINOR_VERSION 0
 #define PATCH_VERSION 4
-#define VERSION_SIGN ""
+#define VERSION_SIGN "α"
 
 #define VER_HELPER(suf,M,m,p,s) suf""#M"."#m"."#p s
 #define VERSION_STRING(suf,M,m,p,s) VER_HELPER(suf,M,m,p,s)

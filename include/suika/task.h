@@ -25,12 +25,12 @@
 #include "def.h"
 
 namespace suika {
-	struct yield_type {
-		constexpr yield_type() :count(1) {}
-		constexpr yield_type(uint32 c) : count(c) {}
-		uint32 count;
-	};
 	namespace detail {
+		struct yield_type {
+			constexpr yield_type() :count(1) {}
+			constexpr yield_type(uint32 c) : count(c) {}
+			uint32 count;
+		};
 		struct awaiter {
 			virtual ~awaiter() = default;
 			virtual bool resume() = 0;
@@ -59,9 +59,14 @@ namespace suika {
 		template<typename T>
 		struct task_awaiter;
 	}
-	inline auto operator co_await(const suika::yield_type& y) {
+	inline auto operator co_await(const suika::detail::yield_type& y) {
 		return suika::detail::yield_awaiter{ y };
 	}
+
+	/// <summary>
+	/// タスククラス(コルーチン)
+	/// </summary>
+	/// <typeparam name="T">yield/returnで返す値</typeparam>
 	template<typename T = void>
 	class task {
 	public:
@@ -70,18 +75,33 @@ namespace suika {
 	private:
 		handle_type handle;
 	public:
+		/// <summary>
+		/// 新しいタスクを作成する
+		/// </summary>
 		task() {
 			handle = nullptr;
 		}
 
+		/// <summary>
+		/// 新しいタスクを作成する
+		/// </summary>
+		/// <param name="p">既存のタスク</param>
 		task(promise_type* p) : handle(std::coroutine_handle<promise_type>::from_promise(*p)) {}
 
 		task(const task&) = delete;
 
+		/// <summary>
+		/// 既存のタスクを移行する
+		/// </summary>
+		/// <param name="rhs">既存のタスク</param>
 		task(task&& rhs) noexcept :handle(rhs.handle) {
 			rhs.handle = nullptr;
 		}
 
+		/// <summary>
+		/// 既存のタスクを移行する
+		/// </summary>
+		/// <param name="rhs">既存のタスク</param>
 		task& operator =(task&& rhs) noexcept {
 			if (handle) {
 				handle.destroy();
@@ -91,16 +111,27 @@ namespace suika {
 			return *this;
 		}
 
+		/// <summary>
+		/// タスクを消す
+		/// </summary>
 		~task() {
 			if (handle != nullptr) {
 				handle.destroy();
 			}
 		}
 
+		/// <summary>
+		/// タスク中の値を取得する
+		/// </summary>
+		/// <returns>yield/return値</returns>
 		decltype(auto) value() const {
 			return handle.promise().get();
 		}
 
+		/// <summary>
+		/// タスクを再開する
+		/// </summary>
+		/// <returns>タスクが終了したか</returns>
 		bool resume() const{
 			if (!handle) {
 				return false;
@@ -125,6 +156,10 @@ namespace suika {
 			return !handle.done();
 		}
 
+		/// <summary>
+		/// タスクの状態を取得
+		/// </summary>
+		/// <returns>タスクが終了したか</returns>
 		bool is_done() const{
 			if (!handle) {
 				return true;

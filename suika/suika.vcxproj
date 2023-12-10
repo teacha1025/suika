@@ -96,6 +96,7 @@
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="animator.cpp" />
     <ClCompile Include="canvas.cpp" />
+    <ClCompile Include="collision.cpp" />
     <ClCompile Include="constant_buffer.cpp" />
     <ClCompile Include="circle.cpp" />
     <ClCompile Include="codecvt.cpp" />
@@ -142,6 +143,7 @@
     <ClInclude Include="..\include\suika\cbuffer.h" />
     <ClInclude Include="..\include\suika\circle.h" />
     <ClInclude Include="..\include\suika\codecvt.h" />
+    <ClInclude Include="..\include\suika\collision.h" />
     <ClInclude Include="..\include\suika\color.h" />
     <ClInclude Include="..\include\suika\concepts.h" />
     <ClInclude Include="..\include\suika\def.h" />

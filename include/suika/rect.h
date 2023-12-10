@@ -23,6 +23,8 @@
 #include "vertex.h"
 #include "palette.h"
 #include "shader.h"
+#include "line.h"
+#include "matrix.h"
 
 namespace suika {
 	/// <summary>
@@ -104,5 +106,33 @@ namespace suika {
 			return this->_color;
 		}
 		
+		virtual line top() const {
+			const auto mtx = vector::affine_transformation(_center, _transition, _rotation, (float3)_extend);
+			const auto A = mtx * float4(0, 0, 1, 1);
+			const auto B = mtx * float4(_size.x, 0, 1, 1);
+
+			return line(float2{ A.x,A.y }, float2{ B.x,B.y });
+		}
+		virtual line right() const {
+			const auto mtx = vector::affine_transformation(_center, _transition, _rotation, (float3)_extend);
+			const auto A = mtx * float4(_size.x, 0, 1, 1);
+			const auto B = mtx * float4(_size.x, _size.y, 1, 1);
+
+			return line(float2{ A.x,A.y }, float2{ B.x,B.y });
+		}
+		virtual line left() const {
+			const auto mtx = vector::affine_transformation(_center, _transition, _rotation, (float3)_extend);
+			const auto A = mtx * float4(0, _size.y, 1, 1);
+			const auto B = mtx * float4(0, 0, 1, 1);
+
+			return line(float2{ A.x,A.y }, float2{ B.x,B.y });
+		}
+		virtual line bottom() const {
+			const auto mtx = vector::affine_transformation(_center, _transition, _rotation, (float3)_extend);
+			const auto A = mtx * float4(_size.x, _size.y, 1, 1);
+			const auto B = mtx * float4(0, _size.y, 1, 1);
+
+			return line(float2{ A.x,A.y }, float2{ B.x,B.y });
+		}
 	};
 }

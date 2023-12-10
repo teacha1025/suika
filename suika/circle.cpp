@@ -61,4 +61,15 @@ namespace suika {
 		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { _color.r, _color.g, _color.b, _color.a }, { float2{0,0},float2{1,1} });
 
 	}
+	point<circle::position_type> circle::offset() const {
+		const auto mtx = vector::affine_transformation({}, {}, (double3)_rotation, (double3)_extend);
+		const auto c = mtx * double4(_center.x, _center.y, 0, 1.0f);
+		return { c.x,c.y };
+	}
+
+	vector3<circle::position_type> circle::offset_xyz() const {
+		const auto mtx = vector::affine_transformation({}, {}, _rotation, (float3)_extend);
+		const auto c = mtx * float4(_center.x, _center.y, _center.z, 1.0f);
+		return float3{ c.x,c.y,c.z };
+	}
 }

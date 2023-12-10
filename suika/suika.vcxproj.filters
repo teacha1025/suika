@@ -113,6 +113,9 @@
     <ClCompile Include="animator.cpp">
       <Filter>suika\animation</Filter>
     </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>suika\shape\collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -246,6 +249,9 @@
     </Filter>
     <Filter Include="suika\coroutine">
       <UniqueIdentifier>{3895f116-82d8-4de7-b191-541bed0e5ef3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\shape\collision">
+      <UniqueIdentifier>{4c9412a9-e3ae-4c29-a6de-ae9fde805928}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -449,6 +455,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\task.h">
       <Filter>suika\coroutine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\collision.h">
+      <Filter>suika\shape\collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

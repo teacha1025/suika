@@ -4,7 +4,7 @@
 namespace suika {
 	namespace detail {
 		bool collision(const point<double>& a, const circle& b) {
-			return vector::size_square(a - (b.position() - b.center())) <= b.radius() * b.radius();
+			return vector::size_square(a - (b.position() - b.offset())) <= pow(b.radius()*b.extend().x, 2);
 		}
 		bool collision(const point<double>& a, const line& b) {
 			const auto _a = double2(b.B() - b.A());
@@ -30,30 +30,44 @@ namespace suika {
 	}
 	namespace collision_2d {
 		bool collision(const circle& a, const circle& b) {
-			return vector::size_square((a.position() - a.center()) - (b.position() - b.center())) <= pow(a.radius() + b.radius(), 2);
+			if(a.extend().x == a.extend().y && b.extend().x == b.extend().y)
+				return vector::size_square((a.position() - a.offset()) - (b.position() - b.offset())) <= pow((a.radius()*a.extend().x) + (b.radius() * b.extend().x), 2);
+			else {
+				const auto _a = double2(a.position() - a.offset());
+				const auto _b = double2(b.position() - b.offset());
+				const auto _c = _a - _b;
+				const auto _d = vector::set_length(_c, 1.0);
+				const auto _e = vector::set_length(_d, a.radius());
+				const auto _f = vector::set_length(_d, b.radius());
+				const auto _g = _b + _e;
+				const auto _h = _a - _f;
+				return vector::size_square(_g - _h) <= pow(a.radius() + b.radius(), 2);
+			}
 		}
 		bool collision(const circle& a, const line& b) {
 			if (collision(a, b.A()) || collision(a, b.B()))
 				return true;
+			const auto c = double2(a.position() - a.offset());
+			const auto r = a.radius() * a.extend().x;
 			const auto _a = double2(b.B() - b.A());
-			const auto _b = double2((a.position() - a.center()) - b.A());
-			const auto _c = double2((a.position() - a.center()) - b.B());
+			const auto _b = double2((a.position() - a.offset()) - b.A());
+			const auto _c = double2((a.position() - a.offset()) - b.B());
 			const auto na = vector::set_length(_a, 1.0);
-			const auto sb = vector::dot(na, _b);
-			if (abs(sb) <= a.radius()) {
+			const auto sb = vector::cross( _b, na);
+			if (abs(sb) <= a.radius() * a.extend().x) {
 				const auto d1 = vector::dot(_a, _b);
 				const auto d2 = vector::dot(_a, _c);
 				if (d1 * d2 <= 0.0) {
 					return true;
 				}
-				if (vector::size_square(_b) < pow(a.radius(), 2) ||
-					vector::size_square(_c) < pow(a.radius(), 2))
+				if (vector::size_square(_b) < pow(a.radius() * a.extend().x, 2) ||
+					vector::size_square(_c) < pow(a.radius() * a.extend().x, 2))
 					return true;
 			}
 			return false;
 		}
 		bool collision(const circle& a, const rect& b) {
-			return collision(a.position() - a.center(), b) ||
+			return collision(a.position() - a.offset(), b) ||
 				collision(a, b.top()) ||
 				collision(a, b.right()) ||
 				collision(a, b.bottom()) ||

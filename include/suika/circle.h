@@ -120,6 +120,9 @@ namespace suika {
 			return this->_color;
 		}
 
+		virtual point<position_type> offset() const;
+		virtual vector3<position_type> offset_xyz() const;
+
 		/// <summary>
 		/// •`‰æ‚Ì•ª‰ð”\‚ðŽæ“¾
 		/// </summary>

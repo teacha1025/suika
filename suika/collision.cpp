@@ -54,14 +54,12 @@ namespace suika {
 			const auto _c = double2((a.position() - a.offset()) - b.B());
 			const auto na = vector::set_length(_a, 1.0);
 			const auto sb = vector::cross( _b, na);
-			if (abs(sb) <= a.radius() * a.extend().x) {
-				const auto d1 = vector::dot(_a, _b);
-				const auto d2 = vector::dot(_a, _c);
-				if (d1 * d2 <= 0.0) {
+			if (abs(sb) <= r) {
+				if (vector::dot(_a, _b) * vector::dot(_a, _c) <= 0.0) {
 					return true;
 				}
-				if (vector::size_square(_b) < pow(a.radius() * a.extend().x, 2) ||
-					vector::size_square(_c) < pow(a.radius() * a.extend().x, 2))
+				if (vector::size_square(_b) < pow(r, 2) ||
+					vector::size_square(_c) < pow(r, 2))
 					return true;
 			}
 			return false;
@@ -80,30 +78,27 @@ namespace suika {
 			const auto CA = a.A() - b.A();
 			const auto CB = a.B() - b.A();
 			const auto CD = b.B() - b.A();
-			if (vector::cross(AB, AC) * vector::cross(AB, AD) > 0) {
-				return false;
-			}
-			if (vector::cross(CD, CA) * vector::cross(CD, CB) > 0) {
+			if (vector::cross(AB, AC) * vector::cross(AB, AD) > 0 || vector::cross(CD, CA) * vector::cross(CD, CB) > 0) {
 				return false;
 			}
 			return true;
 		}
 		bool collision(const line& a, const rect& b) {
-			return collision(b, a.A()) || collision(b, a.B()) ||
+			return detail::collision(a.A(), b) || detail::collision(a.B(), b) ||
 				collision(a, b.top()) ||
 				collision(a, b.right()) ||
 				collision(a, b.left()) ||
 				collision(a, b.bottom());
 		}
 		bool collision(const rect& a, const rect& b) {
-			return collision(a, b.top()) ||
-				collision(a, b.right()) ||
-				collision(a, b.bottom()) ||
-				collision(a, b.left()) ||
-				collision(b, a.top()) ||
-				collision(b, a.right()) ||
-				collision(b, a.bottom()) ||
-				collision(b, a.left());
+			return collision(b.top(), a) ||
+				   collision(b.right(), a) ||
+				   collision(b.bottom(), a) ||
+				   collision(b.left(), a) ||
+				   collision(a.top(), b) ||
+				   collision(a.right(), b) ||
+				   collision(a.bottom(), b) ||
+				   collision(a.left(), b);
 		}
 		bool collision(const line& a, const circle& b) {
 			return collision(b, a);

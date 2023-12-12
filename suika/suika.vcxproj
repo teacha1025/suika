@@ -115,6 +115,7 @@
     <ClCompile Include="d3d\viewport.cpp" />
     <ClCompile Include="d3d\vs.cpp" />
     <ClCompile Include="d3d\xinput.cpp" />
+    <ClCompile Include="filesystem.cpp" />
     <ClCompile Include="font.cpp" />
     <ClCompile Include="gamepad.cpp" />
     <ClCompile Include="keyboard.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="..\include\suika\draw.h" />
     <ClInclude Include="..\include\suika\easing.h" />
     <ClInclude Include="..\include\suika\except.h" />
+    <ClInclude Include="..\include\suika\filesystem.h" />
     <ClInclude Include="..\include\suika\font.h" />
     <ClInclude Include="..\include\suika\gamepad.h" />
     <ClInclude Include="..\include\suika\input_base.h" />

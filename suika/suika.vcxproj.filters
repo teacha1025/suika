@@ -116,6 +116,9 @@
     <ClCompile Include="collision.cpp">
       <Filter>suika\shape\collision</Filter>
     </ClCompile>
+    <ClCompile Include="filesystem.cpp">
+      <Filter>suika\filesystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -252,6 +255,9 @@
     </Filter>
     <Filter Include="suika\shape\collision">
       <UniqueIdentifier>{4c9412a9-e3ae-4c29-a6de-ae9fde805928}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\filesystem">
+      <UniqueIdentifier>{f6b8b2b3-9568-443e-a728-8de01a7b628d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -458,6 +464,9 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\collision.h">
       <Filter>suika\shape\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\filesystem.h">
+      <Filter>suika\filesystem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

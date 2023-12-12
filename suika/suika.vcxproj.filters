@@ -119,6 +119,9 @@
     <ClCompile Include="filesystem.cpp">
       <Filter>suika\filesystem</Filter>
     </ClCompile>
+    <ClCompile Include="text_writer.cpp">
+      <Filter>suika\filesystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -466,6 +469,9 @@
       <Filter>suika\shape\collision</Filter>
     </ClInclude>
     <ClInclude Include="..\include\suika\filesystem.h">
+      <Filter>suika\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\text_writer.h">
       <Filter>suika\filesystem</Filter>
     </ClInclude>
   </ItemGroup>

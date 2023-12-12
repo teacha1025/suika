@@ -21,51 +21,39 @@
 #pragma once
 
 #include <memory>
+#include <vector>
 
 #include "def.h"
 #include "string.h"
 
 namespace suika {
-	namespace detail{
+	namespace detail {
 		struct file_deleter {
 			void operator()(FILE* file) const noexcept {
-				fclose(file);
+				if (file)
+					fclose(file);
 			}
 		};
 	}
-	enum class encode {
-		shift_jis,
-		utf8,
-		utf8_bom,
-		utf16,
-		utf16_bom,
-		utf32,
-		utf32_bom,
-	};
-
-	enum class new_line {
-		crlf,
-		lf,
-		cr,
-	};
-
 	namespace filesystem {
-		using path_type = string_view;
+		enum class encode {
+			shift_jis,
+			utf8,
+			utf16,
+			//utf32,
+		};
+
+		enum class new_line {
+			crlf,
+			lf,
+			cr,
+		};
+
 		bool exists(path_type path);
 
-		class text_writer {
-		private:
-			path_type _path;
-			encode _encode = encode::utf8;
-			new_line _new_line = new_line::crlf;
+		path_type current_path();
 
-			std::unique_ptr<FILE, detail::file_deleter> _file;
-		public:
-			text_writer(path_type path, encode encode);
-			~text_writer();
-
-			void write(string_view text);
-			void writeln(string_view text);
-		};
+		//ディレクトリ内のファイルを列挙する
+		std::vector<path_type> enumerate_files(path_type path);
 	}
 } // namespace suika

@@ -18,26 +18,31 @@
 // 
 // -----------------------------------------------------------
 
-#include <filesystem>
+#pragma once
 
-#include "../include/suika/filesystem.h"
+#include <memory>
+#include <vector>
+
+#include "def.h"
+#include "string.h"
+#include "filesystem.h"
 
 namespace suika {
 	namespace filesystem {
-		bool exists(path_type path) {
-			return std::filesystem::exists(path.to_wstring());
-		}
+		
+		class text_writer {
+		private:
+			path_type _path;
+			encode _encode = encode::utf8;
+			new_line _new_line = new_line::crlf;
 
-		path_type current_path() {
-			return string(std::filesystem::current_path());
-		}
+			std::unique_ptr<FILE, detail::file_deleter> _file;
+		public:
+			text_writer(path_type path, encode encode = encode::utf8, new_line nl = new_line::crlf);
+			~text_writer();
 
-		std::vector<path_type> enumerate_files(path_type path) {
-			std::filesystem::directory_iterator itr(path.to_wstring());
-			std::vector<path_type> files;
-			for (auto& p : itr) {
-				files.push_back(string(p.path().wstring()));
-			}
-		}
+			void write(string_view text);
+			void writeln(string_view text);
+		};
 	}
-}
+} // namespace suika

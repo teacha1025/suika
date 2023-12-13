@@ -37,15 +37,15 @@ namespace suika {
 		return suika::to_wstring(_str);
 	}
 
-	string_view::utf8 string_view::to_utf8() const {
+	string_view::utf8 string_view::to_u8string() const {
 		return suika::to_u8string(_str);
 	}
 
-	string_view::utf16 string_view::to_utf16() const {
+	string_view::utf16 string_view::to_u16string() const {
 		return suika::to_u16string(_str);
 	}
 
-	string_view::utf32 string_view::to_utf32() const {
+	string_view::utf32 string_view::to_u32string() const {
 		return suika::to_u32string(_str);
 	}
 }

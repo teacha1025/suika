@@ -34,7 +34,7 @@
 #include "../include/suika/blend.h"
 
 #include "../include/suika/filesystem.h"
-//#include "../include/suika/text_reader.h"
+#include "../include/suika/text_reader.h"
 #include "../include/suika/text_writer.h"
 
 #include "../include/suika/color.h"

@@ -40,9 +40,9 @@ namespace string_test
 	void sv_test(string_view sv, string_view wsv, string_view sv8, string_view sv16, string_view sv32) {
 		Assert::IsTrue(EQ_STD_STR(sv.to_string(), STR_TEXT));
 		Assert::IsTrue(EQ_STD_STR(wsv.to_wstring(), WSTR_TEXT));
-		Assert::IsTrue(EQ_STD_STR(sv8.to_utf8(), U8_TEXT));
-		Assert::IsTrue(EQ_STD_STR(sv16.to_utf16(), U16_TEXT));
-		Assert::IsTrue(EQ_STD_STR(sv32.to_utf32(), U32_TEXT));
+		Assert::IsTrue(EQ_STD_STR(sv8.to_u8string(), U8_TEXT));
+		Assert::IsTrue(EQ_STD_STR(sv16.to_u16string(), U16_TEXT));
+		Assert::IsTrue(EQ_STD_STR(sv32.to_u32string(), U32_TEXT));
 	}
 
 	TEST_CLASS(Split) {

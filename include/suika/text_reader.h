@@ -31,20 +31,20 @@
 namespace suika {
 	namespace filesystem {
 		
-		class text_writer {
+		class text_reader {
 		private:
 			path_type _path;
 			encode _encode = encode::utf8;
 			new_line _new_line = new_line::crlf;
 
 			//std::unique_ptr<FILE, detail::file_deleter> _file;
-			std::ofstream _file;
+			std::ifstream _file;
 		public:
-			text_writer(path_type path, encode encode = encode::utf8, new_line nl = new_line::crlf);
-			~text_writer();
+			text_reader(path_type path, encode encode = encode::utf8, new_line nl = new_line::crlf);
+			~text_reader();
 
-			void write(string_view text);
-			void writeln(string_view text);
+			string read();
+			std::vector<string> readln();
 		};
 	}
 } // namespace suika

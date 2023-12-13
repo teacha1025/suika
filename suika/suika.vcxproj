@@ -131,6 +131,7 @@
     <ClCompile Include="string_view.cpp" />
     <ClCompile Include="system.cpp" />
     <ClCompile Include="texture.cpp" />
+    <ClCompile Include="text_reader.cpp" />
     <ClCompile Include="text_writer.cpp" />
     <ClCompile Include="vertex.cpp" />
     <ClCompile Include="window.cpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="..\include\suika\system.h" />
     <ClInclude Include="..\include\suika\task.h" />
     <ClInclude Include="..\include\suika\texture.h" />
+    <ClInclude Include="..\include\suika\text_reader.h" />
     <ClInclude Include="..\include\suika\text_writer.h" />
     <ClInclude Include="..\include\suika\type.h" />
     <ClInclude Include="..\include\suika\vector.h" />

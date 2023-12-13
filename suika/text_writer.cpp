@@ -17,7 +17,7 @@
 // limitations under the License.
 // 
 // -----------------------------------------------------------
-
+#define _CRT_SECURE_NO_WARNINGS
 #include <filesystem>
 
 #include "../include/suika/text_writer.h"
@@ -36,63 +36,60 @@ namespace suika {
 
 		text_writer::text_writer(path_type path, encode encode, new_line nl) {
 			_path = path;
-			const wchar_t* opt = L"w";
 
-			switch (encode) {
-				case encode::shift_jis: opt = L"w, ccs=SHIFT_JIS"; break;
-				case encode::utf8: opt = L"w, ccs=UTF-8"; break;
-				case encode::utf16: opt = L"w, ccs=UTF-16"; break;
-				//case encode::utf32: opt = L"w, ccs=UTF-32"; break;
-			}
-
-			FILE* fp = new FILE();
-			auto err = _wfopen_s(&fp, path.to_wstring().c_str(), opt);
-			_file.reset(fp);
-			if (err != 0) {
-				return;
-			}
+			_file.open(path.to_wstring(), std::ios::out | std::ios::binary);
+			
 			_encode = encode;
+			_new_line = nl;
 		}
 		text_writer::~text_writer() {
+			_file.close();
 		}
 
 		void text_writer::write(string_view text) {
 			switch (_encode) {
 				case encode::shift_jis: {
-					std::string s = text.to_string();
-					fwrite(s.c_str(), sizeof(char), s.size(), _file.get());
+					auto s = text.to_string();
+					_file.write(std::bit_cast<const char*>(s.data()), s.size() * sizeof(char));
+					_file.flush();
 					break;
 				}
 				case encode::utf8: {
-					std::u8string s = text.to_utf8();
-					fwrite(s.c_str(), sizeof(char8_t), s.size(), _file.get());
+					auto s = text.to_u8string();
+					_file.write(std::bit_cast<const char*>(s.data()), s.size() * sizeof(char8_t));
+					_file.flush();
 					break;
 				}
 				case encode::utf16: {
-					std::wstring s = text.to_wstring();
-					fwrite(s.c_str(), sizeof(wchar_t), s.size(), _file.get());
+					auto s = text.to_u16string();
+					_file.write(std::bit_cast<const char*>(s.data()), s.size() * sizeof(char16_t));
+					_file.flush();
 					break;
 				}
 			}
 		}
 		void text_writer::writeln(string_view text) {
+			auto n = nl(_new_line);
 			switch (_encode) {
 				case encode::shift_jis: {
-					std::string s = text.to_string();
-					fwrite(s.c_str(), sizeof(char), s.size(), _file.get());
-					fwrite(nl(_new_line).to_string().c_str(), sizeof(char), nl(_new_line).size(), _file.get());
+					auto s = text.to_string();
+					s += n.to_string();
+					_file.write(std::bit_cast<const char*>(s.data()), s.size() * sizeof(char));
+					_file.flush();
 					break;
 				}
 				case encode::utf8: {
-					std::u8string s = text.to_utf8();
-					fwrite(s.c_str(), sizeof(char8_t), s.size(), _file.get());
-					fwrite(nl(_new_line).to_utf8().c_str(), sizeof(char8_t), nl(_new_line).size(), _file.get());
+					auto s = text.to_u8string();
+					s += n.to_u8string();
+					_file.write(std::bit_cast<const char*>(s.data()), s.size() * sizeof(char8_t));
+					_file.flush();
 					break;
 				}
 				case encode::utf16: {
-					std::wstring s = text.to_wstring();
-					fwrite(s.c_str(), sizeof(wchar_t), s.size(), _file.get());
-					fwrite(nl(_new_line).to_wstring().c_str(), sizeof(wchar_t), nl(_new_line).size(), _file.get());
+					auto s = text.to_u16string();
+					s += n.to_u16string();
+					_file.write(std::bit_cast<const char*>(s.data()), s.size() * sizeof(char16_t));
+					_file.flush();
 					break;
 				}
 			}

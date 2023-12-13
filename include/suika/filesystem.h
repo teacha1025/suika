@@ -30,7 +30,7 @@ namespace suika {
 	namespace detail {
 		struct file_deleter {
 			void operator()(FILE* file) const noexcept {
-				if (file)
+				if (file != nullptr)
 					fclose(file);
 			}
 		};

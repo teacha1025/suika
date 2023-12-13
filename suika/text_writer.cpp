@@ -31,21 +31,7 @@ namespace suika {
 				case new_line::lf: return U"\n";
 				case new_line::cr: return U"\r";
 			}
-		}
-		bool exists(path_type path) {
-			return std::filesystem::exists(path.to_wstring());
-		}
-
-		path_type current_path() {
-			return string(std::filesystem::current_path());
-		}
-
-		std::vector<path_type> enumerate_files(path_type path) {
-			std::filesystem::directory_iterator itr(path.to_wstring());
-			std::vector<path_type> files;
-			for (auto& p : itr) {
-				files.push_back(string(p.path().wstring()));
-			}
+			return U"";
 		}
 
 		text_writer::text_writer(path_type path, encode encode, new_line nl) {
@@ -68,7 +54,6 @@ namespace suika {
 			_encode = encode;
 		}
 		text_writer::~text_writer() {
-
 		}
 
 		void text_writer::write(string_view text) {

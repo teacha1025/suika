@@ -38,6 +38,7 @@ namespace suika {
 			for (auto& p : itr) {
 				files.push_back(string(p.path().wstring()));
 			}
+			return files;
 		}
 	}
 }

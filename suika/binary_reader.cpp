@@ -1,6 +1,6 @@
 // -----------------------------------------------------------
 // 
-// string_view
+// binary reader
 // 
 // Copyright 2023 teacha1025
 // 
@@ -17,35 +17,41 @@
 // limitations under the License.
 // 
 // -----------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+#include <filesystem>
 
-#include <string>
-#include <string_view>
-#include <array>
-#include <Windows.h>
-
-#include "../include/suika/def.h"
-#include "../include/suika/string_view.h"
-#include "../include/suika/codecvt.h"
-#include "../include/suika/except.h"
+#include "../include/suika/binary_reader.h"
+#include "../include/suika/filesystem.h"
 
 namespace suika {
-	string_view::str string_view::to_string() const {
-		return suika::to_string(_str);
-	}
+	namespace filesystem {
+		void binary_reader::close() {
+			if (_file != nullptr) {
+				fclose(_file.get());
+				_file.reset();
+			}
+		}
 
-	string_view::wstr string_view::to_wstring() const {
-		return suika::to_wstring(_str);
-	}
+		binary_reader::binary_reader(path_type path) {
+			_path = path;
 
-	string_view::utf8 string_view::to_u8string() const {
-		return suika::to_u8string(_str);
-	}
+			_file.reset(fopen(path.to_string().c_str(), "rb"));
+		}
 
-	string_view::utf16 string_view::to_u16string() const {
-		return suika::to_u16string(_str);
-	}
+		binary_reader::binary_reader(binary_reader&& a) {
+			a.close();
+			_path = a._path;
+			_file.reset(fopen(_path.to_string().c_str(), "rb"));
+		}
 
-	string_view::utf32 string_view::to_u32string() const {
-		return suika::to_u32string(_str);
+		binary_reader::~binary_reader() {
+			close();
+		}
+
+		void* binary_reader::read(size_t size) {
+			void* buffer = malloc(size);
+			fread(buffer, size, 1, _file.get());
+			return buffer;
+		}
 	}
 }

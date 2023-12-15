@@ -1,6 +1,6 @@
 // -----------------------------------------------------------
 // 
-// string_view
+// text reader
 // 
 // Copyright 2023 teacha1025
 // 
@@ -18,34 +18,33 @@
 // 
 // -----------------------------------------------------------
 
-#include <string>
-#include <string_view>
-#include <array>
-#include <Windows.h>
+#pragma once
 
-#include "../include/suika/def.h"
-#include "../include/suika/string_view.h"
-#include "../include/suika/codecvt.h"
-#include "../include/suika/except.h"
+#include <memory>
+#include <vector>
+#include <fstream>
+
+#include "def.h"
+#include "string.h"
+#include "filesystem.h"
 
 namespace suika {
-	string_view::str string_view::to_string() const {
-		return suika::to_string(_str);
-	}
+	namespace filesystem {
+		
+		class text_reader {
+		private:
+			path_type _path;
+			encode _encode = encode::utf8;
+			new_line _new_line = new_line::crlf;
 
-	string_view::wstr string_view::to_wstring() const {
-		return suika::to_wstring(_str);
-	}
+			//std::unique_ptr<FILE, detail::file_deleter> _file;
+			std::ifstream _file;
+		public:
+			text_reader(path_type path, encode encode = encode::utf8, new_line nl = new_line::crlf);
+			~text_reader();
 
-	string_view::utf8 string_view::to_u8string() const {
-		return suika::to_u8string(_str);
+			string read();
+			std::vector<string> readln();
+		};
 	}
-
-	string_view::utf16 string_view::to_u16string() const {
-		return suika::to_u16string(_str);
-	}
-
-	string_view::utf32 string_view::to_u32string() const {
-		return suika::to_u32string(_str);
-	}
-}
+} // namespace suika

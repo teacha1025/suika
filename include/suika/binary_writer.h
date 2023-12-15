@@ -1,6 +1,6 @@
 // -----------------------------------------------------------
 // 
-// string_view
+// binary writer
 // 
 // Copyright 2023 teacha1025
 // 
@@ -18,34 +18,39 @@
 // 
 // -----------------------------------------------------------
 
-#include <string>
-#include <string_view>
-#include <array>
-#include <Windows.h>
+#pragma once
 
-#include "../include/suika/def.h"
-#include "../include/suika/string_view.h"
-#include "../include/suika/codecvt.h"
-#include "../include/suika/except.h"
+#include <memory>
+#include <vector>
+#include <fstream>
+
+#include "def.h"
+#include "concepts.h"
+#include "string.h"
+#include "filesystem.h"
 
 namespace suika {
-	string_view::str string_view::to_string() const {
-		return suika::to_string(_str);
-	}
+	namespace filesystem {
+		
+		class binary_writer {
+		private:
+			path_type _path;
 
-	string_view::wstr string_view::to_wstring() const {
-		return suika::to_wstring(_str);
-	}
+			std::unique_ptr<FILE, detail::file_deleter> _file;
 
-	string_view::utf8 string_view::to_u8string() const {
-		return suika::to_u8string(_str);
-	}
+			void close();
+		public:
+			binary_writer(path_type path);
+			binary_writer(const binary_writer&) = delete;
+			binary_writer(binary_writer&&);
+			~binary_writer();
 
-	string_view::utf16 string_view::to_u16string() const {
-		return suika::to_u16string(_str);
-	}
+			void write(void* source, size_t size);
 
-	string_view::utf32 string_view::to_u32string() const {
-		return suika::to_u32string(_str);
+			template<concepts::trivially T>
+			void write(T source) {
+				write(&source, sizeof(T));
+			}
+		};
 	}
-}
+} // namespace suika

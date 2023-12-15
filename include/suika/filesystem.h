@@ -1,6 +1,6 @@
 // -----------------------------------------------------------
 // 
-// string_view
+// filesystem
 // 
 // Copyright 2023 teacha1025
 // 
@@ -18,34 +18,42 @@
 // 
 // -----------------------------------------------------------
 
-#include <string>
-#include <string_view>
-#include <array>
-#include <Windows.h>
+#pragma once
 
-#include "../include/suika/def.h"
-#include "../include/suika/string_view.h"
-#include "../include/suika/codecvt.h"
-#include "../include/suika/except.h"
+#include <memory>
+#include <vector>
+
+#include "def.h"
+#include "string.h"
 
 namespace suika {
-	string_view::str string_view::to_string() const {
-		return suika::to_string(_str);
+	namespace detail {
+		struct file_deleter {
+			void operator()(FILE* file) const noexcept {
+				if (file != nullptr)
+					fclose(file);
+			}
+		};
 	}
+	namespace filesystem {
+		enum class encode {
+			shift_jis,
+			utf8,
+			utf16,
+			//utf32,
+		};
 
-	string_view::wstr string_view::to_wstring() const {
-		return suika::to_wstring(_str);
-	}
+		enum class new_line {
+			crlf,
+			lf,
+			cr,
+		};
 
-	string_view::utf8 string_view::to_u8string() const {
-		return suika::to_u8string(_str);
-	}
+		bool exists(path_type path);
 
-	string_view::utf16 string_view::to_u16string() const {
-		return suika::to_u16string(_str);
-	}
+		path_type current_path();
 
-	string_view::utf32 string_view::to_u32string() const {
-		return suika::to_u32string(_str);
+		//ディレクトリ内のファイルを列挙する
+		std::vector<path_type> enumerate_files(path_type path);
 	}
-}
+} // namespace suika

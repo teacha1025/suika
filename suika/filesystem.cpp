@@ -1,6 +1,6 @@
 // -----------------------------------------------------------
 // 
-// string_view
+// filesystem
 // 
 // Copyright 2023 teacha1025
 // 
@@ -18,34 +18,27 @@
 // 
 // -----------------------------------------------------------
 
-#include <string>
-#include <string_view>
-#include <array>
-#include <Windows.h>
+#include <filesystem>
 
-#include "../include/suika/def.h"
-#include "../include/suika/string_view.h"
-#include "../include/suika/codecvt.h"
-#include "../include/suika/except.h"
+#include "../include/suika/filesystem.h"
 
 namespace suika {
-	string_view::str string_view::to_string() const {
-		return suika::to_string(_str);
-	}
+	namespace filesystem {
+		bool exists(path_type path) {
+			return std::filesystem::exists(path.to_wstring());
+		}
 
-	string_view::wstr string_view::to_wstring() const {
-		return suika::to_wstring(_str);
-	}
+		path_type current_path() {
+			return string(std::filesystem::current_path());
+		}
 
-	string_view::utf8 string_view::to_u8string() const {
-		return suika::to_u8string(_str);
-	}
-
-	string_view::utf16 string_view::to_u16string() const {
-		return suika::to_u16string(_str);
-	}
-
-	string_view::utf32 string_view::to_u32string() const {
-		return suika::to_u32string(_str);
+		std::vector<path_type> enumerate_files(path_type path) {
+			std::filesystem::directory_iterator itr(path.to_wstring());
+			std::vector<path_type> files;
+			for (auto& p : itr) {
+				files.push_back(string(p.path().wstring()));
+			}
+			return files;
+		}
 	}
 }

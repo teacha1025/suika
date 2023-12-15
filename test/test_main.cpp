@@ -1,7 +1,4 @@
 ﻿#include "suika.h"
-#include <queue>
-#include <regex>
-#include <fstream>
 using namespace suika;
 
 void init() {
@@ -10,99 +7,57 @@ void init() {
 	suika::window::vsync(true);
 }
 
+struct save_data {
+	int HP = 100;         //HP
+	int MP = 52;         //MP
+	int Money = 1500;      //所持金
+	int Exp = 80;        //経験値
+};
+auto s = sizeof(save_data);
 int main() {
-	uint mode = 1;
-	float r = 0;
-	auto r1 = rect({ 64,32 });
-	r1.centered({ 8,8 }).extended(1.4);
-	auto r2 = rect({ 120,96 });
-	r2.centered({ 8,8 }).extended(1.4).at({ 640,640 });
-	auto c1 = circle(48);
-	c1.centered({ 16,16 }).extended(1.4);
-	auto c2 = circle(64);
-	c2.centered({ -16,16 }).extended(1.8).at({ 320,480 });
-	auto l1 = line({ 0,0 }, { 64,80 });
-	l1.centered({ 32,40 }).extended(1.4);
-	auto l2 = line({ 0,0 }, { 64,80 });
-	l2.centered({ 32,40 }).extended(1.5).at({ 720,80 });
-	range<0.1, 5.0> s = 1.0;
+	{
+		auto writer = filesystem::text_writer(U"write_test.txt", filesystem::encode::utf8);
+		writer.writeln(U"Hello, world!");
+		writer.writeln(U"こんにちは、世界！");
+		writer.writeln(U"안녕하세요, 세계!");
+		writer.writeln(U"你好，世界！");
+		writer.writeln(U"Привет, мир!");
+		writer.writeln(U"مرحبا بالعالم!");
+		writer.writeln(U"สวัสดีชาวโลก!");
+		writer.writeln(U"नमस्ते दुनिया!");
+	}
+	{
+		auto reader = filesystem::text_reader(U"write_test.txt", filesystem::encode::utf8);
+		auto lines = reader.readln();
+		for (auto& line : lines) {
+			suika::log.info(line);
+		}
+	}
+	{
+		auto writer = filesystem::binary_writer(U"write_test.bin");
+		save_data data1, data2;
+		data2.HP = 200;
+		writer.write(data1);
+		writer.write(data2);
+	}
+	{
+		auto reader = filesystem::binary_reader(U"write_test.bin");
+		auto data = reader.read<save_data>();
+		suika::log.info("1");
+		suika::log.info(std::format("HP:{}", data.HP));
+		suika::log.info(std::format("MP:{}", data.MP));
+		suika::log.info(std::format("Money:{}", data.Money));
+		suika::log.info(std::format("Exp:{}", data.Exp));
+
+		data = reader.read<save_data>();
+		suika::log.info("2");
+		suika::log.info(std::format("HP:{}", data.HP));
+		suika::log.info(std::format("MP:{}", data.MP));
+		suika::log.info(std::format("Money:{}", data.Money));
+		suika::log.info(std::format("Exp:{}", data.Exp));
+
+	}
 	while (sys::update()) {
-		window::title(std::format("{}, {:1.3f}, [{:2.2f}]", mouse::position(), s.get(), sys::fps()));
-		if (mouse::Left.down()) {
-			mode = (mode + 1) % 3;
-		}
-		s += mouse::wheel() * 0.01;
-		r2.rotated(-r).extended(s);
-		c2.rotated(-r).extended(s);
-		l2.rotated(-r).extended(s);
-		switch (mode) {
-			case 0: {
-				auto& x = r1.at(mouse::position()).extended(s).rotated(r - 0.4);
-				if (collision_2d::collision(x, r2)) {
-					x.colored(palette::red);
-				}
-				else if (collision_2d::collision(x, c2)) {
-					x.colored(palette::blue);
-				}
-				else if (collision_2d::collision(x, l2)) {
-					x.colored(palette::green);
-				}
-				else {
-					x.colored(palette::white);
-				}
-				break;
-			}
-			case 1: {
-				auto& x = c1.at(mouse::position()).extended(s).rotated(r - 0.4);
-				if (collision_2d::collision(x, r2)) {
-					x.colored(palette::red);
-				}
-				else if (collision_2d::collision(x, c2)) {
-					x.colored(palette::blue);
-				}
-				else if (collision_2d::collision(x, l2)) {
-					x.colored(palette::green);
-				}
-				else {
-					x.colored(palette::white);
-				}
-				break;
-			}
-			case 2: {
-				auto& x = l1.at(mouse::position()).extended(s).rotated(r - 0.4);
-				if (collision_2d::collision(x, r2)) {
-					x.colored(palette::red);
-				}
-				else if (collision_2d::collision(x, c2)) {
-					x.colored(palette::blue);
-				}
-				else if (collision_2d::collision(x, l2)) {
-					x.colored(palette::green);
-				}
-				else {
-					x.colored(palette::white);
-				}
-				break;
-			}
-		}
-		r2.draw();
-		c2.draw();
-		l2.draw();
 		
-		switch (mode) {
-			case 0: {
-				r1.draw();
-				break;
-			}
-			case 1: {
-				c1.draw();
-				break;
-			}
-			case 2: {
-				l1.draw();
-				break;
-			}
-		}
-		r += 0.01;
 	}
 }

@@ -138,19 +138,19 @@ namespace suika {
 		/// •¶Žš—ñ‚ð•ÏŠ·
 		/// </summary>
 		/// <returns>UTF8•¶Žš—ñ</returns>
-		NODISCARD utf8 to_utf8() const;
+		NODISCARD utf8 to_u8string() const;
 
 		/// <summary>
 		/// •¶Žš—ñ‚ð•ÏŠ·
 		/// </summary>
 		/// <returns>UTF16•¶Žš—ñ</returns>
-		NODISCARD utf16 to_utf16() const;
+		NODISCARD utf16 to_u16string() const;
 
 		/// <summary>
 		/// •¶Žš—ñ‚ð•ÏŠ·
 		/// </summary>
 		/// <returns>UTF32•¶Žš—ñ</returns>
-		NODISCARD utf32 to_utf32() const;
+		NODISCARD utf32 to_u32string() const;
 
 #pragma region STD_FUNCTION
 		/// <summary>

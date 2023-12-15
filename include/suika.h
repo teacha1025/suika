@@ -36,6 +36,8 @@
 #include "../include/suika/filesystem.h"
 #include "../include/suika/text_reader.h"
 #include "../include/suika/text_writer.h"
+#include "../include/suika/binary_writer.h"
+#include "../include/suika/binary_reader.h"
 
 #include "../include/suika/color.h"
 #include "../include/suika/palette.h"

@@ -1,6 +1,6 @@
 // -----------------------------------------------------------
 // 
-// text reader
+// binary reader
 // 
 // Copyright 2023 teacha1025
 // 
@@ -31,20 +31,26 @@
 namespace suika {
 	namespace filesystem {
 		
-		class text_reader {
+		class binary_reader {
 		private:
 			path_type _path;
-			encode _encode = encode::utf8;
-			new_line _new_line = new_line::crlf;
 
-			//std::unique_ptr<FILE, detail::file_deleter> _file;
-			std::ifstream _file;
+			std::unique_ptr<FILE, detail::file_deleter> _file;
+
+			void close();
+			//std::ofstream _file;
 		public:
-			text_reader(path_type path, encode encode = encode::utf8, new_line nl = new_line::crlf);
-			~text_reader();
+			binary_reader(path_type path);
+			binary_reader(const binary_reader&) = delete;
+			binary_reader(binary_reader&&);
+			~binary_reader();
 
-			string read();
-			std::vector<string> readln();
+			void* read(size_t size);
+
+			template<class T>
+			T read() {
+				return *static_cast<T*>(read(sizeof(T)));
+			}
 		};
 	}
 } // namespace suika

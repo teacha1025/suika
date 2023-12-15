@@ -1,6 +1,6 @@
 // -----------------------------------------------------------
 // 
-// text reader
+// binary writer
 // 
 // Copyright 2023 teacha1025
 // 
@@ -25,26 +25,32 @@
 #include <fstream>
 
 #include "def.h"
+#include "concepts.h"
 #include "string.h"
 #include "filesystem.h"
 
 namespace suika {
 	namespace filesystem {
 		
-		class text_reader {
+		class binary_writer {
 		private:
 			path_type _path;
-			encode _encode = encode::utf8;
-			new_line _new_line = new_line::crlf;
 
-			//std::unique_ptr<FILE, detail::file_deleter> _file;
-			std::ifstream _file;
+			std::unique_ptr<FILE, detail::file_deleter> _file;
+
+			void close();
 		public:
-			text_reader(path_type path, encode encode = encode::utf8, new_line nl = new_line::crlf);
-			~text_reader();
+			binary_writer(path_type path);
+			binary_writer(const binary_writer&) = delete;
+			binary_writer(binary_writer&&);
+			~binary_writer();
 
-			string read();
-			std::vector<string> readln();
+			void write(void* source, size_t size);
+
+			template<concepts::trivially T>
+			void write(T source) {
+				write(&source, sizeof(T));
+			}
 		};
 	}
 } // namespace suika

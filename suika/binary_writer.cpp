@@ -1,6 +1,6 @@
 // -----------------------------------------------------------
 // 
-// text reader
+// binary writer
 // 
 // Copyright 2023 teacha1025
 // 
@@ -17,34 +17,39 @@
 // limitations under the License.
 // 
 // -----------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+#include <filesystem>
 
-#pragma once
-
-#include <memory>
-#include <vector>
-#include <fstream>
-
-#include "def.h"
-#include "string.h"
-#include "filesystem.h"
+#include "../include/suika/binary_writer.h"
+#include "../include/suika/filesystem.h"
 
 namespace suika {
 	namespace filesystem {
-		
-		class text_reader {
-		private:
-			path_type _path;
-			encode _encode = encode::utf8;
-			new_line _new_line = new_line::crlf;
+		void binary_writer::close() {
+			if (_file != nullptr) {
+				fclose(_file.get());
+				_file.reset();
+			}
+		}
 
-			//std::unique_ptr<FILE, detail::file_deleter> _file;
-			std::ifstream _file;
-		public:
-			text_reader(path_type path, encode encode = encode::utf8, new_line nl = new_line::crlf);
-			~text_reader();
+		binary_writer::binary_writer(path_type path) {
+			_path = path;
 
-			string read();
-			std::vector<string> readln();
-		};
+			_file.reset(fopen(path.to_string().c_str(), "wb"));
+		}
+
+		binary_writer::binary_writer(binary_writer&& a) {
+			a.close();
+			_path = a._path;
+			_file.reset(fopen(_path.to_string().c_str(), "wb"));
+		}
+
+		binary_writer::~binary_writer() {
+			close();
+		}
+
+		void binary_writer::write(void* source, size_t size) {
+			fwrite(source, size, 1, _file.get());
+		}
 	}
-} // namespace suika
+}

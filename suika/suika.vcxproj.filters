@@ -125,6 +125,12 @@
     <ClCompile Include="text_reader.cpp">
       <Filter>suika\filesystem</Filter>
     </ClCompile>
+    <ClCompile Include="binary_reader.cpp">
+      <Filter>suika\filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="binary_writer.cpp">
+      <Filter>suika\filesystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -478,6 +484,12 @@
       <Filter>suika\filesystem</Filter>
     </ClInclude>
     <ClInclude Include="..\include\suika\text_reader.h">
+      <Filter>suika\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\binary_reader.h">
+      <Filter>suika\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\binary_writer.h">
       <Filter>suika\filesystem</Filter>
     </ClInclude>
   </ItemGroup>

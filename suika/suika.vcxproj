@@ -95,6 +95,8 @@
   <ItemGroup>
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="animator.cpp" />
+    <ClCompile Include="binary_reader.cpp" />
+    <ClCompile Include="binary_writer.cpp" />
     <ClCompile Include="canvas.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="constant_buffer.cpp" />
@@ -141,6 +143,8 @@
     <ClInclude Include="..\include\suika\animation.h" />
     <ClInclude Include="..\include\suika\animator.h" />
     <ClInclude Include="..\include\suika\base.h" />
+    <ClInclude Include="..\include\suika\binary_reader.h" />
+    <ClInclude Include="..\include\suika\binary_writer.h" />
     <ClInclude Include="..\include\suika\blend.h" />
     <ClInclude Include="..\include\suika\canvas.h" />
     <ClInclude Include="..\include\suika\cbuffer.h" />

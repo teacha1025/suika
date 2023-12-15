@@ -1,6 +1,6 @@
 // -----------------------------------------------------------
 // 
-// text reader
+// binary reader
 // 
 // Copyright 2023 teacha1025
 // 
@@ -17,34 +17,41 @@
 // limitations under the License.
 // 
 // -----------------------------------------------------------
+#define _CRT_SECURE_NO_WARNINGS
+#include <filesystem>
 
-#pragma once
-
-#include <memory>
-#include <vector>
-#include <fstream>
-
-#include "def.h"
-#include "string.h"
-#include "filesystem.h"
+#include "../include/suika/binary_reader.h"
+#include "../include/suika/filesystem.h"
 
 namespace suika {
 	namespace filesystem {
-		
-		class text_reader {
-		private:
-			path_type _path;
-			encode _encode = encode::utf8;
-			new_line _new_line = new_line::crlf;
+		void binary_reader::close() {
+			if (_file != nullptr) {
+				fclose(_file.get());
+				_file.reset();
+			}
+		}
 
-			//std::unique_ptr<FILE, detail::file_deleter> _file;
-			std::ifstream _file;
-		public:
-			text_reader(path_type path, encode encode = encode::utf8, new_line nl = new_line::crlf);
-			~text_reader();
+		binary_reader::binary_reader(path_type path) {
+			_path = path;
 
-			string read();
-			std::vector<string> readln();
-		};
+			_file.reset(fopen(path.to_string().c_str(), "rb"));
+		}
+
+		binary_reader::binary_reader(binary_reader&& a) {
+			a.close();
+			_path = a._path;
+			_file.reset(fopen(_path.to_string().c_str(), "rb"));
+		}
+
+		binary_reader::~binary_reader() {
+			close();
+		}
+
+		void* binary_reader::read(size_t size) {
+			void* buffer = malloc(size);
+			fread(buffer, size, 1, _file.get());
+			return buffer;
+		}
 	}
-} // namespace suika
+}

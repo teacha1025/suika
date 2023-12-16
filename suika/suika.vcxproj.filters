@@ -113,6 +113,24 @@
     <ClCompile Include="animator.cpp">
       <Filter>suika\animation</Filter>
     </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>suika\shape\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="filesystem.cpp">
+      <Filter>suika\filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="text_writer.cpp">
+      <Filter>suika\filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="text_reader.cpp">
+      <Filter>suika\filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="binary_reader.cpp">
+      <Filter>suika\filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="binary_writer.cpp">
+      <Filter>suika\filesystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -243,6 +261,15 @@
     </Filter>
     <Filter Include="suika\animation">
       <UniqueIdentifier>{332fbce4-47b4-4b5f-954c-9e3e73930c34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\coroutine">
+      <UniqueIdentifier>{3895f116-82d8-4de7-b191-541bed0e5ef3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\shape\collision">
+      <UniqueIdentifier>{4c9412a9-e3ae-4c29-a6de-ae9fde805928}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\filesystem">
+      <UniqueIdentifier>{f6b8b2b3-9568-443e-a728-8de01a7b628d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -444,8 +471,30 @@
     <ClInclude Include="..\include\suika\animator.h">
       <Filter>suika\animation</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\suika\task.h">
+      <Filter>suika\coroutine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\collision.h">
+      <Filter>suika\shape\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\filesystem.h">
+      <Filter>suika\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\text_writer.h">
+      <Filter>suika\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\text_reader.h">
+      <Filter>suika\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\binary_reader.h">
+      <Filter>suika\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\binary_writer.h">
+      <Filter>suika\filesystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

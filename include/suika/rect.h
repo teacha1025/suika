@@ -23,6 +23,8 @@
 #include "vertex.h"
 #include "palette.h"
 #include "shader.h"
+#include "line.h"
+#include "matrix.h"
 
 namespace suika {
 	/// <summary>
@@ -34,6 +36,8 @@ namespace suika {
 		color_f _color = palette::white;
 
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
+
+		float3 _ext_cnt = { 1,1,1 };
 	public:
 		rect() { 
 			_shaders = { .vs = SHAPE_VERTEX, .ps = SHAPE_PIXEL };
@@ -51,6 +55,66 @@ namespace suika {
 		/// ‹éŒ`‚ğ•`‰æ‚·‚é
 		/// </summary>
 		virtual void draw() override;
+
+		/// <summary>
+		/// Šg‘å—¦‚Ìİ’è
+		/// </summary>
+		/// <param name="rate">Šg‘å—¦</param>
+		virtual rect extended(const vector3<double>& rate)&& override{
+			_extend = rate;
+			_ext_cnt = float3{ 1/(float(_extend.x)), 1/(float(_extend.y)), 1/(float(_extend.z)) };
+			return static_cast<rect&&>(std::move(*this));
+		}
+
+		/// <summary>
+		/// Šg‘å—¦‚Ìİ’è
+		/// </summary>
+		/// <param name="rate">Šg‘å—¦</param>
+		virtual rect& extended(const vector3<double>& rate)& override {
+			_extend = rate;
+			_ext_cnt = float3{ 1 / (float(_extend.x)), 1 / (float(_extend.y)), 1 / (float(_extend.z)) };
+			return static_cast<rect&>(*this);
+		}
+
+		/// <summary>
+		/// Šg‘å—¦‚Ìİ’è
+		/// </summary>
+		/// <param name="rate">Šg‘å—¦</param>
+		virtual rect extended(const point<double>& rate)&& {
+			_extend = { rate.x, rate.y, 1 };
+			_ext_cnt = float3{ 1 / (float(_extend.x)), 1 / (float(_extend.y)), 1 / (float(_extend.z)) };
+			return static_cast<rect&&>(std::move(*this));
+		}
+
+		/// <summary>
+		/// Šg‘å—¦‚Ìİ’è
+		/// </summary>
+		/// <param name="rate">Šg‘å—¦</param>
+		virtual rect& extended(const point<double>& rate)& {
+			_extend = { rate.x, rate.y, 1 };
+			_ext_cnt = float3{ 1 / (float(_extend.x)), 1 / (float(_extend.y)), 1 / (float(_extend.z)) };
+			return static_cast<rect&>(*this);
+		}
+
+		/// <summary>
+		/// Šg‘å—¦‚Ìİ’è
+		/// </summary>
+		/// <param name="rate">Šg‘å—¦</param>
+		virtual rect extended(double rate)&& {
+			_extend = { rate, rate, rate };
+			_ext_cnt = float3{ 1 / (float(_extend.x)), 1 / (float(_extend.y)), 1 / (float(_extend.z)) };
+			return static_cast<rect&&>(std::move(*this));
+		}
+
+		/// <summary>
+		/// Šg‘å—¦‚Ìİ’è
+		/// </summary>
+		/// <param name="rate">Šg‘å—¦</param>
+		virtual rect& extended(double rate)& {
+			_extend = { rate, rate, rate };
+			_ext_cnt = float3{ 1 / (float(_extend.x)), 1 / (float(_extend.y)), 1 / (float(_extend.z)) };
+			return static_cast<rect&>(*this);
+		}
 
 		/// <summary>
 		/// F‚ğİ’è
@@ -104,5 +168,9 @@ namespace suika {
 			return this->_color;
 		}
 		
+		virtual line top() const;
+		virtual line right() const;
+		virtual line left() const;
+		virtual line bottom() const;
 	};
 }

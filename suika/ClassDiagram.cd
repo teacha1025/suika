@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="suika::animation" Collapsed="true">
+    <Position X="40.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgAAAAAAgAACAAIAAIIiIIgFAgCAEEIAAQQAAEIRACE=</HashCode>
+      <FileName>E:\programing\suika\include\suika\animation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::animator" Collapsed="true">
+    <Position X="42.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAIAAgAAAAAAAAAaAIAAAAAiACAAAAAAAAEACACE=</HashCode>
+      <FileName>E:\programing\suika\include\suika\animator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::circle" Collapsed="true">
+    <Position X="44.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAiAgIAAAQAAIACCAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\circle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::exception" Collapsed="true">
+    <Position X="54" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAACA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\except.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::font" Collapsed="true">
+    <Position X="8.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAoBABAACAgIQBARAAaQIBplAACUA5CokIAEACdAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\font.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::input_base" Collapsed="true">
+    <Position X="17.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAACAEAABAAACAAAAABAAAAAIAAAAgAkEAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\input_base.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::iscene" Collapsed="true">
+    <Position X="57.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAIAAAAAAIAAAAAQAAAAAIAAAAAAAAEAAI=</HashCode>
+      <FileName>E:\programing\suika\include\suika\scene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::line" Collapsed="true">
+    <Position X="47" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEEAAAAgAgIAAAAAAIAAAAAAAAAAACAAACAIAkAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\line.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::logger" Collapsed="true">
+    <Position X="24.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABACAAAAAACBMWAAAAAAAAAAFIAYBABAAACAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\logger.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::polar2&lt;size, angle&gt;" Collapsed="true">
+    <Position X="26.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACIAAAAAAAAQAAEAAAAAAAIAAhAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\point.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::rect" Collapsed="true">
+    <Position X="49.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAgIAAAQAIIAIAAAAAAAAACAAAAAAAIAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\rect.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::scene_manager" Collapsed="true">
+    <Position X="54" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAEEABAAAEAAAQQIAEAAAIAAIAAAAAAAAEAAEAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\scene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::string" Collapsed="true">
+    <Position X="55.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UVAAMJECQDBEQBBGg+OIAQgzABEAAAIArwEwEkAEQAo=</HashCode>
+      <FileName>E:\programing\suika\include\suika\string.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::string_view" Collapsed="true">
+    <Position X="57.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QFAAAJECQDAABQBGg+AAAQgSAAEIAAIArQAwEgAESAo=</HashCode>
+      <FileName>E:\programing\suika\include\suika\string_view.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::task&lt;T&gt;" Collapsed="true">
+    <Position X="54" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAAAAAAAAAAAAAAAAAAEAAAAACAAAAAiAABAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\task.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::texture" Collapsed="true">
+    <Position X="51.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAACAAIAAIIAAAABAgAAAgIAAAAAAAIAAiE=</HashCode>
+      <FileName>E:\programing\suika\include\suika\texture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::vector2&lt;T&gt;" Collapsed="true">
+    <Position X="31.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAQAEAAQAAAAAAAAgAIABgAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\point.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::vector3&lt;T&gt;" Collapsed="true">
+    <Position X="38" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAQAEAAQAAAAAAAAAAIABgAQAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\point.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::vector4&lt;T&gt;" Collapsed="true">
+    <Position X="33.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAQAEAAQAAAAAAAAAAIAhgAQAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\point.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::vrange&lt;T&gt;" Collapsed="true">
+    <Position X="35.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEIAAAAAQgAAAACAAQQAAAIAAAAAAIAAgAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\range.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::detail::gamepad" Collapsed="true">
+    <Position X="55.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAEAAIAACAAAAAAAAJABAAAAAAAAAAE6ACgIwGAYCI=</HashCode>
+      <FileName>E:\programing\suika\include\suika\gamepad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::detail::gamepad_button" Collapsed="true">
+    <Position X="17.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAABAQAAAhAAAAAAAIEAAAQAEAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\gamepad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::detail::gamepad_stick" Collapsed="true">
+    <Position X="22.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBAAAEBABAACAAAABABAAAAAoABAACAAIEAAAwAEAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\gamepad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::detail::gamepad_trigger" Collapsed="true">
+    <Position X="13.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EBAAAAAABAACAAAABABAAAAAoIBAACAAoEAAAwAEAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\gamepad.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::detail::ibase" Collapsed="true">
+    <Position X="28" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAIAAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\base.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::detail::ishape&lt;T&gt;" Collapsed="true">
+    <Position X="46" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAABAAiAAAABARAEKQIAgFAAAQAACgoIAEAAEIAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\draw.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::detail::key" Collapsed="true">
+    <Position X="20" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\keyboard.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="suika::detail::mouse" Collapsed="true">
+    <Position X="15.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\mouse.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="suika::canvas" Collapsed="true">
+    <Position X="54" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAQQAAACAAAAAAAEAAAAAAAAAgA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\canvas.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="suika::cbuffer_default" Collapsed="true">
+    <Position X="55.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\cbuffer.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="suika::color" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAQAAAAAABACoIQAFABAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\color.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="suika::color_f" Collapsed="true">
+    <Position X="4.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAIAAAAAAAAAAQAAAAAABAEoIQABAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\color.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="suika::color_v" Collapsed="true">
+    <Position X="57.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAQABAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\vertex.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="suika::hsv" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAQAAAAAAAAEgYJAAAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\color.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="suika::matrix&lt;T&gt;" Collapsed="true">
+    <Position X="55.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAKAAASAAAAAABAAAkwAgAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\matrix.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="suika::matrix2x2&lt;T&gt;" Collapsed="true">
+    <Position X="57.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAACABAAAAAAAAAAAAgIAAAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\matrix.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="suika::matrix4x4&lt;T&gt;" Collapsed="true">
+    <Position X="54" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAACAAAAAAAAAABAAAgAIAAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\matrix.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="suika::range&lt;minimum, maximum&gt;" Collapsed="true">
+    <Position X="29" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEIAIAAAQAAAAAAAAwQAAAAAAAAAAIAAgAAAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\range.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="suika::gamepad::info" Collapsed="true">
+    <Position X="54" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAIAAAAAAAAAAAAEAAAEAAAAAAABAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\gamepad.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="suika::vertex::vertex_2d" Collapsed="true">
+    <Position X="55.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIQAAAAAAAACAAAAAAAAAAgA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\vertex.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="suika::blend" Collapsed="true">
+    <Position X="54" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EwAABgABAgEAAAAAAgAAAAAAAAAACAAIAAAQAAACAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\blend.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="suika::font_alignment" Collapsed="true">
+    <Position X="57.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\font.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="suika::font_stretch" Collapsed="true">
+    <Position X="54" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAIAAAAAAAAAAAAAAAACgAAACAAIAQAAAAAggAgAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\font.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="suika::font_style" Collapsed="true">
+    <Position X="55.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\font.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="suika::font_weight" Collapsed="true">
+    <Position X="57.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAACAAAAAAAAAAAAwAEkAAAIAAAAAAAAIAAABAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\font.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="suika::input_state" Collapsed="true">
+    <Position X="54" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAACAAAAAAAAAAAAAABAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\input_base.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="suika::pad_states" Collapsed="true">
+    <Position X="55.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQgAAIAAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\gamepad.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="suika::primitive_topology" Collapsed="true">
+    <Position X="57.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAEEAQAAgAAAAACAAAAAAAAAAIAAAAAAAACAAAQAAA=</HashCode>
+      <FileName>E:\programing\suika\include\suika\vertex.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="suika::mouse::cursor" Collapsed="true">
+    <Position X="55.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAgAAAgAAAIgAAAAIABAAAAAAJAGAwAAgACIAAg=</HashCode>
+      <FileName>E:\programing\suika\include\suika\mouse.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Yu Gothic UI" Size="9" />
+</ClassDiagram>

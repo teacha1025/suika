@@ -1,5 +1,7 @@
 var hierarchy =
 [
+    [ "suika::filesystem::binary_reader", "classsuika_1_1filesystem_1_1binary__reader.html", null ],
+    [ "suika::filesystem::binary_writer", "classsuika_1_1filesystem_1_1binary__writer.html", null ],
     [ "suika::exception", "classsuika_1_1exception.html", null ],
     [ "suika::detail::gamepad", "classsuika_1_1detail_1_1gamepad.html", null ],
     [ "suika::detail::ibase", "classsuika_1_1detail_1_1ibase.html", [
@@ -28,6 +30,7 @@ var hierarchy =
       [ "suika::vector2< double >", "classsuika_1_1vector2.html", null ],
       [ "suika::vector3< position_type >", "classsuika_1_1vector3.html", null ],
       [ "suika::vector3< double >", "classsuika_1_1vector3.html", null ],
+      [ "suika::vector3< float >", "classsuika_1_1vector3.html", null ],
       [ "suika::vector4< float >", "classsuika_1_1vector4.html", null ],
       [ "suika::color", "structsuika_1_1color.html", null ],
       [ "suika::color_f", "structsuika_1_1color__f.html", null ],
@@ -53,5 +56,9 @@ var hierarchy =
     [ "suika::iscene", "classsuika_1_1iscene.html", null ],
     [ "suika::matrix< T >", "structsuika_1_1matrix.html", null ],
     [ "suika::scene_manager", "classsuika_1_1scene__manager.html", null ],
-    [ "suika::string", "classsuika_1_1string.html", null ]
+    [ "suika::string", "classsuika_1_1string.html", null ],
+    [ "suika::task< T >", "classsuika_1_1task.html", null ],
+    [ "suika::task< T >", "classsuika_1_1task.html", null ],
+    [ "suika::filesystem::text_reader", "classsuika_1_1filesystem_1_1text__reader.html", null ],
+    [ "suika::filesystem::text_writer", "classsuika_1_1filesystem_1_1text__writer.html", null ]
 ];

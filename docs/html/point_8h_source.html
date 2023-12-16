@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign">
-   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.4</span>
+   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.5</span>
    </div>
   </td>
  </tr>
@@ -1207,23 +1207,23 @@ $(document).ready(function(){initNavTree('point_8h_source.html',''); initResizab
 <div class="line"><a id="l01227" name="l01227"></a><span class="lineno"> 1227</span>} <span class="comment">// namespace suika</span></div>
 <div class="line"><a id="l01228" name="l01228"></a><span class="lineno"> 1228</span> </div>
 <div class="line"><a id="l01229" name="l01229"></a><span class="lineno"> 1229</span><span class="keyword">template</span>&lt;suika::concepts::numbers T&gt;</div>
-<div class="line"><a id="l01230" name="l01230"></a><span class="lineno"> 1230</span><span class="keyword">struct </span>std::formatter&lt;<a class="code hl_namespace" href="namespacesuika.html">suika</a>::vector2&lt;T&gt;&gt;: std::formatter&lt;suika::string::string_type&gt; {</div>
+<div class="line"><a id="l01230" name="l01230"></a><span class="lineno"> 1230</span><span class="keyword">struct </span>std::formatter&lt;<a class="code hl_namespace" href="namespacesuika.html">suika</a>::vector2&lt;T&gt;&gt;: std::formatter&lt;suika::string::str&gt; {</div>
 <div class="line"><a id="l01231" name="l01231"></a><span class="lineno"> 1231</span>    <span class="keyword">auto</span> format(<a class="code hl_class" href="classsuika_1_1vector2.html">suika::vector2&lt;T&gt;</a> v, std::format_context&amp; ctx)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l01232" name="l01232"></a><span class="lineno"> 1232</span>        <span class="keywordflow">return</span> std::formatter&lt;suika::string::string_type&gt;::format(v.<a class="code hl_function" href="classsuika_1_1vector2.html#ae58ddbbafeba678a58099455bc646cd4">to_string</a>().<a class="code hl_function" href="classsuika_1_1string.html#ab30b50ac90a82cbb3e10ea4edbfb886a">to_string</a>(), ctx);</div>
+<div class="line"><a id="l01232" name="l01232"></a><span class="lineno"> 1232</span>        <span class="keywordflow">return</span> std::formatter&lt;suika::string::str&gt;::format(v.<a class="code hl_function" href="classsuika_1_1vector2.html#ae58ddbbafeba678a58099455bc646cd4">to_string</a>().<a class="code hl_function" href="classsuika_1_1string.html#ab30b50ac90a82cbb3e10ea4edbfb886a">to_string</a>(), ctx);</div>
 <div class="line"><a id="l01233" name="l01233"></a><span class="lineno"> 1233</span>    }</div>
 <div class="line"><a id="l01234" name="l01234"></a><span class="lineno"> 1234</span>};</div>
 <div class="line"><a id="l01235" name="l01235"></a><span class="lineno"> 1235</span> </div>
 <div class="line"><a id="l01236" name="l01236"></a><span class="lineno"> 1236</span><span class="keyword">template</span>&lt;suika::concepts::numbers T&gt;</div>
-<div class="line"><a id="l01237" name="l01237"></a><span class="lineno"> 1237</span><span class="keyword">struct </span>std::formatter&lt;<a class="code hl_namespace" href="namespacesuika.html">suika</a>::vector3&lt;T&gt;&gt;: std::formatter&lt;suika::string::string_type&gt; {</div>
+<div class="line"><a id="l01237" name="l01237"></a><span class="lineno"> 1237</span><span class="keyword">struct </span>std::formatter&lt;<a class="code hl_namespace" href="namespacesuika.html">suika</a>::vector3&lt;T&gt;&gt;: std::formatter&lt;suika::string::str&gt; {</div>
 <div class="line"><a id="l01238" name="l01238"></a><span class="lineno"> 1238</span>    <span class="keyword">auto</span> format(<a class="code hl_class" href="classsuika_1_1vector3.html">suika::vector3&lt;T&gt;</a> v, std::format_context&amp; ctx)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l01239" name="l01239"></a><span class="lineno"> 1239</span>        <span class="keywordflow">return</span> std::formatter&lt;suika::string::string_type&gt;::format(v.<a class="code hl_function" href="classsuika_1_1vector3.html#acb56a825c8eb87874e397128c7a73a23">to_string</a>().<a class="code hl_function" href="classsuika_1_1string.html#ab30b50ac90a82cbb3e10ea4edbfb886a">to_string</a>(), ctx);</div>
+<div class="line"><a id="l01239" name="l01239"></a><span class="lineno"> 1239</span>        <span class="keywordflow">return</span> std::formatter&lt;suika::string::str&gt;::format(v.<a class="code hl_function" href="classsuika_1_1vector3.html#acb56a825c8eb87874e397128c7a73a23">to_string</a>().<a class="code hl_function" href="classsuika_1_1string.html#ab30b50ac90a82cbb3e10ea4edbfb886a">to_string</a>(), ctx);</div>
 <div class="line"><a id="l01240" name="l01240"></a><span class="lineno"> 1240</span>    }</div>
 <div class="line"><a id="l01241" name="l01241"></a><span class="lineno"> 1241</span>};</div>
 <div class="line"><a id="l01242" name="l01242"></a><span class="lineno"> 1242</span> </div>
 <div class="line"><a id="l01243" name="l01243"></a><span class="lineno"> 1243</span><span class="keyword">template</span>&lt;suika::concepts::numbers T&gt;</div>
-<div class="line"><a id="l01244" name="l01244"></a><span class="lineno"> 1244</span><span class="keyword">struct </span>std::formatter&lt;<a class="code hl_namespace" href="namespacesuika.html">suika</a>::polar2&lt;T&gt;&gt;: std::formatter&lt;suika::string::string_type&gt; {</div>
+<div class="line"><a id="l01244" name="l01244"></a><span class="lineno"> 1244</span><span class="keyword">struct </span>std::formatter&lt;<a class="code hl_namespace" href="namespacesuika.html">suika</a>::polar2&lt;T&gt;&gt;: std::formatter&lt;suika::string::str&gt; {</div>
 <div class="line"><a id="l01245" name="l01245"></a><span class="lineno"> 1245</span>    <span class="keyword">auto</span> format(<a class="code hl_class" href="classsuika_1_1polar2.html">suika::polar2&lt;T&gt;</a> v, std::format_context&amp; ctx)<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l01246" name="l01246"></a><span class="lineno"> 1246</span>        <span class="keywordflow">return</span> std::formatter&lt;suika::string::string_type&gt;::format(v.<a class="code hl_function" href="classsuika_1_1polar2.html#a5560cdd427abdce3ddfd2ae268f19bff">to_string</a>().<a class="code hl_function" href="classsuika_1_1string.html#ab30b50ac90a82cbb3e10ea4edbfb886a">to_string</a>(), ctx);</div>
+<div class="line"><a id="l01246" name="l01246"></a><span class="lineno"> 1246</span>        <span class="keywordflow">return</span> std::formatter&lt;suika::string::str&gt;::format(v.<a class="code hl_function" href="classsuika_1_1polar2.html#a5560cdd427abdce3ddfd2ae268f19bff">to_string</a>().<a class="code hl_function" href="classsuika_1_1string.html#ab30b50ac90a82cbb3e10ea4edbfb886a">to_string</a>(), ctx);</div>
 <div class="line"><a id="l01247" name="l01247"></a><span class="lineno"> 1247</span>    }</div>
 <div class="line"><a id="l01248" name="l01248"></a><span class="lineno"> 1248</span>};</div>
 <div class="line"><a id="l01249" name="l01249"></a><span class="lineno"> 1249</span><span class="preprocessor">#undef SCAST</span></div>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['polar2_0',['polar2',['../classsuika_1_1polar2.html',1,'suika']]]
+  ['matrix_0',['matrix',['../structsuika_1_1matrix.html',1,'suika']]],
+  ['mouse_1',['mouse',['../classsuika_1_1detail_1_1mouse.html',1,'suika::detail']]]
 ];

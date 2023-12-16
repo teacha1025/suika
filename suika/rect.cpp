@@ -45,9 +45,37 @@ namespace suika {
 		set_ps(this->_shaders.ps);
 		suika::d3d::blend::blends[_blend].set();
 		suika::d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		
+		const auto c = _center * double3{ (_extend.x), (_extend.y), (_extend.z) };
 		d3d::vertex::set_vertex_instance(create_vertex());
-		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, double3{ this->_extend.x * this->_size.x,this->_extend.y * this->_size.y,this->_extend.z }, { _color.r, _color.g, _color.b, _color.a }, { float2{ 0,0 },float2{1,1} });
+		d3d::vertex::add_index(c, this->_transition - c, this->_rotation, double3{ this->_extend.x * this->_size.x,this->_extend.y * this->_size.y,this->_extend.z }, { _color.r, _color.g, _color.b, _color.a }, { float2{ 0,0 },float2{1,1} });
+	}
+	line rect::top() const {
+		const auto mtx = vector::affine_transformation(_center, _transition, _rotation, (float3)_extend);
+		const auto A = mtx * float4(0, 0, 1, 1);
+		const auto B = mtx * float4(_size.x, 0, 1, 1);
+
+		return line(float2{ A.x,A.y }, float2{ B.x,B.y });
+	}
+	line rect::right() const {
+		const auto mtx = vector::affine_transformation(_center, _transition, _rotation, (float3)_extend);
+		const auto A = mtx * float4(_size.x, 0, 1, 1);
+		const auto B = mtx * float4(_size.x, _size.y, 1, 1);
+
+		return line(float2{ A.x,A.y }, float2{ B.x,B.y });
+	}
+	line rect::left() const {
+		const auto mtx = vector::affine_transformation(_center, _transition, _rotation, (float3)_extend);
+		const auto A = mtx * float4(0, _size.y, 1, 1);
+		const auto B = mtx * float4(0, 0, 1, 1);
+
+		return line(float2{ A.x,A.y }, float2{ B.x,B.y });
+	}
+	line rect::bottom() const {
+		const auto mtx = vector::affine_transformation(_center, _transition, _rotation, (float3)_extend);
+		const auto A = mtx * float4(_size.x, _size.y, 1, 1);
+		const auto B = mtx * float4(0, _size.y, 1, 1);
+
+		return line(float2{ A.x,A.y }, float2{ B.x,B.y });
 	}
 #endif
 }

@@ -128,16 +128,12 @@ namespace suika {
 		/// 線分の点を取得
 		/// </summary>
 		/// <returns>始点</returns>
-		virtual point<float> A() const {
-			return this->_A;
-		}
+		virtual point<float> A() const;
 
 		/// <summary>
 		/// 線分の点を取得
 		/// </summary>
 		/// <returns>終点</returns>
-		virtual point<float> B() const {
-			return this->_B;
-		}
+		virtual point<float> B() const;
 	};
 }

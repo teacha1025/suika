@@ -58,7 +58,19 @@ namespace suika {
 		d3d::blend::blends[_blend].set();
 		d3d::vertex::set_vertex_instance(create_vertex());
 		d3d::vertex::set_index(index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, this->_extend, { _color.r, _color.g, _color.b, _color.a }, { float2{0,0},float2{1,1} });
+		auto c = (this->_center * this->_extend);
+		d3d::vertex::add_index(c, this->_transition - c, this->_rotation, this->_extend, { _color.r, _color.g, _color.b, _color.a }, { float2{0,0},float2{1,1} });
 
+	}
+	point<circle::position_type> circle::offset() const {
+		const auto mtx = vector::affine_transformation({}, {}, (double3)_rotation, (double3)_extend);
+		const auto c = mtx * double4(_center.x, _center.y, 1.0, 1.0);
+		return { c.x,c.y };
+	}
+
+	vector3<circle::position_type> circle::offset_xyz() const {
+		const auto mtx = vector::affine_transformation({}, {}, _rotation, (float3)_extend);
+		const auto c = mtx * float4(_center.x, _center.y, _center.z, 1.0f);
+		return float3{ c.x,c.y,c.z };
 	}
 }

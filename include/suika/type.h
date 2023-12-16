@@ -23,6 +23,7 @@
 #include <cstdint>
 
 namespace suika {
+	class string;
 #pragma region type
 	/// <summary>
 	/// 8bit®”Œ^
@@ -100,5 +101,7 @@ namespace suika {
 	/// UTF-32‘Î‰charŒ^
 	/// </summary>
 	using char32 = char32_t;
+
+	using path_type = string;
 #pragma endregion
 }

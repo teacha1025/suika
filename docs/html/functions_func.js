@@ -20,5 +20,6 @@ var functions_func =
     [ "u", "functions_func_u.html", null ],
     [ "v", "functions_func_v.html", null ],
     [ "w", "functions_func_w.html", null ],
-    [ "~", "functions_func_~.html", null ]
+    [ "~", "functions_func_~.html", null ],
+    [ "‾", "functions_func_0xe280be.html", null ]
 ];

@@ -94,7 +94,7 @@ namespace suika {
 		/// <param name="key">パターンの識別キー</param>
 		/// <param name="pattern">再生の順番(画像の左上からZの順に1,2,...)</param>
 		/// <param name="interval">次の画像に遷移するまでのカウント</param>
-		/// <param name="next">再生が終わったときに、次に再生されるパターンのキー</param>
+		/// <param name="resume">再生が終わったときに、次に再生されるパターンのキー</param>
 		void add(uint key, std::vector<uint> pattern, double interval, uint next);
 
 		/// <summary>

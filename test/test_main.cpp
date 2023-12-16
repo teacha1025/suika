@@ -1,52 +1,63 @@
 ﻿#include "suika.h"
 using namespace suika;
-//namespace palette = suika::palette;
 
 void init() {
 	suika::window::background(suika::palette::skyblue);
 	suika::window::title("APP");
 	suika::window::vsync(true);
 }
+
+struct save_data {
+	int HP = 100;         //HP
+	int MP = 52;         //MP
+	int Money = 1500;      //所持金
+	int Exp = 80;        //経験値
+};
+auto s = sizeof(save_data);
 int main() {
-	font f("メイリオ");
-	//texture t("g1.png");
-	define interval = 5;
-	animator anm("player.png", { 8,3 });
-	enum {
-		S, SL, LS, L, SR, RS, RL, LR, R,
-	};
-	anm.add(S, { 0,1,2,3,4,5,6,7 }, interval);
-	anm.add(SL, { 8,9,10,11 }, interval, L);
-	anm.add(LS, { 11,10,9,8 }, interval, S);
-	anm.add(L, { 12,13,14,15 }, interval);
-	anm.add(SR, { 16,17,18,19 }, interval, R);
-	anm.add(RS, { 19,18,17,16 }, interval, S);
-	anm.add(RL, { 19,18,17,8,9,10,11 }, interval, L);
-	anm.add(LR, { 11,10,9,8,17,18,19 }, interval,R);
-	anm.add(R, { 20,21,22,23 }, interval);
+	{
+		auto writer = filesystem::text_writer(U"write_test.txt", filesystem::encode::utf8);
+		writer.writeln(U"Hello, world!");
+		writer.writeln(U"こんにちは、世界！");
+		writer.writeln(U"안녕하세요, 세계!");
+		writer.writeln(U"你好，世界！");
+		writer.writeln(U"Привет, мир!");
+		writer.writeln(U"مرحبا بالعالم!");
+		writer.writeln(U"สวัสดีชาวโลก!");
+		writer.writeln(U"नमस्ते दुनिया!");
+	}
+	{
+		auto reader = filesystem::text_reader(U"write_test.txt", filesystem::encode::utf8);
+		auto lines = reader.readln();
+		for (auto& line : lines) {
+			suika::log.info(line);
+		}
+	}
+	{
+		auto writer = filesystem::binary_writer(U"write_test.bin");
+		save_data data1, data2;
+		data2.HP = 200;
+		writer.write(data1);
+		writer.write(data2);
+	}
+	{
+		auto reader = filesystem::binary_reader(U"write_test.bin");
+		auto data = reader.read<save_data>();
+		suika::log.info("1");
+		suika::log.info(std::format("HP:{}", data.HP));
+		suika::log.info(std::format("MP:{}", data.MP));
+		suika::log.info(std::format("Money:{}", data.Money));
+		suika::log.info(std::format("Exp:{}", data.Exp));
 
-	anm.condition(S, SL, []() {return keyboard::Left.down(); });
-	anm.condition(S, SR, []() {return keyboard::Right.down(); });
-	anm.condition(SL, LS, []() {return keyboard::Right.release() && keyboard::Left.release(); });
-	anm.condition(SL, LR, []() {return keyboard::Right.press(); });
-	anm.condition(SR, RL, []() {return keyboard::Right.release() && keyboard::Left.down(); });
-	anm.condition(SR, RS, []() {return keyboard::Right.release() && keyboard::Left.release(); });
-	anm.condition(LS, LR, []() {return keyboard::Right.press() && keyboard::Left.release(); });
-	anm.condition(LS, SL, []() {return keyboard::Right.release() && keyboard::Left.press(); });
-	anm.condition(RS, RL, []() {return keyboard::Right.release() && keyboard::Left.press(); });
-	anm.condition(RS, SR, []() {return keyboard::Right.press() && keyboard::Left.release(); });
-	anm.condition(L, LS, []() {return keyboard::Right.release() && keyboard::Left.release(); });
-	anm.condition(L, LR, []() {return keyboard::Right.press(); });
-	anm.condition(R, RS, []() {return keyboard::Right.release() && keyboard::Left.release(); });
-	anm.condition(R, RL, []() {return keyboard::Right.release() && keyboard::Left.press(); });
+		data = reader.read<save_data>();
+		suika::log.info("2");
+		suika::log.info(std::format("HP:{}", data.HP));
+		suika::log.info(std::format("MP:{}", data.MP));
+		suika::log.info(std::format("Money:{}", data.Money));
+		suika::log.info(std::format("Exp:{}", data.Exp));
 
-	float rot = 0;
-
-	anm.set(S);
+	}
 	while (sys::update()) {
-		anm.centered({ 16,16 }).at(window::center()).extended(4.0).rotated(rot).updated(1);
-		anm.rect().draw();
-		anm.draw();
-		rot += sys::delta() / 2;
+		
 	}
 }

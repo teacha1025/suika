@@ -1,7 +1,26 @@
 var namespacesuika =
 [
+    [ "collision_2d", "namespacesuika_1_1collision__2d.html", [
+      [ "collision", "namespacesuika_1_1collision__2d.html#ab9ea6a6c804db5dc5636c0dfc1aeb925", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a2a95fc3501abcf7347976eee3746ecd2", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a697800ba5c2713fa1a4c8e0495853362", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a33cc3b2a74ebcbf29d764d79485f2dd6", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a97362850571556ffe33d8710522141f1", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a727f959abde290e1581593ddf84b8abf", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#acdc6e01ef3afbbe35948ee5816c238d1", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a11f4259ed04bf1626100c6d75048e807", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a96cf6740cef9563bd10ccd38ee3157ed", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a234a5fe15dbe0916e0029e4f11070ab6", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a9a73cabdb1586403be605d3311703a4e", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a3d3bfbebfc9f878f5f42281b162be5a7", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#aeca3436e374fb24611d46f88f6567025", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a31aa936668eb7a66a81becb0c7895d6d", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a3f9e974f6bb5269c86bf6a19320d8972", null ],
+      [ "collision", "namespacesuika_1_1collision__2d.html#a0eca985bcf376aa9f5d09e9ee0f38f0a", null ]
+    ] ],
     [ "detail", "namespacesuika_1_1detail.html", "namespacesuika_1_1detail" ],
     [ "ease", "namespacesuika_1_1ease.html", null ],
+    [ "filesystem", "namespacesuika_1_1filesystem.html", "namespacesuika_1_1filesystem" ],
     [ "gamepad", "namespacesuika_1_1gamepad.html", "namespacesuika_1_1gamepad" ],
     [ "keyboard", "namespacesuika_1_1keyboard.html", [
       [ "pressed_key", "namespacesuika_1_1keyboard.html#afaa2d5d82a08e7bb1c7b218df0461907", null ],
@@ -428,6 +447,7 @@ var namespacesuika =
     [ "rect", "classsuika_1_1rect.html", "classsuika_1_1rect" ],
     [ "scene_manager", "classsuika_1_1scene__manager.html", "classsuika_1_1scene__manager" ],
     [ "string", "classsuika_1_1string.html", "classsuika_1_1string" ],
+    [ "task", "classsuika_1_1task.html", "classsuika_1_1task" ],
     [ "texture", "classsuika_1_1texture.html", "classsuika_1_1texture" ],
     [ "vector2", "classsuika_1_1vector2.html", "classsuika_1_1vector2" ],
     [ "vector3", "classsuika_1_1vector3.html", "classsuika_1_1vector3" ],

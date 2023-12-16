@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>suika: suika::filesystem::text_writer クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.5</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('classsuika_1_1filesystem_1_1text__writer.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="classsuika_1_1filesystem_1_1text__writer-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle"><div class="title">suika::filesystem::text_writer クラス</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>文字列書き出し  
+ <a href="classsuika_1_1filesystem_1_1text__writer.html#details">[詳解]</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a0c569b55139c83c94cb9a968c39f74e2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsuika_1_1filesystem_1_1text__writer.html#a0c569b55139c83c94cb9a968c39f74e2">text_writer</a> (<a class="el" href="classsuika_1_1string.html">path_type</a> path, <a class="el" href="namespacesuika_1_1filesystem.html#ab35750ff97320329ef0c5f1985e9d7df">encode</a> <a class="el" href="namespacesuika_1_1filesystem.html#ab35750ff97320329ef0c5f1985e9d7df">encode</a>=<a class="el" href="namespacesuika_1_1filesystem.html#ab35750ff97320329ef0c5f1985e9d7dfa30df7f629fcf6b940bcaef5faf2490bb">encode::utf8</a>, <a class="el" href="namespacesuika_1_1filesystem.html#a23e02f5acc4279dcb7d089ee51278643">new_line</a> nl=<a class="el" href="namespacesuika_1_1filesystem.html#a23e02f5acc4279dcb7d089ee51278643a9df56ad3b9634f16d00f717b3e0fcc00">new_line::crlf</a>)</td></tr>
+<tr class="memdesc:a0c569b55139c83c94cb9a968c39f74e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">ライターの作成  <br /></td></tr>
+<tr class="separator:a0c569b55139c83c94cb9a968c39f74e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab522e072ac61b751b1b6db424e1bf19d"><td class="memItemLeft" align="right" valign="top"><a id="ab522e072ac61b751b1b6db424e1bf19d" name="ab522e072ac61b751b1b6db424e1bf19d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>‾text_writer</b> ()</td></tr>
+<tr class="memdesc:ab522e072ac61b751b1b6db424e1bf19d"><td class="mdescLeft">&#160;</td><td class="mdescRight">デストラクタ <br /></td></tr>
+<tr class="separator:ab522e072ac61b751b1b6db424e1bf19d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56ae49dbce12ad25dd624b19007410a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsuika_1_1filesystem_1_1text__writer.html#a56ae49dbce12ad25dd624b19007410a6">write</a> (string_view text)</td></tr>
+<tr class="memdesc:a56ae49dbce12ad25dd624b19007410a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">文字列を書き込む  <br /></td></tr>
+<tr class="separator:a56ae49dbce12ad25dd624b19007410a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47cfbc951756256066216a2428b2103d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classsuika_1_1filesystem_1_1text__writer.html#a47cfbc951756256066216a2428b2103d">writeln</a> (string_view text)</td></tr>
+<tr class="memdesc:a47cfbc951756256066216a2428b2103d"><td class="mdescLeft">&#160;</td><td class="mdescRight">行に文字列を書き込む  <br /></td></tr>
+<tr class="separator:a47cfbc951756256066216a2428b2103d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>文字列書き出し </p>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="a0c569b55139c83c94cb9a968c39f74e2" name="a0c569b55139c83c94cb9a968c39f74e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c569b55139c83c94cb9a968c39f74e2">&#9670;&#160;</a></span>text_writer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">suika::filesystem::text_writer::text_writer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classsuika_1_1string.html">path_type</a>&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacesuika_1_1filesystem.html#ab35750ff97320329ef0c5f1985e9d7df">encode</a>&#160;</td>
+          <td class="paramname"><em>encode</em> = <code><a class="el" href="namespacesuika_1_1filesystem.html#ab35750ff97320329ef0c5f1985e9d7dfa30df7f629fcf6b940bcaef5faf2490bb">encode::utf8</a></code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacesuika_1_1filesystem.html#a23e02f5acc4279dcb7d089ee51278643">new_line</a>&#160;</td>
+          <td class="paramname"><em>nl</em> = <code><a class="el" href="namespacesuika_1_1filesystem.html#a23e02f5acc4279dcb7d089ee51278643a9df56ad3b9634f16d00f717b3e0fcc00">new_line::crlf</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ライターの作成 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>ファイルへのパス</td></tr>
+    <tr><td class="paramname">encode</td><td>書き込み時の文字列エンコード</td></tr>
+    <tr><td class="paramname">nl</td><td>改行文字の種類</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="a56ae49dbce12ad25dd624b19007410a6" name="a56ae49dbce12ad25dd624b19007410a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56ae49dbce12ad25dd624b19007410a6">&#9670;&#160;</a></span>write()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void suika::filesystem::text_writer::write </td>
+          <td>(</td>
+          <td class="paramtype">string_view&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>文字列を書き込む </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>書き込む文字列</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a47cfbc951756256066216a2428b2103d" name="a47cfbc951756256066216a2428b2103d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47cfbc951756256066216a2428b2103d">&#9670;&#160;</a></span>writeln()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void suika::filesystem::text_writer::writeln </td>
+          <td>(</td>
+          <td class="paramtype">string_view&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>行に文字列を書き込む </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>書き込む文字列</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespacesuika.html">suika</a></li><li class="navelem"><a class="el" href="namespacesuika_1_1filesystem.html">filesystem</a></li><li class="navelem"><a class="el" href="classsuika_1_1filesystem_1_1text__writer.html">text_writer</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

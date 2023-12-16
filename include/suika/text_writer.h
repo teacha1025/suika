@@ -29,8 +29,13 @@
 #include "filesystem.h"
 
 namespace suika {
+	/// <summary>
+	/// ファイル操作に関する関数、クラス群
+	/// </summary>
 	namespace filesystem {
-		
+		/// <summary>
+		/// 文字列書き出し
+		/// </summary>
 		class text_writer {
 		private:
 			path_type _path;
@@ -40,10 +45,29 @@ namespace suika {
 			//std::unique_ptr<FILE, detail::file_deleter> _file;
 			std::ofstream _file;
 		public:
+			/// <summary>
+			/// ライターの作成
+			/// </summary>
+			/// <param name="path">ファイルへのパス</param>
+			/// <param name="encode">書き込み時の文字列エンコード</param>
+			/// <param name="nl">改行文字の種類</param>
 			text_writer(path_type path, encode encode = encode::utf8, new_line nl = new_line::crlf);
+			
+			/// <summary>
+			/// デストラクタ
+			/// </summary>
 			~text_writer();
 
+			/// <summary>
+			/// 文字列を書き込む
+			/// </summary>
+			/// <param name="text">書き込む文字列</param>
 			void write(string_view text);
+
+			/// <summary>
+			/// 行に文字列を書き込む
+			/// </summary>
+			/// <param name="text">書き込む文字列</param>
 			void writeln(string_view text);
 		};
 	}

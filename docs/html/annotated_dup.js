@@ -11,6 +11,12 @@ var annotated_dup =
         [ "key", "classsuika_1_1detail_1_1key.html", "classsuika_1_1detail_1_1key" ],
         [ "mouse", "classsuika_1_1detail_1_1mouse.html", "classsuika_1_1detail_1_1mouse" ]
       ] ],
+      [ "filesystem", "namespacesuika_1_1filesystem.html", [
+        [ "binary_reader", "classsuika_1_1filesystem_1_1binary__reader.html", "classsuika_1_1filesystem_1_1binary__reader" ],
+        [ "binary_writer", "classsuika_1_1filesystem_1_1binary__writer.html", "classsuika_1_1filesystem_1_1binary__writer" ],
+        [ "text_reader", "classsuika_1_1filesystem_1_1text__reader.html", "classsuika_1_1filesystem_1_1text__reader" ],
+        [ "text_writer", "classsuika_1_1filesystem_1_1text__writer.html", "classsuika_1_1filesystem_1_1text__writer" ]
+      ] ],
       [ "gamepad", "namespacesuika_1_1gamepad.html", [
         [ "info", "structsuika_1_1gamepad_1_1info.html", "structsuika_1_1gamepad_1_1info" ]
       ] ],
@@ -32,6 +38,7 @@ var annotated_dup =
       [ "rect", "classsuika_1_1rect.html", "classsuika_1_1rect" ],
       [ "scene_manager", "classsuika_1_1scene__manager.html", "classsuika_1_1scene__manager" ],
       [ "string", "classsuika_1_1string.html", "classsuika_1_1string" ],
+      [ "task", "classsuika_1_1task.html", "classsuika_1_1task" ],
       [ "texture", "classsuika_1_1texture.html", "classsuika_1_1texture" ],
       [ "vector2", "classsuika_1_1vector2.html", "classsuika_1_1vector2" ],
       [ "vector3", "classsuika_1_1vector3.html", "classsuika_1_1vector3" ],

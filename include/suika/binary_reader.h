@@ -25,12 +25,18 @@
 #include <fstream>
 
 #include "def.h"
+#include "concepts.h"
 #include "string.h"
 #include "filesystem.h"
 
 namespace suika {
+	/// <summary>
+	/// ファイル操作に関する関数、クラス群
+	/// </summary>
 	namespace filesystem {
-		
+		/// <summary>
+		/// バイナリの読み込み
+		/// </summary>
 		class binary_reader {
 		private:
 			path_type _path;
@@ -38,16 +44,36 @@ namespace suika {
 			std::unique_ptr<FILE, detail::file_deleter> _file;
 
 			void close();
-			//std::ofstream _file;
 		public:
+			/// <summary>
+			/// リーダーを作成
+			/// </summary>
+			/// <param name="path">ファイルのパス</param>
 			binary_reader(path_type path);
 			binary_reader(const binary_reader&) = delete;
+			/// <summary>
+			/// ムーブコンストラクタ
+			/// </summary>
+			/// <param name=""></param>
 			binary_reader(binary_reader&&);
+			/// <summary>
+			/// デストラクタ
+			/// </summary>
 			~binary_reader();
 
+			/// <summary>
+			/// バイナリを読み込む
+			/// </summary>
+			/// <param name="size">読み込むサイズ</param>
+			/// <returns>読み込んだバイナリデータ</returns>
 			void* read(size_t size);
 
-			template<class T>
+			/// <summary>
+			/// バイナリを読み込む
+			/// </summary>
+			/// <typeparam name="T">トリビアルコピー可能なデータ型</typeparam>
+			/// <returns>読み込んだデータ</returns>
+			template<concepts::trivially T>
 			T read() {
 				return *static_cast<T*>(read(sizeof(T)));
 			}

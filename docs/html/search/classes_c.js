@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['scene_5fmanager_0',['scene_manager',['../classsuika_1_1scene__manager.html',1,'suika']]],
-  ['string_1',['string',['../classsuika_1_1string.html',1,'suika']]]
+  ['range_0',['range',['../structsuika_1_1range.html',1,'suika']]],
+  ['range_3c_200_2e0_2c_201_2e0_20_3e_1',['range&lt; 0.0, 1.0 &gt;',['../structsuika_1_1range.html',1,'suika']]],
+  ['rect_2',['rect',['../classsuika_1_1rect.html',1,'suika']]]
 ];

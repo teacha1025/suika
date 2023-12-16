@@ -56,11 +56,12 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "classsuika_1_1detail_1_1ishape.html#afba0517df90f33890dd8443504bc514a",
-"classsuika_1_1rect.html#ac6fb8e279b102eaf6a95c9f841f64089",
-"classsuika_1_1string.html#ac200ea1224fa00b3d5957442947ac0a9",
-"namespacemembers_vars_h.html",
-"namespacesuika_1_1keyboard.html#aba67354dd999b16b1279d3d2ff0604d3",
-"namespacesuika_1_1suffix.html#a585b2945a0ae69c2a790c1d81791d89b"
+"classsuika_1_1logger.html#a71ad64c4fdc6abf966891fa6307150fb",
+"classsuika_1_1string.html#a9cd315bd2212757b5bdb3838a74eccc3",
+"functions_func_f.html",
+"namespacesuika_1_1collision__2d.html#a9a73cabdb1586403be605d3311703a4e",
+"namespacesuika_1_1palette.html#a62a9db56b7af483594ad5ee1b53a9baf",
+"structsuika_1_1matrix.html"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';

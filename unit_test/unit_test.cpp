@@ -115,8 +115,8 @@ namespace string_test
 			std::vector<string> splited_a = suika::split(STR_SPLIT_TEXT, ',', true);
 			std::vector<string> splited_b = suika::split(STR_SPLIT_TEXT, ',', false);
 
-			std::vector<string> data_a = { DATA_A() };
-			std::vector<string> data_b = { DATA_B() };
+			std::vector<string> data_a = { DATA_A("")};
+			std::vector<string> data_b = { DATA_B("")};
 
 			Assert::IsTrue(data_a == splited_a);
 			Assert::IsTrue(data_b == splited_b);

@@ -29,8 +29,14 @@
 #include "filesystem.h"
 
 namespace suika {
+	/// <summary>
+	/// ファイル操作に関する関数、クラス群
+	/// </summary>
 	namespace filesystem {
 		
+		/// <summary>
+		/// 文字列読み込み
+		/// </summary>
 		class text_reader {
 		private:
 			path_type _path;
@@ -40,10 +46,29 @@ namespace suika {
 			//std::unique_ptr<FILE, detail::file_deleter> _file;
 			std::ifstream _file;
 		public:
+			/// <summary>
+			/// リーダーを作成
+			/// </summary>
+			/// <param name="path">ファイルへのパス</param>
+			/// <param name="encode">書き込み時の文字列エンコード</param>
+			/// <param name="nl">改行文字の種類</param>
 			text_reader(path_type path, encode encode = encode::utf8, new_line nl = new_line::crlf);
+			
+			/// <summary>
+			/// デストラクタ
+			/// </summary>
 			~text_reader();
 
+			/// <summary>
+			/// テキストを読み込む
+			/// </summary>
+			/// <returns>読み込んだ文字列</returns>
 			string read();
+
+			/// <summary>
+			/// テキストを読み込んで1行ずつに分割する
+			/// </summary>
+			/// <returns>1行ずつの文字列</returns>
 			std::vector<string> readln();
 		};
 	}

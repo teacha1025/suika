@@ -35,25 +35,51 @@ namespace suika {
 			}
 		};
 	}
+
+	/// <summary>
+	/// ファイル操作に関する関数、クラス群
+	/// </summary>
 	namespace filesystem {
+		/// <summary>
+		/// エンコードの種類
+		/// </summary>
 		enum class encode {
+			//! Shift-JIS文字コード(cp932)
 			shift_jis,
+			//! UTF-8(BOMあり)
 			utf8,
+			//! UTF16(LE)
 			utf16,
 			//utf32,
 		};
 
 		enum class new_line {
+			//! CRLF
 			crlf,
+			//! LF
 			lf,
+			//! CR
 			cr,
 		};
 
+		/// <summary>
+		/// ファイルが存在するかを取得
+		/// </summary>
+		/// <param name="path">ファイルのパス</param>
+		/// <returns>存在するかどうか</returns>
 		bool exists(path_type path);
 
+		/// <summary>
+		/// 現在のディレクトリを取得
+		/// </summary>
+		/// <returns>実行ファイルがあるディレクトリへのパス</returns>
 		path_type current_path();
 
-		//ディレクトリ内のファイルを列挙する
+		/// <summary>
+		/// ディレクトリ内の要素を列挙する
+		/// </summary>
+		/// <param name="path">ディレクトリのパス</param>
+		/// <returns>ディレクトリ内のファイル、フォルダ名</returns>
 		std::vector<path_type> enumerate_files(path_type path);
 	}
 } // namespace suika

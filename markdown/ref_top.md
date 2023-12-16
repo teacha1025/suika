@@ -23,10 +23,16 @@ DirectX11 / DirectInput に対応した、Windows 向けのゲーム制作ライ
 ### Ver0.0.4
 
 - イージング関数の実装
-- string_viewの実装及びstringの改修
-- テクスチャのUV指定の描画を実装
-- アニメーションクラスanimation及びanimatorの実装
-- pow関数のバグ修正
+- string_view の実装及び string の改修
+- テクスチャの UV 指定の描画を実装
+- アニメーションクラス animation 及び animator の実装
+- pow 関数のバグ修正
+
+### Ver0.0.5
+
+- タスク(コルーチン)の実装
+- 2 次元図形同士の当たり判定の実装
+- ファイル書込み/読込みの実装
 
 # ライセンス情報
 

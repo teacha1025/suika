@@ -30,8 +30,13 @@
 #include "filesystem.h"
 
 namespace suika {
+	/// <summary>
+/// ファイル操作に関する関数、クラス群
+/// </summary>
 	namespace filesystem {
-		
+		/// <summary>
+		/// バイナリデータの書込み
+		/// </summary>
 		class binary_writer {
 		private:
 			path_type _path;
@@ -40,13 +45,36 @@ namespace suika {
 
 			void close();
 		public:
+			/// <summary>
+			/// ライターを作成
+			/// </summary>
+			/// <param name="path">書き込むファイルのパス</param>
 			binary_writer(path_type path);
 			binary_writer(const binary_writer&) = delete;
-			binary_writer(binary_writer&&);
+
+			/// <summary>
+			///	ムーブコンストラクタ
+			/// </summary>
+			/// <param name="writer">ムーブ元</param>
+			binary_writer(binary_writer&& writer);
+
+			/// <summary>
+			/// デストラクタ
+			/// </summary>
 			~binary_writer();
 
+			/// <summary>
+			/// バイナリを書き込む
+			/// </summary>
+			/// <param name="source">書き込むデータへのポインタ</param>
+			/// <param name="size">書き込むサイズ</param>
 			void write(void* source, size_t size);
 
+			/// <summary>
+			/// バイナリを書き込む
+			/// </summary>
+			/// <typeparam name="T">トリビアルコピー可能なデータ型</typeparam>
+			/// <param name="source">書き込むデータ</param>
 			template<concepts::trivially T>
 			void write(T source) {
 				write(&source, sizeof(T));

@@ -2,13 +2,14 @@
 using namespace suika;
 
 void init() {
-	suika::window::background(suika::palette::skyblue);
+	suika::log.set(true, "log.log");
+	suika::window::background(suika::palette::yellowgreen);
 	suika::window::title("APP");
 	suika::window::vsync(true);
 }
 
 struct save_data {
-	int HP = 100;         //HP
+	int HP = 200;         //HP
 	int MP = 52;         //MP
 	int Money = 1500;      //所持金
 	int Exp = 80;        //経験値

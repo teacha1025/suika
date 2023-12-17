@@ -48,20 +48,21 @@ var NAVTREE =
         [ "変数", "functions_vars.html", null ],
         [ "関連関数", "functions_rela.html", null ]
       ] ]
-    ] ]
+    ] ],
+    [ "各種例", "examples.html", "examples" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"annotated.html",
-"classsuika_1_1detail_1_1ishape.html#afba0517df90f33890dd8443504bc514a",
-"classsuika_1_1logger.html#a71ad64c4fdc6abf966891fa6307150fb",
-"classsuika_1_1string.html#a9cd315bd2212757b5bdb3838a74eccc3",
-"functions_func_f.html",
-"namespacesuika_1_1collision__2d.html#a9a73cabdb1586403be605d3311703a4e",
-"namespacesuika_1_1palette.html#a62a9db56b7af483594ad5ee1b53a9baf",
-"structsuika_1_1matrix.html"
+"animator_8hpp-example.html",
+"classsuika_1_1detail_1_1ishape.html#afb2ee8c5eae350f464fd935942a4c772",
+"classsuika_1_1logger.html#a60a5d16164ae2d10173ede676002b45a",
+"classsuika_1_1string.html#a9c95375028ef77fbad76ba86767a2854",
+"functions_func_d.html",
+"namespacesuika_1_1collision__2d.html#a96cf6740cef9563bd10ccd38ee3157ed",
+"namespacesuika_1_1palette.html#a5e9bd68a91d2a86b6057c1e831d46584",
+"structsuika_1_1hsv.html#afde07a8b5ecdc9611fe867e80538833c"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';

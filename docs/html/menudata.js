@@ -171,4 +171,5 @@ var menudata={children:[
 {text:"v",url:"functions_vars.html#index_v"},
 {text:"x",url:"functions_vars.html#index_x"},
 {text:"y",url:"functions_vars.html#index_y"}]},
-{text:"関連関数",url:"functions_rela.html"}]}]}]}
+{text:"関連関数",url:"functions_rela.html"}]}]},
+{text:"各種例",url:"examples.html"}]}

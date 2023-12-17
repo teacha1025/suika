@@ -84,7 +84,11 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="d3d.log" />
+    <Text Include="log.log" />
     <Text Include="Log.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\sample\animator.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,3 +1,7 @@
+/** @example{lineno} animator.hpp
+ * A small description.
+*/
+
 // -----------------------------------------------------------
 // 
 // animator

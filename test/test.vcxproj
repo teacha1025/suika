@@ -89,6 +89,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\sample\animator.hpp" />
+    <ClInclude Include="..\sample\fileIO.hpp" />
+    <ClInclude Include="..\sample\font.hpp" />
+    <ClInclude Include="..\sample\task.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

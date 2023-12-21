@@ -62,13 +62,13 @@ namespace suika {
 			/// •¶š—ñ‚ğ‘‚«‚Ş
 			/// </summary>
 			/// <param name="text">‘‚«‚Ş•¶š—ñ</param>
-			void write(string_view text);
+			void write(string text);
 
 			/// <summary>
 			/// s‚É•¶š—ñ‚ğ‘‚«‚Ş
 			/// </summary>
 			/// <param name="text">‘‚«‚Ş•¶š—ñ</param>
-			void writeln(string_view text);
+			void writeln(string text);
 		};
 	}
 } // namespace suika

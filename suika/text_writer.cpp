@@ -46,49 +46,49 @@ namespace suika {
 			_file.close();
 		}
 
-		void text_writer::write(string_view text) {
+		void text_writer::write(string text) {
 			switch (_encode) {
 				case encode::shift_jis: {
 					auto s = text.to_string();
-					_file.write(std::bit_cast<const char*>(s.data()), s.size() * sizeof(char));
+					_file.write(std::bit_cast<const char*>(s.c_str()), s.size() * sizeof(char));
 					_file.flush();
 					break;
 				}
 				case encode::utf8: {
 					auto s = text.to_u8string();
-					_file.write(std::bit_cast<const char*>(s.data()), s.size() * sizeof(char8_t));
+					_file.write(std::bit_cast<const char*>(s.c_str()), s.size() * sizeof(char8_t));
 					_file.flush();
 					break;
 				}
 				case encode::utf16: {
 					auto s = text.to_u16string();
-					_file.write(std::bit_cast<const char*>(s.data()), s.size() * sizeof(char16_t));
+					_file.write(std::bit_cast<const char*>(s.c_str()), s.size() * sizeof(char16_t));
 					_file.flush();
 					break;
 				}
 			}
 		}
-		void text_writer::writeln(string_view text) {
+		void text_writer::writeln(string text) {
 			auto n = nl(_new_line);
 			switch (_encode) {
 				case encode::shift_jis: {
 					auto s = text.to_string();
 					s += n.to_string();
-					_file.write(std::bit_cast<const char*>(s.data()), s.size() * sizeof(char));
+					_file.write(std::bit_cast<const char*>(s.c_str()), s.size() * sizeof(char));
 					_file.flush();
 					break;
 				}
 				case encode::utf8: {
 					auto s = text.to_u8string();
 					s += n.to_u8string();
-					_file.write(std::bit_cast<const char*>(s.data()), s.size() * sizeof(char8_t));
+					_file.write(std::bit_cast<const char*>(s.c_str()), s.size() * sizeof(char8_t));
 					_file.flush();
 					break;
 				}
 				case encode::utf16: {
 					auto s = text.to_u16string();
 					s += n.to_u16string();
-					_file.write(std::bit_cast<const char*>(s.data()), s.size() * sizeof(char16_t));
+					_file.write(std::bit_cast<const char*>(s.c_str()), s.size() * sizeof(char16_t));
 					_file.flush();
 					break;
 				}

@@ -31,5 +31,14 @@
     <ClInclude Include="..\sample\animator.hpp">
       <Filter>サンプル</Filter>
     </ClInclude>
+    <ClInclude Include="..\sample\task.hpp">
+      <Filter>サンプル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sample\fileIO.hpp">
+      <Filter>サンプル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sample\font.hpp">
+      <Filter>サンプル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

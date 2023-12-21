@@ -59,10 +59,10 @@ var NAVTREEINDEX =
 "classsuika_1_1detail_1_1ishape.html#afb2ee8c5eae350f464fd935942a4c772",
 "classsuika_1_1logger.html#a60a5d16164ae2d10173ede676002b45a",
 "classsuika_1_1string.html#a9c95375028ef77fbad76ba86767a2854",
-"functions_func_d.html",
-"namespacesuika_1_1collision__2d.html#a96cf6740cef9563bd10ccd38ee3157ed",
-"namespacesuika_1_1palette.html#a5e9bd68a91d2a86b6057c1e831d46584",
-"structsuika_1_1hsv.html#afde07a8b5ecdc9611fe867e80538833c"
+"functions_func_b.html",
+"namespacesuika_1_1collision__2d.html#a697800ba5c2713fa1a4c8e0495853362",
+"namespacesuika_1_1palette.html#a5c4d0b3398b3331654b576ee373c73aa",
+"structsuika_1_1hsv.html#af1ffdc15b761b74863c509dc2f81410a"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';

@@ -18,6 +18,9 @@ void init() {
 }
 
 int main() {
+	// 表示する絵文字の定義
+	const string emoji_list[] = { U"🍉", U"🥝", U"🍓", U"和", U"🚅" };
+
 	// フォントサイズ64のメイリオの淵付きフォントを作成
 	font edged_font("メイリオ", 64, true, 2, font_weight::extra_bold);
 
@@ -28,9 +31,7 @@ int main() {
 	edged_font.text(U"Hello, suika!!").colored(palette::white, palette::red).centered(edged_font.rect().center()).at(window::center());
 
 	// スイカの絵文字を表示
-	font.text(U"🍉").centered(font.rect().center()).colored(palette::white);
-
-	const string emoji_list[] = { U"🍉", U"🥝", U"🍓", U"和", U"🚅"};
+	font.text(emoji_list[0]).centered(font.rect().center()).colored(palette::white);
 
 	while (sys::update()) {
 

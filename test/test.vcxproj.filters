@@ -40,5 +40,8 @@
     <ClInclude Include="..\sample\font.hpp">
       <Filter>サンプル</Filter>
     </ClInclude>
+    <ClInclude Include="..\sample\keyboard.hpp">
+      <Filter>サンプル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

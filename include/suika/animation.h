@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // animation
 // 
@@ -29,7 +29,7 @@
 
 namespace suika {
 	/// <summary>
-	/// ƒAƒjƒ[ƒVƒ‡ƒ“‚ðÄ¶‚·‚éƒNƒ‰ƒX
+	/// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å†ç”Ÿã™ã‚‹ã‚¯ãƒ©ã‚¹
 	/// </summary>
 	class animation : public detail::ishape<animation> {
 	protected:
@@ -49,109 +49,109 @@ namespace suika {
 		animation() = default;
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚ðì¬
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’ä½œæˆ
 		/// </summary>
-		/// <param name="path">ƒeƒNƒXƒ`ƒƒ‚ÌƒpƒX</param>
-		/// <param name="div">•ªŠ„”</param>
+		/// <param name="path">ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ãƒ‘ã‚¹</param>
+		/// <param name="div">åˆ†å‰²æ•°</param>
 		animation(string path, const point<uint>& div);
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚ðì¬
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’ä½œæˆ
 		/// </summary>
-		/// <param name="path">ƒeƒNƒXƒ`ƒƒ‚ÌƒpƒX</param>
-		/// <param name="div">•ªŠ„”</param>
-		/// <param name="region_lt">ƒeƒNƒXƒ`ƒƒ‚Ì—Ìˆæ‚Ì¶ã</param>
-		/// <param name="region_rb">ƒeƒNƒXƒ`ƒƒ‚Ì—Ìˆæ‚Ì‰E‰º</param>
+		/// <param name="path">ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ãƒ‘ã‚¹</param>
+		/// <param name="div">åˆ†å‰²æ•°</param>
+		/// <param name="region_lt">ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®é ˜åŸŸã®å·¦ä¸Š</param>
+		/// <param name="region_rb">ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®é ˜åŸŸã®å³ä¸‹</param>
 		animation(string path, const point<uint>& div, const point<float>& region_lt, const point<float>& region_rb);
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚ð”½“]‚³‚¹‚é
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’åè»¢ã•ã›ã‚‹
 		/// </summary>
-		/// <param name="turn">Še•ûŒü‚Ì”½“]</param>
+		/// <param name="turn">å„æ–¹å‘ã®åè»¢</param>
 		virtual animation turned(const point<bool>& turn)&&;
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚ð”½“]‚³‚¹‚é
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’åè»¢ã•ã›ã‚‹
 		/// </summary>
-		/// <param name="turn">Še•ûŒü‚Ì”½“]</param>
+		/// <param name="turn">å„æ–¹å‘ã®åè»¢</param>
 		virtual animation& turned(const point<bool>& turn)&;
 
 		/// <summary>
-		/// ƒAƒjƒ[ƒVƒ‡ƒ“‚Ìƒpƒ^[ƒ“‚ðÝ’è‚·‚é
+		/// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¨­å®šã™ã‚‹
 		/// </summary>
-		/// <param name="pattern">ƒpƒ^[ƒ“‚ÌŽ¦‚µ‚½”z—ñ</param>
-		/// <param name="interval">Ø‚è‘Ö‚¦‚ÌŠÔŠu‚ðŽ¦‚µ‚½”z—ñ</param>
-		/// <param name="loop">ƒAƒjƒ[ƒVƒ‡ƒ“‚ðŒJ‚è•Ô‚·‚©</param>
+		/// <param name="pattern">ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ç¤ºã—ãŸé…åˆ—</param>
+		/// <param name="interval">åˆ‡ã‚Šæ›¿ãˆã®é–“éš”ã‚’ç¤ºã—ãŸé…åˆ—</param>
+		/// <param name="loop">ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ç¹°ã‚Šè¿”ã™ã‹</param>
 		virtual animation patterned(const std::vector<uint>& pattern, const std::vector<double>& interval, bool loop = true)&&;
 
 		/// <summary>
-		/// ƒAƒjƒ[ƒVƒ‡ƒ“‚Ìƒpƒ^[ƒ“‚ðÝ’è‚·‚é
+		/// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¨­å®šã™ã‚‹
 		/// </summary>
-		/// <param name="pattern">ƒpƒ^[ƒ“‚ÌŽ¦‚µ‚½”z—ñ</param>
-		/// <param name="interval">Ø‚è‘Ö‚¦‚ÌŠÔŠu‚ðŽ¦‚µ‚½”z—ñ</param>
-		/// <param name="loop">ƒAƒjƒ[ƒVƒ‡ƒ“‚ðŒJ‚è•Ô‚·‚©</param>
+		/// <param name="pattern">ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ç¤ºã—ãŸé…åˆ—</param>
+		/// <param name="interval">åˆ‡ã‚Šæ›¿ãˆã®é–“éš”ã‚’ç¤ºã—ãŸé…åˆ—</param>
+		/// <param name="loop">ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ç¹°ã‚Šè¿”ã™ã‹</param>
 		virtual animation& patterned(const std::vector<uint>& pattern, const std::vector<double>& interval, bool loop = true)&;
 
 		/// <summary>
-		/// ƒAƒjƒ[ƒVƒ‡ƒ“‚Ìƒpƒ^[ƒ“‚ðÝ’è‚·‚é
+		/// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¨­å®šã™ã‚‹
 		/// </summary>
-		/// <param name="pattern">ƒpƒ^[ƒ“‚ÌŽ¦‚µ‚½”z—ñ</param>
-		/// <param name="interval">Ø‚è‘Ö‚¦‚ÌŠÔŠu</param>
-		/// <param name="loop">ƒAƒjƒ[ƒVƒ‡ƒ“‚ðŒJ‚è•Ô‚·‚©</param>
+		/// <param name="pattern">ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ç¤ºã—ãŸé…åˆ—</param>
+		/// <param name="interval">åˆ‡ã‚Šæ›¿ãˆã®é–“éš”</param>
+		/// <param name="loop">ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ç¹°ã‚Šè¿”ã™ã‹</param>
 		virtual animation patterned(const std::vector<uint>& pattern, double interval = 1, bool loop = true)&&;
 
 		/// <summary>
-		/// ƒAƒjƒ[ƒVƒ‡ƒ“‚Ìƒpƒ^[ƒ“‚ðÝ’è‚·‚é
+		/// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ‘ã‚¿ãƒ¼ãƒ³ã‚’è¨­å®šã™ã‚‹
 		/// </summary>
-		/// <param name="pattern">ƒpƒ^[ƒ“‚ÌŽ¦‚µ‚½”z—ñ</param>
-		/// <param name="interval">Ø‚è‘Ö‚¦‚ÌŠÔŠu</param>
-		/// <param name="loop">ƒAƒjƒ[ƒVƒ‡ƒ“‚ðŒJ‚è•Ô‚·‚©</param>
+		/// <param name="pattern">ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ç¤ºã—ãŸé…åˆ—</param>
+		/// <param name="interval">åˆ‡ã‚Šæ›¿ãˆã®é–“éš”</param>
+		/// <param name="loop">ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ç¹°ã‚Šè¿”ã™ã‹</param>
 		virtual animation& patterned(const std::vector<uint>& pattern, double interval = 1, bool loop = true)&;
 
 		/// <summary>
-		/// ƒAƒjƒ[ƒVƒ‡ƒ“‚ðXV‚·‚é
+		/// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’æ›´æ–°ã™ã‚‹
 		/// </summary>
-		/// <param name="t">•Ï‰»ŽžŠÔ</param>
+		/// <param name="t">å¤‰åŒ–æ™‚é–“</param>
 		virtual void updated(double t);
 
 		/// <summary>
-		/// ƒAƒjƒ[ƒVƒ‡ƒ“‚ÌƒCƒ“ƒfƒbƒNƒX‚ðÝ’è‚·‚é
+		/// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’è¨­å®šã™ã‚‹
 		/// </summary>
-		/// <param name="index">ƒCƒ“ƒfƒbƒNƒX</param>
+		/// <param name="index">ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹</param>
 		virtual void indexed(uint index);
 
 		/// <summary>
-		/// Ä¶’†‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‚ÌƒCƒ“ƒfƒbƒNƒX‚ðŽæ“¾
+		/// å†ç”Ÿä¸­ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å–å¾—
 		/// </summary>
-		/// <returns>ƒCƒ“ƒfƒbƒNƒX</returns>
+		/// <returns>ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹</returns>
 		virtual uint index() const;
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ”½“]‚ðŽæ“¾
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£åè»¢ã‚’å–å¾—
 		/// </summary>
-		/// <returns>Še•ûŒü‚Ì”½“]</returns>
+		/// <returns>å„æ–¹å‘ã®åè»¢</returns>
 		point<bool> turn() const;
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚Ì‘å‚«‚³‚ðŽæ“¾
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®å¤§ãã•ã‚’å–å¾—
 		/// </summary>
-		/// <returns>ƒeƒNƒXƒ`ƒƒ‚Ì‘å‚«‚³</returns>
+		/// <returns>ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®å¤§ãã•</returns>
 		point<float> size() const;
 
 		/// <summary>
-		/// ƒAƒjƒ[ƒVƒ‡ƒ“‚ÌÄ¶‚ªI—¹‚µ‚½‚©Žæ“¾
+		/// ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®å†ç”ŸãŒçµ‚äº†ã—ãŸã‹å–å¾—
 		/// </summary>
-		/// <returns>ƒAƒjƒ[ƒVƒ‡ƒ“‚ÌÄ¶‚ªI—¹‚µ‚½‚©</returns>
+		/// <returns>ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®å†ç”ŸãŒçµ‚äº†ã—ãŸã‹</returns>
 		bool finished() const;
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚Ì—Ìˆæ‚ðŽ¦‚·‹éŒ`‚ðŽæ“¾‚·‚é
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®é ˜åŸŸã‚’ç¤ºã™çŸ©å½¢ã‚’å–å¾—ã™ã‚‹
 		/// </summary>
-		/// <returns>ƒeƒNƒXƒ`ƒƒ‚Ì—Ìˆæ‚ðŽ¦‚·‹éŒ`</returns>
+		/// <returns>ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®é ˜åŸŸã‚’ç¤ºã™çŸ©å½¢</returns>
 		rect rect() const;
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚ð•`‰æ‚·‚é
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’æç”»ã™ã‚‹
 		/// </summary>
 		virtual void draw() override;
 	};

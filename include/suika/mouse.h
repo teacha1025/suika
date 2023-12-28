@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // mouse.
 // 
@@ -26,48 +26,48 @@
 
 namespace suika {
 	/// <summary>
-	/// “à•”“I‚ÈÀ‘•
+	/// å†…éƒ¨çš„ãªå®Ÿè£…
 	/// </summary>
 	namespace detail {
 		/// <summary>
-		/// ƒ}ƒEƒX
+		/// ãƒã‚¦ã‚¹
 		/// </summary>
 		class mouse : public input_base {
 		public:
 			/// <summary>
-			/// ƒ}ƒEƒXƒL[‚Ìì¬
+			/// ãƒã‚¦ã‚¹ã‚­ãƒ¼ã®ä½œæˆ
 			/// </summary>
-			/// <param name="code">ƒ}ƒEƒXƒR[ƒh</param>
-			/// <param name="name">ƒ}ƒEƒX‚Ì–¼‘O</param>
+			/// <param name="code">ãƒã‚¦ã‚¹ã‚³ãƒ¼ãƒ‰</param>
+			/// <param name="name">ãƒã‚¦ã‚¹ã®åå‰</param>
 			mouse(unsigned int code, string name);
 
 			/// <summary>
-			/// ƒfƒtƒHƒ‹ƒg“ü—Í
+			/// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå…¥åŠ›
 			/// </summary>
 			mouse() {}
 
 			/// <summary>
-			/// ƒ}ƒEƒX‚ÌXV
+			/// ãƒã‚¦ã‚¹ã®æ›´æ–°
 			/// </summary>
 			void update();
 		};
 	}
 	/// <summary>
-	/// ƒL[“ü—Í‚Ì’è‹`‹y‚ÑŠÖ”
+	/// ã‚­ãƒ¼å…¥åŠ›ã®å®šç¾©åŠã³é–¢æ•°
 	/// </summary>
 	namespace mouse {
 		/// <summary>
-		/// ¶ƒ{ƒ^ƒ“
+		/// å·¦ãƒœã‚¿ãƒ³
 		/// </summary>
 		extern detail::mouse Left;
 
 		/// <summary>
-		/// ’†ƒ{ƒ^ƒ“
+		/// ä¸­ãƒœã‚¿ãƒ³
 		/// </summary>
 		extern detail::mouse Middle;
 
 		/// <summary>
-		/// ‰Eƒ{ƒ^ƒ“
+		/// å³ãƒœã‚¿ãƒ³
 		/// </summary>
 		extern detail::mouse Right;
 
@@ -78,77 +78,77 @@ namespace suika {
 		extern detail::mouse Button8;
 
 		/// <summary>
-		/// ƒJ[ƒ\ƒ‹‚Ìí—Ş
+		/// ã‚«ãƒ¼ã‚½ãƒ«ã®ç¨®é¡
 		/// </summary>
 		enum cursor {
-			//! •W€
+			//! æ¨™æº–
 			icon,
-			//! •W€
+			//! æ¨™æº–
 			arrow,
-			//! ãŒü‚«–îˆó
+			//! ä¸Šå‘ãçŸ¢å°
 			up_arrow,
-			//! Iƒ}[ƒN
+			//! Iãƒãƒ¼ã‚¯
 			ibeam,
-			//! \š
+			//! åå­—
 			cross,
-			//! l·‚µw
+			//! äººå·®ã—æŒ‡
 			hand,
-			//! ‹Ö~
+			//! ç¦æ­¢
 			no,
-			//! ã‰º–îˆó
+			//! ä¸Šä¸‹çŸ¢å°
 			resize_NS,
-			//! ¶‰E–îˆó
+			//! å·¦å³çŸ¢å°
 			resize_WE,
-			//! ‰Eã‚Æ¶‰º–îˆó
+			//! å³ä¸Šã¨å·¦ä¸‹çŸ¢å°
 			resize_NWSE,
-			//! ¶ã‚Æ‰E‰º–îˆó
+			//! å·¦ä¸Šã¨å³ä¸‹çŸ¢å°
 			resize_NESW,
-			//! \š–îˆó
+			//! åå­—çŸ¢å°
 			resize_all,
-			//! ƒwƒ‹ƒv
+			//! ãƒ˜ãƒ«ãƒ—
 			help,
-			//! ƒsƒ“ƒ}[ƒN
+			//! ãƒ”ãƒ³ãƒãƒ¼ã‚¯
 			pin,
-			//! l
+			//! äºº
 			person,
-			//! ‚®‚é‚®‚é(»Œv)
+			//! ãã‚‹ãã‚‹(ç ‚æ™‚è¨ˆ)
 			wait,
-			//! –îˆó‚Æ‚®‚é‚®‚é
+			//! çŸ¢å°ã¨ãã‚‹ãã‚‹
 			appstarting
 		};
 
 		/// <summary>
-		/// ƒ}ƒEƒXƒJ[ƒ\ƒ‹‚ÌˆÊ’u‚ğæ“¾
+		/// ãƒã‚¦ã‚¹ã‚«ãƒ¼ã‚½ãƒ«ã®ä½ç½®ã‚’å–å¾—
 		/// </summary>
-		/// <param name="id">ƒEƒBƒ“ƒhƒE‚ÌID</param>
-		/// <returns>ƒJ[ƒ\ƒ‹‚ÌˆÊ’u</returns>
+		/// <param name="id">ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ID</param>
+		/// <returns>ã‚«ãƒ¼ã‚½ãƒ«ã®ä½ç½®</returns>
 		point<int> position(window::id id = window::default_id);
 
 		/// <summary>
-		/// ƒ}ƒEƒXƒJ[ƒ\ƒ‹‚ÌˆÊ’u‚ğİ’è
+		/// ãƒã‚¦ã‚¹ã‚«ãƒ¼ã‚½ãƒ«ã®ä½ç½®ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="p">ˆÊ’u</param>
-		/// <param name="id">ƒEƒBƒ“ƒhƒEID</param>
-		/// <param name="flag">ƒEƒBƒ“ƒhƒE‚ªƒAƒNƒeƒBƒu‚Ì‚¾‚¯ƒJ[ƒ\ƒ‹‚ğİ’è‚·‚é</param>
+		/// <param name="p">ä½ç½®</param>
+		/// <param name="id">ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ID</param>
+		/// <param name="flag">ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã®æ™‚ã ã‘ã‚«ãƒ¼ã‚½ãƒ«ã‚’è¨­å®šã™ã‚‹</param>
 		void position(const point<int>& p, window::id id = window::default_id, bool flag = true);
 
 		/// <summary>
-		/// ƒJ[ƒ\ƒ‹ˆÚ“®—Ê‚ğæ“¾
+		/// ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•é‡ã‚’å–å¾—
 		/// </summary>
-		/// <param name="id">ƒEƒBƒ“ƒhƒEID</param>
-		/// <returns>‚PƒtƒŒ[ƒ€‚ÌƒJ[ƒ\ƒ‹ˆÚ“®—Ê</returns>
+		/// <param name="id">ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ID</param>
+		/// <returns>ï¼‘ãƒ•ãƒ¬ãƒ¼ãƒ ã®ã‚«ãƒ¼ã‚½ãƒ«ç§»å‹•é‡</returns>
 		point<int> delta_position(window::id id = window::default_id);
 
 		/// <summary>
-		/// ƒzƒC[ƒ‹‰ñ“]—Ê‚ğæ“¾
+		/// ãƒ›ã‚¤ãƒ¼ãƒ«å›è»¢é‡ã‚’å–å¾—
 		/// </summary>
-		/// <returns>‚PƒtƒŒ[ƒ€‚ÌƒzƒC[ƒ‹‰ñ“]—Ê</returns>
+		/// <returns>ï¼‘ãƒ•ãƒ¬ãƒ¼ãƒ ã®ãƒ›ã‚¤ãƒ¼ãƒ«å›è»¢é‡</returns>
 		int wheel();
 
 		/// <summary>
-		/// ƒJ[ƒ\ƒ‹‚ÌŒ©‚½–Ú‚ğ•ÏX‚·‚é
+		/// ã‚«ãƒ¼ã‚½ãƒ«ã®è¦‹ãŸç›®ã‚’å¤‰æ›´ã™ã‚‹
 		/// </summary>
-		/// <param name="style">ƒJ[ƒ\ƒ‹‚Ìí—Ş</param>
+		/// <param name="style">ã‚«ãƒ¼ã‚½ãƒ«ã®ç¨®é¡</param>
 		void style(cursor style);
 	}
 }

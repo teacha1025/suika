@@ -1,49 +1,49 @@
 /*
 * keyboard
-*	ƒL[“ü—Í‚ğ—˜—p‚µ‚½ƒIƒuƒWƒFƒNƒg‚ÌˆÚ“®
+*	ã‚­ãƒ¼å…¥åŠ›ã‚’åˆ©ç”¨ã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç§»å‹•
 */
 
 #include "../include/suika.h"
 using namespace suika;
 
-//ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ì‰Šú‰»
+//ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®åˆæœŸåŒ–
 void init() {
-	//log.log‚ÉƒƒO‚ğo—Í‚·‚é
+	//log.logã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹
 	suika::log.set(true, "log.log");
 
-	//ƒEƒBƒ“ƒhƒE‚Ìİ’è
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®è¨­å®š
 	window::background(palette::black);
 	window::title("APP");
 	window::vsync(true);
 }
 
 int main() {
-	// ƒIƒuƒWƒFƒNƒg‚ÌÀ•W
+	// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åº§æ¨™â˜º
 	float2 position = window::center();
 
-	// ƒIƒuƒWƒFƒNƒg(‹éŒ`)‚Ì’è‹`
+	// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ(çŸ©å½¢)ã®å®šç¾©
 	rect object(float2{ 128,128 });
 
-	// ƒIƒuƒWƒFƒNƒg‚ÌF‚È‚Ç‚ğİ’è
+	// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®è‰²ãªã©ã‚’è¨­å®š
 	object.colored(palette::white).centered(object.size() / 2);
 	while (sys::update()) {
-		// \šƒL[¶‚ğ‰Ÿ‚µ‚Ä‚¢‚éŠÔ‚Í
+		// åå­—ã‚­ãƒ¼å·¦ã‚’æŠ¼ã—ã¦ã„ã‚‹é–“ã¯
 		if (keyboard::Left.press()) {
-			// xÀ•W‚ğ–ˆƒtƒŒ[ƒ€Œ¸‚ç‚·
+			// xåº§æ¨™ã‚’æ¯ãƒ•ãƒ¬ãƒ¼ãƒ æ¸›ã‚‰ã™
 			position.x -= 4;
 		}
 
-		// \šƒL[¶‚ğ‰Ÿ‚µ‚Ä‚¢‚éŠÔ‚Í
+		// åå­—ã‚­ãƒ¼å·¦ã‚’æŠ¼ã—ã¦ã„ã‚‹é–“ã¯
 		else if (keyboard::Right.press()) {
 			position.x += 4;
 		}
 
-		// \šƒL[¶‚ğ‰Ÿ‚µ‚Ä‚¢‚éŠÔ‚Í
+		// åå­—ã‚­ãƒ¼å·¦ã‚’æŠ¼ã—ã¦ã„ã‚‹é–“ã¯
 		if (keyboard::Up.press()) {
 			position.y -= 4;
 		}
 
-		// \šƒL[¶‚ğ‰Ÿ‚µ‚Ä‚¢‚éŠÔ‚Í
+		// åå­—ã‚­ãƒ¼å·¦ã‚’æŠ¼ã—ã¦ã„ã‚‹é–“ã¯
 		else if (keyboard::Down.press()) {
 			position.y += 4;
 		}

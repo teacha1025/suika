@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // line
 // 
@@ -26,7 +26,7 @@
 
 namespace suika {
 	/// <summary>
-	/// ü•ªƒNƒ‰ƒX
+	/// ç·šåˆ†ã‚¯ãƒ©ã‚¹
 	/// </summary>
 	class line : public detail::ishape<line> {
 	protected:
@@ -42,98 +42,98 @@ namespace suika {
 		}
 
 		/// <summary>
-		///@2“_‚©‚çü•ªì¬
+		///ã€€2ç‚¹ã‹ã‚‰ç·šåˆ†ä½œæˆ
 		/// </summary>
-		/// <param name="A">n“_</param>
-		/// <param name="B">I“_</param>
+		/// <param name="A">å§‹ç‚¹</param>
+		/// <param name="B">çµ‚ç‚¹</param>
 		line(point<float> A, point<float> B) : _A(A), _B(B) {
 			_shaders = { .vs = SHAPE_VERTEX, .ps = SHAPE_PIXEL };
 		}
 
 		/// <summary>
-		/// ‘¾‚³1‚Ìü•ª‚ğ•`‰æ‚·‚é
+		/// å¤ªã•1ã®ç·šåˆ†ã‚’æç”»ã™ã‚‹
 		/// </summary>
 		virtual void draw() override;
 
 		/// <summary>
-		/// ‘¾‚³b‚Ìü•ª‚ğ•`‰æ‚·‚é
+		/// å¤ªã•bã®ç·šåˆ†ã‚’æç”»ã™ã‚‹
 		/// </summary>
-		/// <param name="b">‘¾‚³</param>
-		/// <param name="rounded">Šp‚ğŠÛ‚ß‚é‚©</param>
+		/// <param name="b">å¤ªã•</param>
+		/// <param name="rounded">è§’ã‚’ä¸¸ã‚ã‚‹ã‹</param>
 		virtual void draw(float b, bool rounded = false);
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
 		virtual line colored(const color_f& color)&& {
 			this->_color = color;
 			return static_cast<line&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
 		virtual line& colored(const color_f& color)& {
 			this->_color = color;
 			return static_cast<line&>(*this);
 		}
 
 		/// <summary>
-		/// ü•ª‚Ì“_‚ğİ’è
+		/// ç·šåˆ†ã®ç‚¹ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="A">n“_</param>
+		/// <param name="A">å§‹ç‚¹</param>
 		virtual line& A(const point<float>& A)& {
 			this->_A = A;
 			return static_cast<line&>(*this);
 		}
 
 		/// <summary>
-		/// ü•ª‚Ì“_‚ğİ’è
+		/// ç·šåˆ†ã®ç‚¹ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="A">n“_</param>
+		/// <param name="A">å§‹ç‚¹</param>
 		virtual line A(point<float>&& A)&& {
 			this->_A = A;
 			return static_cast<line&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ü•ª‚Ì“_‚ğİ’è
+		/// ç·šåˆ†ã®ç‚¹ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="B">I“_</param>
+		/// <param name="B">çµ‚ç‚¹</param>
 		virtual line& B(const point<float>& B)& {
 			this->_B = B;
 			return static_cast<line&>(*this);
 		}
 
 		/// <summary>
-		/// ü•ª‚Ì“_‚ğİ’è
+		/// ç·šåˆ†ã®ç‚¹ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="B">I“_</param>
+		/// <param name="B">çµ‚ç‚¹</param>
 		virtual line B(point<float>&& B)&& {
 			this->_B = B;
 			return static_cast<line&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ü•ª‚ÌF‚ğæ“¾
+		/// ç·šåˆ†ã®è‰²ã‚’å–å¾—
 		/// </summary>
-		/// <returns>ü•ª‚ÌF</returns>
+		/// <returns>ç·šåˆ†ã®è‰²</returns>
 		virtual color_f color() const {
 			return this->_color;
 		}
 
 		/// <summary>
-		/// ü•ª‚Ì“_‚ğæ“¾
+		/// ç·šåˆ†ã®ç‚¹ã‚’å–å¾—
 		/// </summary>
-		/// <returns>n“_</returns>
+		/// <returns>å§‹ç‚¹</returns>
 		virtual point<float> A() const;
 
 		/// <summary>
-		/// ü•ª‚Ì“_‚ğæ“¾
+		/// ç·šåˆ†ã®ç‚¹ã‚’å–å¾—
 		/// </summary>
-		/// <returns>I“_</returns>
+		/// <returns>çµ‚ç‚¹</returns>
 		virtual point<float> B() const;
 	};
 }

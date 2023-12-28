@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // rect
 // 
@@ -28,7 +28,7 @@
 
 namespace suika {
 	/// <summary>
-	/// ‹éŒ`ƒNƒ‰ƒX
+	/// çŸ©å½¢ã‚¯ãƒ©ã‚¹
 	/// </summary>
 	class rect : public detail::ishape<rect> {
 	protected:
@@ -44,22 +44,22 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ‹éŒ`ì¬
+		/// çŸ©å½¢ä½œæˆ
 		/// </summary>
-		/// <param name="size">‹éŒ`‚ÌƒTƒCƒY</param>
+		/// <param name="size">çŸ©å½¢ã®ã‚µã‚¤ã‚º</param>
 		rect(const point<float>& size) : _size(size) {
 			_shaders = { .vs = SHAPE_VERTEX, .ps = SHAPE_PIXEL };
 		}
 
 		/// <summary>
-		/// ‹éŒ`‚ğ•`‰æ‚·‚é
+		/// çŸ©å½¢ã‚’æç”»ã™ã‚‹
 		/// </summary>
 		virtual void draw() override;
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìİ’è
+		/// æ‹¡å¤§ç‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rate">Šg‘å—¦</param>
+		/// <param name="rate">æ‹¡å¤§ç‡</param>
 		virtual rect extended(const vector3<double>& rate)&& override{
 			_extend = rate;
 			_ext_cnt = float3{ 1/(float(_extend.x)), 1/(float(_extend.y)), 1/(float(_extend.z)) };
@@ -67,9 +67,9 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìİ’è
+		/// æ‹¡å¤§ç‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rate">Šg‘å—¦</param>
+		/// <param name="rate">æ‹¡å¤§ç‡</param>
 		virtual rect& extended(const vector3<double>& rate)& override {
 			_extend = rate;
 			_ext_cnt = float3{ 1 / (float(_extend.x)), 1 / (float(_extend.y)), 1 / (float(_extend.z)) };
@@ -77,9 +77,9 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìİ’è
+		/// æ‹¡å¤§ç‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rate">Šg‘å—¦</param>
+		/// <param name="rate">æ‹¡å¤§ç‡</param>
 		virtual rect extended(const point<double>& rate)&& {
 			_extend = { rate.x, rate.y, 1 };
 			_ext_cnt = float3{ 1 / (float(_extend.x)), 1 / (float(_extend.y)), 1 / (float(_extend.z)) };
@@ -87,9 +87,9 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìİ’è
+		/// æ‹¡å¤§ç‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rate">Šg‘å—¦</param>
+		/// <param name="rate">æ‹¡å¤§ç‡</param>
 		virtual rect& extended(const point<double>& rate)& {
 			_extend = { rate.x, rate.y, 1 };
 			_ext_cnt = float3{ 1 / (float(_extend.x)), 1 / (float(_extend.y)), 1 / (float(_extend.z)) };
@@ -97,9 +97,9 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìİ’è
+		/// æ‹¡å¤§ç‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rate">Šg‘å—¦</param>
+		/// <param name="rate">æ‹¡å¤§ç‡</param>
 		virtual rect extended(double rate)&& {
 			_extend = { rate, rate, rate };
 			_ext_cnt = float3{ 1 / (float(_extend.x)), 1 / (float(_extend.y)), 1 / (float(_extend.z)) };
@@ -107,9 +107,9 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìİ’è
+		/// æ‹¡å¤§ç‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rate">Šg‘å—¦</param>
+		/// <param name="rate">æ‹¡å¤§ç‡</param>
 		virtual rect& extended(double rate)& {
 			_extend = { rate, rate, rate };
 			_ext_cnt = float3{ 1 / (float(_extend.x)), 1 / (float(_extend.y)), 1 / (float(_extend.z)) };
@@ -117,53 +117,53 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
 		virtual rect colored(const color_f& color)&& {
 			this->_color = color;
 			return static_cast<rect&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
 		virtual rect& colored(const color_f& color)& {
 			this->_color = color;
 			return static_cast<rect&>(*this);
 		}
 
 		/// <summary>
-		/// ‹éŒ`‚Ì‘å‚«‚³‚ğ•Ï‚¦‚é
+		/// çŸ©å½¢ã®å¤§ãã•ã‚’å¤‰ãˆã‚‹
 		/// </summary>
-		/// <param name="size">•ÏXŒã‚Ì‘å‚«‚³</param>
+		/// <param name="size">å¤‰æ›´å¾Œã®å¤§ãã•</param>
 		virtual rect resized(const point<float>& size)&& {
 			this->_size = size;
 			return static_cast<rect&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ‹éŒ`‚Ì‘å‚«‚³‚ğ•Ï‚¦‚é
+		/// çŸ©å½¢ã®å¤§ãã•ã‚’å¤‰ãˆã‚‹
 		/// </summary>
-		/// <param name="size">•ÏXŒã‚Ì‘å‚«‚³</param>
+		/// <param name="size">å¤‰æ›´å¾Œã®å¤§ãã•</param>
 		virtual rect& resized(const point<float>& size)& {
 			this->_size = size;
 			return static_cast<rect&>(*this);
 		}
 
 		/// <summary>
-		/// ‹éŒ`‚ÌƒTƒCƒY‚ğæ“¾
+		/// çŸ©å½¢ã®ã‚µã‚¤ã‚ºã‚’å–å¾—
 		/// </summary>
-		/// <returns>‹éŒ`‚ÌƒTƒCƒY</returns>
+		/// <returns>çŸ©å½¢ã®ã‚µã‚¤ã‚º</returns>
 		virtual point<float> size() const {
 			return this->_size;
 		}
 
 		/// <summary>
-		/// ‹éŒ`‚ÌF‚ğæ“¾
+		/// çŸ©å½¢ã®è‰²ã‚’å–å¾—
 		/// </summary>
-		/// <returns>‹éŒ`‚ÌF</returns>
+		/// <returns>çŸ©å½¢ã®è‰²</returns>
 		virtual color_f color() const {
 			return this->_color;
 		}

@@ -14,5 +14,6 @@
         "Debug": true,
         "Release": true,
         "x64": true
-    }
+    },
+    "files.encoding": "utf8bom"
 }

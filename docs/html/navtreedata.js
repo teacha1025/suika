@@ -60,8 +60,8 @@ var NAVTREEINDEX =
 "classsuika_1_1logger.html#a60a5d16164ae2d10173ede676002b45a",
 "classsuika_1_1string.html#a9c95375028ef77fbad76ba86767a2854",
 "functions_func_d.html",
-"namespacesuika_1_1collision__2d.html#a727f959abde290e1581593ddf84b8abf",
-"namespacesuika_1_1palette.html#a5d6b7bf3617e257e15420d40287d72c3",
+"namespacesuika_1_1collision__2d.html#a697800ba5c2713fa1a4c8e0495853362",
+"namespacesuika_1_1palette.html#a5c4d0b3398b3331654b576ee373c73aa",
 "structsuika_1_1hsv.html#af1ffdc15b761b74863c509dc2f81410a"
 ];
 

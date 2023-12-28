@@ -43,5 +43,8 @@
     <ClInclude Include="..\sample\keyboard.hpp">
       <Filter>サンプル</Filter>
     </ClInclude>
+    <ClInclude Include="..\sample\mouse.hpp">
+      <Filter>サンプル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

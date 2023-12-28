@@ -129,8 +129,7 @@ var menudata={children:[
 {text:"w",url:"functions_w.html#index_w"},
 {text:"x",url:"functions_x.html#index_x"},
 {text:"y",url:"functions_y.html#index_y"},
-{text:"~",url:"functions_~.html#index__7E"},
-{text:"‾",url:"functions_0xe280be.html#index_a0xe280be"}]},
+{text:"~",url:"functions_~.html#index__7E"}]},
 {text:"関数",url:"functions_func.html",children:[
 {text:"a",url:"functions_func.html#index_a"},
 {text:"b",url:"functions_func_b.html#index_b"},
@@ -152,8 +151,7 @@ var menudata={children:[
 {text:"u",url:"functions_func_u.html#index_u"},
 {text:"v",url:"functions_func_v.html#index_v"},
 {text:"w",url:"functions_func_w.html#index_w"},
-{text:"~",url:"functions_func_~.html#index__7E"},
-{text:"‾",url:"functions_func_0xe280be.html#index_a0xe280be"}]},
+{text:"~",url:"functions_func_~.html#index__7E"}]},
 {text:"変数",url:"functions_vars.html",children:[
 {text:"_",url:"functions_vars.html#index__5F"},
 {text:"a",url:"functions_vars.html#index_a"},

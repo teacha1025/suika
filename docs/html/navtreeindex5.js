@@ -1,6 +1,5 @@
 var NAVTREEINDEX5 =
 {
-"namespacesuika_1_1collision__2d.html#a697800ba5c2713fa1a4c8e0495853362":[1,0,0,0,2],
 "namespacesuika_1_1collision__2d.html#a727f959abde290e1581593ddf84b8abf":[1,0,0,0,5],
 "namespacesuika_1_1collision__2d.html#a96cf6740cef9563bd10ccd38ee3157ed":[1,0,0,0,8],
 "namespacesuika_1_1collision__2d.html#a97362850571556ffe33d8710522141f1":[1,0,0,0,4],
@@ -249,5 +248,6 @@ var NAVTREEINDEX5 =
 "namespacesuika_1_1palette.html#a54b05887aaa4c46e2e9c64d4f84e301f":[1,0,0,8,27],
 "namespacesuika_1_1palette.html#a5964807c7d81cc08dc97f43c871ba4f5":[1,0,0,8,6],
 "namespacesuika_1_1palette.html#a5a4946102ebdc1da21c7caf8aebd80cb":[1,0,0,8,120],
-"namespacesuika_1_1palette.html#a5aa5bf4a3677096339a862e468f5d686":[1,0,0,8,92]
+"namespacesuika_1_1palette.html#a5aa5bf4a3677096339a862e468f5d686":[1,0,0,8,92],
+"namespacesuika_1_1palette.html#a5c4d0b3398b3331654b576ee373c73aa":[1,0,0,8,59]
 };

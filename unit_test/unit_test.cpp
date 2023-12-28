@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "CppUnitTest.h"
 #include <DirectXMath.h>
 #include <suika.h>

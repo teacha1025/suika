@@ -1,50 +1,53 @@
-﻿/*
+/*
 * keyboard
-*	繧ｭ繝ｼ蜈･蜉帙ｒ蛻ｩ逕ｨ縺励◆繧ｪ繝悶ず繧ｧ繧ｯ繝医・遘ｻ蜍・
+*	キー入力によってオブジェクトを移動させる
 */
 
 #include "../include/suika.h"
 using namespace suika;
 
-//繧｢繝励Μ繧ｱ繝ｼ繧ｷ繝ｧ繝ｳ縺ｮ蛻晄悄蛹・
+//アプリケーションの初期化
 void init() {
-	//log.log縺ｫ繝ｭ繧ｰ繧貞・蜉帙☆繧・
+	//log.logにログを出力する
 	suika::log.set(true, "log.log");
 
-	//繧ｦ繧｣繝ｳ繝峨え縺ｮ險ｭ螳・
+	//ウィンドウの設定
 	window::background(palette::black);
 	window::title("APP");
 	window::vsync(true);
 }
 
 int main() {
-	// 繧ｪ繝悶ず繧ｧ繧ｯ繝医・蠎ｧ讓吮仄
+	// オブジェクトの位置
 	float2 position = window::center();
 
-	// 繧ｪ繝悶ず繧ｧ繧ｯ繝・遏ｩ蠖｢)縺ｮ螳夂ｾｩ
+	// オブジェクトの定義
 	rect object(float2{ 128,128 });
 
-	// 繧ｪ繝悶ず繧ｧ繧ｯ繝医・濶ｲ縺ｪ縺ｩ繧定ｨｭ螳・
+	// オブジェクトの設定
 	object.colored(palette::white).centered(object.size() / 2);
 	while (sys::update()) {
-		// 蜊∝ｭ励く繝ｼ蟾ｦ繧呈款縺励※縺・ｋ髢薙・
+		// キーが押されたとき
 		if (keyboard::Left.press()) {
-			// x蠎ｧ讓吶ｒ豈弱ヵ繝ｬ繝ｼ繝貂帙ｉ縺・
+			// 左に移動
 			position.x -= 4;
 		}
 
-		// 蜊∝ｭ励く繝ｼ蟾ｦ繧呈款縺励※縺・ｋ髢薙・
+		// キーが押されたとき
 		else if (keyboard::Right.press()) {
+			// 右に移動
 			position.x += 4;
 		}
 
-		// 蜊∝ｭ励く繝ｼ蟾ｦ繧呈款縺励※縺・ｋ髢薙・
+		// キーが押されたとき
 		if (keyboard::Up.press()) {
+			// 上に移動
 			position.y -= 4;
 		}
 
-		// 蜊∝ｭ励く繝ｼ蟾ｦ繧呈款縺励※縺・ｋ髢薙・
+		// キーが押されたとき
 		else if (keyboard::Down.press()) {
+			// 下に移動
 			position.y += 4;
 		}
 

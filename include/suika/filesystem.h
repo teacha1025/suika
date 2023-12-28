@@ -1,4 +1,4 @@
-﻿/** @example{lineno} fileIO.hpp
+/** @example{lineno} fileIO.hpp
  * ファイル操作のサンプル
 */
 

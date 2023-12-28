@@ -1,4 +1,4 @@
-﻿/** @example{lineno} animator.hpp
+/** @example{lineno} animator.hpp
  * アニメーションのサンプル
 */
 

@@ -1,4 +1,4 @@
-﻿/** @example{lineno} task.hpp
+/** @example{lineno} task.hpp
  * タスクのサンプル
 */
 

@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // circle
 // 
@@ -26,7 +26,7 @@
 
 namespace suika {
 	/// <summary>
-	/// ‰~Œ`ƒNƒ‰ƒX
+	/// å††å½¢ã‚¯ãƒ©ã‚¹
 	/// </summary>
 	class circle : public detail::ishape<circle> {
 	protected:
@@ -37,85 +37,85 @@ namespace suika {
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
 	public:
 		/// <summary>
-		/// ‰~‚Ìì¬
+		/// å††ã®ä½œæˆ
 		/// </summary>
-		/// <param name="r">‰~‚Ì”¼Œa</param>
+		/// <param name="r">å††ã®åŠå¾„</param>
 		circle(float r) : _radius(r) {
 			_shaders = { .vs = SHAPE_VERTEX, .ps = SHAPE_PIXEL };
 			_resolution = (uint16)r;
 		}
 
 		/// <summary>
-		/// ‰~‚ğ•`‰æ‚·‚é
+		/// å††ã‚’æç”»ã™ã‚‹
 		/// </summary>
 		virtual void draw() override;
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
 		virtual circle colored(const color_f& color)&& {
 			this->_color = color;
 			return static_cast<circle&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
 		virtual circle& colored(const color_f& color)& {
 			this->_color = color;
 			return static_cast<circle&>(*this);
 		}
 
 		/// <summary>
-		/// ”¼Œa‚ğ•Ï‚¦‚é
+		/// åŠå¾„ã‚’å¤‰ãˆã‚‹
 		/// </summary>
-		/// <param name="r">•ÏXŒã‚Ì”¼Œa</param>
+		/// <param name="r">å¤‰æ›´å¾Œã®åŠå¾„</param>
 		virtual circle resized(float r)&& {
 			this->_radius = r;
 			return static_cast<circle&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ”¼Œa‚ğ•Ï‚¦‚é
+		/// åŠå¾„ã‚’å¤‰ãˆã‚‹
 		/// </summary>
-		/// <param name="r">•ÏXŒã‚Ì‘å‚«‚³</param>
+		/// <param name="r">å¤‰æ›´å¾Œã®å¤§ãã•</param>
 		virtual circle& resized(float r)& {
 			this->_radius = r;
 			return static_cast<circle&>(*this);
 		}
 
 		/// <summary>
-		/// •`‰æ‚Ì•ª‰ğ”\‚ğİ’è
+		/// æç”»ã®åˆ†è§£èƒ½ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="r">•ªŠ„”</param>
+		/// <param name="r">åˆ†å‰²æ•°</param>
 		virtual circle resolution(uint16 r)&& {
 			this->_resolution = r;
 			return static_cast<circle&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// •`‰æ‚Ì•ª‰ğ”\‚ğİ’è
+		/// æç”»ã®åˆ†è§£èƒ½ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="r">•ªŠ„”</param>
+		/// <param name="r">åˆ†å‰²æ•°</param>
 		virtual circle& resolution(uint16 r)& {
 			this->_resolution = r;
 			return static_cast<circle&>(*this);
 		}
 
 		/// <summary>
-		/// ‰~‚Ì”¼Œa‚ğæ“¾
+		/// å††ã®åŠå¾„ã‚’å–å¾—
 		/// </summary>
-		/// <returns>”¼Œa</returns>
+		/// <returns>åŠå¾„</returns>
 		virtual float radius() const {
 			return this->_radius;
 		}
 
 		/// <summary>
-		/// ‰~‚ÌF‚ğæ“¾
+		/// å††ã®è‰²ã‚’å–å¾—
 		/// </summary>
-		/// <returns>‰~‚ÌF</returns>
+		/// <returns>å††ã®è‰²</returns>
 		virtual color_f color() const {
 			return this->_color;
 		}
@@ -124,9 +124,9 @@ namespace suika {
 		virtual vector3<position_type> offset_xyz() const;
 
 		/// <summary>
-		/// •`‰æ‚Ì•ª‰ğ”\‚ğæ“¾
+		/// æç”»ã®åˆ†è§£èƒ½ã‚’å–å¾—
 		/// </summary>
-		/// <returns>•ª‰ğ”\</returns>
+		/// <returns>åˆ†è§£èƒ½</returns>
 		virtual uint16 resolution() const {
 			return this->_resolution;
 		}

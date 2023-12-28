@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // system
 // 
@@ -27,46 +27,46 @@
 namespace suika {
 	namespace sys {
 		/// <summary>
-		/// ƒtƒŒ[ƒ€‚ðXV‚·‚é
+		/// ãƒ•ãƒ¬ãƒ¼ãƒ ã‚’æ›´æ–°ã™ã‚‹
 		/// </summary>
 		/// <returns></returns>
 		bool update();
 
 		/// <summary>
-		/// ŽŸƒtƒŒ[ƒ€‚ÅƒvƒƒOƒ‰ƒ€‚ðI—¹‚·‚é
+		/// æ¬¡ãƒ•ãƒ¬ãƒ¼ãƒ ã§ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’çµ‚äº†ã™ã‚‹
 		/// </summary>
 		void exit();
 
 		/// <summary>
-		/// ƒvƒƒOƒ‰ƒ€‚ðŽw’èŽžŠÔ’âŽ~‚·‚é
+		/// ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’æŒ‡å®šæ™‚é–“åœæ­¢ã™ã‚‹
 		/// </summary>
-		/// <param name="t">’âŽ~ŽžŠÔ</param>
-		/// <remarks>ƒvƒƒOƒ‰ƒ€‚·‚×‚Ä‚Ìˆ—‚ª’âŽ~‚µ‚Ü‚·B</remarks>
+		/// <param name="t">åœæ­¢æ™‚é–“</param>
+		/// <remarks>ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã™ã¹ã¦ã®å‡¦ç†ãŒåœæ­¢ã—ã¾ã™ã€‚</remarks>
 		void sleep(std::chrono::nanoseconds t);
 
 		/// <summary>
-		/// ƒvƒƒOƒ‰ƒ€‚ðŽw’è‚Ü‚ÅŽžŠÔ’âŽ~‚·‚é
+		/// ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚’æŒ‡å®šã¾ã§æ™‚é–“åœæ­¢ã™ã‚‹
 		/// </summary>
-		/// <param name="t">ÄŠJŽž</param>
-		/// <remarks>ƒvƒƒOƒ‰ƒ€‚·‚×‚Ä‚Ìˆ—‚ª’âŽ~‚µ‚Ü‚·B</remarks>
+		/// <param name="t">å†é–‹æ™‚åˆ»</param>
+		/// <remarks>ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã™ã¹ã¦ã®å‡¦ç†ãŒåœæ­¢ã—ã¾ã™ã€‚</remarks>
 		void wait(std::chrono::system_clock::time_point t);
 
 		/// <summary>
-		/// ƒtƒŒ[ƒ€ƒŒ[ƒg‚ðŽæ“¾
+		/// ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆã‚’å–å¾—
 		/// </summary>
-		/// <returns>Œ»Ý‚ÌƒtƒŒ[ƒ€ƒŒ[ƒg</returns>
+		/// <returns>ç¾åœ¨ã®ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¬ãƒ¼ãƒˆ</returns>
 		float fps();
 
 		/// <summary>
-		/// ‘O‚ÌƒtƒŒ[ƒ€‚©‚ç‚ÌŒo‰ßŽžŠÔ‚ðŽæ“¾
+		/// å‰ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã‹ã‚‰ã®çµŒéŽæ™‚é–“ã‚’å–å¾—
 		/// </summary>
-		/// <returns>Œo‰ßŽžŠÔ(•b)</returns>
+		/// <returns>çµŒéŽæ™‚é–“(ç§’)</returns>
 		double delta();
 
 		/// <summary>
-		/// ‘O‚ÌƒtƒŒ[ƒ€‚©‚ç‚ÌŒo‰ßŽžŠÔ‚ðŽæ“¾
+		/// å‰ã®ãƒ•ãƒ¬ãƒ¼ãƒ ã‹ã‚‰ã®çµŒéŽæ™‚é–“ã‚’å–å¾—
 		/// </summary>
-		/// <returns>Œo‰ßŽžŠÔ(ƒiƒm•b)</returns>
+		/// <returns>çµŒéŽæ™‚é–“(ãƒŠãƒŽç§’)</returns>
 		long long delta_nano();
 	}
 }

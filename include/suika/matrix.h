@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // matrix
 // 
@@ -141,9 +141,9 @@ namespace suika {
 	};
 
 	/// <summary>
-	/// nsm—ñ‚Ìs—ñ‚ğ•\‚·ƒNƒ‰ƒX	
+	/// nè¡Œmåˆ—ã®è¡Œåˆ—ã‚’è¡¨ã™ã‚¯ãƒ©ã‚¹	
 	/// </summary>
-	/// <typeparam name="T">s—ñ‚Ì”’lŒ^</typeparam>
+	/// <typeparam name="T">è¡Œåˆ—ã®æ•°å€¤å‹</typeparam>
 	template<concepts::numbers T = float>
 	struct matrix {
 	private:
@@ -153,39 +153,39 @@ namespace suika {
 
 		mat vec;
 
-		//ns,m—ñ
+		//nè¡Œ,måˆ—
 		uint n = 1, m = 1;
 	public:
 		/// <summary>
-		/// 1x1‚Ìs—ñ‚ğ¶¬‚·‚é
+		/// 1x1ã®è¡Œåˆ—ã‚’ç”Ÿæˆã™ã‚‹
 		/// </summary>
 		matrix() {
 			resize(1, 1, 0);
 		}
 
 		/// <summary>
-		/// nxn‚Ìs—ñ‚ğ¶¬‚·‚é
+		/// nxnã®è¡Œåˆ—ã‚’ç”Ÿæˆã™ã‚‹
 		/// </summary>
-		/// <param name="n">s‚¨‚æ‚Ñ—ñ”</param>
-		/// <param name="fill">‰Šú‰»’l</param>
+		/// <param name="n">è¡ŒãŠã‚ˆã³åˆ—æ•°</param>
+		/// <param name="fill">åˆæœŸåŒ–å€¤</param>
 		matrix(uint n, T fill = 0) {
 			resize(n, n, fill);
 		}
 
 		/// <summary>
-		/// nxm‚Ìs—ñ‚ğ¶¬‚·‚é
+		/// nxmã®è¡Œåˆ—ã‚’ç”Ÿæˆã™ã‚‹
 		/// </summary>
-		/// <param name="n">s”</param>
-		/// <param name="m">—ñ”</param>
-		/// <param name="fill">‰Šú‰»’l</param>
+		/// <param name="n">è¡Œæ•°</param>
+		/// <param name="m">åˆ—æ•°</param>
+		/// <param name="fill">åˆæœŸåŒ–å€¤</param>
 		matrix(uint n, uint m, T fill = 0) {
 			resize(n, m, fill);
 		}
 
 		/// <summary>
-		/// 2ŸŒ³”z—ñ‚©‚çs—ñ‚ğ¶¬‚·‚é
+		/// 2æ¬¡å…ƒé…åˆ—ã‹ã‚‰è¡Œåˆ—ã‚’ç”Ÿæˆã™ã‚‹
 		/// </summary>
-		/// <param name="mt">2ŸŒ³”z—ñ</param>
+		/// <param name="mt">2æ¬¡å…ƒé…åˆ—</param>
 		matrix(const mat& mt) {
 			vec = mt;
 			n = mt.size();
@@ -193,12 +193,12 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// nxm‚Ìs—ñ‚ğ”z—ñ‚©‚ç¶¬‚·‚é
+		/// nxmã®è¡Œåˆ—ã‚’é…åˆ—ã‹ã‚‰ç”Ÿæˆã™ã‚‹
 		/// </summary>
-		/// <param name="n">s”</param>
-		/// <param name="m">—ñ”</param>
-		/// <param name="ary">”z—ñ</param>
-		/// <param name="fill">‰Šú‰»’l</param>
+		/// <param name="n">è¡Œæ•°</param>
+		/// <param name="m">åˆ—æ•°</param>
+		/// <param name="ary">é…åˆ—</param>
+		/// <param name="fill">åˆæœŸåŒ–å€¤</param>
 		matrix(uint n, uint m, const std::vector<T>& ary, T fill = 0) {
 			if (ary.size() != n * m) {
 				throw;
@@ -212,11 +212,11 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// s—ñ‚ğnxm‚Ìs—ñ‚É‰Šú‰»‚·‚é
+		/// è¡Œåˆ—ã‚’nxmã®è¡Œåˆ—ã«åˆæœŸåŒ–ã™ã‚‹
 		/// </summary>
-		/// <param name="n">s”</param>
-		/// <param name="m">—ñ”</param>
-		/// <param name="fill">‰Šú‰»’l</param>
+		/// <param name="n">è¡Œæ•°</param>
+		/// <param name="m">åˆ—æ•°</param>
+		/// <param name="fill">åˆæœŸåŒ–å€¤</param>
 		void resize(uint n, uint m, T fill = 0) {
 			this->n = n;
 			this->m = m;
@@ -229,27 +229,27 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// n,m‚Ì’l‚ğæ“¾‚·‚é
+		/// n,mã®å€¤ã‚’å–å¾—ã™ã‚‹
 		/// </summary>
-		/// <param name="n">s”Ô†</param>
-		/// <param name="m">—ñ”Ô†</param>
-		/// <returns>n,m‚Ì’l</returns>
+		/// <param name="n">è¡Œç•ªå·</param>
+		/// <param name="m">åˆ—ç•ªå·</param>
+		/// <returns>n,mã®å€¤</returns>
 		const T& at(uint n, uint m) const {
 			return vec[n][m];
 		}
 
 		/// <summary>
-		/// n,m‚ÌQÆ‚ğæ“¾‚·‚é
+		/// n,mã®å‚ç…§ã‚’å–å¾—ã™ã‚‹
 		/// </summary>
-		/// <param name="n">s”Ô†</param>
-		/// <param name="m">—ñ”Ô†</param>
-		/// <returns>n,m‚ÌQÆ</returns>
+		/// <param name="n">è¡Œç•ªå·</param>
+		/// <param name="m">åˆ—ç•ªå·</param>
+		/// <returns>n,mã®å‚ç…§</returns>
 		T& at(uint n, uint m) {
 			return vec[n][m];
 		}
 
 		/// <summary>
-		/// nsm—ñ‚Ìs—ñ‚Ìs”‚ğæ“¾‚·‚é
+		/// nè¡Œmåˆ—ã®è¡Œåˆ—ã®è¡Œæ•°ã‚’å–å¾—ã™ã‚‹
 		/// </summary>
 		/// <returns>{m,n}</returns>
 		point<uint> size() const {
@@ -257,7 +257,7 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ”CˆÓ‚Ì”’lŒ^‚Ìs—ñ‚ÉƒLƒƒƒXƒg‚·‚é
+		/// ä»»æ„ã®æ•°å€¤å‹ã®è¡Œåˆ—ã«ã‚­ãƒ£ã‚¹ãƒˆã™ã‚‹
 		/// </summary>
 		/// <typeparam name="t"></typeparam>
 		template<concepts::numbers t>
@@ -558,46 +558,46 @@ namespace suika {
 
 	namespace vector {
 		/// <summary>
-		/// s—ñ‚Æ2ŸŒ³ƒxƒNƒgƒ‹‚Æ‚ÌÏZ
+		/// è¡Œåˆ—ã¨2æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«ã¨ã®ç©ç®—
 		/// </summary>
-		/// <param name="m">2—ñ‚Ìs—ñ</param>
-		/// <param name="v">2ŸŒ³ƒxƒNƒgƒ‹</param>
+		/// <param name="m">2åˆ—ã®è¡Œåˆ—</param>
+		/// <param name="v">2æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«</param>
 		/// <returns>m*v</returns>
-		/// <remarks>s—ñ‚Ì—ñ”‚Í2‚Å‚ ‚é•K—v‚ª‚ ‚é</remarks>
+		/// <remarks>è¡Œåˆ—ã®åˆ—æ•°ã¯2ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚‹</remarks>
 		template<concepts::numbers T, concepts::numbers t>
 		auto mul(const matrix<T>& m, const vector2<t>& v) {
 			return m * v;
 		}
 
 		/// <summary>
-		/// s—ñ‚Æ3ŸŒ³ƒxƒNƒgƒ‹‚Æ‚ÌÏZ
+		/// è¡Œåˆ—ã¨3æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«ã¨ã®ç©ç®—
 		/// </summary>
-		/// <param name="m">3—ñ‚Ìs—ñ</param>
-		/// <param name="v">3ŸŒ³ƒxƒNƒgƒ‹</param>
+		/// <param name="m">3åˆ—ã®è¡Œåˆ—</param>
+		/// <param name="v">3æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«</param>
 		/// <returns>m*v</returns>
-		/// <remarks>s—ñ‚Ì—ñ”‚Í3‚Å‚ ‚é•K—v‚ª‚ ‚é</remarks>
+		/// <remarks>è¡Œåˆ—ã®åˆ—æ•°ã¯3ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚‹</remarks>
 		template<concepts::numbers T, concepts::numbers t>
 		auto mul(const matrix<T>& m, const vector3<t>& v) {
 			return m * v;
 		}
 
 		/// <summary>
-		/// s—ñ‚Æ4ŸŒ³ƒxƒNƒgƒ‹‚Æ‚ÌÏZ
+		/// è¡Œåˆ—ã¨4æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«ã¨ã®ç©ç®—
 		/// </summary>
-		/// <param name="m">4—ñ‚Ìs—ñ</param>
-		/// <param name="v">4ŸŒ³ƒxƒNƒgƒ‹</param>
+		/// <param name="m">4åˆ—ã®è¡Œåˆ—</param>
+		/// <param name="v">4æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«</param>
 		/// <returns>m*v</returns>
-		/// <remarks>s—ñ‚Ì—ñ”‚Í4‚Å‚ ‚é•K—v‚ª‚ ‚é</remarks>
+		/// <remarks>è¡Œåˆ—ã®åˆ—æ•°ã¯4ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚‹</remarks>
 		template<concepts::numbers T, concepts::numbers t>
 		auto mul(const matrix<T>& m, const vector4<t>& v) {
 			return m * v;
 		}
 
 		/// <summary>
-		/// s—ñ“¯m‚ÌÏZ
+		/// è¡Œåˆ—åŒå£«ã®ç©ç®—
 		/// </summary>
-		/// <param name="m1">¶•Ó’l</param>
-		/// <param name="m2">‰E•Ó’l</param>
+		/// <param name="m1">å·¦è¾ºå€¤</param>
+		/// <param name="m2">å³è¾ºå€¤</param>
 		/// <returns>m1*m2</returns>
 		template<concepts::numbers T>
 		auto mul(const matrix<T>& m1, const matrix<T>& m2) {
@@ -605,10 +605,10 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒxƒNƒgƒ‹‚ğs—ñ‚É•ÏŠ·‚·‚é
+		/// ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¡Œåˆ—ã«å¤‰æ›ã™ã‚‹
 		/// </summary>
-		/// <param name="v">2ŸŒ³ƒxƒNƒgƒ‹</param>
-		/// <returns>1x2s—ñ</returns>
+		/// <param name="v">2æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«</param>
+		/// <returns>1x2è¡Œåˆ—</returns>
 		template<concepts::numbers T>
 		matrix<T> to_matrix(const vector2<T>& v) {
 			matrix<T> ret(1, 2);
@@ -618,10 +618,10 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒxƒNƒgƒ‹‚ğs—ñ‚É•ÏŠ·‚·‚é
+		/// ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¡Œåˆ—ã«å¤‰æ›ã™ã‚‹
 		/// </summary>
-		/// <param name="v">3ŸŒ³ƒxƒNƒgƒ‹</param>
-		/// <returns>1x3s—ñ</returns>
+		/// <param name="v">3æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«</param>
+		/// <returns>1x3è¡Œåˆ—</returns>
 		template<concepts::numbers T>
 		matrix<T> to_matrix(const vector3<T>& v) {
 			matrix<T> ret(1, 3);
@@ -632,10 +632,10 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒxƒNƒgƒ‹‚ğs—ñ‚É•ÏŠ·‚·‚é
+		/// ãƒ™ã‚¯ãƒˆãƒ«ã‚’è¡Œåˆ—ã«å¤‰æ›ã™ã‚‹
 		/// </summary>
-		/// <param name="v">4ŸŒ³ƒxƒNƒgƒ‹</param>
-		/// <returns>1x4s—ñ</returns>
+		/// <param name="v">4æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«</param>
+		/// <returns>1x4è¡Œåˆ—</returns>
 		template<concepts::numbers T>
 		matrix<T> to_matrix(const vector4<T>& v) {
 			matrix<T> ret(1, 4);
@@ -647,10 +647,10 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// s—ñ‚ğƒxƒNƒgƒ‹‚É•ÏŠ·‚·‚é
+		/// è¡Œåˆ—ã‚’ãƒ™ã‚¯ãƒˆãƒ«ã«å¤‰æ›ã™ã‚‹
 		/// </summary>
-		/// <param name="mt">1x2‚Ü‚½‚Í2x1‚Ìs—ñ</param>
-		/// <returns>2ŸŒ³ƒxƒNƒgƒ‹</returns>
+		/// <param name="mt">1x2ã¾ãŸã¯2x1ã®è¡Œåˆ—</param>
+		/// <returns>2æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«</returns>
 		template<concepts::numbers T>
 		vector2<T> to_vector2(const matrix<T>& mt) {
 			uint n = mt.size().y;
@@ -667,10 +667,10 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// s—ñ‚ğƒxƒNƒgƒ‹‚É•ÏŠ·‚·‚é
+		/// è¡Œåˆ—ã‚’ãƒ™ã‚¯ãƒˆãƒ«ã«å¤‰æ›ã™ã‚‹
 		/// </summary>
-		/// <param name="mt">1x3‚Ü‚½‚Í3x1‚Ìs—ñ</param>
-		/// <returns>3ŸŒ³ƒxƒNƒgƒ‹</returns>
+		/// <param name="mt">1x3ã¾ãŸã¯3x1ã®è¡Œåˆ—</param>
+		/// <returns>3æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«</returns>
 		template<concepts::numbers T>
 		vector3<T> to_vector3(const matrix<T>& mt) {
 			uint n = mt.size().y;
@@ -687,10 +687,10 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// s—ñ‚ğƒxƒNƒgƒ‹‚É•ÏŠ·‚·‚é
+		/// è¡Œåˆ—ã‚’ãƒ™ã‚¯ãƒˆãƒ«ã«å¤‰æ›ã™ã‚‹
 		/// </summary>
-		/// <param name="mt">1x4‚Ü‚½‚Í4x1‚Ìs—ñ</param>
-		/// <returns>4ŸŒ³ƒxƒNƒgƒ‹</returns>
+		/// <param name="mt">1x4ã¾ãŸã¯4x1ã®è¡Œåˆ—</param>
+		/// <returns>4æ¬¡å…ƒãƒ™ã‚¯ãƒˆãƒ«</returns>
 		template<concepts::numbers T>
 		vector4<T> to_vector4(const matrix<T>& mt) {
 			uint n = mt.size().y;
@@ -707,9 +707,9 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// s—ñ‚Ì“]’u
+		/// è¡Œåˆ—ã®è»¢ç½®
 		/// </summary>
-		/// <param name="mt">Œ³‚Ìs—ñ</param>
+		/// <param name="mt">å…ƒã®è¡Œåˆ—</param>
 		/// <returns>mt^T</returns>
 		template<concepts::numbers T>
 		matrix<T> transpose(const matrix<T>& mt) {
@@ -724,11 +724,11 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// nxn‚Ì‘ÎŠps—ñ‚ğ¶¬‚·‚é
+		/// nxnã®å¯¾è§’è¡Œåˆ—ã‚’ç”Ÿæˆã™ã‚‹
 		/// </summary>
-		/// <param name="n">s—ñ‚Ì‘å‚«‚³</param>
-		/// <param name="fill">‘ÎŠp¬•ª‚Ì’l</param>
-		/// <returns>nxn‚Ì‘ÎŠps—ñ</returns>
+		/// <param name="n">è¡Œåˆ—ã®å¤§ãã•</param>
+		/// <param name="fill">å¯¾è§’æˆåˆ†ã®å€¤</param>
+		/// <returns>nxnã®å¯¾è§’è¡Œåˆ—</returns>
 		template<concepts::numbers T>
 		matrix<T> identity(uint n, T fill = 1) {
 			matrix<T> ret(n, n);
@@ -739,9 +739,9 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// s—ñ®‚ÌŒvZ
+		/// è¡Œåˆ—å¼ã®è¨ˆç®—
 		/// </summary>
-		/// <param name="mt">“ü—Í‚Ìs—ñ</param>
+		/// <param name="mt">å…¥åŠ›ã®è¡Œåˆ—</param>
 		/// <returns>det(mt)</returns>
 		template<concepts::numbers T>
 		double determinant(const matrix<T>& mt) {
@@ -800,9 +800,9 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ‹ts—ñ‚ÌŒvZ
+		/// é€†è¡Œåˆ—ã®è¨ˆç®—
 		/// </summary>
-		/// <param name="mt">“ü—Í‚Ìs—ñ</param>
+		/// <param name="mt">å…¥åŠ›ã®è¡Œåˆ—</param>
 		/// <returns>mt^-1</returns>
 		template<concepts::numbers T>
 		matrix<T> inverse(const matrix<T>& mt) {
@@ -873,10 +873,10 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒ[ƒ‹•ûŒü‚É‰ñ“]
+		/// ãƒ­ãƒ¼ãƒ«æ–¹å‘ã«å›è»¢
 		/// </summary>
-		/// <param name="roll">Šp“x</param>
-		/// <returns>‰ñ“]s—ñ</returns>
+		/// <param name="roll">è§’åº¦</param>
+		/// <returns>å›è»¢è¡Œåˆ—</returns>
 		template<concepts::numbers T>
 		matrix<T> rotation_roll(double roll) {
 			std::vector<double> v(16);
@@ -890,10 +890,10 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒsƒbƒ`•ûŒü‚É‰ñ“]
+		/// ãƒ”ãƒƒãƒæ–¹å‘ã«å›è»¢
 		/// </summary>
-		/// <param name="pitch">Šp“x</param>
-		/// <returns>‰ñ“]s—ñ</returns>
+		/// <param name="pitch">è§’åº¦</param>
+		/// <returns>å›è»¢è¡Œåˆ—</returns>
 		template<concepts::numbers T>
 		matrix<T> rotation_pitch(double pitch) {
 			std::vector<double> v(16);
@@ -907,10 +907,10 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒˆ[•ûŒü‚É‰ñ“]
+		/// ãƒ¨ãƒ¼æ–¹å‘ã«å›è»¢
 		/// </summary>
-		/// <param name="yaw">Šp“x</param>
-		/// <returns>‰ñ“]s—ñ</returns>
+		/// <param name="yaw">è§’åº¦</param>
+		/// <returns>å›è»¢è¡Œåˆ—</returns>
 		template<concepts::numbers T>
 		matrix<T> rotation_yaw(double yaw) {
 			std::vector<double> v(16);
@@ -924,24 +924,24 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ‰ñ“]À•W‚ğ•Ô‚·
+		/// å›è»¢åº§æ¨™ã‚’è¿”ã™
 		/// </summary>
-		/// <param name="roll">ƒ[ƒ‹Šp</param>
-		/// <param name="pitch">ƒsƒbƒ`Šp</param>
-		/// <param name="yaw">ƒˆ[Šp</param>
-		/// <returns>‰ñ“]s—ñ</returns>
+		/// <param name="roll">ãƒ­ãƒ¼ãƒ«è§’</param>
+		/// <param name="pitch">ãƒ”ãƒƒãƒè§’</param>
+		/// <param name="yaw">ãƒ¨ãƒ¼è§’</param>
+		/// <returns>å›è»¢è¡Œåˆ—</returns>
 		template<concepts::numbers T>
 		matrix<T> rotation(double roll, double pitch, double yaw) {
 			return rotation_roll<double>(roll) * rotation_yaw<double>(yaw) * rotation_pitch<double>(pitch);
 		}
 
 		/// <summary>
-		/// Šg‘åk¬s—ñ‚ğ•Ô‚·
+		/// æ‹¡å¤§ç¸®å°è¡Œåˆ—ã‚’è¿”ã™
 		/// </summary>
-		/// <param name="x">x•ûŒü‚ÌŠg‘å—¦</param>
-		/// <param name="y">y•ûŒü‚ÌŠg‘å—¦</param>
-		/// <param name="z">z•ûŒü‚ÌŠg‘å—¦</param>
-		/// <returns>Šg‘åk¬s—ñ</returns>
+		/// <param name="x">xæ–¹å‘ã®æ‹¡å¤§ç‡</param>
+		/// <param name="y">yæ–¹å‘ã®æ‹¡å¤§ç‡</param>
+		/// <param name="z">zæ–¹å‘ã®æ‹¡å¤§ç‡</param>
+		/// <returns>æ‹¡å¤§ç¸®å°è¡Œåˆ—</returns>
 		template<concepts::numbers T>
 		matrix<T> scalling(T x, T y, T z) {
 			return matrix<T>(4, 4, {
@@ -953,12 +953,12 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// •½sˆÚ“®s—ñ‚ğ•Ô‚·
+		/// å¹³è¡Œç§»å‹•è¡Œåˆ—ã‚’è¿”ã™
 		/// </summary>
-		/// <param name="x">x•ûŒü‚ÌˆÚ“®—Ê</param>
-		/// <param name="y">y•ûŒü‚ÌˆÚ“®—Ê</param>
-		/// <param name="z">z•ûŒü‚ÌˆÚ“®—Ê</param>
-		/// <returns>•½sˆÚ“®s—ñ</returns>
+		/// <param name="x">xæ–¹å‘ã®ç§»å‹•é‡</param>
+		/// <param name="y">yæ–¹å‘ã®ç§»å‹•é‡</param>
+		/// <param name="z">zæ–¹å‘ã®ç§»å‹•é‡</param>
+		/// <returns>å¹³è¡Œç§»å‹•è¡Œåˆ—</returns>
 		template<concepts::numbers T>
 		matrix<T> translation(T x, T y, T z) {
 			return matrix<T>(4, 4, {
@@ -970,14 +970,14 @@ namespace suika {
 		}
 		
 		/// <summary>
-		/// ™’’fs—ñ‚ğ•Ô‚·
+		/// å‰ªæ–­è¡Œåˆ—ã‚’è¿”ã™
 		/// </summary>
-		/// <param name="Hxy">xy•½–Ê‚Å‚Ìx•ûŒü‚Ö‚ÌŒW”</param>
-		/// <param name="Hyx">xy•½–Ê‚Å‚Ìy•ûŒü‚Ö‚ÌŒW”</param>
-		/// <param name="Hxz">xz•½–Ê‚Å‚Ìx•ûŒü‚Ö‚ÌŒW”</param>
-		/// <param name="Hzx">xz•½–Ê‚Å‚Ìz•ûŒü‚Ö‚ÌŒW”</param>
-		/// <param name="Hyz">yz•½–Ê‚Å‚Ìy•ûŒü‚Ö‚ÌŒW”</param>
-		/// <param name="Hzy">yz•½–Ê‚Å‚Ìz•ûŒü‚Ö‚ÌŒW”</param>
+		/// <param name="Hxy">xyå¹³é¢ã§ã®xæ–¹å‘ã¸ã®ä¿‚æ•°</param>
+		/// <param name="Hyx">xyå¹³é¢ã§ã®yæ–¹å‘ã¸ã®ä¿‚æ•°</param>
+		/// <param name="Hxz">xzå¹³é¢ã§ã®xæ–¹å‘ã¸ã®ä¿‚æ•°</param>
+		/// <param name="Hzx">xzå¹³é¢ã§ã®zæ–¹å‘ã¸ã®ä¿‚æ•°</param>
+		/// <param name="Hyz">yzå¹³é¢ã§ã®yæ–¹å‘ã¸ã®ä¿‚æ•°</param>
+		/// <param name="Hzy">yzå¹³é¢ã§ã®zæ–¹å‘ã¸ã®ä¿‚æ•°</param>
 		/// <returns></returns>
 		template<concepts::numbers T>
 		matrix<T> shear(T Hxy, T Hyx, T Hxz, T Hzx, T Hyz, T Hzy) {
@@ -990,13 +990,13 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒAƒtƒBƒ“•ÏŠ·
+		/// ã‚¢ãƒ•ã‚£ãƒ³å¤‰æ›
 		/// </summary>
-		/// <param name="origine">‰ñ“]‚ÌŒ´“_</param>
-		/// <param name="transition">•½sˆÚ“®—Ê</param>
-		/// <param name="rot">²‰ñ‚è‚Ì‰ñ“]—Ê</param>
-		/// <param name="scale">Šg‘å—¦</param>
-		/// <returns>ƒAƒtƒBƒ“•ÏŠ·s—ñ</returns>
+		/// <param name="origine">å›è»¢ã®åŸç‚¹</param>
+		/// <param name="transition">å¹³è¡Œç§»å‹•é‡</param>
+		/// <param name="rot">è»¸å›ã‚Šã®å›è»¢é‡</param>
+		/// <param name="scale">æ‹¡å¤§ç‡</param>
+		/// <returns>ã‚¢ãƒ•ã‚£ãƒ³å¤‰æ›è¡Œåˆ—</returns>
 		template< concepts::numbers T>
 		matrix<T> affine_transformation(const vector3<T>& origine, const vector3<T>& transition, const vector3<T>& rot, const vector3<T>& scale) {
 			double sp = std::sin(rot.x), sy = std::sin(rot.y), sr = std::sin(rot.z);

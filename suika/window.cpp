@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // window
 // 
@@ -143,7 +143,7 @@ namespace suika {
 			wclass.lpszClassName = title_view.data();
 
 			if (!RegisterClass(&wclass)) {
-				//throw EXCEPT("ƒEƒBƒ“ƒhƒE‚Ìì¬‚É¸”s");
+				//throw EXCEPT("ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ä½œæˆã«å¤±æ•—");
 			}
 
 			id hwnd = CreateWindow(
@@ -197,7 +197,7 @@ namespace suika {
 
 		auto& param(id id) {
 			if (!window_list.contains(id)) {
-				throw ("‘¶İ‚µ‚È‚¢ƒEƒBƒ“ƒhƒE‚ğQÆ‚µ‚æ‚¤‚Æ‚µ‚Ü‚µ‚½");
+				throw ("å­˜åœ¨ã—ãªã„ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’å‚ç…§ã—ã‚ˆã†ã¨ã—ã¾ã—ãŸ");
 			}
 			return window_list[id];
 		}

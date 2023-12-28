@@ -1,4 +1,4 @@
-//// -----------------------------------------------------------
+ï»¿//// -----------------------------------------------------------
 // 
 // type definition
 // 
@@ -26,79 +26,79 @@ namespace suika {
 	class string;
 #pragma region type
 	/// <summary>
-	/// 8bit®”Œ^
+	/// 8bitæ•´æ•°å‹
 	/// </summary>
 	using int8 = int8_t;
 	/// <summary>
-	/// 16bit®”Œ^
+	/// 16bitæ•´æ•°å‹
 	/// </summary>
 	using int16 = int16_t;
 	/// <summary>
-	/// 32bit®”Œ^
+	/// 32bitæ•´æ•°å‹
 	/// </summary>
 	using int32 = int32_t;
 	/// <summary>
-	/// 64bit®”Œ^
+	/// 64bitæ•´æ•°å‹
 	/// </summary>
 	using int64 = int64_t;
 	/// <summary>
-	/// 8bit•„†‚È‚µ®”Œ^
+	/// 8bitç¬¦å·ãªã—æ•´æ•°å‹
 	/// </summary>
 	using uint8 = uint8_t;
 	/// <summary>
-	/// 16bit•„†‚È‚µ®”Œ^
+	/// 16bitç¬¦å·ãªã—æ•´æ•°å‹
 	/// </summary>
 	using uint16 = uint16_t;
 	/// <summary>
-	/// 32bit•„†‚È‚µ®”Œ^
+	/// 32bitç¬¦å·ãªã—æ•´æ•°å‹
 	/// </summary>
 	using uint32 = uint32_t;
 	/// <summary>
-	/// 64bit•„†‚È‚µ®”Œ^
+	/// 64bitç¬¦å·ãªã—æ•´æ•°å‹
 	/// </summary>
 	using uint64 = uint64_t;
 
 	/// <summary>
-	/// 1Byte®”Œ^
+	/// 1Byteæ•´æ•°å‹
 	/// </summary>
 	using byte = int8;
 	/// <summary>
-	/// 1Byte•„†‚È‚µ®”Œ^
+	/// 1Byteç¬¦å·ãªã—æ•´æ•°å‹
 	/// </summary>
 	using ubyte = uint8;
 
 	/// <summary>
-	/// long long®”Œ^(64bit)
+	/// long longæ•´æ•°å‹(64bit)
 	/// </summary>
 	using longlong = int64;
 
 	/// <summary>
-	/// •„†‚È‚µ®”Œ^(32bit)
+	/// ç¬¦å·ãªã—æ•´æ•°å‹(32bit)
 	/// </summary>
 	using uint = uint32;
 	/// <summary>
-	/// •„†‚È‚µlong®”Œ^(32bit)
+	/// ç¬¦å·ãªã—longæ•´æ•°å‹(32bit)
 	/// </summary>
 	using ulong = uint32;
 	/// <summary>
-	/// •„†‚È‚µlong long®”Œ^(64bit)
+	/// ç¬¦å·ãªã—long longæ•´æ•°å‹(64bit)
 	/// </summary>
 	using ulonglong = uint64;
 	/// <summary>
-	/// long doubleŒ^(MSVC‚Ìê‡‚Ídouble‚Æ“¯“™)
+	/// long doubleå‹(MSVCã®å ´åˆã¯doubleã¨åŒç­‰)
 	/// </summary>
 	using ldouble = long double;
 
 	/// <summary>
-	/// UTF-8‘Î‰charŒ^
+	/// UTF-8å¯¾å¿œcharå‹
 	/// </summary>
 	using char8 = char8_t;
 	/// <summary>
-	/// UTF-16‘Î‰charŒ^
+	/// UTF-16å¯¾å¿œcharå‹
 	/// </summary>
 	using char16 = char16_t;
 	/// <summary>
-	/// UTF-32‘Î‰charŒ^
+	/// UTF-32å¯¾å¿œcharå‹
 	/// </summary>
 	using char32 = char32_t;
 

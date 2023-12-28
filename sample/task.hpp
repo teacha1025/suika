@@ -1,54 +1,54 @@
-/*
+ï»¿/*
 * task
-*	•¡”‚Ì‹éŒ`‚ğƒ^ƒXƒN‚ğg—p‚µ‚ÄˆÚ“®‚³‚¹‚é
+*	è¤‡æ•°ã®çŸ©å½¢ã‚’ã‚¿ã‚¹ã‚¯ã‚’ä½¿ç”¨ã—ã¦ç§»å‹•ã•ã›ã‚‹
 */
 
 #include "../include/suika.h"
 using namespace suika;
 
-//ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Ì‰Šú‰»
+//ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®åˆæœŸåŒ–
 void init() {
-	//log.log‚ÉƒƒO‚ğo—Í‚·‚é
+	//log.logã«ãƒ­ã‚°ã‚’å‡ºåŠ›ã™ã‚‹
 	suika::log.set(true, "log.log");
 
-	//ƒEƒBƒ“ƒhƒE‚Ìİ’è
+	//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®è¨­å®š
 	window::background(palette::black);
 	window::title("APP");
 	window::vsync(true);
 }
 
-// ‹éŒ`ˆÚ“®‚Ìƒ^ƒXƒN
+// çŸ©å½¢ç§»å‹•ã®ã‚¿ã‚¹ã‚¯
 task<void> task_move(rect& r) {
 	point<float> pos = r.position();
 	while (true) {
 		r.at(pos);
 		
-		//ˆ—‚ğ’†’f
+		//å‡¦ç†ã‚’ä¸­æ–­
 		co_yield{};
 
-		//‹éŒ`‚ğˆÚ“®
+		//çŸ©å½¢ã‚’ç§»å‹•
 		pos += {1, 1};
 	}
 }
 
 int main() {
-	//128x128‚Ì‹éŒ`‚ğì¬
+	//128x128ã®çŸ©å½¢ã‚’ä½œæˆ
 	rect r1({ 128,128 });
 	r1.colored(palette::orange).at({ 0,0 });
 
 	rect r2({ 128,128 });
 	r2.colored(palette::greenyellow).at({ 640,0 });
 
-	//ƒ^ƒXƒN‚ğì¬
+	//ã‚¿ã‚¹ã‚¯ã‚’ä½œæˆ
 	auto task1 = task_move(r1);
 	auto task2 = task_move(r2);
 
 	while (sys::update()) {
-		//ƒ^ƒXƒN‚ğÄŠJ
+		//ã‚¿ã‚¹ã‚¯ã‚’å†é–‹
 		task1.resume();
 		task2.resume();
 
-		//‹éŒ`‚ğ•`‰æ
+		//çŸ©å½¢ã‚’æç”»
 		r1.draw();
 		r2.draw();
 	}

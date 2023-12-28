@@ -1,5 +1,5 @@
-/** @example{lineno} font.hpp
- * •¶š—ñ•`‰æ‚ÌƒTƒ“ƒvƒ‹
+ï»¿/** @example{lineno} font.hpp
+ * æ–‡å­—åˆ—æç”»ã®ã‚µãƒ³ãƒ—ãƒ«
 */
 
 // -----------------------------------------------------------
@@ -33,85 +33,85 @@
 
 namespace suika {
 	/// <summary>
-	/// ƒtƒHƒ“ƒg‚Ì”z’u
+	/// ãƒ•ã‚©ãƒ³ãƒˆã®é…ç½®
 	/// </summary>
 	enum class font_alignment {
-		//! ¶’[‘µ‚¦
+		//! å·¦ç«¯æƒãˆ
 		left = 0,
-		//! ‰E’[‘µ‚¦
+		//! å³ç«¯æƒãˆ
 		right = 1,
-		//! ’†‰›‘µ‚¦
+		//! ä¸­å¤®æƒãˆ
 		center = 2,
-		//! —¼’[‘µ‚¦
+		//! ä¸¡ç«¯æƒãˆ
 		justified = 3
 	};
 
 	/// <summary>
-	/// ƒtƒHƒ“ƒg‚Ì•
+	/// ãƒ•ã‚©ãƒ³ãƒˆã®å¹…
 	/// </summary>
 	enum class font_stretch {
-		//! –¢’è‹`
+		//! æœªå®šç¾©
 		undefined = 0,
-		//! ’´‹É×
+		//! è¶…æ¥µç´°
 		ultra_condensed = 1,
-		//! ‹É×
+		//! æ¥µç´°
 		extra_condensed = 2,
-		//! ×
+		//! ç´°
 		condensed = 3,
-		//! ”¼×
+		//! åŠç´°
 		semi_condensed = 4,
-		//! •W€
+		//! æ¨™æº–
 		normal = 5,
-		//! ”¼‘¾
+		//! åŠå¤ª
 		semi_expanded = 6,
-		//! ‘¾
+		//! å¤ª
 		expanded = 7,
-		//! ‹É‘¾
+		//! æ¥µå¤ª
 		extra_expanded = 8,
-		//! ’´‹É‘¾
+		//! è¶…æ¥µå¤ª
 		ultra_expanded = 9,
 	};
 
 	/// <summary>
-	/// ƒtƒHƒ“ƒg‚ÌÎ‘Ì
+	/// ãƒ•ã‚©ãƒ³ãƒˆã®æ–œä½“
 	/// </summary>
 	enum class font_style {
-		//! •W€
+		//! æ¨™æº–
 		normal = 0,
-		//! Î‘Ì
+		//! æ–œä½“
 		oblique = 1,
-		//! ƒtƒHƒ“ƒg•W€‚ÌÎ‘Ì
+		//! ãƒ•ã‚©ãƒ³ãƒˆæ¨™æº–ã®æ–œä½“
 		italic = 2
 	};
 
 	/// <summary>
-	/// ƒtƒHƒ“ƒg‚Ì‘¾‚³
+	/// ãƒ•ã‚©ãƒ³ãƒˆã®å¤ªã•
 	/// </summary>
 	enum class font_weight {
-		//! ’´‹É×
+		//! è¶…æ¥µç´°
 		thin = 100,
-		//! ‹É×
+		//! æ¥µç´°
 		extra_light = 200,
-		//! ×
+		//! ç´°
 		light = 300,
-		//! ”¼×
+		//! åŠç´°
 		semi_light = 350,
-		//! •W€
+		//! æ¨™æº–
 		normal = 400,
-		//! ”¼‘¾
+		//! åŠå¤ª
 		semi_bold = 600,
-		//! ‘¾
+		//! å¤ª
 		bold = 700,
-		//! ‹É‘¾
+		//! æ¥µå¤ª
 		extra_bold = 800,
-		//! ’´‹É‘¾
+		//! è¶…æ¥µå¤ª
 		heavy = 900,
-		//! Å‘¾
+		//! æœ€å¤ª
 		extra_heavy = 950
 	};
 
 	/// <summary>
-	/// ƒtƒHƒ“ƒg•`‰æ‚ÉŠÖ‚·‚éƒNƒ‰ƒX
+	/// ãƒ•ã‚©ãƒ³ãƒˆæç”»ã«é–¢ã™ã‚‹ã‚¯ãƒ©ã‚¹
 	/// </summary>
 	class font : public detail::ibase {
 	public:
@@ -131,19 +131,19 @@ namespace suika {
 		bool _edge_enabled;
 
 		using position_type = float;
-		//Œ´“_‚©‚ç‚ÌˆÚ“®—Ê
+		//åŸç‚¹ã‹ã‚‰ã®ç§»å‹•é‡
 		vector3<position_type> _transition;
 
-		//ƒIƒuƒWƒFƒNƒg‚Ì•`‰æA‰ñ“]‚Ì’†S
+		//ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æç”»ã€å›è»¢ã®ä¸­å¿ƒ
 		vector3<position_type> _center;
 
-		//‰ñ“]—Ê
+		//å›è»¢é‡
 		vector3<position_type> _rotation;
 
-		//Šg‘å—¦
+		//æ‹¡å¤§ç‡
 		vector3<double> _extend;
 
-		//ƒuƒŒƒ“ƒh
+		//ãƒ–ãƒ¬ãƒ³ãƒ‰
 		blend _blend;
 
 		string _text;
@@ -155,13 +155,13 @@ namespace suika {
 		string create_key() const;
 	public:
 		/// <summary>
-		/// ƒfƒtƒHƒ‹ƒg‚ÌƒtƒHƒ“ƒg‚ğì¬
+		/// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ãƒ•ã‚©ãƒ³ãƒˆã‚’ä½œæˆ
 		/// </summary>
 		font() {
 			_color = palette::black;
 			_size = 16;
 			_alignment = font_alignment::left;
-			_font = "ƒƒCƒŠƒI";
+			_font = "ãƒ¡ã‚¤ãƒªã‚ª";
 			_locale = "";
 			_stretch = font_stretch::normal;
 			_style = font_style::normal;
@@ -176,16 +176,16 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg‚ğì¬‚·‚é
+		/// ãƒ•ã‚©ãƒ³ãƒˆã‚’ä½œæˆã™ã‚‹
 		/// </summary>
-		/// <param name="font_name">ƒtƒHƒ“ƒg–¼(e.g.ƒƒCƒŠƒI)</param>
-		/// <param name="size">ƒtƒHƒ“ƒgƒTƒCƒY</param>
-		/// <param name="edge">ƒtƒHƒ“ƒg‚ÌƒGƒbƒWİ’è</param>
-		/// <param name="edge_width">ƒtƒHƒ“ƒg‚ÌƒGƒbƒW•(edge==false‚È‚ç–³‹‚³‚ê‚é)</param>
-		/// <param name="w">ƒtƒHƒ“ƒg‚Ì‘¾‚³</param>
-		/// <param name="s">ƒtƒHƒ“ƒg‚ÌÎ‘Ìİ’è</param>
-		/// <param name="a">ƒtƒHƒ“ƒg‚Ì”z’u</param>
-		/// <param name="st">ƒtƒHƒ“ƒg‚Ì•</param>
+		/// <param name="font_name">ãƒ•ã‚©ãƒ³ãƒˆå(e.g.ãƒ¡ã‚¤ãƒªã‚ª)</param>
+		/// <param name="size">ãƒ•ã‚©ãƒ³ãƒˆã‚µã‚¤ã‚º</param>
+		/// <param name="edge">ãƒ•ã‚©ãƒ³ãƒˆã®ã‚¨ãƒƒã‚¸è¨­å®š</param>
+		/// <param name="edge_width">ãƒ•ã‚©ãƒ³ãƒˆã®ã‚¨ãƒƒã‚¸å¹…(edge==falseãªã‚‰ç„¡è¦–ã•ã‚Œã‚‹)</param>
+		/// <param name="w">ãƒ•ã‚©ãƒ³ãƒˆã®å¤ªã•</param>
+		/// <param name="s">ãƒ•ã‚©ãƒ³ãƒˆã®æ–œä½“è¨­å®š</param>
+		/// <param name="a">ãƒ•ã‚©ãƒ³ãƒˆã®é…ç½®</param>
+		/// <param name="st">ãƒ•ã‚©ãƒ³ãƒˆã®å¹…</param>
 		font(const string& font_name, float size = 16.0f, bool edge = false, int32 edge_width =1u, font_weight w = font_weight::normal, font_style s = font_style::normal, font_alignment a = font_alignment::left, font_stretch st = font_stretch::normal) {
 			_color = palette::black;
 			_size = size;
@@ -217,197 +217,197 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒeƒLƒXƒg‚ğ•`‰æ‚·‚é
+		/// ãƒ†ã‚­ã‚¹ãƒˆã‚’æç”»ã™ã‚‹
 		/// </summary>
 		virtual void draw() const;
 
 		/// <summary>
-		/// •`‰æ‚·‚é“à—e‚ğİ’è
+		/// æç”»ã™ã‚‹å†…å®¹ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="text">ƒeƒLƒXƒg</param>
+		/// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆ</param>
 		virtual font text(const string& text)&& {
 			_text = text;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// •`‰æ‚·‚é“à—e‚ğİ’è
+		/// æç”»ã™ã‚‹å†…å®¹ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="text">ƒeƒLƒXƒg</param>
+		/// <param name="text">ãƒ†ã‚­ã‚¹ãƒˆ</param>
 		virtual font& text(const string& text)& {
 			_text = text;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// À•W‚ğİ’è
+		/// åº§æ¨™ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="position">İ’è‚·‚éÀ•W</param>
+		/// <param name="position">è¨­å®šã™ã‚‹åº§æ¨™</param>
 		virtual font at(const vector3<position_type>& position)&& {
 			_transition = position;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// À•W‚ğİ’è
+		/// åº§æ¨™ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="position">İ’è‚·‚éÀ•W</param>
+		/// <param name="position">è¨­å®šã™ã‚‹åº§æ¨™</param>
 		virtual font& at(const vector3<position_type>& position)& {
 			_transition = position;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// À•W‚ğİ’è
+		/// åº§æ¨™ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="position">İ’è‚·‚éÀ•W</param>
+		/// <param name="position">è¨­å®šã™ã‚‹åº§æ¨™</param>
 		virtual font at(const point<position_type>& position)&& {
 			_transition = vector3<position_type>{ position.x, position.y, 0.0 };
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// À•W‚ğİ’è
+		/// åº§æ¨™ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="position">İ’è‚·‚éÀ•W</param>
+		/// <param name="position">è¨­å®šã™ã‚‹åº§æ¨™</param>
 		virtual font& at(const point<position_type>& position)& {
 			_transition = vector3<position_type>{ position.x, position.y, 0.0 };
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// ƒIƒuƒWƒFƒNƒg‚Ì’†S‚ğİ’è
+		/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä¸­å¿ƒã‚’è¨­å®š
 		/// </summary>
-		/// <param name="center">İ’è‚·‚é’†SÀ•W</param>
+		/// <param name="center">è¨­å®šã™ã‚‹ä¸­å¿ƒåº§æ¨™</param>
 		virtual font centered(const vector3<position_type>& center)&& {
 			_center = center;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ƒIƒuƒWƒFƒNƒg‚Ì’†S‚ğİ’è
+		/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä¸­å¿ƒã‚’è¨­å®š
 		/// </summary>
-		/// <param name="center">İ’è‚·‚é’†SÀ•W</param>
+		/// <param name="center">è¨­å®šã™ã‚‹ä¸­å¿ƒåº§æ¨™</param>
 		virtual font& centered(const vector3<position_type>& center)& {
 			_center = center;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// ƒIƒuƒWƒFƒNƒg‚Ì’†S‚ğİ’è
+		/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä¸­å¿ƒã‚’è¨­å®š
 		/// </summary>
-		/// <param name="center">İ’è‚·‚é’†SÀ•W</param>
+		/// <param name="center">è¨­å®šã™ã‚‹ä¸­å¿ƒåº§æ¨™</param>
 		virtual font centered(const point<position_type>& center)&& {
 			_center = vector3<position_type>{ center.x, center.y, 0.0 };
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ƒIƒuƒWƒFƒNƒg‚Ì’†S‚ğİ’è
+		/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä¸­å¿ƒã‚’è¨­å®š
 		/// </summary>
-		/// <param name="center">İ’è‚·‚é’†SÀ•W</param>
+		/// <param name="center">è¨­å®šã™ã‚‹ä¸­å¿ƒåº§æ¨™</param>
 		virtual font& centered(const point<position_type>& center)& {
 			_center = vector3<position_type>{ center.x, center.y, 0.0 };
 			return dynamic_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg‚Ì•ÏX
+		/// ãƒ•ã‚©ãƒ³ãƒˆã®å¤‰æ›´
 		/// </summary>
-		/// <param name="font_name">ƒtƒHƒ“ƒg–¼</param>
+		/// <param name="font_name">ãƒ•ã‚©ãƒ³ãƒˆå</param>
 		virtual font font_name(const string& font_name)&& {
 			_font = font_name;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg‚Ì•ÏX
+		/// ãƒ•ã‚©ãƒ³ãƒˆã®å¤‰æ›´
 		/// </summary>
-		/// <param name="font_name">ƒtƒHƒ“ƒg–¼</param>
+		/// <param name="font_name">ãƒ•ã‚©ãƒ³ãƒˆå</param>
 		virtual font& font_name(const string& font_name)& {
 			_font = font_name;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg•
+		/// ãƒ•ã‚©ãƒ³ãƒˆå¹…
 		/// </summary>
-		/// <param name="stretch">•</param>
+		/// <param name="stretch">å¹…</param>
 		virtual font stretch(font_stretch stretch)&& {
 			_stretch = stretch;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg•
+		/// ãƒ•ã‚©ãƒ³ãƒˆå¹…
 		/// </summary>
-		/// <param name="stretch">•</param>
+		/// <param name="stretch">å¹…</param>
 		virtual font& stretch(font_stretch stretch)& {
 			_stretch = stretch;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg‚ÌƒXƒ^ƒCƒ‹
+		/// ãƒ•ã‚©ãƒ³ãƒˆã®ã‚¹ã‚¿ã‚¤ãƒ«
 		/// </summary>
-		/// <param name="style">ƒXƒ^ƒCƒ‹</param>
+		/// <param name="style">ã‚¹ã‚¿ã‚¤ãƒ«</param>
 		virtual font style(font_style style)&& {
 			_style = style;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg‚ÌƒXƒ^ƒCƒ‹
+		/// ãƒ•ã‚©ãƒ³ãƒˆã®ã‚¹ã‚¿ã‚¤ãƒ«
 		/// </summary>
-		/// <param name="style">ƒXƒ^ƒCƒ‹</param>
+		/// <param name="style">ã‚¹ã‚¿ã‚¤ãƒ«</param>
 		virtual font& style(font_style style)& {
 			_style = style;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg‚Ì‘¾‚³
+		/// ãƒ•ã‚©ãƒ³ãƒˆã®å¤ªã•
 		/// </summary>
-		/// <param name="weight">‘¾‚³</param>				
+		/// <param name="weight">å¤ªã•</param>				
 		virtual font weight(font_weight weight)&& {
 			_weight = weight;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg‚Ì‘¾‚³
+		/// ãƒ•ã‚©ãƒ³ãƒˆã®å¤ªã•
 		/// </summary>
-		/// <param name="weight">‘¾‚³</param>
+		/// <param name="weight">å¤ªã•</param>
 		virtual font& weight(font_weight weight)& {
 			_weight = weight;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg‚Ì”z’u
+		/// ãƒ•ã‚©ãƒ³ãƒˆã®é…ç½®
 		/// </summary>
-		/// <param name="alignment">”z’u</param>
+		/// <param name="alignment">é…ç½®</param>
 		virtual font alignment(font_alignment alignment)&& {
 			_alignment = alignment;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg‚Ì”z’u
+		/// ãƒ•ã‚©ãƒ³ãƒˆã®é…ç½®
 		/// </summary>
-		/// <param name="alignment">”z’u</param>
+		/// <param name="alignment">é…ç½®</param>
 		virtual font& alignment(font_alignment alignment)& {
 			_alignment = alignment;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// ‰æ‚è‚Ìİ’è
+		/// ç¸å–ã‚Šã®è¨­å®š
 		/// </summary>
-		/// <param name="enabled">‰æ‚è‚ğ‚·‚é‚©</param>
-		/// <param name="width">‰‚Ì‘¾‚³</param>
-		/// <remarks>width‚ª0ˆÈ‰º‚Ìê‡‚Í‰æ‚è‚Í‚³‚ê‚Ü‚¹‚ñ</remarks>
-		/// <remarks>‰‚Ì‘¾‚³‚ªƒtƒHƒ“ƒg‚Ì‘¾‚³‚Ì1/3ˆÈ‰º‚Æ‚È‚è‚Ü‚·B</remarks>
+		/// <param name="enabled">ç¸å–ã‚Šã‚’ã™ã‚‹ã‹</param>
+		/// <param name="width">ç¸ã®å¤ªã•</param>
+		/// <remarks>widthãŒ0ä»¥ä¸‹ã®å ´åˆã¯ç¸å–ã‚Šã¯ã•ã‚Œã¾ã›ã‚“</remarks>
+		/// <remarks>ç¸ã®å¤ªã•ãŒãƒ•ã‚©ãƒ³ãƒˆã®å¤ªã•ã®1/3ä»¥ä¸‹ã¨ãªã‚Šã¾ã™ã€‚</remarks>
 		virtual font edged(bool enabled, int32 width = 0)&& {
 			_edge_enabled = enabled;
 			if (enabled) {
@@ -425,12 +425,12 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ‰æ‚è‚Ìİ’è
+		/// ç¸å–ã‚Šã®è¨­å®š
 		/// </summary>
-		/// <param name="enabled">‰æ‚è‚ğ‚·‚é‚©</param>
-		/// <param name="width">‰‚Ì‘¾‚³</param>
-		/// <remarks>width‚ª0ˆÈ‰º‚Ìê‡‚Í‰æ‚è‚Í‚³‚ê‚Ü‚¹‚ñ</remarks>
-		/// <remarks>‰‚Ì‘¾‚³‚ªƒtƒHƒ“ƒg‚Ì‘¾‚³‚Ì1/3ˆÈ‰º‚Æ‚È‚è‚Ü‚·B</remarks>
+		/// <param name="enabled">ç¸å–ã‚Šã‚’ã™ã‚‹ã‹</param>
+		/// <param name="width">ç¸ã®å¤ªã•</param>
+		/// <remarks>widthãŒ0ä»¥ä¸‹ã®å ´åˆã¯ç¸å–ã‚Šã¯ã•ã‚Œã¾ã›ã‚“</remarks>
+		/// <remarks>ç¸ã®å¤ªã•ãŒãƒ•ã‚©ãƒ³ãƒˆã®å¤ªã•ã®1/3ä»¥ä¸‹ã¨ãªã‚Šã¾ã™ã€‚</remarks>
 		virtual font& edged(bool enabled, int32 width = 0)& {
 			_edge_enabled = enabled;
 			if (enabled) {
@@ -448,127 +448,127 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ‰ñ“]—Ê‚Ìİ’è
+		/// å›è»¢é‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rotation">İ’è‚·‚éŠe²‚Ì‰ñ“]—Ê</param>
+		/// <param name="rotation">è¨­å®šã™ã‚‹å„è»¸ã®å›è»¢é‡</param>
 		virtual font rotated(const vector3<position_type>& rotation)&& {
 			_rotation = rotation;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ‰ñ“]—Ê‚Ìİ’è
+		/// å›è»¢é‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rotation">İ’è‚·‚éŠe²‚Ì‰ñ“]—Ê</param>
+		/// <param name="rotation">è¨­å®šã™ã‚‹å„è»¸ã®å›è»¢é‡</param>
 		virtual font& rotated(const vector3<position_type>& rotation)& {
 			_rotation = rotation;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// ‰ñ“]—Ê‚Ìİ’è
+		/// å›è»¢é‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rotation">İ’è‚·‚é‰ñ“]—Ê</param>
+		/// <param name="rotation">è¨­å®šã™ã‚‹å›è»¢é‡</param>
 		virtual font rotated(const position_type& rotation)&& {
 			_rotation.z = rotation;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ‰ñ“]—Ê‚Ìİ’è
+		/// å›è»¢é‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rotation">İ’è‚·‚é‰ñ“]—Ê</param>
+		/// <param name="rotation">è¨­å®šã™ã‚‹å›è»¢é‡</param>
 		virtual font& rotated(const position_type& rotation)& {
 			_rotation.z = rotation;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìİ’è
+		/// æ‹¡å¤§ç‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rate">Šg‘å—¦</param>
+		/// <param name="rate">æ‹¡å¤§ç‡</param>
 		virtual font extended(const vector3<double>& rate)&& {
 			_extend = rate;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìİ’è
+		/// æ‹¡å¤§ç‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rate">Šg‘å—¦</param>
+		/// <param name="rate">æ‹¡å¤§ç‡</param>
 		virtual font& extended(const vector3<double>& rate)& {
 			_extend = rate;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìİ’è
+		/// æ‹¡å¤§ç‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rate">Šg‘å—¦</param>
+		/// <param name="rate">æ‹¡å¤§ç‡</param>
 		virtual font extended(const point<double>& rate)&& {
 			_extend = { rate.x, rate.y, 1 };
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìİ’è
+		/// æ‹¡å¤§ç‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rate">Šg‘å—¦</param>
+		/// <param name="rate">æ‹¡å¤§ç‡</param>
 		virtual font& extended(const point<double>& rate)& {
 			_extend = { rate.x, rate.y, 1 };
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìİ’è
+		/// æ‹¡å¤§ç‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rate">Šg‘å—¦</param>
+		/// <param name="rate">æ‹¡å¤§ç‡</param>
 		virtual font extended(double rate)&& {
 			_extend = { rate, rate, rate };
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìİ’è
+		/// æ‹¡å¤§ç‡ã®è¨­å®š
 		/// </summary>
-		/// <param name="rate">Šg‘å—¦</param>
+		/// <param name="rate">æ‹¡å¤§ç‡</param>
 		virtual font& extended(double rate)& {
 			_extend = { rate, rate, rate };
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// ƒuƒŒƒ“ƒh‚Ìİ’è
+		/// ãƒ–ãƒ¬ãƒ³ãƒ‰ã®è¨­å®š
 		/// </summary>
-		/// <param name="type">ƒuƒŒƒ“ƒh‚Ìí—Ş</param>
+		/// <param name="type">ãƒ–ãƒ¬ãƒ³ãƒ‰ã®ç¨®é¡</param>
 		virtual font blended(blend type)&& {
 			_blend = type;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ƒuƒŒƒ“ƒh‚Ìİ’è
+		/// ãƒ–ãƒ¬ãƒ³ãƒ‰ã®è¨­å®š
 		/// </summary>
-		/// <param name="type">ƒuƒŒƒ“ƒh‚Ìí—Ş</param>
+		/// <param name="type">ãƒ–ãƒ¬ãƒ³ãƒ‰ã®ç¨®é¡</param>
 		virtual font& blended(blend type)& {
 			_blend = type;
 			return static_cast<font&>(*this);
 		}
 
-		//æ“¾Œn
+		//å–å¾—ç³»
 
 		/// <summary>
-		/// ƒIƒuƒWƒFƒNƒg‚ÌŒ´“_‚©‚ç‚ÌˆÚ“®—Ê‚ğæ“¾
+		/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åŸç‚¹ã‹ã‚‰ã®ç§»å‹•é‡ã‚’å–å¾—
 		/// </summary>
-		/// <returns>xyz‹óŠÔ‚ÌˆÚ“®—Ê</returns>
+		/// <returns>xyzç©ºé–“ã®ç§»å‹•é‡</returns>
 		virtual vector3<position_type> position_xyz() const {
 			return _transition;
 		}
 
 		/// <summary>
-		/// ƒIƒuƒWƒFƒNƒg‚ÌŒ´“_‚©‚ç‚ÌˆÚ“®—Ê‚ğæ“¾
+		/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åŸç‚¹ã‹ã‚‰ã®ç§»å‹•é‡ã‚’å–å¾—
 		/// </summary>
-		/// <returns>xy•½–Ê‚ÌˆÚ“®—Ê</returns>
+		/// <returns>xyå¹³é¢ã®ç§»å‹•é‡</returns>
 		virtual point<position_type> position() const {
 			return point<position_type> {
 				static_cast<position_type>(_transition.x),
@@ -577,17 +577,17 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìæ“¾
+		/// æ‹¡å¤§ç‡ã®å–å¾—
 		/// </summary>
-		/// <returns>xyz•ûŒü‚ÌŠg‘å—¦</returns>
+		/// <returns>xyzæ–¹å‘ã®æ‹¡å¤§ç‡</returns>
 		virtual vector3<position_type> extend_xyz() const {
 			return _extend;
 		}
 
 		/// <summary>
-		/// Šg‘å—¦‚Ìæ“¾
+		/// æ‹¡å¤§ç‡ã®å–å¾—
 		/// </summary>
-		/// <returns>xy•ûŒü‚Ö‚ÌŠg‘å—¦</returns>
+		/// <returns>xyæ–¹å‘ã¸ã®æ‹¡å¤§ç‡</returns>
 		virtual point<position_type> extend() const {
 			return point<position_type> {
 				static_cast<position_type>(_extend.x),
@@ -596,17 +596,17 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ‰ñ“]—Ê‚Ìæ“¾
+		/// å›è»¢é‡ã®å–å¾—
 		/// </summary>
-		/// <returns>xyz²‚Ì‰ñ“]—Ê</returns>
+		/// <returns>xyzè»¸ã®å›è»¢é‡</returns>
 		virtual vector3<position_type> rotate_xyz() const {
 			return _rotation;
 		}
 
 		/// <summary>
-		/// ‰ñ“]—Ê‚Ìæ“¾
+		/// å›è»¢é‡ã®å–å¾—
 		/// </summary>
-		/// <returns>xy²‚Ì‰ñ“]—Ê</returns>
+		/// <returns>xyè»¸ã®å›è»¢é‡</returns>
 		virtual point<position_type> rotate() const {
 			return point<position_type> {
 				static_cast<position_type>(_rotation.x),
@@ -615,17 +615,17 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ’†SÀ•W‚Ìæ“¾
+		/// ä¸­å¿ƒåº§æ¨™ã®å–å¾—
 		/// </summary>
-		/// <returns>xyz‹óŠÔ‚Ì’†SÀ•W</returns>
+		/// <returns>xyzç©ºé–“ã®ä¸­å¿ƒåº§æ¨™</returns>
 		virtual vector3<position_type> center_xyz() const {
 			return _center;
 		}
 
 		/// <summary>
-		/// ’†SÀ•W‚Ìæ“¾
+		/// ä¸­å¿ƒåº§æ¨™ã®å–å¾—
 		/// </summary>
-		/// <returns>xy‹óŠÔ‚Ì’†SÀ•W</returns>
+		/// <returns>xyç©ºé–“ã®ä¸­å¿ƒåº§æ¨™</returns>
 		virtual point<position_type> center() const {
 			return point<position_type> {
 				static_cast<position_type>(_center.x),
@@ -634,48 +634,48 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
 		virtual font colored(const color_f& color)&& {
 			this->_color = color;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
 		virtual font& colored(const color_f& color)& {
 			this->_color = color;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
-		/// <param name="a">“§–¾“x</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
+		/// <param name="a">é€æ˜åº¦</param>
 		virtual font colored(const color_f& color, float a)&& {
 			this->_color = color_f(color, a);
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
-		/// <param name="a">“§–¾“x</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
+		/// <param name="a">é€æ˜åº¦</param>
 		virtual font& colored(const color_f& color, float a)& {
 			this->_color = color_f(color, a);
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
-		/// <param name="edge">ƒGƒbƒW‚ÌF</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
+		/// <param name="edge">ã‚¨ãƒƒã‚¸ã®è‰²</param>
 		virtual font colored(const color_f& color, const color_f& edge)&& {
 			this->_color = color;
 			this->_edge_color = edge;
@@ -683,10 +683,10 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
-		/// <param name="edge">ƒGƒbƒW‚ÌF</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
+		/// <param name="edge">ã‚¨ãƒƒã‚¸ã®è‰²</param>
 		virtual font& colored(const color_f& color, const color_f& edge)& {
 			this->_color = color;
 			this->_edge_color = edge;
@@ -694,11 +694,11 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
-		/// <param name="edge">ƒGƒbƒW‚ÌF</param>
-		/// <param name="a">“§–¾“x</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
+		/// <param name="edge">ã‚¨ãƒƒã‚¸ã®è‰²</param>
+		/// <param name="a">é€æ˜åº¦</param>
 		virtual font colored(const color_f& color, const color_f& edge, float a)&& {
 			this->_color = color_f(color, a);
 			this->_edge_color = color_f(edge, a);
@@ -706,11 +706,11 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// F‚ğİ’è
+		/// è‰²ã‚’è¨­å®š
 		/// </summary>
-		/// <param name="color">“h‚è‚Â‚Ô‚µ‚ÌF</param>
-		/// <param name="edge">ƒGƒbƒW‚ÌF</param>
-		/// <param name="a">“§–¾“x</param>
+		/// <param name="color">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
+		/// <param name="edge">ã‚¨ãƒƒã‚¸ã®è‰²</param>
+		/// <param name="a">é€æ˜åº¦</param>
 		virtual font& colored(const color_f& color, const color_f& edge, float a)& {
 			this->_color = color_f(color, a);
 			this->_edge_color = color_f(edge, a);
@@ -718,32 +718,32 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg‚Ì‘å‚«‚³‚ğ•Ï‚¦‚é
+		/// ãƒ•ã‚©ãƒ³ãƒˆã®å¤§ãã•ã‚’å¤‰ãˆã‚‹
 		/// </summary>
-		/// <param name="size">•ÏXŒã‚Ì‘å‚«‚³</param>
+		/// <param name="size">å¤‰æ›´å¾Œã®å¤§ãã•</param>
 		virtual font resized(float size)&& {
 			this->_size = size;
 			return static_cast<font&&>(std::move(*this));
 		}
 
 		/// <summary>
-		/// ƒtƒHƒ“ƒg‚Ì‘å‚«‚³‚ğ•Ï‚¦‚é
+		/// ãƒ•ã‚©ãƒ³ãƒˆã®å¤§ãã•ã‚’å¤‰ãˆã‚‹
 		/// </summary>
-		/// <param name="size">•ÏXŒã‚Ì‘å‚«‚³</param>
+		/// <param name="size">å¤‰æ›´å¾Œã®å¤§ãã•</param>
 		virtual font& resized(float size)& {
 			this->_size = size;
 			return static_cast<font&>(*this);
 		}
 
 		/// <summary>
-		/// ‹éŒ`‚ÌƒTƒCƒY‚ğæ“¾
+		/// çŸ©å½¢ã®ã‚µã‚¤ã‚ºã‚’å–å¾—
 		/// </summary>
-		/// <returns>‹éŒ`‚ÌƒTƒCƒY</returns>
+		/// <returns>çŸ©å½¢ã®ã‚µã‚¤ã‚º</returns>
 		virtual suika::rect rect() const;
 		/// <summary>
-		/// ƒtƒHƒ“ƒg‚ÌF‚ğæ“¾
+		/// ãƒ•ã‚©ãƒ³ãƒˆã®è‰²ã‚’å–å¾—
 		/// </summary>
-		/// <returns>ƒtƒHƒ“ƒg‚ÌF</returns>
+		/// <returns>ãƒ•ã‚©ãƒ³ãƒˆã®è‰²</returns>
 		
 		virtual color_f color() const {
 			return this->_color;

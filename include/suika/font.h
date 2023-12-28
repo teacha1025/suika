@@ -1,4 +1,4 @@
-/** @example{lineno} font.hpp
+﻿/** @example{lineno} font.hpp
  * 文字列描画のサンプル
 */
 

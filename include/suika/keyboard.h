@@ -1,4 +1,4 @@
-/** @example{lineno} keyboard.hpp
+﻿/** @example{lineno} keyboard.hpp
  * 文字列描画のサンプル
 */
 

@@ -1,4 +1,4 @@
-#include "../include/suika/collision.h"
+﻿#include "../include/suika/collision.h"
 #include "../include/suika/vector.h"
 
 namespace suika {

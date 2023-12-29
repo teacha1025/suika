@@ -1,3 +1,7 @@
+﻿/** @example{lineno} fileIO.hpp
+ * ファイル操作のサンプル
+*/
+
 // -----------------------------------------------------------
 // 
 // filesystem
@@ -37,16 +41,16 @@ namespace suika {
 	}
 
 	/// <summary>
-	/// �t�@�C������Ɋւ���֐��A�N���X�Q
+	/// ファイル操作に関する関数、クラス群
 	/// </summary>
 	namespace filesystem {
 		/// <summary>
-		/// �G���R�[�h�̎��
+		/// エンコードの種類
 		/// </summary>
 		enum class encode {
-			//! Shift-JIS�����R�[�h(cp932)
+			//! Shift-JIS文字コード(cp932)
 			shift_jis,
-			//! UTF-8(BOM����)
+			//! UTF-8(BOMあり)
 			utf8,
 			//! UTF16(LE)
 			utf16,
@@ -63,23 +67,23 @@ namespace suika {
 		};
 
 		/// <summary>
-		/// �t�@�C�������݂��邩���擾
+		/// ファイルが存在するかを取得
 		/// </summary>
-		/// <param name="path">�t�@�C���̃p�X</param>
-		/// <returns>���݂��邩�ǂ���</returns>
+		/// <param name="path">ファイルのパス</param>
+		/// <returns>存在するかどうか</returns>
 		bool exists(path_type path);
 
 		/// <summary>
-		/// ���݂̃f�B���N�g�����擾
+		/// 現在のディレクトリを取得
 		/// </summary>
-		/// <returns>���s�t�@�C��������f�B���N�g���ւ̃p�X</returns>
+		/// <returns>実行ファイルがあるディレクトリへのパス</returns>
 		path_type current_path();
 
 		/// <summary>
-		/// �f�B���N�g�����̗v�f��񋓂���
+		/// ディレクトリ内の要素を列挙する
 		/// </summary>
-		/// <param name="path">�f�B���N�g���̃p�X</param>
-		/// <returns>�f�B���N�g�����̃t�@�C���A�t�H���_��</returns>
+		/// <param name="path">ディレクトリのパス</param>
+		/// <returns>ディレクトリ内のファイル、フォルダ名</returns>
 		std::vector<path_type> enumerate_files(path_type path);
 	}
 } // namespace suika

@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="サンプル">
+      <UniqueIdentifier>{234c5d86-7bd0-40f0-85e3-c61509987691}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test_main.cpp">
@@ -22,5 +25,26 @@
   <ItemGroup>
     <Text Include="Log.txt" />
     <Text Include="d3d.log" />
+    <Text Include="log.log" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\sample\animator.hpp">
+      <Filter>サンプル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sample\task.hpp">
+      <Filter>サンプル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sample\fileIO.hpp">
+      <Filter>サンプル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sample\font.hpp">
+      <Filter>サンプル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sample\keyboard.hpp">
+      <Filter>サンプル</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sample\mouse.hpp">
+      <Filter>サンプル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

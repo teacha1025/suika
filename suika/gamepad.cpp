@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // gamepad.
 // 
@@ -46,7 +46,7 @@ namespace suika {
 					.vid = suika::d3d::dinput::gamepad_list[i].vid,
 				};
 				gamepads[i] = d;
-				log.info(std::format(L"Gamepad{}({}):{}", d.index, d.states == pad_states::Disable ? L"—˜—p•s‰Â" : d.states == pad_states::DirectInput ? L"DirectInput" : L"XInput", d.name.to_wstring()));
+				log.info(std::format(L"Gamepad{}({}):{}", d.index, d.states == pad_states::Disable ? L"åˆ©ç”¨ä¸å¯" : d.states == pad_states::DirectInput ? L"DirectInput" : L"XInput", d.name.to_wstring()));
 			}
 			for (ubyte i = 0; i < suika::gamepad::gamepads.size(); i++) {
 				init(suika::gamepad::pad[i], i, suika::gamepad::gamepads[i]);

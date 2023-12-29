@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // suika exception.
 // 
@@ -24,7 +24,7 @@
 
 namespace suika {
 	/// <summary>
-	/// —áŠOƒNƒ‰ƒX
+	/// ä¾‹å¤–ã‚¯ãƒ©ã‚¹
 	/// </summary>
 	class exception {
 	private:
@@ -32,15 +32,15 @@ namespace suika {
 
 	public:
 		/// <summary>
-		/// —áŠO‚ğì¬
+		/// ä¾‹å¤–ã‚’ä½œæˆ
 		/// </summary>
-		/// <param name="message">—áŠO‚ÌƒƒbƒZ[ƒW</param>
+		/// <param name="message">ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸</param>
 		exception(std::string message) : message(message) {}
 
 		/// <summary>
-		/// —áŠO‚ÌƒƒbƒZ[ƒW‚ğæ“¾
+		/// ä¾‹å¤–ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å–å¾—
 		/// </summary>
-		/// <returns>ƒƒbƒZ[ƒW</returns>
+		/// <returns>ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸</returns>
 		string what() const {
 			return message;
 		}

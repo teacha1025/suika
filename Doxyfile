@@ -34,7 +34,7 @@
 # https://www.gnu.org/software/libiconv/ for the list of possible encodings.
 # The default value is: UTF-8.
 
-DOXYFILE_ENCODING      = SHIFT_JIS
+DOXYFILE_ENCODING      = UTF-8
 
 # The PROJECT_NAME tag is a single word (or a sequence of words surrounded by
 # double-quotes, unless you are using Doxywizard) that should identify the
@@ -48,7 +48,7 @@ PROJECT_NAME           = suika
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         = "Ver 0.0.3"
+PROJECT_NUMBER         = "Ver 0.0.5"
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
@@ -917,7 +917,7 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = include \
+INPUT                  = include\suika \
                          include/suika \
                          markdown
 
@@ -929,7 +929,7 @@ INPUT                  = include \
 # See also: INPUT_FILE_ENCODING
 # The default value is: UTF-8.
 
-INPUT_ENCODING         = SHIFT_JIS
+INPUT_ENCODING         = UTF-8
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses The INPUT_FILE_ENCODING tag can be used to specify
@@ -1052,7 +1052,7 @@ EXCLUDE_SYMBOLS        =
 # that contain example code fragments that are included (see the \include
 # command).
 
-EXAMPLE_PATH           =
+EXAMPLE_PATH           = sample
 
 # If the value of the EXAMPLE_PATH tag contains directories, you can use the
 # EXAMPLE_PATTERNS tag to specify one or more wildcard pattern (like *.cpp and

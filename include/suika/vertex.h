@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // 
 // vertex
 // 
@@ -35,28 +35,28 @@ namespace suika {
 		float r, g, b, a;
 	};
 	/// <summary>
-	/// �g�|���W�[
+	/// トポロジー
 	/// </summary>
 	enum primitive_topology {
-		//! ����`
+		//! 未定義
 		PRIMITIVE_TOPOLOGY_UNDEFINED = 0,
-		//! �_�̃��X�g
+		//! 点のリスト
 		PRIMITIVE_TOPOLOGY_POINTLIST = 1,
-		//! ���̃��X�g
+		//! 線のリスト
 		PRIMITIVE_TOPOLOGY_LINELIST = 2,
-		//! ���C���X�g���b�v
+		//! ラインストリップ
 		PRIMITIVE_TOPOLOGY_LINESTRIP = 3,
-		//! �O�p�`���X�g
+		//! 三角形リスト
 		PRIMITIVE_TOPOLOGY_TRIANGLELIST = 4,
-		//! �O�p�`�X�g���b�v
+		//! 三角形ストリップ
 		PRIMITIVE_TOPOLOGY_TRIANGLESTRIP = 5,
-		//! �אڊ֌W�������C�����X�g
+		//! 隣接関係を持つラインリスト
 		PRIMITIVE_TOPOLOGY_LINELIST_ADJ = 10,
-		//! �אڊ֌W�������C���X�g���b�v
+		//! 隣接関係を持つラインストリップ
 		PRIMITIVE_TOPOLOGY_LINESTRIP_ADJ = 11,
-		//! �אڊ֌W�����O�p�`���X�g
+		//! 隣接関係を持つ三角形リスト
 		PRIMITIVE_TOPOLOGY_TRIANGLELIST_ADJ = 12,
-		//! �אڊ֌W�����O�p�`�X�g���b�v
+		//! 隣接関係を持つ三角形ストリップ
 		PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ = 13,
 	};
 	namespace vertex {
@@ -74,38 +74,38 @@ namespace suika {
 			}
 		};
 		/// <summary>
-		/// ���_�̍쐬
+		/// 頂点の作成
 		/// </summary>
-		/// <param name="pos">���_���W</param>
-		/// <param name="col">�F</param>
-		/// <param name="uv">UV�l</param>
-		/// <returns>���_</returns>
+		/// <param name="pos">頂点座標</param>
+		/// <param name="col">色</param>
+		/// <param name="uv">UV値</param>
+		/// <returns>頂点</returns>
 		vertex_2d create_2d(const float4& pos, const color_f& col, const float2& uv);
 
 		/// <summary>
-		/// ���_�̍쐬
+		/// 頂点の作成
 		/// </summary>
-		/// <param name="pos">���_���W</param>
-		/// <param name="col">�F</param>
-		/// <param name="uv">UV�l</param>
-		/// <returns>���_</returns>
+		/// <param name="pos">頂点座標</param>
+		/// <param name="col">色</param>
+		/// <param name="uv">UV値</param>
+		/// <returns>頂点</returns>
 		vertex_2d create_2d(const float2& pos, const color_f& col, const float2& uv);
 
 		/// <summary>
-		/// ���_�̍쐬
+		/// 頂点の作成
 		/// </summary>
-		/// <param name="pos">���_���W</param>
-		/// <param name="col">�F</param>
-		/// <param name="uv">UV�l</param>
-		/// <returns>���_</returns>
+		/// <param name="pos">頂点座標</param>
+		/// <param name="col">色</param>
+		/// <param name="uv">UV値</param>
+		/// <returns>頂点</returns>
 		vertex_2d create_2d(const float3& pos, const color_f& col, const float2& uv);
 		
 		/// <summary>
-		/// �|���S���̕`��
+		/// ポリゴンの描画
 		/// </summary>
-		/// <param name="vertices">�`�悷��|���S���̒��_�f�[�^</param>
-		/// <param name="index">�|���S���̃C���f�b�N�X</param>
-		/// <param name="topology">�`��̃g�|���W�[</param>
+		/// <param name="vertices">描画するポリゴンの頂点データ</param>
+		/// <param name="index">ポリゴンのインデックス</param>
+		/// <param name="topology">描画のトポロジー</param>
 		void draw(const std::vector<vertex_2d>& vertices, const std::vector<uint16>& index, primitive_topology topology);
 	}
 }

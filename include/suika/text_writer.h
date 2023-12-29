@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // text writer
 // 
@@ -30,11 +30,11 @@
 
 namespace suika {
 	/// <summary>
-	/// ƒtƒ@ƒCƒ‹‘€ì‚ÉŠÖ‚·‚éŠÖ”AƒNƒ‰ƒXŒQ
+	/// ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã«é–¢ã™ã‚‹é–¢æ•°ã€ã‚¯ãƒ©ã‚¹ç¾¤
 	/// </summary>
 	namespace filesystem {
 		/// <summary>
-		/// •¶š—ñ‘‚«o‚µ
+		/// æ–‡å­—åˆ—æ›¸ãå‡ºã—
 		/// </summary>
 		class text_writer {
 		private:
@@ -46,29 +46,29 @@ namespace suika {
 			std::ofstream _file;
 		public:
 			/// <summary>
-			/// ƒ‰ƒCƒ^[‚Ìì¬
+			/// ãƒ©ã‚¤ã‚¿ãƒ¼ã®ä½œæˆ
 			/// </summary>
-			/// <param name="path">ƒtƒ@ƒCƒ‹‚Ö‚ÌƒpƒX</param>
-			/// <param name="encode">‘‚«‚İ‚Ì•¶š—ñƒGƒ“ƒR[ƒh</param>
-			/// <param name="nl">‰üs•¶š‚Ìí—Ş</param>
+			/// <param name="path">ãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®ãƒ‘ã‚¹</param>
+			/// <param name="encode">æ›¸ãè¾¼ã¿æ™‚ã®æ–‡å­—åˆ—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰</param>
+			/// <param name="nl">æ”¹è¡Œæ–‡å­—ã®ç¨®é¡</param>
 			text_writer(path_type path, encode encode = encode::utf8, new_line nl = new_line::crlf);
 			
 			/// <summary>
-			/// ƒfƒXƒgƒ‰ƒNƒ^
+			/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 			/// </summary>
 			~text_writer();
 
 			/// <summary>
-			/// •¶š—ñ‚ğ‘‚«‚Ş
+			/// æ–‡å­—åˆ—ã‚’æ›¸ãè¾¼ã‚€
 			/// </summary>
-			/// <param name="text">‘‚«‚Ş•¶š—ñ</param>
-			void write(string_view text);
+			/// <param name="text">æ›¸ãè¾¼ã‚€æ–‡å­—åˆ—</param>
+			void write(string text);
 
 			/// <summary>
-			/// s‚É•¶š—ñ‚ğ‘‚«‚Ş
+			/// è¡Œã«æ–‡å­—åˆ—ã‚’æ›¸ãè¾¼ã‚€
 			/// </summary>
-			/// <param name="text">‘‚«‚Ş•¶š—ñ</param>
-			void writeln(string_view text);
+			/// <param name="text">æ›¸ãè¾¼ã‚€æ–‡å­—åˆ—</param>
+			void writeln(string text);
 		};
 	}
 } // namespace suika

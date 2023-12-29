@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // 
 // animation
 // 
@@ -241,8 +241,8 @@ namespace suika {
 		set_ps(this->_shaders.ps);
 		suika::d3d::blend::blends[_blend].set();
 		suika::d3d::vertex::set_index(::index, (D3D11_PRIMITIVE_TOPOLOGY)suika::PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-
+		const auto c = _center * double3{ (_extend.x), (_extend.y), (_extend.z) };
 		d3d::vertex::set_vertex_instance(create_vertex());
-		d3d::vertex::add_index(this->_center, this->_transition - this->_center, this->_rotation, double3{ this->_extend.x* this->_draw_size.x, this->_extend.y* this->_draw_size.y, this->_extend.z }, { 0,0,0,0 }, { float2{left,top},float2{right, bottom} });
+		d3d::vertex::add_index(c, this->_transition - c, this->_rotation, double3{ this->_extend.x* this->_draw_size.x, this->_extend.y* this->_draw_size.y, this->_extend.z }, { 0,0,0,0 }, { float2{left,top},float2{right, bottom} });
 	}
 }

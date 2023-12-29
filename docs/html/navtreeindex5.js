@@ -1,5 +1,9 @@
 var NAVTREEINDEX5 =
 {
+"namespacesuika_1_1collision__2d.html#a697800ba5c2713fa1a4c8e0495853362":[1,0,0,0,2],
+"namespacesuika_1_1collision__2d.html#a727f959abde290e1581593ddf84b8abf":[1,0,0,0,5],
+"namespacesuika_1_1collision__2d.html#a96cf6740cef9563bd10ccd38ee3157ed":[1,0,0,0,8],
+"namespacesuika_1_1collision__2d.html#a97362850571556ffe33d8710522141f1":[1,0,0,0,4],
 "namespacesuika_1_1collision__2d.html#a9a73cabdb1586403be605d3311703a4e":[1,0,0,0,10],
 "namespacesuika_1_1collision__2d.html#ab9ea6a6c804db5dc5636c0dfc1aeb925":[1,0,0,0,0],
 "namespacesuika_1_1collision__2d.html#acdc6e01ef3afbbe35948ee5816c238d1":[1,0,0,0,6],
@@ -245,9 +249,5 @@ var NAVTREEINDEX5 =
 "namespacesuika_1_1palette.html#a54b05887aaa4c46e2e9c64d4f84e301f":[1,0,0,8,27],
 "namespacesuika_1_1palette.html#a5964807c7d81cc08dc97f43c871ba4f5":[1,0,0,8,6],
 "namespacesuika_1_1palette.html#a5a4946102ebdc1da21c7caf8aebd80cb":[1,0,0,8,120],
-"namespacesuika_1_1palette.html#a5aa5bf4a3677096339a862e468f5d686":[1,0,0,8,92],
-"namespacesuika_1_1palette.html#a5c4d0b3398b3331654b576ee373c73aa":[1,0,0,8,59],
-"namespacesuika_1_1palette.html#a5d6b7bf3617e257e15420d40287d72c3":[1,0,0,8,135],
-"namespacesuika_1_1palette.html#a5e9bd68a91d2a86b6057c1e831d46584":[1,0,0,8,24],
-"namespacesuika_1_1palette.html#a626554e17bf457bc7b13a6f8c379f2be":[1,0,0,8,119]
+"namespacesuika_1_1palette.html#a5aa5bf4a3677096339a862e468f5d686":[1,0,0,8,92]
 };

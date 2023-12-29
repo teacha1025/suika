@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // draw base class.
 // 
@@ -28,38 +28,38 @@
 
 namespace suika {
 	/// <summary>
-	/// “à•”“I‚ÈÀ‘•
+	/// å†…éƒ¨çš„ãªå®Ÿè£…
 	/// </summary>
 	namespace detail {
 		/// <summary>
-		/// •`‰æŒnƒNƒ‰ƒX
+		/// æç”»ç³»ã‚¯ãƒ©ã‚¹
 		/// </summary>
 		template<class T>
 		class ishape : public ibase {
 		protected:
 			using position_type = float;
 			/// <summary>
-			/// Œ´“_‚©‚ç‚ÌˆÚ“®—Ê
+			/// åŸç‚¹ã‹ã‚‰ã®ç§»å‹•é‡
 			/// </summary>
 			vector3<position_type> _transition;
 
 			/// <summary>
-			/// ƒIƒuƒWƒFƒNƒg‚Ì•`‰æA‰ñ“]‚Ì’†S
+			/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®æç”»ã€å›è»¢ã®ä¸­å¿ƒ
 			/// </summary>
 			vector3<position_type> _center;
 
 			/// <summary>
-			/// Še•ûŒü‚Ì‰ñ“]Šp“x
+			/// å„æ–¹å‘ã®å›è»¢è§’åº¦
 			/// </summary>
 			vector3<position_type> _rotation;
 
 			/// <summary>
-			/// Še•ûŒü‚ÌŠg‘å—¦
+			/// å„æ–¹å‘ã®æ‹¡å¤§ç‡
 			/// </summary>
 			vector3<double> _extend;
 			
 			/// <summary>
-			/// ƒuƒŒƒ“ƒh‚Ìí—Ş
+			/// ãƒ–ãƒ¬ãƒ³ãƒ‰ã®ç¨®é¡
 			/// </summary>
 			blend _blend;
 
@@ -77,237 +77,237 @@ namespace suika {
 				_extend({ 1.0, 1.0, 1.0 }),
 				_blend(blend::alpha){}
 
-			//İ’èŒn
+			//è¨­å®šç³»
 
 			/// <summary>
-			/// À•W‚ğİ’è
+			/// åº§æ¨™ã‚’è¨­å®š
 			/// </summary>
-			/// <param name="position">İ’è‚·‚éÀ•W</param>
+			/// <param name="position">è¨­å®šã™ã‚‹åº§æ¨™</param>
 			virtual T at(const vector3<position_type>& position)&& {
 				_transition = position;
 				return static_cast<T&&>(std::move(*this));
 			}
 
 			/// <summary>
-			/// À•W‚ğİ’è
+			/// åº§æ¨™ã‚’è¨­å®š
 			/// </summary>
-			/// <param name="position">İ’è‚·‚éÀ•W</param>
+			/// <param name="position">è¨­å®šã™ã‚‹åº§æ¨™</param>
 			virtual T& at(const vector3<position_type>& position)& {
 				_transition = position;
 				return static_cast<T&>(*this);
 			}
 
 			/// <summary>
-			/// À•W‚ğİ’è
+			/// åº§æ¨™ã‚’è¨­å®š
 			/// </summary>
-			/// <param name="position">İ’è‚·‚éÀ•W</param>
+			/// <param name="position">è¨­å®šã™ã‚‹åº§æ¨™</param>
 			virtual T at(const point<position_type>& position)&& {
 				_transition = vector3<position_type>{ position.x, position.y, 0.0 };
 				return static_cast<T&&>(std::move(*this));
 			}
 
 			/// <summary>
-			/// À•W‚ğİ’è
+			/// åº§æ¨™ã‚’è¨­å®š
 			/// </summary>
-			/// <param name="position">İ’è‚·‚éÀ•W</param>
+			/// <param name="position">è¨­å®šã™ã‚‹åº§æ¨™</param>
 			virtual T& at(const point<position_type>& position)& {
 				_transition = vector3<position_type>{ position.x, position.y, 0.0 };
 				return static_cast<T&>(*this);
 			}
 
 			/// <summary>
-			/// ƒIƒuƒWƒFƒNƒg‚Ì’†S‚ğİ’è
+			/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä¸­å¿ƒã‚’è¨­å®š
 			/// </summary>
-			/// <param name="center">İ’è‚·‚é’†SÀ•W</param>
+			/// <param name="center">è¨­å®šã™ã‚‹ä¸­å¿ƒåº§æ¨™</param>
 			virtual T centered(const vector3<position_type>& center)&& {
 				_center = center;
 				return static_cast<T&&>(std::move(*this));
 			}
 
 			/// <summary>
-			/// ƒIƒuƒWƒFƒNƒg‚Ì’†S‚ğİ’è
+			/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä¸­å¿ƒã‚’è¨­å®š
 			/// </summary>
-			/// <param name="center">İ’è‚·‚é’†SÀ•W</param>
+			/// <param name="center">è¨­å®šã™ã‚‹ä¸­å¿ƒåº§æ¨™</param>
 			virtual T& centered(const vector3<position_type>& center)& {
 				_center = center;
 				return static_cast<T&>(*this);
 			}
 
 			/// <summary>
-			/// ƒIƒuƒWƒFƒNƒg‚Ì’†S‚ğİ’è
+			/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä¸­å¿ƒã‚’è¨­å®š
 			/// </summary>
-			/// <param name="center">İ’è‚·‚é’†SÀ•W</param>
+			/// <param name="center">è¨­å®šã™ã‚‹ä¸­å¿ƒåº§æ¨™</param>
 			virtual T centered(const point<position_type>& center)&& {
 				_center = vector3<position_type>{ center.x, center.y, 0.0 };
 				return static_cast<T&&>(std::move(*this));
 			}
 
 			/// <summary>
-			/// ƒIƒuƒWƒFƒNƒg‚Ì’†S‚ğİ’è
+			/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ä¸­å¿ƒã‚’è¨­å®š
 			/// </summary>
-			/// <param name="center">İ’è‚·‚é’†SÀ•W</param>
+			/// <param name="center">è¨­å®šã™ã‚‹ä¸­å¿ƒåº§æ¨™</param>
 			virtual T& centered(const point<position_type>& center)& {
 				_center = vector3<position_type>{ center.x, center.y, 0.0 };
 				return dynamic_cast<T&>(*this);
 			}
 
 			/// <summary>
-			/// ‰ñ“]—Ê‚Ìİ’è
+			/// å›è»¢é‡ã®è¨­å®š
 			/// </summary>
-			/// <param name="rotation">İ’è‚·‚éŠe²‚Ì‰ñ“]—Ê</param>
+			/// <param name="rotation">è¨­å®šã™ã‚‹å„è»¸ã®å›è»¢é‡</param>
 			virtual T rotated(const vector3<position_type>& rotation)&& {
 				_rotation = rotation;
 				return static_cast<T&&>(std::move(*this));
 			}
 
 			/// <summary>
-			/// ‰ñ“]—Ê‚Ìİ’è
+			/// å›è»¢é‡ã®è¨­å®š
 			/// </summary>
-			/// <param name="rotation">İ’è‚·‚éŠe²‚Ì‰ñ“]—Ê</param>
+			/// <param name="rotation">è¨­å®šã™ã‚‹å„è»¸ã®å›è»¢é‡</param>
 			virtual T& rotated(const vector3<position_type>& rotation)& {
 				_rotation = rotation;
 				return static_cast<T&>(*this);
 			}
 
 			/// <summary>
-			/// ‰ñ“]—Ê‚Ìİ’è
+			/// å›è»¢é‡ã®è¨­å®š
 			/// </summary>
-			/// <param name="rotation">İ’è‚·‚é‰ñ“]—Ê</param>
+			/// <param name="rotation">è¨­å®šã™ã‚‹å›è»¢é‡</param>
 			virtual T rotated(const position_type& rotation)&& {
 				_rotation.z = rotation;
 				return static_cast<T&&>(std::move(*this));
 			}
 			/// <summary>
-			/// ‰ñ“]—Ê‚Ìİ’è
+			/// å›è»¢é‡ã®è¨­å®š
 			/// </summary>
-			/// <param name="rotation">İ’è‚·‚é‰ñ“]—Ê</param>
+			/// <param name="rotation">è¨­å®šã™ã‚‹å›è»¢é‡</param>
 			virtual T& rotated(const position_type& rotation)& {
 				_rotation.z = rotation;
 				return static_cast<T&>(*this);
 			}
 
 			/// <summary>
-			/// Šg‘å—¦‚Ìİ’è
+			/// æ‹¡å¤§ç‡ã®è¨­å®š
 			/// </summary>
-			/// <param name="rate">Šg‘å—¦</param>
+			/// <param name="rate">æ‹¡å¤§ç‡</param>
 			virtual T extended(const vector3<double>& rate)&& {
 				_extend = rate;
 				return static_cast<T&&>(std::move(*this));
 			}
 
 			/// <summary>
-			/// Šg‘å—¦‚Ìİ’è
+			/// æ‹¡å¤§ç‡ã®è¨­å®š
 			/// </summary>
-			/// <param name="rate">Šg‘å—¦</param>
+			/// <param name="rate">æ‹¡å¤§ç‡</param>
 			virtual T& extended(const vector3<double>& rate)& {
 				_extend = rate;
 				return static_cast<T&>(*this);
 			}
 
 			/// <summary>
-			/// Šg‘å—¦‚Ìİ’è
+			/// æ‹¡å¤§ç‡ã®è¨­å®š
 			/// </summary>
-			/// <param name="rate">Šg‘å—¦</param>
+			/// <param name="rate">æ‹¡å¤§ç‡</param>
 			virtual T extended(const point<double>& rate)&& {
 				_extend = { rate.x, rate.y, 1 };
 				return static_cast<T&&>(std::move(*this));
 			}
 
 			/// <summary>
-			/// Šg‘å—¦‚Ìİ’è
+			/// æ‹¡å¤§ç‡ã®è¨­å®š
 			/// </summary>
-			/// <param name="rate">Šg‘å—¦</param>
+			/// <param name="rate">æ‹¡å¤§ç‡</param>
 			virtual T& extended(const point<double>& rate)& {
 				_extend = { rate.x, rate.y, 1 };
 				return static_cast<T&>(*this);
 			}
 
 			/// <summary>
-			/// Šg‘å—¦‚Ìİ’è
+			/// æ‹¡å¤§ç‡ã®è¨­å®š
 			/// </summary>
-			/// <param name="rate">Šg‘å—¦</param>
+			/// <param name="rate">æ‹¡å¤§ç‡</param>
 			virtual T extended(double rate)&& {
 				_extend = { rate, rate, rate };
 				return static_cast<T&&>(std::move(*this));
 			}
 
 			/// <summary>
-			/// Šg‘å—¦‚Ìİ’è
+			/// æ‹¡å¤§ç‡ã®è¨­å®š
 			/// </summary>
-			/// <param name="rate">Šg‘å—¦</param>
+			/// <param name="rate">æ‹¡å¤§ç‡</param>
 			virtual T& extended(double rate)& {
 				_extend = { rate, rate, rate };
 				return static_cast<T&>(*this);
 			}
 
 			/// <summary>
-			/// ƒuƒŒƒ“ƒh‚Ìİ’è
+			/// ãƒ–ãƒ¬ãƒ³ãƒ‰ã®è¨­å®š
 			/// </summary>
-			/// <param name="type">ƒuƒŒƒ“ƒh‚Ìí—Ş</param>
+			/// <param name="type">ãƒ–ãƒ¬ãƒ³ãƒ‰ã®ç¨®é¡</param>
 			virtual T blended(blend type)&& {
 				_blend = type;
 				return static_cast<T&&>(std::move(*this));
 			}
 
 			/// <summary>
-			/// ƒuƒŒƒ“ƒh‚Ìİ’è
+			/// ãƒ–ãƒ¬ãƒ³ãƒ‰ã®è¨­å®š
 			/// </summary>
-			/// <param name="type">ƒuƒŒƒ“ƒh‚Ìí—Ş</param>
+			/// <param name="type">ãƒ–ãƒ¬ãƒ³ãƒ‰ã®ç¨®é¡</param>
 			virtual T& blended(blend type)& {
 				_blend = type;
 				return static_cast<T&>(*this);
 			}
 
 			/// <summary>
-			/// ’¸“_ƒVƒF[ƒ_[‚Ìİ’è
+			/// é ‚ç‚¹ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®è¨­å®š
 			/// </summary>
-			/// <param name="shader">ƒVƒF[ƒ_[‚Ì–¼‘O</param>
+			/// <param name="shader">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®åå‰</param>
 			virtual T vs(const string& shader)&& {
 				_shaders.vs = shader;
 				return static_cast<T&&>(std::move(*this));
 			}
 
 			/// <summary>
-			/// ’¸“_ƒVƒF[ƒ_[‚Ìİ’è
+			/// é ‚ç‚¹ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®è¨­å®š
 			/// </summary>
-			/// <param name="shader">ƒVƒF[ƒ_[‚Ì–¼‘O</param>
+			/// <param name="shader">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®åå‰</param>
 			virtual T& vs(const string& shader)& {
 				_shaders.vs = shader;
 				return static_cast<T&>(*this);
 			}
 
 			/// <summary>
-			/// ƒsƒNƒZƒ‹ƒVƒF[ƒ_[‚Ìİ’è
+			/// ãƒ”ã‚¯ã‚»ãƒ«ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®è¨­å®š
 			/// </summary>
-			/// <param name="shader">ƒVƒF[ƒ_[‚Ì–¼‘O</param>
+			/// <param name="shader">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®åå‰</param>
 			virtual T ps(const string& shader)&& {
 				_shaders.ps = shader;
 				return static_cast<T&&>(std::move(*this));
 			}
 
 			/// <summary>
-			/// ƒsƒNƒZƒ‹ƒVƒF[ƒ_[‚Ìİ’è
+			/// ãƒ”ã‚¯ã‚»ãƒ«ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®è¨­å®š
 			/// </summary>
-			/// <param name="shader">ƒVƒF[ƒ_[‚Ì–¼‘O</param>
+			/// <param name="shader">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®åå‰</param>
 			virtual T& ps(const string& shader)& {
 				_shaders.ps = shader;
 				return static_cast<T&>(*this);
 			}
 
-			//æ“¾Œn
+			//å–å¾—ç³»
 
 			/// <summary>
-			/// ƒIƒuƒWƒFƒNƒg‚ÌŒ´“_‚©‚ç‚ÌˆÚ“®—Ê‚ğæ“¾
+			/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åŸç‚¹ã‹ã‚‰ã®ç§»å‹•é‡ã‚’å–å¾—
 			/// </summary>
-			/// <returns>xyz‹óŠÔ‚ÌˆÚ“®—Ê</returns>
+			/// <returns>xyzç©ºé–“ã®ç§»å‹•é‡</returns>
 			virtual vector3<position_type> position_xyz() const {
 				return _transition;
 			}
 
 			/// <summary>
-			/// ƒIƒuƒWƒFƒNƒg‚ÌŒ´“_‚©‚ç‚ÌˆÚ“®—Ê‚ğæ“¾
+			/// ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åŸç‚¹ã‹ã‚‰ã®ç§»å‹•é‡ã‚’å–å¾—
 			/// </summary>
-			/// <returns>xy•½–Ê‚ÌˆÚ“®—Ê</returns>
+			/// <returns>xyå¹³é¢ã®ç§»å‹•é‡</returns>
 			virtual point<position_type> position() const {
 				return point<position_type> {
 					static_cast<position_type>(_transition.x),
@@ -316,17 +316,17 @@ namespace suika {
 			}
 
 			/// <summary>
-			/// Šg‘å—¦‚Ìæ“¾
+			/// æ‹¡å¤§ç‡ã®å–å¾—
 			/// </summary>
-			/// <returns>xyz•ûŒü‚ÌŠg‘å—¦</returns>
+			/// <returns>xyzæ–¹å‘ã®æ‹¡å¤§ç‡</returns>
 			virtual vector3<position_type> extend_xyz() const {
 				return _extend;
 			}
 
 			/// <summary>
-			/// Šg‘å—¦‚Ìæ“¾
+			/// æ‹¡å¤§ç‡ã®å–å¾—
 			/// </summary>
-			/// <returns>xy•ûŒü‚Ö‚ÌŠg‘å—¦</returns>
+			/// <returns>xyæ–¹å‘ã¸ã®æ‹¡å¤§ç‡</returns>
 			virtual point<position_type> extend() const {
 				return point<position_type> {
 					static_cast<position_type>(_extend.x),
@@ -335,17 +335,17 @@ namespace suika {
 			}
 
 			/// <summary>
-			/// ‰ñ“]—Ê‚Ìæ“¾
+			/// å›è»¢é‡ã®å–å¾—
 			/// </summary>
-			/// <returns>xyz²‚Ì‰ñ“]—Ê</returns>
+			/// <returns>xyzè»¸ã®å›è»¢é‡</returns>
 			virtual vector3<position_type> rotate_xyz() const {
 				return _rotation;
 			}
 
 			/// <summary>
-			/// ‰ñ“]—Ê‚Ìæ“¾
+			/// å›è»¢é‡ã®å–å¾—
 			/// </summary>
-			/// <returns>xy²‚Ì‰ñ“]—Ê</returns>
+			/// <returns>xyè»¸ã®å›è»¢é‡</returns>
 			virtual point<position_type> rotate() const {
 				return point<position_type> {
 					static_cast<position_type>(_rotation.x),
@@ -354,17 +354,17 @@ namespace suika {
 			}
 
 			/// <summary>
-			/// ’†SÀ•W‚Ìæ“¾
+			/// ä¸­å¿ƒåº§æ¨™ã®å–å¾—
 			/// </summary>
-			/// <returns>xyz‹óŠÔ‚Ì’†SÀ•W</returns>
+			/// <returns>xyzç©ºé–“ã®ä¸­å¿ƒåº§æ¨™</returns>
 			virtual vector3<position_type> center_xyz() const {
 				return _center;
 			}
 
 			/// <summary>
-			/// ’†SÀ•W‚Ìæ“¾
+			/// ä¸­å¿ƒåº§æ¨™ã®å–å¾—
 			/// </summary>
-			/// <returns>xy‹óŠÔ‚Ì’†SÀ•W</returns>
+			/// <returns>xyç©ºé–“ã®ä¸­å¿ƒåº§æ¨™</returns>
 			virtual point<position_type> center() const {
 				return point<position_type> {
 					static_cast<position_type>(_center.x),

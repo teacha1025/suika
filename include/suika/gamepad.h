@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+п»ї// -----------------------------------------------------------
 // 
 // gamepad.
 // 
@@ -31,37 +31,37 @@
 
 namespace suika {
 	/// <summary>
-	/// ѓQЃ[ѓЂѓpѓbѓh‚МЏу‘Ф
+	/// г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰гЃ®зЉ¶ж…‹
 	/// </summary>
 	enum class pad_states {
-		//! XInput‚Е“ь—НЏ€—ќ
+		//! XInputгЃ§е…ҐеЉ›е‡¦зђ†
 		XInput,
-		//! DirectInput‚Е“ь—НЏ€—ќ
+		//! DirectInputгЃ§е…ҐеЉ›е‡¦зђ†
 		DirectInput,
-		//! ѓQЃ[ѓЂѓpѓbѓh‚Н–ўђЪ‘±ЃA‚ ‚й‚ў‚НЋg—p•s‰В
+		//! г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰гЃЇжњЄжЋҐз¶љгЂЃгЃ‚г‚‹гЃ„гЃЇдЅїз”ЁдёЌеЏЇ
 		Disable
 	};
 
 	/// <summary>
-	/// ѓQЃ[ѓЂѓpѓbѓh“ь—Н‚ЙЉЦ‚·‚й’и‹`‹y‚СЉЦђ”
+	/// г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰е…ҐеЉ›гЃ«й–ўгЃ™г‚‹е®љзѕ©еЏЉгЃій–ўж•°
 	/// </summary>
 	namespace gamepad {
 		/// <summary>
-		/// ѓQЃ[ѓЂѓpѓbѓh‚ЙЉЦ‚·‚йЏо•с
+		/// г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰гЃ«й–ўгЃ™г‚‹жѓ…е ±
 		/// </summary>
 		struct info {
 			/// <summary>
-			/// ѓQЃ[ѓЂѓpѓbѓh‚МID
+			/// г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰гЃ®ID
 			/// </summary>
 			ubyte		index = 255;
 
 			/// <summary>
-			/// ђЪ‘±‚МЋн—Ю
+			/// жЋҐз¶љгЃ®зЁ®йЎћ
 			/// </summary>
 			pad_states	states = pad_states::Disable;
 
 			/// <summary>
-			/// ѓfѓoѓCѓX–ј
+			/// гѓ‡гѓђг‚¤г‚№еђЌ
 			/// </summary>
 			string		name;
 
@@ -78,7 +78,7 @@ namespace suika {
 	}
 
 	/// <summary>
-	/// “а•”“I‚ИЋА‘•
+	/// е†…йѓЁзљ„гЃЄе®џиЈ…
 	/// </summary>
 	namespace detail {
 		class gamepad;
@@ -86,7 +86,7 @@ namespace suika {
 		class gamepad_stick;
 
 		/// <summary>
-		/// ѓQЃ[ѓЂѓpѓbѓh‚Мѓ{ѓ^ѓ“
+		/// г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰гЃ®гѓњг‚їгѓі
 		/// </summary>
 		class gamepad_button : public input_base {
 			ubyte _id = 0;
@@ -106,14 +106,14 @@ namespace suika {
 
 			void update();
 			/// <summary>
-			/// –ј‘O‚рЋж“ѕ
+			/// еђЌе‰Ќг‚’еЏ–еѕ—
 			/// </summary>
-			/// <returns>ѓ{ѓ^ѓ“‚М–ј‘O</returns>
+			/// <returns>гѓњг‚їгѓігЃ®еђЌе‰Ќ</returns>
 			virtual string to_string() const override;
 		};
 
 		/// <summary>
-		/// ѓQЃ[ѓЂѓpѓbѓh‚МѓXѓeѓBѓbѓN
+		/// г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰гЃ®г‚№гѓ†г‚Јгѓѓг‚Ї
 		/// </summary>
 		class gamepad_stick : public input_base {
 		private:
@@ -137,63 +137,63 @@ namespace suika {
 			void update();
 
 			/// <summary>
-			/// ѓXѓeѓBѓbѓN‚М“ь—Н’l‚МЋж“ѕ
+			/// г‚№гѓ†г‚Јгѓѓг‚ЇгЃ®е…ҐеЉ›еЂ¤гЃ®еЏ–еѕ—
 			/// </summary>
-			/// <returns>‰Ў:x[-1~1] Џc:y[-1~1]</returns>
+			/// <returns>жЁЄ:x[-1~1] зё¦:y[-1~1]</returns>
 			point<double> value() const {
 				return _value;
 			}
 
 			/// <summary>
-			/// ‰џ‚і‚к‚ЅЋћЉФ‚МЋж“ѕ
+			/// жЉјгЃ•г‚ЊгЃџж™‚й–“гЃ®еЏ–еѕ—
 			/// </summary>
-			/// <returns>ѓXѓeѓBѓbѓN‚Є‰џ‚µЌћ‚Ь‚к‚ЅѓtѓЊЃ[ѓЂђ”</returns>
+			/// <returns>г‚№гѓ†г‚Јгѓѓг‚ЇгЃЊжЉјгЃ—иѕјгЃѕг‚ЊгЃџгѓ•гѓ¬гѓјгѓ ж•°</returns>
 			unsigned int count() const override {
 				return button.count();
 			}
 
 			/// <summary>
-			/// ‰џ‚і‚к‚Д‚ў‚й‚©‚З‚¤‚©‚МЋж“ѕ
+			/// жЉјгЃ•г‚ЊгЃ¦гЃ„г‚‹гЃ‹гЃ©гЃ†гЃ‹гЃ®еЏ–еѕ—
 			/// </summary>
-			/// <returns>‰џ‚і‚к‚Д‚ў‚й‚©‚З‚¤‚©</returns>
+			/// <returns>жЉјгЃ•г‚ЊгЃ¦гЃ„г‚‹гЃ‹гЃ©гЃ†гЃ‹</returns>
 			bool press() const override {
 				return button.press();
 			}
 
 			/// <summary>
-			/// —Ј‚і‚к‚Д‚ў‚й‚М‚©‚З‚¤‚©‚МЋж“ѕ
+			/// й›ўгЃ•г‚ЊгЃ¦гЃ„г‚‹гЃ®гЃ‹гЃ©гЃ†гЃ‹гЃ®еЏ–еѕ—
 			/// </summary>
-			/// <returns>—Ј‚і‚к‚Д‚ў‚й‚©‚З‚¤‚©</returns>
+			/// <returns>й›ўгЃ•г‚ЊгЃ¦гЃ„г‚‹гЃ‹гЃ©гЃ†гЃ‹</returns>
 			bool release() const override {
 				return button.release();
 			}
 
 			/// <summary>
-			/// —Ј‚і‚к‚Ѕ‚©‚З‚¤‚©‚МЋж“ѕ
+			/// й›ўгЃ•г‚ЊгЃџгЃ‹гЃ©гЃ†гЃ‹гЃ®еЏ–еѕ—
 			/// </summary>
-			/// <returns>—Ј‚і‚к‚ЅЏuЉФ‚©‚З‚¤‚©</returns>
+			/// <returns>й›ўгЃ•г‚ЊгЃџзћ¬й–“гЃ‹гЃ©гЃ†гЃ‹</returns>
 			bool up() const override {
 				return button.up();
 			}
 
 			/// <summary>
-			/// ‰џ‚і‚к‚Ѕ‚©‚З‚¤‚©‚МЋж“ѕ
+			/// жЉјгЃ•г‚ЊгЃџгЃ‹гЃ©гЃ†гЃ‹гЃ®еЏ–еѕ—
 			/// </summary>
-			/// <returns>‰џ‚і‚к‚ЅЏuЉФ‚©‚З‚¤‚©</returns>
+			/// <returns>жЉјгЃ•г‚ЊгЃџзћ¬й–“гЃ‹гЃ©гЃ†гЃ‹</returns>
 			bool down() const override {
 				return button.down();
 			}
 
 			/// <summary>
-			/// и‡’l‚рђЭ’и‚·‚й
+			/// й–ѕеЂ¤г‚’иЁ­е®љгЃ™г‚‹
 			/// </summary>
-			/// <param name="value">ђV‚µ‚ўи‡’l</param>
+			/// <param name="value">ж–°гЃ—гЃ„й–ѕеЂ¤</param>
 			void threshold(range<0.0, 1.0> value) {
 				_deadzone = value;
 			}
 
 			/// <summary>
-			/// Њ»ЌЭ‚Ми‡’l‚рЋж“ѕ
+			/// зЏѕењЁгЃ®й–ѕеЂ¤г‚’еЏ–еѕ—
 			/// </summary>
 			/// <returns></returns>
 			double threshold() const {
@@ -201,13 +201,13 @@ namespace suika {
 			}
 
 			/// <summary>
-			/// –ј‘O‚рЋж“ѕ
+			/// еђЌе‰Ќг‚’еЏ–еѕ—
 			/// </summary>
-			/// <returns>ѓXѓeѓBѓbѓN‚М–ј‘O</returns>
+			/// <returns>г‚№гѓ†г‚Јгѓѓг‚ЇгЃ®еђЌе‰Ќ</returns>
 			virtual string to_string() const override;
 		};
 		/// <summary>
-		/// ѓQЃ[ѓЂѓpѓbѓh‚МѓgѓЉѓKЃ[
+		/// г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰гЃ®гѓ€гѓЄг‚¬гѓј
 		/// </summary>
 		class gamepad_trigger : public input_base {
 		private:
@@ -231,77 +231,77 @@ namespace suika {
 			void update();
 
 			/// <summary>
-			/// ѓgѓЉѓKЃ[‚М“ь—Н’l‚МЋж“ѕ
+			/// гѓ€гѓЄг‚¬гѓјгЃ®е…ҐеЉ›еЂ¤гЃ®еЏ–еѕ—
 			/// </summary>
-			/// <returns>‰р•ъ:0 ‰џ‰є:1</returns>
+			/// <returns>и§Јж”ѕ:0 жЉјдё‹:1</returns>
 			double value() const {
 				return _value;
 			}
 
 			/// <summary>
-			/// ‰џ‚і‚к‚ЅЋћЉФ‚МЋж“ѕ
+			/// жЉјгЃ•г‚ЊгЃџж™‚й–“гЃ®еЏ–еѕ—
 			/// </summary>
-			/// <returns>ѓLЃ[‚вѓ{ѓ^ѓ“‚Є‰џ‚і‚к‚ЅѓtѓЊЃ[ѓЂђ”</returns>
+			/// <returns>г‚­гѓјг‚„гѓњг‚їгѓігЃЊжЉјгЃ•г‚ЊгЃџгѓ•гѓ¬гѓјгѓ ж•°</returns>
 			unsigned int count() const override {
 				return _button.count();
 			}
 
 			/// <summary>
-			/// ‰џ‚і‚к‚Д‚ў‚й‚©‚З‚¤‚©‚МЋж“ѕ
+			/// жЉјгЃ•г‚ЊгЃ¦гЃ„г‚‹гЃ‹гЃ©гЃ†гЃ‹гЃ®еЏ–еѕ—
 			/// </summary>
-			/// <returns>‰џ‚і‚к‚Д‚ў‚й‚©‚З‚¤‚©</returns>
+			/// <returns>жЉјгЃ•г‚ЊгЃ¦гЃ„г‚‹гЃ‹гЃ©гЃ†гЃ‹</returns>
 			bool press() const override {
 				return _button.press();
 			}
 
 			/// <summary>
-			/// —Ј‚і‚к‚Д‚ў‚й‚М‚©‚З‚¤‚©‚МЋж“ѕ
+			/// й›ўгЃ•г‚ЊгЃ¦гЃ„г‚‹гЃ®гЃ‹гЃ©гЃ†гЃ‹гЃ®еЏ–еѕ—
 			/// </summary>
-			/// <returns>—Ј‚і‚к‚Д‚ў‚й‚©‚З‚¤‚©</returns>
+			/// <returns>й›ўгЃ•г‚ЊгЃ¦гЃ„г‚‹гЃ‹гЃ©гЃ†гЃ‹</returns>
 			bool release() const override {
 				return _button.release();
 			}
 
 			/// <summary>
-			/// —Ј‚і‚к‚Ѕ‚©‚З‚¤‚©‚МЋж“ѕ
+			/// й›ўгЃ•г‚ЊгЃџгЃ‹гЃ©гЃ†гЃ‹гЃ®еЏ–еѕ—
 			/// </summary>
-			/// <returns>—Ј‚і‚к‚ЅЏuЉФ‚©‚З‚¤‚©</returns>
+			/// <returns>й›ўгЃ•г‚ЊгЃџзћ¬й–“гЃ‹гЃ©гЃ†гЃ‹</returns>
 			bool up() const override {
 				return _button.up();
 			}
 
 			/// <summary>
-			/// ‰џ‚і‚к‚Ѕ‚©‚З‚¤‚©‚МЋж“ѕ
+			/// жЉјгЃ•г‚ЊгЃџгЃ‹гЃ©гЃ†гЃ‹гЃ®еЏ–еѕ—
 			/// </summary>
-			/// <returns>‰џ‚і‚к‚ЅЏuЉФ‚©‚З‚¤‚©</returns>
+			/// <returns>жЉјгЃ•г‚ЊгЃџзћ¬й–“гЃ‹гЃ©гЃ†гЃ‹</returns>
 			bool down() const override {
 				return _button.down();
 			}
 
 			/// <summary>
-			/// и‡’l‚рђЭ’и‚·‚й
+			/// й–ѕеЂ¤г‚’иЁ­е®љгЃ™г‚‹
 			/// </summary>
-			/// <param name="value">ђV‚µ‚ўи‡’l</param>
+			/// <param name="value">ж–°гЃ—гЃ„й–ѕеЂ¤</param>
 			void threshold(range<0.0, 1.0> value) {
 				_deadzone = value;
 			}
 
 			/// <summary>
-			/// Њ»ЌЭ‚Ми‡’l‚рЋж“ѕ
+			/// зЏѕењЁгЃ®й–ѕеЂ¤г‚’еЏ–еѕ—
 			/// </summary>
-			/// <returns>“ь—Н‚рЊџ’m‚·‚й‚Ь‚Е‚Ми‡’l(ѓfѓbѓhѓ]Ѓ[ѓ“)</returns>
+			/// <returns>е…ҐеЉ›г‚’ж¤њзџҐгЃ™г‚‹гЃѕгЃ§гЃ®й–ѕеЂ¤(гѓ‡гѓѓгѓ‰г‚ѕгѓјгѓі)</returns>
 			double threshold() const {
 				return _deadzone;
 			}
 
 			/// <summary>
-			/// –ј‘O‚рЋж“ѕ
+			/// еђЌе‰Ќг‚’еЏ–еѕ—
 			/// </summary>
-			/// <returns>ѓgѓЉѓKЃ[‚М–ј‘O</returns>
+			/// <returns>гѓ€гѓЄг‚¬гѓјгЃ®еђЌе‰Ќ</returns>
 			virtual string to_string() const override;
 		};
 		/// <summary>
-		/// ѓQЃ[ѓЂѓpѓbѓh
+		/// г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰
 		/// </summary>
 		class gamepad {
 		private:
@@ -315,111 +315,111 @@ namespace suika {
 			bool _is_use_xinput = true;
 		public:
 			/// <summary>
-			/// Џ\ЋљЏг
+			/// еЌЃе­—дёЉ
 			/// </summary>
 			gamepad_button Up;
 
 			/// <summary>
-			/// Џ\Ћљ‰є
+			/// еЌЃе­—дё‹
 			/// </summary>
 			gamepad_button Down;
 
 			/// <summary>
-			/// Џ\ЋљЌ¶
+			/// еЌЃе­—е·¦
 			/// </summary>
 			gamepad_button Left;
 
 			/// <summary>
-			/// Џ\Ћљ‰E
+			/// еЌЃе­—еЏі
 			/// </summary>
 			gamepad_button Right;
 
 			/// <summary>
-			/// ѓXѓ^Ѓ[ѓgѓ{ѓ^ѓ“
+			/// г‚№г‚їгѓјгѓ€гѓњг‚їгѓі
 			/// </summary>
 			gamepad_button Start;
 
 			/// <summary>
-			/// ѓoѓbѓNѓ{ѓ^ѓ“
+			/// гѓђгѓѓг‚Їгѓњг‚їгѓі
 			/// </summary>
 			gamepad_button Back;
 
 			/// <summary>
-			/// LBѓ{ѓ^ѓ“
+			/// LBгѓњг‚їгѓі
 			/// </summary>
 			gamepad_button LShoulder;
 
 			/// <summary>
-			/// RBѓ{ѓ^ѓ“
+			/// RBгѓњг‚їгѓі
 			/// </summary>
 			gamepad_button RShoulder;
 
 			/// <summary>
-			/// Ќ¶ѓXѓeѓBѓbѓN
+			/// е·¦г‚№гѓ†г‚Јгѓѓг‚Ї
 			/// </summary>
 			gamepad_stick LStick;
 
 			/// <summary>
-			/// ‰EѓXѓeѓBѓbѓN
+			/// еЏіг‚№гѓ†г‚Јгѓѓг‚Ї
 			/// </summary>
 			gamepad_stick RStick;
 
 			/// <summary>
-			/// Ќ¶ѓgѓЉѓKЃ[
+			/// е·¦гѓ€гѓЄг‚¬гѓј
 			/// </summary>
 			gamepad_trigger LTrigger;
 
 			/// <summary>
-			/// ‰EѓgѓЉѓKЃ[
+			/// еЏігѓ€гѓЄг‚¬гѓј
 			/// </summary>
 			gamepad_trigger RTrigger;
 
 			/// <summary>
-			/// Aѓ{ѓ^ѓ“
+			/// Aгѓњг‚їгѓі
 			/// </summary>
 			gamepad_button A;
 
 			/// <summary>
-			/// Bѓ{ѓ^ѓ“
+			/// Bгѓњг‚їгѓі
 			/// </summary>
 			gamepad_button B;
 
 			/// <summary>
-			/// Xѓ{ѓ^ѓ“
+			/// Xгѓњг‚їгѓі
 			/// </summary>
 			gamepad_button X;
 
 			/// <summary>
-			/// Yѓ{ѓ^ѓ“
+			/// Yгѓњг‚їгѓі
 			/// </summary>
 			gamepad_button Y;
 
 			/// <summary>
-			/// ѓQЃ[ѓЂѓpѓbѓh‚МЏу‘Ф
+			/// г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰гЃ®зЉ¶ж…‹
 			/// </summary>
-			/// <returns>Њ»ЌЭ‚МЏ€—ќЏу‘Ф</returns>
+			/// <returns>зЏѕењЁгЃ®е‡¦зђ†зЉ¶ж…‹</returns>
 			pad_states states() const {
 				return _info.states;
 			}
 
 			/// <summary>
-			/// Њ»ЌЭ‰џ‚і‚к‚Д‚ў‚йѓ{ѓ^ѓ“‚рЋж“ѕ
+			/// зЏѕењЁжЉјгЃ•г‚ЊгЃ¦гЃ„г‚‹гѓњг‚їгѓіг‚’еЏ–еѕ—
 			/// </summary>
-			/// <returns>ѓ{ѓ^ѓ“‚Ц‚МЋQЏЖ‚р•Ф‚·</returns>
+			/// <returns>гѓњг‚їгѓігЃёгЃ®еЏ‚з…§г‚’иї”гЃ™</returns>
 			std::vector<std::reference_wrapper<detail::gamepad_button>> pressed_button();
 
 			/// <summary>
-			/// Њ»ЌЭ‚МЏо•с‚рЋж“ѕ‚·‚й
+			/// зЏѕењЁгЃ®жѓ…е ±г‚’еЏ–еѕ—гЃ™г‚‹
 			/// </summary>
-			/// <returns>ѓQЃ[ѓЂѓpѓbѓh‚МЏо•с</returns>
+			/// <returns>г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰гЃ®жѓ…е ±</returns>
 			suika::gamepad::info info() const{
 				return _info;
 			}
 
 			/// <summary>
-			/// xinput‚Й‘О‰ћ‚µ‚Д‚ў‚йЏкЌ‡ЃA“ь—НЏ€—ќ‚Йxinput‚рЋg—p‚·‚й‚©ђЭ’и
+			/// xinputгЃ«еЇѕеїњгЃ—гЃ¦гЃ„г‚‹е ґеђ€гЂЃе…ҐеЉ›е‡¦зђ†гЃ«xinputг‚’дЅїз”ЁгЃ™г‚‹гЃ‹иЁ­е®љ
 			/// </summary>
-			/// <param name="flag">xinput‚рЋg—p‚·‚й‚©</param>
+			/// <param name="flag">xinputг‚’дЅїз”ЁгЃ™г‚‹гЃ‹</param>
 			void enable_xinput(bool flag) {
 				_is_use_xinput = flag;
 				A._is_use_xinput = flag;
@@ -449,9 +449,9 @@ namespace suika {
 			}
 
 			/// <summary>
-			/// ѓQЃ[ѓЂѓpѓbѓh‚М–ј‘O‚рЋж“ѕ
+			/// г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰гЃ®еђЌе‰Ќг‚’еЏ–еѕ—
 			/// </summary>
-			/// <returns>ѓfѓoѓCѓX–ј+ђ»•i–ј</returns>
+			/// <returns>гѓ‡гѓђг‚¤г‚№еђЌ+иЈЅе“ЃеђЌ</returns>
 			string to_string() const{
 				return _info.name;
 			}
@@ -459,26 +459,26 @@ namespace suika {
 	} // namespace detail
 
 	/// <summary>
-	/// ѓQЃ[ѓЂѓpѓbѓh“ь—Н‚ЙЉЦ‚·‚й’и‹`‹y‚СЉЦђ”
+	/// г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰е…ҐеЉ›гЃ«й–ўгЃ™г‚‹е®љзѕ©еЏЉгЃій–ўж•°
 	/// </summary>
 	namespace gamepad {
 		define MAX_JOYPAD_NUM = 16;
 		
 
 		/// <summary>
-		/// ђЪ‘±‚і‚к‚Д‚ў‚йѓQЃ[ѓЂѓpѓbѓh‚рЌДЌXђV‚·‚й
+		/// жЋҐз¶љгЃ•г‚ЊгЃ¦гЃ„г‚‹г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰г‚’е†Ќж›ґж–°гЃ™г‚‹
 		/// </summary>
 		void load_gamepads();
 
 		/// <summary>
-		/// ѓQЃ[ѓЂѓpѓbѓh(0~15)
+		/// г‚Ігѓјгѓ гѓ‘гѓѓгѓ‰(0~15)
 		/// </summary>
 		extern std::array<detail::gamepad, MAX_JOYPAD_NUM> pad;
 
 		/// <summary>
-		/// Њ»ЌЭ‰џ‚і‚к‚Д‚ў‚йѓ{ѓ^ѓ“‚рЋж“ѕ
+		/// зЏѕењЁжЉјгЃ•г‚ЊгЃ¦гЃ„г‚‹гѓњг‚їгѓіг‚’еЏ–еѕ—
 		/// </summary>
-		/// <returns>ѓ{ѓ^ѓ“‚Ц‚МЋQЏЖ‚р•Ф‚·</returns>
+		/// <returns>гѓњг‚їгѓігЃёгЃ®еЏ‚з…§г‚’иї”гЃ™</returns>
 		//std::vector<std::reference_wrapper<detail::gamepad_button>> pressed_button();
 
 	} // namespace gamepad

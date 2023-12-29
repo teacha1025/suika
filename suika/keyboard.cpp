@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+Ôªø// -----------------------------------------------------------
 // 
 // keyboard.
 // 
@@ -314,7 +314,7 @@ namespace suika {
 			NumSlash = detail::key(DIK_DIVIDE, "Num/");
 			NumEnter = detail::key(DIK_NUMPADENTER, "NumEnter");
 			Minus = detail::key(DIK_MINUS, "-");
-			Yen = detail::key(DIK_YEN, "Åè");
+			Yen = detail::key(DIK_YEN, "Ôø•");
 			Caret = detail::key(DIK_PREVTRACK, "^");
 			Period = detail::key(DIK_PERIOD, ".");
 			Slash = detail::key(DIK_SLASH, "/");
@@ -326,7 +326,7 @@ namespace suika {
 			LBracket = detail::key(DIK_LBRACKET, "[");
 			RBracket = detail::key(DIK_RBRACKET, "]");
 			At = detail::key(DIK_AT, "@");
-			Backslash = detail::key(DIK_BACKSLASH, "Å_");
+			Backslash = detail::key(DIK_BACKSLASH, "Ôºº");
 			Comma = detail::key(DIK_COMMA, ",");
 			Kanji = detail::key(DIK_KANJI, "Kanji");
 			Convert = detail::key(DIK_CONVERT, "Convert");

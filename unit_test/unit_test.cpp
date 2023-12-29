@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CppUnitTest.h"
 #include <DirectXMath.h>
 #include <suika.h>
@@ -17,7 +17,7 @@ constexpr float eps_f = 1e-7f;
 
 namespace string_test
 {
-#define CONVERT_TEXT "‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã"
+#define CONVERT_TEXT "ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹"
 	define STR_TEXT = CONVERT_TEXT;
 	define WSTR_TEXT = L"" CONVERT_TEXT;
 	define U8_TEXT = u8"" CONVERT_TEXT;
@@ -157,73 +157,73 @@ namespace string_test
 	public:
 		TEST_METHOD(ReplaceUTF8) {
 			using string = std::u8string;
-			string src = u8"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O";
-			Assert::IsTrue(std::u8string(u8"ABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u8"abc", u8""));
-			Assert::IsTrue(std::u8string(u8"abcabc‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u8"ABC", u8"abc"));
-			Assert::IsTrue(std::u8string(u8"abcABC‚í‚ğ‚ñ123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u8"‚ ‚¢‚¤", u8"‚í‚ğ‚ñ"));
-			Assert::IsTrue(std::u8string(u8"abcABC‚ ‚¢‚¤456‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u8"123", u8"456"));
-			Assert::IsTrue(std::u8string(u8"abcABC‚ ‚¢‚¤123‚S‚T‚Uˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u8"‚P‚Q‚R", u8"‚S‚T‚U"));
-			Assert::IsTrue(std::u8string(u8"abcABC‚ ‚¢‚¤123‚P‚Q‚RlŒÜ˜Z a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u8"ˆê“ñO", u8"lŒÜ˜Z"));
-			Assert::IsTrue(std::u8string(u8"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO abc A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u8"a b c", u8"abc"));
-			Assert::IsTrue(std::u8string(u8"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u8"A B C ", u8""));
-			Assert::IsTrue(std::u8string(u8"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñOabcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO") == suika::replace_string(src, u8" ", u8""));
-			Assert::IsTrue(std::u8string(u8"abcABC‚ i‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  i ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u8"‚¢", u8"i"));
+			string src = u8"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰";
+			Assert::IsTrue(std::u8string(u8"ABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u8"abc", u8""));
+			Assert::IsTrue(std::u8string(u8"abcabcã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u8"ABC", u8"abc"));
+			Assert::IsTrue(std::u8string(u8"abcABCã‚ã‚’ã‚“123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u8"ã‚ã„ã†", u8"ã‚ã‚’ã‚“"));
+			Assert::IsTrue(std::u8string(u8"abcABCã‚ã„ã†456ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u8"123", u8"456"));
+			Assert::IsTrue(std::u8string(u8"abcABCã‚ã„ã†123ï¼”ï¼•ï¼–ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u8"ï¼‘ï¼’ï¼“", u8"ï¼”ï¼•ï¼–"));
+			Assert::IsTrue(std::u8string(u8"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“å››äº”å…­ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u8"ä¸€äºŒä¸‰", u8"å››äº”å…­"));
+			Assert::IsTrue(std::u8string(u8"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ abc A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u8"a b c", u8"abc"));
+			Assert::IsTrue(std::u8string(u8"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u8"A B C ", u8""));
+			Assert::IsTrue(std::u8string(u8"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰") == suika::replace_string(src, u8" ", u8""));
+			Assert::IsTrue(std::u8string(u8"abcABCã‚iã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ i ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u8"ã„", u8"i"));
 		}
 		TEST_METHOD(ReplaceUTF16) {
 			using string = std::u16string;
-			string src = u"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O";
-			Assert::IsTrue(std::u16string(u"ABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u"abc", u""));
-			Assert::IsTrue(std::u16string(u"abcabc‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u"ABC", u"abc"));
-			Assert::IsTrue(std::u16string(u"abcABC‚í‚ğ‚ñ123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u"‚ ‚¢‚¤", u"‚í‚ğ‚ñ"));
-			Assert::IsTrue(std::u16string(u"abcABC‚ ‚¢‚¤456‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u"123", u"456"));
-			Assert::IsTrue(std::u16string(u"abcABC‚ ‚¢‚¤123‚S‚T‚Uˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u"‚P‚Q‚R", u"‚S‚T‚U"));
-			Assert::IsTrue(std::u16string(u"abcABC‚ ‚¢‚¤123‚P‚Q‚RlŒÜ˜Z a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u"ˆê“ñO", u"lŒÜ˜Z"));
-			Assert::IsTrue(std::u16string(u"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO abc A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u"a b c", u"abc"));
-			Assert::IsTrue(std::u16string(u"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u"A B C ", u""));
-			Assert::IsTrue(std::u16string(u"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñOabcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO") == suika::replace_string(src, u" ", u"").c_str());
-			Assert::IsTrue(std::u16string(u"abcABC‚ i‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  i ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, u"‚¢", u"i"));
+			string src = u"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰";
+			Assert::IsTrue(std::u16string(u"ABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u"abc", u""));
+			Assert::IsTrue(std::u16string(u"abcabcã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u"ABC", u"abc"));
+			Assert::IsTrue(std::u16string(u"abcABCã‚ã‚’ã‚“123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u"ã‚ã„ã†", u"ã‚ã‚’ã‚“"));
+			Assert::IsTrue(std::u16string(u"abcABCã‚ã„ã†456ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u"123", u"456"));
+			Assert::IsTrue(std::u16string(u"abcABCã‚ã„ã†123ï¼”ï¼•ï¼–ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u"ï¼‘ï¼’ï¼“", u"ï¼”ï¼•ï¼–"));
+			Assert::IsTrue(std::u16string(u"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“å››äº”å…­ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u"ä¸€äºŒä¸‰", u"å››äº”å…­"));
+			Assert::IsTrue(std::u16string(u"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ abc A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u"a b c", u"abc"));
+			Assert::IsTrue(std::u16string(u"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u"A B C ", u""));
+			Assert::IsTrue(std::u16string(u"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰") == suika::replace_string(src, u" ", u"").c_str());
+			Assert::IsTrue(std::u16string(u"abcABCã‚iã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ i ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, u"ã„", u"i"));
 		}
 		TEST_METHOD(ReplaceUTF32) {
 			using string = std::u32string;
-			string src = U"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O";
-			Assert::IsTrue(std::u32string(U"ABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, U"abc", U""));
-			Assert::IsTrue(std::u32string(U"abcabc‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, U"ABC", U"abc"));
-			Assert::IsTrue(std::u32string(U"abcABC‚í‚ğ‚ñ123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, U"‚ ‚¢‚¤", U"‚í‚ğ‚ñ"));
-			Assert::IsTrue(std::u32string(U"abcABC‚ ‚¢‚¤456‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, U"123", U"456"));
-			Assert::IsTrue(std::u32string(U"abcABC‚ ‚¢‚¤123‚S‚T‚Uˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, U"‚P‚Q‚R", U"‚S‚T‚U"));
-			Assert::IsTrue(std::u32string(U"abcABC‚ ‚¢‚¤123‚P‚Q‚RlŒÜ˜Z a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, U"ˆê“ñO", U"lŒÜ˜Z"));
-			Assert::IsTrue(std::u32string(U"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO abc A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, U"a b c", U"abc"));
-			Assert::IsTrue(std::u32string(U"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, U"A B C ", U""));
-			Assert::IsTrue(std::u32string(U"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñOabcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO") == suika::replace_string(src, U" ", U"").c_str());
-			Assert::IsTrue(std::u32string(U"abcABC‚ i‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  i ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O") == suika::replace_string(src, U"‚¢", U"i"));
+			string src = U"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰";
+			Assert::IsTrue(std::u32string(U"ABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, U"abc", U""));
+			Assert::IsTrue(std::u32string(U"abcabcã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, U"ABC", U"abc"));
+			Assert::IsTrue(std::u32string(U"abcABCã‚ã‚’ã‚“123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, U"ã‚ã„ã†", U"ã‚ã‚’ã‚“"));
+			Assert::IsTrue(std::u32string(U"abcABCã‚ã„ã†456ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, U"123", U"456"));
+			Assert::IsTrue(std::u32string(U"abcABCã‚ã„ã†123ï¼”ï¼•ï¼–ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, U"ï¼‘ï¼’ï¼“", U"ï¼”ï¼•ï¼–"));
+			Assert::IsTrue(std::u32string(U"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“å››äº”å…­ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, U"ä¸€äºŒä¸‰", U"å››äº”å…­"));
+			Assert::IsTrue(std::u32string(U"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ abc A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, U"a b c", U"abc"));
+			Assert::IsTrue(std::u32string(U"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, U"A B C ", U""));
+			Assert::IsTrue(std::u32string(U"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰") == suika::replace_string(src, U" ", U"").c_str());
+			Assert::IsTrue(std::u32string(U"abcABCã‚iã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ i ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰") == suika::replace_string(src, U"ã„", U"i"));
 		}
 		TEST_METHOD(ReplaceString) {
 			using string = std::string;
-			string src = "abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O";
-			Assert::AreEqual("ABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, "abc", "").c_str());
-			Assert::AreEqual("abcabc‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, "ABC", "abc").c_str());
-			Assert::AreEqual("abcABC‚í‚ğ‚ñ123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, "‚ ‚¢‚¤", "‚í‚ğ‚ñ").c_str());
-			Assert::AreEqual("abcABC‚ ‚¢‚¤456‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, "123", "456").c_str());
-			Assert::AreEqual("abcABC‚ ‚¢‚¤123‚S‚T‚Uˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, "‚P‚Q‚R", "‚S‚T‚U").c_str());
-			Assert::AreEqual("abcABC‚ ‚¢‚¤123‚P‚Q‚RlŒÜ˜Z a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, "ˆê“ñO", "lŒÜ˜Z").c_str());
-			Assert::AreEqual("abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO abc A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, "a b c", "abc").c_str());
-			Assert::AreEqual("abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, "A B C ", "").c_str());
-			Assert::AreEqual("abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñOabcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO", suika::replace_string(src, " ", "").c_str());
-			Assert::AreEqual("abcABC‚ i‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  i ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, "‚¢", "i").c_str());
+			string src = "abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰";
+			Assert::AreEqual("ABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, "abc", "").c_str());
+			Assert::AreEqual("abcabcã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, "ABC", "abc").c_str());
+			Assert::AreEqual("abcABCã‚ã‚’ã‚“123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, "ã‚ã„ã†", "ã‚ã‚’ã‚“").c_str());
+			Assert::AreEqual("abcABCã‚ã„ã†456ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, "123", "456").c_str());
+			Assert::AreEqual("abcABCã‚ã„ã†123ï¼”ï¼•ï¼–ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, "ï¼‘ï¼’ï¼“", "ï¼”ï¼•ï¼–").c_str());
+			Assert::AreEqual("abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“å››äº”å…­ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, "ä¸€äºŒä¸‰", "å››äº”å…­").c_str());
+			Assert::AreEqual("abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ abc A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, "a b c", "abc").c_str());
+			Assert::AreEqual("abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, "A B C ", "").c_str());
+			Assert::AreEqual("abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰", suika::replace_string(src, " ", "").c_str());
+			Assert::AreEqual("abcABCã‚iã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ i ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, "ã„", "i").c_str());
 		}
 		TEST_METHOD(ReplaceWString) {
 			using string = std::wstring;
-			string src = L"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O";
-			Assert::AreEqual(L"ABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, L"abc", L"").c_str());
-			Assert::AreEqual(L"abcabc‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, L"ABC", L"abc").c_str());
-			Assert::AreEqual(L"abcABC‚í‚ğ‚ñ123‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, L"‚ ‚¢‚¤", L"‚í‚ğ‚ñ").c_str());
-			Assert::AreEqual(L"abcABC‚ ‚¢‚¤456‚P‚Q‚Rˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, L"123", L"456").c_str());
-			Assert::AreEqual(L"abcABC‚ ‚¢‚¤123‚S‚T‚Uˆê“ñO a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, L"‚P‚Q‚R", L"‚S‚T‚U").c_str());
-			Assert::AreEqual(L"abcABC‚ ‚¢‚¤123‚P‚Q‚RlŒÜ˜Z a b c A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, L"ˆê“ñO", L"lŒÜ˜Z").c_str());
-			Assert::AreEqual(L"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO abc A B C ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, L"a b c", L"abc").c_str());
-			Assert::AreEqual(L"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO a b c ‚  ‚¢ ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, L"A B C ", L"").c_str());
-			Assert::AreEqual(L"abcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñOabcABC‚ ‚¢‚¤123‚P‚Q‚Rˆê“ñO", suika::replace_string(src, L" ", L"").c_str());
-			Assert::AreEqual(L"abcABC‚ i‚¤123‚P‚Q‚Rˆê“ñO a b c A B C ‚  i ‚¤ 1 2 3 ‚P ‚Q ‚R ˆê “ñ O", suika::replace_string(src, L"‚¢", L"i").c_str());
+			string src = L"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰";
+			Assert::AreEqual(L"ABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, L"abc", L"").c_str());
+			Assert::AreEqual(L"abcabcã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, L"ABC", L"abc").c_str());
+			Assert::AreEqual(L"abcABCã‚ã‚’ã‚“123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, L"ã‚ã„ã†", L"ã‚ã‚’ã‚“").c_str());
+			Assert::AreEqual(L"abcABCã‚ã„ã†456ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, L"123", L"456").c_str());
+			Assert::AreEqual(L"abcABCã‚ã„ã†123ï¼”ï¼•ï¼–ä¸€äºŒä¸‰ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, L"ï¼‘ï¼’ï¼“", L"ï¼”ï¼•ï¼–").c_str());
+			Assert::AreEqual(L"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“å››äº”å…­ a b c A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, L"ä¸€äºŒä¸‰", L"å››äº”å…­").c_str());
+			Assert::AreEqual(L"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ abc A B C ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, L"a b c", L"abc").c_str());
+			Assert::AreEqual(L"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c ã‚ ã„ ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, L"A B C ", L"").c_str());
+			Assert::AreEqual(L"abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰abcABCã‚ã„ã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰", suika::replace_string(src, L" ", L"").c_str());
+			Assert::AreEqual(L"abcABCã‚iã†123ï¼‘ï¼’ï¼“ä¸€äºŒä¸‰ a b c A B C ã‚ i ã† 1 2 3 ï¼‘ ï¼’ ï¼“ ä¸€ äºŒ ä¸‰", suika::replace_string(src, L"ã„", L"i").c_str());
 		}
 		};
 	TEST_CLASS(Convert) {
@@ -235,11 +235,11 @@ namespace string_test
 			using string = std::string;
 			using wstring = std::wstring;
 
-			utf8    u8 = u8"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			utf16   u16 = u"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			utf32   u32 = U"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			string  s = "‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			wstring w = L"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
+			utf8    u8 = u8"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			utf16   u16 = u"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			utf32   u32 = U"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			string  s = "ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			wstring w = L"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
 
 			utf8 c16 = suika::to_u8string(u16);
 			utf8 c32 = suika::to_u8string(u32);
@@ -263,11 +263,11 @@ namespace string_test
 			using string = std::string;
 			using wstring = std::wstring;
 
-			utf8    u8 = u8"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			utf16   u16 = u"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			utf32   u32 = U"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			string  s = "‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			wstring w = L"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
+			utf8    u8 = u8"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			utf16   u16 = u"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			utf32   u32 = U"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			string  s = "ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			wstring w = L"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
 
 			auto c8 = suika::to_u16string(u8);
 			auto c32 = suika::to_u16string(u32);
@@ -291,11 +291,11 @@ namespace string_test
 			using string = std::string;
 			using wstring = std::wstring;
 
-			utf8    u8 = u8"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			utf16   u16 = u"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			utf32   u32 = U"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			string  s = "‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			wstring w = L"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
+			utf8    u8 = u8"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			utf16   u16 = u"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			utf32   u32 = U"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			string  s = "ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			wstring w = L"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
 
 			auto c8 = suika::to_u32string(u8);
 			auto c16 = suika::to_u32string(u16);
@@ -314,11 +314,11 @@ namespace string_test
 			using string = std::string;
 			using wstring = std::wstring;
 
-			utf8    u8 = u8"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			utf16   u16 = u"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			utf32   u32 = U"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			string  s = "‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			wstring w = L"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
+			utf8    u8 = u8"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			utf16   u16 = u"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			utf32   u32 = U"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			string  s = "ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			wstring w = L"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
 
 			string c8 = suika::to_string(u8);
 			string c16 = suika::to_string(u16);
@@ -341,11 +341,11 @@ namespace string_test
 			using string = std::string;
 			using wstring = std::wstring;
 
-			utf8    u8 = u8"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			utf16   u16 = u"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			utf32   u32 = U"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			string  s = "‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
-			wstring w = L"‚ ‚ß‚ñ‚Ú ‚ ‚©‚¢‚È@‚ ‚¢‚¤‚¦‚¨-123,‚S‚T‚Uµ”ª‹ã";
+			utf8    u8 = u8"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			utf16   u16 = u"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			utf32   u32 = U"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			string  s = "ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
+			wstring w = L"ã‚ã‚ã‚“ã¼ ã‚ã‹ã„ãªã€€ã‚ã„ã†ãˆãŠ-123,ï¼”ï¼•ï¼–ä¸ƒå…«ä¹";
 
 			wstring c8 = suika::to_wstring(u8);
 			wstring c16 = suika::to_wstring(u16);
@@ -1037,7 +1037,7 @@ namespace math_test {
 			Assert::IsTrue(EQ_F(std::exp(-f), math::exp(-f)));
 
 
-			//45ˆÈ~failed
+			//45ä»¥é™failed
 			i = 40;
 			f = 40.0f;
 			d = 40.0;

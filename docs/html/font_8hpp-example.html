@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.6"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>suika: font.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">suika<span id="projectnumber">&#160;Ver 0.0.5</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.9.6 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('font_8hpp-example.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">font.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<p>文字列描画のサンプル</p>
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">* font</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">*   フォントを使って文字列を描画する</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">*/</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;../include/suika.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacesuika.html">suika</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">//アプリケーションの初期化</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keywordtype">void</span> init() {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="comment">//log.logにログを出力する</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    suika::log.<a id="a0" name="a0"></a><a class="code hl_function" href="classsuika_1_1logger.html#a76deb9fa80cbbe667aa0c07c509591ac">set</a>(<span class="keyword">true</span>, <span class="stringliteral">&quot;log.log&quot;</span>);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="comment">//ウィンドウの設定</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    window::background(palette::yellowgreen);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    window::title(<span class="stringliteral">&quot;APP&quot;</span>);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    window::vsync(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">int</span> main() {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">// 表示する絵文字の定義</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">const</span> <span class="keywordtype">string</span> emoji_list[] = { U<span class="stringliteral">&quot;🍉&quot;</span>, U<span class="stringliteral">&quot;🥝&quot;</span>, U<span class="stringliteral">&quot;🍓&quot;</span>, U<span class="stringliteral">&quot;和&quot;</span>, U<span class="stringliteral">&quot;🚅&quot;</span> };</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// フォントサイズ64のメイリオの淵付きフォントを作成</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a id="_a1" name="_a1"></a><a class="code hl_class" href="classsuika_1_1font.html">font</a> edged_font(<span class="stringliteral">&quot;メイリオ&quot;</span>, 64, <span class="keyword">true</span>, 2, font_weight::extra_bold);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// フォントサイズ64の游明朝の淵なしフォントを作成</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <a class="code hl_class" href="classsuika_1_1font.html">font</a> <a class="code hl_class" href="classsuika_1_1font.html">font</a>(<span class="stringliteral">&quot;游明朝&quot;</span>, 64);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// 文字色白、淵色赤で画面中央に表示</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    edged_font.text(U<span class="stringliteral">&quot;Hello, suika!!&quot;</span>).colored(palette::white, palette::red).centered(edged_font.rect().center()).at(window::center());</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// スイカの絵文字を表示</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_class" href="classsuika_1_1font.html">font</a>.<a id="a2" name="a2"></a><a class="code hl_function" href="classsuika_1_1font.html#a83a63b57469c89d7b6e7313fa1be06b7">text</a>(emoji_list[0]).<a id="a3" name="a3"></a><a class="code hl_function" href="classsuika_1_1font.html#a41cd4d9a0e2d93a326f35748f5821bdf">centered</a>(<a class="code hl_class" href="classsuika_1_1font.html">font</a>.<a id="a4" name="a4"></a><a class="code hl_function" href="classsuika_1_1font.html#a2aff30472d5a14932157428a88805ca4">rect</a>().<a id="a5" name="a5"></a><a class="code hl_function" href="classsuika_1_1detail_1_1ishape.html#a01f3f6505d19efdbc4302377bf2286a9">center</a>()).<a id="a6" name="a6"></a><a class="code hl_function" href="classsuika_1_1font.html#aae8bb760b0d4031c24c0e4e53423ba64">colored</a>(palette::white);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordflow">while</span> (sys::update()) {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">// フォントを表示</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        edged_font.<a id="a7" name="a7"></a><a class="code hl_function" href="classsuika_1_1font.html#a139f163b125c79f47621f13d26c851f5">draw</a>();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="comment">// 左クリックで文字を切り替える</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">if</span> (mouse::Left.down()) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keyword">static</span> <a class="code hl_typedef" href="namespacesuika.html#a85f9d12708ac4df230123ee5604a548a">uint</a> i = 0;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            i++;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            i %= 5;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="comment">// 絵文字をセット</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <a class="code hl_class" href="classsuika_1_1font.html">font</a>.<a class="code hl_function" href="classsuika_1_1font.html#a83a63b57469c89d7b6e7313fa1be06b7">text</a>(emoji_list[i]).<a class="code hl_function" href="classsuika_1_1font.html#a41cd4d9a0e2d93a326f35748f5821bdf">centered</a>(<a class="code hl_class" href="classsuika_1_1font.html">font</a>.<a class="code hl_function" href="classsuika_1_1font.html#a2aff30472d5a14932157428a88805ca4">rect</a>().<a class="code hl_function" href="classsuika_1_1detail_1_1ishape.html#a01f3f6505d19efdbc4302377bf2286a9">center</a>());</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="comment">// マウスの位置にフォントを表示</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <a class="code hl_class" href="classsuika_1_1font.html">font</a>.<a id="a8" name="a8"></a><a class="code hl_function" href="classsuika_1_1font.html#a92cc9ed63ffae5525d33d326c8f532b1">at</a>(mouse::position()).<a class="code hl_function" href="classsuika_1_1font.html#a139f163b125c79f47621f13d26c851f5">draw</a>();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>}</div>
+<div class="ttc" id="aclasssuika_1_1detail_1_1ishape_html_a01f3f6505d19efdbc4302377bf2286a9"><div class="ttname"><a href="classsuika_1_1detail_1_1ishape.html#a01f3f6505d19efdbc4302377bf2286a9">suika::detail::ishape::center</a></div><div class="ttdeci">virtual point&lt; position_type &gt; center() const</div><div class="ttdoc">中心座標の取得</div><div class="ttdef"><b>Definition:</b> draw.h:368</div></div>
+<div class="ttc" id="aclasssuika_1_1font_html"><div class="ttname"><a href="classsuika_1_1font.html">suika::font</a></div><div class="ttdoc">フォント描画に関するクラス</div><div class="ttdef"><b>Definition:</b> font.h:116</div></div>
+<div class="ttc" id="aclasssuika_1_1font_html_a139f163b125c79f47621f13d26c851f5"><div class="ttname"><a href="classsuika_1_1font.html#a139f163b125c79f47621f13d26c851f5">suika::font::draw</a></div><div class="ttdeci">virtual void draw() const</div><div class="ttdoc">テキストを描画する</div></div>
+<div class="ttc" id="aclasssuika_1_1font_html_a2aff30472d5a14932157428a88805ca4"><div class="ttname"><a href="classsuika_1_1font.html#a2aff30472d5a14932157428a88805ca4">suika::font::rect</a></div><div class="ttdeci">virtual suika::rect rect() const</div><div class="ttdoc">矩形のサイズを取得</div></div>
+<div class="ttc" id="aclasssuika_1_1font_html_a41cd4d9a0e2d93a326f35748f5821bdf"><div class="ttname"><a href="classsuika_1_1font.html#a41cd4d9a0e2d93a326f35748f5821bdf">suika::font::centered</a></div><div class="ttdeci">virtual font centered(const vector3&lt; position_type &gt; &amp;center) &amp;&amp;</div><div class="ttdoc">オブジェクトの中心を設定</div><div class="ttdef"><b>Definition:</b> font.h:282</div></div>
+<div class="ttc" id="aclasssuika_1_1font_html_a83a63b57469c89d7b6e7313fa1be06b7"><div class="ttname"><a href="classsuika_1_1font.html#a83a63b57469c89d7b6e7313fa1be06b7">suika::font::text</a></div><div class="ttdeci">virtual font text(const string &amp;text) &amp;&amp;</div><div class="ttdoc">描画する内容を設定</div><div class="ttdef"><b>Definition:</b> font.h:228</div></div>
+<div class="ttc" id="aclasssuika_1_1font_html_a92cc9ed63ffae5525d33d326c8f532b1"><div class="ttname"><a href="classsuika_1_1font.html#a92cc9ed63ffae5525d33d326c8f532b1">suika::font::at</a></div><div class="ttdeci">virtual font at(const vector3&lt; position_type &gt; &amp;position) &amp;&amp;</div><div class="ttdoc">座標を設定</div><div class="ttdef"><b>Definition:</b> font.h:246</div></div>
+<div class="ttc" id="aclasssuika_1_1font_html_aae8bb760b0d4031c24c0e4e53423ba64"><div class="ttname"><a href="classsuika_1_1font.html#aae8bb760b0d4031c24c0e4e53423ba64">suika::font::colored</a></div><div class="ttdeci">virtual font colored(const color_f &amp;color) &amp;&amp;</div><div class="ttdoc">色を設定</div><div class="ttdef"><b>Definition:</b> font.h:640</div></div>
+<div class="ttc" id="aclasssuika_1_1logger_html_a76deb9fa80cbbe667aa0c07c509591ac"><div class="ttname"><a href="classsuika_1_1logger.html#a76deb9fa80cbbe667aa0c07c509591ac">suika::logger::set</a></div><div class="ttdeci">void set(bool output_flag, const string &amp;name=&quot;Log.txt&quot;)</div><div class="ttdoc">ログファイルの設定</div></div>
+<div class="ttc" id="anamespacesuika_html"><div class="ttname"><a href="namespacesuika.html">suika</a></div><div class="ttdoc">suika名前空間</div><div class="ttdef"><b>Definition:</b> animation.h:30</div></div>
+<div class="ttc" id="anamespacesuika_html_a85f9d12708ac4df230123ee5604a548a"><div class="ttname"><a href="namespacesuika.html#a85f9d12708ac4df230123ee5604a548a">suika::uint</a></div><div class="ttdeci">uint32 uint</div><div class="ttdoc">符号なし整数型(32bit)</div><div class="ttdef"><b>Definition:</b> type.h:78</div></div>
+</div><!-- fragment --> </div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
+  </ul>
+</div>
+</body>
+</html>

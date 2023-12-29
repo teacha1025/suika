@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // binary writer
 // 
@@ -31,11 +31,11 @@
 
 namespace suika {
 	/// <summary>
-/// ƒtƒ@ƒCƒ‹‘€ì‚ÉŠÖ‚·‚éŠÖ”AƒNƒ‰ƒXŒQ
+/// ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã«é–¢ã™ã‚‹é–¢æ•°ã€ã‚¯ãƒ©ã‚¹ç¾¤
 /// </summary>
 	namespace filesystem {
 		/// <summary>
-		/// ƒoƒCƒiƒŠƒf[ƒ^‚Ì‘‚İ
+		/// ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿ã®æ›¸è¾¼ã¿
 		/// </summary>
 		class binary_writer {
 		private:
@@ -46,35 +46,35 @@ namespace suika {
 			void close();
 		public:
 			/// <summary>
-			/// ƒ‰ƒCƒ^[‚ğì¬
+			/// ãƒ©ã‚¤ã‚¿ãƒ¼ã‚’ä½œæˆ
 			/// </summary>
-			/// <param name="path">‘‚«‚Şƒtƒ@ƒCƒ‹‚ÌƒpƒX</param>
+			/// <param name="path">æ›¸ãè¾¼ã‚€ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹</param>
 			binary_writer(path_type path);
 			binary_writer(const binary_writer&) = delete;
 
 			/// <summary>
-			///	ƒ€[ƒuƒRƒ“ƒXƒgƒ‰ƒNƒ^
+			///	ãƒ ãƒ¼ãƒ–ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 			/// </summary>
-			/// <param name="writer">ƒ€[ƒuŒ³</param>
+			/// <param name="writer">ãƒ ãƒ¼ãƒ–å…ƒ</param>
 			binary_writer(binary_writer&& writer);
 
 			/// <summary>
-			/// ƒfƒXƒgƒ‰ƒNƒ^
+			/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 			/// </summary>
 			~binary_writer();
 
 			/// <summary>
-			/// ƒoƒCƒiƒŠ‚ğ‘‚«‚Ş
+			/// ãƒã‚¤ãƒŠãƒªã‚’æ›¸ãè¾¼ã‚€
 			/// </summary>
-			/// <param name="source">‘‚«‚Şƒf[ƒ^‚Ö‚Ìƒ|ƒCƒ“ƒ^</param>
-			/// <param name="size">‘‚«‚ŞƒTƒCƒY</param>
+			/// <param name="source">æ›¸ãè¾¼ã‚€ãƒ‡ãƒ¼ã‚¿ã¸ã®ãƒã‚¤ãƒ³ã‚¿</param>
+			/// <param name="size">æ›¸ãè¾¼ã‚€ã‚µã‚¤ã‚º</param>
 			void write(void* source, size_t size);
 
 			/// <summary>
-			/// ƒoƒCƒiƒŠ‚ğ‘‚«‚Ş
+			/// ãƒã‚¤ãƒŠãƒªã‚’æ›¸ãè¾¼ã‚€
 			/// </summary>
-			/// <typeparam name="T">ƒgƒŠƒrƒAƒ‹ƒRƒs[‰Â”\‚Èƒf[ƒ^Œ^</typeparam>
-			/// <param name="source">‘‚«‚Şƒf[ƒ^</param>
+			/// <typeparam name="T">ãƒˆãƒªãƒ“ã‚¢ãƒ«ã‚³ãƒ”ãƒ¼å¯èƒ½ãªãƒ‡ãƒ¼ã‚¿å‹</typeparam>
+			/// <param name="source">æ›¸ãè¾¼ã‚€ãƒ‡ãƒ¼ã‚¿</param>
 			template<concepts::trivially T>
 			void write(T source) {
 				write(&source, sizeof(T));

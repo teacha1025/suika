@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // system
 // 
@@ -55,7 +55,7 @@ namespace suika {
 				static auto _fps_old = std::chrono::system_clock::now(), _old = std::chrono::system_clock::now(), _now = std::chrono::system_clock::now();
 				_now = std::chrono::system_clock::now();
 				if (auto d = std::chrono::duration_cast<std::chrono::nanoseconds>(_now - _fps_old); d >= std::chrono::milliseconds(500)) {
-					//fpsŒv‘ª
+					//fpsè¨ˆæ¸¬
 					now_fps = static_cast<float>(cnt / (d.count() * suffix::NANO));
 					_fps_old = _now;
 					cnt = 0;

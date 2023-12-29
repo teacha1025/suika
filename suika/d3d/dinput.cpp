@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // direct input.
 // 
@@ -168,7 +168,7 @@ namespace suika {
 				}
 
 				for (const auto& pad : gamepad_list) {
-					log_d3d.info(std::format(L"Gamepad({}):{}", pad.states == 0 ? L"—˜—p•s‰Â" : pad.states == 1 ? L"DirectInput" : L"XInput", pad.name.to_wstring()));
+					log_d3d.info(std::format(L"Gamepad({}):{}", pad.states == 0 ? L"åˆ©ç”¨ä¸å¯" : pad.states == 1 ? L"DirectInput" : L"XInput", pad.name.to_wstring()));
 				}
 
 				for (auto& i : gamepad_list) {

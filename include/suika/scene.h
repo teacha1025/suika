@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // scene manager
 // 
@@ -29,46 +29,46 @@ namespace suika {
 	class scene_manager;
 
 	/// <summary>
-	/// ƒV[ƒ“ƒNƒ‰ƒX‚Ìƒx[ƒXƒNƒ‰ƒX
+	/// ã‚·ãƒ¼ãƒ³ã‚¯ãƒ©ã‚¹ã®ãƒ™ãƒ¼ã‚¹ã‚¯ãƒ©ã‚¹
 	/// </summary>
 	class iscene {
 	private:
 		friend scene_manager;
 	protected:
 		/// <summary>
-		/// ƒV[ƒ“ŠÇ—ƒNƒ‰ƒX‚Ö‚Ìƒ|ƒCƒ“ƒ^
+		/// ã‚·ãƒ¼ãƒ³ç®¡ç†ã‚¯ãƒ©ã‚¹ã¸ã®ãƒã‚¤ãƒ³ã‚¿
 		/// </summary>
 		scene_manager* _p_manager= nullptr;
 	public:
 		/// <summary>
-		/// ƒV[ƒ“Ø‚è‘Ö‚¦‚Ì‚ÉÀs
+		/// ã‚·ãƒ¼ãƒ³åˆ‡ã‚Šæ›¿ãˆã®æ™‚ã«å®Ÿè¡Œ
 		/// </summary>
 		virtual void init() {};
 
 		/// <summary>
-		/// –ˆƒtƒŒ[ƒ€Às‚³‚ê‚éXVŠÖ”
+		/// æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å®Ÿè¡Œã•ã‚Œã‚‹æ›´æ–°é–¢æ•°
 		/// </summary>
 		virtual void update() {}
 
 		/// <summary>
-		/// –ˆƒtƒŒ[ƒ€Às‚³‚ê‚é•`‰æŠÖ”
+		/// æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å®Ÿè¡Œã•ã‚Œã‚‹æç”»é–¢æ•°
 		/// </summary>
 		virtual void draw() {};
 
 		/// <summary>
-		/// ƒtƒF[ƒhƒCƒ“‚ÉÀs‚³‚ê‚é•`‰æŠÖ”
+		/// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³æ™‚ã«å®Ÿè¡Œã•ã‚Œã‚‹æç”»é–¢æ•°
 		/// </summary>
-		/// <param name="time">Œo‰ßŠÔ</param>
+		/// <param name="time">çµŒéæ™‚é–“</param>
 		virtual void fadein(double time) {};
 
 		/// <summary>
-		/// ƒtƒF[ƒhƒAƒEƒg‚ÉÀs‚³‚ê‚é•`‰æŠÖ”
+		/// ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆæ™‚ã«å®Ÿè¡Œã•ã‚Œã‚‹æç”»é–¢æ•°
 		/// </summary>
-		/// <param name="time">Œo‰ßŠÔ</param>
+		/// <param name="time">çµŒéæ™‚é–“</param>
 		virtual void fadeout(double time) {};
 
 		/// <summary>
-		/// ƒV[ƒ“I—¹‚Ì‚ÉŒÄ‚Ño‚³‚ê‚éŠÖ”
+		/// ã‚·ãƒ¼ãƒ³çµ‚äº†ã®æ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹é–¢æ•°
 		/// </summary>
 		virtual void fin() {};
 
@@ -76,7 +76,7 @@ namespace suika {
 	};
 
 	/// <summary>
-	/// ƒV[ƒ“ŠÇ—ƒNƒ‰ƒX
+	/// ã‚·ãƒ¼ãƒ³ç®¡ç†ã‚¯ãƒ©ã‚¹
 	/// </summary>
 	class scene_manager {
 	private:
@@ -97,10 +97,10 @@ namespace suika {
 		} _change_state = change_state::none;
 
 		enum class fade_state {
-			none,//ƒtƒF[ƒh‚µ‚Ä‚¢‚È‚¢
-			fadein,//ƒtƒF[ƒhƒCƒ“’†
-			fadeout,//ƒtƒF[ƒhƒAƒEƒg’†
-			fade,//ƒtƒF[ƒhƒCƒ“‚ÆƒtƒF[ƒhƒAƒEƒg‚ğ“¯‚És‚¤
+			none,//ãƒ•ã‚§ãƒ¼ãƒ‰ã—ã¦ã„ãªã„
+			fadein,//ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ä¸­
+			fadeout,//ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆä¸­
+			fade,//ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã¨ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã‚’åŒæ™‚ã«è¡Œã†
 		} _fade_state = fade_state::none;
 
 		double _fade_time = 0;
@@ -109,15 +109,15 @@ namespace suika {
 		bool _is_scene_pushed = false;
 	public:
 		/// <summary>
-		/// V‚µ‚¢ƒV[ƒ“‚ğ“o˜^‚·‚é
+		/// æ–°ã—ã„ã‚·ãƒ¼ãƒ³ã‚’ç™»éŒ²ã™ã‚‹
 		/// </summary>
-		/// <typeparam name="Scene">iscene‚ğŒp³‚µ‚½ƒV[ƒ“ƒNƒ‰ƒX</typeparam>
-		/// <typeparam name="...Args">ƒV[ƒ“ƒNƒ‰ƒX‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”</typeparam>
-		/// <param name="fadeout_time">ƒtƒF[ƒhƒAƒEƒg‚·‚éŠÔ</param>
-		/// <param name="fadein_time">ƒtƒF[ƒhƒCƒ“‚·‚éŠÔ</param>
-		/// <param name="is_fade_sametime">ƒtƒF[ƒhƒCƒ“‚ÆƒtƒF[ƒhƒAƒEƒg‚ğ“¯‚És‚¤‚©</param>
-		/// <param name="...arg">ƒV[ƒ“ƒNƒ‰ƒX‚ÌƒRƒ“ƒXƒgƒ‰ƒNƒ^‚Ìˆø”</param>
-		/// <remarks>ƒtƒF[ƒh‚ğ“¯‚És‚¤ê‡AƒtƒF[ƒhŠÔ‚Ífadeout_time‚ğÌ—p‚·‚é</remarks>
+		/// <typeparam name="Scene">isceneã‚’ç¶™æ‰¿ã—ãŸã‚·ãƒ¼ãƒ³ã‚¯ãƒ©ã‚¹</typeparam>
+		/// <typeparam name="...Args">ã‚·ãƒ¼ãƒ³ã‚¯ãƒ©ã‚¹ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®å¼•æ•°</typeparam>
+		/// <param name="fadeout_time">ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã™ã‚‹æ™‚é–“</param>
+		/// <param name="fadein_time">ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã™ã‚‹æ™‚é–“</param>
+		/// <param name="is_fade_sametime">ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã¨ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã‚’åŒæ™‚ã«è¡Œã†ã‹</param>
+		/// <param name="...arg">ã‚·ãƒ¼ãƒ³ã‚¯ãƒ©ã‚¹ã®ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ã®å¼•æ•°</param>
+		/// <remarks>ãƒ•ã‚§ãƒ¼ãƒ‰ã‚’åŒæ™‚ã«è¡Œã†å ´åˆã€ãƒ•ã‚§ãƒ¼ãƒ‰æ™‚é–“ã¯fadeout_timeã‚’æ¡ç”¨ã™ã‚‹</remarks>
 		template<class Scene, class... Args>
 		void change(double fadeout_time, double fadein_time, bool is_fade_sametime, Args... arg) {
 			_next_scene.reset((iscene*)(new Scene(arg...)));
@@ -135,21 +135,21 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ‘O‚ÌƒV[ƒ“‚É–ß‚é
+		/// å‰ã®ã‚·ãƒ¼ãƒ³ã«æˆ»ã‚‹
 		/// </summary>
-		/// <param name="fadeout_time">ƒtƒF[ƒhƒAƒEƒg‚·‚éŠÔ</param>
-		/// <param name="fadein_time">ƒtƒF[ƒhƒCƒ“‚·‚éŠÔ</param>
-		/// <param name="is_fade_sametime">ƒtƒF[ƒhƒCƒ“‚ÆƒtƒF[ƒhƒAƒEƒg‚ğ“¯‚És‚¤‚©</param>
-		/// <remarks>ƒtƒF[ƒh‚ğ“¯‚És‚¤ê‡AƒtƒF[ƒhŠÔ‚Ífadeout_time‚ğÌ—p‚·‚é</remarks>
+		/// <param name="fadeout_time">ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã™ã‚‹æ™‚é–“</param>
+		/// <param name="fadein_time">ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã™ã‚‹æ™‚é–“</param>
+		/// <param name="is_fade_sametime">ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã¨ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆã‚’åŒæ™‚ã«è¡Œã†ã‹</param>
+		/// <remarks>ãƒ•ã‚§ãƒ¼ãƒ‰ã‚’åŒæ™‚ã«è¡Œã†å ´åˆã€ãƒ•ã‚§ãƒ¼ãƒ‰æ™‚é–“ã¯fadeout_timeã‚’æ¡ç”¨ã™ã‚‹</remarks>
 		void back(double fadeout_time, double fadein_time, bool is_fade_sametime);
 
 		/// <summary>
-		/// ƒV[ƒ“‚ÌXV
+		/// ã‚·ãƒ¼ãƒ³ã®æ›´æ–°
 		/// </summary>
 		void update();
 
 		/// <summary>
-		/// ƒV[ƒ“‚Ì•`‰æ
+		/// ã‚·ãƒ¼ãƒ³ã®æç”»
 		/// </summary>
 		void draw();
 	};

@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // canvas.
 // 
@@ -29,38 +29,38 @@ namespace suika {
 		color bg_color;
 
 		/// <summary>
-		/// ƒLƒƒƒ“ƒoƒX‚ðì¬‚·‚é
+		/// ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚’ä½œæˆã™ã‚‹
 		/// </summary>
-		/// <param name="size">ƒLƒƒƒ“ƒoƒXƒTƒCƒY</param>
-		/// <param name="top">ƒgƒbƒvÀ•W</param>
-		/// <param name="hWnd">ƒEƒBƒ“ƒhƒEID</param>
-		/// <param name="bg">“h‚è‚Â‚Ô‚µ‚ÌF</param>
+		/// <param name="size">ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚µã‚¤ã‚º</param>
+		/// <param name="top">ãƒˆãƒƒãƒ—åº§æ¨™</param>
+		/// <param name="hWnd">ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ID</param>
+		/// <param name="bg">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
 		canvas(const point<float>& size, const point<float>& top, HWND hWnd, const color& bg);
 
 		/// <summary>
-		/// ƒLƒƒƒ“ƒoƒX‚ðƒNƒŠƒA‚·‚é
+		/// ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹
 		/// </summary>
 		void clear() const;
 
 		/// <summary>
-		/// •`‰ææ‚ÌƒLƒƒƒ“ƒoƒX‚ÉÝ’è‚·‚é
+		/// æç”»å…ˆã®ã‚­ãƒ£ãƒ³ãƒã‚¹ã«è¨­å®šã™ã‚‹
 		/// </summary>
 		void set() const;
 
 		/// <summary>
-		/// ƒLƒƒƒ“ƒoƒX‚ðƒEƒBƒ“ƒhƒE‚É“]ŽÊ‚·‚é
+		/// ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚’ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã«è»¢å†™ã™ã‚‹
 		/// </summary>
-		/// <param name="vsync">‚’¼“¯Šú‚ð‚·‚é‚©</param>
+		/// <param name="vsync">åž‚ç›´åŒæœŸã‚’ã™ã‚‹ã‹</param>
 		void present(bool vsync = false) const;
 	};
 
 	/// <summary>
-	/// ƒLƒƒƒ“ƒoƒX‚ðì¬‚·‚é
+	/// ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚’ä½œæˆã™ã‚‹
 	/// </summary>
-	/// <param name="size">ƒLƒƒƒ“ƒoƒXƒTƒCƒY</param>
-	/// <param name="top">ƒgƒbƒvÀ•W</param>
-	/// <param name="hWnd">ƒEƒBƒ“ƒhƒEID</param>
-	/// <param name="fillcolor">“h‚è‚Â‚Ô‚µ‚ÌF</param>
-	/// <returns>ì¬‚³‚ê‚½ƒLƒƒƒ“ƒoƒX</returns>
+	/// <param name="size">ã‚­ãƒ£ãƒ³ãƒã‚¹ã‚µã‚¤ã‚º</param>
+	/// <param name="top">ãƒˆãƒƒãƒ—åº§æ¨™</param>
+	/// <param name="hWnd">ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ID</param>
+	/// <param name="fillcolor">å¡—ã‚Šã¤ã¶ã—ã®è‰²</param>
+	/// <returns>ä½œæˆã•ã‚ŒãŸã‚­ãƒ£ãƒ³ãƒã‚¹</returns>
 	std::shared_ptr<canvas> make_canvas(const point<float>& size, const point<float>& top, HWND hWnd, const color& fillcolor);
 }

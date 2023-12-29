@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // 
 // font draw.
 // 
@@ -49,11 +49,11 @@ namespace suika {
 		set(_cid);
 		if (_edge_enabled) {
 			const auto r = d3d::dwrite::get_size_edged(_font, _text, _size, _edge_width, create_key());
-			return suika::rect({ r.x,r.y }).at(_transition);
+			return suika::rect({ r.x,r.y }).at(_transition).centered({ r.x / 2.0, r.y / 2.0 });
 		}
 		else {
 			const auto r = d3d::dwrite::get_size(_text, _cid);
-			return suika::rect({ r.x,r.y }).at(_transition);
+			return suika::rect({ r.x,r.y }).at(_transition).centered({ r.x / 2.0, r.y / 2.0 });
 		}
 	}
 }  // namespace suika

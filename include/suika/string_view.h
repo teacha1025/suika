@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+﻿// -----------------------------------------------------------
 // 
 // string_view
 // 
@@ -60,20 +60,20 @@ namespace suika {
 		static constexpr size_type npos{ static_cast<size_type>(-1) };
 
 		/// <summary>
-		/// ��̕�����r���[���쐬
+		/// 空の文字列ビューを作成
 		/// </summary>
 		constexpr string_view() noexcept = default;
 
 		/// <summary>
-		/// �R�s�[�R���X�g���N�^
+		/// コピーコンストラクタ
 		/// </summary>
-		/// <param name="str">�R�s�[���镶����r���[</param>
+		/// <param name="str">コピーする文字列ビュー</param>
 		constexpr string_view(const string_view& str) noexcept = default;
 
 		/// <summary>
-		/// UTF32�����񂩂當����r���[���쐬
+		/// UTF32文字列から文字列ビューを作成
 		/// </summary>
-		/// <param name="str">������</param>
+		/// <param name="str">文字列</param>
 		constexpr string_view(const char_t* str) noexcept {
 			_str = string_view_type(str);
 		}
@@ -81,647 +81,647 @@ namespace suika {
 		constexpr string_view(nullptr_t) = delete;
 #endif
 		/// <summary>
-		/// UTF32������Ƃ��̒������當����r���[���쐬
+		/// UTF32文字列とその長さから文字列ビューを作成
 		/// </summary>
-		/// <param name="str">������</param>
-		/// <param name="len">����</param>
+		/// <param name="str">文字列</param>
+		/// <param name="len">長さ</param>
 		constexpr string_view(const char_t* str, size_type len) noexcept {
 			_str = string_view_type(str, len);
 		}
 
 		/// <summary>
-		/// UTF32������C�e���[�^���當����r���[���쐬
+		/// UTF32文字列イテレータから文字列ビューを作成
 		/// </summary>
-		/// <typeparam name="_it">�C�e���[�^</typeparam>
-		/// <typeparam name="_end">�C�e���[�^</typeparam>
-		/// <param name="begin">�n�[</param>
-		/// <param name="end">�I�[</param>
+		/// <typeparam name="_it">イテレータ</typeparam>
+		/// <typeparam name="_end">イテレータ</typeparam>
+		/// <param name="begin">始端</param>
+		/// <param name="end">終端</param>
 		template<class _it, class _end>
 		constexpr string_view(_it begin, _end end) noexcept(noexcept(end - begin)) {
 			_str = string_view_type(begin, end);
 		}
 
 		/// <summary>
-		/// UTF32������r���[���當����r���[���쐬
+		/// UTF32文字列ビューから文字列ビューを作成
 		/// </summary>
-		/// <param name="str">������r���[</param>
+		/// <param name="str">文字列ビュー</param>
 		constexpr string_view(const string_view_type& str) noexcept {
 			_str = str;
 		}
 
 		/// <summary>
-		/// ���[�u�R���X�g���N�^
+		/// ムーブコンストラクタ
 		/// </summary>
-		/// <param name="str">������r���[</param>
+		/// <param name="str">文字列ビュー</param>
 		constexpr string_view(string_view&& str) noexcept = default;
 
 		/// <summary>
-		/// �R�s�[������Z�q
+		/// コピー代入演算子
 		/// </summary>
-		/// <param name="str">������r���[</param>
+		/// <param name="str">文字列ビュー</param>
 		/// <returns></returns>
 		constexpr string_view& operator=(const string_view& str) noexcept = default;
 
 		/// <summary>
-		/// �������ϊ�
+		/// 文字列を変換
 		/// </summary>
-		/// <returns>shift-jis������</returns>
+		/// <returns>shift-jis文字列</returns>
 		NODISCARD str to_string() const;
 
 		/// <summary>
-		/// �������ϊ�
+		/// 文字列を変換
 		/// </summary>
-		/// <returns>���C�h������</returns>
+		/// <returns>ワイド文字列</returns>
 		NODISCARD wstr to_wstring() const;
 
 		/// <summary>
-		/// �������ϊ�
+		/// 文字列を変換
 		/// </summary>
-		/// <returns>UTF8������</returns>
+		/// <returns>UTF8文字列</returns>
 		NODISCARD utf8 to_u8string() const;
 
 		/// <summary>
-		/// �������ϊ�
+		/// 文字列を変換
 		/// </summary>
-		/// <returns>UTF16������</returns>
+		/// <returns>UTF16文字列</returns>
 		NODISCARD utf16 to_u16string() const;
 
 		/// <summary>
-		/// �������ϊ�
+		/// 文字列を変換
 		/// </summary>
-		/// <returns>UTF32������</returns>
+		/// <returns>UTF32文字列</returns>
 		NODISCARD utf32 to_u32string() const;
 
 #pragma region STD_FUNCTION
 		/// <summary>
-		/// �n�[�C�e���[�^���擾
+		/// 始端イテレータを取得
 		/// </summary>
-		/// <returns>�n�[�C�e���[�^</returns>
+		/// <returns>始端イテレータ</returns>
 		NODISCARD constexpr const_iterator begin() const noexcept {
 			return _str.begin();
 		}
 
 		/// <summary>
-		/// �I�[�C�e���[�^���擾
+		/// 終端イテレータを取得
 		/// </summary>
-		/// <returns>�I�[�C�e���[�^</returns>
+		/// <returns>終端イテレータ</returns>
 		NODISCARD constexpr const_iterator end() const noexcept {
 			return _str.end();
 		}
 
 		/// <summary>
-		/// �n�[�C�e���[�^���擾
+		/// 始端イテレータを取得
 		/// </summary>
-		/// <returns>�n�[�C�e���[�^</returns>
+		/// <returns>始端イテレータ</returns>
 		NODISCARD constexpr const_iterator cbegin() const noexcept {
 			return _str.cbegin();
 		}
 
 		/// <summary>
-		/// �I�[�C�e���[�^���擾
+		/// 終端イテレータを取得
 		/// </summary>
-		/// <returns>�I�[�C�e���[�^</returns>
+		/// <returns>終端イテレータ</returns>
 		NODISCARD constexpr const_iterator cend() const noexcept {
 			return _str.cend();
 		}
 
 		/// <summary>
-		/// �t���n�[�C�e���[�^���擾
+		/// 逆順始端イテレータを取得
 		/// </summary>
-		/// <returns>�t���n�[�C�e���[�^</returns>
+		/// <returns>逆順始端イテレータ</returns>
 		NODISCARD constexpr const_reverse_iterator rbegin() const noexcept {
 			return _str.rbegin();
 		}
 
 		/// <summary>
-		/// �t���I�[�C�e���[�^���擾
+		/// 逆順終端イテレータを取得
 		/// </summary>
-		/// <returns>�t���I�[�C�e���[�^</returns>
+		/// <returns>逆順終端イテレータ</returns>
 		NODISCARD constexpr const_reverse_iterator rend() const noexcept {
 			return _str.rend();
 		}
 
 		/// <summary>
-		/// �t���n�[�C�e���[�^���擾
+		/// 逆順始端イテレータを取得
 		/// </summary>
-		/// <returns>�t���n�[�C�e���[�^</returns>
+		/// <returns>逆順始端イテレータ</returns>
 		NODISCARD constexpr const_reverse_iterator crbegin() const noexcept {
 			return _str.crbegin();
 		}
 
 		/// <summary>
-		/// �t���I�[�C�e���[�^���擾
+		/// 逆順終端イテレータを取得
 		/// </summary>
-		/// <returns>�t���I�[�C�e���[�^</returns>
+		/// <returns>逆順終端イテレータ</returns>
 		NODISCARD constexpr const_reverse_iterator crend() const noexcept {
 			return _str.crend();
 		}
 
 		/// <summary>
-		/// ������̒������擾
+		/// 文字列の長さを取得
 		/// </summary>
-		/// <returns>������̒���</returns>
+		/// <returns>文字列の長さ</returns>
 		NODISCARD constexpr size_type size() const noexcept {
 			return _str.size();
 		}
 
 		/// <summary>
-		/// ������̒������擾
+		/// 文字列の長さを取得
 		/// </summary>
-		/// <returns>������̒���</returns>
+		/// <returns>文字列の長さ</returns>
 		NODISCARD constexpr size_type length() const noexcept {
 			return _str.length();
 		}
 
 		/// <summary>
-		/// ������̒������擾
+		/// 文字列の長さを取得
 		/// </summary>
-		/// <returns>������̒���</returns>
+		/// <returns>文字列の長さ</returns>
 		NODISCARD constexpr size_type max_size() const noexcept {
 			return _str.max_size();
 		}
 
 		/// <summary>
-		/// �����񂪋󂩂ǂ������擾
+		/// 文字列が空かどうかを取得
 		/// </summary>
-		/// <returns>�����񂪋󂩂ǂ���</returns>
+		/// <returns>文字列が空かどうか</returns>
 		NODISCARD constexpr bool empty() const noexcept {
 			return _str.empty();
 		}
 		
 		/// <summary>
-		/// �C�ӂ̈ʒu�̕������擾
+		/// 任意の位置の文字を取得
 		/// </summary>
 		/// <param name="pos"></param>
-		/// <returns>pos�Ԗڂ̕���</returns>
+		/// <returns>pos番目の文字</returns>
 		NODISCARD constexpr const_reference operator[](size_type pos) const noexcept {
 			return _str[pos];
 		}
 
 		/// <summary>
-		/// �C�ӂ̈ʒu�̕������擾
+		/// 任意の位置の文字を取得
 		/// </summary>
 		/// <param name="pos"></param>
-		/// <returns>pos�Ԗڂ̕���</returns>
+		/// <returns>pos番目の文字</returns>
 		NODISCARD constexpr const_reference at(size_type pos) const {
 			return _str.at(pos);
 		}
 
 		/// <summary>
-		/// ������̐擪���擾
+		/// 文字列の先頭を取得
 		/// </summary>
-		/// <returns>������̐擪</returns>
+		/// <returns>文字列の先頭</returns>
 		NODISCARD constexpr const_reference front() const noexcept {
 			return _str.front();
 		}
 
 		/// <summary>
-		/// ������̖������擾
+		/// 文字列の末尾を取得
 		/// </summary>
-		/// <returns>������̖���</returns>
+		/// <returns>文字列の末尾</returns>
 		NODISCARD constexpr const_reference back() const noexcept {
 			return _str.back();
 		}
 
 		/// <summary>
-		/// �����z��\�����擾
+		/// 文字配列表現を取得
 		/// </summary>
-		/// <returns>�����z��\��</returns>
+		/// <returns>文字配列表現</returns>
 		NODISCARD constexpr const_pointer data() const noexcept {
 			return _str.data();
 		}
 
 		/// <summary>
-		/// �擪�̕������폜
+		/// 先頭の文字を削除
 		/// </summary>
-		/// <param name="n">�폜���镶����</param>
+		/// <param name="n">削除する文字数</param>
 		NODISCARD constexpr void remove_prefix(size_type n) noexcept {
 			_str.remove_prefix(n);
 		}
 
 		/// <summary>
-		/// �����̕������폜
+		/// 末尾の文字を削除
 		/// </summary>
-		/// <param name="n">�폜���镶����</param>
+		/// <param name="n">削除する文字数</param>
 		NODISCARD constexpr void remove_suffix(size_type n) noexcept {
 			_str.remove_suffix(n);
 		}
 
 		/// <summary>
-		/// ����string_view�ƃf�[�^�����ւ���
+		/// 他のstring_viewとデータを入れ替える
 		/// </summary>
-		/// <param name="str">����ւ���string_view</param>
+		/// <param name="str">入れ替えるstring_view</param>
 		NODISCARD constexpr void swap(string_view& str) noexcept {
 			_str.swap(str._str);
 		}
 
 		/// <summary>
-		/// ���̕�����ɁA���g�̕�������R�s�[����
+		/// 他の文字列に、自身の文字列をコピーする
 		/// </summary>
-		/// <param name="dest">�R�s�[��</param>
-		/// <param name="count">�R�s�[���镶����</param>
-		/// <param name="pos">�R�s�[���镶����̈ʒu</param>
-		/// <returns>�R�s�[����������</returns>
+		/// <param name="dest">コピー先</param>
+		/// <param name="count">コピーする文字数</param>
+		/// <param name="pos">コピーする文字列の位置</param>
+		/// <returns>コピーした文字数</returns>
 		NODISCARD constexpr size_type copy(char_t* dest, size_type count, size_type pos = 0) const {
 			return _str.copy(dest, count, pos);
 		}
 
 		/// <summary>
-		/// ������̈ꕔ���擾
+		/// 文字列の一部を取得
 		/// </summary>
-		/// <param name="pos">�擾���镶����̈ʒu</param>
-		/// <param name="count">�擾���镶����</param>
-		/// <returns>�擾����������</returns>
+		/// <param name="pos">取得する文字列の位置</param>
+		/// <param name="count">取得する文字数</param>
+		/// <returns>取得した文字列</returns>
 		NODISCARD constexpr string_view substr(size_type pos = 0, size_type count = string_view::npos) const {
 			return _str.substr(pos, count);
 		}
 
 		/// <summary>
-		/// ������̔�r
+		/// 文字列の比較
 		/// </summary>
-		/// <param name="str">��r���镶����</param>
-		/// <returns>��r����</returns>
+		/// <param name="str">比較する文字列</param>
+		/// <returns>比較結果</returns>
 		NODISCARD constexpr int compare(string_view str) const noexcept {
 			return _str.compare(str._str);
 		}
 
 		/// <summary>
-		/// ������̔�r
+		/// 文字列の比較
 		/// </summary>
-		/// <param name="pos">��r���镶����̈ʒu</param>
-		/// <param name="count">��r���镶����</param>
-		/// <param name="str">��r���镶����</param>
-		/// <returns>��r����</returns>
+		/// <param name="pos">比較する文字列の位置</param>
+		/// <param name="count">比較する文字数</param>
+		/// <param name="str">比較する文字列</param>
+		/// <returns>比較結果</returns>
 		NODISCARD constexpr int compare(size_type pos, size_type count, string_view str) const {
 			return _str.compare(pos, count, str._str);
 		}
 
 		/// <summary>
-		/// ������̔�r
+		/// 文字列の比較
 		/// </summary>
-		/// <param name="pos">��r���镶����̈ʒu</param>
-		/// <param name="count">��r���镶����</param>
-		/// <param name="str">��r���镶����</param>
-		/// <param name="subpos">��r���镶����̈ʒu</param>
-		/// <param name="subcount">��r���镶����</param>
-		/// <returns>��r����</returns>
+		/// <param name="pos">比較する文字列の位置</param>
+		/// <param name="count">比較する文字数</param>
+		/// <param name="str">比較する文字列</param>
+		/// <param name="subpos">比較する文字列の位置</param>
+		/// <param name="subcount">比較する文字数</param>
+		/// <returns>比較結果</returns>
 		NODISCARD constexpr int compare(size_type pos, size_type count, string_view str, size_type subpos, size_type subcount) const {
 			return _str.compare(pos, count, str._str, subpos, subcount);
 		}
 
 		/// <summary>
-		/// ������̔�r
+		/// 文字列の比較
 		/// </summary>
-		/// <param name="str">��r���镶����</param>
-		/// <returns>��r����</returns>
+		/// <param name="str">比較する文字列</param>
+		/// <returns>比較結果</returns>
 		NODISCARD constexpr int compare(const_pointer str) const {
 			return _str.compare(str);
 		}
 
 		/// <summary>
-		/// ������̔�r
+		/// 文字列の比較
 		/// </summary>
-		/// <param name="pos">��r���镶����̈ʒu</param>
-		/// <param name="count">��r���镶����</param>
-		/// <param name="str">��r���镶����</param>
+		/// <param name="pos">比較する文字列の位置</param>
+		/// <param name="count">比較する文字数</param>
+		/// <param name="str">比較する文字列</param>
 		NODISCARD constexpr int compare(size_type pos, size_type count, const_pointer str) const {
 			return _str.compare(pos, count, str);
 		}
 
 		/// <summary>
-		/// ������̔�r
+		/// 文字列の比較
 		/// </summary>
-		/// <param name="pos">��r���镶����̈ʒu</param>
-		/// <param name="count">��r���镶����</param>
-		/// <param name="str">��r���镶����</param>
-		/// <param name="subcount">��r���镶����</param>
+		/// <param name="pos">比較する文字列の位置</param>
+		/// <param name="count">比較する文字数</param>
+		/// <param name="str">比較する文字列</param>
+		/// <param name="subcount">比較する文字数</param>
 		NODISCARD constexpr int compare(size_type pos, size_type count, const_pointer str, size_type subcount) const {
 			return _str.compare(pos, count, str, subcount);
 		}
 
 		/// <summary>
-		/// �w��̕�����Ŏn�܂邩����
+		/// 指定の文字列で始まるか判定
 		/// </summary>
-		/// <param name="str">���߂̕�����</param>
-		/// <returns>�w��̕�����Ŏn�܂邩</returns>
+		/// <param name="str">初めの文字列</param>
+		/// <returns>指定の文字列で始まるか</returns>
 		NODISCARD constexpr bool starts_with(string_view str) const noexcept {
 			return _str.starts_with(str._str);
 		}
 
 		/// <summary>
-		/// �w��̕�����Ŏn�܂邩����
+		/// 指定の文字列で始まるか判定
 		/// </summary>
-		/// <param name="str">���߂̕���</param>
-		/// <returns>�w��̕�����Ŏn�܂邩</returns>
+		/// <param name="str">初めの文字</param>
+		/// <returns>指定の文字列で始まるか</returns>
 		NODISCARD constexpr bool starts_with(char_t str) const noexcept {
 			return _str.starts_with(str);
 		}
 
 		/// <summary>
-		/// �w��̕�����Ŏn�܂邩����
+		/// 指定の文字列で始まるか判定
 		/// </summary>
-		/// <param name="str">���߂̕�����</param>
-		/// <returns>�w��̕�����Ŏn�܂邩</returns>
+		/// <param name="str">初めの文字列</param>
+		/// <returns>指定の文字列で始まるか</returns>
 		NODISCARD constexpr bool starts_with(const_pointer str) const noexcept {
 			return _str.starts_with(str);
 		}
 
 		/// <summary>
-		/// �w��̕�����ŏI��邩����
+		/// 指定の文字列で終わるか判定
 		/// </summary>
-		/// <param name="str">�I���̕�����</param>
-		/// <returns>�w��̕�����ŏI��邩</returns>
+		/// <param name="str">終わりの文字列</param>
+		/// <returns>指定の文字列で終わるか</returns>
 		NODISCARD constexpr bool ends_with(string_view str) const noexcept {
 			return _str.ends_with(str._str);
 		}
 
 		/// <summary>
-		/// �w��̕�����ŏI��邩����
+		/// 指定の文字列で終わるか判定
 		/// </summary>
-		/// <param name="str">�I���̕���</param>
-		/// <returns>�w��̕�����ŏI��邩</returns>
+		/// <param name="str">終わりの文字</param>
+		/// <returns>指定の文字列で終わるか</returns>
 		NODISCARD constexpr bool ends_with(char_t str) const noexcept {
 			return _str.ends_with(str);
 		}
 
 		/// <summary>
-		/// �w��̕�����ŏI��邩����
+		/// 指定の文字列で終わるか判定
 		/// </summary>
-		/// <param name="str">�I���̕�����</param>
-		/// <returns>�w��̕�����ŏI��邩</returns>
+		/// <param name="str">終わりの文字列</param>
+		/// <returns>指定の文字列で終わるか</returns>
 		NODISCARD constexpr bool ends_with(const_pointer str) const noexcept {
 			return _str.ends_with(str);
 		}
 
 		/// <summary>
-		/// �w��̕�������܂ނ�����
+		/// 指定の文字列を含むか判定
 		/// </summary>
-		/// <param name="str">�܂ޕ�����</param>
-		/// <returns>�w��̕�������܂ނ�</returns>
+		/// <param name="str">含む文字列</param>
+		/// <returns>指定の文字列を含むか</returns>
 		NODISCARD constexpr bool contains(string_view str) const noexcept {
 			return _str.find(str._str) != string_view::npos;
 		}
 
 		/// <summary>
-		/// �w��̕������܂ނ�����
+		/// 指定の文字を含むか判定
 		/// </summary>
-		/// <param name="str">�܂ޕ���</param>
-		/// <returns>�w��̕������܂ނ�</returns>
+		/// <param name="str">含む文字</param>
+		/// <returns>指定の文字を含むか</returns>
 		NODISCARD constexpr bool contains(char_t str) const noexcept {
 			return _str.find(str) != string_view::npos;
 		}
 
 		/// <summary>
-		/// �w��̕�������܂ނ�����
+		/// 指定の文字列を含むか判定
 		/// </summary>
-		/// <param name="str">�܂ޕ�����</param>
-		/// <returns>�w��̕�������܂ނ�</returns>
+		/// <param name="str">含む文字列</param>
+		/// <returns>指定の文字列を含むか</returns>
 		NODISCARD constexpr bool contains(const_pointer str) const {
 			return _str.find(str) != string_view::npos;
 		}
 
 		/// <summary>
-		/// �w��̕����������
+		/// 指定の文字列を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos����A*this�Ɋ܂܂�镔��������str���ŏ��Ɍ����ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posから、*thisに含まれる部分文字列strが最初に現れる位置</returns>
 		NODISCARD constexpr size_type find(string_view str, size_type pos = 0) const noexcept {
 			return _str.find(str._str, pos);
 		}
 
 		/// <summary>
-		/// �w��̕����������
+		/// 指定の文字列を検索
 		/// </summary>
-		/// <param name="c">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos����A*this�Ɋ܂܂�镶��c���ŏ��Ɍ����ʒu</returns>
+		/// <param name="c">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posから、*thisに含まれる文字cが最初に現れる位置</returns>
 		NODISCARD constexpr size_type find(char_t c, size_type pos = 0) const noexcept {
 			return _str.find(c, pos);
 		}
 
 		/// <summary>
-		/// �w��̕����������
+		/// 指定の文字列を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <param name="n">�������镶����</param>
-		/// <returns> �w�肵���ʒupos����A*this�Ɋ܂܂�镔��������str�̐擪n�������ŏ��Ɍ����ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <param name="n">検索する文字数</param>
+		/// <returns> 指定した位置posから、*thisに含まれる部分文字列strの先頭n文字が最初に現れる位置</returns>
 		NODISCARD constexpr size_type find(const_pointer str, size_type pos, size_type n) const noexcept {
 			return _str.find(str, pos, n);
 		}
 
 		/// <summary>
-		/// �w��̕����������
+		/// 指定の文字列を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos����A*this�Ɋ܂܂�镔��������str���ŏ��Ɍ����ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posから、*thisに含まれる部分文字列strが最初に現れる位置</returns>
 		NODISCARD constexpr size_type find(const_pointer str, size_type pos) const noexcept {
 			return _str.find(str, pos);
 		}
 
 		/// <summary>
-		/// �Ō�Ɍ����w�蕶���������
+		/// 最後に現れる指定文字列を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos���O�ŁA*this�Ɋ܂܂�镔��������str���Ō�Ɍ����ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posより前で、*thisに含まれる部分文字列strが最後に現れる位置</returns>
 		NODISCARD constexpr size_type rfind(string_view str, size_type pos) const noexcept {
 			return _str.rfind(str._str, pos);
 		}
 
 		/// <summary>
-		/// �Ō�Ɍ����w�蕶���������
+		/// 最後に現れる指定文字列を検索
 		/// </summary>
-		/// <param name="c">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos���O�ŁA*this�Ɋ܂܂�镶��c���Ō�Ɍ����ʒu</returns>
+		/// <param name="c">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posより前で、*thisに含まれる文字cが最後に現れる位置</returns>
 		NODISCARD constexpr size_type rfind(char_t c, size_type pos) const noexcept {
 			return _str.rfind(c, pos);
 		}
 
 		/// <summary>
-		/// �Ō�Ɍ����w�蕶���������
+		/// 最後に現れる指定文字列を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <param name="n">�������镶����</param>
-		/// <returns>�w�肵���ʒupos���O�ŁA*this�Ɋ܂܂�镔��������str�̐擪n�������Ō�Ɍ����ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <param name="n">検索する文字数</param>
+		/// <returns>指定した位置posより前で、*thisに含まれる部分文字列strの先頭n文字が最後に現れる位置</returns>
 		NODISCARD constexpr size_type rfind(const_pointer str, size_type pos, size_type n) const noexcept {
 			return _str.rfind(str, pos);
 		}
 
 		/// <summary>
-		/// �Ō�Ɍ����w�蕶���������
+		/// 最後に現れる指定文字列を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos���O�ŁA*this�Ɋ܂܂�镔��������str���Ō�Ɍ����ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posより前で、*thisに含まれる部分文字列strが最後に現れる位置</returns>
 		NODISCARD constexpr size_type rfind(const_pointer str, size_type pos = 0) const noexcept{
 			return _str.rfind(str, pos);
 		}
 
 		/// <summary>
-		/// �ŏ��Ɍ����w�蕶��������
+		/// 最初に現れる指定文字を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos����A������str���̂����ꂩ�̕������ŏ��Ɍ����ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posから、文字列str内のいずれかの文字が最初に現れる位置</returns>
 		NODISCARD constexpr size_type find_first_of(string_view str, size_type pos = 0) const noexcept {
 			return _str.find_first_of(str._str, pos);
 		}
 
 		/// <summary>
-		/// �ŏ��Ɍ����w�蕶��������
+		/// 最初に現れる指定文字を検索
 		/// </summary>
-		/// <param name="c">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos����A����c���ŏ��Ɍ����ʒu</returns>
+		/// <param name="c">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posから、文字cが最初に現れる位置</returns>
 		NODISCARD constexpr size_type find_first_of(char_t c, size_type pos = 0) const noexcept {
 			return _str.find_first_of(c, pos);
 		}
 
 		/// <summary>
-		/// �ŏ��Ɍ����w�蕶��������
+		/// 最初に現れる指定文字を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <param name="n">�������镶����</param>
-		/// <returns> �w�肵���ʒupos����A������str�̐擪n�����̂����ꂩ�̕������ŏ��Ɍ����ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <param name="n">検索する文字数</param>
+		/// <returns> 指定した位置posから、文字列strの先頭n文字のいずれかの文字が最初に現れる位置</returns>
 		NODISCARD constexpr size_type find_first_of(const_pointer str, size_type pos, size_type n) const noexcept {
 			return _str.find_first_of(str, pos, n);
 		}
 
 		/// <summary>
-		/// �ŏ��Ɍ����w�蕶��������
+		/// 最初に現れる指定文字を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos����A������str���̂����ꂩ�̕������ŏ��Ɍ����ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posから、文字列str内のいずれかの文字が最初に現れる位置</returns>
 		NODISCARD constexpr size_type find_first_of(const_pointer str, size_type pos) const noexcept {
 			return _str.find_first_of(str, pos);
 		}
 
 		/// <summary>
-		/// �Ō�Ɍ����w�蕶��������
+		/// 最後に現れる指定文字を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos���O�ŁA������str���̂����ꂩ�̕������Ō�Ɍ����ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posより前で、文字列str内のいずれかの文字が最後に現れる位置</returns>
 		NODISCARD constexpr size_type find_last_of(string_view str, size_type pos = 0) const noexcept {
 			return _str.find_last_of(str._str, pos);
 		}
 
 		/// <summary>
-		/// �Ō�Ɍ����w�蕶��������
+		/// 最後に現れる指定文字を検索
 		/// </summary>
-		/// <param name="c">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos���O�ŁA����c���Ō�Ɍ����ʒu</returns>
+		/// <param name="c">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posより前で、文字cが最後に現れる位置</returns>
 		NODISCARD constexpr size_type find_last_of(char_t c, size_type pos = 0) const noexcept {
 			return _str.find_last_of(c, pos);
 		}
 
 		/// <summary>
-		/// �Ō�Ɍ����w�蕶��������
+		/// 最後に現れる指定文字を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <param name="n">�������镶����</param>
-		/// <returns> �w�肵���ʒupos���O�ŁA������str�̐擪n�����̂����ꂩ�̕������Ō�Ɍ����ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <param name="n">検索する文字数</param>
+		/// <returns> 指定した位置posより前で、文字列strの先頭n文字のいずれかの文字が最後に現れる位置</returns>
 		NODISCARD constexpr size_type find_last_of(const_pointer str, size_type pos, size_type n) const noexcept {
 			return _str.find_last_of(str, pos, n);
 		}
 
 		/// <summary>
-		/// �Ō�Ɍ����w�蕶��������
+		/// 最後に現れる指定文字を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos���O�ŁA������str���̂����ꂩ�̕������Ō�Ɍ����ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posより前で、文字列str内のいずれかの文字が最後に現れる位置</returns>
 		NODISCARD constexpr size_type find_last_of(const_pointer str, size_type pos) const noexcept {
 			return _str.find_last_of(str, pos);
 		}
 
 		/// <summary>
-		/// �ŏ��Ɍ����w�蕶��������
+		/// 最初に現れる指定文字を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos����A������str���̂�����̕����ɂ���v���Ȃ��ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posから、文字列str内のいずれの文字にも一致しない位置</returns>
 		NODISCARD constexpr size_type find_first_not_of(string_view str, size_type pos = 0) const noexcept {
 			return _str.find_first_not_of(str._str, pos);
 		}
 
 		/// <summary>
-		/// �ŏ��Ɍ����w�蕶��������
+		/// 最初に現れる指定文字を検索
 		/// </summary>
-		/// <param name="c">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos����A����c�Ɉ�v���Ȃ��ŏ��̈ʒu</returns>
+		/// <param name="c">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posから、文字cに一致しない最初の位置</returns>
 		NODISCARD constexpr size_type find_first_not_of(char_t c, size_type pos = 0) const noexcept {
 			return _str.find_first_not_of(c, pos);
 		}
 
 		/// <summary>
-		/// �ŏ��Ɍ����w�蕶��������
+		/// 最初に現れる指定文字を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <param name="n">�������镶����</param>
-		/// <returns> �w�肵���ʒupos����A������str�̐擪n�����̂����ꂩ�̕����ɂ���v���Ȃ��ŏ��̈ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <param name="n">検索する文字数</param>
+		/// <returns> 指定した位置posから、文字列strの先頭n文字のいずれかの文字にも一致しない最初の位置</returns>
 		NODISCARD constexpr size_type find_first_not_of(const_pointer str, size_type pos, size_type n) const noexcept {
 			return _str.find_first_not_of(str, pos, n);
 		}
 
 		/// <summary>
-		/// �ŏ��Ɍ����w�蕶��������
+		/// 最初に現れる指定文字を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos����A������str���̂����ꂩ�̕����ɂ���v���Ȃ��ŏ��̈ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posから、文字列str内のいずれかの文字にも一致しない最初の位置</returns>
 		NODISCARD constexpr size_type find_first_not_of(const_pointer str, size_type pos) const noexcept {
 			return _str.find_first_not_of(str, pos);
 		}
 
 		/// <summary>
-		/// �Ō�Ɍ����w�蕶��������
+		/// 最後に現れる指定文字を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos���O�ŁA������str���̂����ꂩ�̕����ɂ���v���Ȃ��Ō�̈ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posより前で、文字列str内のいずれかの文字にも一致しない最後の位置</returns>
 		NODISCARD constexpr size_type find_last_not_of(string_view str, size_type pos = 0) const noexcept {
 			return _str.find_last_not_of(str._str, pos);
 		}
 
 		/// <summary>
-		/// �Ō�Ɍ����w�蕶��������
+		/// 最後に現れる指定文字を検索
 		/// </summary>
-		/// <param name="c">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos���O�ŁA����c�Ɉ�v���Ȃ��Ō�̈ʒu</returns>
+		/// <param name="c">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posより前で、文字cに一致しない最後の位置</returns>
 		NODISCARD constexpr size_type find_last_not_of(char_t c, size_type pos = 0) const noexcept {
 			return _str.find_last_not_of(c, pos);
 		}
 
 		/// <summary>
-		/// �Ō�Ɍ����w�蕶��������
+		/// 最後に現れる指定文字を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <param name="n">�������镶����</param>
-		/// <returns> �w�肵���ʒupos���O�ŁA������str�̐擪n�����̂����ꂩ�̕����ɂ���v���Ȃ��Ō�̈ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <param name="n">検索する文字数</param>
+		/// <returns> 指定した位置posより前で、文字列strの先頭n文字のいずれかの文字にも一致しない最後の位置</returns>
 		NODISCARD constexpr size_type find_last_not_of(const_pointer str, size_type pos, size_type n) const noexcept {
 			return _str.find_last_not_of(str, pos, n);
 		}
 
 		/// <summary>
-		/// �Ō�Ɍ����w�蕶��������
+		/// 最後に現れる指定文字を検索
 		/// </summary>
-		/// <param name="str">�������镶����</param>
-		/// <param name="pos">�������镶����̈ʒu</param>
-		/// <returns>�w�肵���ʒupos���O�ŁA������str���̂����ꂩ�̕����ɂ���v���Ȃ��Ō�̈ʒu</returns>
+		/// <param name="str">検索する文字列</param>
+		/// <param name="pos">検索する文字列の位置</param>
+		/// <returns>指定した位置posより前で、文字列str内のいずれかの文字にも一致しない最後の位置</returns>
 		NODISCARD constexpr size_type find_last_not_of(const_pointer str, size_type pos) const noexcept {
 			return _str.find_last_not_of(str, pos);
 		}
@@ -729,63 +729,63 @@ namespace suika {
 #if __cpp_lib_three_way_comparison
 
 		/// <summary>
-		/// 3����r���Z�q
+		/// 3項比較演算子
 		/// </summary>
-		/// <param name="rhs">��r�Ώ�</param>
-		/// <returns>��r����</returns>
+		/// <param name="rhs">比較対象</param>
+		/// <returns>比較結果</returns>
 		NODISCARD constexpr std::strong_ordering operator <=>(const string_view& rhs) const noexcept = default;
 
 #else
 		/// <summary>
-		/// ��r���Z�q
+		/// 比較演算子
 		/// </summary>
-		/// <param name="rhs">��r�Ώ�</param>
-		/// <returns>��r����</returns>
+		/// <param name="rhs">比較対象</param>
+		/// <returns>比較結果</returns>
 		NODISCARD friend constexpr bool operator ==(string_view lhs, string_view rhs) noexcept {
 			return (lhs.compare(rhs) == 0);
 		}
 
 		/// <summary>
-		/// ��r���Z�q
+		/// 比較演算子
 		/// </summary>
-		/// <param name="rhs">��r�Ώ�</param>
-		/// <returns>��r����</returns>
+		/// <param name="rhs">比較対象</param>
+		/// <returns>比較結果</returns>
 		NODISCARD friend constexpr bool operator !=(string_view lhs, string_view rhs) noexcept {
 			return (lhs.compare(rhs) != 0);
 		}
 
 		/// <summary>
-		/// ��r���Z�q
+		/// 比較演算子
 		/// </summary>
-		/// <param name="rhs">��r�Ώ�</param>
-		/// <returns>��r����</returns>
+		/// <param name="rhs">比較対象</param>
+		/// <returns>比較結果</returns>
 		NODISCARD friend constexpr bool operator <(string_view lhs, string_view rhs) noexcept {
 			return (lhs.compare(rhs) < 0);
 		}
 
 		/// <summary>
-		/// ��r���Z�q
+		/// 比較演算子
 		/// </summary>
-		/// <param name="rhs">��r�Ώ�</param>
-		/// <returns>��r����</returns>
+		/// <param name="rhs">比較対象</param>
+		/// <returns>比較結果</returns>
 		NODISCARD friend constexpr bool operator <=(string_view lhs, string_view rhs) noexcept {
 			return (lhs.compare(rhs) <= 0);
 		}
 
 		/// <summary>
-		/// ��r���Z�q
+		/// 比較演算子
 		/// </summary>
-		/// <param name="rhs">��r�Ώ�</param>
-		/// <returns>��r����</returns>
+		/// <param name="rhs">比較対象</param>
+		/// <returns>比較結果</returns>
 		NODISCARD friend constexpr bool operator >(string_view lhs, string_view rhs) noexcept {
 			return (lhs.compare(rhs) > 0);
 		}
 
 		/// <summary>
-		/// ��r���Z�q
+		/// 比較演算子
 		/// </summary>
-		/// <param name="rhs">��r�Ώ�</param>
-		/// <returns>��r����</returns>
+		/// <param name="rhs">比較対象</param>
+		/// <returns>比較結果</returns>
 		NODISCARD friend constexpr bool operator >=(string_view lhs, string_view rhs) noexcept {
 			return (lhs.compare(rhs) >= 0);
 		}

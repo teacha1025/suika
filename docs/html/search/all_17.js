@@ -9,6 +9,6 @@ var searchData=
   ['wheel_6',['wheel',['../namespacesuika_1_1mouse.html#acb8d5b2cdb912299cabd9754c96a5a31',1,'suika::mouse']]],
   ['white_7',['white',['../namespacesuika_1_1palette.html#ab8acffb8b9a03fdc06c370d7b2f38ecc',1,'suika::palette']]],
   ['whitesmoke_8',['whitesmoke',['../namespacesuika_1_1palette.html#aa6dc331cedb0e7989cae18c92a5ba686',1,'suika::palette']]],
-  ['write_9',['write',['../classsuika_1_1filesystem_1_1binary__writer.html#ada70df63e03296c8a714353a4b69cfd2',1,'suika::filesystem::binary_writer::write(void *source, size_t size)'],['../classsuika_1_1filesystem_1_1binary__writer.html#ab5ca43ae806f66bff134e404972e1a8c',1,'suika::filesystem::binary_writer::write(T source)'],['../classsuika_1_1filesystem_1_1text__writer.html#a56ae49dbce12ad25dd624b19007410a6',1,'suika::filesystem::text_writer::write(string_view text)']]],
-  ['writeln_10',['writeln',['../classsuika_1_1filesystem_1_1text__writer.html#a47cfbc951756256066216a2428b2103d',1,'suika::filesystem::text_writer']]]
+  ['write_9',['write',['../classsuika_1_1filesystem_1_1binary__writer.html#ada70df63e03296c8a714353a4b69cfd2',1,'suika::filesystem::binary_writer::write(void *source, size_t size)'],['../classsuika_1_1filesystem_1_1binary__writer.html#ab5ca43ae806f66bff134e404972e1a8c',1,'suika::filesystem::binary_writer::write(T source)'],['../classsuika_1_1filesystem_1_1text__writer.html#a7bf6086cc2540e7c03a0c0448228b8ce',1,'suika::filesystem::text_writer::write(string text)']]],
+  ['writeln_10',['writeln',['../classsuika_1_1filesystem_1_1text__writer.html#a1804198271bf25cb0a11b194e0869fe7',1,'suika::filesystem::text_writer']]]
 ];

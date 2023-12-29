@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // text reader
 // 
@@ -30,12 +30,12 @@
 
 namespace suika {
 	/// <summary>
-	/// ƒtƒ@ƒCƒ‹‘€ì‚ÉŠÖ‚·‚éŠÖ”AƒNƒ‰ƒXŒQ
+	/// ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã«é–¢ã™ã‚‹é–¢æ•°ã€ã‚¯ãƒ©ã‚¹ç¾¤
 	/// </summary>
 	namespace filesystem {
 		
 		/// <summary>
-		/// •¶š—ñ“Ç‚İ‚İ
+		/// æ–‡å­—åˆ—èª­ã¿è¾¼ã¿
 		/// </summary>
 		class text_reader {
 		private:
@@ -47,28 +47,28 @@ namespace suika {
 			std::ifstream _file;
 		public:
 			/// <summary>
-			/// ƒŠ[ƒ_[‚ğì¬
+			/// ãƒªãƒ¼ãƒ€ãƒ¼ã‚’ä½œæˆ
 			/// </summary>
-			/// <param name="path">ƒtƒ@ƒCƒ‹‚Ö‚ÌƒpƒX</param>
-			/// <param name="encode">‘‚«‚İ‚Ì•¶š—ñƒGƒ“ƒR[ƒh</param>
-			/// <param name="nl">‰üs•¶š‚Ìí—Ş</param>
+			/// <param name="path">ãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®ãƒ‘ã‚¹</param>
+			/// <param name="encode">æ›¸ãè¾¼ã¿æ™‚ã®æ–‡å­—åˆ—ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‰</param>
+			/// <param name="nl">æ”¹è¡Œæ–‡å­—ã®ç¨®é¡</param>
 			text_reader(path_type path, encode encode = encode::utf8, new_line nl = new_line::crlf);
 			
 			/// <summary>
-			/// ƒfƒXƒgƒ‰ƒNƒ^
+			/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 			/// </summary>
 			~text_reader();
 
 			/// <summary>
-			/// ƒeƒLƒXƒg‚ğ“Ç‚İ‚Ş
+			/// ãƒ†ã‚­ã‚¹ãƒˆã‚’èª­ã¿è¾¼ã‚€
 			/// </summary>
-			/// <returns>“Ç‚İ‚ñ‚¾•¶š—ñ</returns>
+			/// <returns>èª­ã¿è¾¼ã‚“ã æ–‡å­—åˆ—</returns>
 			string read();
 
 			/// <summary>
-			/// ƒeƒLƒXƒg‚ğ“Ç‚İ‚ñ‚Å1s‚¸‚Â‚É•ªŠ„‚·‚é
+			/// ãƒ†ã‚­ã‚¹ãƒˆã‚’èª­ã¿è¾¼ã‚“ã§1è¡Œãšã¤ã«åˆ†å‰²ã™ã‚‹
 			/// </summary>
-			/// <returns>1s‚¸‚Â‚Ì•¶š—ñ</returns>
+			/// <returns>1è¡Œãšã¤ã®æ–‡å­—åˆ—</returns>
 			std::vector<string> readln();
 		};
 	}

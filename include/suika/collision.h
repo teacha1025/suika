@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // shape collision
 // 
@@ -32,156 +32,156 @@ namespace suika {
 		bool collision(const point<double>& a, const rect& b);
 	}
 	/// <summary>
-	/// 2ŸŒ³}Œ`“¯m‚Ì“–‚½‚è”»’è
+	/// 2æ¬¡å…ƒå›³å½¢åŒå£«ã®å½“ãŸã‚Šåˆ¤å®š
 	/// </summary>
 	namespace collision_2d {
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		template<concepts::numbers T>
 		bool collision(const point<T>& a, const point<T>& b) {
 			return a == b;
 		}
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		template<concepts::numbers T>
 		bool collision(const point<T>& a, const circle& b) {
 			return detail::collision(a, b);
 		}
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		template<concepts::numbers T>
 		bool collision(const point<T>& a, const line& b) {
 			return detail::collision(a, b);
 		}
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		template<concepts::numbers T>
 		bool collision(const point<T>& a, const rect& b) {
 			return detail::collision(a, b);
 		}
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		bool collision(const circle& a, const circle& b);
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		bool collision(const circle& a, const line& b);
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		bool collision(const circle& a, const rect& b);
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		bool collision(const line& a, const line& b);
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		bool collision(const line& a, const rect& b);
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		bool collision(const rect& a, const rect& b);
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		template<concepts::numbers T>
 		bool collision(const circle& a, const point<T>& b) {
 			return collision(b, a);
 		}
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		template<concepts::numbers T>
 		bool collision(const line& a, const point<T>& b) {
 			return collision(b, a);
 		}
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		template<concepts::numbers T>
 		bool collision(const rect& a, const point<T>& b) {
 			return collision(b, a);
 		}
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		bool collision(const line& a, const circle& b);
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		bool collision(const rect& a, const circle& b);
 
 		/// <summary>
-		/// “–‚½‚è”»’è‚ğæ“¾
+		/// å½“ãŸã‚Šåˆ¤å®šã‚’å–å¾—
 		/// </summary>
-		/// <param name="a">}Œ`A</param>
-		/// <param name="b">}Œ`B</param>
-		/// <returns>2‚Â‚Ì}Œ`A,B‚ªÚG‚µ‚Ä‚¢‚é‚©</returns>
+		/// <param name="a">å›³å½¢A</param>
+		/// <param name="b">å›³å½¢B</param>
+		/// <returns>2ã¤ã®å›³å½¢A,BãŒæ¥è§¦ã—ã¦ã„ã‚‹ã‹</returns>
 		bool collision(const rect& a, const line& b);
 	}
 }

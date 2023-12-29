@@ -1,5 +1,7 @@
 var NAVTREEINDEX4 =
 {
+"functions_func_d.html":[3,3,1,3],
+"functions_func_e.html":[3,3,1,4],
 "functions_func_f.html":[3,3,1,5],
 "functions_func_g.html":[3,3,1,6],
 "functions_func_h.html":[3,3,1,7],
@@ -41,8 +43,10 @@ var NAVTREEINDEX4 =
 "index.html":[0],
 "index.html#autotoc_md1":[0,0],
 "index.html#autotoc_md7":[0,1],
-"namespacemembers.html":[1,1,0],
+"keyboard_8hpp-example.html":[4,3],
+"mouse_8hpp-example.html":[4,4],
 "namespacemembers.html":[1,1,0,0],
+"namespacemembers.html":[1,1,0],
 "namespacemembers_b.html":[1,1,0,1],
 "namespacemembers_c.html":[1,1,0,2],
 "namespacemembers_d.html":[1,1,0,3],
@@ -68,8 +72,8 @@ var NAVTREEINDEX4 =
 "namespacemembers_type.html":[1,1,3],
 "namespacemembers_u.html":[1,1,0,20],
 "namespacemembers_v.html":[1,1,0,21],
-"namespacemembers_vars.html":[1,1,2],
 "namespacemembers_vars.html":[1,1,2,0],
+"namespacemembers_vars.html":[1,1,2],
 "namespacemembers_vars_b.html":[1,1,2,1],
 "namespacemembers_vars_c.html":[1,1,2,2],
 "namespacemembers_vars_d.html":[1,1,2,3],
@@ -245,9 +249,5 @@ var NAVTREEINDEX4 =
 "namespacesuika_1_1collision__2d.html#a31aa936668eb7a66a81becb0c7895d6d":[1,0,0,0,13],
 "namespacesuika_1_1collision__2d.html#a33cc3b2a74ebcbf29d764d79485f2dd6":[1,0,0,0,3],
 "namespacesuika_1_1collision__2d.html#a3d3bfbebfc9f878f5f42281b162be5a7":[1,0,0,0,11],
-"namespacesuika_1_1collision__2d.html#a3f9e974f6bb5269c86bf6a19320d8972":[1,0,0,0,14],
-"namespacesuika_1_1collision__2d.html#a697800ba5c2713fa1a4c8e0495853362":[1,0,0,0,2],
-"namespacesuika_1_1collision__2d.html#a727f959abde290e1581593ddf84b8abf":[1,0,0,0,5],
-"namespacesuika_1_1collision__2d.html#a96cf6740cef9563bd10ccd38ee3157ed":[1,0,0,0,8],
-"namespacesuika_1_1collision__2d.html#a97362850571556ffe33d8710522141f1":[1,0,0,0,4]
+"namespacesuika_1_1collision__2d.html#a3f9e974f6bb5269c86bf6a19320d8972":[1,0,0,0,14]
 };

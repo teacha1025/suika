@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // shader
 // 
@@ -29,45 +29,45 @@ namespace suika {
 	const string TEXTURE_PIXEL  = "suika_shader_internal_texture";
 
 	/// <summary>
-	/// HLSLƒtƒ@ƒCƒ‹‚©‚çƒo[ƒeƒbƒNƒXƒVƒF[ƒ_[‚ğì¬
+	/// HLSLãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã‚’ä½œæˆ
 	/// </summary>
-	/// <param name="key_input">ƒVƒF[ƒ_[ƒtƒ@ƒCƒ‹‚Ö‚ÌƒpƒX</param>
-	/// <param name="name">ƒVƒF[ƒ_[‚Ì“o˜^–¼</param>
+	/// <param name="key_input">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®ãƒ‘ã‚¹</param>
+	/// <param name="name">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®ç™»éŒ²å</param>
 	void add_vs(const string& key_input, const string& name);
 
 	/// <summary>
-	/// ƒVƒF[ƒ_[”z—ñ‚©‚çƒo[ƒeƒbƒNƒXƒVƒF[ƒ_[‚ğì¬
+	/// ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼é…åˆ—ã‹ã‚‰ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã‚’ä½œæˆ
 	/// </summary>
-	/// <param name="key_input">ƒVƒF[ƒ_[”z—ñ</param>
-	/// <param name="size">ƒVƒF[ƒ_[”z—ñ‚Ì—v‘f”</param>
-	/// <param name="name">ƒVƒF[ƒ_[‚Ì“o˜^–¼</param>
+	/// <param name="key_input">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼é…åˆ—</param>
+	/// <param name="size">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼é…åˆ—ã®è¦ç´ æ•°</param>
+	/// <param name="name">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®ç™»éŒ²å</param>
 	void add_vs(const void* key_input, size_t size, const string& name);
 
 	/// <summary>
-	/// HLSLƒtƒ@ƒCƒ‹‚©‚çƒsƒNƒZƒ‹ƒVƒF[ƒ_[‚ğì¬
+	/// HLSLãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ãƒ”ã‚¯ã‚»ãƒ«ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã‚’ä½œæˆ
 	/// </summary>
-	/// <param name="key_input">ƒVƒF[ƒ_[ƒtƒ@ƒCƒ‹‚Ö‚ÌƒpƒX</param>
-	/// <param name="name">ƒVƒF[ƒ_[‚Ì“o˜^–¼</param>
+	/// <param name="key_input">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«ã¸ã®ãƒ‘ã‚¹</param>
+	/// <param name="name">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®ç™»éŒ²å</param>
 	void add_ps(const string& key_input, const string& name);
 
 	/// <summary>
-	/// ƒVƒF[ƒ_[”z—ñ‚©‚çƒsƒNƒZƒ‹ƒVƒF[ƒ_[‚ğì¬
+	/// ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼é…åˆ—ã‹ã‚‰ãƒ”ã‚¯ã‚»ãƒ«ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã‚’ä½œæˆ
 	/// </summary>
-	/// <param name="key_input">ƒVƒF[ƒ_[”z—ñ</param>
-	/// <param name="size">ƒVƒF[ƒ_[”z—ñ‚Ì—v‘f”</param>
-	/// <param name="name">ƒVƒF[ƒ_[‚Ì“o˜^–¼</param>
+	/// <param name="key_input">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼é…åˆ—</param>
+	/// <param name="size">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼é…åˆ—ã®è¦ç´ æ•°</param>
+	/// <param name="name">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®ç™»éŒ²å</param>
 	void add_ps(const void* key_input, size_t size, const string& name);
 
 	/// <summary>
-	/// ƒo[ƒeƒbƒNƒXƒVƒF[ƒ_[‚ğİ’è‚·‚é
+	/// ãƒãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã‚’è¨­å®šã™ã‚‹
 	/// </summary>
-	/// <param name="name">ƒVƒF[ƒ_[‚Ì“o˜^–¼</param>
+	/// <param name="name">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®ç™»éŒ²å</param>
 	void set_vs(const string& name);
 
 	/// <summary>
-	/// ƒsƒNƒZƒ‹ƒVƒF[ƒ_[‚ğİ’è‚·‚é
+	/// ãƒ”ã‚¯ã‚»ãƒ«ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã‚’è¨­å®šã™ã‚‹
 	/// </summary>
-	/// <param name="name">ƒVƒF[ƒ_[‚Ì“o˜^–¼</param>
+	/// <param name="name">ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã®ç™»éŒ²å</param>
 	void set_ps(const string& name);
 
 }

@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // binary reader
 // 
@@ -31,11 +31,11 @@
 
 namespace suika {
 	/// <summary>
-	/// ƒtƒ@ƒCƒ‹‘€ì‚ÉŠÖ‚·‚éŠÖ”AƒNƒ‰ƒXŒQ
+	/// ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã«é–¢ã™ã‚‹é–¢æ•°ã€ã‚¯ãƒ©ã‚¹ç¾¤
 	/// </summary>
 	namespace filesystem {
 		/// <summary>
-		/// ƒoƒCƒiƒŠ‚Ì“Ç‚İ‚İ
+		/// ãƒã‚¤ãƒŠãƒªã®èª­ã¿è¾¼ã¿
 		/// </summary>
 		class binary_reader {
 		private:
@@ -46,33 +46,33 @@ namespace suika {
 			void close();
 		public:
 			/// <summary>
-			/// ƒŠ[ƒ_[‚ğì¬
+			/// ãƒªãƒ¼ãƒ€ãƒ¼ã‚’ä½œæˆ
 			/// </summary>
-			/// <param name="path">ƒtƒ@ƒCƒ‹‚ÌƒpƒX</param>
+			/// <param name="path">ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‘ã‚¹</param>
 			binary_reader(path_type path);
 			binary_reader(const binary_reader&) = delete;
 			/// <summary>
-			/// ƒ€[ƒuƒRƒ“ƒXƒgƒ‰ƒNƒ^
+			/// ãƒ ãƒ¼ãƒ–ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 			/// </summary>
 			/// <param name=""></param>
 			binary_reader(binary_reader&&);
 			/// <summary>
-			/// ƒfƒXƒgƒ‰ƒNƒ^
+			/// ãƒ‡ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
 			/// </summary>
 			~binary_reader();
 
 			/// <summary>
-			/// ƒoƒCƒiƒŠ‚ğ“Ç‚İ‚Ş
+			/// ãƒã‚¤ãƒŠãƒªã‚’èª­ã¿è¾¼ã‚€
 			/// </summary>
-			/// <param name="size">“Ç‚İ‚ŞƒTƒCƒY</param>
-			/// <returns>“Ç‚İ‚ñ‚¾ƒoƒCƒiƒŠƒf[ƒ^</returns>
+			/// <param name="size">èª­ã¿è¾¼ã‚€ã‚µã‚¤ã‚º</param>
+			/// <returns>èª­ã¿è¾¼ã‚“ã ãƒã‚¤ãƒŠãƒªãƒ‡ãƒ¼ã‚¿</returns>
 			void* read(size_t size);
 
 			/// <summary>
-			/// ƒoƒCƒiƒŠ‚ğ“Ç‚İ‚Ş
+			/// ãƒã‚¤ãƒŠãƒªã‚’èª­ã¿è¾¼ã‚€
 			/// </summary>
-			/// <typeparam name="T">ƒgƒŠƒrƒAƒ‹ƒRƒs[‰Â”\‚Èƒf[ƒ^Œ^</typeparam>
-			/// <returns>“Ç‚İ‚ñ‚¾ƒf[ƒ^</returns>
+			/// <typeparam name="T">ãƒˆãƒªãƒ“ã‚¢ãƒ«ã‚³ãƒ”ãƒ¼å¯èƒ½ãªãƒ‡ãƒ¼ã‚¿å‹</typeparam>
+			/// <returns>èª­ã¿è¾¼ã‚“ã ãƒ‡ãƒ¼ã‚¿</returns>
 			template<concepts::trivially T>
 			T read() {
 				return *static_cast<T*>(read(sizeof(T)));

@@ -1,3 +1,7 @@
+ï»¿/** @example{lineno} keyboard.hpp
+ * ã‚­ãƒ¼å…¥åŠ›ã®ã‚µãƒ³ãƒ—ãƒ«
+*/
+
 // -----------------------------------------------------------
 // 
 // keyboard.
@@ -24,594 +28,594 @@
 
 namespace suika {
 	/// <summary>
-	/// “à•”“I‚ÈÀ‘•
+	/// å†…éƒ¨çš„ãªå®Ÿè£…
 	/// </summary>
 	namespace detail {
 		/// <summary>
-		/// ƒL[ƒ{[ƒh
+		/// ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰
 		/// </summary>
 		class key : public input_base {
 		public:
 			/// <summary>
-			/// ƒL[‚Ìì¬
+			/// ã‚­ãƒ¼ã®ä½œæˆ
 			/// </summary>
-			/// <param name="code">ƒL[ƒR[ƒh</param>
-			/// <param name="name">ƒL[‚Ì–¼‘O</param>
+			/// <param name="code">ã‚­ãƒ¼ã‚³ãƒ¼ãƒ‰</param>
+			/// <param name="name">ã‚­ãƒ¼ã®åå‰</param>
 			key(unsigned int code, string name);
 
 			/// <summary>
-			/// ƒfƒtƒHƒ‹ƒgƒL[
+			/// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚­ãƒ¼
 			/// </summary>
 			key() {}
 
 			/// <summary>
-			/// ƒL[‚ÌXV
+			/// ã‚­ãƒ¼ã®æ›´æ–°
 			/// </summary>
 			void update();
 		};
 	}
 	/// <summary>
-	/// ƒL[“ü—Í‚Ì’è‹`‹y‚ÑŠÖ”
+	/// ã‚­ãƒ¼å…¥åŠ›ã®å®šç¾©åŠã³é–¢æ•°
 	/// </summary>
 	namespace keyboard {
 		/// <summary>
-		/// 1ƒL[
+		/// 1ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Key1;
 
 		/// <summary>
-		/// 2ƒL[
+		/// 2ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Key2;
 
 		/// <summary>
-		/// 3ƒL[
+		/// 3ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Key3;
 
 		/// <summary>
-		/// 4ƒL[
+		/// 4ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Key4;
 
 		/// <summary>
-		/// 5ƒL[
+		/// 5ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Key5;
 
 		/// <summary>
-		/// 6ƒL[
+		/// 6ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Key6;
 
 		/// <summary>
-		/// 7ƒL[
+		/// 7ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Key7;
 
 		/// <summary>
-		/// 8ƒL[
+		/// 8ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Key8;
 
 		/// <summary>
-		/// 9ƒL[
+		/// 9ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Key9;
 
 		/// <summary>
-		/// 0ƒL[
+		/// 0ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Key0;
 
 
 
 		/// <summary>
-		/// NumLockƒL[
+		/// NumLockã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Numlock;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[1ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼1ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Num1;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[2ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼2ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Num2;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[3ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼3ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Num3;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[4ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼4ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Num4;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[5ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼5ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Num5;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[6ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼6ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Num6;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[7ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼7ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Num7;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[8ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼8ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Num8;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[9ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼9ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Num9;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[0ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼0ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Num0;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[*ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼*ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key NumAsterisk;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[+ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼+ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key NumPlus;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[-ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼-ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key NumMinus;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[.ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼.ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key NumPeriod;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[/ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼/ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key NumSlash;
 
 		/// <summary>
-		/// ƒeƒ“ƒL[‚ÌƒGƒ“ƒ^[ƒL[
+		/// ãƒ†ãƒ³ã‚­ãƒ¼ã®ã‚¨ãƒ³ã‚¿ãƒ¼ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key NumEnter;
 
 
 
 		/// <summary>
-		/// -ƒL[
+		/// -ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Minus;
 
 		/// <summary>
-		/// \ƒL[
+		/// \ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Yen;
 
 		/// <summary>
-		/// ^ƒL[
+		/// ^ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Caret;
 		/// <summary>
-		/// .ƒL[
+		/// .ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Period;
 
 		/// <summary>
-		/// ^ƒL[
+		/// ï¼ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Slash;
 
 		/// <summary>
-		/// ¶AltƒL[
+		/// å·¦Altã‚­ãƒ¼
 		/// </summary>
 		extern detail::key LAlt;
 
 		/// <summary>
-		/// ‰EAltƒL[
+		/// å³Altã‚­ãƒ¼
 		/// </summary>
 		extern detail::key RAlt;
 
 		/// <summary>
-		/// ScrollLockƒL[
+		/// ScrollLockã‚­ãƒ¼
 		/// </summary>
 		extern detail::key ScrollLock;
 
 		/// <summary>
-		/// ;ƒL[
+		/// ;ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Semicolon;
 
 		/// <summary>
-		/// :ƒL[
+		/// :ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Colon;
 
 		/// <summary>
-		/// [ƒL[
+		/// [ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key LBracket;
 
 		/// <summary>
-		/// ]ƒL[
+		/// ]ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key RBracket;
 
 		/// <summary>
-		/// @ƒL[
+		/// @ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key At;
 
 		/// <summary>
-		/// _ƒL[
+		/// ï¼¼ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Backslash;
 
 		/// <summary>
-		/// ,ƒL[
+		/// ,ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Comma;
 
 		/// <summary>
-		/// Š¿šƒL[
+		/// æ¼¢å­—ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Kanji;
 
 		/// <summary>
-		/// •ÏŠ·ƒL[
+		/// å¤‰æ›ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Convert;
 
 		/// <summary>
-		/// –³•ÏŠ·ƒL[
+		/// ç„¡å¤‰æ›ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key NoConvert;
 
 		/// <summary>
-		/// ‚©‚ÈƒL[
+		/// ã‹ãªã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Kana;
 
 		/// <summary>
-		/// ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒƒjƒ…[ƒL[
+		/// ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Menu;
 
 		/// <summary>
-		/// CapsLockƒL[
+		/// CapsLockã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Capaslock;
 
 		/// <summary>
-		/// PrintScreenƒL[
+		/// PrintScreenã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Printscreen;
 
 		/// <summary>
-		/// PauseBreakƒL[
+		/// PauseBreakã‚­ãƒ¼
 		/// </summary>
 		extern detail::key PauseBreak;
 
 		/// <summary>
-		/// ¶WindowsƒL[
+		/// å·¦Windowsã‚­ãƒ¼
 		/// </summary>
 		extern detail::key LWindows;
 
 		/// <summary>
-		/// ‰EWindowsƒL[
+		/// å³Windowsã‚­ãƒ¼
 		/// </summary>
 		extern detail::key RWindows;
 
 
 
 		/// <summary>
-		/// ƒ^ƒuƒL[
+		/// ã‚¿ãƒ–ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Tab;
 
 		/// <summary>
-		/// ƒoƒbƒNƒXƒy[ƒXƒL[
+		/// ãƒãƒƒã‚¯ã‚¹ãƒšãƒ¼ã‚¹ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Back;
 
 		/// <summary>
-		/// ƒGƒ“ƒ^[ƒL[
+		/// ã‚¨ãƒ³ã‚¿ãƒ¼ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Return;
 
 		/// <summary>
-		/// ¶ƒVƒtƒgƒL[
+		/// å·¦ã‚·ãƒ•ãƒˆã‚­ãƒ¼
 		/// </summary>
 		extern detail::key LShift;
 
 		/// <summary>
-		/// ‰EƒVƒtƒgƒL[
+		/// å³ã‚·ãƒ•ãƒˆã‚­ãƒ¼
 		/// </summary>
 		extern detail::key RShift;
 
 		/// <summary>
-		/// ¶ƒRƒ“ƒgƒ[ƒ‹ƒL[
+		/// å·¦ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key LControl;
 
 		/// <summary>
-		/// ‰EƒRƒ“ƒgƒ[ƒ‹ƒL[
+		/// å³ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key RControl;
 
 		/// <summary>
-		/// ƒGƒXƒP[ƒvƒL[
+		/// ã‚¨ã‚¹ã‚±ãƒ¼ãƒ—ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Escape;
 
 		/// <summary>
-		/// ƒXƒy[ƒXƒL[
+		/// ã‚¹ãƒšãƒ¼ã‚¹ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Space;
 
 		/// <summary>
-		/// PageUpƒL[
+		/// PageUpã‚­ãƒ¼
 		/// </summary>
 		extern detail::key PageUp;
 
 		/// <summary>
-		///‚Ï‚°Down ƒL[
+		///ã±ã’Down ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key PageDown;
 
 		/// <summary>
-		/// EndƒL[
+		/// Endã‚­ãƒ¼
 		/// </summary>
 		extern detail::key End;
 
 		/// <summary>
-		/// HomeƒL[
+		/// Homeã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Home;
 
 		/// <summary>
-		/// ©ƒL[
+		/// â†ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Left;
 
 		/// <summary>
-		/// ªƒL[
+		/// â†‘ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Up;
 
 		/// <summary>
-		/// ¨ƒL[
+		/// â†’ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Right;
 
 		/// <summary>
-		/// «ƒL[
+		/// â†“ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Down;
 
 		/// <summary>
-		/// InsertƒL[
+		/// Insertã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Insert;
 
 		/// <summary>
-		/// DeleteƒL[
+		/// Deleteã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Delete;
 
 
 
 		/// <summary>
-		/// F1ƒL[
+		/// F1ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F1;
 
 		/// <summary>
-		/// F2ƒL[
+		/// F2ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F2;
 
 		/// <summary>
-		/// F3ƒL[
+		/// F3ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F3;
 
 		/// <summary>
-		/// F4ƒL[
+		/// F4ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F4;
 
 		/// <summary>
-		/// F5ƒL[
+		/// F5ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F5;
 
 		/// <summary>
-		/// F6ƒL[
+		/// F6ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F6;
 
 		/// <summary>
-		/// F7ƒL[
+		/// F7ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F7;
 
 		/// <summary>
-		/// F8ƒL[
+		/// F8ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F8;
 
 		/// <summary>
-		/// F9ƒL[
+		/// F9ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F9;
 
 		/// <summary>
-		/// !0ƒL[
+		/// !0ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F10;
 
 		/// <summary>
-		/// F11ƒL[
+		/// F11ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F11;
 
 		/// <summary>
-		/// F12ƒL[
+		/// F12ã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F12;
 
 
 
 		/// <summary>
-		/// AƒL[
+		/// Aã‚­ãƒ¼
 		/// </summary>
 		extern detail::key A;
 
 		/// <summary>
-		/// BƒL[
+		/// Bã‚­ãƒ¼
 		/// </summary>
 		extern detail::key B;
 
 		/// <summary>
-		/// CƒL[
+		/// Cã‚­ãƒ¼
 		/// </summary>
 		extern detail::key C;
 
 		/// <summary>
-		/// DƒL[
+		/// Dã‚­ãƒ¼
 		/// </summary>
 		extern detail::key D;
 
 		/// <summary>
-		/// EƒL[
+		/// Eã‚­ãƒ¼
 		/// </summary>
 		extern detail::key E;
 
 		/// <summary>
-		/// FƒL[
+		/// Fã‚­ãƒ¼
 		/// </summary>
 		extern detail::key F;
 
 		/// <summary>
-		/// GƒL[
+		/// Gã‚­ãƒ¼
 		/// </summary>
 		extern detail::key G;
 
 		/// <summary>
-		/// HƒL[
+		/// Hã‚­ãƒ¼
 		/// </summary>
 		extern detail::key H;
 
 		/// <summary>
-		/// IƒL[
+		/// Iã‚­ãƒ¼
 		/// </summary>
 		extern detail::key I;
 
 		/// <summary>
-		/// JƒL[
+		/// Jã‚­ãƒ¼
 		/// </summary>
 		extern detail::key J;
 
 		/// <summary>
-		/// KƒL[
+		/// Kã‚­ãƒ¼
 		/// </summary>
 		extern detail::key K;
 
 		/// <summary>
-		/// LƒL[
+		/// Lã‚­ãƒ¼
 		/// </summary>
 		extern detail::key L;
 
 		/// <summary>
-		/// MƒL[
+		/// Mã‚­ãƒ¼
 		/// </summary>
 		extern detail::key M;
 
 		/// <summary>
-		/// NƒL[
+		/// Nã‚­ãƒ¼
 		/// </summary>
 		extern detail::key N;
 
 		/// <summary>
-		/// OƒL[
+		/// Oã‚­ãƒ¼
 		/// </summary>
 		extern detail::key O;
 
 		/// <summary>
-		/// PƒL[
+		/// Pã‚­ãƒ¼
 		/// </summary>
 		extern detail::key P;
 
 		/// <summary>
-		/// QƒL[
+		/// Qã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Q;
 
 		/// <summary>
-		/// RƒL[
+		/// Rã‚­ãƒ¼
 		/// </summary>
 		extern detail::key R;
 
 		/// <summary>
-		/// SƒL[
+		/// Sã‚­ãƒ¼
 		/// </summary>
 		extern detail::key S;
 
 		/// <summary>
-		/// TƒL[
+		/// Tã‚­ãƒ¼
 		/// </summary>
 		extern detail::key T;
 
 		/// <summary>
-		/// UƒL[
+		/// Uã‚­ãƒ¼
 		/// </summary>
 		extern detail::key U;
 
 		/// <summary>
-		/// VƒL[
+		/// Vã‚­ãƒ¼
 		/// </summary>
 		extern detail::key V;
 
 		/// <summary>
-		/// WƒL[
+		/// Wã‚­ãƒ¼
 		/// </summary>
 		extern detail::key W;
 
 		/// <summary>
-		/// XƒL[
+		/// Xã‚­ãƒ¼
 		/// </summary>
 		extern detail::key X;
 
 		/// <summary>
-		/// YƒL[
+		/// Yã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Y;
 
 		/// <summary>
-		/// ZƒL[
+		/// Zã‚­ãƒ¼
 		/// </summary>
 		extern detail::key Z;
 
 		/// <summary>
-		/// ‰Ÿ‚³‚ê‚½ƒL[‚ğ‚·‚×‚Äæ“¾
+		/// æŠ¼ã•ã‚ŒãŸã‚­ãƒ¼ã‚’ã™ã¹ã¦å–å¾—
 		/// </summary>
-		/// <returns>Œ»İ‰Ÿ‚³‚ê‚Ä‚¢‚éƒL[‚Ì”z—ñ</returns>
+		/// <returns>ç¾åœ¨æŠ¼ã•ã‚Œã¦ã„ã‚‹ã‚­ãƒ¼ã®é…åˆ—</returns>
 		std::vector<std::reference_wrapper<detail::key>> pressed_key();
 	}; // namespace keyboard
 }

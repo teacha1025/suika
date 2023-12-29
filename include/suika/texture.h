@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // texture
 // 
@@ -28,7 +28,7 @@
 
 namespace suika {
 	/// <summary>
-	/// ƒeƒNƒXƒ`ƒƒ•`‰æ‚ÉŠÖ‚·‚éƒNƒ‰ƒX
+	/// ãƒ†ã‚¯ã‚¹ãƒãƒ£æç”»ã«é–¢ã™ã‚‹ã‚¯ãƒ©ã‚¹
 	/// </summary>
 	class texture : public detail::ishape<texture> {
 	protected:
@@ -40,51 +40,51 @@ namespace suika {
 		virtual std::vector<suika::vertex::vertex_2d> create_vertex() override;
 	public:
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚ğì¬
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’ä½œæˆ
 		/// </summary>
-		/// <param name="path">ƒeƒNƒXƒ`ƒƒ‚ÌƒpƒX</param>
+		/// <param name="path">ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®ãƒ‘ã‚¹</param>
 		texture(string path);
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚ğ”½“]‚³‚¹‚é
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’åè»¢ã•ã›ã‚‹
 		/// </summary>
-		/// <param name="turn">Še•ûŒü‚Ì”½“]</param>
+		/// <param name="turn">å„æ–¹å‘ã®åè»¢</param>
 		virtual texture turned(const point<bool>& turn)&&;
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚ğ”½“]‚³‚¹‚é
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’åè»¢ã•ã›ã‚‹
 		/// </summary>
-		/// <param name="turn">Še•ûŒü‚Ì”½“]</param>
+		/// <param name="turn">å„æ–¹å‘ã®åè»¢</param>
 		virtual texture& turned(const point<bool>& turn)&;
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚ÌUVÀ•W‚ğİ’è‚·‚é
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®UVåº§æ¨™ã‚’è¨­å®šã™ã‚‹
 		/// </summary>
-		/// <param name="lt">¶ã</param>
-		/// <param name="rb">‰E‰º</param>
+		/// <param name="lt">å·¦ä¸Š</param>
+		/// <param name="rb">å³ä¸‹</param>
 		virtual texture uv(const point<float>& lt, const point<float>& rb)&&;
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚ÌUVÀ•W‚ğİ’è‚·‚é
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®UVåº§æ¨™ã‚’è¨­å®šã™ã‚‹
 		/// </summary>
-		/// <param name="lt">¶ã</param>
-		/// <param name="rb">‰E‰º</param>
+		/// <param name="lt">å·¦ä¸Š</param>
+		/// <param name="rb">å³ä¸‹</param>
 		virtual texture& uv(const point<float>& lt, const point<float>& rb)&;
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ”½“]‚ğæ“¾
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£åè»¢ã‚’å–å¾—
 		/// </summary>
-		/// <returns>Še•ûŒü‚Ì”½“]</returns>
+		/// <returns>å„æ–¹å‘ã®åè»¢</returns>
 		point<bool> turn() const;
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚Ì‘å‚«‚³‚ğæ“¾
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®å¤§ãã•ã‚’å–å¾—
 		/// </summary>
-		/// <returns>ƒeƒNƒXƒ`ƒƒ‚Ì‘å‚«‚³</returns>
+		/// <returns>ãƒ†ã‚¯ã‚¹ãƒãƒ£ã®å¤§ãã•</returns>
 		point<float> size() const;
 
 		/// <summary>
-		/// ƒeƒNƒXƒ`ƒƒ‚ğ•`‰æ‚·‚é
+		/// ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’æç”»ã™ã‚‹
 		/// </summary>
 		virtual void draw() override;
 	};

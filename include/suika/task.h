@@ -1,3 +1,7 @@
+ï»¿/** @example{lineno} task.hpp
+ * ã‚¿ã‚¹ã‚¯ã®ã‚µãƒ³ãƒ—ãƒ«
+*/
+
 // -----------------------------------------------------------
 // 
 // coroutine task
@@ -64,9 +68,9 @@ namespace suika {
 	}
 
 	/// <summary>
-	/// ƒ^ƒXƒNƒNƒ‰ƒX(ƒRƒ‹[ƒ`ƒ“)
+	/// ã‚¿ã‚¹ã‚¯ã‚¯ãƒ©ã‚¹(ã‚³ãƒ«ãƒ¼ãƒãƒ³)
 	/// </summary>
-	/// <typeparam name="T">yield/return‚Å•Ô‚·’l</typeparam>
+	/// <typeparam name="T">yield/returnã§è¿”ã™å€¤</typeparam>
 	template<typename T = void>
 	class task {
 	public:
@@ -76,32 +80,32 @@ namespace suika {
 		handle_type handle;
 	public:
 		/// <summary>
-		/// V‚µ‚¢ƒ^ƒXƒN‚ğì¬‚·‚é
+		/// æ–°ã—ã„ã‚¿ã‚¹ã‚¯ã‚’ä½œæˆã™ã‚‹
 		/// </summary>
 		task() {
 			handle = nullptr;
 		}
 
 		/// <summary>
-		/// V‚µ‚¢ƒ^ƒXƒN‚ğì¬‚·‚é
+		/// æ–°ã—ã„ã‚¿ã‚¹ã‚¯ã‚’ä½œæˆã™ã‚‹
 		/// </summary>
-		/// <param name="p">Šù‘¶‚Ìƒ^ƒXƒN</param>
+		/// <param name="p">æ—¢å­˜ã®ã‚¿ã‚¹ã‚¯</param>
 		task(promise_type* p) : handle(std::coroutine_handle<promise_type>::from_promise(*p)) {}
 
 		task(const task&) = delete;
 
 		/// <summary>
-		/// Šù‘¶‚Ìƒ^ƒXƒN‚ğˆÚs‚·‚é
+		/// æ—¢å­˜ã®ã‚¿ã‚¹ã‚¯ã‚’ç§»è¡Œã™ã‚‹
 		/// </summary>
-		/// <param name="rhs">Šù‘¶‚Ìƒ^ƒXƒN</param>
+		/// <param name="rhs">æ—¢å­˜ã®ã‚¿ã‚¹ã‚¯</param>
 		task(task&& rhs) noexcept :handle(rhs.handle) {
 			rhs.handle = nullptr;
 		}
 
 		/// <summary>
-		/// Šù‘¶‚Ìƒ^ƒXƒN‚ğˆÚs‚·‚é
+		/// æ—¢å­˜ã®ã‚¿ã‚¹ã‚¯ã‚’ç§»è¡Œã™ã‚‹
 		/// </summary>
-		/// <param name="rhs">Šù‘¶‚Ìƒ^ƒXƒN</param>
+		/// <param name="rhs">æ—¢å­˜ã®ã‚¿ã‚¹ã‚¯</param>
 		task& operator =(task&& rhs) noexcept {
 			if (handle) {
 				handle.destroy();
@@ -112,7 +116,7 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒ^ƒXƒN‚ğÁ‚·
+		/// ã‚¿ã‚¹ã‚¯ã‚’æ¶ˆã™
 		/// </summary>
 		~task() {
 			if (handle != nullptr) {
@@ -121,17 +125,17 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒ^ƒXƒN’†‚Ì’l‚ğæ“¾‚·‚é
+		/// ã‚¿ã‚¹ã‚¯ä¸­ã®å€¤ã‚’å–å¾—ã™ã‚‹
 		/// </summary>
-		/// <returns>yield/return’l</returns>
+		/// <returns>yield/returnå€¤</returns>
 		decltype(auto) value() const {
 			return handle.promise().get();
 		}
 
 		/// <summary>
-		/// ƒ^ƒXƒN‚ğÄŠJ‚·‚é
+		/// ã‚¿ã‚¹ã‚¯ã‚’å†é–‹ã™ã‚‹
 		/// </summary>
-		/// <returns>ƒ^ƒXƒN‚ªI—¹‚µ‚½‚©</returns>
+		/// <returns>ã‚¿ã‚¹ã‚¯ãŒçµ‚äº†ã—ãŸã‹</returns>
 		bool resume() const{
 			if (!handle) {
 				return false;
@@ -157,9 +161,9 @@ namespace suika {
 		}
 
 		/// <summary>
-		/// ƒ^ƒXƒN‚Ìó‘Ô‚ğæ“¾
+		/// ã‚¿ã‚¹ã‚¯ã®çŠ¶æ…‹ã‚’å–å¾—
 		/// </summary>
-		/// <returns>ƒ^ƒXƒN‚ªI—¹‚µ‚½‚©</returns>
+		/// <returns>ã‚¿ã‚¹ã‚¯ãŒçµ‚äº†ã—ãŸã‹</returns>
 		bool is_done() const{
 			if (!handle) {
 				return true;

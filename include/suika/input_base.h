@@ -1,4 +1,4 @@
-// -----------------------------------------------------------
+ï»¿// -----------------------------------------------------------
 // 
 // user input device base class.
 // 
@@ -31,7 +31,7 @@ namespace suika {
 	};
 
 	/// <summary>
-	/// ƒfƒoƒCƒX“ü—Í
+	/// ãƒ‡ãƒã‚¤ã‚¹å…¥åŠ›
 	/// </summary>
 	class input_base : public detail::ibase {
 	protected:
@@ -42,49 +42,49 @@ namespace suika {
 		string _device_name;
 	public:
 		/// <summary>
-		/// ‰Ÿ‚³‚ê‚½ŠÔ‚Ìæ“¾
+		/// æŠ¼ã•ã‚ŒãŸæ™‚é–“ã®å–å¾—
 		/// </summary>
-		/// <returns>ƒL[‚âƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½ƒtƒŒ[ƒ€”</returns>
+		/// <returns>ã‚­ãƒ¼ã‚„ãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸãƒ•ãƒ¬ãƒ¼ãƒ æ•°</returns>
 		virtual unsigned int count() const {
 			return _press_count;
 		}
 
 		/// <summary>
-		/// ‰Ÿ‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìæ“¾
+		/// æŠ¼ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã®å–å¾—
 		/// </summary>
-		/// <returns>‰Ÿ‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©</returns>
+		/// <returns>æŠ¼ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹</returns>
 		virtual bool press() const {
 			return _state == input_state::press || _state == input_state::down;
 		}
 
 		/// <summary>
-		/// —£‚³‚ê‚Ä‚¢‚é‚Ì‚©‚Ç‚¤‚©‚Ìæ“¾
+		/// é›¢ã•ã‚Œã¦ã„ã‚‹ã®ã‹ã©ã†ã‹ã®å–å¾—
 		/// </summary>
-		/// <returns>—£‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©</returns>
+		/// <returns>é›¢ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹</returns>
 		virtual bool release() const {
 			return _state == input_state::release;
 		}
 
 		/// <summary>
-		/// —£‚³‚ê‚½‚©‚Ç‚¤‚©‚Ìæ“¾
+		/// é›¢ã•ã‚ŒãŸã‹ã©ã†ã‹ã®å–å¾—
 		/// </summary>
-		/// <returns>—£‚³‚ê‚½uŠÔ‚©‚Ç‚¤‚©</returns>
+		/// <returns>é›¢ã•ã‚ŒãŸç¬é–“ã‹ã©ã†ã‹</returns>
 		virtual bool up() const {
 			return _state == input_state::up;
 		}
 
 		/// <summary>
-		/// ‰Ÿ‚³‚ê‚½‚©‚Ç‚¤‚©‚Ìæ“¾
+		/// æŠ¼ã•ã‚ŒãŸã‹ã©ã†ã‹ã®å–å¾—
 		/// </summary>
-		/// <returns>‰Ÿ‚³‚ê‚½uŠÔ‚©‚Ç‚¤‚©</returns>
+		/// <returns>æŠ¼ã•ã‚ŒãŸç¬é–“ã‹ã©ã†ã‹</returns>
 		virtual bool down() const {
 			return _state == input_state::down;
 		}
 
 		/// <summary>
-		/// –¼‘O‚ğæ“¾
+		/// åå‰ã‚’å–å¾—
 		/// </summary>
-		/// <returns>ƒL[‚Ì–¼‘O‚âƒ}ƒEƒX‚Ìƒ{ƒ^ƒ“‚Ì–¼‘O</returns>
+		/// <returns>ã‚­ãƒ¼ã®åå‰ã‚„ãƒã‚¦ã‚¹ã®ãƒœã‚¿ãƒ³ã®åå‰</returns>
 		virtual string to_string() const {
 			return _device_name;
 		}

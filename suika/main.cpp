@@ -156,10 +156,25 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			suika::log.error("d3d error");
 			return 0;
 		}
+#if 0
 		suika::add_vs("../suika/d3d/shader/shape.hlsl",   suika::SHAPE_VERTEX);
 		suika::add_vs("../suika/d3d/shader/texture.hlsl", suika::TEXTURE_VERTEX);
 		suika::add_ps("../suika/d3d/shader/shape.hlsl",   suika::SHAPE_PIXEL);
 		suika::add_ps("../suika/d3d/shader/texture.hlsl", suika::TEXTURE_PIXEL);
+#else
+		{
+#include "d3d/shader/shape_vs.h"
+#include "d3d/shader/shape_ps.h"
+			suika::add_vs(g_vs_main, sizeof(g_vs_main), suika::SHAPE_VERTEX);
+			suika::add_ps(g_ps_main, sizeof(g_ps_main), suika::SHAPE_PIXEL);
+		}
+		{
+#include "d3d/shader/texture_vs.h"
+#include "d3d/shader/texture_ps.h"
+			suika::add_vs(g_vs_main, sizeof(g_vs_main), suika::TEXTURE_VERTEX);
+			suika::add_ps(g_ps_main, sizeof(g_ps_main), suika::TEXTURE_PIXEL);
+		}
+#endif
 		suika::set_vs(suika::SHAPE_VERTEX);
 		suika::set_ps(suika::SHAPE_PIXEL);
 

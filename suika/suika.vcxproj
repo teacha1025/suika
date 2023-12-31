@@ -95,6 +95,7 @@
   <ItemGroup>
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="animator.cpp" />
+    <ClCompile Include="audio.cpp" />
     <ClCompile Include="binary_reader.cpp" />
     <ClCompile Include="binary_writer.cpp" />
     <ClCompile Include="canvas.cpp" />
@@ -103,19 +104,25 @@
     <ClCompile Include="circle.cpp" />
     <ClCompile Include="codecvt.cpp" />
     <ClCompile Include="color.cpp" />
+    <ClCompile Include="d3d\bgm.cpp" />
     <ClCompile Include="d3d\blend.cpp" />
     <ClCompile Include="d3d\cbuffer.cpp" />
     <ClCompile Include="d3d\d3d_vertex.cpp" />
     <ClCompile Include="d3d\device.cpp" />
     <ClCompile Include="d3d\dinput.cpp" />
     <ClCompile Include="d3d\dwrite.cpp" />
+    <ClCompile Include="d3d\loader.cpp" />
     <ClCompile Include="d3d\ps.cpp" />
     <ClCompile Include="d3d\RTV.cpp" />
+    <ClCompile Include="d3d\sound_effect.cpp" />
+    <ClCompile Include="d3d\submix_voice.cpp" />
     <ClCompile Include="d3d\swapchain.cpp" />
     <ClCompile Include="d3d\d3d_texture.cpp" />
     <ClCompile Include="d3d\target_texture.cpp" />
+    <ClCompile Include="d3d\therd_party\xaudio\WAVFileReader.cpp" />
     <ClCompile Include="d3d\viewport.cpp" />
     <ClCompile Include="d3d\vs.cpp" />
+    <ClCompile Include="d3d\xaduio.cpp" />
     <ClCompile Include="d3d\xinput.cpp" />
     <ClCompile Include="filesystem.cpp" />
     <ClCompile Include="font.cpp" />
@@ -142,6 +149,7 @@
     <ClInclude Include="..\include\suika.h" />
     <ClInclude Include="..\include\suika\animation.h" />
     <ClInclude Include="..\include\suika\animator.h" />
+    <ClInclude Include="..\include\suika\audio.h" />
     <ClInclude Include="..\include\suika\base.h" />
     <ClInclude Include="..\include\suika\binary_reader.h" />
     <ClInclude Include="..\include\suika\binary_writer.h" />
@@ -210,9 +218,13 @@
     <ClInclude Include="d3d\swapchain.hpp" />
     <ClInclude Include="d3d\target_texture.h" />
     <ClInclude Include="d3d\texture.hpp" />
+    <ClInclude Include="d3d\therd_party\xaudio\pch.h" />
+    <ClInclude Include="d3d\therd_party\xaudio\PlatformHelpers.h" />
+    <ClInclude Include="d3d\therd_party\xaudio\WAVFileReader.h" />
     <ClInclude Include="d3d\vertex.h" />
     <ClInclude Include="d3d\viewport.hpp" />
     <ClInclude Include="d3d\vs.hpp" />
+    <ClInclude Include="d3d\xaudio.hpp" />
     <ClInclude Include="d3d\xinput.h" />
   </ItemGroup>
   <ItemGroup>

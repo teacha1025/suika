@@ -61,6 +61,8 @@
 
 #include "../include/suika/easing.h"
 
+#include "../include/suika/audio.h"
+
 #include "../include/suika/task.h"
 #include "../include/suika/collision.h"
 

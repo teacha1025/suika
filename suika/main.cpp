@@ -39,6 +39,7 @@
 #include "d3d/cbuffer.hpp"
 #include "d3d/blend.hpp"
 #include "d3d/dwrite.h"
+#include "d3d/xaudio.hpp"
 
 #include "d3d/shader/shape_vs.h"
 #include "d3d/shader/shape_ps.h"
@@ -191,6 +192,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		suika::keyboard::init();
 		suika::mouse::init();
 		suika::gamepad::init();
+		suika::d3d::xaudio::init();
 
 		auto cb = suika::set_view(suika::window::size(wid));
 		suika::set_cbuffer(sizeof(cb), &cb, 0);
@@ -208,6 +210,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		suika::d3d::dwrite::free();
 		suika::d3d::dinput::fin();
 		suika::d3d::texture::fin();
+		suika::d3d::xaudio::fin();
 
 		if (SUCCEEDED(hr_init)) {
 			CoUninitialize();

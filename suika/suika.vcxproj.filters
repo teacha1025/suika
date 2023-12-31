@@ -131,6 +131,27 @@
     <ClCompile Include="binary_writer.cpp">
       <Filter>suika\filesystem</Filter>
     </ClCompile>
+    <ClCompile Include="d3d\bgm.cpp">
+      <Filter>d3d\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d\loader.cpp">
+      <Filter>d3d\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d\sound_effect.cpp">
+      <Filter>d3d\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d\submix_voice.cpp">
+      <Filter>d3d\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d\xaduio.cpp">
+      <Filter>d3d\audio</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d\therd_party\xaudio\WAVFileReader.cpp">
+      <Filter>d3d\audio\therd_party</Filter>
+    </ClCompile>
+    <ClCompile Include="audio.cpp">
+      <Filter>suika\audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="d3d">
@@ -270,6 +291,15 @@
     </Filter>
     <Filter Include="suika\filesystem">
       <UniqueIdentifier>{f6b8b2b3-9568-443e-a728-8de01a7b628d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d\audio">
+      <UniqueIdentifier>{d78abab7-bd68-47e6-b9e0-c164300094db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="d3d\audio\therd_party">
+      <UniqueIdentifier>{18efc6e2-23f8-4480-a7a1-0e8e840f5844}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="suika\audio">
+      <UniqueIdentifier>{5b4ed24a-b5c7-44d5-9982-c2edf44a76cb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -491,6 +521,21 @@
     </ClInclude>
     <ClInclude Include="..\include\suika\binary_writer.h">
       <Filter>suika\filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\xaudio.hpp">
+      <Filter>d3d\audio</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\therd_party\xaudio\pch.h">
+      <Filter>d3d\audio\therd_party</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\therd_party\xaudio\PlatformHelpers.h">
+      <Filter>d3d\audio\therd_party</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\therd_party\xaudio\WAVFileReader.h">
+      <Filter>d3d\audio\therd_party</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\suika\audio.h">
+      <Filter>suika\audio</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

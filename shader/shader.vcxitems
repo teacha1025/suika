@@ -17,4 +17,10 @@
     <FxCompile Include="$(MSBuildThisFileDirectory)..\suika\d3d\shader\shape.hlsl" />
     <FxCompile Include="$(MSBuildThisFileDirectory)..\suika\d3d\shader\texture.hlsl" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\suika\d3d\shader\shape_ps.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\suika\d3d\shader\shape_vs.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\suika\d3d\shader\texture_ps.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\suika\d3d\shader\texture_vs.h" />
+  </ItemGroup>
 </Project>

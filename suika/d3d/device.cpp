@@ -38,7 +38,11 @@ namespace suika {
 		ComPtr<IDXGIFactory> pFactory;
 		logger log_d3d;
 		bool init() {
+#ifdef _DEBUG
 			log_d3d.set(true, "d3d.log");
+#else
+			log_d3d.set(false);
+#endif
 			log_d3d.init();
 
 			

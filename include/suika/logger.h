@@ -23,7 +23,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <cstdlib>
+#include <fstream>
 #include <chrono>
 
 #include "def.h"
@@ -35,7 +35,8 @@ namespace suika {
 	/// </summary>
 	class logger: public detail::ibase {
 		std::chrono::system_clock::time_point _startup_count;
-		FILE* fp;
+		//FILE* fp;
+		std::ofstream file;
 		std::string filename = "Log.txt";
 		bool flag	 = true;
 

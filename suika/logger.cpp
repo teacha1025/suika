@@ -34,26 +34,29 @@
 namespace suika {
 	logger::logger() {
 		_startup_count = std::chrono::system_clock::now();
-		fp			 = nullptr;
+		//fp = nullptr;
 	}
 
 	logger::~logger() {
 		if (!flag)
 			return;
-		if (fp != nullptr) {
+		/*if (fp != nullptr) {
 			fclose(fp);
-		}
+		}*/
+		file.close();
 	}
 
 	bool logger::init() {
 		if (!flag)
-			return 0;
+			return true;
 
 		namespace chrono		 = std::chrono;
 		chrono::local_seconds lt = chrono::zoned_seconds { "Asia/Tokyo", chrono::floor<chrono::seconds>(chrono::system_clock::now()) }.get_local_time();
 
-		auto e = fopen_s(&fp, filename.c_str(), "w");
-		if (e != 0) {
+		//auto e = fopen_s(&fp, filename.c_str(), "w");
+		//if (e != 0) {
+		file.open(filename, std::ios::out | std::ios::binary);
+		if(!file.is_open()) {
 			while (true) {
 				OutputDebugString((L"ログファイルの作成に失敗"));
 				auto id = MessageBox(NULL, (L"ログファイルを作成できません。\nフォルダが書き込み禁止になってませんか？"), (L"ログファイルの作成に失敗"), MB_ABORTRETRYIGNORE | MB_ICONERROR);
@@ -61,9 +64,10 @@ namespace suika {
 					return false;
 				}
 				else if (id == IDRETRY || id == IDTRYAGAIN) {
-					e = fopen_s(&fp, filename.c_str(), "w");
-					if (e != 0)
+					file.open(filename, std::ios::out | std::ios::binary);
+					if (!file.is_open()) {
 						continue;
+					}
 					else {
 						add(std::format("起動時刻 {:%Y/%m/%d %X}  Lib version: {}", lt, suika::VERSION_S));
 						return true;
@@ -87,21 +91,27 @@ namespace suika {
 	}
 
 	std::mutex mtx;
-	void	   logger::add(const string& str) {
+	void logger::add(const string& str) {
 		std::lock_guard<std::mutex> lock(mtx);
 		static string log;
 		auto			   t = std::chrono::system_clock::now();
 		auto			   d = std::chrono::duration_cast<std::chrono::milliseconds>(t - _startup_count);
-		log = std::format("[{}]\t{}\n", d.count(), str.to_string());
+		log = std::format("[{}]\t{}", d.count(), str.to_string());
 		OutputDebugString(log.to_wstring().c_str());
+		OutputDebugString(L"\n");
 		if (!flag)
 			return;
-		if (fp == nullptr) {
+		if (!file.is_open()) {
 			if (init() != 0)
 				return;
 		}
-		if (fp != nullptr)
-			fprintf(fp, log.to_string().c_str());
+		else {
+			//fprintf(fp, log.to_string().c_str());
+			auto s = str.to_u8string();
+			s += u8"\r\n";
+			file.write(std::bit_cast<const char*>(s.c_str()), s.size() * sizeof(char));
+			file.flush();
+		}
 	}
 
 	void logger::exception(const string& str) {

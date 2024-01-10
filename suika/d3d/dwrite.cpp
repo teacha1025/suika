@@ -48,6 +48,8 @@ namespace suika {
 			ComPtr<ID2D1SolidColorBrush> pEdgeSolidBrush;
 			ComPtr<IDWriteFontFile> fontFile;
 			ComPtr<IDWriteFontCollection> pFontCollection;
+
+			const string DEFAULT_FONT = string("Arial");
 			
 			static void registerFontFace(const string& fontFamilyName, ComPtr<IDWriteFontFile>& fontFile) noexcept {
 				std::array<IDWriteFontFile*, 1U> fontFileArray = { fontFile.Get() };
@@ -62,17 +64,21 @@ namespace suika {
 				}
 			}
 
-			static void registerFontFace(const string& fontFamilyName) {
+			static void registerFontFace(string fontFamilyName) {
+				if (fontFaceMap.contains(fontFamilyName)) [[likely]] {
+					return;
+				}
 				ComPtr<IDWriteFontFamily> family;
 				ComPtr<IDWriteFont> pFont;
 				UINT index = 0;
 				BOOL exist = false;
-				
+
 				auto er = pFontCollection->FindFamilyName(fontFamilyName.to_wstring().c_str(), &index, &exist);
 				if (FAILED(er) || !exist) {
-					log_d3d.error(fontFamilyName + " was not found.");
+					log_d3d.error(fontFamilyName.to_string() + " was not found.");
 					log_d3d.result(er);
-					return;
+					//return;
+					pFontCollection->FindFamilyName(DEFAULT_FONT.to_wstring().c_str(), &index, &exist);
 				}
 				er = pFontCollection->GetFontFamily(index, family.GetAddressOf());
 				if (FAILED(er)) {
@@ -105,6 +111,10 @@ namespace suika {
 					codePoints.emplace_back(character);
 				}
 				const auto& fontFace = fontFaceMap[fontFamilyName];
+				if (fontFace == nullptr) {
+					//dose not exit
+					return;
+				}
 				auto er = fontFace->GetGlyphIndicesW(codePoints.data(), static_cast<UINT32>(codePoints.size()), glyphIndices.data());
 				ComPtr<ID2D1PathGeometry> pathGeometry = nullptr;
 				if (FAILED(er=pD2DFactory->CreatePathGeometry(pathGeometry.ReleaseAndGetAddressOf()))) [[unlikely]] {

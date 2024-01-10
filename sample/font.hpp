@@ -22,7 +22,7 @@ int main() {
 	const string emoji_list[] = { U"🍉", U"🥝", U"🍓", U"和", U"🚅" };
 
 	// フォントサイズ64のメイリオの淵付きフォントを作成
-	font edged_font("メイリオ", 64, true, 2, font_weight::extra_bold);
+	font edged_font("HG行書s体", 64, true, 2, font_weight::extra_bold);
 
 	// フォントサイズ64の游明朝の淵なしフォントを作成
 	font font("游明朝", 64);
